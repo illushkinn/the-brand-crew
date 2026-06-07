@@ -12,7 +12,8 @@
 <!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <!-- Iosevka Font (via Fontsource) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/iosevka-aile@5.1.0/400.css">
@@ -37,7 +38,7 @@
 /* ------ RESET ------ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-body { font-family: 'Inter', sans-serif; overflow-x: hidden; background: linear-gradient(135deg, #0a0a0f, #1a1a2e, #16213e, #0f0f1a); background-size: 400% 400%; animation: gradShift 25s ease infinite; }
+body { font-family: var(--font-body); overflow-x: hidden; background: linear-gradient(135deg, #0a0a0f, #1a1a2e, #16213e, #0f0f1a); background-size: 400% 400%; animation: gradShift 25s ease infinite; }
 img, svg { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; -webkit-focus-ring-color: transparent; outline: none; }
 button { border: none; background: none; cursor: pointer; font: inherit; color: inherit; -webkit-tap-highlight-color: transparent; -webkit-focus-ring-color: transparent; outline: none; }
@@ -69,7 +70,7 @@ ul { list-style: none; }
   --accent-glow: rgba(221,97,76,0.15);
   --code-bg: #1A1A1A;
   --font-display: 'Iosevka Aile', 'Iosevka', 'Darker Grotesque', 'Arial Black', 'Impact', sans-serif;
-  --font-body: 'Inter', sans-serif;
+  --font-body: 'Sora', sans-serif;
 }
 
 [data-theme="light"] {
@@ -577,7 +578,7 @@ a:focus-visible {
   width: 3rem;
   height: 3rem;
   margin: 0 auto 1rem;
-  color: var(--ochra);
+  color: var(--terracota);
   display: block;
 }
 .solucion-card h4 {
@@ -785,7 +786,7 @@ a:focus-visible {
   margin-bottom: 0.5rem;
 }
 .pricing-line-label {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-body);
   font-size: 1rem;
   font-weight: 600;
   color: var(--headline);
@@ -810,7 +811,7 @@ a:focus-visible {
   font-size: 1.1rem;
   margin-bottom: 1rem;
   font-weight: 700;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-body);
 }
 .pricing-includes ul {
   display: grid;
@@ -1256,7 +1257,7 @@ a:focus-visible {
   padding: 0.75rem 1.5rem;
   background: var(--terracota, #DD614C);
   color: #fff;
-  font-family: var(--font-body, 'Inter', sans-serif);
+  font-family: var(--font-body, 'Sora', sans-serif);
   font-size: 0.875rem;
   font-weight: 600;
   border-radius: 0 0 8px 8px;
@@ -1480,19 +1481,39 @@ a:focus-visible {
 
   <div class="solucion-grid">
     <div class="glass-card solucion-card fade-in">
-      <i data-lucide="rocket" class="card-icon"></i>
+      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" width="48" height="48" class="card-icon">
+        <path d="M6 24s6-10 18-10 18 10 18 10-6 10-18 10-18-10-18-10z" />
+        <circle cx="24" cy="24" r="4.5" />
+        <circle cx="24" cy="24" r="1.5" fill="currentColor" stroke="none" />
+        <path d="M33 15l2.5 2.5M35.5 17.5l2-2M33 15l2-2" stroke-width="1" opacity="0.6"/>
+      </svg>
       <h4>Diseño que convierte</h4>
       <p>Nada de plantillas genéricas. Tu página con su personalidad única.</p>
     </div>
 
     <div class="glass-card solucion-card fade-in fade-in-delay-1">
-      <i data-lucide="smartphone" class="card-icon"></i>
+      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" width="48" height="48" class="card-icon">
+        <rect x="12" y="6" width="24" height="36" rx="3" />
+        <line x1="24" y1="38" x2="24" y2="39" />
+        <circle cx="20" cy="14" r="3.5" stroke-width="1" opacity="0.5"/>
+        <path d="M22.5 12.5l4-4M28.5 10.5l-2 2" stroke-width="1" opacity="0.5"/>
+        <rect x="15" y="19" width="18" height="12" rx="1" stroke-width="1"/>
+        <line x1="35" y1="15" x2="39" y2="19" stroke-width="1.5"/>
+        <circle cx="39" cy="19" r="4" stroke-width="1.5"/>
+        <line x1="42" y1="22" x2="45" y2="25" stroke-width="1.5"/>
+      </svg>
       <h4>Se ve bien en cualquier pantalla + SEO</h4>
       <p>Se ve bien en cualquier pantalla y Google te encuentra.</p>
     </div>
 
     <div class="glass-card solucion-card fade-in fade-in-delay-2">
-      <i data-lucide="globe" class="card-icon"></i>
+      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" width="48" height="48" class="card-icon">
+        <circle cx="24" cy="24" r="17" />
+        <ellipse cx="24" cy="24" rx="10" ry="17" stroke-width="1" opacity="0.5"/>
+        <line x1="7" y1="24" x2="41" y2="24" />
+        <line x1="24" y1="7" x2="24" y2="41" />
+        <path d="M31 20l-9 9-4-4" stroke-width="1.5" />
+      </svg>
       <h4>Dominio + Hosting</h4>
       <p>Todo incluido el primer año. Vos ocupate de tu negocio, del resto me encargo yo.</p>
     </div>

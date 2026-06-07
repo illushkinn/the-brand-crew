@@ -8,7 +8,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@700;800;900&family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Iosevka Font (via Fontsource) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/iosevka-aile@5.1.0/400.css">
@@ -34,7 +34,7 @@
       --gray: #666666;
       --terracotta: #e25c3a;
       --font-display: 'Iosevka Aile', 'Iosevka', 'Darker Grotesque', 'Arial Black', 'Impact', sans-serif;
-      --font-body: 'Inter', 'Segoe UI', 'Helvetica Neue', sans-serif;
+      --font-body: 'Sora', 'Inter', 'Segoe UI', sans-serif;
     }
 
     /* =========================================================
@@ -98,10 +98,12 @@
 
     .front-inner {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       align-items: center;
+      justify-content: center;
       height: 100%;
-      padding: 0 5mm;
+      padding: 4mm 5mm;
+      gap: 2mm;
     }
 
     /* --- Left: logo + brand name --- */
@@ -129,6 +131,7 @@
       color: var(--text);
       text-transform: uppercase;
       letter-spacing: 2.5px;
+      text-align: center;
     }
 
     .brand-name .line {
@@ -145,6 +148,7 @@
       font-style: italic;
       letter-spacing: 1.5px;
       width: 100%;
+      text-align: center;
     }
 
     .tagline-line {
@@ -158,7 +162,6 @@
     /* --- Decorative divider between brand & tagline --- */
     .card-divider {
       display: block;
-      flex: 0 0 100%;
       margin: 0.5mm auto 0.5mm;
       opacity: 0.4;
     }
@@ -325,25 +328,21 @@
     <div class="card-label">Anverso / Front</div>
     <div class="card card-front">
       <div class="front-inner">
-        <div class="front-left">
-          <img class="front-logo" src="assets/logo(1).png" alt="The Brand Crew">
-          <div class="brand-name">
-            <span class="line">THE</span>
-            <span class="line">BRAND</span>
-            <span class="line">CREW</span>
-          </div>
+        <img class="front-logo" src="assets/logo(1).png" alt="The Brand Crew">
+        <div class="brand-name">
+          <span class="line">THE</span>
+          <span class="line">BRAND</span>
+          <span class="line">CREW</span>
+        </div>
 
-          <!-- Decorative divider -->
-          <svg class="card-divider" viewBox="0 0 200 12" width="80%" height="12">
-            <path d="M 15,6 Q 100,-2 185,6" stroke="#1A1A1A" stroke-width="0.8" fill="none" stroke-linecap="round"/>
-          </svg>
+        <!-- Decorative divider -->
+        <svg class="card-divider" viewBox="0 0 200 12" width="80%" height="12">
+          <path d="M 15,6 Q 100,-2 185,6" stroke="#1A1A1A" stroke-width="0.8" fill="none" stroke-linecap="round"/>
+        </svg>
 
-          <div class="front-tagline">
-            <div class="tagline-line">Servicios de páginas web</div>
-            <div class="tagline-line tagline-accent">que garpan</div>
-            <div class="tagline-line">para comercios</div>
-            <div class="tagline-line">que laburan</div>
-          </div>
+        <div class="front-tagline">
+          <div class="tagline-line">Páginas web <span class="tagline-accent">que garpan</span></div>
+          <div class="tagline-line">Para comercios y servicios <span class="tagline-accent">que laburan</span></div>
         </div>
       </div>
     </div>
