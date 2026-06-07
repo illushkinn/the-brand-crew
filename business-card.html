@@ -106,11 +106,11 @@
 
     /* --- Left: logo + brand name --- */
     .front-left {
-      flex: 0.7;
+      flex: 1;
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 2mm;
+      justify-content: flex-start;
+      gap: 3mm;
     }
 
     .front-logo {
@@ -134,42 +134,22 @@
       display: block;
     }
 
-    /* --- Divider --- */
-    .front-divider {
-      width: 1.5px;
-      height: 70%;
-      background: var(--text);
-      flex-shrink: 0;
-      margin: 0 3mm;
-    }
-
-    /* --- Right: tagline --- */
-    .front-right {
-      flex: 1.3;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-    }
-
-    .front-right .tagline-main {
+    /* --- Tagline next to logo --- */
+    .front-tagline {
       font-family: var(--font-display);
       font-weight: 800;
       font-size: 7.5pt;
-      color: var(--terracotta);
+      line-height: 1.25;
       text-transform: uppercase;
       letter-spacing: 1.5px;
-      line-height: 1.2;
-      margin-bottom: 1mm;
     }
 
-    .front-right .tagline-sub {
-      font-family: var(--font-body);
-      font-weight: 500;
-      font-size: 6.5pt;
-      color: var(--gray);
-      letter-spacing: 0.5px;
-      line-height: 1.2;
+    .tagline-line {
+      display: block;
+    }
+
+    .tagline-accent {
+      color: var(--terracotta);
     }
 
     /* =========================================================
@@ -196,34 +176,20 @@
     .back-inner {
       display: flex;
       flex-direction: column;
+      justify-content: center;
+      align-items: center;
       height: 100%;
       position: relative;
       z-index: 1;
     }
 
-    /* --- Tagline con saltos de línea --- */
-    .back-tagline {
-      font-family: var(--font-display);
-      font-weight: 900;
-      font-size: 7.5pt;
-      color: var(--text);
-      line-height: 1.35;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      margin-bottom: 2.5mm;
-      flex-shrink: 0;
-    }
 
-    .back-tagline .accent {
-      color: var(--terracotta);
-    }
 
     /* --- Pricing panels (glass) --- */
     .back-pricing {
       display: flex;
       gap: 2.5mm;
-      flex: 1;
-      min-height: 0;
+      width: 100%;
     }
 
     .back-pricing-panel {
@@ -267,34 +233,6 @@
       margin-top: 0.5mm;
       letter-spacing: 1.5px;
       text-transform: uppercase;
-    }
-
-    /* --- Contact bar --- */
-    .back-contact {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-top: 2mm;
-      margin-top: auto;
-      flex-shrink: 0;
-    }
-
-    .back-contact-item {
-      font-family: var(--font-display);
-      font-weight: 600;
-      font-size: 6pt;
-      color: #6b7280;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-
-    .back-contact-item a {
-      color: #6366f1;
-      text-decoration: none;
-    }
-
-    .back-contact-item a:hover {
-      text-decoration: underline;
     }
 
     /* =========================================================
@@ -369,11 +307,12 @@
             <span class="line">BRAND</span>
             <span class="line">CREW</span>
           </div>
-        </div>
-        <div class="front-divider"></div>
-        <div class="front-right">
-          <div class="tagline-main">Páginas web que garpan</div>
-          <div class="tagline-sub">para comercios que laburan</div>
+          <div class="front-tagline">
+            <div class="tagline-line">Páginas web</div>
+            <div class="tagline-line tagline-accent">que garpan</div>
+            <div class="tagline-line">para comercios</div>
+            <div class="tagline-line">que laburan</div>
+          </div>
         </div>
       </div>
     </div>
@@ -384,14 +323,6 @@
     <div class="card-label">Reverso / Back</div>
     <div class="card card-back">
       <div class="back-inner">
-
-        <!-- Tagline con saltos de línea -->
-        <div class="back-tagline">
-          Páginas web<br>
-          <span class="accent">que garpan</span><br>
-          para comercios<br>
-          que laburan
-        </div>
 
         <!-- Pricing panels -->
         <div class="back-pricing">
@@ -405,12 +336,6 @@
             <div class="back-pricing-amount">ARS 20.000</div>
             <div class="back-pricing-suffix">2 AÑOS</div>
           </div>
-        </div>
-
-        <!-- Contact -->
-        <div class="back-contact">
-          <span class="back-contact-item">WA +54 9 11 2406 3009</span>
-          <span class="back-contact-item"><a href="https://thebrandcrew.lat">thebrandcrew.lat</a></span>
         </div>
 
       </div>
