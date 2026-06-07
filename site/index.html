@@ -1087,6 +1087,27 @@ a:focus-visible {
   opacity: 0.7;
   margin-top: 0.2rem;
 }
+.footer .footer-social {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.4rem;
+}
+.footer .footer-social a {
+  color: var(--terracota);
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: text-decoration 0.2s;
+}
+.footer .footer-social a:hover,
+.footer .footer-social a:focus-visible {
+  text-decoration: underline;
+}
+.footer .footer-sep {
+  color: var(--terracota);
+  font-size: 0.85rem;
+  opacity: 0.6;
+}
 .footer .footer-credit {
   font-size: 0.85rem;
   color: var(--body-dim);
@@ -1790,6 +1811,11 @@ a:focus-visible {
       <div class="footer-card-content">
         <p class="footer-brand"><span>T</span>he Brand Crew</p>
         <p class="footer-cuit">CUIT 20-19025451-9</p>
+        <div class="footer-social">
+          <a href="https://www.linkedin.com/in/illya-grytsyk/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <span class="footer-sep">·</span>
+          <a href="https://beacons.site/illya_studio" target="_blank" rel="noopener noreferrer">Beacons</a>
+        </div>
       </div>
       <p class="footer-credit">Hecho con <i data-lucide="heart" style="color:var(--terracota);width:1.1em;height:1.1em;display:inline;vertical-align:middle;"></i> e <strong>Illya</strong></p>
     </div>
