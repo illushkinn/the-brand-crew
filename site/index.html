@@ -258,9 +258,15 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800; }
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  transition: transform 0.35s ease, opacity 0.35s ease;
 }
 [data-theme="light"] .navbar {
   background: rgba(245, 240, 235, 0.6);
+}
+.navbar.is-hidden {
+  opacity: 0;
+  transform: translateY(-100%);
+  pointer-events: none;
 }
 /* Desktop nav */
 .navbar-links {
@@ -279,7 +285,7 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800; }
   font-family: var(--font-display);
   font-weight: 800;
   font-size: 1rem;
-  color: var(--headline);
+  color: var(--verde);
   white-space: nowrap;
   position: absolute;
   left: 1rem;
@@ -289,10 +295,6 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800; }
   transition: opacity 0.3s ease, transform 0.3s ease;
   pointer-events: none;
   z-index: 1;
-}
-.navbar-brand-mobile.is-hidden {
-  opacity: 0;
-  transform: translateY(calc(-50% - 10px));
 }
 @media (max-width: 767px) {
   .navbar-brand-mobile {
@@ -493,6 +495,7 @@ a:focus-visible {
   position: relative;
   z-index: 1;
   max-width: 900px;
+  margin-top: -1rem;
 }
 .hero-badge {
   display: inline-flex;
@@ -1467,7 +1470,7 @@ a:focus-visible {
     <a href="#contacto">Empecemos</a>
   </div>
 
-  <span class="navbar-brand-mobile" id="navbarBrandMobile">The Brand Crew</span>
+  <span class="navbar-brand-mobile" id="navbarBrandMobile"><i data-lucide="zap"></i></span>
 
   <div class="navbar-actions">
     <button class="hamburger-btn" id="hamburgerBtn" aria-label="Abrir menú" aria-expanded="false">
@@ -1499,13 +1502,8 @@ a:focus-visible {
   </div>
 
   <div class="hero-content">
-    <div class="hero-badge">
-      <i data-lucide="zap"></i>
-      The Brand Crew
-    </div>
-
     <h1 class="hero-title">Páginas web que <span class="text-terracota">garpan</span></h1>
-    <p class="hero-sub">Para comercios y servicios que <span class="text-terracota">laburan</span></p>
+    <p class="hero-sub">Para comercios que <span class="text-terracota">laburan</span></p>
     <p class="hero-meta">
       <i data-lucide="palette"></i> Diseño + desarrollo
       <span class="dot-sep" aria-hidden="true"></span>
@@ -1841,7 +1839,7 @@ window.scrollTo(0, 0);
   const faqItems = document.querySelectorAll('.faq-item');
   const fadeEls = document.querySelectorAll('.fade-in');
   const mobileLinks = mobileMenu.querySelectorAll('.mobile-link');
-  const navbarBrandMobile = document.getElementById('navbarBrandMobile');
+  const navbar = document.querySelector('.navbar');
 
   /* ==============================================
      HAMBURGER / MOBILE MENU
@@ -1957,13 +1955,13 @@ window.scrollTo(0, 0);
       }
     });
 
-    // Mobile brand auto-hide: hide after ~100px scroll, show when back near top
-    if (navbarBrandMobile) {
-      if (scrollY > 100) {
-        navbarBrandMobile.classList.add('is-hidden');
-      } else {
-        navbarBrandMobile.classList.remove('is-hidden');
-      }
+    // Navbar auto-hide: hide entire nav after scrolling past hero
+    const heroSection = document.querySelector('.hero') || document.querySelector('section:first-of-type');
+    const heroThreshold = heroSection ? heroSection.offsetHeight * 0.7 : 400;
+    if (scrollY > heroThreshold) {
+      navbar.classList.add('is-hidden');
+    } else {
+      navbar.classList.remove('is-hidden');
     }
   }
 
