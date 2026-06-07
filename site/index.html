@@ -1345,6 +1345,29 @@ a:focus-visible {
     padding-top: 0.4rem;
     font-size: 0.75rem;
   }
+
+  /* CTA ocupa 100dvh en mobile, footer al fondo */
+  .cta-final {
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2rem 1.5rem;
+  }
+
+  .cta-final .cta-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .cta-final .footer {
+    width: 100%;
+    padding: 1rem 0;
+  }
 }
 </style>
 <script type="application/ld+json">
@@ -1691,21 +1714,20 @@ a:focus-visible {
      8. CTA FINAL
      ============================================== -->
 <section class="cta-final" id="contacto" aria-label="Contacto final">
-  <h2>Dale, <span class="text-terracota">empecemos</span>.</h2>
+  <div class="cta-content">
+    <h2>Dale, <span class="text-terracota">empecemos</span>.</h2>
+  </div>
+
+  <footer class="footer" role="contentinfo">
+    <div class="footer-info">
+      <p class="footer-brand"><span>T</span>he Brand Crew</p>
+      <p class="footer-cuit">CUIT 20-12345678-9</p>
+    </div>
+    <p class="footer-credit">Hecho con <i data-lucide="heart" style="color:var(--terracota);width:1.1em;height:1.1em;display:inline;vertical-align:middle;"></i> e <strong>Illya</strong></p>
+  </footer>
 </section>
 
 </main>
-
-<!-- ==============================================
-     FOOTER
-     ============================================== -->
-<footer class="footer" role="contentinfo">
-  <div class="footer-info">
-    <p class="footer-brand"><span>T</span>he Brand Crew</p>
-    <p class="footer-cuit">CUIT 20-12345678-9</p>
-  </div>
-  <p class="footer-credit">Hecho con <i data-lucide="heart" style="color:var(--terracota);width:1.1em;height:1.1em;display:inline;vertical-align:middle;"></i> e <strong>Illya</strong></p>
-</footer>
 
 <!-- ==============================================
      FAB CONTAINER (3-dots + WhatsApp + Progress)
