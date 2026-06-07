@@ -19,8 +19,8 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/iosevka-aile@5.1.0/700.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/iosevka-aile@5.1.0/900.css">
 
-<!-- Phosphor Icons -->
-<script src="https://unpkg.com/@phosphor-icons/web@2.1.1" defer></script>
+<!-- Lucide Icons -->
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 
 <!-- Vercel Web Analytics -->
 <script>
@@ -202,8 +202,9 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800; }
   font-size: 1rem;
   padding: 0.6rem 1.2rem;
 }
-.btn i.ph {
-  font-size: 1.3em;
+.btn svg {
+  width: 1.3em;
+  height: 1.3em;
 }
 
 /* ------ CTA EM/PECEMOS (estilo distintivo) ------ */
@@ -281,7 +282,6 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800; }
 }
 .hamburger-btn:hover {
   color: var(--terracota);
-  background: rgba(255,255,255,0.05);
 }
 
 /* Focus-visible global para botones y links */
@@ -538,7 +538,8 @@ a:focus-visible {
   .problema-grid { grid-template-columns: repeat(3, 1fr); }
 }
 .problema-card .card-icon {
-  font-size: 2.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
   margin-bottom: 1rem;
   color: var(--terracota);
 }
@@ -551,7 +552,7 @@ a:focus-visible {
   font-size: 0.95rem;
 }
 .problema-card .card-emoji {
-  display: none; /* We use Phosphor icons instead */
+  display: none; /* We use Lucide icons instead */
 }
 
 /* ================================================
@@ -573,7 +574,8 @@ a:focus-visible {
   text-align: center;
 }
 .solucion-card .card-icon {
-  font-size: 3rem;
+  width: 3rem;
+  height: 3rem;
   margin-bottom: 1rem;
   color: var(--ochra);
   display: block;
@@ -827,9 +829,10 @@ a:focus-visible {
   font-size: 0.95rem;
   color: var(--body);
 }
-.pricing-includes li i {
+.pricing-includes li svg {
   color: var(--verde);
-  font-size: 1.1rem;
+  width: 1.1rem;
+  height: 1.1rem;
 }
 .pricing-not-includes {
   font-size: 0.9rem;
@@ -926,13 +929,14 @@ a:focus-visible {
 .faq-question:hover {
   color: var(--terracota);
 }
-.faq-question i {
-  font-size: 1.2rem;
+.faq-question svg {
+  width: 1.2rem;
+  height: 1.2rem;
   transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   flex-shrink: 0;
   color: var(--terracota);
 }
-.faq-question[aria-expanded="true"] i {
+.faq-question[aria-expanded="true"] svg {
   transform: rotate(45deg);
 }
 .faq-answer {
@@ -1126,7 +1130,8 @@ a:focus-visible {
   left: 50%;
   transform: translate(-50%, -50%);
   color: var(--terracota);
-  font-size: 1.1rem;
+  width: 1.1rem;
+  height: 1.1rem;
   transition: transform 0.3s;
 }
 .progress-circle:hover .arrow-icon {
@@ -1177,8 +1182,9 @@ a:focus-visible {
 .fab-trigger:hover {
   opacity: 0.8;
 }
-.fab-trigger i {
-  font-size: 1.75rem;
+.fab-trigger svg {
+  width: 1.75rem;
+  height: 1.75rem;
 }
 .fab-menu {
   display: flex;
@@ -1235,6 +1241,28 @@ a:focus-visible {
 ::selection {
   background: var(--terracota);
   color: #fff;
+}
+
+/* ------ SKIP LINK (accesibilidad) ------ */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--terracota, #DD614C);
+  color: #fff;
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 0 0 8px 8px;
+  z-index: 10000;
+  text-decoration: none;
+  transition: top 0.25s ease;
+}
+.skip-link:focus {
+  top: 0;
+  outline: 2px solid #fff;
+  outline-offset: 2px;
 }
 
 /* ------ MOBILE PADDING (max-width: 768px) ------ */
@@ -1332,6 +1360,8 @@ a:focus-visible {
 </head>
 <body>
 
+<a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
 <!-- ==============================================
      NAVBAR
      ============================================== -->
@@ -1346,7 +1376,8 @@ a:focus-visible {
 
   <div class="navbar-actions">
     <button class="hamburger-btn" id="hamburgerBtn" aria-label="Abrir menú" aria-expanded="false">
-      <i class="ph ph-list"></i>
+      <i data-lucide="menu" id="hamburgerMenuIcon"></i>
+      <i data-lucide="x" id="hamburgerCloseIcon" style="display:none"></i>
   </button>
   </div>
 </nav>
@@ -1360,6 +1391,8 @@ a:focus-visible {
   <a href="#contacto" class="mobile-link">Empecemos</a>
 </div>
 
+<main id="main-content">
+
 <!-- ==============================================
      1. HERO
      ============================================== -->
@@ -1372,23 +1405,23 @@ a:focus-visible {
 
   <div class="hero-content">
     <div class="hero-badge">
-      <i class="ph ph-lightning"></i>
+      <i data-lucide="zap"></i>
       The Brand Crew
     </div>
 
     <h1 class="hero-title">Páginas web que <span class="text-terracota">garpan</span></h1>
     <p class="hero-sub">Para comercios que <span class="text-terracota">laburan</span></p>
     <p class="hero-meta">
-      <i class="ph ph-palette"></i> Diseño + desarrollo
+      <i data-lucide="palette"></i> Diseño + desarrollo
       <span class="dot-sep" aria-hidden="true"></span>
-      <i class="ph ph-globe"></i> Dominio + hosting
+      <i data-lucide="globe"></i> Dominio + hosting
       <span class="dot-sep" aria-hidden="true"></span>
-      <i class="ph ph-currency-circle-dollar"></i> Desde <strong>$140k</strong>
+      <i data-lucide="circle-dollar-sign"></i> Desde <strong>$140k</strong>
     </p>
 
     <div class="hero-actions">
       <a href="#servicios" class="btn btn-secondary btn-lg">
-        <i class="ph ph-arrow-down"></i>
+        <i data-lucide="arrow-down"></i>
         Más info
       </a>
     </div>
@@ -1400,7 +1433,7 @@ a:focus-visible {
      ============================================== -->
 <section class="section problema" id="servicios" aria-label="El problema que resolvemos">
   <span class="section-label mono text-terracota">
-    <i class="ph ph-warning-circle"></i> El problema
+    <i data-lucide="alert-circle"></i> El problema
   </span>
   <h2 class="section-title">El negocio que no está en internet, <span class="text-terracota">no existe</span>.</h2>
   <p class="section-sub">
@@ -1409,19 +1442,19 @@ a:focus-visible {
 
   <div class="problema-grid">
     <div class="glass-card problema-card fade-in">
-      <i class="ph ph-magnifying-glass card-icon"></i>
+      <i data-lucide="search" class="card-icon"></i>
       <h4>No te encuentran</h4>
       <p>Si no estás en Google, no existís. Hoy la gente busca todo en internet, y si tu negocio no aparece, el cliente se va a otro.</p>
     </div>
 
     <div class="glass-card problema-card fade-in fade-in-delay-1">
-      <i class="ph ph-shield-checkered card-icon"></i>
+      <i data-lucide="shield" class="card-icon"></i>
       <h4>Te da miedo</h4>
       <p>No sabés por dónde arrancar, te da desconfianza poner plata, te preocupa que te caguen. Es normal. Por eso existo.</p>
     </div>
 
     <div class="glass-card problema-card fade-in fade-in-delay-2">
-      <i class="ph ph-currency-circle-dollar card-icon"></i>
+      <i data-lucide="circle-dollar-sign" class="card-icon"></i>
       <h4>Las agencias cobran un ojo</h4>
       <p>$500k, $800k, $1M — y encima no te explican nada. Te dan un WordPress genérico y chau. Yo no laburo así.</p>
     </div>
@@ -1435,7 +1468,7 @@ a:focus-visible {
      ============================================== -->
 <section class="section solucion" id="solucion" aria-label="La solución">
   <span class="section-label mono text-terracota">
-    <i class="ph ph-check-circle"></i> La solución
+    <i data-lucide="check-circle"></i> La solución
   </span>
   <h2 class="section-title">Una página web que <span class="text-ochra">vende por vos</span>.</h2>
   <p class="section-sub">
@@ -1444,27 +1477,24 @@ a:focus-visible {
 
   <div class="solucion-grid">
     <div class="glass-card solucion-card fade-in">
-      <i class="ph ph-rocket card-icon"></i>
+      <i data-lucide="rocket" class="card-icon"></i>
       <h4>Diseño que convierte</h4>
       <p>Nada de plantillas genéricas. Tu página con su personalidad única.</p>
     </div>
 
     <div class="glass-card solucion-card fade-in fade-in-delay-1">
-      <i class="ph ph-device-mobile card-icon"></i>
+      <i data-lucide="smartphone" class="card-icon"></i>
       <h4>Se ve bien en cualquier pantalla + SEO</h4>
-      <p>Se ve bien en cualquier pantalla. Y Google te encuentra.</p>
+      <p>Se ve bien en cualquier pantalla y Google te encuentra.</p>
     </div>
 
     <div class="glass-card solucion-card fade-in fade-in-delay-2">
-      <i class="ph ph-globe-hemisphere-west card-icon"></i>
+      <i data-lucide="globe" class="card-icon"></i>
       <h4>Dominio + Hosting</h4>
       <p>Todo incluido el primer año. Vos ocupate de tu negocio, del resto me encargo yo.</p>
     </div>
   </div>
 
-  <div class="solucion-quote fade-in">
-    <p>No construyo páginas. Construyo herramientas de venta.</p>
-  </div>
 </section>
 
 <div class="section-divider" role="separator" aria-hidden="true"></div>
@@ -1474,7 +1504,7 @@ a:focus-visible {
      ============================================== -->
 <section class="section como-funciona" id="como-funciona" aria-label="Cómo funciona">
   <span class="section-label mono text-terracota">
-    <i class="ph ph-arrows-clockwise"></i> El proceso
+    <i data-lucide="refresh-cw"></i> El proceso
   </span>
   <h2 class="section-title">Tres pasos.<br><span class="text-verde">Sin estrés.</span></h2>
   <p class="section-sub">
@@ -1515,7 +1545,7 @@ a:focus-visible {
      ============================================== -->
 <section class="section pricing" id="precios" aria-label="Precios">
   <span class="section-label mono text-terracota">
-    <i class="ph ph-tag"></i> Precios
+    <i data-lucide="tag"></i> Precios
   </span>
   <h2 class="section-title"><span class="text-terracota">Precio justo.</span></h2>
   <p class="section-sub">
@@ -1549,19 +1579,19 @@ a:focus-visible {
     <div class="pricing-includes">
       <h4>Incluye</h4>
       <ul>
-        <li><i class="ph ph-check"></i> Diseño personalizado</li>
-        <li><i class="ph ph-check"></i> Dominio .com</li>
-        <li><i class="ph ph-check"></i> Hosting rápido</li>
-        <li><i class="ph ph-check"></i> SEO</li>
-        <li><i class="ph ph-check"></i> Varias rondas de cambio</li>
-        <li><i class="ph ph-check"></i> Soporte por WhatsApp 24/7</li>
-        <li><i class="ph ph-check"></i> Adaptable a cualquier pantalla</li>
-        <li><i class="ph ph-check"></i> SSL/HTTPS</li>
+        <li><i data-lucide="check"></i> Diseño personalizado</li>
+        <li><i data-lucide="check"></i> Dominio .com</li>
+        <li><i data-lucide="check"></i> Hosting rápido</li>
+        <li><i data-lucide="check"></i> SEO</li>
+        <li><i data-lucide="check"></i> Varias rondas de cambio</li>
+        <li><i data-lucide="check"></i> Soporte por WhatsApp 24/7</li>
+        <li><i data-lucide="check"></i> Adaptable a cualquier pantalla</li>
+        <li><i data-lucide="check"></i> SSL/HTTPS</li>
       </ul>
     </div>
 
     <a href="https://wa.me/5491124063009" target="_blank" rel="noopener" class="btn btn-empecemos btn-lg" style="width:100%;justify-content:center;">
-      <i class="ph ph-rocket"></i>
+      <i data-lucide="rocket"></i>
       Quiero mi página
     </a>
   </div>
@@ -1574,7 +1604,7 @@ a:focus-visible {
      ============================================== -->
 <section class="section faq" id="faq" aria-label="Preguntas frecuentes">
   <span class="section-label mono text-terracota">
-    <i class="ph ph-question"></i> FAQ
+    <i data-lucide="help-circle"></i> FAQ
   </span>
   <h2 class="section-title">Preguntas <span class="text-ochra">frecuentes</span></h2>
 
@@ -1582,7 +1612,7 @@ a:focus-visible {
     <div class="faq-item">
       <button class="faq-question" aria-expanded="false">
         ¿Qué pasa si no me gusta?
-        <i class="ph ph-plus"></i>
+        <i data-lucide="plus"></i>
       </button>
       <div class="faq-answer">
         <p>Trabajamos hasta que te guste. Incluímos una ronda de cambios, y si hace falta más, lo charlamos. Mi objetivo no es cobrarte y ghostearte — es que tengas una página que te haga feliz.</p>
@@ -1592,7 +1622,7 @@ a:focus-visible {
     <div class="faq-item">
       <button class="faq-question" aria-expanded="false">
         ¿Me van a robar la plata?
-        <i class="ph ph-plus"></i>
+        <i data-lucide="plus"></i>
       </button>
       <div class="faq-answer">
         <p>Pagás la mitad al arranque ($70k) y la mitad cuando te entrego la página funcionando ($70k). Si no te entrego, no pagás el resto. Así de transparente.</p>
@@ -1602,7 +1632,7 @@ a:focus-visible {
     <div class="faq-item">
       <button class="faq-question" aria-expanded="false">
         ¿Puedo actualizarlo después?
-        <i class="ph ph-plus"></i>
+        <i data-lucide="plus"></i>
       </button>
       <div class="faq-answer">
         <p>Sí. Te enseño a hacer cambios básicos, o si preferís, lo hacemos juntos por WhatsApp. Si necesitás algo más grande, arreglamos precio según el trabajo.</p>
@@ -1612,7 +1642,7 @@ a:focus-visible {
     <div class="faq-item">
       <button class="faq-question" aria-expanded="false">
         ¿Y si no tengo contenido?
-        <i class="ph ph-plus"></i>
+        <i data-lucide="plus"></i>
       </button>
       <div class="faq-answer">
         <p>No hay problema. Te ayudo a escribirlo. Parte del servicio es que tu página tenga texto que venda, no lorem ipsum. Si es mucho laburo editorial, lo cobramos aparte, pero siempre te aviso antes.</p>
@@ -1622,7 +1652,7 @@ a:focus-visible {
     <div class="faq-item">
       <button class="faq-question" aria-expanded="false">
         ¿Hosting y dominio?
-        <i class="ph ph-plus"></i>
+        <i data-lucide="plus"></i>
       </button>
       <div class="faq-answer">
         <p>Incluído el primer año. Dominio .com y hosting rápido con SSL. Al año siguiente son ~$100k para renovar todo. Te aviso con tiempo, no te llevás sorpresas.</p>
@@ -1632,7 +1662,7 @@ a:focus-visible {
     <div class="faq-item">
       <button class="faq-question" aria-expanded="false">
         ¿Qué necesitás de mí para arrancar?
-        <i class="ph ph-plus"></i>
+        <i data-lucide="plus"></i>
       </button>
       <div class="faq-answer">
         <p>Nada técnico. Me contás de tu negocio, qué hacés, a quién le vendés. Si tenés logo, fotos, colores, mejor. Si no, lo creamos juntos. Lo único que necesitás son ganas de tener presencia online.</p>
@@ -1648,15 +1678,17 @@ a:focus-visible {
   <h2>Dale, <span class="text-terracota">empecemos</span>.</h2>
 </section>
 
+</main>
+
 <!-- ==============================================
      FOOTER
      ============================================== -->
-<footer class="footer">
+<footer class="footer" role="contentinfo">
   <div class="footer-info">
     <p class="footer-brand"><span>T</span>he Brand Crew</p>
     <p class="footer-cuit">CUIT 20-12345678-9</p>
   </div>
-  <p class="footer-credit">Hecho con <i class="ph ph-heart-straight" style="color:var(--terracota);font-size:1.1em;vertical-align:middle;"></i> e <strong>Illya</strong></p>
+  <p class="footer-credit">Hecho con <i data-lucide="heart" style="color:var(--terracota);width:1.1em;height:1.1em;vertical-align:middle;"></i> e <strong>Illya</strong></p>
 </footer>
 
 <!-- ==============================================
@@ -1682,13 +1714,13 @@ a:focus-visible {
         <circle class="bg-circle" cx="20" cy="20" r="17"/>
         <circle class="fg-circle" id="progressFg" cx="20" cy="20" r="17"/>
       </svg>
-      <i class="ph ph-arrow-up arrow-icon"></i>
+      <i data-lucide="arrow-up" class="arrow-icon"></i>
     </div>
   </div>
 
   <!-- 3-dots trigger button -->
   <button class="fab-trigger" id="fabTrigger" aria-label="Abrir menú">
-    <i class="ph ph-dots-three-vertical"></i>
+    <i data-lucide="more-vertical"></i>
   </button>
 </div>
 
@@ -1696,6 +1728,12 @@ a:focus-visible {
      JAVASCRIPT
      ============================================== -->
 <script>
+// Prevenir scroll restoration del navegador en F5
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+window.scrollTo(0, 0);
+
 (function() {
   'use strict';
 
@@ -1711,7 +1749,6 @@ a:focus-visible {
      DOM REFS
      ============================================== */
   const hamburgerBtn = document.getElementById('hamburgerBtn');
-  const hamburgerIcon = hamburgerBtn.querySelector('i');
   const mobileMenu = document.getElementById('mobileMenu');
   const fabContainer = document.getElementById('fabContainer');
   const fabTrigger = document.getElementById('fabTrigger');
@@ -1731,7 +1768,8 @@ a:focus-visible {
     mobileMenu.classList.add('is-open');
     mobileMenu.removeAttribute('inert');
     hamburgerBtn.setAttribute('aria-expanded', 'true');
-    hamburgerIcon.className = 'ph ph-x';
+    document.getElementById('hamburgerMenuIcon').style.display = 'none';
+    document.getElementById('hamburgerCloseIcon').style.display = '';
     document.body.style.overflow = 'hidden';
     // Focus first link
     setTimeout(function() { mobileLinks[0]?.focus(); }, 100);
@@ -1742,7 +1780,8 @@ a:focus-visible {
     mobileMenu.classList.remove('is-open');
     mobileMenu.setAttribute('inert', '');
     hamburgerBtn.setAttribute('aria-expanded', 'false');
-    hamburgerIcon.className = 'ph ph-list';
+    document.getElementById('hamburgerMenuIcon').style.display = '';
+    document.getElementById('hamburgerCloseIcon').style.display = 'none';
     document.body.style.overflow = '';
     hamburgerBtn.focus();
   }
@@ -1990,6 +2029,8 @@ a:focus-visible {
     });
   });
 
+  // Inicializar Lucide Icons
+  lucide.createIcons();
 })();
 </script>
 
