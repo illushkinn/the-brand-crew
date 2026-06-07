@@ -173,12 +173,12 @@
     }
 
     /* =========================================================
-       BACK — Reverso (Brutalist Glassmorphism Dark)
+       BACK — Reverso (Glassmorphism Claro)
        ========================================================= */
     .card-back {
-      background: #0a0a0f;
-      color: #fff;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: #f7f7f5;
+      color: var(--text);
+      border: 1px solid rgba(0, 0, 0, 0.06);
       padding: 3.5mm 4mm;
       position: relative;
       overflow: hidden;
@@ -189,7 +189,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at 25% 40%, rgba(99, 102, 241, 0.08) 0%, transparent 65%);
+      background: radial-gradient(ellipse at 25% 40%, rgba(226, 92, 58, 0.06) 0%, transparent 65%);
       pointer-events: none;
     }
 
@@ -206,7 +206,7 @@
       font-family: var(--font-display);
       font-weight: 900;
       font-size: 7.5pt;
-      color: #fff;
+      color: var(--text);
       line-height: 1.35;
       text-transform: uppercase;
       letter-spacing: 1.5px;
@@ -215,7 +215,7 @@
     }
 
     .back-tagline .accent {
-      color: #6366f1;
+      color: var(--terracotta);
     }
 
     /* --- Pricing panels (glass) --- */
@@ -235,7 +235,7 @@
       background: rgba(255, 255, 255, 0.85);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(0, 0, 0, 0.06);
       border-radius: 1px;
       padding: 2mm 2.5mm;
     }
@@ -244,7 +244,7 @@
       font-family: var(--font-display);
       font-weight: 600;
       font-size: 5.5pt;
-      color: #94a3b8;
+      color: #6b7280;
       text-transform: uppercase;
       letter-spacing: 2px;
       margin-bottom: 1mm;
@@ -255,10 +255,8 @@
       font-weight: 900;
       font-size: 10pt;
       color: #000000;
-      line-height: 1.05;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      line-height: 1.2;
+      text-align: center;
     }
 
     .back-pricing-suffix {
@@ -285,7 +283,7 @@
       font-family: var(--font-display);
       font-weight: 600;
       font-size: 6pt;
-      color: #94a3b8;
+      color: #6b7280;
       letter-spacing: 1px;
       text-transform: uppercase;
     }
@@ -399,12 +397,12 @@
         <div class="back-pricing">
           <div class="back-pricing-panel">
             <div class="back-pricing-label">Diseño + Desarrollo</div>
-            <div class="back-pricing-amount"><span>$</span><span>1</span><span>4</span><span>0</span><span>.</span><span>0</span><span>0</span><span>0</span></div>
+            <div class="back-pricing-amount">ARS 140.000</div>
             <div class="back-pricing-suffix">ARS</div>
           </div>
           <div class="back-pricing-panel">
             <div class="back-pricing-label">Dominio .com</div>
-            <div class="back-pricing-amount"><span>A</span><span>R</span><span>S</span><span> </span><span>2</span><span>0</span><span>.</span><span>0</span><span>0</span><span>0</span></div>
+            <div class="back-pricing-amount">ARS 20.000</div>
             <div class="back-pricing-suffix">2 AÑOS</div>
           </div>
         </div>
