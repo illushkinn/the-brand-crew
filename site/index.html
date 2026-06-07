@@ -41,7 +41,7 @@
 /* ------ RESET ------ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-body { font-family: var(--font-body); overflow-x: hidden; background: linear-gradient(135deg, #0a0a0f, #1a1a2e, #16213e, #0f0f1a); background-size: 400% 400%; animation: gradShift 25s ease infinite; }
+body { font-family: var(--font-body); overflow-x: hidden; background: linear-gradient(135deg, #0a0a0f, #1a1a2e, #16213e, #0f0f1a); background-size: 400% 400%; animation: gradShift 20s cubic-bezier(0.45, 0.05, 0.25, 1) infinite; }
 img, svg { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; -webkit-focus-ring-color: transparent; outline: none; }
 button { border: none; background: none; cursor: pointer; font: inherit; color: inherit; -webkit-tap-highlight-color: transparent; -webkit-focus-ring-color: transparent; outline: none; }
@@ -463,7 +463,7 @@ a:focus-visible {
   border-radius: 50%;
   filter: blur(80px);
   opacity: 0.55;
-  animation: heroFloat 30s cubic-bezier(0.45, 0.05, 0.25, 1) infinite;
+  animation: heroFloat 22s cubic-bezier(0.45, 0.05, 0.25, 1) infinite;
 }
 .hero-shape:nth-child(1) {
   width: 420px;
@@ -508,14 +508,16 @@ a:focus-visible {
 
 @keyframes heroFloat {
   0%, 100% { transform: translate(0, 0) scale(1); }
-  25% { transform: translate(40px, -50px) scale(1.1); }
-  50% { transform: translate(-25px, 25px) scale(0.9); }
-  75% { transform: translate(20px, -30px) scale(1.05); }
+  20% { transform: translate(30px, -40px) scale(1.07); }
+  40% { transform: translate(-30px, 15px) scale(0.93); }
+  60% { transform: translate(20px, 35px) scale(1.04); }
+  80% { transform: translate(-25px, -20px) scale(0.96); }
 }
 @keyframes heroFloatDiag {
   0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(-60px, 40px) scale(1.15); }
-  66% { transform: translate(40px, -60px) scale(0.9); }
+  25% { transform: translate(-45px, 30px) scale(1.1); }
+  50% { transform: translate(35px, -35px) scale(0.93); }
+  75% { transform: translate(-20px, -40px) scale(1.06); }
 }
 
 .hero-content {
@@ -1079,6 +1081,12 @@ a:focus-visible {
   color: var(--headline);
 }
 .footer .footer-brand span { color: var(--headline); }
+.footer .footer-brand .footer-cta {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 0.9rem;
+  color: var(--terracota);
+}
 .footer .footer-cuit {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.8rem;
@@ -1806,7 +1814,7 @@ a:focus-visible {
   <footer class="footer" role="contentinfo">
     <div class="footer-card">
       <div class="footer-card-content">
-        <p class="footer-brand"><span>T</span>he Brand Crew</p>
+        <p class="footer-brand"><span>T</span>he Brand Crew <span class="footer-cta">· Dale, empecemos.</span></p>
         <p class="footer-cuit">CUIT 20-19025451-9</p>
         <div class="footer-social">
           <a href="https://www.linkedin.com/in/illya-grytsyk/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
