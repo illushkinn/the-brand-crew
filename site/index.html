@@ -316,15 +316,8 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800; }
   font-size: 1rem;
   color: var(--headline);
   white-space: nowrap;
-  margin-right: auto;
-  margin-left: 1rem;
-}
-@media (max-width: 767px) {
-  .navbar-brand-right {
-    margin-right: 0;
-    margin-left: 0.5rem;
-    font-size: 0.85rem;
-  }
+  margin-left: auto;
+  margin-right: 0.75rem;
 }
 
 /* Hamburger btn */
@@ -376,15 +369,17 @@ a:focus-visible {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  opacity: 0;
+  clip-path: circle(0% at top right);
+  -webkit-clip-path: circle(0% at top right);
   pointer-events: none;
-  transition: opacity 0.4s;
+  transition: clip-path 0.5s cubic-bezier(0.45, 0.05, 0.25, 1), -webkit-clip-path 0.5s cubic-bezier(0.45, 0.05, 0.25, 1);
 }
 [data-theme="light"] .mobile-menu {
   background: #F5F0EB;
 }
 .mobile-menu.is-open {
-  opacity: 1;
+  clip-path: circle(150% at top right);
+  -webkit-clip-path: circle(150% at top right);
   pointer-events: all;
 }
 .mobile-menu a {
@@ -393,10 +388,9 @@ a:focus-visible {
   font-size: 2.8rem;
   color: var(--headline);
   padding: 0.3rem 1rem;
-  transition: color 0.3s;
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.4s, transform 0.4s, color 0.3s;
+  transition: opacity 0.4s cubic-bezier(0.45, 0.05, 0.25, 1), transform 0.4s cubic-bezier(0.45, 0.05, 0.25, 1), color 0.3s;
 }
 .mobile-menu.is-open a {
   opacity: 1;
@@ -405,12 +399,12 @@ a:focus-visible {
 .mobile-menu a:hover, .mobile-menu a:focus-visible {
   color: var(--terracota);
 }
-.mobile-menu a:nth-child(1) { transition-delay: 50ms; }
-.mobile-menu a:nth-child(2) { transition-delay: 100ms; }
-.mobile-menu a:nth-child(3) { transition-delay: 150ms; }
-.mobile-menu a:nth-child(4) { transition-delay: 200ms; }
-.mobile-menu a:nth-child(5) { transition-delay: 250ms; }
-.mobile-menu a:nth-child(6) { transition-delay: 300ms; }
+.mobile-menu a:nth-child(1) { transition-delay: 80ms; }
+.mobile-menu a:nth-child(2) { transition-delay: 130ms; }
+.mobile-menu a:nth-child(3) { transition-delay: 180ms; }
+.mobile-menu a:nth-child(4) { transition-delay: 230ms; }
+.mobile-menu a:nth-child(5) { transition-delay: 280ms; }
+.mobile-menu a:nth-child(6) { transition-delay: 330ms; }
 
 @media (min-width: 768px) {
   .hamburger-btn { display: none; }
@@ -468,33 +462,43 @@ a:focus-visible {
   position: absolute;
   border-radius: 50%;
   filter: blur(80px);
-  opacity: 0.4;
-  animation: heroFloat 25s ease-in-out infinite;
+  opacity: 0.55;
+  animation: heroFloat 30s cubic-bezier(0.45, 0.05, 0.25, 1) infinite;
 }
 .hero-shape:nth-child(1) {
-  width: 400px;
-  height: 400px;
+  width: 420px;
+  height: 420px;
   background: var(--terracota);
   top: -10%;
-  right: -10%;
+  right: -8%;
   animation-delay: 0s;
 }
 .hero-shape:nth-child(2) {
-  width: 300px;
-  height: 300px;
+  width: 320px;
+  height: 320px;
   background: var(--ochra);
   bottom: -5%;
   left: -5%;
   animation-delay: -7s;
 }
 .hero-shape:nth-child(3) {
-  width: 250px;
-  height: 250px;
+  width: 260px;
+  height: 260px;
   background: var(--verde);
   top: 40%;
   left: 60%;
   animation-delay: -14s;
+  opacity: 0.35;
+}
+.hero-shape:nth-child(4) {
+  width: 220px;
+  height: 220px;
+  background: var(--verde);
+  bottom: 20%;
+  right: 15%;
+  animation-delay: -5s;
   opacity: 0.25;
+  animation-name: heroFloatDiag;
 }
 @keyframes gradShift {
   0% { background-position: 0% 50%; }
@@ -507,6 +511,11 @@ a:focus-visible {
   25% { transform: translate(40px, -50px) scale(1.1); }
   50% { transform: translate(-25px, 25px) scale(0.9); }
   75% { transform: translate(20px, -30px) scale(1.05); }
+}
+@keyframes heroFloatDiag {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-60px, 40px) scale(1.15); }
+  66% { transform: translate(40px, -60px) scale(0.9); }
 }
 
 .hero-content {
@@ -1043,13 +1052,22 @@ a:focus-visible {
    ================================================ */
 .footer {
   padding: 2.5rem clamp(1.25rem, 5vw, 4rem);
-  background: var(--bg);
-  border-top: 1px solid var(--border);
+  background: transparent;
+  border-top: none;
+}
+.footer-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  align-items: flex-start;
-  text-align: left;
+}
+.footer-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
 }
 .footer p {
   color: var(--body-dim);
@@ -1074,9 +1092,9 @@ a:focus-visible {
   color: var(--body-dim);
   padding-top: 0.75rem;
   border-top: 1px solid var(--border);
-  width: max-content;
+  width: 100%;
   max-width: 100%;
-  white-space: nowrap;
+  margin-top: auto;
 }
 .footer .footer-credit svg {
   display: inline;
@@ -1087,9 +1105,6 @@ a:focus-visible {
     flex-direction: column;
     align-items: flex-start;
     text-align: left;
-  }
-  .footer .footer-credit {
-    margin-top: 0.5rem;
   }
 }
 
@@ -1388,11 +1403,14 @@ a:focus-visible {
   }
   .footer {
     padding: 1.25rem 1.5rem;
-    align-items: center;
-    text-align: center;
-    gap: 0.5rem;
     background: transparent;
     border-top: none;
+  }
+  .footer-card {
+    padding: 1.25rem;
+    gap: 1rem;
+    align-items: center;
+    text-align: center;
   }
   .footer .footer-brand {
     font-size: 1rem;
@@ -1517,6 +1535,7 @@ a:focus-visible {
     <div class="hero-shape"></div>
     <div class="hero-shape"></div>
     <div class="hero-shape"></div>
+    <div class="hero-shape"></div>
   </div>
 
   <div class="hero-content">
@@ -1555,8 +1574,8 @@ a:focus-visible {
     </div>
 
     <div class="glass-card problema-card fade-in fade-in-delay-1">
-      <h4>Te da miedo</h4>
-      <p>No sabés por dónde arrancar, te da desconfianza poner plata, te preocupa que te caguen. Es normal. Por eso estoy acá :)</p>
+      <h4>No sabés por dónde arrancar</h4>
+      <p>Te preocupa que te caguen. Es normal. Por eso estoy acá :)</p>
     </div>
 
     <div class="glass-card problema-card fade-in fade-in-delay-2">
@@ -1621,7 +1640,7 @@ a:focus-visible {
       <div class="step-number">1</div>
       <div class="step-content">
         <h3>Conversamos</h3>
-        <p>Me escribís al WhatsApp y me contás tu idea</p>
+        <p>Me escribís al WhatsApp<br>y me contás tu idea</p>
       </div>
     </div>
 
@@ -1649,13 +1668,7 @@ a:focus-visible {
      6. PRICING
      ============================================== -->
 <section class="section pricing" id="precios" aria-label="Precios">
-  <span class="section-label mono text-terracota">
-    Precios
-  </span>
   <h2 class="section-title"><span class="text-verde">Precio justo</span>.</h2>
-  <p class="section-sub">
-    Esto no es un descuento. Es el precio justo cuando labura uno solo y pone toda su energía.
-  </p>
 
   <div class="glass-card pricing-card fade-in">
     <!-- Service price line -->
@@ -1774,11 +1787,13 @@ a:focus-visible {
   </div>
 
   <footer class="footer" role="contentinfo">
-    <div class="footer-info">
-      <p class="footer-brand"><span>T</span>he Brand Crew</p>
-      <p class="footer-cuit">CUIT 20-19025451-9</p>
+    <div class="footer-card">
+      <div class="footer-card-content">
+        <p class="footer-brand"><span>T</span>he Brand Crew</p>
+        <p class="footer-cuit">CUIT 20-19025451-9</p>
+      </div>
+      <p class="footer-credit">Hecho con <i data-lucide="heart" style="color:var(--terracota);width:1.1em;height:1.1em;display:inline;vertical-align:middle;"></i> e <strong>Illya</strong></p>
     </div>
-    <p class="footer-credit">Hecho con <i data-lucide="heart" style="color:var(--terracota);width:1.1em;height:1.1em;display:inline;vertical-align:middle;"></i> e <strong>Illya</strong></p>
   </footer>
 </section>
 
