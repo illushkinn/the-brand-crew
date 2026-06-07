@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="1024" height="1024" fill="none">
+  <!-- Brutalist outer frame -->
+  <rect x="16" y="16" width="224" height="224" rx="8" fill="#121212"/>
+  
+  <!-- Terracotta accent border -->
+  <rect x="28" y="28" width="200" height="200" rx="4" fill="none" stroke="#DD614C" stroke-width="8"/>
+  
+  <!-- B - vertical stem -->
+  <rect x="76" y="56" width="24" height="144" rx="4" fill="#DD614C"/>
+  
+  <!-- B - top bowl -->
+  <path d="M100 56h48c22 0 36 14 36 36s-14 36-36 36H100V56z" fill="none" stroke="#DD614C" stroke-width="16" stroke-linejoin="round"/>
+  
+  <!-- B - bottom bowl -->
+  <path d="M100 164h52c22 0 36-14 36-36s-14-36-36-36H100v72z" fill="none" stroke="#DD614C" stroke-width="16" stroke-linejoin="round"/>
+  
+  <!-- Ochra accent dot - bottom right corner -->
+  <circle cx="212" cy="212" r="8" fill="#DAA144"/>
+</svg>

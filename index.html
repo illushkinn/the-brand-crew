@@ -1,0 +1,2441 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Brand Crew — Brandbook</title>
+<meta name="description" content="Brandbook de The Brand Crew. Páginas web que venden, para comercios que laburan.">
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+
+<!-- Phosphor Icons -->
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1" defer></script>
+
+<style>
+/* ======= RESET & BASE ======= */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+:root {
+  --bg: #121212;
+  --bg-alt: #1A1A1A;
+  --bg-hero: #0E0E0E;
+  --headline: #FFFFFF;
+  --body: #E0E0E0;
+  --body-dim: #A0A0A0;
+  --terracota: #DD614C;
+  --terracota-hover: #C4513E;
+  --terracota-text: #FFFFFF;
+  --ochra: #DAA144;
+  --ochra-text: #121212;
+  --verde: #A8E100;
+  --verde-text: #121212;
+  --glass-bg: rgba(255,255,255,0.04);
+  --glass-border: rgba(255,255,255,0.1);
+  --glass-blur: 16px;
+  --nav-bg: rgba(18,18,18,0.85);
+  --section-divider: rgba(255,255,255,0.06);
+  --border-color: rgba(255,255,255,0.15);
+  --whatsapp: #25D366;
+  --card-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  --focus-ring: #DD614C;
+  --selection-bg: rgba(221,97,76,0.3);
+}
+
+[data-theme="light"] {
+  --bg: #F5F0EB;
+  --bg-alt: #EDE5DC;
+  --bg-hero: #EFE8E0;
+  --headline: #121212;
+  --body: #2A2A2A;
+  --body-dim: #666666;
+  --terracota: #C4513E;
+  --terracota-hover: #A83E2D;
+  --terracota-text: #FFFFFF;
+  --ochra: #C49032;
+  --ochra-text: #FFFFFF;
+  --verde: #7AB800;
+  --verde-text: #121212;
+  --glass-bg: rgba(18,18,18,0.03);
+  --glass-border: rgba(18,18,18,0.08);
+  --nav-bg: rgba(245,240,235,0.85);
+  --section-divider: rgba(18,18,18,0.06);
+  --border-color: rgba(18,18,18,0.15);
+  --card-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  --selection-bg: rgba(196,81,62,0.2);
+}
+
+::selection { background: var(--selection-bg); }
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* ======= TYPOGRAPHY ======= */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Darker Grotesque', sans-serif;
+  color: var(--headline);
+  font-weight: 800;
+  line-height: 1;
+}
+
+h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900; }
+h2 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 800; }
+h3 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; }
+h4 { font-size: clamp(1.3rem, 2.5vw, 1.8rem); font-weight: 700; }
+
+code, .mono {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85em;
+}
+
+::selection { background: var(--selection-bg); }
+
+/* ======= UTILITY ======= */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section-padding {
+  padding: 5rem 0;
+}
+
+.section-header {
+  margin-bottom: 3rem;
+}
+
+.section-number {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--terracota);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.section-title {
+  margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem;
+  color: var(--body-dim);
+  font-weight: 400;
+  max-width: 600px;
+  line-height: 1.5;
+}
+
+/* ======= ACCENT COLORS ======= */
+.accent-terracota { color: var(--terracota); }
+.accent-ochra { color: var(--ochra); }
+.accent-verde { color: var(--verde); }
+
+/* ======= HEADER / NAV ======= */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: var(--nav-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--section-divider);
+  transition: background 0.3s ease;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  gap: 1rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--headline);
+  font-family: 'Darker Grotesque', sans-serif;
+  font-weight: 800;
+  font-size: 1.2rem;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.logo-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: var(--terracota);
+  color: #fff;
+  font-family: 'Darker Grotesque', sans-serif;
+  font-weight: 900;
+  font-size: 1.4rem;
+  border: 3px solid var(--headline);
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.nav-links {
+  display: none;
+  align-items: center;
+  gap: 0.25rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: 'Darker Grotesque', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--body);
+  text-decoration: none;
+  padding: 0.4rem 0.6rem;
+  transition: color 0.2s;
+  letter-spacing: 0.02em;
+}
+
+.nav-links a:hover,
+.nav-links a:focus-visible {
+  color: var(--terracota);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.theme-toggle {
+  background: none;
+  border: 2px solid var(--border-color);
+  color: var(--body);
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: all 0.2s;
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
+  border-color: var(--terracota);
+  color: var(--terracota);
+}
+
+/* Menu Toggle (Creative Hamburger — B to X) */
+.menu-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  color: var(--headline);
+  font-size: 1.4rem;
+  font-family: 'Darker Grotesque', sans-serif;
+  font-weight: 900;
+}
+
+.menu-toggle .toggle-b,
+.menu-toggle .toggle-x {
+  position: absolute;
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.menu-toggle .toggle-x {
+  font-size: 1.3rem;
+  opacity: 0;
+  transform: scale(0.3) rotate(-45deg);
+}
+
+.menu-toggle[aria-expanded="true"] .toggle-b {
+  opacity: 0;
+  transform: scale(0.3) rotate(90deg);
+}
+
+.menu-toggle[aria-expanded="true"] .toggle-x {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
+/* ======= MENU OVERLAY ======= */
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  background: rgba(18,18,18,0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s ease;
+}
+
+[data-theme="light"] .menu-overlay {
+  background: rgba(245,240,235,0.7);
+}
+
+.menu-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.menu-overlay a {
+  font-family: 'Darker Grotesque', sans-serif;
+  font-weight: 800;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: var(--headline);
+  text-decoration: none;
+  padding: 0.3rem 1rem;
+  transition: all 0.2s;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
+  transition-delay: 0s;
+  position: relative;
+}
+
+.menu-overlay a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 1rem;
+  right: 1rem;
+  height: 3px;
+  background: var(--terracota);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+  transform-origin: left;
+}
+
+.menu-overlay a:hover::after,
+.menu-overlay a:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.menu-overlay a:hover,
+.menu-overlay a:focus-visible {
+  color: var(--terracota);
+}
+
+.menu-overlay.open a {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.menu-overlay a:nth-child(1) { transition-delay: 0.05s; }
+.menu-overlay a:nth-child(2) { transition-delay: 0.1s; }
+.menu-overlay a:nth-child(3) { transition-delay: 0.15s; }
+.menu-overlay a:nth-child(4) { transition-delay: 0.2s; }
+.menu-overlay a:nth-child(5) { transition-delay: 0.25s; }
+.menu-overlay a:nth-child(6) { transition-delay: 0.3s; }
+.menu-overlay a:nth-child(7) { transition-delay: 0.35s; }
+
+/* ======= HERO ======= */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: var(--bg-hero);
+  position: relative;
+  overflow: hidden;
+  padding-top: 64px;
+}
+
+.hero::before {
+  content: 'B';
+  font-family: 'Darker Grotesque', sans-serif;
+  font-weight: 900;
+  font-size: clamp(20rem, 50vw, 50rem);
+  color: rgba(221,97,76,0.04);
+  position: absolute;
+  right: -5%;
+  top: 50%;
+  transform: translateY(-50%);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--terracota);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+  display: inline-block;
+  border: 1px solid var(--terracota);
+  padding: 0.3rem 0.8rem;
+}
+
+.hero h1 {
+  margin-bottom: 1rem;
+  max-width: 900px;
+}
+
+.hero h1 .highlight {
+  color: var(--terracota);
+}
+
+.hero p {
+  font-size: 1.05rem;
+  color: var(--body-dim);
+  max-width: 600px;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  background: var(--terracota);
+  color: var(--terracota-text);
+  font-family: 'Darker Grotesque', sans-serif;
+  font-weight: 800;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 3px solid var(--terracota);
+  cursor: pointer;
+  transition: all 0.2s;
+  letter-spacing: 0.03em;
+}
+
+.hero-cta:hover,
+.hero-cta:focus-visible {
+  background: transparent;
+  color: var(--terracota);
+}
+
+.hero-cta i {
+  font-size: 1.3rem;
+}
+
+/* ======= SECTION DIVIDER ======= */
+.section-divider {
+  border: none;
+  height: 1px;
+  background: var(--section-divider);
+  margin: 0;
+}
+
+/* ======= SECTION 00 — ESTRATEGIA ======= */
+.strategy-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.strategy-card {
+  padding: 2rem;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+.strategy-card:hover {
+  border-color: var(--terracota);
+  transform: translateY(-2px);
+}
+
+.strategy-card-icon {
+  font-size: 1.5rem;
+  color: var(--terracota);
+  margin-bottom: 1rem;
+}
+
+.strategy-card h4 {
+  margin-bottom: 0.75rem;
+}
+
+.strategy-card p {
+  font-size: 0.95rem;
+  color: var(--body-dim);
+  line-height: 1.6;
+}
+
+.competitor-box {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.competitor-item {
+  padding: 1.5rem;
+  border: 1px solid var(--border-color);
+  position: relative;
+}
+
+.competitor-item.tbc {
+  border-color: var(--terracota);
+  border-width: 3px;
+}
+
+.competitor-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--body-dim);
+  margin-bottom: 0.5rem;
+}
+
+.competitor-item.tbc .competitor-label {
+  color: var(--terracota);
+}
+
+.competitor-name {
+  font-family: 'Darker Grotesque', sans-serif;
+  font-weight: 800;
+  font-size: 1.3rem;
+  color: var(--headline);
+  margin-bottom: 0.3rem;
+}
+
+.competitor-desc {
+  font-size: 0.9rem;
+  color: var(--body-dim);
+}
+
+/* ======= SECTION 01 — NAMING ======= */
+.naming-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.naming-main {
+  padding: 2.5rem;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+}
+
+.naming-main h3 {
+  margin-bottom: 0.5rem;
+}
+
+.naming-main .tagline {
+  font-size: 1.4rem;
+  font-family: 'Darker Grotesque', sans-serif;
+  font-weight: 700;
+  color: var(--terracota);
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.naming-main p {
+  color: var(--body-dim);
+  line-height: 1.7;
+}
+
+.naming-variants {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.naming-variant {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid var(--border-color);
+  color: var(--body);
+}
+
+/* ======= SECTION 02 — IDENTIDAD VISUAL ======= */
+.palette-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.color-swatch {
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  transition: all 0.2s;
+}
+
+.color-swatch:hover {
+  transform: scale(1.03);
+}
+
+.color-preview {
+  height: 80px;
+  display: flex;
+  align-items: flex-end;
+  padding: 0.5rem;
+}
+
+.color-preview .hex {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  padding: 0.15rem 0.4rem;
+  border-radius: 2px;
+}
+
+.color-info {
+  padding: 0.75rem;
+  background: var(--bg);
+}
+
+.color-name {
+  font-family: 'Darker Grotesque', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--headline);
+}
+
+.color-role {
+  font-size: 0.75rem;
+  color: var(--body-dim);
+}
+
+/* Light mode swatch overrides */
+[data-theme="light"] .color-preview .hex {
+  background: rgba(255,255,255,0.5);
+  color: #121212;
+}
+
+.typography-showcase {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.type-sample {
+  padding: 1.5rem;
+  border: 1px solid var(--border-color);
+}
+
+.type-sample h4 {
+  font-family: 'Darker Grotesque', sans-serif;
+  margin-bottom: 0.5rem;
+}
+
+.type-sample .type-label {
+  font-size: 0.75rem;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--body-dim);
+  margin-bottom: 0.75rem;
+}
+
+.type-sample .type-demo {
+  font-size: 2rem;
+  line-height: 1.1;
+  color: var(--headline);
+}
+
+.type-sample .type-body {
+  font-size: 1rem;
+  color: var(--body);
+  line-height: 1.6;
+}
+
+.type-sample .type-mono {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+  color: var(--body);
+}
+
+.atmosphere {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.atmo-item {
+  padding: 1.5rem;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  backdrop-filter: blur(8px);
+  border-radius: 12px;
+  font-size: 0.95rem;
+  color: var(--body-dim);
+  line-height: 1.6;
+}
+
+.atmo-item strong {
+  color: var(--headline);
+}
+
+/* ======= SECTION 03 — TONO DE VOZ ======= */
+.tone-intro {
+  font-size: 1.05rem;
+  color: var(--body-dim);
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+  max-width: 700px;
+}
+
+.tone-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.tone-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+.tone-table th {
+  font-family: 'Darker Grotesque', sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  text-transform: uppercase;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border: 3px solid var(--border-color);
+  color: var(--headline);
+  background: var(--bg-alt);
+}
+
+.tone-table td {
+  padding: 1rem;
+  border: 3px solid var(--border-color);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  vertical-align: top;
+}
+
+.tone-table .bueno {
+  background: rgba(168,225,0,0.08);
+}
+
+.tone-table .malo {
+  background: rgba(221,97,76,0.08);
+}
+
+.tone-table td:first-child {
+  font-weight: 600;
+}
+
+/* ======= SECTION 04 — COMPONENTES ======= */
+.components-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.component-demo {
+  padding: 2rem;
+  border: 1px solid var(--border-color);
+}
+
+.component-demo h4 {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.component-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--body-dim);
+  margin-bottom: 0.5rem;
+}
+
+/* Glass Card */
+.glass-card {
+  padding: 1.5rem;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  color: var(--body);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.glass-card h5 {
+  font-family: 'Darker Grotesque', sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: var(--headline);
+}
+
+/* Brutalist Button */
+.btn-brutal {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.5rem;
+  background: var(--terracota);
+  color: var(--terracota-text);
+  font-family: 'Darker Grotesque', sans-serif;
+  font-weight: 800;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 3px solid var(--headline);
+  cursor: pointer;
+  transition: all 0.15s;
+  letter-spacing: 0.03em;
+}
+
+.btn-brutal:hover,
+.btn-brutal:focus-visible {
+  background: transparent;
+  color: var(--terracota);
+  border-color: var(--terracota);
+}
+
+.btn-brutal-secondary {
+  background: transparent;
+  color: var(--headline);
+  border-color: var(--border-color);
+}
+
+.btn-brutal-secondary:hover,
+.btn-brutal-secondary:focus-visible {
+  background: var(--ochra);
+  color: var(--ochra-text);
+  border-color: var(--ochra);
+}
+
+/* Tag/Badge */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.7rem;
+  background: var(--ochra);
+  color: var(--ochra-text);
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: none;
+}
+
+.tag-verde {
+  background: var(--verde);
+  color: var(--verde-text);
+}
+
+.tag-outline {
+  background: transparent;
+  border: 2px solid var(--border-color);
+  color: var(--body);
+}
+
+/* Form Input */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  font-family: 'Darker Grotesque', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--headline);
+  margin-bottom: 0.4rem;
+}
+
+.input-brutal {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  background: var(--bg);
+  border: 3px solid var(--border-color);
+  color: var(--headline);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.input-brutal::placeholder {
+  color: var(--body-dim);
+}
+
+.input-brutal:focus {
+  border-color: var(--terracota);
+}
+
+.component-demo-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+/* ======= SECTION 05 — UI PATTERNS ======= */
+.pattern-demo {
+  padding: 2rem;
+  border: 1px solid var(--border-color);
+  margin-bottom: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.pattern-demo:last-child {
+  margin-bottom: 0;
+}
+
+.pattern-demo h4 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.pattern-desc {
+  font-size: 0.9rem;
+  color: var(--body-dim);
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+  max-width: 600px;
+}
+
+/* Pattern preview area */
+.pattern-preview {
+  min-height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-alt);
+  border: 1px dashed var(--border-color);
+  position: relative;
+}
+
+.pattern-preview .fab-demo {
+  width: 56px;
+  height: 56px;
+  background: var(--whatsapp);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.5rem;
+  box-shadow: 0 4px 16px rgba(37,211,102,0.3);
+  cursor: pointer;
+}
+
+.pattern-preview .circle-demo {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pattern-preview .circle-demo svg {
+  transform: rotate(-90deg);
+}
+
+.pattern-preview .circle-demo .arrow-icon {
+  position: absolute;
+  font-size: 0.9rem;
+  color: var(--terracota);
+}
+
+.pattern-specs {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: var(--bg);
+  border: 1px solid var(--border-color);
+}
+
+.pattern-specs h5 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--body-dim);
+  margin-bottom: 0.5rem;
+}
+
+.pattern-specs ul {
+  list-style: none;
+  padding: 0;
+}
+
+.pattern-specs li {
+  font-size: 0.85rem;
+  color: var(--body-dim);
+  padding: 0.2rem 0;
+  padding-left: 1rem;
+  position: relative;
+}
+
+.pattern-specs li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--terracota);
+}
+
+/* Hamburger demo in pattern section */
+.hamburger-demo-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.hamburger-demo-item {
+  text-align: center;
+}
+
+.hamburger-demo-item .label {
+  font-size: 0.75rem;
+  color: var(--body-dim);
+  margin-top: 0.5rem;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.hamburger-demo-item .demo-b {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--terracota);
+  color: #fff;
+  font-family: 'Darker Grotesque', sans-serif;
+  font-weight: 900;
+  font-size: 1.5rem;
+  border: 3px solid var(--headline);
+  margin: 0 auto;
+}
+
+.hamburger-demo-item .demo-x {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid var(--terracota);
+  color: var(--terracota);
+  font-size: 1.3rem;
+  margin: 0 auto;
+}
+
+.hamburger-demo-item .arrow-b {
+  font-size: 1.5rem;
+  color: var(--terracota);
+}
+
+/* ======= SECTION 06 — APLICACIONES ======= */
+.apps-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.app-mockup {
+  padding: 2rem;
+  border: 1px solid var(--border-color);
+}
+
+.app-mockup h4 {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+/* Business Card */
+.business-card {
+  width: 100%;
+  max-width: 340px;
+  aspect-ratio: 1.586;
+  background: var(--bg-hero);
+  border: 3px solid var(--headline);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.bc-top .bc-logo {
+  font-family: 'Darker Grotesque', sans-serif;
+  font-weight: 900;
+  font-size: 1.5rem;
+  color: var(--terracota);
+}
+
+.bc-top .bc-tag {
+  font-size: 0.7rem;
+  color: var(--body-dim);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.bc-bottom .bc-name {
+  font-family: 'Darker Grotesque', sans-serif;
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: var(--headline);
+}
+
+.bc-bottom .bc-title {
+  font-size: 0.75rem;
+  color: var(--body-dim);
+  margin-bottom: 0.5rem;
+}
+
+.bc-bottom .bc-contact {
+  font-size: 0.7rem;
+  color: var(--body-dim);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Instagram Mockup */
+.instagram-mock {
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+  border: 3px solid var(--headline);
+  background: var(--bg);
+  overflow: hidden;
+}
+
+.ig-header {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  gap: 0.75rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.ig-avatar {
+  width: 32px;
+  height: 32px;
+  background: var(--terracota);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Darker Grotesque', sans-serif;
+  font-weight: 900;
+  color: #fff;
+  font-size: 1rem;
+  border: 2px solid var(--headline);
+  flex-shrink: 0;
+}
+
+.ig-user {
+  font-family: 'Darker Grotesque', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--headline);
+}
+
+.ig-dots {
+  margin-left: auto;
+  color: var(--body-dim);
+}
+
+.ig-bio {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.ig-bio-name {
+  font-family: 'Darker Grotesque', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--headline);
+}
+
+.ig-bio-text {
+  font-size: 0.8rem;
+  color: var(--body);
+  line-height: 1.4;
+}
+
+.ig-bio-text .accent {
+  color: var(--terracota);
+  font-weight: 600;
+}
+
+.ig-stats {
+  display: flex;
+  gap: 1rem;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.75rem;
+  color: var(--body-dim);
+}
+
+.ig-stats strong {
+  color: var(--headline);
+}
+
+.ig-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+
+.ig-grid-item {
+  aspect-ratio: 1;
+}
+
+.ig-grid-item:nth-child(1) { background: var(--terracota); }
+.ig-grid-item:nth-child(2) { background: var(--ochra); }
+.ig-grid-item:nth-child(3) { background: var(--verde); }
+.ig-grid-item:nth-child(4) { background: var(--terracota); opacity: 0.7; }
+.ig-grid-item:nth-child(5) { background: var(--bg-alt); }
+.ig-grid-item:nth-child(6) { background: var(--ochra); opacity: 0.7; }
+
+/* Website Mockup */
+.site-mock {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  border: 3px solid var(--headline);
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.mock-browser-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--bg-alt);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.mock-dots {
+  display: flex;
+  gap: 4px;
+}
+
+.mock-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.mock-dot:nth-child(1) { background: #FF5F57; }
+.mock-dot:nth-child(2) { background: #FFBD2E; }
+.mock-dot:nth-child(3) { background: #28C840; }
+
+.mock-url {
+  flex: 1;
+  font-size: 0.65rem;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--body-dim);
+  background: var(--bg);
+  padding: 0.2rem 0.5rem;
+  border: 1px solid var(--border-color);
+  text-align: center;
+}
+
+.mock-content {
+  padding: 1.5rem;
+}
+
+.mock-content .mock-logo {
+  font-family: 'Darker Grotesque', sans-serif;
+  font-weight: 900;
+  font-size: 1.3rem;
+  color: var(--terracota);
+  margin-bottom: 0.75rem;
+}
+
+.mock-content .mock-headline {
+  font-family: 'Darker Grotesque', sans-serif;
+  font-weight: 800;
+  font-size: 1.8rem;
+  color: var(--headline);
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+}
+
+.mock-content .mock-text {
+  font-size: 0.8rem;
+  color: var(--body-dim);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.mock-content .mock-btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: var(--terracota);
+  color: #fff;
+  font-family: 'Darker Grotesque', sans-serif;
+  font-weight: 800;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  border: 2px solid var(--headline);
+}
+
+/* ======= FOOTER ======= */
+.site-footer {
+  padding: 3rem 0;
+  border-top: 1px solid var(--section-divider);
+  text-align: center;
+}
+
+.footer-brand {
+  font-family: 'Darker Grotesque', sans-serif;
+  font-weight: 800;
+  font-size: 1.5rem;
+  color: var(--headline);
+  margin-bottom: 0.5rem;
+}
+
+.footer-made {
+  font-size: 0.9rem;
+  color: var(--body-dim);
+}
+
+.footer-made .emoji {
+  display: inline;
+}
+
+/* ======= WHATSAPP FAB ======= */
+.fab-whatsapp {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 9999;
+  width: 56px;
+  height: 56px;
+  background: var(--whatsapp);
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.35);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.2s;
+  visibility: hidden;
+}
+
+.fab-whatsapp.visible {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+}
+
+.fab-whatsapp:hover,
+.fab-whatsapp:focus-visible {
+  box-shadow: 0 6px 28px rgba(37,211,102,0.5);
+  transform: translateY(-2px);
+}
+
+.fab-whatsapp:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 3px;
+}
+
+@keyframes micro-shake {
+  0%, 100% { transform: translateX(0); }
+  10% { transform: translateX(-3px) rotate(-5deg); }
+  20% { transform: translateX(3px) rotate(5deg); }
+  30% { transform: translateX(-2px) rotate(-3deg); }
+  40% { transform: translateX(2px) rotate(3deg); }
+  50% { transform: translateX(-1px) rotate(-2deg); }
+  60% { transform: translateX(1px) rotate(2deg); }
+  70% { transform: translateX(0); }
+}
+
+.fab-whatsapp.shake {
+  animation: micro-shake 0.6s ease;
+}
+
+/* ======= PROGRESS CIRCLE ======= */
+.progress-circle {
+  position: fixed;
+  bottom: 5.5rem;
+  right: 1.5rem;
+  z-index: 9998;
+  width: 40px;
+  height: 40px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--glass-border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, background 0.3s;
+  visibility: hidden;
+}
+
+.progress-circle.visible {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+}
+
+.progress-circle:hover,
+.progress-circle:focus-visible {
+  background: var(--terracota);
+  border-color: var(--terracota);
+}
+
+.progress-circle:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 3px;
+}
+
+.progress-circle svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.progress-circle .circle-bg {
+  fill: none;
+  stroke: var(--border-color);
+  stroke-width: 2;
+}
+
+.progress-circle .circle-fill {
+  fill: none;
+  stroke: var(--terracota);
+  stroke-width: 2;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.1s ease;
+}
+
+.progress-circle .arrow-icon {
+  position: relative;
+  z-index: 1;
+  font-size: 1rem;
+  color: var(--body);
+  transition: color 0.3s;
+}
+
+.progress-circle:hover .arrow-icon,
+.progress-circle:focus-visible .arrow-icon {
+  color: #fff;
+}
+
+/* ======= RESPONSIVE ======= */
+@media (min-width: 640px) {
+  .palette-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .competitor-box {
+    grid-template-columns: 1fr 1fr;
+  }
+  .apps-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 768px) {
+  .nav-links {
+    display: flex;
+  }
+  .menu-toggle {
+    display: none;
+  }
+  .strategy-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .naming-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .typography-showcase {
+    grid-template-columns: 1fr 1fr;
+  }
+  .components-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .atmosphere {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ======= MOBILE BRUTALIST (max-width: 768px) ======= */
+@media (max-width: 768px) {
+  /* Hero: título ENORME vs texto chico — el contraste ES el brutalismo */
+  h1 { font-size: clamp(2.5rem, 8vw, 3.5rem); }
+  .hero p { font-size: 0.85rem; }
+
+  /* Section titles: agrandados, subtitle susurrado */
+  .section-title { font-size: clamp(2rem, 7vw, 2.5rem); }
+  .section-subtitle { font-size: 0.8rem; }
+
+  /* Menu toggle: mínimo 48×48 target táctil */
+  .menu-toggle { width: 48px; height: 48px; font-size: 1.6rem; }
+
+  /* Cards: bordes más gruesos (3px), padding reducido a la mitad */
+  .strategy-card,
+  .glass-card,
+  .naming-main,
+  .component-demo,
+  .pattern-demo,
+  .app-mockup {
+    border-width: 3px;
+  }
+  .strategy-card { padding: 1rem; }
+  .glass-card { padding: 0.75rem; }
+  .naming-main { padding: 1rem; }
+  .component-demo { padding: 1rem; }
+  .pattern-demo { padding: 1rem; }
+  .app-mockup { padding: 1rem; }
+
+  /* Botones brutalistas: ancho completo en mobile */
+  .btn-brutal { width: 100%; }
+  .hero-cta { width: 100%; }
+
+  /* Espaciado entre secciones: denso, apretado, brutalista */
+  .section-padding { padding: 3rem 0; }
+  .container { padding: 0 1rem; }
+
+  /* WhatsApp FAB: 48×48 mínimo táctil */
+  .fab-whatsapp { width: 48px; height: 48px; bottom: 1rem; right: 1rem; }
+  .fab-whatsapp svg { width: 24px; height: 24px; }
+
+  /* Progress Circle: 36×36, no compite con el FAB */
+  .progress-circle { width: 36px; height: 36px; bottom: 4.5rem; right: 1rem; }
+
+  /* Logo B más compacto en mobile */
+  .logo-mark { width: 32px; height: 32px; font-size: 1.2rem; }
+}
+
+@media (min-width: 1024px) {
+  .strategy-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .competitor-box {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .atmosphere {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .components-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ======= ACCESSIBILITY ======= */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  html { scroll-behavior: auto; }
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  z-index: 10000;
+  padding: 0.5rem 1rem;
+  background: var(--terracota);
+  color: #fff;
+  font-weight: 700;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* ======= SCROLLBAR ======= */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border-color); }
+::-webkit-scrollbar-thumb:hover { background: var(--terracota); }
+</style>
+</head>
+<body>
+
+<!-- Skip Link -->
+<a href="#main" class="skip-link">Saltar al contenido principal</a>
+
+<!-- ======= HEADER ======= -->
+<header class="site-header" role="banner">
+  <div class="container header-inner">
+    <a href="#" class="logo" aria-label="The Brand Crew — inicio">
+      <span class="logo-mark" aria-hidden="true">B</span>
+      <span>THE BRAND CREW</span>
+    </a>
+
+    <nav class="nav-links" role="navigation" aria-label="Navegación principal">
+      <a href="#estrategia">00</a>
+      <a href="#naming">01</a>
+      <a href="#identidad">02</a>
+      <a href="#tono">03</a>
+      <a href="#componentes">04</a>
+      <a href="#patterns">05</a>
+      <a href="#apps">06</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Cambiar a modo claro">
+        <i class="ph ph-moon" aria-hidden="true"></i>
+      </button>
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-label="Abrir menú">
+        <span class="toggle-b" aria-hidden="true">B</span>
+        <i class="ph ph-x toggle-x" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ======= MENU OVERLAY ======= -->
+<div class="menu-overlay" id="menuOverlay" role="dialog" aria-modal="true" aria-label="Menú de navegación">
+  <a href="#estrategia" tabindex="-1">00 · Estrategia</a>
+  <a href="#naming" tabindex="-1">01 · Naming</a>
+  <a href="#identidad" tabindex="-1">02 · Identidad Visual</a>
+  <a href="#tono" tabindex="-1">03 · Tono de Voz</a>
+  <a href="#componentes" tabindex="-1">04 · Componentes</a>
+  <a href="#patterns" tabindex="-1">05 · UI Patterns</a>
+  <a href="#apps" tabindex="-1">06 · Aplicaciones</a>
+</div>
+
+<!-- ======= MAIN ======= -->
+<main id="main">
+
+<!-- ======= HERO ======= -->
+<section class="hero" aria-label="Hero">
+  <div class="container hero-content">
+    <span class="hero-tag">Brandbook · 2026</span>
+    <h1>
+      Páginas web <span class="highlight">que venden</span>,<br>
+      para comercios <span class="highlight">que laburan</span>.
+    </h1>
+    <p>
+      The Brand Crew no es una agencia. Es una cuadrilla que construye herramientas de venta
+      para pequeños comercios. Sin humo, sin plantillas, sin vueltas.
+    </p>
+    <a href="#estrategia" class="hero-cta">
+      <span>Ver el brandbook</span>
+      <i class="ph ph-arrow-down" aria-hidden="true"></i>
+    </a>
+  </div>
+</section>
+
+<!-- ======= 00 — ESTRATEGIA ======= -->
+<hr class="section-divider" role="separator">
+<section id="estrategia" class="section-padding" aria-label="Estrategia de marca">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-number">00 //</span>
+      <h2 class="section-title">Estrategia de Marca</h2>
+      <p class="section-subtitle">El plan de batalla. Por qué existimos, a quién le hablamos y cómo ganamos.</p>
+    </div>
+
+    <div class="strategy-grid">
+      <div class="strategy-card">
+        <div class="strategy-card-icon"><i class="ph ph-bullseye" aria-hidden="true"></i></div>
+        <h4>Propósito</h4>
+        <p>Hacer páginas web que venden, para comercios que laburan. No construimos portfolios — construimos herramientas de venta que le hablan al cliente correcto y generan resultados medibles.</p>
+      </div>
+
+      <div class="strategy-card">
+        <div class="strategy-card-icon"><i class="ph ph-users-three" aria-hidden="true"></i></div>
+        <h4>Target</h4>
+        <p>Dueños de pequeños comercios (pet shops, spas, tiendas de barrio) que <strong>saben</strong> que necesitan internet pero tienen miedo, no saben por dónde empezar, o ya les vendieron humo una vez.</p>
+      </div>
+
+      <div class="strategy-card">
+        <div class="strategy-card-icon"><i class="ph ph-currency-circle-dollar" aria-hidden="true"></i></div>
+        <h4>Precio Disruptivo</h4>
+        <p><strong>$140k ARS</strong> por página web (<strong>$70k</strong> arranque + <strong>$70k</strong> entrega). Dominio .com + hosting ~<strong>$100k/año</strong>. Sin vueltas, sin costos ocultos, sin sorpresas.</p>
+      </div>
+
+      <div class="strategy-card">
+        <div class="strategy-card-icon"><i class="ph ph-target" aria-hidden="true"></i></div>
+        <h4>Posicionamiento</h4>
+        <p>The Brand Crew <strong>no compite con agencias</strong>. Compite con la <strong>INERCIA</strong> del comerciante. No somos otro diseñador web — somos un <strong>gestor de incertidumbre</strong> para la gente común.</p>
+      </div>
+
+      <div class="strategy-card">
+        <div class="strategy-card-icon"><i class="ph ph-sword" aria-hidden="true"></i></div>
+        <h4>Competencia</h4>
+        <p><strong>Flooki</strong> ($80k template-based, sin consultoría). La diferencia: The Brand Crew construye <strong>HERRAMIENTAS DE VENTA</strong>, no plantillas. El cliente no compra diseño, compra <strong>paz mental</strong>.</p>
+      </div>
+
+      <div class="strategy-card">
+        <div class="strategy-card-icon"><i class="ph ph-book-open" aria-hidden="true"></i></div>
+        <h4>Filosofía</h4>
+        <p><strong>Seth Godin</strong> — "Marketing es el acto generoso de ayudar a alguien a resolver un problema". <strong>Liquid Death</strong> — "Entretenimiento primero, producto después". <strong>Ship the work. Valor primero.</strong></p>
+      </div>
+    </div>
+
+    <div class="competitor-box">
+      <div class="competitor-item tbc">
+        <div class="competitor-label">The Brand Crew</div>
+        <div class="competitor-name">Herramientas de venta</div>
+        <div class="competitor-desc">Consultoría + página web + seguimiento. El cliente compra certeza.</div>
+      </div>
+      <div class="competitor-item">
+        <div class="competitor-label">Flooki</div>
+        <div class="competitor-name">Plantillas genéricas</div>
+        <div class="competitor-desc">$80k, template-based, sin consultoría. El cliente compra un template.</div>
+      </div>
+      <div class="competitor-item">
+        <div class="competitor-label">Agencias tradicionales</div>
+        <div class="competitor-name">Humo corporativo</div>
+        <div class="competitor-desc">$300k+, jerga técnica, procesos largos. El cliente compra confusión.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= 01 — NAMING ======= -->
+<hr class="section-divider" role="separator">
+<section id="naming" class="section-padding" aria-label="Naming">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-number">01 //</span>
+      <h2 class="section-title">Naming</h2>
+      <p class="section-subtitle">El nombre. Por qué "The Brand Crew" y no otra cosa.</p>
+    </div>
+
+    <div class="naming-grid">
+      <div class="naming-main">
+        <h3>The Brand Crew</h3>
+        <div class="tagline">"Páginas web que venden, para comercios que laburan."</div>
+        <p>
+          <strong>Crew</strong> no es casualidad. No somos "agencia" (suena a corporativo frío),
+          no somos "estudio" (suena a diseño elitista). Somos una <strong>cuadrilla</strong> —
+          un grupo que labura junto, que se ensucia las manos, que construye al lado del cliente.
+          <br><br>
+          <strong>Brand</strong> porque no hacemos páginas nomás — hacemos <strong>marca</strong>.
+          Una página sin marca es un folleto digital. Una página con marca es una <strong>herramienta de venta</strong>.
+        </p>
+        <div class="naming-variants">
+          <span class="naming-variant">The Brand Crew</span>
+          <span class="naming-variant">TBC</span>
+          <span class="naming-variant">Brand Crew</span>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:1.5rem;">
+        <div class="strategy-card" style="margin:0;">
+          <h4>El tagline</h4>
+          <p>"Páginas web que venden" — el foco está en el resultado, no en el medio. No importa la tecnología, importa que el negocio <strong>venda más</strong>. "Para comercios que laburan" — reconocemos al cliente como laburante, no como "emprendedor". Es un guiño a su realidad.</p>
+        </div>
+        <div class="strategy-card" style="margin:0;">
+          <h4>Anti-tagline</h4>
+          <p class="accent-terracota" style="font-size:1.1rem;font-weight:600;">No soy diseñador web. Soy un vendedor que codea.</p>
+          <p style="margin-top:0.5rem;color:var(--body-dim);">El respaldo que disipa toda duda. No es un pibe con Photoshop — es alguien que entiende de <strong>ventas</strong> y usa el código como medio.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= 02 — IDENTIDAD VISUAL ======= -->
+<hr class="section-divider" role="separator">
+<section id="identidad" class="section-padding" aria-label="Identidad visual">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-number">02 //</span>
+      <h2 class="section-title">Identidad Visual</h2>
+      <p class="section-subtitle">Paleta "Hormigón al Naranja". Brutalismo + Glassmorphism. WCAG AA como valor fundacional.</p>
+    </div>
+
+    <h4 style="margin-bottom:1rem;">Paleta de Colores</h4>
+    <div class="palette-grid">
+      <div class="color-swatch">
+        <div class="color-preview" style="background:#121212;">
+          <span class="hex">#121212</span>
+        </div>
+        <div class="color-info">
+          <div class="color-name">Hormigón</div>
+          <div class="color-role">Fondo (dark)</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-preview" style="background:#F5F0EB;">
+          <span class="hex">#F5F0EB</span>
+        </div>
+        <div class="color-info">
+          <div class="color-name">Papel</div>
+          <div class="color-role">Fondo (light)</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-preview" style="background:#DD614C;">
+          <span class="hex">#DD614C</span>
+        </div>
+        <div class="color-info">
+          <div class="color-name">Terracota</div>
+          <div class="color-role">Acento principal · Botones · CTAs</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-preview" style="background:#DAA144;">
+          <span class="hex">#DAA144</span>
+        </div>
+        <div class="color-info">
+          <div class="color-name">Ochra</div>
+          <div class="color-role">Secundario · Badges · Detalles</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-preview" style="background:#A8E100;">
+          <span class="hex">#A8E100</span>
+        </div>
+        <div class="color-info">
+          <div class="color-name">Verde Ácido</div>
+          <div class="color-role">Highlights · Alertas · Elementos especiales</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-preview" style="background:#FFFFFF;">
+          <span class="hex" style="background:rgba(0,0,0,0.5);color:#fff;">#FFFFFF</span>
+        </div>
+        <div class="color-info">
+          <div class="color-name">Blanco</div>
+          <div class="color-role">Headlines (dark mode)</div>
+        </div>
+      </div>
+    </div>
+
+    <h4 style="margin:2rem 0 1rem;">Tipografía</h4>
+    <div class="typography-showcase">
+      <div class="type-sample">
+        <div class="type-label">Darker Grotesque · 800 · Headlines</div>
+        <div class="type-demo" style="font-family:'Darker Grotesque',sans-serif;font-weight:800;">
+          Páginas web que venden
+        </div>
+      </div>
+      <div class="type-sample">
+        <div class="type-label">Inter · 400 · Body</div>
+        <div class="type-body">
+          Construimos herramientas de venta para pequeños comercios. Sin humo, sin plantillas, sin vueltas.
+        </div>
+      </div>
+      <div class="type-sample">
+        <div class="type-label">Darker Grotesque · 900 · Display</div>
+        <div class="type-demo" style="font-family:'Darker Grotesque',sans-serif;font-weight:900;font-size:3rem;">
+          BRUTAL
+        </div>
+      </div>
+      <div class="type-sample">
+        <div class="type-label">JetBrains Mono · 400 · Código / Técnico</div>
+        <div class="type-mono">&lt;h1&gt;Vendé más&lt;/h1&gt;</div>
+      </div>
+    </div>
+
+    <h4 style="margin:2rem 0 1rem;">Atmósfera</h4>
+    <div class="atmosphere">
+      <div class="atmo-item">
+        <strong>Brutalismo</strong><br>
+        Bordes gruesos, tipografía pesada, alto contraste. Nada de sutileza — todo es INTENCIONAL y FUERTE.
+      </div>
+      <div class="atmo-item">
+        <strong>Glassmorphism decorativo</strong><br>
+        Superficies vidrio con backdrop-filter. Solo en bordes y fondos decorativos — <strong>nunca</strong> donde haya texto. La legibilidad primero.
+      </div>
+      <div class="atmo-item">
+        <strong>WCAG AA como fundación</strong><br>
+        No es una feature. Es cómo se construye. Contraste 4.5:1 mínimo, focus visibles, etiquetas ARIA, soporte de preferencias de movimiento reducido.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= 03 — TONO DE VOZ ======= -->
+<hr class="section-divider" role="separator">
+<section id="tono" class="section-padding" aria-label="Tono de voz">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-number">03 //</span>
+      <h2 class="section-title">Tono de Voz</h2>
+      <p class="section-subtitle">Argentino rioplatense, voseo, directo. Sin humo corporativo.</p>
+    </div>
+
+    <div class="tone-intro">
+      <p>Acá no se vende humo. Se habla claro, como entre personas. El tono es <strong>cálido pero directo</strong>, con contraste entre headlines BRUTALISTAS (agresivos, grandes) y un body cálido que invita a la acción. <strong>Vos, tenés, hacé, decí.</strong> Sin "soluciones digitales integrales". Sin "maximizar tu potencial".</p>
+    </div>
+
+    <div class="tone-table-wrap">
+      <table class="tone-table">
+        <thead>
+          <tr>
+            <th>Bien ✅</th>
+            <th>Mal ❌</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="bueno">"Tu negocio necesita una página web."</td>
+            <td class="malo">"Ofrecemos soluciones digitales integrales para potenciar tu presencia online."</td>
+          </tr>
+          <tr>
+            <td class="bueno">"No soy una agencia. Soy una persona que te va a entender."</td>
+            <td class="malo">"Contamos con un equipo multidisciplinario de profesionales altamente capacitados."</td>
+          </tr>
+          <tr>
+            <td class="bueno">"$140k. Sin vueltas. Sin costos ocultos."</td>
+            <td class="malo">"Presupuesto personalizado según las necesidades y requerimientos del proyecto."</td>
+          </tr>
+          <tr>
+            <td class="bueno">"No construyo páginas. Construyo herramientas de venta."</td>
+            <td class="malo">"Desarrollo sitios web responsivos con tecnologías de última generación."</td>
+          </tr>
+          <tr>
+            <td class="bueno">"Dale, hacé clic y empecemos."</td>
+            <td class="malo">"Lo invitamos a contactarnos para iniciar el proceso de vinculación comercial."</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="margin-top:2rem;display:grid;grid-template-columns:1fr;gap:1rem;">
+      <div class="strategy-card" style="margin:0;">
+        <h4>Regla de oro</h4>
+        <p>Si suena a que lo podría decir un banco o un gobierno, está mal. El tono tiene que sonar a <strong>una persona que sabe y quiere ayudarte</strong>, no a un departamento de marketing.</p>
+      </div>
+      <div class="strategy-card" style="margin:0;">
+        <h4>El contraste</h4>
+        <p><strong>Headlines:</strong> brutales, directos, casi agresivos. "TU NEGOCIO NECESITA UNA PÁGINA WEB."<br>
+        <strong>Body:</strong> cálido, explicativo, paciente. "Y la buena noticia es que no es tan complicado como parece. Te explico."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= 04 — COMPONENTES ======= -->
+<hr class="section-divider" role="separator">
+<section id="componentes" class="section-padding" aria-label="Componentes">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-number">04 //</span>
+      <h2 class="section-title">Componentes</h2>
+      <p class="section-subtitle">Los bloques visuales del sistema de diseño.</p>
+    </div>
+
+    <div class="components-grid">
+      <!-- Glass Card -->
+      <div class="component-demo">
+        <div class="component-label">Componente · Glass Card</div>
+        <h4>Glass Card</h4>
+        <div class="glass-card">
+          <h5>Título de la card</h5>
+          <p>Esta es una glass card con backdrop-filter blur(12px), border-radius 16px y border sutil. Se usa para contenido secundario, testimonios, o paneles de información.</p>
+          <div class="component-demo-row" style="margin-top:1rem;">
+            <span class="tag">border-radius: 16px</span>
+            <span class="tag tag-outline">backdrop-filter: blur(12px)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Brutalist Button -->
+      <div class="component-demo">
+        <div class="component-label">Componente · Brutalist Button</div>
+        <h4>Brutalist Button</h4>
+        <div style="display:flex;flex-wrap:wrap;gap:0.75rem;margin-top:1rem;">
+          <a href="#" class="btn-brutal" onclick="return false;">
+            <i class="ph ph-whatsapp-logo" aria-hidden="true"></i>
+            <span>Contactanos</span>
+          </a>
+          <a href="#" class="btn-brutal btn-brutal-secondary" onclick="return false;">
+            <span>Ver más</span>
+            <i class="ph ph-arrow-right" aria-hidden="true"></i>
+          </a>
+        </div>
+        <div class="component-demo-row" style="margin-top:1rem;">
+          <span class="tag">font-weight: 800</span>
+          <span class="tag tag-outline">border: 3px solid</span>
+          <span class="tag tag-verde">uppercase</span>
+          <span class="tag tag-outline">sin border-radius</span>
+        </div>
+      </div>
+
+      <!-- Tags/Badges -->
+      <div class="component-demo">
+        <div class="component-label">Componente · Tags / Badges</div>
+        <h4>Tags</h4>
+        <div class="component-demo-row">
+          <span class="tag">Ochra</span>
+          <span class="tag tag-verde">Verde ácido</span>
+          <span class="tag tag-outline">Outline</span>
+          <span class="tag" style="background:var(--terracota);color:#fff;">Terracota</span>
+        </div>
+        <p style="margin-top:1rem;font-size:0.85rem;color:var(--body-dim);">
+          Tags: font-size 0.7rem, uppercase, letter-spacing 0.05em. Ideal para metadata, categorías, o badges de estado.
+        </p>
+      </div>
+
+      <!-- Form Input -->
+      <div class="component-demo">
+        <div class="component-label">Componente · Form Input</div>
+        <h4>Form Inputs</h4>
+        <div class="form-group">
+          <label for="demoInput">Nombre</label>
+          <input type="text" id="demoInput" class="input-brutal" placeholder="Tu nombre..." readonly onfocus="this.removeAttribute('readonly')">
+        </div>
+        <div class="form-group">
+          <label for="demoMsg">Mensaje</label>
+          <textarea id="demoMsg" class="input-brutal" rows="2" placeholder="Contame de tu negocio..." readonly onfocus="this.removeAttribute('readonly')"></textarea>
+        </div>
+        <button class="btn-brutal" style="font-size:0.85rem;" onclick="return false;">
+          <span>Enviar</span>
+          <i class="ph ph-paper-plane-right" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= 05 — UI PATTERNS ======= -->
+<hr class="section-divider" role="separator">
+<section id="patterns" class="section-padding" aria-label="UI Patterns">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-number">05 //</span>
+      <h2 class="section-title">UI Patterns</h2>
+      <p class="section-subtitle">Patrones de interfaz recurrentes. Consistentes, accesibles, con personalidad.</p>
+    </div>
+
+    <!-- Pattern: WhatsApp FAB -->
+    <div class="pattern-demo" style="margin-bottom:2rem;">
+      <h4><i class="ph ph-whatsapp-logo" style="color:var(--whatsapp);" aria-hidden="true"></i> WhatsApp FAB</h4>
+      <p class="pattern-desc">Botón flotante de WhatsApp. Posición fixed bottom-right. Aparece con fade-in + slide-up después del hero. Micro-shake cada 30s sin interacción.</p>
+      <div class="pattern-preview">
+        <div class="fab-demo" style="cursor:default;" aria-label="Ejemplo de WhatsApp FAB">
+          <i class="ph-fill ph-whatsapp-logo" aria-hidden="true"></i>
+        </div>
+      </div>
+      <div class="pattern-specs">
+        <h5>Especificaciones</h5>
+        <ul>
+          <li>56×56px · Fondo #25D366 · Icono ph-whatsapp-logo weight fill</li>
+          <li>Fixed: bottom 1.5rem · right 1.5rem · z-index 9999</li>
+          <li>Fade-in + slide-up al pasar el hero (Intersection Observer)</li>
+          <li>Micro-shake 0.6s cada 30s sin interacción</li>
+          <li>aria-label obligatorio · focus-visible outline</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Pattern: Progress Circle -->
+    <div class="pattern-demo" style="margin-bottom:2rem;">
+      <h4><i class="ph ph-circle" style="color:var(--terracota);" aria-hidden="true"></i> Navigation Progress Circle</h4>
+      <p class="pattern-desc">SVG circle 40×40px que se llena con el scroll vía stroke-dashoffset. En el footer se convierte en flecha arriba.</p>
+      <div class="pattern-preview">
+        <div class="circle-demo">
+          <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">
+            <circle cx="20" cy="20" r="18" fill="none" stroke="var(--border-color)" stroke-width="2"/>
+            <circle cx="20" cy="20" r="18" fill="none" stroke="var(--terracota)" stroke-width="2" stroke-dasharray="113.1" stroke-dashoffset="28" stroke-linecap="round" transform="rotate(-90 20 20)"/>
+          </svg>
+          <i class="ph ph-arrow-up arrow-icon" aria-hidden="true"></i>
+        </div>
+      </div>
+      <div class="pattern-specs">
+        <h5>Especificaciones</h5>
+        <ul>
+          <li>SVG circle 40×40px · stroke-dashoffset dinámico vía scroll</li>
+          <li>Posición: bottom 5.5rem · right 1.5rem (arriba del FAB)</li>
+          <li>En footer se transforma a flecha arriba (scroll to top)</li>
+          <li>aria-label="Volver al inicio"</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Pattern: Creative Hamburger -->
+    <div class="pattern-demo">
+      <h4><i class="ph ph-list" style="color:var(--terracota);" aria-hidden="true"></i> Creative Hamburger (B → X)</h4>
+      <p class="pattern-desc">NO las 3 líneas genéricas. La B de "The Brand Crew" se transforma en X al abrir. Overlay glassmorphism con stagger animation en links.</p>
+      <div class="pattern-preview">
+        <div class="hamburger-demo-wrap">
+          <div class="hamburger-demo-item">
+            <div class="demo-b">B</div>
+            <div class="label">Cerrado</div>
+          </div>
+          <div class="hamburger-demo-item">
+            <i class="ph ph-arrow-right arrow-b" aria-hidden="true"></i>
+          </div>
+          <div class="hamburger-demo-item">
+            <div class="demo-x"><i class="ph ph-x" aria-hidden="true"></i></div>
+            <div class="label">Abierto</div>
+          </div>
+        </div>
+      </div>
+      <div class="pattern-specs">
+        <h5>Especificaciones</h5>
+        <ul>
+          <li>La "B" del logo es el botón de menú en mobile</li>
+          <li>B → X con transición CSS cubic-bezier(0.34, 1.56, 0.64, 1)</li>
+          <li>Overlay: rgba(18,18,18,0.7) + backdrop-filter blur(16px)</li>
+          <li>Links con stagger animation (delay progresivo 0.05s–0.35s)</li>
+          <li>Focus trap activo · aria-expanded · inert en contenido</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= 06 — APLICACIONES ======= -->
+<hr class="section-divider" role="separator">
+<section id="apps" class="section-padding" aria-label="Aplicaciones">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-number">06 //</span>
+      <h2 class="section-title">Aplicaciones</h2>
+      <p class="section-subtitle">El sistema de diseño en acción. Mockups de aplicaciones reales.</p>
+    </div>
+
+    <div class="apps-grid">
+      <!-- Business Card -->
+      <div class="app-mockup">
+        <div class="component-label">Aplicación · Tarjeta de Presentación</div>
+        <h4>Business Card</h4>
+        <div class="business-card">
+          <div class="bc-top">
+            <div class="bc-logo">B</div>
+            <div class="bc-tag">THE BRAND CREW</div>
+          </div>
+          <div class="bc-bottom">
+            <div class="bc-name">Illya Grytsyk</div>
+            <div class="bc-title">The Brand Crew · Fundador</div>
+            <div class="bc-contact">illya@thebrandcrew.com</div>
+            <div class="bc-contact" style="margin-top:0.2rem;">@thebrandcrew</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Instagram Profile -->
+      <div class="app-mockup">
+        <div class="component-label">Aplicación · Instagram</div>
+        <h4>Perfil de Instagram</h4>
+        <div class="instagram-mock">
+          <div class="ig-header">
+            <div class="ig-avatar">B</div>
+            <div class="ig-user">thebrandcrew</div>
+            <div class="ig-dots"><i class="ph ph-dots-three-vertical" aria-hidden="true"></i></div>
+          </div>
+          <div class="ig-bio">
+            <div class="ig-bio-name">The Brand Crew</div>
+            <div class="ig-bio-text">
+              Páginas web que venden, para comercios que laburan 🫶<br>
+              <span class="accent">thebrandcrew.com</span>
+            </div>
+          </div>
+          <div class="ig-stats">
+            <span><strong>12</strong> posts</span>
+            <span><strong>47</strong> seguidores</span>
+            <span><strong>3</strong> seguidos</span>
+          </div>
+          <div class="ig-grid">
+            <div class="ig-grid-item"></div>
+            <div class="ig-grid-item"></div>
+            <div class="ig-grid-item"></div>
+            <div class="ig-grid-item"></div>
+            <div class="ig-grid-item"></div>
+            <div class="ig-grid-item"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Website Mockup -->
+      <div class="app-mockup" style="grid-column:1/-1;max-width:600px;margin:0 auto;width:100%;">
+        <div class="component-label">Aplicación · Landing Page</div>
+        <h4>Mockup de Sitio Web</h4>
+        <div class="site-mock">
+          <div class="mock-browser-bar">
+            <div class="mock-dots">
+              <span class="mock-dot"></span>
+              <span class="mock-dot"></span>
+              <span class="mock-dot"></span>
+            </div>
+            <div class="mock-url">thebrandcrew.com</div>
+          </div>
+          <div class="mock-content">
+            <div class="mock-logo">THE BRAND CREW</div>
+            <div class="mock-headline">Páginas web<br>que venden</div>
+            <div class="mock-text">
+              Para comercios que laburan. Sin plantillas, sin humo, sin vueltas.
+              Una página hecha a medida que le habla a <strong>tus</strong> clientes.
+            </div>
+            <div class="mock-btn">Contactanos</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:2rem;padding:2rem;border:1px solid var(--border-color);text-align:center;">
+      <p style="font-size:1.1rem;color:var(--body-dim);margin-bottom:1rem;">¿Querés ver más aplicaciones de la marca?</p>
+      <a href="#" class="btn-brutal" onclick="return false;">
+        <i class="ph ph-download" aria-hidden="true"></i>
+        <span>Descargar brandbook completo</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ======= FOOTER ======= -->
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-brand">THE BRAND CREW</div>
+    <p class="footer-made">Hecho con <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style="display:inline;vertical-align:middle" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg> e <strong>Illya</strong></p>
+  </div>
+</footer>
+
+<!-- ======= WHATSAPP FAB ======= -->
+<a class="fab-whatsapp" id="whatsappFab" href="https://wa.me/5491124063009" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+  <svg viewBox="0 0 24 24" width="28" height="28" fill="white" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M19.077 4.928C17.191 3.041 14.683 2 12.006 2 6.798 2 2.548 6.25 2.548 11.458c0 2.012.522 3.983 1.517 5.717L2.5 21.5l4.497-1.47a9.458 9.458 0 005.009 1.371h.004c5.206 0 9.457-4.25 9.457-9.458 0-2.678-1.042-5.186-2.928-7.072l.038.035zm-7.071 14.55h-.003a7.88 7.88 0 01-4.017-1.099l-.288-.171-2.668.874.874-2.602-.188-.299a7.845 7.845 0 01-1.208-4.223c0-4.346 3.536-7.882 7.885-7.882a7.84 7.84 0 015.576 2.308 7.797 7.797 0 012.309 5.574c0 4.347-3.536 7.883-7.88 7.883l.408-.001zm4.327-5.902c-.237-.119-1.404-.693-1.622-.772-.218-.079-.376-.119-.535.119-.159.238-.616.772-.755.93-.139.159-.278.179-.515.06-.237-.119-1.002-.369-1.908-1.178-.705-.63-1.181-1.408-1.319-1.646-.139-.238-.015-.367.104-.486.107-.107.238-.278.357-.417.119-.139.159-.238.238-.397.079-.159.04-.298-.02-.417-.06-.119-.535-1.29-.733-1.767-.193-.464-.389-.388-.535-.396-.139-.008-.298-.01-.457-.01-.159 0-.417.06-.635.298-.218.238-.834.815-.834 1.987 0 1.172.853 2.305.973 2.464.119.159 1.679 2.564 4.069 3.594.568.245 1.012.392 1.358.502.57.182 1.089.156 1.499.094.457-.068 1.404-.574 1.602-1.128.198-.554.198-1.029.139-1.128-.06-.099-.218-.159-.455-.278z"/>
+  </svg>
+</a>
+
+<!-- ======= PROGRESS CIRCLE ======= -->
+<button class="progress-circle" id="progressCircle" aria-label="Volver al inicio">
+  <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">
+    <circle class="circle-bg" cx="20" cy="20" r="18"/>
+    <circle class="circle-fill" cx="20" cy="20" r="18" stroke-dasharray="113.1" stroke-dashoffset="113.1"/>
+  </svg>
+  <i class="ph ph-arrow-up arrow-icon" aria-hidden="true"></i>
+</button>
+
+<!-- ======= JAVASCRIPT ======= -->
+<script>
+(function() {
+  'use strict';
+
+  const html = document.documentElement;
+  const themeToggle = document.getElementById('themeToggle');
+  const menuToggle = document.getElementById('menuToggle');
+  const menuOverlay = document.getElementById('menuOverlay');
+  const fab = document.getElementById('whatsappFab');
+  const progress = document.getElementById('progressCircle');
+  const progressFill = progress.querySelector('.circle-fill');
+  const circumference = 2 * Math.PI * 18; // ~113.1
+
+  // ======= THEME TOGGLE =======
+  const themeIcon = themeToggle.querySelector('i');
+
+  function setTheme(theme) {
+    html.setAttribute('data-theme', theme);
+    const isDark = theme === 'dark';
+    themeIcon.className = isDark ? 'ph ph-moon' : 'ph ph-sun';
+    themeToggle.setAttribute('aria-label', isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro');
+    localStorage.setItem('tbc-theme', theme);
+  }
+
+  const savedTheme = localStorage.getItem('tbc-theme');
+  if (savedTheme) setTheme(savedTheme);
+
+  themeToggle.addEventListener('click', function() {
+    const current = html.getAttribute('data-theme');
+    setTheme(current === 'dark' ? 'light' : 'dark');
+  });
+
+  // ======= MENU TOGGLE (Creative Hamburger B → X) =======
+  const menuLinks = menuOverlay.querySelectorAll('a');
+  const mainEl = document.getElementById('main');
+
+  function openMenu() {
+    const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+    if (expanded) {
+      closeMenu();
+      return;
+    }
+    menuToggle.setAttribute('aria-expanded', 'true');
+    menuToggle.setAttribute('aria-label', 'Cerrar menú');
+    menuOverlay.classList.add('open');
+    mainEl.setAttribute('inert', '');
+    // Focus trap: focus first link
+    menuLinks[0].removeAttribute('tabindex');
+    menuLinks[0].focus();
+    // Enable tabbable links
+    menuLinks.forEach(function(link) { link.removeAttribute('tabindex'); });
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    menuToggle.setAttribute('aria-expanded', 'false');
+    menuToggle.setAttribute('aria-label', 'Abrir menú');
+    menuOverlay.classList.remove('open');
+    mainEl.removeAttribute('inert');
+    document.body.style.overflow = '';
+    menuToggle.focus();
+    // Disable tabbable links
+    menuLinks.forEach(function(link) { link.setAttribute('tabindex', '-1'); });
+  }
+
+  menuToggle.addEventListener('click', openMenu);
+
+  // Close on overlay click
+  menuOverlay.addEventListener('click', function(e) {
+    if (e.target === menuOverlay) closeMenu();
+  });
+
+  // Close on Escape
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && menuOverlay.classList.contains('open')) {
+      closeMenu();
+    }
+  });
+
+  // Close on link click
+  menuLinks.forEach(function(link) {
+    link.addEventListener('click', closeMenu);
+  });
+
+  // Focus trap
+  document.addEventListener('keydown', function(e) {
+    if (e.key !== 'Tab' || !menuOverlay.classList.contains('open')) return;
+    const firstLink = menuLinks[0];
+    const lastLink = menuLinks[menuLinks.length - 1];
+    if (e.shiftKey && document.activeElement === firstLink) {
+      e.preventDefault();
+      lastLink.focus();
+    } else if (!e.shiftKey && document.activeElement === lastLink) {
+      e.preventDefault();
+      firstLink.focus();
+    }
+  });
+
+  // ======= WHATSAPP FAB =======
+  const hero = document.querySelector('.hero');
+  let fabTimer = null;
+  let fabInteractionTimeout = null;
+
+  if (hero && fab) {
+    const heroObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (!entry.isIntersecting) {
+          fab.classList.add('visible');
+          startShakeTimer();
+        } else {
+          fab.classList.remove('visible');
+          stopShakeTimer();
+        }
+      });
+    }, { threshold: 0 });
+
+    heroObserver.observe(hero);
+  }
+
+  function startShakeTimer() {
+    stopShakeTimer();
+    fabTimer = setInterval(function() {
+      if (!fabInteractionTimeout) {
+        fab.classList.add('shake');
+        setTimeout(function() { fab.classList.remove('shake'); }, 600);
+      }
+    }, 30000);
+  }
+
+  function stopShakeTimer() {
+    if (fabTimer) { clearInterval(fabTimer); fabTimer = null; }
+  }
+
+  fab.addEventListener('click', function() {
+    fabInteractionTimeout = setTimeout(function() {
+      fabInteractionTimeout = null;
+    }, 10000);
+  });
+
+  // ======= PROGRESS CIRCLE =======
+  function updateProgress() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progressVal = docHeight > 0 ? scrollTop / docHeight : 0;
+    const offset = circumference * (1 - progressVal);
+    progressFill.style.strokeDashoffset = offset;
+
+    // Show/hide
+    if (scrollTop > window.innerHeight) {
+      progress.classList.add('visible');
+    } else {
+      progress.classList.remove('visible');
+    }
+  }
+
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  window.addEventListener('resize', updateProgress, { passive: true });
+  updateProgress();
+
+  progress.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // ======= CLOSE MENU ON RESIZE (desktop) =======
+  let resizeTimer;
+  window.addEventListener('resize', function() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function() {
+      if (window.innerWidth >= 768 && menuOverlay.classList.contains('open')) {
+        closeMenu();
+      }
+    }, 200);
+  });
+
+})();
+</script>
+</body>
+</html>

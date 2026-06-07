@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Brand Crew — Tarjeta Personal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Iosevka Font (via Fontsource) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/iosevka-aile@5.1.0/400.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/iosevka-aile@5.1.0/700.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/iosevka-aile@5.1.0/900.css">
+
+  <style>
+    /* =========================================================
+       RESET
+       ========================================================= */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       VARIABLES — Blanco + Negro + Terracota
+       ========================================================= */
+    :root {
+      --bg: #FFFFFF;
+      --text: #1A1A1A;
+      --gray: #666666;
+      --terracotta: #e25c3a;
+      --font-display: 'Iosevka Aile', 'Iosevka', 'Darker Grotesque', 'Arial Black', 'Impact', sans-serif;
+      --font-body: 'Inter', 'Segoe UI', 'Helvetica Neue', sans-serif;
+    }
+
+    /* =========================================================
+       SCREEN STYLES (preview)
+       ========================================================= */
+    @media screen {
+      body {
+        background: linear-gradient(135deg, #1a1a1a 0%, #2a2520 50%, #1a1a1a 100%);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 2.5rem 1rem;
+        font-family: var(--font-body);
+      }
+
+      .cards-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3rem;
+        max-width: 100%;
+      }
+
+      .card {
+        width: 90mm;
+        height: 50mm;
+        border-radius: 2px;
+        cursor: default;
+      }
+
+      .card-label {
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 9pt;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        color: rgba(255, 255, 255, 0.25);
+        text-align: center;
+        margin-bottom: 0.5rem;
+      }
+
+      .card-pair {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    /* =========================================================
+       FRONT — Anverso
+       ========================================================= */
+    /* =========================================================
+       FRONT — Anverso (bento split)
+       ========================================================= */
+    .card-front {
+      background: var(--bg);
+      color: var(--text);
+      border: 1.5px solid var(--text);
+    }
+
+    .front-inner {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      height: 100%;
+      padding: 0 5mm;
+    }
+
+    /* --- Left: logo + brand name --- */
+    .front-left {
+      flex: 0.7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2mm;
+    }
+
+    .front-logo {
+      width: 18mm;
+      height: 18mm;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .brand-name {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 14pt;
+      line-height: 1.05;
+      color: var(--text);
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+    }
+
+    .brand-name .line {
+      display: block;
+    }
+
+    /* --- Divider --- */
+    .front-divider {
+      width: 1.5px;
+      height: 70%;
+      background: var(--text);
+      flex-shrink: 0;
+      margin: 0 3mm;
+    }
+
+    /* --- Right: tagline --- */
+    .front-right {
+      flex: 1.3;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .front-right .tagline-main {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 7.5pt;
+      color: var(--terracotta);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      line-height: 1.2;
+      margin-bottom: 1mm;
+    }
+
+    .front-right .tagline-sub {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 6.5pt;
+      color: var(--gray);
+      letter-spacing: 0.5px;
+      line-height: 1.2;
+    }
+
+    /* =========================================================
+       BACK — Reverso (Brutalist Glassmorphism Dark)
+       ========================================================= */
+    .card-back {
+      background: #0a0a0f;
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 3.5mm 4mm;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Ambient brand glow */
+    .card-back::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 25% 40%, rgba(99, 102, 241, 0.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .back-inner {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* --- Tagline con saltos de línea --- */
+    .back-tagline {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 7.5pt;
+      color: #fff;
+      line-height: 1.35;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 2.5mm;
+      flex-shrink: 0;
+    }
+
+    .back-tagline .accent {
+      color: #6366f1;
+    }
+
+    /* --- Pricing panels (glass) --- */
+    .back-pricing {
+      display: flex;
+      gap: 2.5mm;
+      flex: 1;
+      min-height: 0;
+    }
+
+    .back-pricing-panel {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 1px;
+      padding: 2mm 2.5mm;
+    }
+
+    .back-pricing-label {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 5.5pt;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 1mm;
+    }
+
+    .back-pricing-amount {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 10pt;
+      color: #000000;
+      line-height: 1.05;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .back-pricing-suffix {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 5pt;
+      color: #000000;
+      margin-top: 0.5mm;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    /* --- Contact bar --- */
+    .back-contact {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 2mm;
+      margin-top: auto;
+      flex-shrink: 0;
+    }
+
+    .back-contact-item {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 6pt;
+      color: #94a3b8;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .back-contact-item a {
+      color: #6366f1;
+      text-decoration: none;
+    }
+
+    .back-contact-item a:hover {
+      text-decoration: underline;
+    }
+
+    /* =========================================================
+       PRINT STYLES
+       ========================================================= */
+    @media print {
+      @page {
+        size: 90mm 50mm;
+        margin: 0;
+      }
+
+      html, body {
+        margin: 0;
+        padding: 0;
+        background: none;
+        min-height: auto;
+      }
+
+      body {
+        display: block;
+      }
+
+      .cards-wrapper {
+        display: block;
+        padding: 0;
+        margin: 0;
+        gap: 0;
+      }
+
+      .card-pair {
+        display: block;
+        margin: 0;
+      }
+
+      .card-label {
+        display: none !important;
+      }
+
+      .card {
+        width: 90mm;
+        height: 50mm;
+        box-shadow: none !important;
+        border-radius: 0;
+        page-break-after: always;
+        transform: none !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .card:last-child {
+        page-break-after: auto;
+      }
+
+
+    }
+
+  </style>
+</head>
+<body>
+
+<div class="cards-wrapper">
+
+  <!-- ==================== FRONT ==================== -->
+  <div class="card-pair">
+    <div class="card-label">Anverso / Front</div>
+    <div class="card card-front">
+      <div class="front-inner">
+        <div class="front-left">
+          <img class="front-logo" src="assets/logo(1).png" alt="The Brand Crew">
+          <div class="brand-name">
+            <span class="line">THE</span>
+            <span class="line">BRAND</span>
+            <span class="line">CREW</span>
+          </div>
+        </div>
+        <div class="front-divider"></div>
+        <div class="front-right">
+          <div class="tagline-main">Páginas web que garpan</div>
+          <div class="tagline-sub">para comercios que laburan</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== BACK ==================== -->
+  <div class="card-pair">
+    <div class="card-label">Reverso / Back</div>
+    <div class="card card-back">
+      <div class="back-inner">
+
+        <!-- Tagline con saltos de línea -->
+        <div class="back-tagline">
+          Páginas web<br>
+          <span class="accent">que garpan</span><br>
+          para comercios<br>
+          que laburan
+        </div>
+
+        <!-- Pricing panels -->
+        <div class="back-pricing">
+          <div class="back-pricing-panel">
+            <div class="back-pricing-label">Diseño + Desarrollo</div>
+            <div class="back-pricing-amount"><span>$</span><span>1</span><span>4</span><span>0</span><span>.</span><span>0</span><span>0</span><span>0</span></div>
+            <div class="back-pricing-suffix">ARS</div>
+          </div>
+          <div class="back-pricing-panel">
+            <div class="back-pricing-label">Dominio .com</div>
+            <div class="back-pricing-amount"><span>A</span><span>R</span><span>S</span><span> </span><span>2</span><span>0</span><span>.</span><span>0</span><span>0</span><span>0</span></div>
+            <div class="back-pricing-suffix">2 AÑOS</div>
+          </div>
+        </div>
+
+        <!-- Contact -->
+        <div class="back-contact">
+          <span class="back-contact-item">WA +54 9 11 2406 3009</span>
+          <span class="back-contact-item"><a href="https://thebrandcrew.lat">thebrandcrew.lat</a></span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+</body>
+</html>
