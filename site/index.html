@@ -1010,9 +1010,13 @@ a:focus-visible {
   color: var(--body-dim);
   padding-top: 0.75rem;
   border-top: 1px solid var(--border);
-  width: 100%;
-  max-width: 350px;
+  width: max-content;
+  max-width: 100%;
   white-space: nowrap;
+}
+.footer .footer-credit svg {
+  display: inline;
+  vertical-align: middle;
 }
 @media (min-width: 768px) {
   .footer {
@@ -1677,7 +1681,7 @@ a:focus-visible {
     <p class="footer-brand"><span>T</span>he Brand Crew</p>
     <p class="footer-cuit">CUIT 20-12345678-9</p>
   </div>
-  <p class="footer-credit">Hecho con <i data-lucide="heart" style="color:var(--terracota);width:1.1em;height:1.1em;vertical-align:middle;"></i> e <strong>Illya</strong></p>
+  <p class="footer-credit">Hecho con <i data-lucide="heart" style="color:var(--terracota);width:1.1em;height:1.1em;display:inline;vertical-align:middle;"></i> e <strong>Illya</strong></p>
 </footer>
 
 <!-- ==============================================
