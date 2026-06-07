@@ -252,40 +252,6 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800; }
   background: #0a0a0f;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
-.navbar-logo {
-  font-family: var(--font-display);
-  font-weight: 900;
-  font-size: 1.2rem;
-  letter-spacing: -0.03em;
-  color: var(--headline);
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-  z-index: 1001;
-}
-.navbar-logo .b-letter {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  background: var(--terracota);
-  color: #fff;
-  border-radius: 8px;
-  font-size: 1.4rem;
-  line-height: 1;
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  overflow: hidden;
-}
-.navbar-logo .b-letter.is-open {
-  border-radius: 50%;
-  transform: rotate(45deg);
-  background: var(--terracota);
-}
-.navbar-logo .logo-text {
-  transition: opacity 0.2s;
-}
-
 /* Desktop nav */
 .navbar-links {
   display: none;
@@ -1299,10 +1265,6 @@ a:focus-visible {
 
 /* ------ MOBILE (max-width: 767px) ------ */
 @media (max-width: 767px) {
-  .navbar-logo {
-    display: none;
-  }
-
   .hero {
     padding-bottom: 1.5rem;
     min-height: 100dvh;
@@ -1374,10 +1336,6 @@ a:focus-visible {
      NAVBAR
      ============================================== -->
 <nav class="navbar" role="navigation" aria-label="Navegación principal">
-  <a href="#" class="navbar-logo" aria-label="The Brand Crew — inicio">
-    <img class="b-letter" id="bLogo" src="assets/logo(1).png" alt="The Brand Crew" width="48" height="48" style="object-fit:contain;background:none;border-radius:8px;">
-  </a>
-
   <div class="navbar-links" id="navLinks">
     <a href="#servicios">Servicios</a>
     <a href="#como-funciona">Cómo funciona</a>
@@ -1488,7 +1446,7 @@ a:focus-visible {
     <div class="glass-card solucion-card fade-in">
       <i class="ph ph-rocket card-icon"></i>
       <h4>Diseño que convierte</h4>
-      <p>Nada de plantillas genéricas. Tu página con personalidad única: brutalista, moderna, pensada para vender.</p>
+      <p>Nada de plantillas genéricas. Tu página con personalidad única.</p>
     </div>
 
     <div class="glass-card solucion-card fade-in fade-in-delay-1">
@@ -1550,24 +1508,7 @@ a:focus-visible {
   </div>
 </section>
 
-<div class="section-divider" role="separator" aria-hidden="true"></div>
 
-<!-- ==============================================
-     5. PROBLEM/SOLUTION
-     ============================================== -->
-<section class="problem-section" id="problema">
-  <div class="problem-content">
-    <span class="problem-label">EL PROBLEMA</span>
-    <h2 class="problem-title">El problema no es tener página web. Es tener una que funcione.</h2>
-    <p class="problem-text">La mayoría de los comercios gastan plata en páginas que nadie ve. Plantillas genéricas. Diseñadores que desaparecen. Agencias que te prometen el mundo y te entregan un template que no vende un carajo.</p>
-    <div class="problem-divider"></div>
-    <span class="solution-label">LA SOLUCIÓN</span>
-    <p class="solution-text">No soy una agencia. Soy yo. Nos sentamos, charlamos de tu negocio, y construyo una página desde cero. Con diseño único, pensada para vender, rápida, y que se ve impecable en cualquier pantalla.</p>
-    <p class="solution-text"><strong>Sin plantillas. Sin vueltas. Sin desapariciones.</strong></p>
-  </div>
-</section>
-
-<div class="section-divider" role="separator" aria-hidden="true"></div>
 
 <!-- ==============================================
      6. PRICING
@@ -1782,7 +1723,6 @@ a:focus-visible {
   const hamburgerBtn = document.getElementById('hamburgerBtn');
   const hamburgerIcon = hamburgerBtn.querySelector('i');
   const mobileMenu = document.getElementById('mobileMenu');
-  const bLogo = document.getElementById('bLogo');
   const fabContainer = document.getElementById('fabContainer');
   const fabTrigger = document.getElementById('fabTrigger');
   const fabMenu = document.getElementById('fabMenu');
@@ -1802,7 +1742,6 @@ a:focus-visible {
     mobileMenu.removeAttribute('inert');
     hamburgerBtn.setAttribute('aria-expanded', 'true');
     hamburgerIcon.className = 'ph ph-x';
-    bLogo.classList.add('is-open');
     document.body.style.overflow = 'hidden';
     // Focus first link
     setTimeout(function() { mobileLinks[0]?.focus(); }, 100);
@@ -1814,7 +1753,6 @@ a:focus-visible {
     mobileMenu.setAttribute('inert', '');
     hamburgerBtn.setAttribute('aria-expanded', 'false');
     hamburgerIcon.className = 'ph ph-list';
-    bLogo.classList.remove('is-open');
     document.body.style.overflow = '';
     hamburgerBtn.focus();
   }
