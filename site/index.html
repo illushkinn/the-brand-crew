@@ -254,8 +254,13 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #0a0a0f;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(18, 18, 18, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+[data-theme="light"] .navbar {
+  background: rgba(245, 240, 235, 0.6);
 }
 /* Desktop nav */
 .navbar-links {
@@ -266,6 +271,33 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800; }
   align-items: center;
   gap: 0.5rem;
   z-index: 1001;
+}
+
+/* Mobile brand text (centered, auto-hide on scroll) */
+.navbar-brand-mobile {
+  display: none;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1rem;
+  color: var(--headline);
+  white-space: nowrap;
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 1;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+.navbar-brand-mobile.is-hidden {
+  opacity: 0;
+  transform: translateY(calc(-50% - 10px));
+}
+@media (max-width: 767px) {
+  .navbar-brand-mobile {
+    display: block;
+  }
 }
 
 /* Hamburger btn */
@@ -1428,6 +1460,8 @@ a:focus-visible {
     <a href="#contacto">Empecemos</a>
   </div>
 
+  <span class="navbar-brand-mobile" id="navbarBrandMobile">The Brand Crew</span>
+
   <div class="navbar-actions">
     <button class="hamburger-btn" id="hamburgerBtn" aria-label="Abrir menú" aria-expanded="false">
       <i data-lucide="menu" id="hamburgerMenuIcon"></i>
@@ -1724,7 +1758,7 @@ a:focus-visible {
   <footer class="footer" role="contentinfo">
     <div class="footer-info">
       <p class="footer-brand"><span>T</span>he Brand Crew</p>
-      <p class="footer-cuit">CUIT 20-12345678-9</p>
+      <p class="footer-cuit">CUIT 20-19025451-9</p>
     </div>
     <p class="footer-credit">Hecho con <i data-lucide="heart" style="color:var(--terracota);width:1.1em;height:1.1em;display:inline;vertical-align:middle;"></i> e <strong>Illya</strong></p>
   </footer>
@@ -1800,6 +1834,7 @@ window.scrollTo(0, 0);
   const faqItems = document.querySelectorAll('.faq-item');
   const fadeEls = document.querySelectorAll('.fade-in');
   const mobileLinks = mobileMenu.querySelectorAll('.mobile-link');
+  const navbarBrandMobile = document.getElementById('navbarBrandMobile');
 
   /* ==============================================
      HAMBURGER / MOBILE MENU
@@ -1914,6 +1949,15 @@ window.scrollTo(0, 0);
         el.classList.add('is-visible');
       }
     });
+
+    // Mobile brand auto-hide: hide after ~100px scroll, show when back near top
+    if (navbarBrandMobile) {
+      if (scrollY > 100) {
+        navbarBrandMobile.classList.add('is-hidden');
+      } else {
+        navbarBrandMobile.classList.remove('is-hidden');
+      }
+    }
   }
 
   // Throttled scroll
