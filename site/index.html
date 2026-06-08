@@ -1057,7 +1057,6 @@ a:focus-visible {
   border-top: none;
 }
 .footer-card {
-  position: relative;
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 16px;
@@ -1124,16 +1123,7 @@ a:focus-visible {
   display: inline;
   vertical-align: middle;
 }
-.footer-arrow {
-  position: absolute;
-  bottom: 0.5rem;
-  right: 0.5rem;
-  font-size: 1.2rem;
-  color: var(--terracota);
-  opacity: 0.4;
-  pointer-events: none;
-  transform: rotate(0deg);
-}
+
 @media (min-width: 768px) {
   .footer {
     flex-direction: column;
@@ -1365,6 +1355,59 @@ a:focus-visible {
 ::selection {
   background: var(--terracota);
   color: #fff;
+}
+
+/* ================================================
+   STEP INTERACTION — overlay + protagonism
+   ================================================ */
+.steps-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  z-index: 50;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+.steps-overlay.is-visible {
+  opacity: 1;
+  pointer-events: all;
+}
+.step {
+  border: 1px solid transparent;
+  border-radius: 12px;
+  padding: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  cursor: pointer;
+}
+.step.is-active {
+  position: relative;
+  z-index: 60;
+  transform: scale(1.03);
+  box-shadow: 0 0 30px rgba(221, 97, 76, 0.3);
+  border-color: var(--brand, #DD614C);
+}
+.steps-overlay.is-visible ~ .step:not(.is-active) {
+  opacity: 0.3;
+  filter: grayscale(0.5);
+}
+.step-close {
+  display: none;
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: none;
+  border: none;
+  color: var(--headline, #fff);
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 5;
+  -webkit-tap-highlight-color: transparent;
+}
+.step.is-active .step-close {
+  display: block;
 }
 
 /* ------ SKIP LINK (accesibilidad) ------ */
@@ -1674,12 +1717,14 @@ a:focus-visible {
   </p>
 
   <div class="steps-container">
+    <div class="steps-overlay" id="stepsOverlay" aria-hidden="true"></div>
     <div class="step fade-in">
       <div class="step-number">1</div>
       <div class="step-content">
         <h3>Conversamos</h3>
         <p>Me escribís al WhatsApp<br>y me contás tu idea.</p>
       </div>
+      <button class="step-close" aria-label="Cerrar detalle">&times;</button>
     </div>
 
     <div class="step fade-in fade-in-delay-1">
@@ -1688,6 +1733,7 @@ a:focus-visible {
         <h3>Diseño</h3>
         <p>En el transcurso de 48 horas te entrego resultados y ajustamos lo que haga falta.</p>
       </div>
+      <button class="step-close" aria-label="Cerrar detalle">&times;</button>
     </div>
 
     <div class="step fade-in fade-in-delay-2">
@@ -1696,6 +1742,7 @@ a:focus-visible {
         <h3>Estás Online</h3>
         <p>Hacemos onboarding y te doy una consultoría sin cargo.</p>
       </div>
+      <button class="step-close" aria-label="Cerrar detalle">&times;</button>
     </div>
   </div>
 </section>
@@ -1837,7 +1884,6 @@ a:focus-visible {
         </div>
       </div>
       <p class="footer-credit">Hecho con <i data-lucide="heart" style="color:var(--terracota);width:1.1em;height:1.1em;display:inline;vertical-align:middle;"></i> e <strong>Illya</strong></p>
-      <span class="footer-arrow" aria-hidden="true">↗</span>
     </div>
   </footer>
 </section>
@@ -2191,6 +2237,66 @@ window.scrollTo(0, 0);
       }
     });
   });
+
+  /* ==============================================
+     STEP INTERACTION — overlay + protagonism
+     ============================================== */
+  (function() {
+    var overlay = document.getElementById('stepsOverlay');
+    var steps = document.querySelectorAll('.step');
+    var active = false;
+
+    function activate(step) {
+      if (active) return;
+      active = true;
+      overlay.classList.add('is-visible');
+      step.classList.add('is-active');
+      steps.forEach(function(s) {
+        if (s !== step) s.setAttribute('aria-hidden', 'true');
+      });
+      var close = step.querySelector('.step-close');
+      if (close) setTimeout(function() { close.focus(); }, 100);
+    }
+
+    function deactivate() {
+      if (!active) return;
+      active = false;
+      overlay.classList.remove('is-visible');
+      steps.forEach(function(s) {
+        s.classList.remove('is-active');
+        s.removeAttribute('aria-hidden');
+      });
+    }
+
+    steps.forEach(function(step) {
+      step.addEventListener('click', function(e) {
+        if (e.target.closest('.step-close')) return;
+        if (step.classList.contains('is-active')) {
+          deactivate();
+        } else {
+          deactivate(); // close any other active first
+          activate(step);
+        }
+      });
+
+      var closeBtn = step.querySelector('.step-close');
+      if (closeBtn) {
+        closeBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          deactivate();
+        });
+      }
+    });
+
+    overlay.addEventListener('click', deactivate);
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && active) {
+        deactivate();
+        e.preventDefault();
+      }
+    });
+  })();
 
   // Inicializar Lucide Icons
   lucide.createIcons();
