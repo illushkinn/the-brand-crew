@@ -7,19 +7,15 @@
 <title>The Brand Crew</title>
 <meta name="description" content="Páginas web que garpan, para comercios que laburan. Diseño + desarrollo + dominio + hosting desde $140.000.">
 <meta name="theme-color" content="#121212">
-<link rel="icon" type="image/svg+xml" href="assets/logo_1.svg">
-<link rel="icon" type="image/png" href="assets/logo(1).png">
+
+<meta name="google-site-verification" content="k-kPS76zKdKwT-18dhJwvxuK56oZXsaMpiBEeOmjuQA" />
+
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
 <!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-
-<!-- Iosevka Font (via Fontsource) -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/iosevka-aile@5.1.0/400.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/iosevka-aile@5.1.0/700.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/iosevka-aile@5.1.0/900.css">
+<link href="https://fonts.googleapis.com/css2?family=Prata&family=Lato:wght@300;400;700;900&family=Grand+Hotel&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <!-- Lucide Icons -->
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
@@ -110,8 +106,9 @@ ul { list-style: none; }
   --nav-bg: rgba(18,18,18,0.85);
   --accent-glow: rgba(221,97,76,0.15);
   --code-bg: #1A1A1A;
-  --font-display: 'Iosevka Aile', 'Iosevka', 'Darker Grotesque', 'Arial Black', 'Impact', sans-serif;
-  --font-body: 'Sora', sans-serif;
+  --font-display: 'Prata', serif;
+  --font-body: 'Lato', sans-serif;
+  --font-accent: 'Grand Hotel', cursive;
 }
 
 [data-theme="light"] {
@@ -144,8 +141,8 @@ ul { list-style: none; }
 
 /* ------ TYPOGRAPHY ------ */
 h1, h2, h3, h4, .h-darker {
-  font-family: 'Darker Grotesque', sans-serif;
-  font-weight: 900;
+  font-family: var(--font-display);
+  font-weight: 400;
   line-height: 0.92;
   letter-spacing: -0.03em;
   color: var(--headline);
@@ -153,7 +150,7 @@ h1, h2, h3, h4, .h-darker {
 h1 { font-size: clamp(3.5rem, 12vw, 7rem); }
 h2 { font-size: clamp(2.8rem, 8vw, 5rem); }
 h3 { font-size: clamp(2rem, 5vw, 3.2rem); }
-h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800; }
+h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
 .body-large { font-size: clamp(1.15rem, 2.5vw, 1.4rem); line-height: 1.6; }
 .body-mid { font-size: clamp(1rem, 2vw, 1.15rem); line-height: 1.6; }
 .body-small { font-size: 0.9rem; line-height: 1.5; color: var(--body-dim); }
@@ -210,7 +207,7 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800; }
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  font-family: 'Darker Grotesque', sans-serif;
+  font-family: var(--font-body);
   font-weight: 800;
   font-size: 1.4rem;
   letter-spacing: -0.02em;
@@ -324,9 +321,9 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800; }
 /* Mobile brand text (centered, auto-hide on scroll) */
 .navbar-brand-mobile {
   display: none;
-  font-family: var(--font-body);
-  font-weight: 800;
-  font-size: 1rem;
+  font-family: var(--font-accent);
+  font-weight: 400;
+  font-size: 1.1rem;
   color: var(--verde);
   white-space: nowrap;
   position: absolute;
@@ -353,13 +350,36 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800; }
 
 /* Brand text on right side of navbar */
 .navbar-brand-right {
-  font-family: var(--font-body);
-  font-weight: 800;
-  font-size: 1rem;
+  font-family: var(--font-accent);
+  font-weight: 400;
+  font-size: 1.1rem;
   color: var(--headline);
   white-space: nowrap;
   margin-left: auto;
   margin-right: 0.75rem;
+}
+
+/* ===== NAVBAR BRAND LOGO ===== */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+@media (min-width: 768px) {
+  .navbar-brand {
+    margin-left: auto;
+  }
+}
+
+.navbar-brand-text {
+  font-family: var(--font-accent);
+  font-weight: 400;
+  font-size: 1.3rem;
+  letter-spacing: 0.02em;
+  color: #FFFFFF;
+  white-space: nowrap;
 }
 
 /* Hamburger btn */
@@ -425,8 +445,8 @@ a:focus-visible {
   pointer-events: all;
 }
 .mobile-menu a {
-  font-family: 'Darker Grotesque', sans-serif;
-  font-weight: 800;
+  font-family: var(--font-body);
+  font-weight: 900;
   font-size: 2.8rem;
   color: var(--headline);
   padding: 0.3rem 1rem;
@@ -603,7 +623,7 @@ a:focus-visible {
 }
 
 .hero-title {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: clamp(3.8rem, 9vw, 6rem);
   letter-spacing: 0.02em;
   line-height: 1.1;
@@ -713,11 +733,11 @@ a:focus-visible {
   border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
 }
 .solucion-quote p {
-  font-family: 'Darker Grotesque', sans-serif;
-  font-size: clamp(1.4rem, 3vw, 1.8rem);
-  font-weight: 800;
+  font-family: var(--font-accent);
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: 400;
   color: var(--headline);
-  letter-spacing: -0.02em;
+  letter-spacing: 0.01em;
 }
 
 /* ================================================
@@ -752,8 +772,8 @@ a:focus-visible {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Darker Grotesque', sans-serif;
-  font-weight: 900;
+  font-family: var(--font-display);
+  font-weight: 400;
   font-size: 1.6rem;
   position: relative;
   z-index: 2;
@@ -792,7 +812,7 @@ a:focus-visible {
   .step:not(:last-child)::after {
     content: '';
     position: absolute;
-    top: 32px;
+    top: calc(32px + var(--space-md));
     left: calc(50% + 48px);
     right: calc(-50% + 48px);
     height: 2px;
@@ -1001,11 +1021,11 @@ a:focus-visible {
   margin-bottom: 1.5rem;
 }
 .porque-yo-content .highlight-text {
-  font-family: 'Darker Grotesque', sans-serif;
-  font-weight: 900;
-  font-size: clamp(1.4rem, 3vw, 1.8rem);
+  font-family: var(--font-accent);
+  font-weight: 400;
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
   color: var(--terracota);
-  letter-spacing: -0.02em;
+  letter-spacing: 0.01em;
 }
 .porque-yo-badge {
   display: inline-flex;
@@ -1024,7 +1044,7 @@ a:focus-visible {
    FAQ
    ================================================ */
 .faq {
-  background: var(--bg-alt);
+  background: var(--bg);
 }
 .faq-list {
   max-width: 720px;
@@ -1121,9 +1141,10 @@ a:focus-visible {
   font-size: 0.9rem;
 }
 .footer .footer-brand {
-  font-family: var(--font-display);
-  font-weight: 800;
+  font-family: var(--font-body);
+  font-weight: 900;
   font-size: 1.2rem;
+  letter-spacing: -0.02em;
   color: var(--headline);
 }
 .footer .footer-brand span { color: var(--headline); }
@@ -1443,6 +1464,9 @@ a:focus-visible {
   opacity: 0.3;
   filter: grayscale(0.5);
 }
+.steps-overlay.is-visible ~ .step::after {
+  display: none;
+}
 .step-close {
   display: none;
   position: absolute;
@@ -1515,6 +1539,7 @@ a:focus-visible {
   }
   .hero-title {
     margin-bottom: 0.75rem;
+    word-spacing: -0.5px;
   }
   .hero-sub {
     margin-bottom: 2rem;
@@ -1538,7 +1563,7 @@ a:focus-visible {
     border-top: none;
   }
   .footer-card {
-    padding: 1.25rem;
+    padding: 1.5rem;
     gap: var(--space-md);
     align-items: center;
     text-align: center;
@@ -1550,14 +1575,16 @@ a:focus-visible {
     font-size: 1rem;
   }
   .footer .footer-cuit {
-    display: none;
+    font-size: 0.75rem;
+    opacity: 0.6;
   }
   .footer .footer-credit {
     white-space: normal;
     width: 100%;
-    padding-top: 0.4rem;
-    font-size: 0.75rem;
-    border-top: none;
+    padding-top: 0.75rem;
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    border-top: 1px solid var(--border);
   }
 
   /* CTA ocupa 100dvh en mobile, footer al fondo */
@@ -1580,6 +1607,49 @@ a:focus-visible {
 
   .cta-final .footer {
     width: 100%;
+  }
+}
+/* ===== SCROLL REVEAL ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.9s cubic-bezier(0.2, 0, 0, 1),
+              transform 0.9s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.step:nth-of-type(1) { transition-delay: 0ms; }
+.step:nth-of-type(2) { transition-delay: 120ms; }
+.step:nth-of-type(3) { transition-delay: 240ms; }
+
+/* ===== GRADIENT VERTICAL LINE — "La aguja que teje fino" ===== */
+.gradient-line {
+  position: fixed;
+  right: 0.5rem;
+  bottom: 0;
+  width: 6px;
+  height: 40vh;
+  background: linear-gradient(to bottom, #DD614C, #DAA144);
+  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+  z-index: 50;
+  pointer-events: none;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+/* Slightly more visible on hover/focus of any interactive element */
+html:has(:hover) .gradient-line {
+  opacity: 0.7;
+}
+
+/* Hide on mobile where it might clutter */
+@media (max-width: 767px) {
+  .gradient-line {
+    display: none;
   }
 }
 </style>
@@ -1638,7 +1708,9 @@ a:focus-visible {
     <a href="#contacto">Empecemos</a>
   </div>
 
-  <span class="navbar-brand-right">The Brand Crew</span>
+  <a href="#" class="navbar-brand" aria-label="The Brand Crew — inicio">
+    <span class="navbar-brand-text">The Brand Crew</span>
+  </a>
 
   <div class="navbar-actions">
     <button class="hamburger-btn" id="hamburgerBtn" aria-label="Abrir menú" aria-expanded="false">
@@ -1661,7 +1733,7 @@ a:focus-visible {
 <!-- ==============================================
      1. HERO
      ============================================== -->
-<section class="hero" id="inicio" aria-label="Hero principal">
+<section class="hero reveal" id="inicio" aria-label="Hero principal">
   <div class="hero-shapes" aria-hidden="true">
     <div class="hero-shape"></div>
     <div class="hero-shape"></div>
@@ -1691,7 +1763,7 @@ a:focus-visible {
 <!-- ==============================================
      2. PROBLEMA
      ============================================== -->
-<section class="section problema" id="servicios" aria-label="El problema que resolvemos">
+<section class="section problema reveal" id="servicios" aria-label="El problema que resolvemos">
   <span class="section-label mono text-terracota">
     El problema
   </span>
@@ -1721,7 +1793,7 @@ a:focus-visible {
 <!-- ==============================================
      3. SOLUCIÓN
      ============================================== -->
-<section class="section solucion" id="solucion" aria-label="La solución">
+<section class="section solucion reveal" id="solucion" aria-label="La solución">
   <span class="section-label mono text-terracota">
     La solución
   </span>
@@ -1757,7 +1829,7 @@ a:focus-visible {
 <!-- ==============================================
      4. CÓMO FUNCIONA
      ============================================== -->
-<section class="section como-funciona" id="como-funciona" aria-label="Cómo funciona">
+<section class="section como-funciona reveal" id="como-funciona" aria-label="Cómo funciona">
   <span class="section-label mono text-terracota">
     El proceso
   </span>
@@ -1768,7 +1840,7 @@ a:focus-visible {
 
   <div class="steps-container">
     <div class="steps-overlay" id="stepsOverlay" aria-hidden="true"></div>
-    <div class="step fade-in">
+    <div class="step fade-in reveal">
       <div class="step-number">1</div>
       <div class="step-content">
         <h3>Conversamos</h3>
@@ -1776,7 +1848,7 @@ a:focus-visible {
       </div>
     </div>
 
-    <div class="step fade-in fade-in-delay-1">
+    <div class="step fade-in fade-in-delay-1 reveal">
       <div class="step-number">2</div>
       <div class="step-content">
         <h3>Diseño</h3>
@@ -1784,7 +1856,7 @@ a:focus-visible {
       </div>
     </div>
 
-    <div class="step fade-in fade-in-delay-2">
+    <div class="step fade-in fade-in-delay-2 reveal">
       <div class="step-number">3</div>
       <div class="step-content">
         <h3>Estás Online</h3>
@@ -1799,7 +1871,7 @@ a:focus-visible {
 <!-- ==============================================
      6. PRICING
      ============================================== -->
-<section class="section pricing" id="precios" aria-label="Precios">
+<section class="section pricing reveal" id="precios" aria-label="Precios">
   <h2 class="section-title"><span class="text-verde">Precio justo</span>.</h2>
 
   <div class="glass-card pricing-card fade-in">
@@ -1851,7 +1923,7 @@ a:focus-visible {
 <!-- ==============================================
      7. FAQ
      ============================================== -->
-<section class="section faq" id="faq" aria-label="Preguntas frecuentes">
+<section class="section faq reveal" id="faq" aria-label="Preguntas frecuentes">
   <span class="section-label mono text-terracota">
     FAQ
   </span>
@@ -1913,13 +1985,13 @@ a:focus-visible {
 <!-- ==============================================
      8. CTA FINAL
      ============================================== -->
-<section class="cta-final" id="contacto" aria-label="Contacto final">
+<section class="cta-final reveal" id="contacto" aria-label="Contacto final">
   <div class="cta-content">
     <h2>Dale, <span class="text-terracota">empecemos</span>.</h2>
   </div>
 
   <footer class="footer" role="contentinfo">
-    <div class="footer-card">
+    <div class="footer-card reveal">
       <h2 class="cta-heading">Dale, <span class="text-terracota">empecemos</span>.</h2>
       <div class="footer-card-content">
         <p class="footer-brand"><span>T</span>he Brand Crew</p>
@@ -2335,10 +2407,28 @@ window.scrollTo(0, 0);
     });
   })();
 
+  // Scroll reveal with IntersectionObserver
+  (function() {
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      observer.observe(el);
+    });
+  })();
+
   // Inicializar Lucide Icons
   lucide.createIcons();
 })();
 </script>
+
+<!-- Gradiente vertical decorativo -->
+<div class="gradient-line" aria-hidden="true"></div>
 
 </body>
 </html>

@@ -19,5 +19,5 @@ The Brand Crew es el estudio personal de Illya Grytsyk, consultor de ventas y di
 ## Tecnologías
 - HTML5, CSS3, JavaScript (vanilla)
 - Deploy en Vercel
-- Fuentes: Iosevka Aile, Inter
+- Fuentes: Prata (display), Lato (body), Grand Hotel (accent), JetBrains Mono (code)
 - Phosphor Icons
