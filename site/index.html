@@ -1401,23 +1401,6 @@ a:focus-visible {
   opacity: 0.3;
   filter: grayscale(0.5);
 }
-.step-close {
-  display: none;
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
-  background: none;
-  border: none;
-  color: var(--headline, #fff);
-  font-size: 1.5rem;
-  cursor: pointer;
-  z-index: 5;
-  -webkit-tap-highlight-color: transparent;
-}
-.step.is-active .step-close {
-  display: block;
-}
-
 /* ------ SKIP LINK (accesibilidad) ------ */
 .skip-link {
   position: absolute;
@@ -1732,7 +1715,6 @@ a:focus-visible {
         <h3>Conversamos</h3>
         <p>Me escribís al WhatsApp<br>y me contás tu idea.</p>
       </div>
-      <button class="step-close" aria-label="Cerrar detalle">&times;</button>
     </div>
 
     <div class="step fade-in fade-in-delay-1">
@@ -1741,7 +1723,6 @@ a:focus-visible {
         <h3>Diseño</h3>
         <p>En el transcurso de 48 horas te entrego resultados y ajustamos lo que haga falta.</p>
       </div>
-      <button class="step-close" aria-label="Cerrar detalle">&times;</button>
     </div>
 
     <div class="step fade-in fade-in-delay-2">
@@ -1750,7 +1731,6 @@ a:focus-visible {
         <h3>Estás Online</h3>
         <p>Hacemos onboarding y te doy una consultoría sin cargo.</p>
       </div>
-      <button class="step-close" aria-label="Cerrar detalle">&times;</button>
     </div>
   </div>
 </section>
@@ -2262,8 +2242,6 @@ window.scrollTo(0, 0);
       steps.forEach(function(s) {
         if (s !== step) s.setAttribute('aria-hidden', 'true');
       });
-      var close = step.querySelector('.step-close');
-      if (close) setTimeout(function() { close.focus(); }, 100);
     }
 
     function deactivate() {
@@ -2278,7 +2256,6 @@ window.scrollTo(0, 0);
 
     steps.forEach(function(step) {
       step.addEventListener('click', function(e) {
-        if (e.target.closest('.step-close')) return;
         if (step.classList.contains('is-active')) {
           deactivate();
         } else {
@@ -2287,13 +2264,6 @@ window.scrollTo(0, 0);
         }
       });
 
-      var closeBtn = step.querySelector('.step-close');
-      if (closeBtn) {
-        closeBtn.addEventListener('click', function(e) {
-          e.stopPropagation();
-          deactivate();
-        });
-      }
     });
 
     overlay.addEventListener('click', deactivate);
