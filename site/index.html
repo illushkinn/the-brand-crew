@@ -282,7 +282,7 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800; }
 /* Mobile brand text (centered, auto-hide on scroll) */
 .navbar-brand-mobile {
   display: none;
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-weight: 800;
   font-size: 1rem;
   color: var(--verde);
@@ -311,7 +311,7 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800; }
 
 /* Brand text on right side of navbar */
 .navbar-brand-right {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-weight: 800;
   font-size: 1rem;
   color: var(--headline);
@@ -569,7 +569,7 @@ a:focus-visible {
 
 
 .hero-sub {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: clamp(1.1rem, 2.5vw, 1.5rem);
   color: var(--headline);
   margin-top: 1.5rem;
@@ -770,14 +770,14 @@ a:focus-visible {
 .problem-label,
 .solution-label {
   display: inline-block;
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: 0.75rem;
   letter-spacing: 0.15em;
   color: var(--brand, #6366f1);
   margin-bottom: 1.5rem;
 }
 .problem-title {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: clamp(1.8rem, 4vw, 2.5rem);
   line-height: 1.2;
   color: #fff;
@@ -838,7 +838,7 @@ a:focus-visible {
   text-align: center;
 }
 .pricing-split-item .amount {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-weight: 900;
   font-size: 1.6rem;
   color: var(--headline);
@@ -871,7 +871,7 @@ a:focus-visible {
   font-weight: 400;
 }
 .pricing-line-price {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-weight: 900;
   font-size: 1.5rem;
   color: var(--headline);
@@ -1057,6 +1057,7 @@ a:focus-visible {
   border-top: none;
 }
 .footer-card {
+  position: relative;
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 16px;
@@ -1081,12 +1082,6 @@ a:focus-visible {
   color: var(--headline);
 }
 .footer .footer-brand span { color: var(--headline); }
-.footer .footer-brand .footer-cta {
-  font-family: var(--font-body);
-  font-weight: 400;
-  font-size: 0.9rem;
-  color: var(--terracota);
-}
 .footer .footer-cuit {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.8rem;
@@ -1116,6 +1111,7 @@ a:focus-visible {
   opacity: 0.6;
 }
 .footer .footer-credit {
+  font-family: var(--font-body);
   font-size: 0.85rem;
   color: var(--body-dim);
   padding-top: 0.75rem;
@@ -1128,11 +1124,27 @@ a:focus-visible {
   display: inline;
   vertical-align: middle;
 }
+.footer-arrow {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  font-size: 1.2rem;
+  color: var(--terracota);
+  opacity: 0.4;
+  pointer-events: none;
+  transform: rotate(0deg);
+}
 @media (min-width: 768px) {
   .footer {
     flex-direction: column;
     align-items: flex-start;
     text-align: left;
+  }
+  .footer-card .cta-heading {
+    display: block;
+  }
+  .cta-content h2 {
+    display: none;
   }
 }
 
@@ -1439,6 +1451,9 @@ a:focus-visible {
     align-items: center;
     text-align: center;
   }
+  .footer-card .cta-heading {
+    display: none;
+  }
   .footer .footer-brand {
     font-size: 1rem;
   }
@@ -1663,7 +1678,7 @@ a:focus-visible {
       <div class="step-number">1</div>
       <div class="step-content">
         <h3>Conversamos</h3>
-        <p>Me escribís al WhatsApp<br>y me contás tu idea</p>
+        <p>Me escribís al WhatsApp<br>y me contás tu idea.</p>
       </div>
     </div>
 
@@ -1811,8 +1826,9 @@ a:focus-visible {
 
   <footer class="footer" role="contentinfo">
     <div class="footer-card">
+      <h2 class="cta-heading">Dale, <span class="text-terracota">empecemos</span>.</h2>
       <div class="footer-card-content">
-        <p class="footer-brand"><span>T</span>he Brand Crew <span class="footer-cta">· Dale, empecemos.</span></p>
+        <p class="footer-brand"><span>T</span>he Brand Crew</p>
         <p class="footer-cuit">CUIT 20-19025451-9</p>
         <div class="footer-social">
           <a href="https://www.linkedin.com/in/illya-grytsyk/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
@@ -1821,6 +1837,7 @@ a:focus-visible {
         </div>
       </div>
       <p class="footer-credit">Hecho con <i data-lucide="heart" style="color:var(--terracota);width:1.1em;height:1.1em;display:inline;vertical-align:middle;"></i> e <strong>Illya</strong></p>
+      <span class="footer-arrow" aria-hidden="true">↗</span>
     </div>
   </footer>
 </section>
