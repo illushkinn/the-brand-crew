@@ -37,7 +37,7 @@
 
 /* ------ RESET ------ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; scroll-snap-type: y proximity; scroll-padding-top: 64px; overscroll-behavior: none; }
+html { scroll-behavior: smooth; scroll-snap-type: y proximity; scroll-padding-top: 64px; overscroll-behavior: none; background: var(--bg); }
 body { font-family: var(--font-body); overflow-x: hidden; background: var(--bg); overscroll-behavior: none; }
 img, svg { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; -webkit-focus-ring-color: transparent; outline: none; }
@@ -286,7 +286,7 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: var(--color-nav-bg);
+  background: var(--nav-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -294,7 +294,7 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   will-change: transform;
 }
 [data-theme="light"] .navbar {
-  background: var(--color-nav-bg);
+  background: var(--nav-bg);
 }
 .navbar.is-hidden {
   opacity: 0;
@@ -431,7 +431,7 @@ a:focus-visible {
   transition: clip-path 0.5s cubic-bezier(0.45, 0.05, 0.25, 1), -webkit-clip-path 0.5s cubic-bezier(0.45, 0.05, 0.25, 1);
 }
 [data-theme="light"] .mobile-menu {
-  background: var(--color-nav-bg);
+  background: var(--nav-bg);
 }
 .mobile-menu.is-open {
   clip-path: circle(150% at top right);
@@ -797,6 +797,38 @@ a:focus-visible {
   .resultado-nombre {
     font-size: 1.1rem;
   }
+}
+
+/* All text white in Casos reales */
+.resultados .section-label,
+.resultados .section-sub,
+.resultados .resultado-tag,
+.resultados .resultado-link,
+.resultados .resultado-historia p,
+.resultados .resultado-historia em,
+.resultados .resultado-metrica-valor,
+.resultados .resultado-metrica-label {
+  color: var(--white);
+}
+.resultados .resultado-link:hover {
+  color: var(--white);
+  text-decoration: underline;
+}
+
+/* Warm testimonial block — Behance case study aesthetic */
+.testimonio-calido {
+  background: linear-gradient(135deg, rgba(221,97,76,0.06) 0%, rgba(218,161,68,0.04) 100%);
+  border-left: 3px solid var(--terracota);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  margin-bottom: 1.25rem;
+  padding: 1rem 1.25rem;
+}
+.testimonio-calido p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--white);
+  font-style: italic;
 }
 
 /* ================================================
@@ -1858,7 +1890,7 @@ html:has(:hover) .gradient-line {
 }
 </script>
 </head>
-<body style="background: var(--color-bg)">
+<body>
 <script>window.scrollTo(0,0);</script>
 
 <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
@@ -2010,8 +2042,8 @@ html:has(:hover) .gradient-line {
       </div>
     </div>
 
-    <div class="resultado-historia">
-      <p>«Apolonia es una verdulería con historia. Dueños laburantes que querían llegar a más clientes sin perder la esencia de siempre. Les construí una página que muestra quiénes son, qué ofrecen, y por qué la gente los elige.»</p>
+    <div class="testimonio-calido">
+      <p>«Me recibieron con mate y una idea hermosa. Fui a comprar leña para la chimenea y conocí al dueño de Apolonia, una verdulería de estación en Playa Grande. Quería avisarles a sus clientes qué frutas y verduras estaban en su mejor momento, tarjetas con QR para la vidriera, y una app sencilla pensada para gente grande. Así nació.»</p>
     </div>
 
     <div class="resultado-metricas">
