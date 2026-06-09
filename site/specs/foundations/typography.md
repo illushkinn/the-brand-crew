@@ -55,17 +55,17 @@ All heading and body sizes use `clamp()`:
 
 | Element | Size | Line Height |
 |---------|------|-------------|
-| h1 | `clamp(3.5rem, 12vw, 7rem)` | 0.92 |
-| h2 | `clamp(2.8rem, 8vw, 5rem)` | 0.92 |
-| h3 | `clamp(2rem, 5vw, 3.2rem)` | 0.92 |
+| h1 | `clamp(2.5rem, 6vw, 5rem)` | 0.92 |
+| h2 | `clamp(2rem, 5vw, 3.5rem)` | 0.92 |
+| h3 | `clamp(1.5rem, 3.5vw, 2.5rem)` | 0.92 |
 | h4 | `clamp(1.4rem, 3vw, 2rem)` | 0.92 |
-| Body Large | `clamp(1.15rem, 2.5vw, 1.4rem)` | 1.6 |
+| Body Large | `clamp(1rem, 2vw, 1.2rem)` | 1.6 |
 | Body Mid | `clamp(1rem, 2vw, 1.15rem)` | 1.6 |
 | Body Small | `0.9rem` | 1.5 |
-| Hero Title | `clamp(3.8rem, 9vw, 6rem)` | 1.1 |
-| Section Sub | `clamp(1.1rem, 2.5vw, 1.35rem)` | 1.6 |
-| Button (default) | `1.4rem` | — |
-| Button (lg) | `clamp(1.4rem, 3vw, 1.8rem)` | — |
+| Hero Title | `clamp(2.8rem, 7vw, 5rem)` | 1.1 |
+| Section Sub | `clamp(1rem, 2vw, 1.2rem)` | 1.6 |
+| Button (default) | `1.15rem` | — |
+| Button (lg) | `clamp(1.15rem, 2.5vw, 1.4rem)` | — |
 | Button (sm) | `1rem` | — |
 | Section Label | `0.8rem` | — |
 
