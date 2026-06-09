@@ -37,7 +37,7 @@
 
 /* ------ RESET ------ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; scroll-snap-type: y mandatory; scroll-padding-top: 64px; }
+html { scroll-behavior: smooth; scroll-snap-type: y proximity; scroll-padding-top: 64px; }
 body { font-family: var(--font-body); overflow-x: hidden; background: var(--bg); }
 img, svg { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; -webkit-focus-ring-color: transparent; outline: none; }
@@ -651,7 +651,10 @@ a:focus-visible {
 .problema {
   background: var(--bg);
   scroll-snap-align: start;
-  overflow: hidden;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .problema-grid {
   display: grid;
@@ -686,7 +689,10 @@ a:focus-visible {
 .solucion {
   background: var(--bg);
   scroll-snap-align: start;
-  overflow: hidden;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .solucion-grid {
   display: grid;
@@ -736,7 +742,10 @@ a:focus-visible {
 .como-funciona {
   background: var(--bg);
   scroll-snap-align: start;
-  overflow: hidden;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .steps-container {
   margin-top: 3rem;
@@ -865,7 +874,10 @@ a:focus-visible {
 .pricing {
   background: var(--bg);
   scroll-snap-align: start;
-  overflow: hidden;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .pricing-card {
   max-width: 600px;
@@ -1040,7 +1052,10 @@ a:focus-visible {
 .faq {
   background: var(--bg);
   scroll-snap-align: start;
-  overflow: hidden;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .faq-list {
   max-width: 720px;
@@ -1099,7 +1114,10 @@ a:focus-visible {
   text-align: center;
   padding: clamp(5rem, 12vw, 10rem) clamp(1.25rem, 5vw, 4rem);
   scroll-snap-align: start;
-  overflow: hidden;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .cta-final h2 {
   margin-bottom: var(--space-md);
