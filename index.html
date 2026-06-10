@@ -694,15 +694,20 @@ a:focus-visible {
 .resultados {
   background: var(--bg);
   scroll-snap-align: start;
-  min-height: 100vh; /* dvh fallback */
+  min-height: 100vh;
   min-height: 100svh;
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
+.resultados-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 1.5rem;
+}
 .resultados .glass-card {
-  margin-bottom: 1.5rem;
+  margin-bottom: 0;
 }
 .resultado-header {
   display: flex;
@@ -786,7 +791,7 @@ a:focus-visible {
 }
 .resultado-footer {
   text-align: center;
-  padding-top: 2rem;
+  margin-top: 2rem;
 }
 @media (max-width: 768px) {
   .resultado-metricas {
@@ -1987,6 +1992,7 @@ html:has(:hover) .gradient-line {
   </p>
 
   <!-- Caso 1: Luisito -->
+  <div class="resultados-grid">
   <div class="glass-card resultado-card fade-in">
     <div class="resultado-header">
       <div class="resultado-avatar" style="background: var(--terracota); color: var(--white); font-size: 1.8rem; font-family: var(--font-display); display: flex; align-items: center; justify-content: center; border-radius: var(--radius-sm);">L</div>
@@ -2029,7 +2035,7 @@ html:has(:hover) .gradient-line {
     </div>
 
     <div class="resultado-historia">
-      <p>El dueño: «quería avisarles a sus clientes qué frutas y verduras estaban en su mejor momento, tarjetas con QR para la vidriera, y una app sencilla pensada para gente grande.» Así nació.</p>
+      <p>«Me recibieron con mate y una idea hermosa. Fui a comprar leña para la chimenea y conocí al dueño de Apolonia, una verdulería de estación en Playa Grande. Quería avisarles a sus clientes qué frutas y verduras estaban en su mejor momento, tarjetas con QR para la vidriera, y una app sencilla pensada para gente grande. Así nació.»</p>
     </div>
 
     <div class="resultado-metricas">
@@ -2047,6 +2053,8 @@ html:has(:hover) .gradient-line {
       </div>
     </div>
   </div>
+
+  </div><!-- .resultados-grid -->
 
   <div class="resultado-footer fade-in fade-in-delay-2">
     <p class="section-sub" style="max-width:100%; padding: var(--space-lg) var(--space-md); margin: var(--space-md) 0;">
