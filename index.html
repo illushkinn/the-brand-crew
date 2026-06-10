@@ -3,7 +3,7 @@
 <head>
 <script>history.scrollRestoration='manual';</script>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>The Brand Crew</title>
 <meta name="description" content="Páginas web que garpan, para comercios que laburan. Diseño + desarrollo + dominio + hosting desde $140.000.">
 <meta name="theme-color" content="#121212">
@@ -37,8 +37,8 @@
 
 /* ------ RESET ------ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; scroll-snap-type: y proximity; scroll-padding-top: 64px; overscroll-behavior: none; background: var(--bg); }
-body { font-family: var(--font-body); overflow-x: hidden; background: var(--bg); overscroll-behavior: none; }
+html { scroll-behavior: smooth; scroll-padding-top: 64px; overscroll-behavior: none; background: var(--bg); }
+body { scroll-snap-type: y proximity; font-family: var(--font-body); overflow-x: hidden; background: var(--bg); overscroll-behavior: none; }
 img, svg { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; -webkit-focus-ring-color: transparent; outline: none; }
 button { border: none; background: none; cursor: pointer; font: inherit; color: inherit; -webkit-tap-highlight-color: transparent; -webkit-focus-ring-color: transparent; outline: none; }
@@ -332,6 +332,11 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
 @media (max-width: 767px) {
   .navbar-brand-mobile {
     display: block;
+  }
+  .navbar, .mobile-menu {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: var(--bg);
   }
 }
 @media (min-width: 768px) {
@@ -705,7 +710,7 @@ a:focus-visible {
 }
 .resultados-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
 }
 .resultados .glass-card {
