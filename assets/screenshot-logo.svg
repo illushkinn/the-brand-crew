@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 36" fill="none">
+  <!-- The Brand Crew — Isologo Sora ExtraBold -->
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Sora:wght@800&amp;display=swap');
+    </style>
+  </defs>
+  <!-- "The Brand Crew" in white, no stroke -->
+  <text x="0" y="50%" dominant-baseline="central"
+        font-family="Sora, sans-serif" font-weight="800"
+        font-size="22" fill="#FFFFFF">
+    The Brand Crew
+  </text>
+</svg>
