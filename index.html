@@ -748,15 +748,19 @@ a:focus-visible {
   color: var(--terracota);
 }
 .resultado-historia {
+  background: linear-gradient(135deg, rgba(221,97,76,0.06) 0%, rgba(218,161,68,0.04) 100%);
   margin-bottom: 1.25rem;
-  padding-left: 0.75rem;
-  border-left: 2px solid var(--glass-border);
+  padding: 1rem 1.25rem;
+  border-left: 3px solid var(--terracota);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
 }
 .resultado-historia p {
   font-size: 0.95rem;
   line-height: 1.6;
-  color: var(--body-dim);
+  color: var(--white);
   font-style: italic;
+  margin: 0;
+}
 }
 .resultado-historia em {
   color: var(--text);
@@ -816,21 +820,6 @@ a:focus-visible {
 }
 
 /* Warm testimonial block — Behance case study aesthetic */
-.testimonio-calido {
-  background: linear-gradient(135deg, rgba(221,97,76,0.06) 0%, rgba(218,161,68,0.04) 100%);
-  border-left: 3px solid var(--terracota);
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-  margin-bottom: 1.25rem;
-  padding: 1rem 1.25rem;
-}
-.testimonio-calido p {
-  margin: 0;
-  font-size: 1rem;
-  line-height: 1.7;
-  color: var(--white);
-  font-style: italic;
-}
-
 /* ================================================
    CÓMO FUNCIONA (pasos)
    ================================================ */
@@ -2040,10 +2029,6 @@ html:has(:hover) .gradient-line {
         <h3 class="resultado-nombre">Apolonia</h3>
         <a href="https://apolonia.vercel.app" class="resultado-link" target="_blank" rel="noopener">Ver el sitio →</a>
       </div>
-    </div>
-
-    <div class="testimonio-calido">
-      <p>«Me recibieron con mate y una idea hermosa. Fui a comprar leña para la chimenea y conocí al dueño de Apolonia, una verdulería de estación en Playa Grande. Quería avisarles a sus clientes qué frutas y verduras estaban en su mejor momento, tarjetas con QR para la vidriera, y una app sencilla pensada para gente grande. Así nació.»</p>
     </div>
 
     <div class="resultado-metricas">
