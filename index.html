@@ -1408,19 +1408,23 @@ section:not(.hero)::before {
   height: 1.75rem;
 }
 .fab-menu {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px) scaleY(0);
+  transform-origin: bottom;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
   opacity: 0;
-  transform: translateY(10px) scaleY(0);
-  transform-origin: bottom;
   transition: opacity 0.25s ease, transform 0.25s ease;
   pointer-events: none;
+  padding-bottom: 12px;
 }
 .fab-menu.is-open {
   opacity: 1;
-  transform: translateY(0) scaleY(1);
+  transform: translateX(-50%) translateY(0) scaleY(1);
   pointer-events: all;
 }
 /* Override FAB positioning when inside container */
@@ -2607,7 +2611,7 @@ window.scrollTo(0, 0);
 
     // Empujar FAB suavemente al acercarse al footer
     if (scrollY > docHeight - 400) {
-      var extra = Math.min((scrollY - (docHeight - 400)) * 0.25, 100);
+      var extra = Math.min((scrollY - (docHeight - 600)) * 0.15, 60);
       fabContainer.style.bottom = (2 + extra) + 'px';
     } else {
       fabContainer.style.bottom = '';
