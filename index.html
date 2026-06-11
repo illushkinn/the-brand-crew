@@ -1874,8 +1874,8 @@ a:focus-visible {
   50% { background: linear-gradient(to bottom, #DAA144, #DD614C); }
 }
 
-/* Hide on mobile where it might clutter */
-@media (max-width: 767px) {
+/* Hide on very small screens */
+@media (max-width: 374px) {
   .gradient-line {
     display: none;
   }
@@ -2571,9 +2571,17 @@ window.scrollTo(0, 0);
   /* ==============================================
      FAB MENU TOGGLE (3-dots click)
      ============================================== */
+  let fabMenuOpen = false;
   fabTrigger.addEventListener('click', function(e) {
+    e.preventDefault();
     e.stopPropagation();
+    fabMenuOpen = !fabMenuOpen;
     fabMenu.classList.toggle('is-open');
+    // Bloquear clicks en WhatsApp brevemente para evitar apertura accidental
+    if (fabMenuOpen) {
+      whatsappFab.style.pointerEvents = 'none';
+      setTimeout(() => { whatsappFab.style.pointerEvents = ''; }, 300);
+    }
   });
 
   // Close menu when clicking WhatsApp or Progress Circle
