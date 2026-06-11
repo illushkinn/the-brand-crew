@@ -2495,11 +2495,11 @@ window.scrollTo(0, 0);
     const scrollY = window.scrollY || window.pageYOffset;
     let currentSection = 0;
 
-    // Container: show after 200px, hide 300px before footer
+    // Container: show after 200px, push up when near footer
     const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const nearBottom = scrollY > docHeight - 300;
+    const footerZone = docHeight - 500;
     
-    if (scrollY > 200 && !nearBottom) {
+    if (scrollY > 200) {
       if (!containerVisible) {
         containerVisible = true;
         fabContainer.classList.add('is-visible');
@@ -2527,6 +2527,14 @@ window.scrollTo(0, 0);
           shakeInterval = null;
         }
       }
+    }
+
+    // Empujar FAB hacia arriba al acercarse al footer
+    if (scrollY > footerZone) {
+      var extra = Math.min((scrollY - footerZone) * 0.5, 200);
+      fabContainer.style.bottom = (24 + extra) + 'px';
+    } else {
+      fabContainer.style.bottom = '';
     }
 
     // Update progress circle
