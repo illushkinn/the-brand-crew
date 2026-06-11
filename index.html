@@ -1872,21 +1872,20 @@ section:not(.hero)::before {
 .curtain.open::before { transform: translateX(-100%); }
 .curtain.open::after { transform: translateX(100%); }
 
-/* Film glasmórfico mobile — tap para revelar */
+/* Film glasmórfico mobile — Looney Tunes circle reveal */
 .glass-film {
   display: none;
   position: fixed; inset: 0; z-index: 9998;
   background: oklch(0.15 0.01 265 / 0.88);
   backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-  border: 1px solid oklch(1 0 0 / 0.12);
   flex-direction: column; align-items: center; justify-content: center;
   cursor: pointer;
-  transition: opacity 0.6s ease, visibility 0.6s ease;
   user-select: none; -webkit-user-select: none;
+  clip-path: circle(50% at center);
+  transition: clip-path 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
-.glass-film.fade-out {
-  opacity: 0;
-  visibility: hidden;
+.glass-film.hide {
+  clip-path: circle(0% at center);
 }
 .glass-film.dissolve {
   opacity: 0;
@@ -2075,7 +2074,7 @@ section:not(.hero)::before {
 </div>
 
 <div class="curtain" id="curtain"></div>
-<script>window.scrollTo(0,0);document.addEventListener('DOMContentLoaded',()=>{setTimeout(()=>{document.getElementById('curtain').classList.add('open');},200);const film=document.getElementById('glassFilm');if(film){film.addEventListener('click',()=>{film.classList.add('fade-out');});}
+<script>window.scrollTo(0,0);document.addEventListener('DOMContentLoaded',()=>{setTimeout(()=>{document.getElementById('curtain').classList.add('open');},200);const film=document.getElementById('glassFilm');if(film){film.addEventListener('click',()=>{film.classList.add('hide');setTimeout(()=>{film.style.display='none';},700);});}
 document.querySelectorAll('.card-film').forEach(cf=>{cf.addEventListener('click',e=>{e.stopPropagation();cf.classList.add('dissolve');setTimeout(()=>cf.remove(),500);});});
 document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListener('click',()=>{document.querySelectorAll('.resultado-card').forEach(c=>c.classList.remove('is-focused'));card.classList.add('is-focused');});});});</script>
 
