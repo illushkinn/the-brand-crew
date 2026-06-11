@@ -437,7 +437,9 @@ a:focus-visible {
   position: fixed;
   inset: 0;
   z-index: 999;
-  background: #0a0a0f;
+  background: rgba(10, 10, 15, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1356,7 +1358,7 @@ a:focus-visible {
   right: calc(8px + env(safe-area-inset-right, 0px));
   z-index: 900;
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   align-items: center;
   gap: 10px;
   opacity: 0;
@@ -1619,9 +1621,7 @@ a:focus-visible {
     font-size: 1.6rem;
   }
   .navbar, .mobile-menu {
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    background: rgba(10, 10, 15, 0.7);
+    background: transparent;
   }
 
   /* ── Mobile typography: Sora ── */
@@ -1996,16 +1996,16 @@ a:focus-visible {
     <a href="#contacto">Empecemos</a>
   </div>
 
-  <a href="#" class="navbar-brand" aria-label="The Brand Crew — inicio">
-    <span class="navbar-brand-text">The Brand Crew</span>
-  </a>
-
   <div class="navbar-actions">
     <button class="hamburger-btn" id="hamburgerBtn" aria-label="Abrir menú" aria-expanded="false">
       <i data-lucide="menu" id="hamburgerMenuIcon"></i>
       <i data-lucide="x" id="hamburgerCloseIcon" style="display:none"></i>
-  </button>
+    </button>
   </div>
+
+  <a href="#" class="navbar-brand" aria-label="The Brand Crew — inicio">
+    <span class="navbar-brand-text">The Brand Crew</span>
+  </a>
 </nav>
 
 <!-- Mobile Menu Overlay -->
@@ -2527,7 +2527,7 @@ window.scrollTo(0, 0);
     // Empujar FAB hacia arriba al acercarse al footer
     if (scrollY > footerZone) {
       var extra = Math.min((scrollY - footerZone) * 0.5, 200);
-      fabContainer.style.bottom = (24 + extra) + 'px';
+      fabContainer.style.bottom = (8 + extra) + 'px';
     } else {
       fabContainer.style.bottom = '';
     }
