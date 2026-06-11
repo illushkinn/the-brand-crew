@@ -791,10 +791,40 @@ a:focus-visible {
   padding-bottom: 2rem;
 }
 .resultados-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
   gap: 1.5rem;
+  scrollbar-width: none;
+  padding-bottom: 0.5rem;
 }
+.resultados-grid::-webkit-scrollbar { display: none; }
+.resultados-grid .glass-card {
+  flex: 0 0 min(380px, 80vw);
+  scroll-snap-align: start;
+  margin-bottom: 0;
+}
+.resultados-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+.resultados-arrow {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--verde);
+  color: var(--black);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  border: none;
+  font-size: 1.2rem;
+  transition: opacity 0.2s;
+  flex-shrink: 0;
+}
+.resultados-arrow:disabled { opacity: 0.3; cursor: default; }
+.resultados-arrow:hover:not(:disabled) { opacity: 0.8; }
 .resultados .glass-card {
   margin-bottom: 0;
 }
@@ -2124,6 +2154,10 @@ a:focus-visible {
   <h2 class="section-title" style="color: var(--verde);">Casos reales<span style="color: var(--white);">.</span></h2>
 
   <!-- Caso 1: Luisito -->
+  <div class="resultados-nav">
+    <button class="resultados-arrow" id="resultadosPrev" aria-label="Anterior" disabled>‹</button>
+    <button class="resultados-arrow" id="resultadosNext" aria-label="Siguiente">›</button>
+  </div>
   <div class="resultados-grid">
   <div class="glass-card resultado-card fade-in">
     <div class="resultado-header">
@@ -2823,7 +2857,21 @@ window.scrollTo(0, 0);
       btnSecondary.style.setProperty('--mouse-y', y + '%');
     });
   }
-</script></script>
+  // Galería horizontal: flechas
+  const grid = document.querySelector('.resultados-grid');
+  const prev = document.getElementById('resultadosPrev');
+  const next = document.getElementById('resultadosNext');
+  if (grid && prev && next) {
+    const scrollAmount = grid.querySelector('.glass-card')?.offsetWidth + 24 || 400;
+    next.addEventListener('click', () => { grid.scrollBy({ left: scrollAmount, behavior: 'smooth' }); });
+    prev.addEventListener('click', () => { grid.scrollBy({ left: -scrollAmount, behavior: 'smooth' }); });
+    grid.addEventListener('scroll', () => {
+      prev.disabled = grid.scrollLeft <= 10;
+      next.disabled = grid.scrollLeft + grid.clientWidth >= grid.scrollWidth - 10;
+    });
+    grid.dispatchEvent(new Event('scroll'));
+  }
+</script>
 
 <!-- Gradiente vertical decorativo -->
 <div class="gradient-line" aria-hidden="true"></div>
