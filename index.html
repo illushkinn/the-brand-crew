@@ -1859,6 +1859,35 @@ section:not(.hero)::before {
 .curtain.open::before { transform: translateX(-100%); }
 .curtain.open::after { transform: translateX(100%); }
 
+/* Film glasmórfico mobile — tap para revelar */
+.glass-film {
+  display: none;
+  position: fixed; inset: 0; z-index: 9998;
+  background: rgba(10,10,15,0.6);
+  backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+  flex-direction: column; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: opacity 0.6s ease, backdrop-filter 0.6s ease;
+}
+.glass-film.dissolve {
+  opacity: 0;
+  backdrop-filter: blur(0); -webkit-backdrop-filter: blur(0);
+  pointer-events: none;
+}
+.glass-film-hint {
+  font-family: var(--font-accent);
+  font-size: 2rem; color: var(--white);
+  opacity: 0.8;
+  animation: film-pulse 2s ease-in-out infinite;
+}
+@keyframes film-pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+@media (max-width: 767px) {
+  .glass-film { display: flex; }
+}
+
 /* ===== DESKTOP (min-width: 768px) — consolidated ===== */
 @media (min-width: 768px) {
   /* ── Navbar ── */
@@ -1993,8 +2022,13 @@ section:not(.hero)::before {
 </head>
 <body>
 
+<!-- Film glasmórfico mobile — tocá para revelar -->
+<div class="glass-film" id="glassFilm">
+  <div class="glass-film-hint">Tocá para descubrir</div>
+</div>
+
 <div class="curtain" id="curtain"></div>
-<script>window.scrollTo(0,0);document.addEventListener('DOMContentLoaded',()=>{setTimeout(()=>{document.getElementById('curtain').classList.add('open');},200);});</script>
+<script>window.scrollTo(0,0);document.addEventListener('DOMContentLoaded',()=>{setTimeout(()=>{document.getElementById('curtain').classList.add('open');},200);const film=document.getElementById('glassFilm');if(film){film.addEventListener('click',()=>{film.classList.add('dissolve');setTimeout(()=>film.remove(),700);});}});</script>
 
 <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
