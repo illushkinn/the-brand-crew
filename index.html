@@ -1871,8 +1871,28 @@ section:not(.hero)::before {
 .preloader-title { font-family: var(--font-accent); font-size: 1.8rem; color: var(--white); margin-bottom: 1rem; }
 .preloader-bar { width: 100%; height: 3px; background: rgba(255,255,255,0.08); border-radius: 2px; overflow: hidden; }
 .preloader-fill { height: 100%; width: 0%; background: linear-gradient(to right, var(--terracota), var(--verde)); border-radius: 2px; transition: width 0.15s ease; }
-.preloader-hint { font-family: var(--font-accent); font-size: 1.4rem; color: var(--white); opacity: 0; margin-top: 1.5rem; transition: opacity 0.5s ease; position: absolute; left: 50%; transform: translateX(-50%); white-space: nowrap; }
-.preloader-hint.visible { opacity: 0.8; }
+.preloader-hint { opacity: 0; margin-top: 1.5rem; transition: opacity 0.5s ease; }
+.preloader-hint.visible { opacity: 1; }
+.hint-ring {
+  display: block; width: 44px; height: 44px;
+  border: 2px solid var(--terracota); border-radius: 50%;
+  animation: hint-pulse 2s ease-in-out infinite;
+  position: relative;
+}
+.hint-ring::after {
+  content: ''; position: absolute;
+  inset: 6px; border-radius: 50%;
+  background: var(--terracota);
+  animation: hint-fill 2s ease-in-out infinite;
+}
+@keyframes hint-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(1.15); opacity: 1; }
+}
+@keyframes hint-fill {
+  0%, 100% { transform: scale(1); opacity: 0.3; }
+  50% { transform: scale(0.6); opacity: 0.8; }
+}
 
 .card-film {
   display: none;
@@ -2046,7 +2066,7 @@ section:not(.hero)::before {
   <div id="preloader-ui">
     <div class="preloader-title">The Brand Crew</div>
     <div class="preloader-bar"><div class="preloader-fill" id="preloader-fill"></div></div>
-    <div class="preloader-hint" id="preloader-hint">Adelante :)</div>
+    <div class="preloader-hint" id="preloader-hint"><span class="hint-ring"></span></div>
   </div>
 </div>
 <script>window.scrollTo(0,0);
