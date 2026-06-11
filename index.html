@@ -2075,11 +2075,12 @@ section:not(.hero)::before {
 
   // Geometrías abstractas
   const group = new THREE.Group();
-  const geo = new THREE.TorusKnotGeometry(0.6, 0.18, 100, 16);
+  const isMobile = window.innerWidth <= 767;
+  const geo = new THREE.TorusKnotGeometry(isMobile ? 0.4 : 0.6, isMobile ? 0.12 : 0.18, 100, 16);
   const mat = new THREE.MeshStandardMaterial({ color: 0xDD614C, roughness: 0.3, metalness: 0.6, emissive: 0xDD614C, emissiveIntensity: 0.4 });
   const knot = new THREE.Mesh(geo, mat); group.add(knot);
 
-  const ringGeo = new THREE.TorusGeometry(1.6, 0.05, 16, 100);
+  const ringGeo = new THREE.TorusGeometry(isMobile ? 1.0 : 1.6, 0.05, 16, isMobile ? 60 : 100);
   const ringMat = new THREE.MeshStandardMaterial({ color: 0x7AB800, roughness: 0.2, metalness: 0.8, emissive: 0x7AB800, emissiveIntensity: 0.3 });
   const ring = new THREE.Mesh(ringGeo, ringMat); ring.rotation.x = Math.PI/2; group.add(ring);
 
