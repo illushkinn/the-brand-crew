@@ -2081,7 +2081,7 @@ section:not(.hero)::before {
   const group = new THREE.Group();
   const geo = new THREE.OctahedronGeometry(isMobile ? 0.5 : 0.8, 0);
   const mat = new THREE.MeshStandardMaterial({ color: 0xDD614C, roughness: 0.2, metalness: 0.7, emissive: 0xDD614C, emissiveIntensity: 0.5 });
-  const star = new THREE.Mesh(geo, mat); star.scale.set(1, 1, 1.6); group.add(star);
+  const star = new THREE.Mesh(geo, mat); star.scale.set(1, 1.6, 1); group.add(star);
   scene.add(group);
 
   // Partículas
