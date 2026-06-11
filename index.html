@@ -1373,7 +1373,7 @@ section:not(.hero)::before {
    ================================================ */
 .fab-container {
   position: fixed;
-  bottom: calc(8px + env(safe-area-inset-bottom, 0px));
+  bottom: calc(2px + env(safe-area-inset-bottom, 0px));
   right: calc(20px + env(safe-area-inset-right, 0px));
   z-index: 900;
   display: flex;
@@ -1920,10 +1920,11 @@ section:not(.hero)::before {
     overflow-y: visible;
     scroll-snap-type: none;
   }
-  .resultados-grid .glass-card {
-    flex: auto;
-    min-width: 0;
-  }
+.resultados-grid .glass-card:focus-within,
+.resultados-grid .glass-card.is-focused {
+  border-color: var(--verde);
+  box-shadow: 0 0 20px rgba(122,184,0,0.15);
+}
   .navbar-brand-mobile {
     display: block;
     left: auto;
@@ -2062,7 +2063,8 @@ section:not(.hero)::before {
 
 <div class="curtain" id="curtain"></div>
 <script>window.scrollTo(0,0);document.addEventListener('DOMContentLoaded',()=>{setTimeout(()=>{document.getElementById('curtain').classList.add('open');},200);const film=document.getElementById('glassFilm');if(film){film.addEventListener('click',()=>{film.classList.add('dissolve');setTimeout(()=>film.remove(),700);});}
-document.querySelectorAll('.card-film').forEach(cf=>{cf.addEventListener('click',e=>{e.stopPropagation();cf.classList.add('dissolve');setTimeout(()=>cf.remove(),500);});});});</script>
+document.querySelectorAll('.card-film').forEach(cf=>{cf.addEventListener('click',e=>{e.stopPropagation();cf.classList.add('dissolve');setTimeout(()=>cf.remove(),500);});});
+document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListener('click',()=>{document.querySelectorAll('.resultado-card').forEach(c=>c.classList.remove('is-focused'));card.classList.add('is-focused');});});});</script>
 
 <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
