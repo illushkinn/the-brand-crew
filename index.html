@@ -1457,7 +1457,7 @@ section:not(.hero)::before {
   height: 2px;
   border-radius: 2px;
   background: rgba(255,255,255,0.18);
-  transition: background 0.4s ease, width 0.4s ease, opacity 0.4s ease;
+  transition: background 0.4s ease, width 0.4s ease, opacity 0.8s ease;
   position: relative;
   cursor: pointer;
 }
@@ -1878,7 +1878,7 @@ section:not(.hero)::before {
   backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
   flex-direction: column; align-items: center; justify-content: center;
   cursor: pointer;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.8s ease;
 }
 .glass-film.dissolve {
   opacity: 0;
@@ -1891,7 +1891,7 @@ section:not(.hero)::before {
   backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
   border-radius: inherit;
   cursor: pointer;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.8s ease;
 }
 .card-film.dissolve {
   opacity: 0;
@@ -2066,7 +2066,7 @@ section:not(.hero)::before {
 </div>
 
 <div class="curtain" id="curtain"></div>
-<script>window.scrollTo(0,0);document.addEventListener('DOMContentLoaded',()=>{setTimeout(()=>{document.getElementById('curtain').classList.add('open');},200);const film=document.getElementById('glassFilm');if(film){film.addEventListener('click',()=>{film.classList.add('dissolve');setTimeout(()=>{film.style.backdropFilter='none';film.style.webkitBackdropFilter='none';setTimeout(()=>film.remove(),300);},400);});}
+<script>window.scrollTo(0,0);document.addEventListener('DOMContentLoaded',()=>{setTimeout(()=>{document.getElementById('curtain').classList.add('open');},200);const film=document.getElementById('glassFilm');if(film){film.addEventListener('click',()=>{film.classList.add('dissolve');});}
 document.querySelectorAll('.card-film').forEach(cf=>{cf.addEventListener('click',e=>{e.stopPropagation();cf.classList.add('dissolve');setTimeout(()=>cf.remove(),500);});});
 document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListener('click',()=>{document.querySelectorAll('.resultado-card').forEach(c=>c.classList.remove('is-focused'));card.classList.add('is-focused');});});});</script>
 
