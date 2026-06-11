@@ -39,7 +39,7 @@
 /* ------ RESET ------ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; scroll-padding-top: 64px; overscroll-behavior: none; background: var(--bg); }
-body { font-family: var(--font-body); overflow-x: hidden; background: var(--bg); overscroll-behavior: none; }
+body { font-family: var(--font-body); overflow-x: hidden; background: var(--bg); overscroll-behavior: contain; }
 h1, h2, h3, h4 { text-wrap: balance; }
 p { text-wrap: pretty; }
 img, svg { display: block; max-width: 100%; }
@@ -1875,9 +1875,8 @@ section:not(.hero)::before {
 /* Film glasmórfico mobile — Looney Tunes circle reveal */
 .glass-film {
   display: none;
-  position: fixed; inset: 0; z-index: 9998;
-  background: oklch(0.15 0.01 265 / 0.88);
-  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  position: fixed; inset: 0;   z-index: 10000;
+  background: oklch(0.12 0.005 265);
   flex-direction: column; align-items: center; justify-content: center;
   cursor: pointer;
   user-select: none; -webkit-user-select: none;
