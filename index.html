@@ -2084,7 +2084,7 @@ section:not(.hero)::before {
   const ringMat = new THREE.MeshStandardMaterial({ color: 0x7AB800, roughness: 0.2, metalness: 0.8, emissive: 0x7AB800, emissiveIntensity: 0.3 });
   const ring = new THREE.Mesh(ringGeo, ringMat); ring.rotation.x = Math.PI/2; group.add(ring);
 
-  const ring2 = new THREE.Mesh(ringGeo, ringMat); ring2.rotation.z = Math.PI/2; group.add(ring2);
+  const ring2 = new THREE.Mesh(ringGeo, ringMat); ring2.rotation.z = Math.PI/2; ring2.scale.set(0.65, 0.65, 0.65); group.add(ring2);
   scene.add(group);
 
   // Partículas
