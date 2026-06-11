@@ -2569,8 +2569,7 @@ window.scrollTo(0, 0);
       }
     }
 
-    // Update progress circle (always active, independent of container visibility)
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    // Update progress circle
     if (docHeight > 0) {
       const pct = Math.min((scrollY / docHeight) * 100, 100);
       progressFg.style.strokeDashoffset = 100 - pct;
