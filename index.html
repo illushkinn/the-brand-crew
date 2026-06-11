@@ -2536,8 +2536,11 @@ window.scrollTo(0, 0);
     const scrollY = window.scrollY || window.pageYOffset;
     let currentSection = 0;
 
-    // Container: show after 200px scroll
-    if (scrollY > 200) {
+    // Container: show after 200px scroll, hide near footer
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const nearBottom = scrollY > docHeight - 80;
+    
+    if (scrollY > 200 && !nearBottom) {
       if (!containerVisible) {
         containerVisible = true;
         fabContainer.classList.add('is-visible');
