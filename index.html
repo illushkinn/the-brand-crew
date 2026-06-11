@@ -1913,6 +1913,14 @@ section:not(.hero)::before {
 /* ===== DESKTOP (min-width: 768px) — consolidated ===== */
 @media (min-width: 768px) {
   /* ── Navbar ── */
+  .resultados-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    overflow: visible;
+  }
+  .resultados-grid .glass-card {
+    flex: auto;
+  }
   .navbar-brand-mobile {
     display: block;
     left: auto;
