@@ -2106,13 +2106,13 @@ section:not(.hero)::before {
   const mat = new THREE.MeshToonMaterial({
     color: 0xDD614C, emissive: 0xDD614C, emissiveIntensity: 0.15
   });
-  // Gradient 3 pasos
+  // Gradient 3 bandas duras para toon
   const gradCanvas = document.createElement('canvas');
   gradCanvas.width = 2; gradCanvas.height = 256;
   const ctx = gradCanvas.getContext('2d');
-  const g = ctx.createLinearGradient(0, 0, 0, 256);
-  g.addColorStop(0, '#DD614C'); g.addColorStop(0.5, '#7AB800'); g.addColorStop(1, '#DAA144');
-  ctx.fillStyle = g; ctx.fillRect(0, 0, 2, 256);
+  ctx.fillStyle = '#DD614C'; ctx.fillRect(0, 0, 2, 85);
+  ctx.fillStyle = '#7AB800'; ctx.fillRect(0, 85, 2, 86);
+  ctx.fillStyle = '#DAA144'; ctx.fillRect(0, 171, 2, 85);
   const gradTex = new THREE.CanvasTexture(gradCanvas);
   gradTex.minFilter = THREE.NearestFilter; gradTex.magFilter = THREE.NearestFilter;
   mat.gradientMap = gradTex;
