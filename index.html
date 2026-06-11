@@ -2571,10 +2571,15 @@ window.scrollTo(0, 0);
       }
     }
 
-    // Empujar FAB hacia arriba al acercarse al footer
+    // Empujar FAB en desktop, ocultar en mobile al llegar al footer
     if (scrollY > footerZone) {
-      var extra = Math.min((scrollY - footerZone) * 0.5, 200);
-      fabContainer.style.bottom = (8 + extra) + 'px';
+      if (window.innerWidth <= 767) {
+        fabContainer.classList.remove('is-visible');
+        containerVisible = false;
+      } else {
+        var extra = Math.min((scrollY - footerZone) * 0.5, 200);
+        fabContainer.style.bottom = (8 + extra) + 'px';
+      }
     } else {
       fabContainer.style.bottom = '';
     }
