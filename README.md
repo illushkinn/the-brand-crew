@@ -1,47 +1,70 @@
 <div align="center">
   <h1>The Brand Crew</h1>
-  <p><strong>Páginas web que garpan, para comercios que laburan.</strong></p>
+  <p><strong>Páginas que venden. Para comercios que laburan.</strong></p>
+  <br>
 </div>
 
 ---
 
-### 🧠 Qué es
+## 🎬 Experiencia
 
-Landing page de una agencia de diseño web boutique. Construida con **HTML/CSS vanilla**, **OKLCH 3-layer design tokens**, y deploy instantáneo en **Vercel**.
-
-**0 errores de token audit.** Cada color, cada sombra, cada espacio está tokenizado en 3 capas: primitives → semantics → components.
+Preloader 3D con **Three.js** — estrella de diamante con materiales físicos (clearcoat, reflectividad), partículas y GSAP. Animación cinematográfica que se disuelve para revelar la landing.
 
 ---
 
-### 🛠️ Stack
+## 🧠 Design System — OKLCH 3-Layer
+
+| Capa | Contenido |
+|------|-----------|
+| **Primitives** | Raw OKLCH values (`--ds-gray-0`, `--ds-terracota`) |
+| **Semantics** | Meaningful names (`--color-bg`, `--color-text`, `--verde`) |
+| **Components** | Solo referencian Layer 2 |
+
+```css
+--terracota: oklch(0.55 0.195 30);
+--verde: oklch(0.82 0.2 125);
+--bg: oklch(0.05 0.005 260);
+```
+
+---
+
+## 📋 Casos Reales
+
+| Proyecto | Cliente | Stack |
+|----------|---------|-------|
+| **Luisito Playa Grande** | Rotisería · 1955 | Astro · Cart Modal · WhatsApp |
+| **Apolonia** | Verdulería de estación | Astro · React · PWA · 122 páginas |
+| **Catálogo Hoco** | Mayorista accesorios | React · Tailwind · shadcn/ui |
+
+Cada caso tiene brandbook propio y página de detalle.
+
+---
+
+## 🛠️ Stack
 
 ```
-HTML/CSS   · OKLCH Design Tokens 3-Layer
-Vercel     · Lucide Icons · Phosphor Icons
-Google Fonts (Prata, Lato, Grand Hotel, JetBrains Mono)
+Three.js · GSAP · HTML/CSS Vanilla · OKLCH 3-Layer
+Vercel · Lucide Icons · Phosphor Icons · Google Fonts (Sora, Prata, Grand Hotel)
 ```
 
 ---
 
-### 🎨 Design System
+## ✨ Detalles Técnicos
 
-| Capa | Archivo | Contenido |
-|------|---------|-----------|
-| Layer 1 — Primitives | `tokens.css` | Raw OKLCH values (`--ds-gray-0`, `--ds-terracota`) |
-| Layer 2 — Semantics | `tokens.css` | Meaningful names (`--color-bg`, `--color-text`) |
-| Layer 3 — Components | `index.html` | References Layer 2 only |
-
----
-
-### 📋 Casos reales
-
-- **Luisito Playa Grande** — Rotisería 1955, menú digital + pedidos WhatsApp
-- **Apolonia** — Verdulería de estación, catálogo 122 páginas, PWA
+- **0 dependencias de framework** — HTML/CSS vanilla + Three.js para el preloader
+- **100% tipográfico** — text-wrap: balance en headings, pretty en párrafos
+- **Mobile-first** — dvh cascade, safe-area insets, overscroll-behavior
+- **CSS audit** — 0 errores de tokens
+- **Glassmorphism** — navbar y menú mobile
+- **Animaciones** — scroll-reveal, fade-in, cortina GSAP
+- **Tracking** — Vercel Speed Insights, Meta Pixel, GA4
 
 ---
 
-### 🚀 Deploy
+## 🚀 Deploy
 
 ```bash
 vercel --prod
 ```
+
+[thebrandcrew.lat](https://thebrandcrew.lat)
