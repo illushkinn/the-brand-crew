@@ -221,16 +221,16 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   transform: scale(1.02);
 }
 .btn-secondary {
-  background: var(--verde);
-  border: 1.5px solid var(--verde);
+  background: linear-gradient(135deg, var(--verde) 0%, #5BBA6F 50%, #7ED957 100%);
+  border: none;
   color: var(--black);
-  box-shadow: inset 0 0 0 2px rgba(255,255,255,0.25);
+  box-shadow: inset 0 0 0 1.5px rgba(255,255,255,0.3);
 }
 .btn-secondary:hover, .btn-secondary:focus-visible {
-  background: var(--verde);
+  background: linear-gradient(135deg, #5BBA6F 0%, #7ED957 50%, var(--verde) 100%);
   color: var(--black);
   transform: scale(1.02);
-  box-shadow: inset 0 0 0 2px rgba(255,255,255,0.35), var(--shadow-button);
+  box-shadow: inset 0 0 0 1.5px rgba(255,255,255,0.4), var(--shadow-button);
 }
 
 .btn-lg {
@@ -400,7 +400,7 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   }
   /* Mantener Prata para hero */
   .hero-title, .hero-sub {
-    font-family: 'Prata', serif !important;
+    font-family: 'Sora', sans-serif !important;
   }
   .hero-title {
     font-size: clamp(3.5rem, 14vw, 8rem) !important;
@@ -806,7 +806,7 @@ a:focus-visible {
   font-family: var(--font-display);
   font-size: 1.3rem;
   font-weight: 400;
-  margin: 0;
+  margin: 0 0 0.6rem 0;
   line-height: 1.3;
 }
 .resultado-link {
@@ -878,6 +878,7 @@ a:focus-visible {
 /* All text white in Casos reales */
 .resultados .section-label,
 .resultados .section-sub,
+.resultados .section-title { margin-bottom: 2.5rem; }
 .resultados .resultado-tag,
 .resultados .resultado-link,
 .resultados .resultado-historia p,
@@ -2021,7 +2022,7 @@ a:focus-visible {
 
     <div class="hero-actions">
       <a href="#servicios" class="btn btn-secondary btn-lg">
-        Más info
+        Ver info
       </a>
     </div>
   </div>
@@ -2130,7 +2131,7 @@ a:focus-visible {
       <div class="resultado-avatar" style="background: var(--verde); color: var(--ds-black); font-size: 1.8rem; font-family: var(--font-display); display: flex; align-items: center; justify-content: center; border-radius: var(--radius-sm);">H</div>
       <div class="resultado-info">
         <span class="mono resultado-tag">Mayorista · Mar del Plata</span>
-        <h3 class="resultado-nombre">Hoco Catalog</h3>
+        <h3 class="resultado-nombre">Catálogo Hoco</h3>
         <a href="https://hococatalog.vercel.app" class="resultado-link" target="_blank" rel="noopener">Ver el sitio →</a>
         <span style="color: var(--body-dim); margin: 0 0.5rem;">·</span>
         <a href="https://hoco-brandbook.vercel.app" class="resultado-link" target="_blank" rel="noopener">Brandbook →</a>
