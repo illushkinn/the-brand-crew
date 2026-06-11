@@ -1416,11 +1416,15 @@ section:not(.hero)::before {
   transform: translateY(10px) scale(0.9);
   transition: opacity 0.25s ease, transform 0.25s ease;
   pointer-events: none;
+  height: 0;
+  overflow: hidden;
 }
 .fab-menu.is-open {
   opacity: 1;
   transform: translateY(0) scale(1);
   pointer-events: all;
+  height: auto;
+  overflow: visible;
 }
 /* Override FAB positioning when inside container */
 .fab-container .whatsapp-fab {
