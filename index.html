@@ -1871,7 +1871,8 @@ section:not(.hero)::before {
 .preloader-title { font-family: var(--font-accent); font-size: 1.8rem; color: var(--white); margin-bottom: 1rem; }
 .preloader-bar { width: 100%; height: 3px; background: rgba(255,255,255,0.08); border-radius: 2px; overflow: hidden; }
 .preloader-fill { height: 100%; width: 0%; background: linear-gradient(to right, var(--terracota), var(--verde)); border-radius: 2px; transition: width 0.15s ease; }
-.preloader-hint { font-family: var(--font-accent); font-size: 1.4rem; color: var(--white); opacity: 0.8; margin-top: 1.5rem; }
+.preloader-hint { font-family: var(--font-accent); font-size: 1.4rem; color: var(--white); opacity: 0; margin-top: 1.5rem; transition: opacity 0.5s ease; position: absolute; left: 50%; transform: translateX(-50%); white-space: nowrap; }
+.preloader-hint.visible { opacity: 0.8; }
 
 .card-film {
   display: none;
@@ -2115,10 +2116,10 @@ section:not(.hero)::before {
   }, 100);
 
   function onComplete(){
-    hint.style.display = 'block';
+    hint.classList.add('visible');
     preloader.addEventListener('click', () => {
-      gsap.to(preloader, { opacity: 0, duration: 0.6, ease: 'power2.inOut', onComplete: () => {
-        preloader.style.display = 'none';
+      gsap.to(preloader, { opacity: 0, duration: 0.5, ease: 'power2.out', onComplete: () => {
+        preloader.style.visibility = 'hidden';
       }});
     });
   }
