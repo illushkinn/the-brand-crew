@@ -1834,6 +1834,17 @@ a:focus-visible {
   50% { background: linear-gradient(to bottom, #DAA144, #DD614C); }
 }
 
+/* Cortina 70s Warner Bros */
+.curtain { position: fixed; inset: 0; z-index: 9999; pointer-events: none; }
+.curtain::before, .curtain::after {
+  content: ''; position: fixed; top: 0; bottom: 0; width: 50vw; background: var(--bg);
+  transition: transform 0.8s cubic-bezier(0.7, 0, 0.3, 1);
+}
+.curtain::before { left: 0; transform: translateX(0); }
+.curtain::after { right: 0; transform: translateX(0); }
+.curtain.open::before { transform: translateX(-100%); }
+.curtain.open::after { transform: translateX(100%); }
+
 /* ===== DESKTOP (min-width: 768px) — consolidated ===== */
 @media (min-width: 768px) {
   /* ── Navbar ── */
@@ -1967,7 +1978,9 @@ a:focus-visible {
 </script>
 </head>
 <body>
-<script>window.scrollTo(0,0);</script>
+
+<div class="curtain" id="curtain"></div>
+<script>window.scrollTo(0,0);document.addEventListener('DOMContentLoaded',()=>{setTimeout(()=>{document.getElementById('curtain').classList.add('open');},200);});</script>
 
 <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
