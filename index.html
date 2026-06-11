@@ -1879,7 +1879,9 @@ section:not(.hero)::before {
   backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
   flex-direction: column; align-items: center; justify-content: center;
   cursor: pointer;
-  transition: opacity 0.8s ease;
+  transition: opacity 1s ease;
+  user-select: none; -webkit-user-select: none;
+  will-change: opacity;
 }
 .glass-film.dissolve {
   opacity: 0;
@@ -1905,6 +1907,7 @@ section:not(.hero)::before {
   font-family: var(--font-accent);
   font-size: 2rem; color: var(--white);
   opacity: 0.8;
+  user-select: none; -webkit-user-select: none;
 }
 @keyframes film-pulse {
   0%, 100% { opacity: 0.5; }
