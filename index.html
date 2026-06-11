@@ -2573,7 +2573,7 @@ window.scrollTo(0, 0);
 
     // Container: show after 200px, push up when near footer
     const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const footerZone = docHeight - 500;
+    const footerZone = docHeight - 600;
     
     if (scrollY > 200) {
       if (!containerVisible) {
@@ -2611,7 +2611,7 @@ window.scrollTo(0, 0);
         fabContainer.classList.remove('is-visible');
         containerVisible = false;
       } else {
-        var extra = Math.min((scrollY - footerZone) * 0.5, 200);
+        var extra = Math.min((scrollY - footerZone) * 0.3, 120);
         fabContainer.style.bottom = (8 + extra) + 'px';
       }
     } else {
