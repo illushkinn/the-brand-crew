@@ -1874,6 +1874,22 @@ section:not(.hero)::before {
   backdrop-filter: blur(0); -webkit-backdrop-filter: blur(0);
   pointer-events: none;
 }
+.card-film {
+  display: none;
+  position: absolute; inset: 0; z-index: 10;
+  background: rgba(10,10,15,0.5);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-radius: inherit;
+  cursor: pointer;
+  transition: opacity 0.4s ease;
+}
+.card-film.dissolve {
+  opacity: 0;
+  pointer-events: none;
+}
+@media (max-width: 767px) {
+  .card-film { display: block; }
+}
 .glass-film-hint {
   font-family: var(--font-accent);
   font-size: 2rem; color: var(--white);
@@ -2024,11 +2040,12 @@ section:not(.hero)::before {
 
 <!-- Film glasmórfico mobile — tocá para revelar -->
 <div class="glass-film" id="glassFilm">
-  <div class="glass-film-hint">Tocá para descubrir</div>
+  <div class="glass-film-hint">Adelante</div>
 </div>
 
 <div class="curtain" id="curtain"></div>
-<script>window.scrollTo(0,0);document.addEventListener('DOMContentLoaded',()=>{setTimeout(()=>{document.getElementById('curtain').classList.add('open');},200);const film=document.getElementById('glassFilm');if(film){film.addEventListener('click',()=>{film.classList.add('dissolve');setTimeout(()=>film.remove(),700);});}});</script>
+<script>window.scrollTo(0,0);document.addEventListener('DOMContentLoaded',()=>{setTimeout(()=>{document.getElementById('curtain').classList.add('open');},200);const film=document.getElementById('glassFilm');if(film){film.addEventListener('click',()=>{film.classList.add('dissolve');setTimeout(()=>film.remove(),700);});}
+document.querySelectorAll('.card-film').forEach(cf=>{cf.addEventListener('click',e=>{e.stopPropagation();cf.classList.add('dissolve');setTimeout(()=>cf.remove(),500);});});});</script>
 
 <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
@@ -2163,6 +2180,7 @@ section:not(.hero)::before {
   </div>
   <div class="resultados-grid">
   <div class="glass-card resultado-card fade-in">
+    <div class="card-film"></div>
     <div class="resultado-header">
       <div class="resultado-avatar" style="background: var(--verde); color: var(--ds-black); font-size: 1.8rem; font-family: var(--font-display); display: flex; align-items: center; justify-content: center; border-radius: var(--radius-sm);">L</div>
       <div class="resultado-info">
