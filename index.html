@@ -2066,7 +2066,7 @@ section:not(.hero)::before {
 </div>
 
 <div class="curtain" id="curtain"></div>
-<script>window.scrollTo(0,0);document.addEventListener('DOMContentLoaded',()=>{setTimeout(()=>{document.getElementById('curtain').classList.add('open');},200);const film=document.getElementById('glassFilm');if(film){film.addEventListener('click',()=>{film.classList.add('dissolve');setTimeout(()=>film.remove(),500);});}
+<script>window.scrollTo(0,0);document.addEventListener('DOMContentLoaded',()=>{setTimeout(()=>{document.getElementById('curtain').classList.add('open');},200);const film=document.getElementById('glassFilm');if(film){film.addEventListener('click',()=>{film.classList.add('dissolve');setTimeout(()=>{film.style.backdropFilter='none';film.style.webkitBackdropFilter='none';setTimeout(()=>film.remove(),300);},400);});}
 document.querySelectorAll('.card-film').forEach(cf=>{cf.addEventListener('click',e=>{e.stopPropagation();cf.classList.add('dissolve');setTimeout(()=>cf.remove(),500);});});
 document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListener('click',()=>{document.querySelectorAll('.resultado-card').forEach(c=>c.classList.remove('is-focused'));card.classList.add('is-focused');});});});</script>
 
