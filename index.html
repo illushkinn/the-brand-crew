@@ -1918,11 +1918,11 @@ section:not(.hero)::before {
 @media (min-width: 768px) {
   /* ── Navbar ── */
   .resultados-grid {
-    display: grid;
+    display: grid !important;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    overflow-x: visible;
-    overflow-y: visible;
-    scroll-snap-type: none;
+    overflow-x: visible !important;
+    overflow-y: visible !important;
+    scroll-snap-type: none !important;
   }
 .resultados-grid .glass-card:focus-within,
 .resultados-grid .glass-card.is-focused {
@@ -2576,10 +2576,7 @@ window.scrollTo(0, 0);
     const scrollY = window.scrollY || window.pageYOffset;
     let currentSection = 0;
 
-    // Container: show after 200px, push up when near footer
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const footerZone = docHeight - 600;
-    
+    // FAB siempre visible en web, empuja al footer
     if (scrollY > 200) {
       if (!containerVisible) {
         containerVisible = true;
@@ -2610,15 +2607,10 @@ window.scrollTo(0, 0);
       }
     }
 
-    // Empujar FAB en desktop, ocultar en mobile al llegar al footer
-    if (scrollY > footerZone) {
-      if (window.innerWidth <= 767) {
-        fabContainer.classList.remove('is-visible');
-        containerVisible = false;
-      } else {
-        var extra = Math.min((scrollY - footerZone) * 0.3, 120);
-        fabContainer.style.bottom = (8 + extra) + 'px';
-      }
+    // Empujar FAB suavemente al acercarse al footer
+    if (scrollY > docHeight - 400) {
+      var extra = Math.min((scrollY - (docHeight - 400)) * 0.25, 100);
+      fabContainer.style.bottom = (2 + extra) + 'px';
     } else {
       fabContainer.style.bottom = '';
     }
