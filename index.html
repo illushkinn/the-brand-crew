@@ -221,14 +221,15 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   transform: scale(1.02);
 }
 .btn-secondary {
-  background: transparent;
+  background: var(--verde);
   border: 1.5px solid var(--verde);
-  color: var(--verde);
+  color: var(--black);
 }
 .btn-secondary:hover, .btn-secondary:focus-visible {
   background: var(--verde);
   color: var(--black);
   transform: scale(1.02);
+  box-shadow: var(--shadow-button);
 }
 
 .btn-lg {
@@ -763,6 +764,13 @@ a:focus-visible {
   display: block;
   margin-bottom: 0.15rem;
   white-space: nowrap;
+}
+.progreso-tag {
+  font-style: italic;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 0.7rem;
+  opacity: 0.7;
 }
 .resultado-nombre {
   font-family: var(--font-display);
@@ -2031,7 +2039,7 @@ a:focus-visible {
     <div class="resultado-header">
       <div class="resultado-avatar" style="background: var(--verde); color: var(--ds-black); font-size: 1.8rem; font-family: var(--font-display); display: flex; align-items: center; justify-content: center; border-radius: var(--radius-sm);">L</div>
       <div class="resultado-info">
-        <span class="mono resultado-tag">Rotisería · Mar del Plata · En progreso</span>
+        <span class="mono resultado-tag">Rotisería · Mar del Plata <em class="progreso-tag">(en progreso)</em></span>
         <h3 class="resultado-nombre">Luisito Playa Grande</h3>
         <a href="https://luisito-playa-grande.vercel.app" class="resultado-link" target="_blank" rel="noopener">Ver el sitio →</a>
         <span style="color: var(--body-dim); margin: 0 0.5rem;">·</span>
@@ -2089,7 +2097,7 @@ a:focus-visible {
     <div class="resultado-header">
       <div class="resultado-avatar" style="background: var(--verde); color: var(--ds-black); font-size: 1.8rem; font-family: var(--font-display); display: flex; align-items: center; justify-content: center; border-radius: var(--radius-sm);">H</div>
       <div class="resultado-info">
-        <span class="mono resultado-tag">Mayorista · Mar del Plata · En progreso</span>
+        <span class="mono resultado-tag">Mayorista · Mar del Plata <em class="progreso-tag">(en progreso)</em></span>
         <h3 class="resultado-nombre">Hoco Catalog</h3>
         <a href="https://hococatalog.vercel.app" class="resultado-link" target="_blank" rel="noopener">Ver el sitio →</a>
         <span style="color: var(--body-dim); margin: 0 0.5rem;">·</span>
