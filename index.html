@@ -2188,10 +2188,6 @@ document.querySelectorAll('.card-film').forEach(cf=>{cf.addEventListener('click'
   <h2 class="section-title" style="color: var(--verde);">Casos reales<span style="color: var(--white);">.</span></h2>
 
   <!-- Caso 1: Luisito -->
-  <div class="resultados-nav">
-    <button class="resultados-arrow" id="resultadosPrev" aria-label="Anterior" disabled>‹</button>
-    <button class="resultados-arrow" id="resultadosNext" aria-label="Siguiente">›</button>
-  </div>
   <div class="resultados-grid">
   <div class="glass-card resultado-card fade-in">
     <div class="card-film"></div>
@@ -2909,20 +2905,6 @@ window.scrollTo(0, 0);
       btnSecondary.style.setProperty('--mouse-x', x + '%');
       btnSecondary.style.setProperty('--mouse-y', y + '%');
     });
-  }
-  // Galería horizontal: flechas
-  const grid = document.querySelector('.resultados-grid');
-  const prev = document.getElementById('resultadosPrev');
-  const next = document.getElementById('resultadosNext');
-  if (grid && prev && next) {
-    const scrollAmount = grid.querySelector('.glass-card')?.offsetWidth + 24 || 400;
-    next.addEventListener('click', () => { grid.scrollBy({ left: scrollAmount, behavior: 'smooth' }); });
-    prev.addEventListener('click', () => { grid.scrollBy({ left: -scrollAmount, behavior: 'smooth' }); });
-    grid.addEventListener('scroll', () => {
-      prev.disabled = grid.scrollLeft <= 10;
-      next.disabled = grid.scrollLeft + grid.clientWidth >= grid.scrollWidth - 10;
-    });
-    grid.dispatchEvent(new Event('scroll'));
   }
 </script>
 
