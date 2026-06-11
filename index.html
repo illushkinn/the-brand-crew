@@ -1876,13 +1876,17 @@ section:not(.hero)::before {
 .glass-film {
   display: none;
   position: fixed; inset: 0; z-index: 9998;
-  background: rgba(10,10,15,0.92);
-  backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+  background: oklch(0.15 0.01 265 / 0.88);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border: 1px solid oklch(1 0 0 / 0.12);
   flex-direction: column; align-items: center; justify-content: center;
   cursor: pointer;
-  transition: opacity 1s ease;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
   user-select: none; -webkit-user-select: none;
-  transform: translateZ(0); backface-visibility: hidden;
+}
+.glass-film.fade-out {
+  opacity: 0;
+  visibility: hidden;
 }
 .glass-film.dissolve {
   opacity: 0;
@@ -2071,7 +2075,7 @@ section:not(.hero)::before {
 </div>
 
 <div class="curtain" id="curtain"></div>
-<script>window.scrollTo(0,0);document.addEventListener('DOMContentLoaded',()=>{setTimeout(()=>{document.getElementById('curtain').classList.add('open');},200);const film=document.getElementById('glassFilm');if(film){film.addEventListener('click',()=>{film.style.display='none';});}
+<script>window.scrollTo(0,0);document.addEventListener('DOMContentLoaded',()=>{setTimeout(()=>{document.getElementById('curtain').classList.add('open');},200);const film=document.getElementById('glassFilm');if(film){film.addEventListener('click',()=>{film.classList.add('fade-out');});}
 document.querySelectorAll('.card-film').forEach(cf=>{cf.addEventListener('click',e=>{e.stopPropagation();cf.classList.add('dissolve');setTimeout(()=>cf.remove(),500);});});
 document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListener('click',()=>{document.querySelectorAll('.resultado-card').forEach(c=>c.classList.remove('is-focused'));card.classList.add('is-focused');});});});</script>
 
