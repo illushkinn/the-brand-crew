@@ -595,6 +595,19 @@ a:focus-visible {
   border-radius: 4px;
 }
 
+/* Gradiente sutil del hero extendido a secciones */
+.problema, .como-funciona, .resultados, .pricing {
+  position: relative;
+}
+.problema::before, .como-funciona::before, .resultados::before, .pricing::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 50% at 50% 10%, var(--brand) 0%, transparent 70%);
+  opacity: 0.04;
+  pointer-events: none;
+}
+
 .hero-title {
   font-family: var(--font-body);
   font-size: clamp(2.8rem, 7vw, 5rem);
