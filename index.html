@@ -398,7 +398,7 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
 .navbar-brand-text {
   font-family: var(--font-accent);
   font-weight: 400;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   letter-spacing: 0.02em;
   color: var(--white);
   white-space: nowrap;
@@ -1352,8 +1352,8 @@ a:focus-visible {
    ================================================ */
 .fab-container {
   position: fixed;
-  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
-  right: calc(16px + env(safe-area-inset-right, 0px));
+  bottom: calc(8px + env(safe-area-inset-bottom, 0px));
+  right: calc(8px + env(safe-area-inset-right, 0px));
   z-index: 900;
   display: flex;
   flex-direction: column-reverse;
@@ -1616,12 +1616,12 @@ a:focus-visible {
   /* ── Navbar brand mobile ── */
   .navbar-brand-mobile {
     display: block;
-    font-size: 1.4rem;
+    font-size: 1.6rem;
   }
   .navbar, .mobile-menu {
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    background: var(--bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    background: rgba(10, 10, 15, 0.7);
   }
 
   /* ── Mobile typography: Sora ── */
