@@ -2057,6 +2057,7 @@ section:not(.hero)::before {
   const hint = document.getElementById('preloader-hint');
   const preloader = document.getElementById('preloader');
   const w = window.innerWidth, h = window.innerHeight;
+  const isMobile = w <= 767;
   const dpr = Math.min(window.devicePixelRatio, 2);
 
   canvas.width = w * dpr; canvas.height = h * dpr;
@@ -2078,7 +2079,6 @@ section:not(.hero)::before {
 
   // Geometrías abstractas
   const group = new THREE.Group();
-  const isMobile = window.innerWidth <= 767;
   const geo = new THREE.OctahedronGeometry(isMobile ? 0.5 : 0.8, 0);
   const mat = new THREE.MeshStandardMaterial({ color: 0xDD614C, roughness: 0.2, metalness: 0.7, emissive: 0xDD614C, emissiveIntensity: 0.5 });
   const star = new THREE.Mesh(geo, mat); star.scale.set(1, 1, 1.6); group.add(star);
