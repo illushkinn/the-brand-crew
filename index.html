@@ -605,8 +605,12 @@ section:not(.hero)::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 60% 50% at 50% 45%, var(--brand) 0%, transparent 65%);
-  opacity: 0.06;
+  background: 
+    radial-gradient(ellipse 25% 30% at 15% 25%, var(--terracota) 0%, transparent 60%),
+    radial-gradient(ellipse 20% 35% at 75% 20%, var(--gold) 0%, transparent 60%),
+    radial-gradient(ellipse 35% 40% at 40% 60%, var(--verde) 0%, transparent 65%),
+    radial-gradient(ellipse 30% 45% at 60% 70%, var(--brand) 0%, transparent 70%);
+  opacity: 0.05;
   pointer-events: none;
 }
 
