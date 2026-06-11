@@ -1915,11 +1915,14 @@ section:not(.hero)::before {
   /* ── Navbar ── */
   .resultados-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    overflow: visible;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    overflow-x: visible;
+    overflow-y: visible;
+    scroll-snap-type: none;
   }
   .resultados-grid .glass-card {
     flex: auto;
+    min-width: 0;
   }
   .navbar-brand-mobile {
     display: block;
