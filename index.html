@@ -2574,6 +2574,7 @@ window.scrollTo(0, 0);
 
   function handleScroll() {
     const scrollY = window.scrollY || window.pageYOffset;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
     let currentSection = 0;
 
     // FAB siempre visible en web, empuja al footer
