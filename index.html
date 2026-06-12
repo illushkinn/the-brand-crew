@@ -164,8 +164,14 @@ ul { list-style: none; }
 }
 /* Shared backdrop blur — glass effect elements */
 .glass-card, .navbar {
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: var(--bg);
+}
+@supports (backdrop-filter: blur()) {
+  .glass-card, .navbar {
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    background: rgba(10, 10, 15, 0.25);
+  }
 }
 
 /* Shared flexbox centering */
@@ -345,7 +351,6 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   background: rgba(10, 10, 15, 0.25);
   border-bottom: 1px solid var(--glass-border);
   transition: transform 0.35s ease, opacity 0.35s ease;
-  will-change: transform;
 }
 [data-theme="light"] .navbar {
   background: var(--nav-bg);
@@ -512,7 +517,6 @@ a:focus-visible {
   border-radius: var(--radius-round);
   filter: blur(40px);
   opacity: 0.55;
-  will-change: transform;
   animation: heroFloat 22s cubic-bezier(0.45, 0.05, 0.25, 1) infinite;
 }
 .hero-shape:nth-child(1) {
