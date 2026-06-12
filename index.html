@@ -2091,7 +2091,7 @@ section:not(.hero)::before {
   });
   // Gradient 3 bandas duras para toon
   const star = new THREE.Mesh(geo, mat); star.scale.set(1, 1.6, 1); group.add(star);
-  group.position.y = 1.0;
+  group.position.y = isMobile ? 0.5 : 1.2;
   scene.add(group);
 
   // Partículas
