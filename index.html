@@ -15,7 +15,7 @@
 <!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Grand+Hotel&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Rethink+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Grand+Hotel&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <!-- Three.js + GSAP -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -75,7 +75,7 @@ body { font-family: var(--font-body); overflow-x: hidden; overflow-y: clip; back
   .pricing-split { gap: 0.5rem; }
   .pricing-split-item { padding: 0.75rem; min-width: 0; }
   .btn { padding: 0.7rem 1.5rem; font-size: 1rem; }
-  .btn-empecemos.btn-lg { padding: 0.9rem 1.5rem; font-size: 1.2rem; }
+  .btn-empecemos.btn-lg { padding: 0.75rem 1.5rem; font-size: 1.05rem; }
   .preloader-title { font-size: 1.4rem; }
   .preloader-hint { font-size: 0.9rem; }
 }
@@ -147,8 +147,8 @@ ul { list-style: none; }
   --nav-bg: rgba(18,18,18,0.85);
   --accent-glow: rgba(221,97,76,0.15);
   --code-bg: #1A1A1A;
-  --font-display: 'Rubik', sans-serif;
-  --font-body: 'Rubik', sans-serif;
+  --font-display: 'Rethink Sans', sans-serif;
+  --font-body: 'Rethink Sans', sans-serif;
   --font-accent: 'Grand Hotel', cursive;
 }
 
@@ -341,7 +341,7 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   background: var(--terracota);
   color: var(--white);
   border-color: var(--terracota);
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-md);
   box-shadow: var(--shadow-button);
   position: relative;
 }
@@ -352,8 +352,9 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   box-shadow: var(--shadow-button-hover);
 }
 .btn-empecemos.btn-lg {
-  padding: 1.1rem 2.8rem;
-  font-size: 1.15rem;
+  padding: 0.85rem 2rem;
+  font-size: 1.05rem;
+  border-radius: var(--radius-md);
 }
 .mobile-link-empecemos {
   display: inline-flex !important;
@@ -433,7 +434,7 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   margin-right: 0.75rem;
 }
 
-/* Mobile: Rubik para todo, hero 2.5x más grande */
+/* Mobile: Rethink Sans para todo, hero 2.5x más grande */
 /* ===== NAVBAR BRAND LOGO ===== */
 .navbar-brand {
   display: flex;
@@ -790,7 +791,6 @@ section:not(.hero)::before {
   color: var(--terracota);
   display: block;
   margin-bottom: 0.15rem;
-  white-space: nowrap;
 }
 .progreso-tag {
   font-style: italic;
@@ -800,6 +800,7 @@ section:not(.hero)::before {
   opacity: 0.7;
   display: block;
   margin-top: 0.1rem;
+  color: var(--white);
 }
 .resultado-nombre {
   font-family: var(--font-display);
@@ -838,8 +839,12 @@ section:not(.hero)::before {
 }
 .resultado-metricas {
   display: flex;
+  justify-content: center;
   gap: 1.5rem;
   flex-wrap: wrap;
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid var(--glass-border);
 }
 .resultado-metrica {
   flex: 1;
@@ -992,21 +997,24 @@ section:not(.hero)::before {
 }
 .pricing-split {
   display: flex;
-  gap: 1rem;
-  margin-bottom: 2rem;
+  gap: 1.25rem;
+  margin: 1.5rem 0 2rem;
   flex-wrap: wrap;
 }
 .pricing-split-item {
   flex: 1;
   min-width: 140px;
-  padding: var(--space-md);
+  padding: var(--space-lg);
   text-align: center;
+  border-radius: var(--radius-md);
+  background: var(--glass-bg);
 }
 .pricing-split-item .amount {
   font-family: var(--font-body);
   font-weight: 500;
   font-size: 1.6rem;
   color: var(--headline);
+  margin-bottom: 0.25rem;
 }
 .pricing-split-item .label {
   font-size: 0.85rem;
@@ -1688,14 +1696,14 @@ section:not(.hero)::before {
     background: rgba(10, 10, 15, 0.25);
   }
 
-  /* ── Mobile typography: Rubik ── */
+  /* ── Mobile typography: Rethink Sans ── */
   body {
-    font-family: 'Rubik', var(--font-body);
+    font-family: 'Rethink Sans', var(--font-body);
   }
   h1, h2, h3, h4, .section-title, .section-sub, .resultado-nombre,
   .resultado-metrica-valor, .resultado-metrica-label, .beneficio-title,
   .beneficio-desc, .paso-texto, .precio-titulo, .faq-question, .faq-answer p {
-    font-family: 'Rubik', sans-serif !important;
+    font-family: 'Rethink Sans', sans-serif !important;
   }
   /* Mantener Grand Hotel para la marca */
   .navbar-brand-mobile, .footer-brand, .navbar-brand-text {
@@ -1707,7 +1715,7 @@ section:not(.hero)::before {
     padding-bottom: var(--space-lg);
   }
   .hero-title, .hero-sub {
-    font-family: 'Rubik', sans-serif !important;
+    font-family: 'Rethink Sans', sans-serif !important;
   }
   .hero-title {
     font-size: clamp(3.5rem, 14vw, 8rem) !important;
@@ -2320,7 +2328,6 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
         <h3 class="resultado-nombre">Luisito Playa Grande</h3>
         <em class="progreso-tag">(en progreso)</em>
         <a href="https://luisito-playa-grande.vercel.app" class="resultado-link" target="_blank" rel="noopener">Ver el sitio →</a>
-        <span style="color: var(--body-dim); margin: 0 0.5rem;">·</span>
         <a href="https://luisito-brandbook.vercel.app" class="resultado-link" target="_blank" rel="noopener">Brandbook →</a>
       </div>
     </div>
@@ -2351,13 +2358,12 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
         <h3 class="resultado-nombre">Apolonia</h3>
         <em class="progreso-tag">(en progreso)</em>
         <a href="https://apolonia.vercel.app" class="resultado-link" target="_blank" rel="noopener">Ver el sitio →</a>
-        <span style="color: var(--body-dim); margin: 0 0.5rem;">·</span>
         <a href="https://apolonia-brandbook.vercel.app" class="resultado-link" target="_blank" rel="noopener">Brandbook →</a>
       </div>
     </div>
 
     <div class="resultado-historia">
-      <p>«Me recibieron con mate y una idea hermosa. Fui a comprar leña para la chimenea y conocí al dueño de Apolonia, una verdulería de estación en Playa Grande. Quería avisarles a sus clientes qué frutas y verduras estaban en su mejor momento, tarjetas con QR para la vidriera, y una app sencilla pensada para gente grande. Así nació.»</p>
+      <p>«Me recibieron con mate y una idea hermosa. Fui a comprar leña para la chimenea y conocí al dueño de Apolonia, una verdulería de estación en Playa Grande. Quería avisarles a sus clientes qué frutas y verduras estaban en su mejor momento con una app sencilla pensada para gente grande.»</p>
     </div>
 
     <div class="resultado-metricas">
@@ -2381,13 +2387,14 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
         <span class="mono resultado-tag">Mayorista · Mar del Plata</span>
         <h3 class="resultado-nombre">Catálogo Hoco</h3>
         <a href="https://hococatalog.vercel.app" class="resultado-link" target="_blank" rel="noopener">Ver el sitio →</a>
-        <span style="color: var(--body-dim); margin: 0 0.5rem;">·</span>
         <a href="https://hoco-brandbook.vercel.app" class="resultado-link" target="_blank" rel="noopener">Brandbook →</a>
       </div>
     </div>
+
     <div class="resultado-historia">
-      <p>«Arrancó como un catálogo entre amigos y hoy ya está operativo: cientos de accesorios por mes. Lo que antes era un PDF por WhatsApp, ahora es una web que funciona sola.»</p>
+      <p>«Lo que antes era un PDF por WhatsApp, ahora es una web que funciona sola.»</p>
     </div>
+
     <div class="resultado-metricas">
       <div class="resultado-metrica">
         <span class="resultado-metrica-valor">Catálogo online</span>
