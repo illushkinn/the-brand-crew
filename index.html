@@ -1548,8 +1548,11 @@ section:not(.hero)::before {
   position: relative;
   z-index: 60;
   transform: scale(1.03);
-  box-shadow: var(--shadow-step-active);
-  border-color: var(--brand);
+  padding: 0.75rem;
+  margin: -0.75rem;
+  border-radius: var(--radius-md);
+  background: var(--glass-bg);
+  border: 1px solid var(--brand);
 }
 .steps-overlay.is-visible ~ .step:not(.is-active) {
   opacity: 0.3;
