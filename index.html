@@ -2074,10 +2074,18 @@ section:not(.hero)::before {
   // Geometrías abstractas
   const group = new THREE.Group();
   const geo = new THREE.OctahedronGeometry(isMobile ? 0.5 : 0.8, 0);
+  const matGradCanvas = document.createElement('canvas');
+  matGradCanvas.width = 256; matGradCanvas.height = 256;
+  const mctx = matGradCanvas.getContext('2d');
+  const mg = mctx.createLinearGradient(0, 0, 256, 256);
+  mg.addColorStop(0, '#DD614C'); mg.addColorStop(0.5, '#7AB800'); mg.addColorStop(1, '#DAA144');
+  mctx.fillStyle = mg; mctx.fillRect(0, 0, 256, 256);
+  const matGradTex = new THREE.CanvasTexture(matGradCanvas);
   const mat = new THREE.MeshPhysicalMaterial({
-    color: 0xDD614C, roughness: 0.08, metalness: 0,
+    map: matGradTex,
+    roughness: 0.08, metalness: 0,
     clearcoat: 0.5, clearcoatRoughness: 0.06,
-    reflectivity: 0.9, emissive: 0xDD614C, emissiveIntensity: 0.1
+    reflectivity: 0.9
   });
   // Gradient 3 bandas duras para toon
   const star = new THREE.Mesh(geo, mat); star.scale.set(1, 1.6, 1); group.add(star);
