@@ -41,8 +41,10 @@
 
 /* ------ RESET ------ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; scroll-padding-top: 64px; overscroll-behavior: none; background: var(--bg); overflow-x: hidden; }
-body { scroll-snap-type: y proximity; font-family: var(--font-body); overflow-x: hidden; background: var(--bg); overscroll-behavior: contain; }
+html { scroll-behavior: smooth; scroll-padding-top: 64px; overscroll-behavior: none; background: var(--bg); overflow-x: hidden; scrollbar-width: none; -ms-overflow-style: none; }
+html::-webkit-scrollbar { display: none; }
+body { scroll-snap-type: y proximity; font-family: var(--font-body); overflow-x: hidden; background: var(--bg); overscroll-behavior: contain; scrollbar-width: none; -ms-overflow-style: none; }
+body::-webkit-scrollbar { display: none; }
 h1, h2, h3, h4 { text-wrap: balance; }
 p { text-wrap: pretty; }
 img, svg { display: block; max-width: 100%; }
@@ -2089,7 +2091,7 @@ section:not(.hero)::before {
   });
   // Gradient 3 bandas duras para toon
   const star = new THREE.Mesh(geo, mat); star.scale.set(1, 1.6, 1); group.add(star);
-  group.position.y = 0.8;
+  group.position.y = 1.0;
   scene.add(group);
 
   // Partículas
