@@ -1860,6 +1860,7 @@ section:not(.hero)::before {
 /* Preloader 3D */
 #preloader { position: fixed; inset: 0; z-index: 10000; background: var(--bg); cursor: pointer; overflow: hidden; }
 #preloader-canvas { width: 100%; height: 100%; display: block; }
+.preloader-glass { position: absolute; inset: 0; background: radial-gradient(ellipse 30% 40% at 50% 50%, rgba(255,255,255,0.03) 0%, transparent 70%); pointer-events: none; }
 #preloader-ui { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
 .preloader-title { font-family: var(--font-accent); font-size: 1.8rem; color: var(--white); margin-bottom: 1rem; }
 .preloader-bar { width: 100%; height: 3px; background: rgba(255,255,255,0.08); border-radius: 2px; overflow: hidden; }
@@ -2036,6 +2037,7 @@ section:not(.hero)::before {
 <!-- Preloader 3D -->
 <div id="preloader">
   <canvas id="preloader-canvas"></canvas>
+  <div class="preloader-glass"></div>
   <div id="preloader-ui">
     <div class="preloader-title">The Brand Crew</div>
     <div class="preloader-bar"><div class="preloader-fill" id="preloader-fill"></div></div>
