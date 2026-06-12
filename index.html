@@ -41,9 +41,13 @@
 
 /* ------ RESET ------ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; scroll-padding-top: 64px; overscroll-behavior: none; background: var(--bg); overflow-x: hidden; scrollbar-width: none; -ms-overflow-style: none; }
-html::-webkit-scrollbar { display: none; }
-html.preloading { overflow: hidden; }
+html { scroll-behavior: smooth; scroll-padding-top: 64px; overscroll-behavior: none; background: var(--bg); overflow-x: hidden; scrollbar-width: thin; scrollbar-color: var(--terracota) transparent; -ms-overflow-style: none; }
+html::-webkit-scrollbar { width: 5px; }
+html::-webkit-scrollbar-track { background: transparent; }
+html::-webkit-scrollbar-thumb { background: linear-gradient(to bottom, var(--terracota), var(--verde)); border-radius: 3px; }
+html::-webkit-scrollbar-thumb:hover { background: linear-gradient(to bottom, var(--terracota-hover), var(--verde-hover)); }
+html.preloading { overflow: hidden; scrollbar-width: none; }
+html.preloading::-webkit-scrollbar { display: none; }
 body { font-family: var(--font-body); overflow-x: hidden; background: var(--bg); }
 h1, h2, h3, h4 { text-wrap: balance; }
 p { text-wrap: pretty; }
