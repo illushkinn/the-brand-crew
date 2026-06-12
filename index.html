@@ -42,7 +42,7 @@
 /* ------ RESET ------ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; scroll-padding-top: 64px; overscroll-behavior: none; background: var(--bg); overflow-x: hidden; }
-body { font-family: var(--font-body); overflow-x: hidden; background: var(--bg); overscroll-behavior: contain; }
+body { scroll-snap-type: y proximity; font-family: var(--font-body); overflow-x: hidden; background: var(--bg); overscroll-behavior: contain; }
 h1, h2, h3, h4 { text-wrap: balance; }
 p { text-wrap: pretty; }
 img, svg { display: block; max-width: 100%; }
