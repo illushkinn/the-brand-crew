@@ -2098,11 +2098,11 @@ section:not(.hero)::before {
 
   // Partículas
   const ptsGeo = new THREE.BufferGeometry();
-  const ptsCount = isMobile ? 120 : 300;
+  const ptsCount = isMobile ? 60 : 120;
   const pos = new Float32Array(ptsCount * 3);
   for(let i=0; i<ptsCount*3; i++) pos[i] = (Math.random() - 0.5) * 8;
   ptsGeo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
-  const ptsMat = new THREE.PointsMaterial({ color: 0xDD614C, size: isMobile ? 0.03 : 0.02, transparent: true, opacity: 0.6, depthWrite: false });
+  const ptsMat = new THREE.PointsMaterial({ color: 0xDD614C, size: isMobile ? 0.015 : 0.012, transparent: true, opacity: 0.3, depthWrite: false });
   const pts = new THREE.Points(ptsGeo, ptsMat); scene.add(pts);
 
   // Animación con mejores prácticas (setAnimationLoop > requestAnimationFrame)
