@@ -2128,6 +2128,8 @@ section:not(.hero)::before {
     hint.classList.add('visible');
     preloader.addEventListener('click', () => {
       gsap.to(preloader, { opacity: 0, duration: 0.5, ease: 'power2.out', onComplete: () => {
+        cancelAnimationFrame(animId);
+        renderer.dispose();
         preloader.remove();
       }});
     });
