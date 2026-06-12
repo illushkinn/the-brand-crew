@@ -41,7 +41,7 @@
 
 /* ------ RESET ------ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; scroll-padding-top: 64px; overscroll-behavior: none; background: var(--bg); }
+html { scroll-behavior: smooth; scroll-padding-top: 64px; overscroll-behavior: none; background: var(--bg); overflow-x: hidden; }
 body { font-family: var(--font-body); overflow-x: hidden; background: var(--bg); overscroll-behavior: contain; }
 h1, h2, h3, h4 { text-wrap: balance; }
 p { text-wrap: pretty; }
@@ -1695,21 +1695,16 @@ section:not(.hero)::before {
     padding: var(--space-md) 2rem;
   }
 
-  /* ── Resultados: horizontal scroll ── */
+  /* ── Resultados: stack mobile ── */
   .resultados-grid {
     display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
+    flex-direction: column;
+    overflow-x: hidden;
     gap: 1rem;
-    padding-bottom: 0.5rem;
-    scrollbar-width: none;
   }
-  .resultados-grid::-webkit-scrollbar { display: none; }
   .resultados-grid .glass-card {
-    flex: 0 0 85vw;
-    scroll-snap-align: start;
-    margin-bottom: 0;
+    flex: auto;
+    width: 100%;
   }
 
   /* ── Section overrides ── */
@@ -2071,7 +2066,7 @@ section:not(.hero)::before {
 
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(45, w/h, 0.1, 100);
-  camera.position.set(0, 1.5, 8); camera.lookAt(0, 0, 0);
+  camera.position.set(0, 1.2, 7); camera.lookAt(0, 0.3, 0);
 
   // Iluminación
   scene.add(new THREE.AmbientLight(0x222244, 0.5));
@@ -2083,20 +2078,14 @@ section:not(.hero)::before {
   // Geometrías abstractas
   const group = new THREE.Group();
   const geo = new THREE.OctahedronGeometry(isMobile ? 0.5 : 0.8, 0);
-  const mat = new THREE.MeshToonMaterial({
-    color: 0xDD614C, emissive: 0xDD614C, emissiveIntensity: 0.15
+  const mat = new THREE.MeshPhysicalMaterial({
+    color: 0xDD614C, roughness: 0.08, metalness: 0,
+    clearcoat: 0.5, clearcoatRoughness: 0.06,
+    reflectivity: 0.9, emissive: 0xDD614C, emissiveIntensity: 0.1
   });
   // Gradient 3 bandas duras para toon
-  const gradCanvas = document.createElement('canvas');
-  gradCanvas.width = 2; gradCanvas.height = 256;
-  const ctx = gradCanvas.getContext('2d');
-  ctx.fillStyle = '#DD614C'; ctx.fillRect(0, 0, 2, 85);
-  ctx.fillStyle = '#7AB800'; ctx.fillRect(0, 85, 2, 86);
-  ctx.fillStyle = '#DAA144'; ctx.fillRect(0, 171, 2, 85);
-  const gradTex = new THREE.CanvasTexture(gradCanvas);
-  gradTex.minFilter = THREE.NearestFilter; gradTex.magFilter = THREE.NearestFilter;
-  mat.gradientMap = gradTex;
   const star = new THREE.Mesh(geo, mat); star.scale.set(1, 1.6, 1); group.add(star);
+  group.position.y = 0.5;
   scene.add(group);
 
   // Partículas
