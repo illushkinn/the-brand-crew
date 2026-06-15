@@ -2427,34 +2427,12 @@ section::before {
     <div class="preloader-hint" id="preloader-hint">Adelante</div>
   </div>
 </div>
-<script>window.scrollTo(0,0);
-(function(){
-  const preloader = document.getElementById('preloader');
-  const fill = document.getElementById('preloader-fill');
-  const hint = document.getElementById('preloader-hint');
-
-  // Simular carga
-  let loaded = 0;
-  const interval = setInterval(() => {
-    loaded += Math.random() * 8;
-    if(loaded >= 100) { loaded = 100; clearInterval(interval); onComplete(); }
-    fill.style.width = loaded + '%';
-  }, 100);
-
-  function onComplete(){
-    hint.classList.add('visible');
-    preloader.addEventListener('click', () => {
-      preloader.style.opacity = '0';
-      preloader.style.transform = 'scale(0.97)';
-      preloader.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
-      setTimeout(() => {
-        preloader.style.display = 'none';
-        preloader.style.transform = '';
-        document.documentElement.classList.remove('preloading');
-      }, 450);
-    });
-  }
-})();
+<script>window.scrollTo(0,0);</script>
+<script type="module">
+import { createPreloader } from '/src/preloader.js'
+const p = document.getElementById('preloader');
+const loader = createPreloader({ preloader: p, fill: document.getElementById('preloader-fill'), hint: document.getElementById('preloader-hint'), doc: document.documentElement });
+loader.start();
 document.querySelectorAll('.card-film').forEach(cf=>{cf.addEventListener('click',e=>{e.stopPropagation();cf.classList.add('dissolve');setTimeout(()=>cf.remove(),500);});});
 document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListener('click',()=>{document.querySelectorAll('.resultado-card').forEach(c=>c.classList.remove('is-focused'));card.classList.add('is-focused');});});
 </script>
