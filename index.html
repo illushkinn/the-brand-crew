@@ -42,12 +42,15 @@
 html { scroll-behavior: smooth; scroll-padding-top: 64px; background: var(--bg); overflow-x: hidden; }
 body { font-family: var(--font-body); overflow-x: hidden; background: var(--bg); font-weight: 300; }
 
-/* Desktop: scrollbar OCULTO — GTK/WSL ignora estilos custom.
-   El scroll funciona con wheel/trackpad/teclado.
-   La aguja (.gradient-line) es el indicador visual. */
+/* Desktop: scrollbar 3px terracota — override absoluto */
 @media (min-width: 768px) {
-  html { overflow-y: scroll; scroll-snap-type: y proximity; scrollbar-width: none; }
-  html::-webkit-scrollbar { display: none; }
+  html { overflow-y: scroll; scroll-snap-type: y proximity; }
+  /* Chrome/Edge/Safari: 3px terracota, track invisible */
+  html::-webkit-scrollbar { width: 3px !important; }
+  html::-webkit-scrollbar-track { background: transparent !important; }
+  html::-webkit-scrollbar-thumb { background: var(--terracota) !important; border-radius: 3px !important; }
+  /* Firefox: thin terracota */
+  html { scrollbar-width: thin !important; scrollbar-color: var(--terracota) transparent !important; }
 }
 
 /* Mobile: scrollbar oculto + scroll-snap */
@@ -189,18 +192,17 @@ ul { list-style: none; }
 
 /* ------ SHARED PATTERNS (DRY consolidation) ------ */
 /* Full-viewport dvh fallback — all fullscreen sections */
+/* Fullscreen sections — sin gap entre ellas */
 .hero, .problema, .resultados, .como-funciona, .pricing, .faq {
-  min-height: 100vh; /* dvh fallback */
-  min-height: 100svh;
   min-height: 100dvh;
-}
-/* Flex column + centered — fullscreen sections */
-.hero, .problema, .resultados, .como-funciona, .pricing, .faq {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: clamp(2rem, 5vw, 5rem) 0;
+  /* margin negativo para eliminar cualquier gap entre secciones */
+  margin-bottom: -1px;
 }
-/* Scroll-snap alignment — all major sections */
+/* Scroll-snap alignment */
 .hero, .problema, .resultados, .como-funciona, .pricing, .faq, .cta-final {
   scroll-snap-align: start;
 }
@@ -246,7 +248,8 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
 
 /* ------ SECTION BASE ------ */
 .section {
-  padding: clamp(2rem, 5vw, 5rem) clamp(1.25rem, 5vw, 4rem);
+  /* Solo padding horizontal, sin gap vertical entre secciones */
+  padding: 0 clamp(1.25rem, 5vw, 4rem);
 }
 .section-label {
   font-family: 'JetBrains Mono', monospace;
@@ -577,6 +580,8 @@ a:focus-visible {
   overflow: hidden;
   box-sizing: border-box;
   z-index: 1;
+  /* Pegar al siguiente section sin gap */
+  margin-bottom: -1px;
 }
 /* Glassmorphism abstract shapes */
 .hero-shapes {
@@ -873,7 +878,7 @@ body::after {
    PROBLEMA
    ================================================ */
 .problema {
-  background: transparent;
+  background: var(--bg);
 }
 .problema-grid {
   display: grid;
@@ -916,7 +921,7 @@ body::after {
    RESULTADOS — Casos de estudio
    ================================================ */
 .resultados {
-  background: transparent;
+  background: var(--bg);
   padding-top: 4rem;
   padding-bottom: 2rem;
 }
@@ -1073,7 +1078,7 @@ body::after {
    CÓMO FUNCIONA (pasos)
    ================================================ */
 .como-funciona {
-  background: transparent;
+  background: var(--bg);
 }
 .steps-container {
   margin-top: 3rem;
@@ -1086,10 +1091,26 @@ body::after {
   display: flex;
   align-items: flex-start;
   gap: var(--space-lg);
+  position: relative;
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   user-select: none;
+}
+/* Línea conectora entre pasos */
+.step::after {
+  content: '';
+  position: absolute;
+  left: 36px; /* centro del step-number (72px/2) */
+  top: 72px;
+  width: 2px;
+  height: calc(100% + 2rem); /* gap entre steps */
+  background: linear-gradient(to bottom, var(--terracota), var(--ochra));
+  z-index: 1;
+}
+/* Último paso: sin línea */
+.step:last-child::after {
+  display: none;
 }
 .step-number {
   flex-shrink: 0;
@@ -1186,7 +1207,7 @@ body::after {
    PRICING
    ================================================ */
 .pricing {
-  background: transparent;
+  background: var(--bg);
 }
 .pricing-card {
   max-width: 600px;
@@ -1378,14 +1399,14 @@ body::after {
    FAQ
    ================================================ */
 .faq {
-  background: transparent;
+  background: var(--bg);
 }
 .faq-list {
   max-width: 720px;
   margin: 3rem auto 0;
 }
 .faq-item {
-  border-bottom: 1px solid var(--border);
+  border-bottom: 2px solid var(--border);
   padding: 0;
 }
 .faq-question {
@@ -1396,7 +1417,7 @@ body::after {
   gap: var(--space-md);
   padding: 1.25rem 0;
   text-align: left;
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   font-weight: 600;
   color: var(--headline);
   position: relative;
@@ -1407,11 +1428,12 @@ body::after {
   color: var(--terracota);
 }
 .faq-question svg {
-  width: 1.2rem;
-  height: 1.2rem;
+  width: 1.5rem;
+  height: 1.5rem;
   transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   flex-shrink: 0;
   color: var(--terracota);
+  stroke-width: 2.5px;
 }
 .faq-question[aria-expanded="true"] svg {
   transform: rotate(45deg);
@@ -2837,7 +2859,7 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
     <!-- Service + Domain price line -->
     <div class="pricing-line">
       <span class="pricing-line-label">Diseño + Desarrollo<br><small>+ Dominio (2 años)</small></span>
-      <span class="pricing-line-price">$400.000<br><span style="font-size:0.8em;">ARS</span></span>
+      <span class="pricing-line-price">$400.000 ARS</span>
     </div>
 
     <div class="pricing-split">
