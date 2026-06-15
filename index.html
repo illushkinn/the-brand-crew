@@ -2194,7 +2194,12 @@ body::after {
   width: 100vw; height: 100vh;
   z-index: 99999;
   isolation: isolate;
-  pointer-events: all;
+  pointer-events: none; /* Wrapper transparente a clicks */
+}
+
+#preloader-wrapper.is-dismissed {
+  display: none !important;
+  pointer-events: none !important;
 }
 
 /* Preloader 3D */
@@ -2206,6 +2211,7 @@ body::after {
   will-change: opacity, transform;
   transform: translateZ(0);
   backface-visibility: hidden;
+  pointer-events: auto; /* Solo el preloader captura clicks */
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
   -webkit-user-select: none;

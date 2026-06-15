@@ -64,6 +64,7 @@ export function createPreloader({ preloader, fill, hint, doc } = {}) {
       preloader.style.display = 'none'
       preloader.style.transform = ''
       if (wrapper) {
+        wrapper.classList.add('is-dismissed')
         wrapper.style.display = 'none'
         wrapper.style.pointerEvents = 'none'
       }
