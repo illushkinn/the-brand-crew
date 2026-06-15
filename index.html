@@ -829,7 +829,6 @@ section::before {
   margin-top: 2rem;
 }
 .problema-card {
-  border-color: var(--terracota);
   pointer-events: none;
 }
 .problema-card .card-icon {
@@ -841,17 +840,20 @@ section::before {
 .problema-card h4 {
   margin-bottom: var(--space-sm);
   line-height: 1.35;
+  text-wrap: pretty;
 }
 .problema-card p {
   color: var(--body-dim);
   line-height: 1.6;
   font-size: 0.95rem;
+  text-wrap: pretty;
 }
 .problema-card p.sub {
   color: var(--body-dim);
   font-size: 0.95rem;
   margin-top: 0.35rem;
   line-height: 1.6;
+  text-wrap: pretty;
 }
 .problema-card .card-emoji {
   display: none; /* We use Lucide icons instead */
@@ -1925,6 +1927,7 @@ section::before {
     display: flex;
     flex-direction: row;
     overflow-x: auto;
+    overflow-y: hidden;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     gap: 1rem;
@@ -2542,7 +2545,7 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
 
     <div class="glass-card problema-card fade-in fade-in-delay-2">
       <h4>Una agencia no es para cualquier proyecto</h4>
-      <p>Tienen equipo, estructura y costo — justificado, pero no para todos.</p>
+      <p>Tienen equipo, estructura y costo. Justificado, pero no para todos.</p>
       <p class="sub">Yo resuelvo los proyectos que a ellas no les cierran. Misma calidad, precio justo.</p>
     </div>
   </div>
@@ -2728,7 +2731,7 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
       </div>
     </div>
 
-    <p class="pricing-b2b">¿Agencia? Preferencial por volumen — <a href="https://wa.me/5491124063009" target="_blank" rel="noopener">consultame</a></p>
+    <p class="pricing-b2b">¿Agencia? Preferencial por volumen, <a href="https://wa.me/5491124063009" target="_blank" rel="noopener">consultame</a></p>
 
     <div class="pricing-includes">
       <h4>Incluye</h4>
