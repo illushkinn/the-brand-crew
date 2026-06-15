@@ -6,7 +6,7 @@
 <meta name="color-scheme" content="dark only">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>The Brand Crew</title>
-<meta name="description" content="Páginas web que garpan, para comercios que laburan. Diseño + desarrollo + dominio + hosting desde $140.000 ARS.">
+<meta name="description" content="Páginas web que garpan, para proyectos que laburan. Diseño + desarrollo + dominio + hosting desde $140.000 ARS. Partner white label para agencias.">
 <meta name="theme-color" content="#121212">
 
 <meta name="google-site-verification" content="k-kPS76zKdKwT-18dhJwvxuK56oZXsaMpiBEeOmjuQA" />
@@ -23,13 +23,15 @@
 
 <!-- Phosphor Icons -->
 <script src="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/index.js"></script>
+<!-- Vercel Web Analytics -->
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
 <script defer src="/_vercel/insights/script.js"></script>
 
-<!-- Vercel Web Analytics -->
-<script>
-    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+<!-- Vercel Speed Insights -->
+<script type="module">
+import { inject } from 'https://esm.sh/@vercel/speed-insights@2';
+inject();
 </script>
-<script defer src="/_vercel/insights/script.js"></script>
 
 <style>
 /* ===================================================
@@ -380,7 +382,9 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(10, 10, 15, 0.25);
+  background: rgba(10, 10, 15, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--glass-border);
   transition: transform 0.35s ease, opacity 0.35s ease;
 }
@@ -452,14 +456,36 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
 
 /* Hamburger btn */
 .hamburger-btn {
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px;
   color: var(--body);
-  font-size: 1.3rem;
-  transition: all 0.3s;
+  transition: opacity 0.2s;
 }
 .hamburger-btn:hover {
-  color: var(--terracota);
+  opacity: 0.7;
+}
+.hamb-line {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease;
+  transform-origin: center;
+  will-change: transform;
+}
+/* Morph a X */
+[aria-expanded="true"] .hamb-line:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+[aria-expanded="true"] .hamb-line:nth-child(2) {
+  opacity: 0;
+}
+[aria-expanded="true"] .hamb-line:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
 }
 
 /* Focus-visible global para botones y links */
@@ -521,12 +547,9 @@ a:focus-visible {
 .mobile-menu a:hover, .mobile-menu a:focus-visible {
   color: var(--terracota);
 }
-.mobile-menu a:nth-child(1) { transition-delay: 80ms; }
-.mobile-menu a:nth-child(2) { transition-delay: 130ms; }
-.mobile-menu a:nth-child(3) { transition-delay: 180ms; }
-.mobile-menu a:nth-child(4) { transition-delay: 230ms; }
-.mobile-menu a:nth-child(5) { transition-delay: 280ms; }
-.mobile-menu a:nth-child(6) { transition-delay: 330ms; }
+.mobile-menu a {
+  will-change: transform, opacity;
+}
 
 /* ================================================
    HERO
@@ -537,6 +560,18 @@ a:focus-visible {
   position: relative;
   overflow: hidden;
 }
+/* Fade bridge: hero → next section */
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 160px;
+  background: linear-gradient(to bottom, transparent, var(--bg));
+  pointer-events: none;
+  z-index: 2;
+}
 /* Glassmorphism abstract shapes */
 .hero-shapes {
   position: absolute;
@@ -546,45 +581,55 @@ a:focus-visible {
 }
 .hero-shape {
   position: absolute;
-  border-radius: var(--radius-round);
   filter: blur(40px);
   opacity: 0.55;
   animation: heroFloat 22s cubic-bezier(0.45, 0.05, 0.25, 1) infinite;
 }
 .hero-shape:nth-child(1) {
-  width: 420px;
+  width: 480px;
   height: 420px;
-  background: var(--terracota);
-  top: -10%;
-  right: -8%;
+  border-radius: 50% / 40%;
+  background: linear-gradient(135deg, var(--terracota), var(--ochra));
+  top: -12%;
+  right: -6%;
   animation-delay: 0s;
+  filter: blur(50px);
 }
 .hero-shape:nth-child(2) {
-  width: 320px;
-  height: 320px;
+  width: 300px;
+  height: 340px;
+  border-radius: 40% / 50%;
   background: var(--ochra);
-  bottom: -5%;
-  left: -5%;
+  bottom: -8%;
+  left: -8%;
   animation-delay: -7s;
+  animation-name: heroTilt;
+  filter: blur(35px);
+  opacity: 0.45;
 }
 .hero-shape:nth-child(3) {
-  width: 260px;
+  width: 240px;
   height: 260px;
-  background: var(--verde);
-  top: 40%;
-  left: 60%;
+  border-radius: 35% / 45%;
+  background: linear-gradient(180deg, var(--verde), rgba(122,184,0,0.4));
+  top: 35%;
+  left: 55%;
   animation-delay: -14s;
-  opacity: 0.35;
+  animation-name: heroPulse;
+  filter: blur(30px);
+  opacity: 0.30;
 }
 .hero-shape:nth-child(4) {
-  width: 220px;
-  height: 220px;
-  background: var(--verde);
-  bottom: 20%;
-  right: 15%;
+  width: 180px;
+  height: 200px;
+  border-radius: 50%;
+  background: var(--color-verde-subtle);
+  bottom: 15%;
+  right: 10%;
   animation-delay: -5s;
-  opacity: 0.25;
   animation-name: heroFloatDiag;
+  filter: blur(45px);
+  opacity: 0.50;
 }
 @keyframes heroFloat {
   0%, 100% { transform: translate(0, 0) scale(1); }
@@ -593,11 +638,82 @@ a:focus-visible {
   60% { transform: translate(20px, 35px) scale(1.04); }
   80% { transform: translate(-25px, -20px) scale(0.96); }
 }
+@keyframes heroTilt {
+  0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+  25% { transform: translate(25px, -20px) rotate(8deg) scale(1.05); }
+  50% { transform: translate(-15px, 30px) rotate(-5deg) scale(0.95); }
+  75% { transform: translate(-30px, -10px) rotate(4deg) scale(1.02); }
+}
+@keyframes heroPulse {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+  33% { transform: translate(10px, -25px) scale(1.12); opacity: 0.45; }
+  66% { transform: translate(-20px, 15px) scale(0.88); opacity: 0.25; }
+}
 @keyframes heroFloatDiag {
   0%, 100% { transform: translate(0, 0) scale(1); }
   25% { transform: translate(-45px, 30px) scale(1.1); }
   50% { transform: translate(35px, -35px) scale(0.93); }
   75% { transform: translate(-20px, -40px) scale(1.06); }
+}
+
+/* ── Section background gradients (per-section atmosphere) ── */
+section {
+  position: relative;
+}
+section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Problema: warm, human — terracota + ocre */
+.problema::before {
+  background:
+    radial-gradient(ellipse 40% 50% at 15% 25%, var(--terracota) 0%, transparent 60%),
+    radial-gradient(ellipse 25% 35% at 80% 70%, var(--ochra) 0%, transparent 55%);
+  opacity: 0.06;
+}
+
+/* Cómo funciona: energy, action — terracota + verde */
+.como-funciona::before {
+  background:
+    radial-gradient(ellipse 35% 40% at 25% 45%, var(--terracota) 0%, transparent 55%),
+    radial-gradient(ellipse 20% 30% at 70% 35%, var(--verde) 0%, transparent 55%);
+  opacity: 0.05;
+}
+
+/* Resultados: growth, success — verde + terracota */
+.resultados::before {
+  background:
+    radial-gradient(ellipse 35% 45% at 50% 35%, var(--verde) 0%, transparent 60%),
+    radial-gradient(ellipse 20% 25% at 20% 80%, var(--terracota) 0%, transparent 50%);
+  opacity: 0.05;
+}
+
+/* Pricing: value, premium — ocre + terracota */
+.pricing::before {
+  background:
+    radial-gradient(ellipse 30% 40% at 50% 25%, var(--ochra) 0%, transparent 55%),
+    radial-gradient(ellipse 25% 35% at 75% 70%, var(--terracota) 0%, transparent 55%);
+  opacity: 0.05;
+}
+
+/* FAQ: subtle, calm — single terracota */
+.faq::before {
+  background:
+    radial-gradient(ellipse 20% 25% at 50% 50%, var(--terracota) 0%, transparent 50%);
+  opacity: 0.04;
+}
+
+/* CTA final: clean, no gradient */
+.cta-final::before {
+  display: none;
+}
+
+/* Hero keeps its existing shapes, no pseudo-element needed */
+.hero::before {
+  display: none;
 }
 
 .hero-content {
@@ -640,23 +756,6 @@ a:focus-visible {
   border-radius: 4px;
 }
 
-/* Gradiente uniforme en todas las secciones */
-section {
-  position: relative;
-}
-section:not(.hero)::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: 
-    radial-gradient(ellipse 25% 30% at 15% 25%, var(--terracota) 0%, transparent 60%),
-    radial-gradient(ellipse 20% 35% at 75% 20%, var(--gold) 0%, transparent 60%),
-    radial-gradient(ellipse 35% 40% at 40% 60%, var(--verde) 0%, transparent 65%),
-    radial-gradient(ellipse 30% 45% at 60% 70%, var(--brand) 0%, transparent 70%);
-  opacity: 0.05;
-  pointer-events: none;
-}
-
 .hero-title {
   font-family: var(--font-body);
   font-size: clamp(2.8rem, 7vw, 5rem);
@@ -694,6 +793,28 @@ section:not(.hero)::before {
   gap: var(--space-md);
   flex-wrap: wrap;
 }
+.hero-b2b-tags {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+.tag-b2b {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-verde);
+  color: var(--color-verde);
+  background: transparent;
+}
+.tag-b2b.tag-outline {
+  border-color: var(--color-border);
+  color: var(--color-text-dim);
+  background: transparent;
+}
 
 /* ================================================
    PROBLEMA
@@ -704,8 +825,12 @@ section:not(.hero)::before {
 .problema-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-lg);
-  margin-top: 3rem;
+  gap: var(--space-md);
+  margin-top: 2rem;
+}
+.problema-card {
+  border-color: var(--terracota);
+  pointer-events: none;
 }
 .problema-card .card-icon {
   width: 2.5rem;
@@ -715,18 +840,25 @@ section:not(.hero)::before {
 }
 .problema-card h4 {
   margin-bottom: var(--space-sm);
+  line-height: 1.35;
 }
 .problema-card p {
   color: var(--body-dim);
   line-height: 1.6;
   font-size: 0.95rem;
 }
+.problema-card p.sub {
+  color: var(--body-dim);
+  font-size: 0.95rem;
+  margin-top: 0.35rem;
+  line-height: 1.6;
+}
 .problema-card .card-emoji {
   display: none; /* We use Lucide icons instead */
 }
 
 /* ================================================
-   RESULTADOS — Casos reales
+   RESULTADOS — Casos de estudio
    ================================================ */
 .resultados {
   background: var(--bg);
@@ -865,7 +997,7 @@ section:not(.hero)::before {
   margin-top: 2rem;
 }
 
-/* All text white in Casos reales */
+/* All text white in Casos de estudio */
 .resultados .section-label,
 .resultados .section-title { margin-bottom: 2.5rem; }
 .resultados .resultado-tag,
@@ -928,6 +1060,29 @@ section:not(.hero)::before {
 .step-content p {
   color: var(--body-dim);
   line-height: 1.6;
+}
+/* B2B step — distinct from numbered steps */
+.b2b-step {
+  border: 1px dashed var(--color-border-glass);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  transition: border-color 0.3s, background 0.3s;
+  cursor: default;
+}
+.b2b-step .b2b-number {
+  display: grid;
+  place-items: center;
+  border-color: var(--verde);
+  color: var(--verde);
+  font-size: 1.6rem;
+  line-height: 1;
+  padding: 0;
+}
+.b2b-step .step-content h3 {
+  color: var(--color-heading);
+}
+.b2b-step .step-content p strong {
+  color: var(--color-terracota);
 }
 /* ================================================
    PROBLEM/SOLUTION SECTION (inserted between services and pricing)
@@ -1094,6 +1249,26 @@ section:not(.hero)::before {
 .pricing-not-includes .not-includes-text {
   color: var(--body-dim);
 }
+.pricing-b2b {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  text-align: center;
+  color: var(--body-dim);
+  opacity: 0.7;
+  margin: 1.25rem 0 0.5rem;
+  padding: 0.75rem;
+  border: 1px dashed var(--color-border-glass);
+  border-radius: var(--radius-md);
+  transition: opacity 0.3s, border-color 0.3s;
+}
+.pricing-b2b:hover {
+  opacity: 1;
+  border-color: var(--color-verde);
+}
+.pricing-b2b a {
+  color: var(--color-verde);
+  text-decoration: underline;
+}
 .pricing-compare {
   background: var(--accent-glow);
   border: 1px solid var(--color-accent-glow);
@@ -1235,6 +1410,7 @@ section:not(.hero)::before {
   background: transparent;
   border-top: none;
 }
+
 .footer-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
@@ -1434,6 +1610,11 @@ section:not(.hero)::before {
   opacity: 1;
   transform: translateY(0);
   pointer-events: all;
+}
+/* Hide elegantly when footer enters viewport — no movement, only fade */
+.fab-container.is-hidden-by-footer {
+  opacity: 0 !important;
+  pointer-events: none !important;
 }
 .fab-trigger {
   color: var(--white);
@@ -1690,8 +1871,11 @@ section:not(.hero)::before {
     display: block;
     font-size: 1.6rem;
   }
-  .navbar, .mobile-menu {
-    background: rgba(10, 10, 15, 0.25);
+  .navbar {
+    background: rgba(10, 10, 15, 0.65);
+  }
+  .mobile-menu {
+    background: rgba(10, 10, 15, 0.45);
   }
 
   /* ── Mobile typography: Rethink Sans ── */
@@ -1759,8 +1943,8 @@ section:not(.hero)::before {
     margin-bottom: 1rem;
   }
   .problema-grid {
-    margin-top: 1.5rem;
-    gap: var(--space-md);
+    margin-top: 1.25rem;
+    gap: var(--space-sm);
   }
   .problema-card .card-icon {
     width: 2rem;
@@ -1770,10 +1954,17 @@ section:not(.hero)::before {
   .problema-card h4 {
     margin-bottom: 0.25rem;
     font-size: clamp(1.1rem, 3.5vw, 1.4rem);
+    text-wrap: balance;
   }
   .problema-card p {
     font-size: 0.85rem;
     line-height: 1.5;
+    text-wrap: balance;
+  }
+  .problema-card p.sub {
+    margin-top: 0.25rem;
+    font-size: 0.85rem;
+    text-wrap: balance;
   }
 
   /* ── Steps ── */
@@ -1824,6 +2015,14 @@ section:not(.hero)::before {
   .footer .footer-cuit {
     font-size: 0.75rem;
     opacity: 0.6;
+  }
+  .footer .footer-social {
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 0.35rem;
+  }
+  .footer .footer-sep {
+    flex-shrink: 0;
   }
   .footer .footer-credit {
     white-space: normal;
@@ -1907,15 +2106,70 @@ section:not(.hero)::before {
 }
 
 /* Preloader 3D */
-#preloader { position: fixed; inset: 0; z-index: 10000; background: var(--bg); cursor: pointer; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+#preloader {
+  position: fixed; inset: 0; z-index: 10000;
+  background: var(--bg);
+  cursor: pointer; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  will-change: opacity, transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  isolation: isolate;
+}
 .preloader-glass { position: absolute; inset: 0; background: radial-gradient(ellipse 30% 40% at 50% 50%, rgba(255,255,255,0.03) 0%, transparent 70%); pointer-events: none; }
 
 /* Diamond 3D — True CSS 3D Plumbob */
-.diamond-wrap { position: relative; width: 90px; height: 150px; margin-bottom: 2rem; perspective: 500px; filter: drop-shadow(0 0 18px rgba(221,97,76,0.35)) drop-shadow(0 0 40px rgba(122,184,0,0.1)); }
+.diamond-wrap {
+  position: relative;
+  width: 90px;
+  height: 150px;
+  margin-bottom: 2rem;
+  perspective: 500px;
+  filter: drop-shadow(0 0 18px rgba(221,97,76,0.35)) drop-shadow(0 0 40px rgba(122,184,0,0.1));
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
 .diamond-3d {
   width: 100%; height: 100%;
   transform-style: preserve-3d;
   animation: diamond3d 5s linear infinite;
+}
+/* Core de luz — punto fijo en el centro, el diamante gira a su alrededor */
+.diamond-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, #fff 0%, rgba(255,255,255,0.4) 40%, transparent 70%);
+  box-shadow:
+    0 0 6px rgba(255,255,255,0.7),
+    0 0 18px rgba(255,255,255,0.2);
+  z-index: 1;
+  pointer-events: none;
+  animation: corePulse 3s ease-in-out infinite;
+}
+@keyframes corePulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    box-shadow:
+      0 0 6px rgba(255,255,255,0.6),
+      0 0 18px rgba(255,255,255,0.15);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.25);
+    box-shadow:
+      0 0 10px rgba(255,255,255,0.8),
+      0 0 28px rgba(255,255,255,0.25);
+  }
+}
+/* Mini diamante para footer */
+.diamond--sm {
+  transform: scale(0.35);
+  transform-origin: center;
+  margin: 0 auto;
 }
 .face {
   position: absolute;
@@ -1926,42 +2180,42 @@ section:not(.hero)::before {
   backface-visibility: hidden;
 }
 .face-top {
-  border-bottom: 70px solid rgba(221,97,76,0.85);
+  border-bottom: 70px solid rgba(221,97,76,0.55);
   top: 0;
   transform: rotateX(25deg) translateZ(35px);
 }
 .face-top-r {
-  border-bottom: 70px solid rgba(122,184,0,0.85);
+  border-bottom: 70px solid rgba(122,184,0,0.55);
   top: 0;
   transform: rotateY(90deg) rotateX(25deg) translateZ(35px);
 }
 .face-top-l {
-  border-bottom: 70px solid rgba(218,161,68,0.85);
+  border-bottom: 70px solid rgba(218,161,68,0.55);
   top: 0;
   transform: rotateY(-90deg) rotateX(25deg) translateZ(35px);
 }
 .face-top-b {
-  border-bottom: 70px solid rgba(221,97,76,0.85);
+  border-bottom: 70px solid rgba(221,97,76,0.55);
   top: 0;
   transform: rotateY(180deg) rotateX(25deg) translateZ(35px);
 }
 .face-bot {
-  border-top: 70px solid rgba(221,97,76,0.85);
+  border-top: 70px solid rgba(221,97,76,0.55);
   bottom: 0;
   transform: rotateX(-25deg) translateZ(35px);
 }
 .face-bot-r {
-  border-top: 70px solid rgba(122,184,0,0.85);
+  border-top: 70px solid rgba(122,184,0,0.55);
   bottom: 0;
   transform: rotateY(90deg) rotateX(-25deg) translateZ(35px);
 }
 .face-bot-l {
-  border-top: 70px solid rgba(218,161,68,0.85);
+  border-top: 70px solid rgba(218,161,68,0.55);
   bottom: 0;
   transform: rotateY(-90deg) rotateX(-25deg) translateZ(35px);
 }
 .face-bot-b {
-  border-top: 70px solid rgba(221,97,76,0.85);
+  border-top: 70px solid rgba(221,97,76,0.55);
   bottom: 0;
   transform: rotateY(180deg) rotateX(-25deg) translateZ(35px);
 }
@@ -2049,8 +2303,9 @@ section:not(.hero)::before {
     width: 100%;
   }
 
-  /* ── Problema ── */
-  .problema-grid { grid-template-columns: repeat(3, 1fr); }
+  /* ── Problema (bento grid) ── */
+  .problema-grid { grid-template-columns: 1fr 1fr; }
+  .problema-card.tall { grid-column: span 2; }
 
   /* ── Resultados ── */
   .resultados-grid {
@@ -2109,7 +2364,7 @@ section:not(.hero)::before {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "name": "The Brand Crew",
-  "description": "Páginas web que garpan, para comercios que laburan. Diseño y desarrollo web para pequeños comercios locales.",
+  "description": "Páginas web que garpan, para proyectos que laburan. Diseño y desarrollo web para proyectos propios y white label para agencias.",
   "url": "https://thebrandcrew.lat",
   "contactPoint": {
     "@type": "ContactPoint",
@@ -2158,6 +2413,7 @@ section:not(.hero)::before {
       <div class="face face-bot-l"></div>
       <div class="face face-bot-b"></div>
     </div>
+    <div class="diamond-core"></div>
   </div>
   <div class="preloader-glass"></div>
   <div id="preloader-ui">
@@ -2184,11 +2440,13 @@ section:not(.hero)::before {
     hint.classList.add('visible');
     preloader.addEventListener('click', () => {
       preloader.style.opacity = '0';
-      preloader.style.transition = 'opacity 0.5s ease';
+      preloader.style.transform = 'scale(0.97)';
+      preloader.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
       setTimeout(() => {
         preloader.style.display = 'none';
+        preloader.style.transform = '';
         document.documentElement.classList.remove('preloading');
-      }, 500);
+      }, 450);
     });
   }
 })();
@@ -2211,8 +2469,9 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
 
   <div class="navbar-actions">
     <button class="hamburger-btn" id="hamburgerBtn" aria-label="Abrir menú" aria-expanded="false">
-      <i data-lucide="menu" id="hamburgerMenuIcon"></i>
-      <i data-lucide="x" id="hamburgerCloseIcon" style="display:none"></i>
+      <span class="hamb-line"></span>
+      <span class="hamb-line"></span>
+      <span class="hamb-line"></span>
     </button>
   </div>
 
@@ -2244,13 +2503,17 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
 
   <div class="hero-content">
     <h1 class="hero-title">Páginas web que <span class="text-terracota">garpan</span></h1>
-    <p class="hero-sub">Para comercios que <span class="text-white">laburan</span></p>
+    <p class="hero-sub">Para proyectos que <span class="text-white">laburan</span></p>
     <p class="hero-meta">
       Diseño + desarrollo
       <span class="dot-sep" aria-hidden="true"></span>
       Dominio + hosting
       <span class="dot-sep" aria-hidden="true"></span>
       Desde <strong>$140.000 ARS</strong>
+    </p>
+    <p class="hero-b2b-tags">
+      <span class="tag-b2b">Clientes directos</span>
+      <span class="tag-b2b tag-outline">Partner white label</span>
     </p>
   </div>
 </section>
@@ -2263,26 +2526,30 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
 
 
   <div class="problema-grid">
-    <div class="glass-card problema-card fade-in">
+    <div class="glass-card problema-card tall fade-in">
       <h4>No te encuentran</h4>
-      <p>Si no estás en Google, no existís.</p>
+      <p>Si no estás en Google y ChatGPT, no existís.</p>
+      <p class="sub">Si buscan tu negocio y no aparecés, perdiste la venta.</p>
     </div>
 
     <div class="glass-card problema-card fade-in fade-in-delay-1">
       <h4>No sabés por dónde arrancar</h4>
       <p>Te ayudo a ordenar las ideas. Lo que sobra, afuera. Lo que suma, adentro.</p>
+      <p class="sub">Sin diseño que no vende, sin páginas al pedo, sin vueltas.</p>
     </div>
 
     <div class="glass-card problema-card fade-in fade-in-delay-2">
-      <h4>Las agencias cobran un ojo de la cara</h4>
+      <h4>Una agencia no es para cualquier proyecto</h4>
+      <p>Tienen equipo, estructura y costo — justificado, pero no para todos.</p>
+      <p class="sub">Yo resuelvo los proyectos que a ellas no les cierran. Misma calidad, precio justo.</p>
     </div>
   </div>
 </section>
 
 <!-- ==============================================
-     3. RESULTADOS — Casos reales
+     3. RESULTADOS — Casos de estudio
      ============================================== -->
-<section class="section como-funciona reveal" id="resultados" aria-label="Casos reales">
+<section class="section como-funciona reveal" id="resultados" aria-label="Casos de estudio">
   <h2 class="section-title">Tres pasos.<br><span class="text-verde">Sin vueltas</span>.</h2>
   <p class="section-sub">
     En una semana tenés tu página lista. Sin complicaciones.
@@ -2313,21 +2580,29 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
         <p>Onboarding y consultoría sin cargo.</p>
       </div>
     </div>
+
+    <div class="step b2b-step reveal fade-in fade-in-delay-3">
+      <div class="step-number b2b-number">★</div>
+      <div class="step-content">
+        <h3>¿Sos agencia?</h3>
+        <p>Te resuelvo landing pages, catálogos y apps mientras vos te ocupás de la estrategia. <strong>White label, rápida, sin romper tu marca.</strong></p>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- ==============================================
      4. CÓMO FUNCIONA
      ============================================== -->
-<section class="section resultados reveal" id="casos" aria-label="Casos reales">
-  <h2 class="section-title" style="color: var(--verde);">Casos reales<span style="color: var(--white);">.</span></h2>
+<section class="section resultados reveal" id="casos" aria-label="Casos de estudio">
+  <h2 class="section-title" style="color: var(--verde);">Casos de estudio<span style="color: var(--white);">.</span></h2>
 
   <!-- Caso 1: Luisito -->
   <div class="resultados-grid">
   <article class="glass-card resultado-card fade-in">
     <div class="card-film"></div>
     <div class="resultado-header">
-      <div class="resultado-avatar" style="background: var(--verde); color: var(--ds-black); font-size: 1.8rem; font-family: var(--font-display); display: flex; align-items: center; justify-content: center; border-radius: var(--radius-sm);">L</div>
+      <div class="resultado-avatar" style="background: var(--verde); color: #000; font-size: 1.8rem; font-family: var(--font-display); display: flex; align-items: center; justify-content: center; border-radius: var(--radius-sm);">L</div>
       <div class="resultado-info">
         <span class="mono resultado-tag">Rotisería · Mar del Plata</span>
         <h3 class="resultado-nombre">Luisito Playa Grande</h3>
@@ -2357,12 +2632,12 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
   <article class="glass-card resultado-card fade-in fade-in-delay-1">
     <div class="card-film"></div>
     <div class="resultado-header">
-      <div class="resultado-avatar" style="background: var(--verde); color: var(--ds-black); font-size: 1.8rem; font-family: var(--font-display); display: flex; align-items: center; justify-content: center; border-radius: var(--radius-sm);">A</div>
+      <div class="resultado-avatar" style="background: var(--verde); color: #000; font-size: 1.8rem; font-family: var(--font-display); display: flex; align-items: center; justify-content: center; border-radius: var(--radius-sm);">A</div>
       <div class="resultado-info">
         <span class="mono resultado-tag">Verdulería · Mar del Plata</span>
         <h3 class="resultado-nombre">Apolonia</h3>
         <em class="progreso-tag">(en progreso)</em>
-        <a href="https://apolonia.vercel.app" class="resultado-link" target="_blank" rel="noopener">Ver el sitio →</a>
+        <a href="https://verduleria-apolonia-mar-del-plata.vercel.app" class="resultado-link" target="_blank" rel="noopener">Ver el sitio →</a>
         <a href="https://apolonia-brandbook.vercel.app" class="resultado-link" target="_blank" rel="noopener">Brandbook →</a>
       </div>
     </div>
@@ -2387,7 +2662,7 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
   <article class="glass-card resultado-card fade-in fade-in-delay-2">
     <div class="card-film"></div>
     <div class="resultado-header">
-      <div class="resultado-avatar" style="background: var(--verde); color: var(--ds-black); font-size: 1.8rem; font-family: var(--font-display); display: flex; align-items: center; justify-content: center; border-radius: var(--radius-sm);">H</div>
+      <div class="resultado-avatar" style="background: var(--verde); color: #000; font-size: 1.8rem; font-family: var(--font-display); display: flex; align-items: center; justify-content: center; border-radius: var(--radius-sm);">H</div>
       <div class="resultado-info">
         <span class="mono resultado-tag">Mayorista · Mar del Plata</span>
         <h3 class="resultado-nombre">Catálogo Hoco</h3>
@@ -2450,6 +2725,8 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
         <div class="label">A la entrega</div>
       </div>
     </div>
+
+    <p class="pricing-b2b">¿Agencia? Preferencial por volumen — <a href="https://wa.me/5491124063009" target="_blank" rel="noopener">consultame</a></p>
 
     <div class="pricing-includes">
       <h4>Incluye</h4>
@@ -2538,7 +2815,7 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
         <p class="footer-brand"><span>T</span>he Brand Crew</p>
         <p class="footer-cuit">Hecho con <span style="color: var(--terracota);">♥</span></p>
         <div class="footer-social">
-          <a href="https://illya-grytsyk.vercel.app" target="_blank" rel="noopener noreferrer">Illya Grytsyk</a>
+          <a href="https://illya-grytsyk.vercel.app" target="_blank" rel="noopener noreferrer">Illya</a>
           <span class="footer-sep">·</span>
           <a href="https://www.linkedin.com/in/illya-grytsyk/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           <span class="footer-sep">·</span>
@@ -2636,25 +2913,37 @@ window.scrollTo(0, 0);
   /* ==============================================
      HAMBURGER / MOBILE MENU
      ============================================== */
+  function setLinkDelays(open) {
+    var len = mobileLinks.length;
+    mobileLinks.forEach(function(link, i) {
+      var delay = open
+        ? 0.08 + i * 0.05          // abriendo: 1ro primero
+        : 0.08 + (len - 1 - i) * 0.05; // cerrando: último primero
+      link.style.transitionDelay = delay + 's';
+    });
+  }
+
   function openMenu() {
     state.menuOpen = true;
+    setLinkDelays(true);
     mobileMenu.classList.add('is-open');
     mobileMenu.removeAttribute('inert');
     hamburgerBtn.setAttribute('aria-expanded', 'true');
-    document.getElementById('hamburgerMenuIcon').style.display = 'none';
-    document.getElementById('hamburgerCloseIcon').style.display = '';
+    // Body scroll lock con padding-right compensation
+    var scrollW = window.innerWidth - document.documentElement.clientWidth;
+    document.body.style.paddingRight = scrollW + 'px';
     document.body.style.overflow = 'hidden';
     // Focus first link
-    setTimeout(function() { mobileLinks[0]?.focus(); }, 100);
+    setTimeout(function() { mobileLinks[0]?.focus(); }, 200);
   }
 
   function closeMenu() {
     state.menuOpen = false;
+    setLinkDelays(false);
     mobileMenu.classList.remove('is-open');
     mobileMenu.setAttribute('inert', '');
     hamburgerBtn.setAttribute('aria-expanded', 'false');
-    document.getElementById('hamburgerMenuIcon').style.display = '';
-    document.getElementById('hamburgerCloseIcon').style.display = 'none';
+    document.body.style.paddingRight = '';
     document.body.style.overflow = '';
     hamburgerBtn.focus();
   }
@@ -2732,14 +3021,6 @@ window.scrollTo(0, 0);
           shakeInterval = null;
         }
       }
-    }
-
-    // Empujar FAB suavemente al acercarse al footer
-    if (scrollY > docHeight - 400) {
-      var extra = Math.min((scrollY - (docHeight - 600)) * 0.15, 60);
-      fabContainer.style.bottom = (2 + extra) + 'px';
-    } else {
-      fabContainer.style.bottom = '';
     }
 
     // Update progress circle
@@ -3020,6 +3301,19 @@ window.scrollTo(0, 0);
     });
   })();
 
+  // Footer IntersectionObserver — hide FAB when footer enters viewport
+  (function() {
+    const footer = document.querySelector('.footer');
+    const container = document.getElementById('fabContainer');
+    if (!footer || !container) return;
+    const obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        container.classList.toggle('is-hidden-by-footer', entry.isIntersecting);
+      });
+    }, { rootMargin: '0px 0px 0px 0px' });
+    obs.observe(footer);
+  })();
+
   // Inicializar Lucide Icons
   lucide.createIcons();
 })();
@@ -3034,7 +3328,7 @@ window.scrollTo(0, 0);
       btnSecondary.style.setProperty('--mouse-y', y + '%');
     });
   }
-  // Flechas Casos reales
+  // Flechas Casos de estudio
   const grid = document.querySelector('.resultados-grid');
   const prev = document.getElementById('resultadosPrev');
   const next = document.getElementById('resultadosNext');
