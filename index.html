@@ -572,10 +572,12 @@ a:focus-visible {
   justify-content: center;
   align-items: center;
   padding: 2rem clamp(1.25rem, 5vw, 4rem);
-  background: transparent;
+  background: var(--bg);
   position: relative;
   overflow: hidden;
   box-sizing: border-box;
+  isolation: isolate;
+  z-index: 1;
 }
 /* Glassmorphism abstract shapes */
 .hero-shapes {
@@ -2188,7 +2190,7 @@ body::after {
 
 /* Preloader 3D */
 #preloader {
-  position: fixed; inset: 0; z-index: 10000;
+  position: fixed; inset: 0; z-index: 99999;
   background: var(--bg);
   cursor: pointer; overflow: hidden;
   display: flex; align-items: center; justify-content: center;
@@ -2196,6 +2198,7 @@ body::after {
   transform: translateZ(0);
   backface-visibility: hidden;
   isolation: isolate;
+  pointer-events: all;
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
