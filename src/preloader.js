@@ -42,6 +42,9 @@ export function createPreloader({ preloader, fill, hint, doc } = {}) {
     api._completed = true
     if (hint) hint.classList.add('visible')
     if (preloader) preloader.addEventListener('click', api.dismiss)
+    // Latido del core cuando la carga termina
+    const coreTrack = preloader ? preloader.querySelector('.core-track') : null
+    if (coreTrack) coreTrack.classList.add('is-ready')
   }
 
   function dismiss() {

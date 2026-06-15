@@ -9,9 +9,11 @@ describe('createPreloader', () => {
     vi.useFakeTimers()
 
     // Create DOM elements with just enough API for testing
+    const coreTrack = { classList: { add: vi.fn() } }
     preloader = {
       style: {},
       addEventListener: vi.fn(),
+      querySelector: vi.fn((selector) => selector === '.core-track' ? coreTrack : null),
     }
     fill = { style: {} }
     hint = { classList: { add: vi.fn() } }
@@ -73,6 +75,14 @@ describe('createPreloader', () => {
       preloaderModule.complete()
 
       expect(preloader.addEventListener).toHaveBeenCalledWith('click', expect.any(Function))
+    })
+
+    it('should add is-ready class to core-track for heartbeat pulse', () => {
+      preloaderModule = createPreloader({ preloader, fill, hint, doc })
+      preloaderModule.complete()
+
+      const coreTrack = preloader.querySelector('.core-track')
+      expect(coreTrack.classList.add).toHaveBeenCalledWith('is-ready')
     })
 
     it('should not throw if hint is null', () => {

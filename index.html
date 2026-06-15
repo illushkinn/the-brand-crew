@@ -2131,7 +2131,12 @@ body::after {
   box-shadow:
     0 0 6px rgba(255,255,255,0.7),
     0 0 18px rgba(255,255,255,0.2);
-  animation: corePulse 3s ease-in-out infinite;
+  animation: none;
+  transition: box-shadow 0.4s ease;
+}
+/* Latido cuando la barra llega al 100% */
+.core-track.is-ready .diamond-core {
+  animation: coreReadyPulse 0.8s ease-out forwards;
 }
 @keyframes coreDrift {
   0%, 100% { transform: translate(0px, 0px); }
@@ -2140,18 +2145,19 @@ body::after {
   60%      { transform: translate(-3px, 0.5px); }
   80%      { transform: translate(1.5px, 2px); }
 }
-@keyframes corePulse {
-  0%, 100% {
+@keyframes coreReadyPulse {
+  /* Latido de "estás listo" — un solo pulso grande y brillante */
+  0% {
     transform: scale(1);
-    box-shadow:
-      0 0 6px rgba(255,255,255,0.6),
-      0 0 18px rgba(255,255,255,0.15);
+    box-shadow: 0 0 6px rgba(255,255,255,0.6), 0 0 18px rgba(255,255,255,0.15);
   }
   50% {
-    transform: scale(1.25);
-    box-shadow:
-      0 0 10px rgba(255,255,255,0.8),
-      0 0 28px rgba(255,255,255,0.25);
+    transform: scale(2.5);
+    box-shadow: 0 0 20px rgba(255,255,255,1), 0 0 60px rgba(255,255,255,0.4), 0 0 100px rgba(255,255,255,0.2);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 6px rgba(255,255,255,0.6), 0 0 18px rgba(255,255,255,0.15);
   }
 }
 /* Mini cubo para footer */
