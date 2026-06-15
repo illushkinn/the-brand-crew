@@ -879,6 +879,26 @@ body::after {
    ================================================ */
 .problema {
   background: var(--bg);
+  position: relative;
+  overflow: hidden;
+}
+/* Extensión del fondo del hero — formas blur más ampliadas */
+.problema::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 70% at 50% -20%, var(--terracota) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 10%, var(--ochra) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 50% at 20% 20%, var(--verde) 0%, transparent 55%);
+  opacity: 0.15;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+.problema-grid, .problema > h2 {
+  position: relative;
+  z-index: 1;
 }
 .problema-grid {
   display: grid;
@@ -1677,10 +1697,10 @@ body::after {
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  opacity: 0;
-  transform: translateY(20px);
+  opacity: 1;
+  transform: translateY(0);
   transition: opacity 0.4s, transform 0.4s;
-  pointer-events: none;
+  pointer-events: all;
   overscroll-behavior: contain;
 }
 .fab-container.is-visible {
@@ -1688,8 +1708,18 @@ body::after {
   transform: translateY(0);
   pointer-events: all;
 }
+.fab-container.is-hidden {
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+}
 /* Hide elegantly when footer enters viewport — no movement, only fade */
 .fab-container.is-hidden-by-footer {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+/* Cuando esta oculto por footer, tambien aplicar is-hidden */
+.fab-container.is-hidden-by-footer.is-hidden {
   opacity: 0 !important;
   pointer-events: none !important;
 }
@@ -3143,6 +3173,7 @@ window.scrollTo(0, 0);
     if (scrollY > 200) {
       if (!containerVisible) {
         containerVisible = true;
+        fabContainer.classList.remove('is-hidden');
         fabContainer.classList.add('is-visible');
         // Start shake timer for WA FAB (only matters when menu is open)
         if (!shakeInterval) {
@@ -3161,6 +3192,7 @@ window.scrollTo(0, 0);
     } else {
       if (containerVisible) {
         containerVisible = false;
+        fabContainer.classList.add('is-hidden');
         fabContainer.classList.remove('is-visible');
         fabMenu.classList.remove('is-open'); // close menu too
         if (shakeInterval) {
@@ -3296,8 +3328,10 @@ window.scrollTo(0, 0);
           footerVisible = entry.isIntersecting;
           if (footerVisible) {
             fabContainer.classList.remove('is-visible');
+            fabContainer.classList.add('is-hidden');
             fabMenu.classList.remove('is-open');
           } else {
+            fabContainer.classList.remove('is-hidden');
             handleScroll();
           }
         });
