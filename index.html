@@ -42,20 +42,12 @@
 html { scroll-behavior: smooth; scroll-padding-top: 64px; background: var(--bg); overflow-x: hidden; }
 body { font-family: var(--font-body); overflow-x: hidden; background: var(--bg); font-weight: 300; }
 
-/* Desktop: scrollbar 3px terracota
-   WebKit: ::-webkit-scrollbar puro, 3px, sin botones ni corner.
-   Firefox: scrollbar-color para thumb/track estándar. */
+/* Desktop: scrollbar OCULTO — GTK/WSL ignora estilos custom.
+   El scroll funciona con wheel/trackpad/teclado.
+   La aguja (.gradient-line) es el indicador visual. */
 @media (min-width: 768px) {
-  html { overflow-y: scroll; scroll-snap-type: y proximity; }
-  /* Firefox / Chrome 121+ scrollbar-color */
-  html { scrollbar-color: var(--terracota) transparent; }
-  /* WebKit: scrollbar 3px terracota */
-  html::-webkit-scrollbar { width: 3px; }
-  html::-webkit-scrollbar-track { background: transparent; }
-  html::-webkit-scrollbar-thumb { background: var(--terracota); border-radius: 3px; }
-  html::-webkit-scrollbar-thumb:hover { background: var(--terracota-hover); }
-  html::-webkit-scrollbar-button { display: none; width: 0; height: 0; }
-  html::-webkit-scrollbar-corner { display: none; }
+  html { overflow-y: scroll; scroll-snap-type: y proximity; scrollbar-width: none; }
+  html::-webkit-scrollbar { display: none; }
 }
 
 /* Mobile: scrollbar oculto + scroll-snap */
@@ -2195,17 +2187,25 @@ body::after {
   50% { background: linear-gradient(to bottom, #DAA144, #DD614C); }
 }
 
+/* Preloader Wrapper: contexto de apilamiento absoluto */
+#preloader-wrapper {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  z-index: 99999;
+  isolation: isolate;
+  pointer-events: all;
+}
+
 /* Preloader 3D */
 #preloader {
-  position: fixed; inset: 0; z-index: 99999;
+  position: absolute; inset: 0;
   background: var(--bg);
   cursor: pointer; overflow: hidden;
   display: flex; align-items: center; justify-content: center;
   will-change: opacity, transform;
   transform: translateZ(0);
   backface-visibility: hidden;
-  isolation: isolate;
-  pointer-events: all;
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -2536,7 +2536,8 @@ body::after {
 </head>
 <body>
 
-<!-- Preloader 3D -->
+<!-- Preloader Wrapper: isolation de capas absoluta -->
+<div id="preloader-wrapper">
 <div id="preloader">
   <div class="diamond-wrap">
     <div class="cube-3d">
@@ -2555,6 +2556,7 @@ body::after {
     <div class="preloader-bar"><div class="preloader-fill" id="preloader-fill"></div></div>
     <div class="preloader-hint" id="preloader-hint">Adelante</div>
   </div>
+</div>
 </div>
 <script>window.scrollTo(0,0);</script>
 <script type="module">

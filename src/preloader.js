@@ -54,12 +54,19 @@ export function createPreloader({ preloader, fill, hint, doc } = {}) {
     var scrollW = window.innerWidth - document.documentElement.clientWidth
     if (scrollW > 0) document.body.style.paddingRight = scrollW + 'px'
 
+    // Buscar wrapper si existe (para aislamiento de capas en LT Browser)
+    var wrapper = document.getElementById('preloader-wrapper')
+
     preloader.style.opacity = '0'
     preloader.style.transform = 'scale(0.97)'
     preloader.style.transition = 'opacity 0.4s ease, transform 0.4s ease'
     setTimeout(() => {
       preloader.style.display = 'none'
       preloader.style.transform = ''
+      if (wrapper) {
+        wrapper.style.display = 'none'
+        wrapper.style.pointerEvents = 'none'
+      }
       if (doc) {
         doc.classList.remove('preloading')
         // Sacar el padding después que el layout se estabilice
