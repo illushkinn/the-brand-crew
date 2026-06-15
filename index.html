@@ -44,9 +44,11 @@ inject();
 html { scroll-behavior: smooth; scroll-padding-top: 64px; background: var(--bg); overflow-x: hidden; }
 body { font-family: var(--font-body); overflow-x: hidden; background: var(--bg); font-weight: 300; }
 
-/* Desktop: scrollbar de 3px terracota + scroll-snap */
+/* Desktop: scrollbar overlay delgado + scroll-snap
+   overflow-y: auto + scrollbar-gutter: stable evita que
+   el scrollbar empuje el contenido al aparecer/desaparecer */
 @media (hover: hover) and (pointer: fine) {
-  html { overflow-y: scroll; scroll-snap-type: y proximity; scrollbar-width: thin; scrollbar-color: var(--terracota) transparent; }
+  html { overflow-y: auto; scroll-snap-type: y proximity; scrollbar-width: thin; scrollbar-color: var(--terracota) transparent; scrollbar-gutter: stable; }
   html::-webkit-scrollbar { width: 3px; }
   html::-webkit-scrollbar-track { background: transparent; }
   html::-webkit-scrollbar-thumb { background: var(--terracota); border-radius: 3px; }
@@ -1984,9 +1986,6 @@ body::after {
   .resultados-grid {
     display: flex;
     flex-direction: row;
-    overflow-x: auto;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
     gap: 1rem;
     scrollbar-width: none;
   }
@@ -2436,7 +2435,7 @@ body::after {
 
   /* ── Resultados ── */
   .resultados-grid {
-    overflow-x: hidden;
+    overflow-x: visible;
   }
 
   /* ── Steps ── */
