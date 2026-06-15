@@ -555,7 +555,9 @@ a:focus-visible {
    HERO
    ================================================ */
 .hero {
-  min-height: calc(100dvh - 64px);
+  min-height: calc(100dvh - 64px + 8px);
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -623,6 +625,37 @@ a:focus-visible {
   animation-name: heroFloatDiag;
   filter: blur(45px);
   opacity: 0.50;
+}
+/* Dark black spots */
+.hero-shape:nth-child(5) {
+  width: 420px;
+  height: 380px;
+  border-radius: 45% / 55%;
+  background: var(--color-bg-hero);
+  top: 20%;
+  left: -15%;
+  animation-delay: -3s;
+  animation-name: heroFloatSlow;
+  filter: blur(60px);
+  opacity: 0.70;
+}
+.hero-shape:nth-child(6) {
+  width: 320px;
+  height: 280px;
+  border-radius: 55% / 45%;
+  background: var(--color-bg-overlay);
+  bottom: -10%;
+  right: -12%;
+  animation-delay: -9s;
+  animation-name: heroPulse;
+  filter: blur(55px);
+  opacity: 0.55;
+}
+@keyframes heroFloatSlow {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(-40px, -20px) scale(1.05); }
+  50% { transform: translate(30px, 25px) scale(0.95); }
+  75% { transform: translate(-20px, -35px) scale(1.03); }
 }
 @keyframes heroFloat {
   0%, 100% { transform: translate(0, 0) scale(1); }
@@ -1977,7 +2010,9 @@ body::after {
   }
   /* Hero: exactamente la ventana visible, centrado */
   .hero {
-    min-height: calc(100dvh - 64px);
+    min-height: calc(100dvh - 64px + 8px);
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -2488,6 +2523,8 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
      ============================================== -->
 <section class="hero reveal" id="inicio" aria-label="Hero principal">
   <div class="hero-shapes" aria-hidden="true">
+    <div class="hero-shape"></div>
+    <div class="hero-shape"></div>
     <div class="hero-shape"></div>
     <div class="hero-shape"></div>
     <div class="hero-shape"></div>
