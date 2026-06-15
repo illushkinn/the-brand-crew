@@ -2115,6 +2115,11 @@ section::before {
   transform: translateZ(0);
   backface-visibility: hidden;
   isolation: isolate;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
 }
 .preloader-glass { position: absolute; inset: 0; background: radial-gradient(ellipse 30% 40% at 50% 50%, rgba(255,255,255,0.03) 0%, transparent 70%); pointer-events: none; }
 
@@ -2187,35 +2192,35 @@ section::before {
 /* Cubo: 6 caras cuadradas de 80px con backface */
 .cube-face {
   position: absolute;
-  top: 20px;
-  left: 20px;
-  width: 80px;
-  height: 80px;
+  top: 24px;
+  left: 24px;
+  width: 72px;
+  height: 72px;
   backface-visibility: hidden;
-  border: 1px solid rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
 }
 .cube-front  {
-  background: rgba(221,97,76,0.70);
+  background: rgba(221,97,76,0.60);
   transform: translateZ(40px);
 }
 .cube-back   {
-  background: rgba(221,97,76,0.35);
+  background: rgba(221,97,76,0.30);
   transform: rotateY(180deg) translateZ(40px);
 }
 .cube-right  {
-  background: rgba(122,184,0,0.60);
+  background: rgba(122,184,0,0.50);
   transform: rotateY(90deg) translateZ(40px);
 }
 .cube-left   {
-  background: rgba(122,184,0,0.50);
+  background: rgba(122,184,0,0.40);
   transform: rotateY(-90deg) translateZ(40px);
 }
 .cube-top    {
-  background: rgba(218,161,68,0.60);
+  background: rgba(218,161,68,0.50);
   transform: rotateX(90deg) translateZ(40px);
 }
 .cube-bottom {
-  background: rgba(218,161,68,0.40);
+  background: rgba(218,161,68,0.30);
   transform: rotateX(-90deg) translateZ(40px);
 }
 @keyframes cube3d {
