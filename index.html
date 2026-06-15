@@ -555,9 +555,9 @@ a:focus-visible {
    HERO
    ================================================ */
 .hero {
-  height: calc(100vh - 64px);
-  height: calc(100dvh - 64px);
-  height: calc(100svh - 64px);
+  height: calc(100vh - 64px - env(safe-area-inset-top, 0px));
+  height: calc(100dvh - 64px - env(safe-area-inset-top, 0px));
+  height: calc(100svh - 64px - env(safe-area-inset-top, 0px));
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -2010,9 +2010,9 @@ body::after {
   }
   /* Hero: exactamente la ventana visible, centrado */
   .hero {
-    height: calc(100vh - 64px);
-    height: calc(100dvh - 64px);
-    height: calc(100svh - 64px);
+    height: calc(100vh - 64px - env(safe-area-inset-top, 0px));
+    height: calc(100dvh - 64px - env(safe-area-inset-top, 0px));
+    height: calc(100svh - 64px - env(safe-area-inset-top, 0px));
     display: flex;
     flex-direction: column;
     justify-content: center;
