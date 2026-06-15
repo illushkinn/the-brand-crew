@@ -44,23 +44,12 @@ inject();
 html { scroll-behavior: smooth; scroll-padding-top: 64px; background: var(--bg); overflow-x: hidden; }
 body { font-family: var(--font-body); overflow-x: hidden; background: var(--bg); font-weight: 300; }
 
-/* Desktop: scrollbar 3px terracota
-   WebKit (Chrome/Edge/Safari): solo ::-webkit-scrollbar puro,
-   SIN scrollbar-width estandar — evita que Chrome mezcle
-   un track de 6px con un thumb de 3px (eso crea el falso
-   'scrollbar entre aguja y scrollbar').
-   Firefox: via @-moz-document con scrollbar-width + color */
+/* Desktop: scrollbar thin terracota
+   Sin ::-webkit-scrollbar — en Linux/Chrome GTK lo ignora
+   y renderiza el track nativo encima. Usamos scrollbar-width
+   + scrollbar-color (estándar, Chrome 121+, Firefox).  */
 @media (min-width: 768px) {
-  html { overflow-y: scroll; scroll-snap-type: y proximity; }
-  html::-webkit-scrollbar { width: 3px; }
-  html::-webkit-scrollbar-track { background: transparent; }
-  html::-webkit-scrollbar-thumb { background: var(--terracota); border-radius: 3px; }
-  html::-webkit-scrollbar-thumb:hover { background: var(--terracota-hover); }
-  html::-webkit-scrollbar-button { display: none; width: 0; height: 0; }
-  html::-webkit-scrollbar-corner { display: none; }
-}
-@-moz-document url-prefix() {
-  html { scrollbar-width: thin; scrollbar-color: var(--terracota) transparent; }
+  html { overflow-y: scroll; scroll-snap-type: y proximity; scrollbar-width: thin; scrollbar-color: var(--terracota) transparent; }
 }
 
 /* Mobile: scrollbar oculto + scroll-snap */
