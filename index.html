@@ -45,15 +45,16 @@ html { scroll-behavior: smooth; scroll-padding-top: 64px; background: var(--bg);
 body { font-family: var(--font-body); overflow-x: hidden; background: var(--bg); font-weight: 300; }
 
 /* Desktop: scrollbar thin terracota siempre visible
-   overflow-y: scroll evita que el hero se mueva al
-   desaparecer el preloader. Sin ::-webkit-scrollbar
-   para evitar doble scrollbar en Linux/Chrome */
-@media (hover: hover) and (pointer: fine) {
+   overflow-y: scroll evita que el hero se mueva.
+   ::-webkit-scrollbar {width:0} evita doble scrollbar
+   en Linux/Chrome compitiendo con scrollbar-width estándar */
+@media (min-width: 768px) {
   html { overflow-y: scroll; scroll-snap-type: y proximity; scrollbar-width: thin; scrollbar-color: var(--terracota) transparent; }
+  html::-webkit-scrollbar { width: 0; }
 }
 
 /* Mobile: scrollbar oculto + scroll-snap */
-@media (hover: none) and (pointer: coarse) {
+@media (max-width: 767px) {
   html { overflow-y: auto; scroll-snap-type: y proximity; scrollbar-width: none; }
   html::-webkit-scrollbar { display: none; }
 }

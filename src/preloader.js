@@ -49,13 +49,26 @@ export function createPreloader({ preloader, fill, hint, doc } = {}) {
 
   function dismiss() {
     if (!preloader) return
+    // Compensar scrollbar width para que el hero NO se mueva
+    // al pasar de overflow:hidden → overflow-y:scroll
+    var scrollW = window.innerWidth - document.documentElement.clientWidth
+    if (scrollW > 0) document.body.style.paddingRight = scrollW + 'px'
+
     preloader.style.opacity = '0'
     preloader.style.transform = 'scale(0.97)'
     preloader.style.transition = 'opacity 0.4s ease, transform 0.4s ease'
     setTimeout(() => {
       preloader.style.display = 'none'
       preloader.style.transform = ''
-      if (doc) doc.classList.remove('preloading')
+      if (doc) {
+        doc.classList.remove('preloading')
+        // Sacar el padding después que el layout se estabilice
+        requestAnimationFrame(function() {
+          requestAnimationFrame(function() {
+            document.body.style.paddingRight = ''
+          })
+        })
+      }
     }, 450)
   }
 
