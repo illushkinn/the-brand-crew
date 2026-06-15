@@ -42,7 +42,8 @@ inject();
 /* ------ RESET ------ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; scroll-padding-top: 64px; background: var(--bg); overflow-x: hidden; }
-body { font-family: var(--font-body); overflow-x: hidden; background: var(--bg); font-weight: 300; }
+body { font-family: var(--font-body); overflow-x: hidden; background: var(--bg); font-weight: 300; scrollbar-width: none; }
+body::-webkit-scrollbar { display: none; }
 
 /* Desktop: scrollbar de 3px terracota */
 @media (hover: hover) and (pointer: fine) {
@@ -1986,7 +1987,6 @@ body::after {
     flex-direction: row;
     overflow-x: auto;
     overflow-y: hidden;
-    scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     gap: 1rem;
     scrollbar-width: none;
@@ -1994,7 +1994,6 @@ body::after {
   .resultados-grid::-webkit-scrollbar { display: none; }
   .resultados-grid .glass-card {
     flex: 0 0 85vw;
-    scroll-snap-align: start;
   }
   .resultados-nav { display: flex; }
 
