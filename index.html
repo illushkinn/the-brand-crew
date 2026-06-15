@@ -656,59 +656,22 @@ a:focus-visible {
   75% { transform: translate(-20px, -40px) scale(1.06); }
 }
 
-/* ── Section background gradients (per-section atmosphere) ── */
-section {
+/* ── Gradiente único de fondo fluido en toda la página ── */
+body {
   position: relative;
 }
-section::before {
+body::before {
   content: '';
   position: absolute;
   inset: 0;
+  background:
+    radial-gradient(ellipse 65% 50% at 18% 12%, var(--terracota) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 45% at 78% 28%, var(--ochra) 0%, transparent 55%),
+    radial-gradient(ellipse 35% 38% at 48% 52%, var(--verde) 0%, transparent 60%),
+    radial-gradient(ellipse 42% 48% at 25% 82%, var(--terracota) 0%, transparent 55%);
+  opacity: 0.20;
   pointer-events: none;
-}
-
-/* Problema: warm, human — terracota + ocre */
-.problema::before {
-  background:
-    radial-gradient(ellipse 40% 50% at 15% 25%, var(--terracota) 0%, transparent 60%),
-    radial-gradient(ellipse 25% 35% at 80% 70%, var(--ochra) 0%, transparent 55%);
-  opacity: 0.06;
-}
-
-/* Cómo funciona: energy, action — terracota + verde */
-.como-funciona::before {
-  background:
-    radial-gradient(ellipse 35% 40% at 25% 45%, var(--terracota) 0%, transparent 55%),
-    radial-gradient(ellipse 20% 30% at 70% 35%, var(--verde) 0%, transparent 55%);
-  opacity: 0.05;
-}
-
-/* Resultados: growth, success — verde + terracota */
-.resultados::before {
-  background:
-    radial-gradient(ellipse 35% 45% at 50% 35%, var(--verde) 0%, transparent 60%),
-    radial-gradient(ellipse 20% 25% at 20% 80%, var(--terracota) 0%, transparent 50%);
-  opacity: 0.05;
-}
-
-/* Pricing: value, premium — ocre + terracota */
-.pricing::before {
-  background:
-    radial-gradient(ellipse 30% 40% at 50% 25%, var(--ochra) 0%, transparent 55%),
-    radial-gradient(ellipse 25% 35% at 75% 70%, var(--terracota) 0%, transparent 55%);
-  opacity: 0.05;
-}
-
-/* FAQ: subtle, calm — single terracota */
-.faq::before {
-  background:
-    radial-gradient(ellipse 20% 25% at 50% 50%, var(--terracota) 0%, transparent 50%);
-  opacity: 0.04;
-}
-
-/* CTA final: clean, no gradient */
-.cta-final::before {
-  display: none;
+  z-index: 0;
 }
 
 /* Hero keeps its existing shapes, no pseudo-element needed */
@@ -2126,7 +2089,7 @@ section::before {
 }
 .preloader-glass { position: absolute; inset: 0; background: radial-gradient(ellipse 30% 40% at 50% 50%, rgba(255,255,255,0.03) 0%, transparent 70%); pointer-events: none; }
 
-/* Cube 3D — CSS 3D cube */
+/* Cube 3D — Glassmorphic walls */
 .diamond-wrap {
   position: relative;
   width: 120px;
@@ -2140,10 +2103,13 @@ section::before {
 .cube-3d {
   position: absolute;
   inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transform-style: preserve-3d;
   animation: cube3d 8s linear infinite;
 }
-/* Core de luz — el punto late + flota en micro-órbita */
+/* Core de luz — micro-órbita sutil */
 .core-track {
   position: absolute;
   inset: 0;
@@ -2165,7 +2131,6 @@ section::before {
   animation: corePulse 3s ease-in-out infinite;
 }
 @keyframes coreDrift {
-  /* Mapa orbital suave: ±3px en un loop de 8s */
   0%, 100% { transform: translate(0px, 0px); }
   20%      { transform: translate(2.5px, -1.5px); }
   40%      { transform: translate(-1px, -3px); }
@@ -2186,45 +2151,55 @@ section::before {
       0 0 28px rgba(255,255,255,0.25);
   }
 }
-/* Mini diamante para footer */
+/* Mini cubo para footer */
 .diamond--sm {
   transform: scale(0.35);
   transform-origin: center;
   margin: 0 auto;
 }
-/* Cubo: 6 caras cuadradas de 80px con backface */
+/* Glassmorphic cube faces */
 .cube-face {
   position: absolute;
-  top: 24px;
-  left: 24px;
-  width: 72px;
-  height: 72px;
+  top: 20px;
+  left: 20px;
+  width: 80px;
+  height: 80px;
   backface-visibility: hidden;
-  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
 }
-.cube-front  {
-  background: rgba(221,97,76,0.60);
+.cube-front {
   transform: translateZ(40px);
+  background: linear-gradient(135deg, rgba(221,97,76,0.15), rgba(255,255,255,0.03));
+  box-shadow: inset 0 0 20px rgba(221,97,76,0.2);
 }
-.cube-back   {
-  background: rgba(221,97,76,0.30);
+.cube-back {
   transform: rotateY(180deg) translateZ(40px);
+  background: linear-gradient(135deg, rgba(221,97,76,0.08), rgba(255,255,255,0.02));
+  box-shadow: inset 0 0 20px rgba(221,97,76,0.1);
 }
-.cube-right  {
-  background: rgba(122,184,0,0.50);
+.cube-right {
   transform: rotateY(90deg) translateZ(40px);
+  background: linear-gradient(135deg, rgba(122,184,0,0.15), rgba(255,255,255,0.03));
+  box-shadow: inset 0 0 20px rgba(122,184,0,0.2);
 }
-.cube-left   {
-  background: rgba(122,184,0,0.40);
+.cube-left {
   transform: rotateY(-90deg) translateZ(40px);
+  background: linear-gradient(135deg, rgba(122,184,0,0.1), rgba(255,255,255,0.02));
+  box-shadow: inset 0 0 20px rgba(122,184,0,0.15);
 }
-.cube-top    {
-  background: rgba(218,161,68,0.50);
+.cube-top {
   transform: rotateX(90deg) translateZ(40px);
+  background: linear-gradient(135deg, rgba(218,161,68,0.12), rgba(255,255,255,0.03));
+  box-shadow: inset 0 0 20px rgba(218,161,68,0.15);
 }
 .cube-bottom {
-  background: rgba(218,161,68,0.30);
   transform: rotateX(-90deg) translateZ(40px);
+  background: linear-gradient(135deg, rgba(218,161,68,0.08), rgba(255,255,255,0.02));
+  box-shadow: inset 0 0 20px rgba(218,161,68,0.1);
 }
 @keyframes cube3d {
   0%   { transform: rotateX(-15deg) rotateY(0deg)   translateY(0px);  }
