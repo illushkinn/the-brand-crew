@@ -1964,6 +1964,13 @@ body::after {
     pointer-events: all !important;
   }
 
+  /* ── Sections: no fullscreen en mobile, más natural ── */
+  .hero, .problema, .resultados, .como-funciona, .pricing, .faq, .cta-final {
+    min-height: auto;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
   /* ── Footer ── */
   .footer {
     background: transparent;
