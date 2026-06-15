@@ -2134,12 +2134,18 @@ section::before {
   transform-style: preserve-3d;
   animation: diamond3d 5s linear infinite;
 }
-/* Core de luz — punto fijo en el centro, el diamante gira a su alrededor */
-.diamond-core {
+/* Core de luz — el punto late + flota en micro-órbita */
+.core-track {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 1;
+  animation: coreDrift 8s ease-in-out infinite;
+}
+.diamond-core {
   width: 5px;
   height: 5px;
   border-radius: 50%;
@@ -2147,19 +2153,25 @@ section::before {
   box-shadow:
     0 0 6px rgba(255,255,255,0.7),
     0 0 18px rgba(255,255,255,0.2);
-  z-index: 1;
-  pointer-events: none;
   animation: corePulse 3s ease-in-out infinite;
+}
+@keyframes coreDrift {
+  /* Mapa orbital suave: ±3px en un loop de 8s */
+  0%, 100% { transform: translate(0px, 0px); }
+  20%      { transform: translate(2.5px, -1.5px); }
+  40%      { transform: translate(-1px, -3px); }
+  60%      { transform: translate(-3px, 0.5px); }
+  80%      { transform: translate(1.5px, 2px); }
 }
 @keyframes corePulse {
   0%, 100% {
-    transform: translate(-50%, -50%) scale(1);
+    transform: scale(1);
     box-shadow:
       0 0 6px rgba(255,255,255,0.6),
       0 0 18px rgba(255,255,255,0.15);
   }
   50% {
-    transform: translate(-50%, -50%) scale(1.25);
+    transform: scale(1.25);
     box-shadow:
       0 0 10px rgba(255,255,255,0.8),
       0 0 28px rgba(255,255,255,0.25);
@@ -2413,7 +2425,7 @@ section::before {
       <div class="face face-bot-l"></div>
       <div class="face face-bot-b"></div>
     </div>
-    <div class="diamond-core"></div>
+    <div class="core-track"><div class="diamond-core"></div></div>
   </div>
   <div class="preloader-glass"></div>
   <div id="preloader-ui">
