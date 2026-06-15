@@ -41,14 +41,25 @@ inject();
 
 /* ------ RESET ------ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; scroll-padding-top: 64px; overscroll-behavior: none; background: var(--bg); overflow-x: hidden; scrollbar-width: 8px; scrollbar-color: var(--terracota) transparent; }
-html::-webkit-scrollbar { width: 8px; }
-html::-webkit-scrollbar-track { background: rgba(0,0,0,0.3); border-radius: 4px; }
-html::-webkit-scrollbar-thumb { background: var(--terracota); border-radius: 4px; }
-html::-webkit-scrollbar-thumb:hover { background: var(--terracota-hover); }
-html.preloading { overflow: hidden; scrollbar-width: none; }
-html.preloading::-webkit-scrollbar { display: none; }
+html { scroll-behavior: smooth; scroll-padding-top: 64px; background: var(--bg); overflow-x: hidden; }
 body { font-family: var(--font-body); overflow-x: hidden; background: var(--bg); font-weight: 300; }
+
+/* Desktop: scrollbar visible pero fino (para agarrar con mouse) */
+@media (hover: hover) and (pointer: fine) {
+  html { scrollbar-width: 2px; scrollbar-color: var(--terracota) transparent; }
+  html::-webkit-scrollbar { width: 2px; }
+  html::-webkit-scrollbar-track { background: transparent; }
+  html::-webkit-scrollbar-thumb { background: var(--terracota); border-radius: 2px; opacity: 0.3; }
+}
+
+/* Mobile: scrollbar oculto (scroll con dedo, sin barra visible) */
+@media (hover: none) and (pointer: coarse) {
+  html { scrollbar-width: none; }
+  html::-webkit-scrollbar { display: none; }
+}
+
+html.preloading { overflow: hidden; }
+html.preloading body { overflow: hidden; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -1975,10 +1986,9 @@ body::after {
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     gap: 1rem;
-    scrollbar-width: thin;
+    scrollbar-width: none;
   }
-  .resultados-grid::-webkit-scrollbar { height: 4px; }
-  .resultados-grid::-webkit-scrollbar-thumb { background: var(--terracota); border-radius: 2px; }
+  .resultados-grid::-webkit-scrollbar { display: none; }
   .resultados-grid .glass-card {
     flex: 0 0 85vw;
     scroll-snap-align: start;
@@ -2152,7 +2162,7 @@ body::after {
 /* ===== GRADIENT VERTICAL LINE — "La aguja que teje fino" ===== */
 .gradient-line {
   position: fixed;
-  right: 8px;
+  right: 16px;
   bottom: 0;
   width: 4px;
   height: 26vh;
