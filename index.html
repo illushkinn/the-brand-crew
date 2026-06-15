@@ -44,18 +44,18 @@ inject();
 html { scroll-behavior: smooth; scroll-padding-top: 64px; background: var(--bg); overflow-x: hidden; }
 body { font-family: var(--font-body); overflow-x: hidden; background: var(--bg); font-weight: 300; }
 
-/* Desktop: scrollbar de 3px terracota — overflow-y: scroll fuerza el scrollbar siempre presente */
+/* Desktop: scrollbar de 3px terracota + scroll-snap */
 @media (hover: hover) and (pointer: fine) {
-  html { overflow-y: scroll; scrollbar-width: thin; scrollbar-color: var(--terracota) transparent; }
+  html { overflow-y: scroll; scroll-snap-type: y proximity; scrollbar-width: thin; scrollbar-color: var(--terracota) transparent; }
   html::-webkit-scrollbar { width: 3px; }
   html::-webkit-scrollbar-track { background: transparent; }
   html::-webkit-scrollbar-thumb { background: var(--terracota); border-radius: 3px; }
   html::-webkit-scrollbar-thumb:hover { background: var(--terracota-hover); }
 }
 
-/* Mobile: scrollbar oculto */
+/* Mobile: scrollbar oculto + scroll-snap */
 @media (hover: none) and (pointer: coarse) {
-  html { overflow-y: auto; scrollbar-width: none; }
+  html { overflow-y: auto; scroll-snap-type: y proximity; scrollbar-width: none; }
   html::-webkit-scrollbar { display: none; }
 }
 
