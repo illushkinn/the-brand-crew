@@ -1011,6 +1011,11 @@ body::after {
   display: flex;
   align-items: center;
   justify-content: center;
+  animation: stepPulse 3s ease-in-out infinite;
+}
+@keyframes stepPulse {
+  0%, 100% { box-shadow: 0 2px 12px rgba(0,0,0,0.15), 0 0 20px rgba(255,255,255,0.1); }
+  50% { box-shadow: 0 2px 12px rgba(0,0,0,0.15), 0 0 30px rgba(255,255,255,0.2); }
 }
 .step-line {
   display: none;
@@ -1034,9 +1039,8 @@ body::after {
   display: grid;
   place-items: center;
   border: none;
-  background: radial-gradient(circle at center, #fff 0%, rgba(255,255,255,0.4) 40%, transparent 70%);
-  box-shadow: 0 0 6px rgba(255,255,255,0.7), 0 0 18px rgba(255,255,255,0.2);
-  color: var(--white);
+  background: var(--white);
+  color: var(--bg);
   font-size: 1.2rem;
   line-height: 1;
   padding: 0;
