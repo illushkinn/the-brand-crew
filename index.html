@@ -25,6 +25,9 @@ html { scrollbar-width: none; }
 html::-webkit-scrollbar { width: 0px; height: 0px; background: transparent; display: none; }
 html::-webkit-scrollbar-thumb { display: none; }
 html::-webkit-scrollbar-track { display: none; }
+html { -ms-overflow-style: none; }
+body { overflow-y: auto; scrollbar-width: none; }
+body::-webkit-scrollbar { display: none; }
 html.preloading { overflow: hidden; }
 html.preloading body { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
