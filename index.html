@@ -287,10 +287,25 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   transform: scale(1.02);
   box-shadow: var(--shadow-button-hover);
 }
-.btn-empecemos.btn-lg {
+  .btn-empecemos.btn-lg {
   padding: 0.85rem 2rem;
   font-size: 1.05rem;
   border-radius: var(--radius-md);
+}
+  .btn-outline {
+  background: transparent;
+  color: var(--white);
+  border: 1.5px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: var(--transition-all);
+}
+  .btn-outline:hover, .btn-outline:focus-visible {
+  background: var(--glass-bg);
+  border-color: var(--terracota);
+  color: var(--white);
+  transform: scale(1.02);
 }
 .mobile-link-empecemos {
   display: inline-flex !important;
@@ -2479,6 +2494,14 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
   <div class="hero-content">
     <h1 class="hero-title">Páginas web que <span class="text-terracota">garpan</span></h1>
     <p class="hero-sub">Para proyectos que <span class="text-white">laburan</span></p>
+    <div class="hero-actions">
+      <a href="https://wa.me/5491124063009" target="_blank" rel="noopener" class="btn btn-empecemos btn-lg">
+        Quiero estar online
+      </a>
+      <a href="https://wa.me/5491124063009" target="_blank" rel="noopener" class="btn btn-outline btn-lg">
+        Dale, charlemos
+      </a>
+    </div>
     <p class="hero-meta">
       Diseño + desarrollo
       <span class="dot-sep" aria-hidden="true"></span>
@@ -2671,7 +2694,7 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
       </ul>
     </div>
     <a href="https://wa.me/5491124063009" target="_blank" rel="noopener" class="btn btn-empecemos btn-lg" style="width:100%;justify-content:center;">
-      Quiero mi página
+      Quiero estar online
     </a>
   </div>
 </section>
