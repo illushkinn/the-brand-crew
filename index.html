@@ -1565,16 +1565,16 @@ body::after {
   line-height: 1;
   transition: opacity 0.2s;
   border-radius: var(--radius-round);
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: var(--shadow-glow);
+  background: transparent;
+  border: none;
+  box-shadow: none;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
+  position: relative;
+  z-index: 10001;
 }
 .fab-trigger:hover {
   opacity: 0.8;
@@ -2731,8 +2731,8 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
       <i data-lucide="arrow-up" class="arrow-icon"></i>
     </div>
   </div>
-  <button class="fab-trigger" id="fabTrigger" aria-label="Abrir menú">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <button class="fab-trigger" id="fabTrigger" aria-label="Abrir menú" onclick="var m = document.getElementById('fabMenu'); m.classList.toggle('is-open'); console.log('FAB inline click');">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="pointer-events: none;">
       <circle cx="12" cy="12" r="1"></circle>
       <circle cx="12" cy="5" r="1"></circle>
       <circle cx="12" cy="19" r="1"></circle>
