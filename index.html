@@ -1505,8 +1505,8 @@ body::after {
 }
 .progress-circle .fg-circle {
   stroke: var(--terracota);
-  stroke-dasharray: 100 100;
-  stroke-dashoffset: 100;
+  stroke-dasharray: 106.8 106.8;
+  stroke-dashoffset: 106.8;
   transition: stroke-dashoffset 0.1s;
   stroke-linecap: round;
 }
@@ -2858,8 +2858,8 @@ window.scrollTo(0, 0);
       }
     }
     if (docHeight > 0) {
-      const pct = Math.min((scrollY / docHeight) * 100, 100);
-      progressFg.style.strokeDashoffset = 100 - pct;
+      const pct = Math.min((scrollY / docHeight) * 106.8, 106.8);
+      progressFg.style.strokeDashoffset = 106.8 - pct;
     }
     const stackLines = document.querySelectorAll('.stack-line');
     const sections = document.querySelectorAll('section');
