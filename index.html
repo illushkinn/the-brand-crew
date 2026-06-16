@@ -997,25 +997,17 @@ body::after {
   width: 72px;
   height: 72px;
   border-radius: 20px;
-  background: var(--glass-bg);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  color: var(--white);
+  background: transparent;
+  color: var(--terracota);
   font-family: var(--font-body);
   font-weight: 500;
   font-size: 2rem;
   position: relative;
   z-index: 2;
-  border: 1px solid var(--glass-border);
-  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+  border: 2px solid var(--terracota);
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: stepPulse 3s ease-in-out infinite;
-}
-@keyframes stepPulse {
-  0%, 100% { box-shadow: 0 2px 12px rgba(0,0,0,0.15), 0 0 20px rgba(255,255,255,0.1); }
-  50% { box-shadow: 0 2px 12px rgba(0,0,0,0.15), 0 0 30px rgba(255,255,255,0.2); }
 }
 .step-line {
   display: none;
@@ -1038,13 +1030,11 @@ body::after {
 .b2b-step .b2b-number {
   display: grid;
   place-items: center;
-  border: none;
-  background: var(--white);
-  color: var(--bg);
-  font-size: 1.2rem;
+  border-color: var(--verde);
+  color: var(--verde);
+  font-size: 1.6rem;
   line-height: 1;
   padding: 0;
-  border-radius: 50%;
 }
 .b2b-step .step-content h3 {
   color: var(--color-heading);
@@ -2804,6 +2794,10 @@ window.scrollTo(0, 0);
     }
   }
   hamburgerBtn.addEventListener('click', toggleMenu);
+  hamburgerBtn.addEventListener('touchstart', function(e) {
+    e.preventDefault();
+    toggleMenu();
+  }, {passive: false});
   mobileLinks.forEach(function(link) {
     link.addEventListener('click', function() {
       closeMenu();
