@@ -1523,7 +1523,7 @@ body::after {
   position: fixed;
   bottom: calc(2px + env(safe-area-inset-bottom, 0px));
   right: calc(20px + env(safe-area-inset-right, 0px));
-  z-index: 900;
+  z-index: 9999;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1531,7 +1531,7 @@ body::after {
   opacity: 1;
   transform: translateY(0);
   transition: opacity 0.4s, transform 0.4s;
-  pointer-events: all;
+  pointer-events: auto;
   overscroll-behavior: contain;
 }
 .fab-container.is-visible {
@@ -2910,11 +2910,13 @@ window.scrollTo(0, 0);
     }
   });
   let fabMenuOpen = false;
+  console.log('FAB Trigger:', fabTrigger, 'FAB Menu:', fabMenu);
   fabTrigger.addEventListener('click', function(e) {
     e.preventDefault();
     e.stopPropagation();
     fabMenuOpen = !fabMenuOpen;
     fabMenu.classList.toggle('is-open');
+    console.log('FAB clicked, menu open:', fabMenuOpen);
     if (fabMenuOpen) {
       whatsappFab.style.pointerEvents = 'none';
       setTimeout(() => { whatsappFab.style.pointerEvents = ''; }, 300);
