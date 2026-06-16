@@ -1519,6 +1519,7 @@ body::after {
   width: 1.1rem;
   height: 1.1rem;
   transition: transform 0.3s;
+  pointer-events: none;
 }
 .progress-circle:hover .arrow-icon {
   transform: translate(-50%, -50%) translateY(-2px);
@@ -2723,7 +2724,7 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
       <div class="stack-line" data-section="5" title="FAQ"></div>
       <div class="stack-line" data-section="6" title="Contacto"></div>
     </div>
-    <div class="progress-circle" id="progressCircle" role="button" aria-label="Volver al inicio" tabindex="0" title="Volver al inicio">
+    <div class="progress-circle" id="progressCircle" role="button" aria-label="Volver al inicio" tabindex="0" title="Volver al inicio" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); console.log('Arrow clicked');">
       <svg viewBox="0 0 40 40">
         <circle class="bg-circle" cx="20" cy="20" r="17"/>
         <circle class="fg-circle" id="progressFg" cx="20" cy="20" r="17"/>
