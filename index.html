@@ -1420,7 +1420,7 @@ body::after {
   z-index: 900;
   width: 44px;
   height: 44px;
-  border-radius: var(--radius-round);
+  border-radius: var(--radius-md);
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
   backdrop-filter: blur(12px);
@@ -2725,7 +2725,7 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
           <a href="https://illya-grytsyk.vercel.app" target="_blank" rel="noopener noreferrer">Illya</a>
           <span class="footer-sep">·</span>
           <a href="/privacidad">Privacidad</a>
-  </article>
+        </div>
       </div>
     </div>
   </footer>
@@ -2810,6 +2810,12 @@ window.scrollTo(0, 0);
   mobileMenu.addEventListener('click', function(e) {
     if (e.target === mobileMenu) {
       closeMenu();
+    }
+  });
+  document.addEventListener('mousedown', function(e) {
+    if (e.button === 2) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   });
   let scrollToTopVisible = false;
