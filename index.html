@@ -8,66 +8,28 @@
 <title>The Brand Crew</title>
 <meta name="description" content="Páginas web que garpan, para proyectos que laburan. Diseño + desarrollo + dominio + hosting desde $400.000 ARS. Partner white label para agencias.">
 <meta name="theme-color" content="#121212">
-
 <meta name="google-site-verification" content="k-kPS76zKdKwT-18dhJwvxuK56oZXsaMpiBEeOmjuQA" />
-
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-
-<!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rethink+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Grand+Hotel&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-
-<!-- Lucide Icons -->
-<script defer src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-
-<!-- Phosphor Icons -->
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/index.js"></script>
-<!-- Vercel Web Analytics -->
-<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
-<script defer src="/_vercel/insights/script.js"></script>
-
-<!-- Vercel Speed Insights -->
-<script>window.si=window.si||function(){(window.siq=window.siq||[]).push(arguments);};</script>
-<script defer src="/_vercel/speed-insights/script.js"></script>
-
 <style>
-/* ===================================================
-   THE BRAND CREW — Site Styles
-   Brutalismo + Glassmorphism
-   =================================================== */
-
-/* ------ RESET ------ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; scroll-padding-top: 64px; background: var(--bg); overflow-x: hidden; }
 body { font-family: var(--font-body); overflow-x: hidden; background: var(--bg); font-weight: 300; }
-
-/* Desktop: scrollbar 3px terracota — override absoluto */
-@media (min-width: 768px) {
-  html { overflow-y: scroll; scroll-snap-type: y proximity; }
-  /* Chrome/Edge/Safari: 3px terracota, track invisible */
-  html::-webkit-scrollbar { width: 3px !important; }
-  html::-webkit-scrollbar-track { background: transparent !important; }
-  html::-webkit-scrollbar-thumb { background: var(--terracota) !important; border-radius: 3px !important; }
-  /* Firefox: thin terracota */
-  html { scrollbar-width: thin !important; scrollbar-color: var(--terracota) transparent !important; }
-}
-
-/* Mobile: scrollbar oculto + scroll-snap */
-@media (max-width: 767px) {
-  html { overflow-y: auto; scroll-snap-type: y proximity; scrollbar-width: none; }
-  html::-webkit-scrollbar { display: none; }
-}
-
+html { overflow-y: scroll; scroll-behavior: smooth; }
+html { scrollbar-width: none; }
+html::-webkit-scrollbar { width: 0px; height: 0px; background: transparent; display: none; }
+html::-webkit-scrollbar-thumb { display: none; }
+html::-webkit-scrollbar-track { display: none; }
 html.preloading { overflow: hidden; }
 html.preloading body { overflow: hidden; }
-
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .resultados-grid { scroll-snap-type: none; }
 }
-
-/* 360x740 — ultra compact */
 @media (max-width: 380px) {
   h1 { font-size: clamp(1.8rem, 8vw, 2.5rem); }
   h2 { font-size: clamp(1.4rem, 6vw, 2rem); }
@@ -96,14 +58,8 @@ p { text-wrap: pretty; }
 img, svg { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; -webkit-focus-ring-color: transparent; outline: none; }
 button { border: none; background: none; cursor: pointer; font: inherit; color: inherit; -webkit-tap-highlight-color: transparent; -webkit-focus-ring-color: transparent; outline: none; }
-/* safe-area se aplica por componente (navbar para top, cta-final para bottom), no acá */
 ul { list-style: none; }
-
-/* ------ CSS CUSTOM PROPERTIES (Theme) ------ */
 :root {
-  /* Dark (default) */
-
-  /* Layer 1 — OKLCH Primitives */
   --oklch-bg-dark: oklch(0.06 0.006 280);
   --oklch-bg-card: oklch(0.08 0.012 280);
   --oklch-bg-elevated: oklch(0.11 0.015 280);
@@ -116,27 +72,19 @@ ul { list-style: none; }
   --oklch-verde: oklch(0.82 0.2 125);
   --oklch-verde-hover: oklch(0.72 0.18 125);
   --oklch-ocre: oklch(0.72 0.12 75);
-
-  /* Spacing tokens */
   --space-xs: 0.25rem;
   --space-sm: 0.5rem;
   --space-md: 1rem;
   --space-lg: 1.5rem;
   --space-xl: 2.5rem;
   --space-2xl: 4rem;
-
-  /* Radii tokens */
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
   --radius-full: 100px;
   --radius-round: 50%;
-
-  /* Static tokens */
   --white: #fff;
   --black: #121212;
-
-  /* Layer 2 — Semantic tokens (project aliases) */
   --bg: var(--oklch-bg-dark);
   --bg-card: var(--oklch-bg-card);
   --headline: var(--oklch-headline);
@@ -163,9 +111,7 @@ ul { list-style: none; }
   --font-body: 'Rethink Sans', sans-serif;
   --font-accent: 'Grand Hotel', cursive;
 }
-
 [data-theme="light"] {
-  /* Layer 1 — OKLCH overrides for light theme */
   --oklch-bg-dark: oklch(0.97 0.005 80);
   --oklch-bg-card: oklch(0.95 0.008 80);
   --oklch-bg-elevated: oklch(0.93 0.01 80);
@@ -173,8 +119,6 @@ ul { list-style: none; }
   --oklch-body: oklch(0.3 0.015 280);
   --oklch-body-dim: oklch(0.5 0.01 280);
   --oklch-border: oklch(0.85 0.01 80);
-
-  /* Layer 2 — Semantic token overrides (non-cascading) */
   --terracota: #C4513E;
   --terracota-hover: #A83D2E;
   --ochra: #C49032;
@@ -189,24 +133,13 @@ ul { list-style: none; }
   --accent-glow: rgba(196,81,62,0.12);
   --code-bg: #EDE8E0;
 }
-
-/* ------ SHARED PATTERNS (DRY consolidation) ------ */
-/* Full-viewport dvh fallback — all fullscreen sections */
-/* Fullscreen sections — sin gap entre ellas */
 .hero, .problema, .resultados, .como-funciona, .pricing, .faq {
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: clamp(2rem, 5vw, 5rem) 0;
-  /* margin negativo para eliminar cualquier gap entre secciones */
-  margin-bottom: -1px;
 }
-/* Scroll-snap alignment */
-.hero, .problema, .resultados, .como-funciona, .pricing, .faq, .cta-final {
-  scroll-snap-align: start;
-}
-/* Shared backdrop blur — glass effect elements */
 .glass-card, .navbar {
   background: transparent;
 }
@@ -217,15 +150,11 @@ ul { list-style: none; }
     background: rgba(10, 10, 15, 0.25);
   }
 }
-
-/* Shared flexbox centering */
 .hamburger-btn, .step-number, .resultados-arrow, .whatsapp-fab, .fab-trigger {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
-/* ------ TYPOGRAPHY ------ */
 h1, h2, h3, h4, .h-darker {
   font-family: var(--font-display);
   font-weight: 500;
@@ -245,10 +174,7 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
 .text-ochra { color: var(--ochra); }
 .text-verde { color: var(--verde); }
 .text-dim { color: var(--body-dim); }
-
-/* ------ SECTION BASE ------ */
 .section {
-  /* Solo padding horizontal, sin gap vertical entre secciones */
   padding: 0 clamp(1.25rem, 5vw, 4rem);
 }
 .section-label {
@@ -269,7 +195,6 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   line-height: 1.6;
   max-width: 680px;
 }
-/* ------ GLASS CARD ------ */
 .glass-card {
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
@@ -283,8 +208,6 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   border-color: var(--terracota);
   transform: translateY(-2px);
 }
-
-/* ------ BUTTONS ------ */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -334,7 +257,6 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   transform: scale(1.02);
   box-shadow: inset 0 0 0 1px rgba(255,255,255,0.25), inset 0 0 14px rgba(126,217,87,0.3);
 }
-
 .btn-lg {
   font-size: clamp(1.15rem, 2.5vw, 1.4rem);
   padding: 1.1rem 2.8rem;
@@ -347,8 +269,6 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   width: 1.3em;
   height: 1.3em;
 }
-
-/* ------ CTA EM/PECEMOS (estilo distintivo) ------ */
 .btn-empecemos {
   background: var(--terracota);
   color: var(--white);
@@ -380,8 +300,6 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   font-size: 1.4rem !important;
   box-shadow: var(--shadow-button);
 }
-
-/* ------ NAVBAR ------ */
 .navbar {
   position: fixed;
   top: 0;
@@ -408,7 +326,6 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   transform: translateY(-100%);
   pointer-events: none;
 }
-/* Desktop nav */
 .navbar-links {
   display: none;
 }
@@ -418,8 +335,6 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   gap: var(--space-sm);
   z-index: 1001;
 }
-
-/* Mobile brand text (centered, auto-hide on scroll) */
 .navbar-brand-mobile {
   display: none;
   font-family: var(--font-accent);
@@ -436,8 +351,6 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   pointer-events: none;
   z-index: 1;
 }
-
-/* Brand text on right side of navbar */
 .navbar-brand-right {
   font-family: var(--font-accent);
   font-weight: 400;
@@ -447,16 +360,12 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   margin-left: auto;
   margin-right: 0.75rem;
 }
-
-/* Mobile: Rethink Sans para todo, hero 2.5x más grande */
-/* ===== NAVBAR BRAND LOGO ===== */
 .navbar-brand {
   display: flex;
   align-items: center;
   gap: 10px;
   text-decoration: none;
 }
-
 .navbar-brand-text {
   font-family: var(--font-accent);
   font-weight: 400;
@@ -465,8 +374,6 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   color: var(--white);
   white-space: nowrap;
 }
-
-/* Hamburger btn */
 .hamburger-btn {
   width: 44px;
   height: 44px;
@@ -489,7 +396,6 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   transform-origin: center;
   will-change: transform;
 }
-/* Morph a X */
 [aria-expanded="true"] .hamb-line:nth-child(1) {
   transform: translateY(8px) rotate(45deg);
 }
@@ -499,8 +405,6 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
 [aria-expanded="true"] .hamb-line:nth-child(3) {
   transform: translateY(-8px) rotate(-45deg);
 }
-
-/* Focus-visible global para botones y links */
 button:focus-visible,
 a:focus-visible {
   outline: 2px solid var(--brand);
@@ -515,8 +419,6 @@ a:focus-visible {
   outline: 2px solid var(--brand);
   outline-offset: 2px;
 }
-
-/* Mobile menu overlay */
 .mobile-menu {
   position: fixed;
   inset: 0;
@@ -562,10 +464,6 @@ a:focus-visible {
 .mobile-menu a {
   will-change: transform, opacity;
 }
-
-/* ================================================
-   HERO
-   ================================================ */
 .hero {
   height: calc(100vh - 64px - env(safe-area-inset-top, 0px));
   height: calc(100dvh - 64px - env(safe-area-inset-top, 0px));
@@ -580,10 +478,7 @@ a:focus-visible {
   overflow: hidden;
   box-sizing: border-box;
   z-index: 1;
-  /* Pegar al siguiente section sin gap */
-  margin-bottom: -1px;
 }
-/* Glassmorphism abstract shapes */
 .hero-shapes {
   position: absolute;
   inset: 0;
@@ -642,7 +537,6 @@ a:focus-visible {
   filter: blur(45px);
   opacity: 0.50;
 }
-/* Dark black spots */
 .hero-shape:nth-child(5) {
   width: 420px;
   height: 380px;
@@ -667,7 +561,6 @@ a:focus-visible {
   filter: blur(55px);
   opacity: 0.55;
 }
-/* Extra dark spots — more depth */
 .hero-shape:nth-child(7) {
   width: 260px;
   height: 220px;
@@ -734,13 +627,10 @@ a:focus-visible {
   50% { transform: translate(35px, -35px) scale(0.93); }
   75% { transform: translate(-20px, -40px) scale(1.06); }
 }
-
-/* ── Fondo glassmórfico fluido — sin breakpoints ── */
 body {
   position: relative;
-  background: transparent; /* El fondo real viene de los pseudo-elementos */
+  background: transparent; 
 }
-/* Capa 1: Gradientes de color fijos (atrás de todo) */
 body::before {
   content: '';
   position: fixed;
@@ -753,26 +643,22 @@ body::before {
   opacity: 0.35;
   pointer-events: none;
   z-index: -2;
-  will-change: transform; /* Optimización GPU */
+  will-change: transform; 
 }
-/* Capa 2: Vidrio esmerilado (entre el color y el contenido) */
 body::after {
   content: '';
   position: fixed;
   inset: 0;
-  background: rgba(10, 10, 15, 0.55); /* Tinte oscuro para legibilidad */
+  background: rgba(10, 10, 15, 0.55); 
   backdrop-filter: blur(80px) saturate(120%);
   -webkit-backdrop-filter: blur(80px) saturate(120%);
   pointer-events: none;
   z-index: -1;
   will-change: transform;
 }
-
-/* Hero keeps its existing shapes */
 .hero::before {
   display: none;
 }
-
 .hero-content {
   position: relative;
   z-index: 1;
@@ -813,15 +699,12 @@ body::after {
   background: var(--accent-glow);
   border-radius: 4px;
 }
-
 .hero-title {
   font-family: var(--font-body);
   font-size: clamp(2.8rem, 7vw, 5rem);
   letter-spacing: 0.02em;
   line-height: 1.1;
 }
-
-
 .hero-sub {
   font-family: var(--font-body);
   font-size: clamp(1.35rem, 3.2vw, 2.25rem);
@@ -873,32 +756,15 @@ body::after {
   color: var(--color-text-dim);
   background: transparent;
 }
-
-/* ================================================
-   PROBLEMA
-   ================================================ */
 .problema {
   background: var(--bg);
   position: relative;
   overflow: hidden;
+  padding-top: clamp(2rem, 8vh, 5rem);
 }
-/* Extensión del fondo del hero — formas blur más ampliadas */
-.problema::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 80% 70% at 50% -20%, var(--terracota) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 50% at 80% 10%, var(--ochra) 0%, transparent 50%),
-    radial-gradient(ellipse 50% 50% at 20% 20%, var(--verde) 0%, transparent 55%);
-  opacity: 0.15;
-  filter: blur(80px);
-  pointer-events: none;
-  z-index: 0;
-}
-.problema-grid, .problema > h2 {
-  position: relative;
-  z-index: 1;
+.problema .section-title {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
 }
 .problema-grid {
   display: grid;
@@ -934,14 +800,10 @@ body::after {
   text-wrap: pretty;
 }
 .problema-card .card-emoji {
-  display: none; /* We use Lucide icons instead */
+  display: none; 
 }
-
-/* ================================================
-   RESULTADOS — Casos de estudio
-   ================================================ */
 .resultados {
-  background: var(--bg);
+  background: transparent;
   padding-top: 4rem;
   padding-bottom: 2rem;
 }
@@ -1076,8 +938,6 @@ body::after {
   text-align: center;
   margin-top: 2rem;
 }
-
-/* All text white in Casos de estudio */
 .resultados .section-label,
 .resultados .section-title { margin-bottom: 2.5rem; }
 .resultados .resultado-tag,
@@ -1092,19 +952,14 @@ body::after {
   color: var(--white);
   text-decoration: underline;
 }
-
-/* Warm testimonial block — Behance case study aesthetic */
-/* ================================================
-   CÓMO FUNCIONA (pasos)
-   ================================================ */
 .como-funciona {
-  background: var(--bg);
+  background: transparent;
 }
 .steps-container {
   margin-top: 3rem;
   display: flex;
   flex-direction: column;
-  gap: 2rem; /* intentional extra spacing for steps */
+  gap: 2rem; 
   position: relative;
 }
 .step {
@@ -1117,18 +972,18 @@ body::after {
   -webkit-user-select: none;
   user-select: none;
 }
-/* Línea conectora entre pasos */
 .step::after {
   content: '';
   position: absolute;
-  left: 36px; /* centro del step-number (72px/2) */
-  top: 72px;
-  width: 2px;
-  height: calc(100% + 2rem); /* gap entre steps */
-  background: linear-gradient(to bottom, var(--terracota), var(--ochra));
-  z-index: 1;
+  left: 35px; 
+  top: 76px; 
+  width: 1px;
+  height: calc(100% - 72px - 2rem + 4px); 
+  background: linear-gradient(180deg, var(--terracota) 0%, var(--ochra) 50%, var(--verde) 100%);
+  border-radius: 1px;
+  z-index: 0; 
+  opacity: 0.4;
 }
-/* Último paso: sin línea */
 .step:last-child::after {
   display: none;
 }
@@ -1157,7 +1012,6 @@ body::after {
   color: var(--body-dim);
   line-height: 1.6;
 }
-/* B2B step — distinct from numbered steps */
 .b2b-step {
   border: 1px dashed var(--color-border-glass);
   border-radius: var(--radius-lg);
@@ -1180,9 +1034,6 @@ body::after {
 .b2b-step .step-content p strong {
   color: var(--color-terracota);
 }
-/* ================================================
-   PROBLEM/SOLUTION SECTION (inserted between services and pricing)
-   ================================================ */
 .problem-section {
   padding: 6rem 1.5rem;
   max-width: 700px;
@@ -1222,12 +1073,8 @@ body::after {
 .solution-text strong {
   color: var(--white);
 }
-
-/* ================================================
-   PRICING
-   ================================================ */
 .pricing {
-  background: var(--bg);
+  background: transparent;
 }
 .pricing-card {
   max-width: 600px;
@@ -1298,7 +1145,6 @@ body::after {
   font-weight: 500;
   color: var(--headline);
 }
-
 .pricing-includes {
   margin-bottom: 2rem;
 }
@@ -1378,10 +1224,6 @@ body::after {
 .pricing-compare strong {
   color: var(--terracota);
 }
-
-/* ================================================
-   POR QUÉ YO
-   ================================================ */
 .porque-yo {
   background: transparent;
 }
@@ -1414,19 +1256,15 @@ body::after {
   color: var(--body-dim);
   margin-top: var(--space-sm);
 }
-
-/* ================================================
-   FAQ
-   ================================================ */
 .faq {
-  background: var(--bg);
+  background: transparent;
 }
 .faq-list {
   max-width: 720px;
   margin: 3rem auto 0;
 }
 .faq-item {
-  border-bottom: 2px solid var(--border);
+  border-bottom: none;
   padding: 0;
 }
 .faq-question {
@@ -1472,16 +1310,12 @@ body::after {
   line-height: 1.7;
   font-size: 0.95rem;
 }
-
-/* ================================================
-   CTA FINAL
-   ================================================ */
 .cta-final {
   background: transparent;
   text-align: center;
   padding: 0 clamp(1.25rem, 5vw, 4rem);
   padding-bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
-  height: 100vh; /* dvh fallback */
+  height: 100vh; 
   height: 100svh;
   height: 100dvh;
   display: flex;
@@ -1499,15 +1333,10 @@ body::after {
   margin-left: auto;
   margin-right: auto;
 }
-
-/* ================================================
-   FOOTER
-   ================================================ */
 .footer {
   background: transparent;
   border-top: none;
 }
-
 .footer-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
@@ -1576,10 +1405,6 @@ body::after {
   display: inline;
   vertical-align: middle;
 }
-
-/* ================================================
-   WHATSAPP FAB
-   ================================================ */
 .whatsapp-fab {
   position: fixed;
   bottom: 24px;
@@ -1623,10 +1448,6 @@ body::after {
   60% { transform: translateY(0) rotate(2deg); }
   75% { transform: translateY(-1px) rotate(-1deg); }
 }
-
-/* ================================================
-   PROGRESS CIRCLE
-   ================================================ */
 .progress-circle {
   position: fixed;
   bottom: 92px;
@@ -1684,10 +1505,6 @@ body::after {
 .progress-circle:hover .arrow-icon {
   transform: translate(-50%, -50%) translateY(-2px);
 }
-
-/* ================================================
-   FAB CONTAINER (3-dots menu wrapper)
-   ================================================ */
 .fab-container {
   position: fixed;
   bottom: calc(2px + env(safe-area-inset-bottom, 0px));
@@ -1713,12 +1530,10 @@ body::after {
   transform: translateY(20px);
   pointer-events: none;
 }
-/* Hide elegantly when footer enters viewport — no movement, only fade */
 .fab-container.is-hidden-by-footer {
   opacity: 0 !important;
   pointer-events: none !important;
 }
-/* Cuando esta oculto por footer, tambien aplicar is-hidden */
 .fab-container.is-hidden-by-footer.is-hidden {
   opacity: 0 !important;
   pointer-events: none !important;
@@ -1732,6 +1547,14 @@ body::after {
   line-height: 1;
   transition: opacity 0.2s;
   border-radius: var(--radius-round);
+  background: none;
+  border: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .fab-trigger:hover {
   opacity: 0.8;
@@ -1760,7 +1583,6 @@ body::after {
   transform: translateX(-50%) translateY(0) scaleY(1);
   pointer-events: all;
 }
-/* Override FAB positioning when inside container */
 .fab-container .whatsapp-fab {
   position: relative;
   bottom: auto;
@@ -1776,8 +1598,6 @@ body::after {
   transform: none !important;
   pointer-events: all !important;
 }
-
-/* ------ MULTI-LAYER SCROLL INDICATOR ------ */
 .scroll-stack {
   display: flex;
   flex-direction: column;
@@ -1809,34 +1629,17 @@ body::after {
   opacity: 0.4;
   width: 16px;
 }
-
-/* ================================================
-   ANIMATIONS
-   ================================================ */
 .fade-in {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-.fade-in.is-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
 }
-.fade-in-delay-1 { transition-delay: 0.1s; }
-.fade-in-delay-2 { transition-delay: 0.2s; }
-.fade-in-delay-3 { transition-delay: 0.3s; }
-
-/* ================================================
-   SELECTION
-   ================================================ */
+.fade-in-delay-1 { }
+.fade-in-delay-2 { }
+.fade-in-delay-3 { }
 ::selection {
   background: var(--terracota);
   color: var(--white);
 }
-
-/* ================================================
-   STEP INTERACTION — overlay + protagonism
-   ================================================ */
 .steps-overlay {
   position: fixed;
   inset: 0;
@@ -1894,7 +1697,6 @@ body::after {
 .step.is-active .step-close {
   display: block;
 }
-/* ------ SKIP LINK (accesibilidad) ------ */
 .skip-link {
   position: absolute;
   top: -100%;
@@ -1915,10 +1717,7 @@ body::after {
   outline: 2px solid var(--white);
   outline-offset: 2px;
 }
-
-/* ------ MOBILE PADDING + RESULTADOS (max-width: 768px) — consolidated ------ */
 @media (max-width: 768px) {
-  /* ── Resultado métricas ── */
   .resultado-metricas {
     gap: 1rem;
   }
@@ -1928,8 +1727,6 @@ body::after {
   .resultado-nombre {
     font-size: 1.1rem;
   }
-
-  /* ── Padding adjustments ── */
   .hero .hero-content {
     padding-left: var(--space-md);
     padding-right: var(--space-md);
@@ -1950,10 +1747,7 @@ body::after {
     grid-template-columns: 1fr;
   }
 }
-
-/* ===== MOBILE (max-width: 767px) — consolidated ===== */
 @media (max-width: 767px) {
-  /* ── CTA heading ── */
   .btn-empecemos.btn-lg {
     padding: 1.3rem 2rem;
     font-size: 1.5rem;
@@ -1973,8 +1767,6 @@ body::after {
     font-size: 3.2rem;
     font-weight: 500;
   }
-
-  /* ── Navbar brand mobile ── */
   .navbar-brand-mobile {
     display: block;
     font-size: 1.6rem;
@@ -1987,8 +1779,6 @@ body::after {
   .mobile-menu {
     background: rgba(10, 10, 15, 0.45);
   }
-
-  /* ── Mobile typography: Rethink Sans ── */
   body {
     font-family: 'Rethink Sans', var(--font-body);
   }
@@ -1997,12 +1787,9 @@ body::after {
   .beneficio-desc, .paso-texto, .precio-titulo, .faq-question, .faq-answer p {
     font-family: 'Rethink Sans', sans-serif !important;
   }
-  /* Mantener Grand Hotel para la marca */
   .navbar-brand-mobile, .footer-brand, .navbar-brand-text {
     font-family: var(--font-accent) !important;
   }
-
-  /* ── Hero — mobile sizing ── */
   .hero {
     padding-bottom: var(--space-lg);
   }
@@ -2029,8 +1816,6 @@ body::after {
   .hero-actions .btn-lg {
     padding: var(--space-md) 2rem;
   }
-
-  /* ── Resultados: carrusel horizontal mobile ── */
   .resultados-grid {
     display: flex;
     flex-direction: row;
@@ -2047,8 +1832,6 @@ body::after {
     scroll-snap-align: start;
   }
   .resultados-nav { display: flex; }
-
-  /* ── Section overrides ── */
   .section-title {
     margin-bottom: 1rem;
   }
@@ -2076,8 +1859,6 @@ body::after {
     font-size: 0.85rem;
     text-wrap: balance;
   }
-
-  /* ── Steps ── */
   .steps-container {
     margin-top: 1.5rem;
     gap: 1rem;
@@ -2097,21 +1878,16 @@ body::after {
   .pricing-card {
     margin-top: 1.5rem;
   }
-
-  /* ── FAB ── */
   .fab-container {
     opacity: 1 !important;
     transform: translateY(0) !important;
     pointer-events: all !important;
   }
-
-  /* ── Sections: contenido más compacto en mobile ── */
   .problema, .resultados, .como-funciona, .pricing, .faq {
     min-height: auto;
     padding-top: 2.5rem;
     padding-bottom: 2.5rem;
   }
-  /* Hero: exactamente la ventana visible, centrado */
   .hero {
     height: calc(100vh - 64px - env(safe-area-inset-top, 0px));
     height: calc(100dvh - 64px - env(safe-area-inset-top, 0px));
@@ -2128,8 +1904,6 @@ body::after {
     padding-top: 3rem;
     padding-bottom: 3rem;
   }
-
-  /* ── Footer ── */
   .footer {
     background: transparent;
     border-top: none;
@@ -2166,10 +1940,8 @@ body::after {
     font-size: 0.8rem;
     border-top: 1px solid var(--border);
   }
-
-  /* ── CTA final (mobile: full height, footer at bottom) ── */
   .cta-final {
-    height: 100vh; /* dvh fallback */
+    height: 100vh; 
     height: 100svh;
     height: 100dvh;
     display: flex;
@@ -2189,30 +1961,23 @@ body::after {
   .cta-final .footer {
     width: 100%;
   }
-
-  /* ── Gradient line — hide on mobile ── */
   .gradient-line {
     display: none;
   }
 }
-/* ===== SCROLL REVEAL ===== */
 .reveal {
   opacity: 0;
   transform: translateY(32px);
   transition: opacity 0.9s cubic-bezier(0.2, 0, 0, 1),
               transform 0.9s cubic-bezier(0.2, 0, 0, 1);
 }
-
 .reveal.visible {
   opacity: 1;
   transform: translateY(0);
 }
-
 .step:nth-of-type(1) { transition-delay: 0ms; }
 .step:nth-of-type(2) { transition-delay: 0ms; }
 .step:nth-of-type(3) { transition-delay: 0ms; }
-
-/* ===== GRADIENT VERTICAL LINE — "La aguja que teje fino" ===== */
 .gradient-line {
   position: fixed;
   right: 16px;
@@ -2228,33 +1993,26 @@ body::after {
   animation: aguja-breathe 2s ease-in-out infinite, aguja-shift 4s ease-in-out infinite;
   box-shadow: 0 0 20px rgba(221,97,76,0.5), 0 0 40px rgba(218,161,68,0.2);
 }
-
 @keyframes aguja-breathe {
   0%, 100% { opacity: 0.3; }
   50% { opacity: 0.85; }
 }
-
 @keyframes aguja-shift {
   0%, 100% { background: linear-gradient(to bottom, #DD614C, #DAA144); }
   50% { background: linear-gradient(to bottom, #DAA144, #DD614C); }
 }
-
-/* Preloader Wrapper: contexto de apilamiento absoluto */
 #preloader-wrapper {
   position: fixed;
   top: 0; left: 0;
   width: 100vw; height: 100vh;
   z-index: 99999;
   isolation: isolate;
-  pointer-events: none; /* Wrapper transparente a clicks */
+  pointer-events: none; 
 }
-
 #preloader-wrapper.is-dismissed {
   display: none !important;
   pointer-events: none !important;
 }
-
-/* Preloader 3D */
 #preloader {
   position: absolute; inset: 0;
   background: var(--bg);
@@ -2263,7 +2021,7 @@ body::after {
   will-change: opacity, transform;
   transform: translateZ(0);
   backface-visibility: hidden;
-  pointer-events: auto; /* Solo el preloader captura clicks */
+  pointer-events: auto; 
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -2271,8 +2029,6 @@ body::after {
   touch-action: manipulation;
 }
 .preloader-glass { position: absolute; inset: 0; background: radial-gradient(ellipse 30% 40% at 50% 50%, rgba(255,255,255,0.03) 0%, transparent 70%); pointer-events: none; }
-
-/* Cube 3D — Glassmorphic walls */
 .diamond-wrap {
   position: relative;
   width: 120px;
@@ -2292,7 +2048,6 @@ body::after {
   transform-style: preserve-3d;
   animation: cube3d 8s linear infinite;
 }
-/* Core de luz — micro-órbita sutil */
 .core-track {
   position: absolute;
   inset: 0;
@@ -2314,7 +2069,6 @@ body::after {
   animation: none;
   transition: box-shadow 0.4s ease;
 }
-/* Latido cuando la barra llega al 100% */
 .core-track.is-ready .diamond-core {
   animation: coreReadyPulse 1.2s ease-out forwards;
 }
@@ -2326,7 +2080,6 @@ body::after {
   80%      { transform: translate(1.5px, 2px); }
 }
 @keyframes coreReadyPulse {
-  /* Latido de "estás listo" — un solo pulso grande y brillante */
   0% {
     transform: scale(1);
     box-shadow: 0 0 6px rgba(255,255,255,0.6), 0 0 18px rgba(255,255,255,0.15);
@@ -2340,13 +2093,11 @@ body::after {
     box-shadow: 0 0 6px rgba(255,255,255,0.6), 0 0 18px rgba(255,255,255,0.15);
   }
 }
-/* Mini cubo para footer */
 .diamond--sm {
   transform: scale(0.35);
   transform-origin: center;
   margin: 0 auto;
 }
-/* Glassmorphic cube faces */
 .cube-face {
   position: absolute;
   top: 20px;
@@ -2426,7 +2177,6 @@ body::after {
 .preloader-fill { height: 100%; width: 0%; background: linear-gradient(to right, var(--terracota), var(--verde)); border-radius: 2px; transition: width 0.15s ease; }
 .preloader-hint { font-family: var(--font-accent); font-size: 1rem; color: var(--white); opacity: 0; margin-top: 1.5rem; transition: opacity 0.5s ease; }
 .preloader-hint.visible { opacity: 0.8; }
-
 .card-film {
   display: none;
   position: absolute; inset: 0; z-index: 10;
@@ -2446,10 +2196,7 @@ body::after {
 @media (max-width: 767px) {
   .fab-container { display: none !important; }
 }
-
-/* ===== DESKTOP (min-width: 768px) — consolidated ===== */
 @media (min-width: 768px) {
-  /* ── Navbar ── */
   .resultados-grid {
     display: grid !important;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -2496,17 +2243,11 @@ body::after {
   .navbar-links a:hover::after, .navbar-links a:focus-visible::after {
     width: 100%;
   }
-
-  /* ── Problema (bento grid) ── */
   .problema-grid { grid-template-columns: 1fr 1fr; }
   .problema-card.tall { grid-column: span 2; }
-
-  /* ── Resultados ── */
   .resultados-grid {
     overflow-x: visible;
   }
-
-  /* ── Steps ── */
   .steps-container {
     flex-direction: row;
     gap: 0;
@@ -2528,18 +2269,17 @@ body::after {
   .step:not(:last-child)::after {
     content: '';
     position: absolute;
-    top: calc(32px + var(--space-md));
-    left: calc(50% + 48px);
-    right: calc(-50% + 48px);
-    height: 2px;
-    background: var(--border);
+    top: 32px; 
+    left: calc(50% + 32px + 0.5rem); 
+    right: calc(-50% + 32px + 0.5rem); 
+    height: 1px;
+    background: linear-gradient(90deg, var(--terracota), var(--ochra));
+    opacity: 0.4;
     z-index: 0;
   }
   .step:not(:last-child)::before {
     display: none;
   }
-
-  /* ── Footer ── */
   .footer {
     flex-direction: column;
     align-items: flex-start;
@@ -2593,8 +2333,6 @@ body::after {
 </script>
 </head>
 <body>
-
-<!-- Preloader Wrapper: isolation de capas absoluta -->
 <div id="preloader-wrapper">
 <div id="preloader">
   <div class="diamond-wrap">
@@ -2625,12 +2363,7 @@ loader.start();
 document.querySelectorAll('.card-film').forEach(cf=>{cf.addEventListener('click',e=>{e.stopPropagation();cf.classList.add('dissolve');setTimeout(()=>cf.remove(),500);});});
 document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListener('click',()=>{document.querySelectorAll('.resultado-card').forEach(c=>c.classList.remove('is-focused'));card.classList.add('is-focused');});});
 </script>
-
 <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
-
-<!-- ==============================================
-     NAVBAR
-     ============================================== -->
 <nav class="navbar" role="navigation" aria-label="Navegación principal">
   <div class="navbar-links" id="navLinks">
     <a href="#casos">Casos</a>
@@ -2638,7 +2371,6 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
     <a href="#faq">FAQ</a>
     <a href="#contacto">Empecemos</a>
   </div>
-
   <div class="navbar-actions">
     <button class="hamburger-btn" id="hamburgerBtn" aria-label="Abrir menú" aria-expanded="false">
       <span class="hamb-line"></span>
@@ -2646,25 +2378,17 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
       <span class="hamb-line"></span>
     </button>
   </div>
-
   <a href="#" class="navbar-brand" aria-label="The Brand Crew — inicio">
     <span class="navbar-brand-text">The Brand Crew</span>
   </a>
 </nav>
-
-<!-- Mobile Menu Overlay -->
 <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Menú de navegación" inert>
   <a href="#casos" class="mobile-link">Casos</a>
   <a href="#precios" class="mobile-link">Precios</a>
   <a href="#faq" class="mobile-link">FAQ</a>
   <a href="#contacto" class="mobile-link">Empecemos</a>
 </div>
-
 <main id="main-content">
-
-<!-- ==============================================
-     1. HERO
-     ============================================== -->
 <section class="hero reveal" id="inicio" aria-label="Hero principal">
   <div class="hero-shapes" aria-hidden="true">
     <div class="hero-shape"></div>
@@ -2677,7 +2401,6 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
     <div class="hero-shape"></div>
     <div class="hero-shape"></div>
   </div>
-
   <div class="hero-content">
     <h1 class="hero-title">Páginas web que <span class="text-terracota">garpan</span></h1>
     <p class="hero-sub">Para proyectos que <span class="text-white">laburan</span></p>
@@ -2694,27 +2417,19 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
     </p>
   </div>
 </section>
-
-<!-- ==============================================
-     2. PROBLEMA
-     ============================================== -->
 <section class="section problema reveal" id="servicios" aria-label="El problema que resolvemos">
   <h2 class="section-title">El negocio que no está en internet,<br><span class="text-terracota">no existe</span>.</h2>
-
-
   <div class="problema-grid">
     <div class="glass-card problema-card tall fade-in">
       <h4>No te encuentran</h4>
       <p>Si no estás en Google y ChatGPT, no existís.</p>
       <p class="sub">Si buscan tu negocio y no aparecés, perdiste la venta.</p>
     </div>
-
     <div class="glass-card problema-card fade-in fade-in-delay-1">
       <h4>No sabés por dónde arrancar</h4>
       <p>Te ayudo a ordenar las ideas. Lo que sobra, afuera. Lo que suma, adentro.</p>
       <p class="sub">Sin diseño que no vende, sin páginas al pedo, sin vueltas.</p>
     </div>
-
     <div class="glass-card problema-card fade-in fade-in-delay-2">
       <h4>Una agencia no es para cualquier proyecto</h4>
       <p>Tienen equipo, estructura y costo. Justificado, pero no para todos.</p>
@@ -2722,16 +2437,11 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
     </div>
   </div>
 </section>
-
-<!-- ==============================================
-     3. RESULTADOS — Casos de estudio
-     ============================================== -->
 <section class="section como-funciona reveal" id="resultados" aria-label="Casos de estudio">
   <h2 class="section-title">Tres pasos.<br><span class="text-verde">Sin vueltas</span>.</h2>
   <p class="section-sub">
     En una semana tenés tu página lista. Sin complicaciones.
   </p>
-
   <div class="steps-container">
     <div class="steps-overlay" id="stepsOverlay" aria-hidden="true"></div>
     <div class="step fade-in reveal">
@@ -2741,7 +2451,6 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
         <p>Me escribís y me contás tu idea.</p>
       </div>
     </div>
-
     <div class="step fade-in fade-in-delay-1 reveal">
       <div class="step-number">2</div>
       <div class="step-content">
@@ -2749,7 +2458,6 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
         <p>En 48 horas tenés resultados. Ajustamos.</p>
       </div>
     </div>
-
     <div class="step fade-in fade-in-delay-2 reveal">
       <div class="step-number">3</div>
       <div class="step-content">
@@ -2757,7 +2465,6 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
         <p>Onboarding y consultoría sin cargo.</p>
       </div>
     </div>
-
     <div class="step b2b-step reveal fade-in fade-in-delay-3">
       <div class="step-number b2b-number">★</div>
       <div class="step-content">
@@ -2767,14 +2474,8 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
     </div>
   </div>
 </section>
-
-<!-- ==============================================
-     4. CÓMO FUNCIONA
-     ============================================== -->
 <section class="section resultados reveal" id="casos" aria-label="Casos de estudio">
   <h2 class="section-title" style="color: var(--verde);">Casos de estudio<span style="color: var(--white);">.</span></h2>
-
-  <!-- Caso 1: Luisito -->
   <div class="resultados-grid">
   <article class="glass-card resultado-card fade-in">
     <div class="card-film"></div>
@@ -2788,11 +2489,9 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
         <a href="https://luisito-brandbook.vercel.app" class="resultado-link" target="_blank" rel="noopener">Brandbook →</a>
       </div>
     </div>
-
     <div class="resultado-historia">
       <p>«Caminando por Mar del Plata, entré a la rotisería de Luisito. Le pregunté: <em>"¿Qué idea tenés para tu negocio en internet?"</em> Me contó su idea, y entre los dos nos pusimos a armar todo.»</p>
     </div>
-
     <div class="resultado-metricas">
       <div class="resultado-metrica">
         <span class="resultado-metrica-valor">Carta digital</span>
@@ -2804,8 +2503,6 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
       </div>
     </div>
   </article>
-
-  <!-- Caso 2: Apolonia -->
   <article class="glass-card resultado-card fade-in fade-in-delay-1">
     <div class="card-film"></div>
     <div class="resultado-header">
@@ -2818,11 +2515,9 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
         <a href="https://apolonia-brandbook.vercel.app" class="resultado-link" target="_blank" rel="noopener">Brandbook →</a>
       </div>
     </div>
-
     <div class="resultado-historia">
       <p>«Fui a comprar leña para la chimenea y conocí al dueño de Apolonia, una verdulería de estación en Playa Grande. Quería avisarles a sus clientes qué frutas y verduras estaban en su mejor momento con una app sencilla pensada para gente grande.»</p>
     </div>
-
     <div class="resultado-metricas">
       <div class="resultado-metrica">
         <span class="resultado-metrica-valor">Catálogo online</span>
@@ -2834,8 +2529,6 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
       </div>
     </div>
   </article>
-
-  <!-- Caso 3: Hoco -->
   <article class="glass-card resultado-card fade-in fade-in-delay-2">
     <div class="card-film"></div>
     <div class="resultado-header">
@@ -2847,11 +2540,9 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
         <a href="https://hoco-brandbook.vercel.app" class="resultado-link" target="_blank" rel="noopener">Brandbook →</a>
       </div>
     </div>
-
     <div class="resultado-historia">
       <p>«Lo que antes era un PDF por WhatsApp, ahora es una web que funciona sola.»</p>
     </div>
-
     <div class="resultado-metricas">
       <div class="resultado-metrica">
         <span class="resultado-metrica-valor">Catálogo online</span>
@@ -2867,31 +2558,19 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
       </div>
     </div>
   </article>
-
-  </div><!-- .resultados-grid -->
-
+  </div>
   <div class="resultados-nav">
     <button class="resultados-arrow" id="resultadosPrev" aria-label="Anterior">‹</button>
     <button class="resultados-arrow" id="resultadosNext" aria-label="Siguiente">›</button>
   </div>
-
 </section>
-
-
-
-<!-- ==============================================
-     6. PRICING
-     ============================================== -->
 <section class="section pricing reveal" id="precios" aria-label="Precios">
   <h2 class="section-title"><span class="text-verde">Un regalo</span>.</h2>
-
   <div class="glass-card pricing-card fade-in">
-    <!-- Service + Domain price line -->
     <div class="pricing-line">
       <span class="pricing-line-label">Diseño + Desarrollo<br><small>+ Dominio (2 años)</small></span>
       <span class="pricing-line-price">$400.000 ARS</span>
     </div>
-
     <div class="pricing-split">
       <div class="pricing-split-item">
         <div class="amount">$200.000</div>
@@ -2902,9 +2581,7 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
         <div class="label">A la entrega</div>
       </div>
     </div>
-
     <p class="pricing-b2b">¿Agencia? Preferencial por volumen, <a href="https://wa.me/5491124063009" target="_blank" rel="noopener">consultame</a></p>
-
     <div class="pricing-includes">
       <h4>Incluye</h4>
       <ul>
@@ -2918,22 +2595,16 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
         <li>✓ SSL/HTTPS</li>
       </ul>
     </div>
-
     <a href="https://wa.me/5491124063009" target="_blank" rel="noopener" class="btn btn-empecemos btn-lg" style="width:100%;justify-content:center;">
       Quiero mi página
     </a>
   </div>
 </section>
-
-<!-- ==============================================
-     7. FAQ
-     ============================================== -->
 <section class="section faq reveal" id="faq" aria-label="Preguntas frecuentes">
   <span class="section-label mono text-terracota">
     FAQ
   </span>
   <h2 class="section-title">Preguntas <span class="text-ochra">frecuentes</span></h2>
-
   <div class="faq-list">
     <div class="faq-item">
       <button class="faq-question" aria-expanded="false">
@@ -2944,7 +2615,6 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
         <p>Trabajamos hasta que te guste. Sin vueltas.</p>
       </div>
     </div>
-
     <div class="faq-item">
       <button class="faq-question" aria-expanded="false">
         ¿Me van a robar la plata?
@@ -2954,7 +2624,6 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
         <p>Para empezar pagás $200.000 y $200.000 cuando termino.</p>
       </div>
     </div>
-
     <div class="faq-item">
       <button class="faq-question" aria-expanded="false">
         ¿Puedo actualizarlo después?
@@ -2964,7 +2633,6 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
         <p>Sí. Cambios básicos te enseño. Cosas grandes, lo charlamos.</p>
       </div>
     </div>
-
     <div class="faq-item">
       <button class="faq-question" aria-expanded="false">
         ¿Qué necesitás de mí para arrancar?
@@ -2976,15 +2644,10 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
     </div>
   </div>
 </section>
-
-<!-- ==============================================
-     8. CTA FINAL
-     ============================================== -->
 <section class="cta-final reveal" id="contacto" aria-label="Contacto final">
   <div class="cta-content">
     <h2><span class="cta-dale">Dale,</span> <span class="text-terracota cta-empecemos">empecemos</span>.</h2>
   </div>
-
   <footer class="footer" role="contentinfo">
     <div class="footer-card reveal">
       <h2 class="cta-heading"><span class="cta-dale">Dale,</span> <span class="text-terracota cta-empecemos">empecemos</span>.</h2>
@@ -3004,14 +2667,8 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
     </div>
   </footer>
 </section>
-
 </main>
-
-<!-- ==============================================
-     FAB CONTAINER (3-dots + WhatsApp + Progress)
-     ============================================== -->
 <div class="fab-container" id="fabContainer">
-  <!-- FAB menu (hidden by default) -->
   <div class="fab-menu" id="fabMenu">
     <a href="https://wa.me/5491124063009"
        target="_blank"
@@ -3024,7 +2681,6 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
         <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
       </svg>
     </a>
-
     <div class="scroll-stack" id="scrollStack" aria-label="Sección actual">
       <div class="stack-line" data-section="0" title="Inicio"></div>
       <div class="stack-line" data-section="1" title="El problema"></div>
@@ -3034,7 +2690,6 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
       <div class="stack-line" data-section="5" title="FAQ"></div>
       <div class="stack-line" data-section="6" title="Contacto"></div>
     </div>
-
     <div class="progress-circle" id="progressCircle" role="button" aria-label="Volver al inicio" tabindex="0" title="Volver al inicio">
       <svg viewBox="0 0 40 40">
         <circle class="bg-circle" cx="20" cy="20" r="17"/>
@@ -3043,37 +2698,25 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
       <i data-lucide="arrow-up" class="arrow-icon"></i>
     </div>
   </div>
-
-  <!-- 3-dots trigger button -->
   <button class="fab-trigger" id="fabTrigger" aria-label="Abrir menú">
-    <i data-lucide="more-vertical"></i>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="1"></circle>
+      <circle cx="12" cy="5" r="1"></circle>
+      <circle cx="12" cy="19" r="1"></circle>
+    </svg>
   </button>
 </div>
-
-<!-- ==============================================
-     JAVASCRIPT
-     ============================================== -->
 <script>
-// Prevenir scroll restoration del navegador en F5
 if ('scrollRestoration' in history) {
   history.scrollRestoration = 'manual';
 }
 window.scrollTo(0, 0);
-
 (function() {
   'use strict';
-
-  /* ==============================================
-     STATE
-     ============================================== */
   const state = {
     menuOpen: false,
     lastInteraction: 0,
   };
-
-  /* ==============================================
-     DOM REFS
-     ============================================== */
   const hamburgerBtn = document.getElementById('hamburgerBtn');
   const mobileMenu = document.getElementById('mobileMenu');
   const fabContainer = document.getElementById('fabContainer');
@@ -3086,34 +2729,26 @@ window.scrollTo(0, 0);
   const fadeEls = document.querySelectorAll('.fade-in');
   const mobileLinks = mobileMenu.querySelectorAll('.mobile-link');
   const navbar = document.querySelector('.navbar');
-
-  /* ==============================================
-     HAMBURGER / MOBILE MENU
-     ============================================== */
   function setLinkDelays(open) {
     var len = mobileLinks.length;
     mobileLinks.forEach(function(link, i) {
       var delay = open
-        ? 0.08 + i * 0.05          // abriendo: 1ro primero
-        : 0.08 + (len - 1 - i) * 0.05; // cerrando: último primero
+        ? 0.08 + i * 0.05
+        : 0.08 + (len - 1 - i) * 0.05;
       link.style.transitionDelay = delay + 's';
     });
   }
-
   function openMenu() {
     state.menuOpen = true;
     setLinkDelays(true);
     mobileMenu.classList.add('is-open');
     mobileMenu.removeAttribute('inert');
     hamburgerBtn.setAttribute('aria-expanded', 'true');
-    // Body scroll lock con padding-right compensation
     var scrollW = window.innerWidth - document.documentElement.clientWidth;
     document.body.style.paddingRight = scrollW + 'px';
     document.body.style.overflow = 'hidden';
-    // Focus first link
     setTimeout(function() { mobileLinks[0]?.focus(); }, 200);
   }
-
   function closeMenu() {
     state.menuOpen = false;
     setLinkDelays(false);
@@ -3124,7 +2759,6 @@ window.scrollTo(0, 0);
     document.body.style.overflow = '';
     hamburgerBtn.focus();
   }
-
   function toggleMenu() {
     if (state.menuOpen) {
       closeMenu();
@@ -3132,50 +2766,35 @@ window.scrollTo(0, 0);
       openMenu();
     }
   }
-
   hamburgerBtn.addEventListener('click', toggleMenu);
-
-  // Close on link click
   mobileLinks.forEach(function(link) {
     link.addEventListener('click', function() {
       closeMenu();
     });
   });
-
-  // Close on Escape
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape' && state.menuOpen) {
       closeMenu();
       e.preventDefault();
     }
   });
-
-  // Close on click outside (click on overlay bg)
   mobileMenu.addEventListener('click', function(e) {
     if (e.target === mobileMenu) {
       closeMenu();
     }
   });
-
-  /* ==============================================
-     SCROLL: FAB CONTAINER + PROGRESS VISIBILITY
-     ============================================== */
   let containerVisible = false;
   let shakeInterval = null;
   let fabShaking = false;
-
   function handleScroll() {
     const scrollY = window.scrollY || window.pageYOffset;
     const docHeight = document.documentElement.scrollHeight - window.innerHeight;
     let currentSection = 0;
-
-    // FAB siempre visible en web, empuja al footer
     if (scrollY > 200) {
       if (!containerVisible) {
         containerVisible = true;
         fabContainer.classList.remove('is-hidden');
         fabContainer.classList.add('is-visible');
-        // Start shake timer for WA FAB (only matters when menu is open)
         if (!shakeInterval) {
           shakeInterval = setInterval(function() {
             if (!fabShaking && containerVisible) {
@@ -3194,21 +2813,17 @@ window.scrollTo(0, 0);
         containerVisible = false;
         fabContainer.classList.add('is-hidden');
         fabContainer.classList.remove('is-visible');
-        fabMenu.classList.remove('is-open'); // close menu too
+        fabMenu.classList.remove('is-open');
         if (shakeInterval) {
           clearInterval(shakeInterval);
           shakeInterval = null;
         }
       }
     }
-
-    // Update progress circle
     if (docHeight > 0) {
       const pct = Math.min((scrollY / docHeight) * 100, 100);
       progressFg.style.strokeDashoffset = 100 - pct;
     }
-
-    // Update multi-layer scroll stack
     const stackLines = document.querySelectorAll('.stack-line');
     const sections = document.querySelectorAll('section');
     sections.forEach(function(sec, i) {
@@ -3227,21 +2842,15 @@ window.scrollTo(0, 0);
         line.classList.add('was-active');
       }
     });
-
-    // Fade-in elements
     fadeEls.forEach(function(el) {
       const rect = el.getBoundingClientRect();
       if (rect.top < window.innerHeight * 0.9 && rect.bottom > 0) {
         el.classList.add('is-visible');
       }
     });
-
-    // Navbar auto-hide: show only on first section (hero)
     const showNav = currentSection <= 0;
     navbar.classList.toggle('is-hidden', !showNav);
   }
-
-  // Throttled scroll
   let ticking = false;
   window.addEventListener('scroll', function() {
     if (!ticking) {
@@ -3252,11 +2861,7 @@ window.scrollTo(0, 0);
       ticking = true;
     }
   });
-
-  // Initial check
   handleScroll();
-
-  // Stack line click → scroll to section
   document.querySelectorAll('.stack-line').forEach(function(line) {
     line.addEventListener('click', function() {
       const idx = parseInt(this.dataset.section);
@@ -3266,8 +2871,6 @@ window.scrollTo(0, 0);
       }
     });
   });
-
-  // Progress circle click → scroll to top
   progressCircle.addEventListener('click', function() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
@@ -3277,48 +2880,33 @@ window.scrollTo(0, 0);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   });
-
-  /* ==============================================
-     FAB MENU TOGGLE (3-dots click)
-     ============================================== */
   let fabMenuOpen = false;
   fabTrigger.addEventListener('click', function(e) {
     e.preventDefault();
     e.stopPropagation();
     fabMenuOpen = !fabMenuOpen;
     fabMenu.classList.toggle('is-open');
-    // Bloquear clicks en WhatsApp brevemente para evitar apertura accidental
     if (fabMenuOpen) {
       whatsappFab.style.pointerEvents = 'none';
       setTimeout(() => { whatsappFab.style.pointerEvents = ''; }, 300);
     }
   });
-
-  // Close menu when clicking WhatsApp or Progress Circle
   whatsappFab.addEventListener('click', function() {
     fabMenu.classList.remove('is-open');
   });
   progressCircle.addEventListener('click', function() {
     fabMenu.classList.remove('is-open');
   });
-
-  // Close menu on Escape
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape' && fabMenu.classList.contains('is-open')) {
       fabMenu.classList.remove('is-open');
     }
   });
-
-  // Close menu when clicking outside the container
   document.addEventListener('click', function(e) {
     if (fabMenu.classList.contains('is-open') && !fabContainer.contains(e.target)) {
       fabMenu.classList.remove('is-open');
     }
   });
-
-  /* ==============================================
-     INTERSECTION OBSERVER: Ocultar FAB container al llegar al footer
-     ============================================== */
   (function() {
     const footerEl = document.querySelector('.footer');
     if (footerEl) {
@@ -3339,30 +2927,20 @@ window.scrollTo(0, 0);
       footerObserver.observe(footerEl);
     }
   })();
-
-  /* ==============================================
-     LEFT-EDGE HOVER TO REVEAL FAB CONTAINER
-     ============================================== */
   (function() {
-    const EDGE_THRESHOLD = 40; // pixels from right edge (near scrollbar)
+    const EDGE_THRESHOLD = 40;
     let edgeTimeout = null;
-
     document.addEventListener('mousemove', function(e) {
       const isNearRightEdge = (window.innerWidth - e.clientX) < EDGE_THRESHOLD;
       const container = document.getElementById('fabContainer');
-
       if (!container) return;
-
       if (isNearRightEdge) {
-        // Force show the container (3-dots button)
         container.classList.add('is-visible');
         container.style.opacity = '1';
         container.style.pointerEvents = 'all';
         container.style.transform = 'translateY(0)';
-
         clearTimeout(edgeTimeout);
       } else {
-        // Restore normal behavior after a delay
         clearTimeout(edgeTimeout);
         edgeTimeout = setTimeout(function() {
           container.style.opacity = '';
@@ -3372,19 +2950,12 @@ window.scrollTo(0, 0);
       }
     });
   })();
-
-  /* ==============================================
-     FAQ ACCORDION
-     ============================================== */
   faqItems.forEach(function(item) {
     const question = item.querySelector('.faq-question');
     const answer = item.querySelector('.faq-answer');
-
     question.addEventListener('click', function(e) {
       e.stopPropagation();
       const isOpen = question.getAttribute('aria-expanded') === 'true';
-
-      // Close all
       faqItems.forEach(function(otherItem) {
         const otherQ = otherItem.querySelector('.faq-question');
         const otherA = otherItem.querySelector('.faq-answer');
@@ -3392,8 +2963,6 @@ window.scrollTo(0, 0);
         otherA.classList.remove('is-open');
         otherA.style.maxHeight = '0';
       });
-
-      // Toggle current
       if (!isOpen) {
         question.setAttribute('aria-expanded', 'true');
         answer.classList.add('is-open');
@@ -3401,10 +2970,6 @@ window.scrollTo(0, 0);
       }
     });
   });
-
-  /* ==============================================
-     SMOOTH SCROLL FOR ANCHOR LINKS
-     ============================================== */
   document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
     anchor.addEventListener('click', function(e) {
       const target = document.querySelector(this.getAttribute('href'));
@@ -3416,15 +2981,10 @@ window.scrollTo(0, 0);
       }
     });
   });
-
-  /* ==============================================
-     STEP INTERACTION — overlay + protagonism
-     ============================================== */
   (function() {
     var overlay = document.getElementById('stepsOverlay');
     var steps = document.querySelectorAll('.step');
     var active = false;
-
     function activate(step) {
       if (active) return;
       active = true;
@@ -3434,7 +2994,6 @@ window.scrollTo(0, 0);
         if (s !== step) s.setAttribute('aria-hidden', 'true');
       });
     }
-
     function deactivate() {
       if (!active) return;
       active = false;
@@ -3444,21 +3003,17 @@ window.scrollTo(0, 0);
         s.removeAttribute('aria-hidden');
       });
     }
-
     steps.forEach(function(step) {
       step.addEventListener('click', function(e) {
         if (step.classList.contains('is-active')) {
           deactivate();
         } else {
-          deactivate(); // close any other active first
+          deactivate();
           activate(step);
         }
       });
-
     });
-
     overlay.addEventListener('click', deactivate);
-
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape' && active) {
         deactivate();
@@ -3466,8 +3021,6 @@ window.scrollTo(0, 0);
       }
     });
   })();
-
-  // Scroll reveal with IntersectionObserver
   (function() {
     const observer = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
@@ -3481,8 +3034,6 @@ window.scrollTo(0, 0);
       observer.observe(el);
     });
   })();
-
-  // Footer IntersectionObserver — hide FAB when footer enters viewport
   (function() {
     const footer = document.querySelector('.footer');
     const container = document.getElementById('fabContainer');
@@ -3494,11 +3045,9 @@ window.scrollTo(0, 0);
     }, { rootMargin: '0px 0px 0px 0px' });
     obs.observe(footer);
   })();
-
-  // Inicializar Lucide Icons
-  lucide.createIcons();
-})();
-  // Lava lamp effect on Ver info button
+  if (typeof lucide !== 'undefined') {
+    lucide.createIcons();
+  }
   const btnSecondary = document.querySelector('.btn-secondary');
   if (btnSecondary) {
     btnSecondary.addEventListener('mousemove', e => {
@@ -3509,7 +3058,6 @@ window.scrollTo(0, 0);
       btnSecondary.style.setProperty('--mouse-y', y + '%');
     });
   }
-  // Flechas Casos de estudio
   const grid = document.querySelector('.resultados-grid');
   const prev = document.getElementById('resultadosPrev');
   const next = document.getElementById('resultadosNext');
@@ -3519,9 +3067,6 @@ window.scrollTo(0, 0);
     prev.addEventListener('click', () => { grid.scrollBy({ left: -scrollAmount, behavior: 'smooth' }); });
   }
 </script>
-
-<!-- Gradiente vertical decorativo -->
 <div class="gradient-line" aria-hidden="true"></div>
-
 </body>
 </html>
