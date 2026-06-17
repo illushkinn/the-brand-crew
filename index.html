@@ -19,7 +19,7 @@
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; scroll-padding-top: 64px; background: var(--bg); overflow-x: hidden; }
-body { font-family: var(--font-body); overflow-x: hidden; background: var(--bg); font-weight: 300; }
+body { font-family: var(--font-body); background: var(--bg); font-weight: 300; }
 html { overflow-y: scroll; scroll-behavior: smooth; }
 html { scrollbar-width: none; }
 html::-webkit-scrollbar { width: 0px; height: 0px; background: transparent; display: none; }
@@ -699,7 +699,7 @@ body::after {
   z-index: 1;
   max-width: 900px;
   margin-top: 0;
-  margin-left: -2rem;
+  margin-left: -3rem;
 }
 .hero-badge {
   display: inline-flex;
@@ -768,6 +768,7 @@ body::after {
   display: flex;
   gap: var(--space-md);
   flex-wrap: wrap;
+  margin-bottom: var(--space-lg);
 }
 .hero-b2b-tags {
   display: flex;
@@ -1407,6 +1408,13 @@ body::after {
   color: var(--body-dim);
   opacity: 0.7;
   margin-top: 0.2rem;
+}
+.footer .footer-illya {
+  color: var(--terracota);
+  text-decoration: none;
+}
+.footer .footer-illya:hover {
+  text-decoration: underline;
 }
 .footer .footer-social {
   display: flex;
@@ -2755,13 +2763,11 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
       <h2 class="cta-heading"><span class="cta-dale">Dale,</span> <span class="text-terracota cta-empecemos">empecemos</span>.</h2>
       <div class="footer-card-content">
         <p class="footer-brand"><span>T</span>he Brand Crew</p>
-        <p class="footer-cuit">Hecho con <span style="color: var(--terracota);">♥</span></p>
+        <p class="footer-cuit"><a href="https://illya-grytsyk.vercel.app" target="_blank" rel="noopener noreferrer" class="footer-illya">Illya</a> <span class="footer-sep">·</span> Hecho con <span style="color: var(--terracota);">♥</span></p>
         <div class="footer-social">
           <a href="https://www.linkedin.com/in/illya-grytsyk/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           <span class="footer-sep">·</span>
           <a href="https://beacons.page/illya_studio" target="_blank" rel="noopener noreferrer">Beacons</a>
-          <span class="footer-sep">·</span>
-          <a href="https://illya-grytsyk.vercel.app" target="_blank" rel="noopener noreferrer">Illya</a>
           <span class="footer-sep">·</span>
           <a href="/privacidad">Privacidad</a>
         </div>
@@ -2864,9 +2870,11 @@ window.scrollTo(0, 0);
     }
   });
   let scrollToTopVisible = false;
+  let lastScrollY = 0;
   function handleScroll() {
     const scrollY = window.scrollY || window.pageYOffset;
-    let currentSection = 0;
+    const delta = Math.abs(scrollY - lastScrollY);
+    lastScrollY = scrollY;
     if (scrollY > 400) {
       if (!scrollToTopVisible) {
         scrollToTopVisible = true;
@@ -2880,22 +2888,8 @@ window.scrollTo(0, 0);
         scrollToTop.classList.remove('is-visible');
       }
     }
-    const sections = document.querySelectorAll('section');
-    sections.forEach(function(sec, i) {
-      const rect = sec.getBoundingClientRect();
-      const sectionCenter = rect.top + rect.height / 2;
-      const viewportCenter = window.innerHeight / 2;
-      if (sectionCenter < viewportCenter + 100) {
-        currentSection = i;
-      }
-    });
-    fadeEls.forEach(function(el) {
-      const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight * 0.9 && rect.bottom > 0) {
-        el.classList.add('is-visible');
-      }
-    });
-    const showNav = currentSection <= 0;
+    if (delta < 5) return;
+    const showNav = scrollY < 100;
     navbar.classList.toggle('is-hidden', !showNav);
   }
   let ticking = false;
@@ -2909,30 +2903,6 @@ window.scrollTo(0, 0);
     }
   });
   handleScroll();
-  })();
-  (function() {
-    const EDGE_THRESHOLD = 40;
-    let edgeTimeout = null;
-    document.addEventListener('mousemove', function(e) {
-      const isNearRightEdge = (window.innerWidth - e.clientX) < EDGE_THRESHOLD;
-      const container = document.getElementById('fabContainer');
-      if (!container) return;
-      if (isNearRightEdge) {
-        container.classList.add('is-visible');
-        container.style.opacity = '1';
-        container.style.pointerEvents = 'all';
-        container.style.transform = 'translateY(0)';
-        clearTimeout(edgeTimeout);
-      } else {
-        clearTimeout(edgeTimeout);
-        edgeTimeout = setTimeout(function() {
-          container.style.opacity = '';
-          container.style.pointerEvents = '';
-          container.style.transform = '';
-        }, 300);
-      }
-    });
-  })();
   faqItems.forEach(function(item) {
     const question = item.querySelector('.faq-question');
     const answer = item.querySelector('.faq-answer');
@@ -3017,7 +2987,6 @@ window.scrollTo(0, 0);
       observer.observe(el);
     });
   })();
-
   if (typeof lucide !== 'undefined') {
     lucide.createIcons();
   }
@@ -3039,6 +3008,31 @@ window.scrollTo(0, 0);
     next.addEventListener('click', () => { grid.scrollBy({ left: scrollAmount, behavior: 'smooth' }); });
     prev.addEventListener('click', () => { grid.scrollBy({ left: -scrollAmount, behavior: 'smooth' }); });
   }
+})();
+(function() {
+  const EDGE_THRESHOLD = 40;
+    let edgeTimeout = null;
+    document.addEventListener('mousemove', function(e) {
+      const isNearRightEdge = (window.innerWidth - e.clientX) < EDGE_THRESHOLD;
+      const container = document.getElementById('fabContainer');
+      if (!container) return;
+      if (isNearRightEdge) {
+        container.classList.add('is-visible');
+        container.style.opacity = '1';
+        container.style.pointerEvents = 'all';
+        container.style.transform = 'translateY(0)';
+        clearTimeout(edgeTimeout);
+      } else {
+        clearTimeout(edgeTimeout);
+        edgeTimeout = setTimeout(function() {
+          container.style.opacity = '';
+          container.style.pointerEvents = '';
+          container.style.transform = '';
+        }, 300);
+      }
+    });
+  })();
+
 </script>
 <div class="gradient-line" aria-hidden="true"></div>
 </body>
