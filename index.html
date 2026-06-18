@@ -2053,6 +2053,13 @@ body::after {
     display: none;
   }
 }
+.hero-problema-wrap {
+  position: relative;
+  overflow: hidden;
+}
+.hero-problema-wrap .hero-shapes {
+  z-index: -1;
+}
 .reveal {
   opacity: 0;
   transform: translateY(32px);
@@ -2494,7 +2501,7 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
   <a href="#contacto" class="mobile-link">Empecemos</a>
 </div>
 <main id="main-content">
-<section class="hero reveal" id="inicio" aria-label="Hero principal">
+<div class="hero-problema-wrap">
   <div class="hero-shapes" aria-hidden="true">
     <div class="hero-shape"></div>
     <div class="hero-shape"></div>
@@ -2506,6 +2513,7 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
     <div class="hero-shape"></div>
     <div class="hero-shape"></div>
   </div>
+<section class="hero reveal" id="inicio" aria-label="Hero principal">
   <div class="hero-content">
     <h1 class="hero-title">Páginas web que <span class="text-terracota">garpan</span></h1>
     <p class="hero-sub">Para proyectos que <span class="text-white">laburan</span></p>
@@ -2547,6 +2555,7 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
     </div>
   </div>
 </section>
+</div>
 <section class="section como-funciona reveal" id="resultados" aria-label="Casos de estudio">
   <h2 class="section-title">Tres pasos.<br><span class="text-verde">Sin vueltas</span>.</h2>
   <p class="section-sub">
