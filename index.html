@@ -764,6 +764,33 @@ body::after {
   background: var(--terracota);
   display: inline-block;
 }
+.hero-meta .price-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+.strike-price {
+  text-decoration: line-through;
+  opacity: 0.4;
+  font-size: 0.8em;
+  color: var(--body-dim);
+  position: relative;
+  white-space: nowrap;
+}
+.strike-price::after {
+  content: '';
+  position: absolute;
+  left: -2px; right: -2px;
+  top: 50%;
+  height: 2px;
+  background: var(--terracota);
+  transform: translateY(-50%);
+}
+.current-price {
+  color: var(--verde);
+  font-weight: 600;
+}
 .hero-actions {
   display: flex;
   gap: var(--space-md);
@@ -1820,9 +1847,6 @@ body::after {
     padding-right: var(--space-md);
     margin-left: -1rem;
   }
-  .hero .hero-meta {
-    display: none;
-  }
   .section {
     padding-left: var(--space-lg);
     padding-right: var(--space-lg);
@@ -2292,6 +2316,12 @@ body::after {
   .fab-container { display: none !important; }
 }
 @media (min-width: 768px) {
+  .hero h1 {
+    margin-bottom: calc(var(--space-md) * 0.5);
+  }
+  .hero-sub {
+    margin-top: var(--space-md);
+  }
   .resultados-grid {
     display: grid !important;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -2527,7 +2557,15 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
       <span class="dot-sep" aria-hidden="true"></span>
       Dominio + hosting
       <span class="dot-sep" aria-hidden="true"></span>
-      Desde <strong>$400.000 ARS</strong>
+      <span class="price-group">
+        <span class="strike-price" aria-label="Precio anterior">$400.000</span>
+        <span class="current-price">$140.000</span>
+      </span>
+      <span class="dot-sep" aria-hidden="true"></span>
+      <span class="price-group">
+        <span class="strike-price" aria-label="Precio anterior">$200.000</span>
+        <span>2 pagos de <strong>$70.000</strong></span>
+      </span>
     </p>
     <p class="hero-b2b-tags">
       <span class="tag-b2b">Clientes directos</span>
@@ -2772,7 +2810,7 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
       <h2 class="cta-heading"><span class="cta-dale">Dale,</span> <span class="text-terracota cta-empecemos">empecemos</span>.</h2>
       <div class="footer-card-content">
         <p class="footer-brand"><span>T</span>he Brand Crew</p>
-        <p class="footer-cuit">Hecho por <a href="https://illya-grytsyk.vercel.app" target="_blank" rel="noopener noreferrer" class="footer-illya">Illya</a> <span style="color: var(--terracota);">♥</span></p>
+        <p class="footer-cuit">Hecho por <a href="https://illya-grytsyk.vercel.app" target="_blank" rel="noopener noreferrer" class="footer-illya">Illya</a></p>
         <div class="footer-social">
           <a href="/privacidad">Privacidad</a>
         </div>
