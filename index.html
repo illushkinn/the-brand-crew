@@ -1210,6 +1210,23 @@ body::after {
   font-size: 1.3rem;
   font-weight: 500;
   color: var(--headline);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.pricing-current {
+  color: var(--verde);
+  font-weight: 600;
+  font-size: 1.1em;
+}
+.pricing-strike.strike-price {
+  font-size: 0.85em;
+}
+.pricing-split .pricing-current {
+  display: block;
+  font-size: 1.4rem;
+  margin-top: 0.15rem;
 }
 .pricing-includes {
   margin-bottom: 2rem;
@@ -2725,15 +2742,24 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
   <div class="glass-card pricing-card fade-in">
     <div class="pricing-line">
       <span class="pricing-line-label">Diseño + Desarrollo<br><small>+ Dominio (2 años)</small></span>
-      <span class="pricing-line-price">$400.000 ARS</span>
+      <span class="pricing-line-price">
+        <span class="strike-price pricing-strike">$400.000 ARS</span>
+        <span class="pricing-current">$140.000 ARS</span>
+      </span>
     </div>
     <div class="pricing-split">
       <div class="pricing-split-item">
-        <div class="amount">$200.000</div>
+        <div class="amount">
+          <span class="strike-price pricing-strike">$200.000</span>
+          <span class="pricing-current">$70.000</span>
+        </div>
         <div class="label">Al arranque</div>
       </div>
       <div class="pricing-split-item">
-        <div class="amount">$200.000</div>
+        <div class="amount">
+          <span class="strike-price pricing-strike">$200.000</span>
+          <span class="pricing-current">$70.000</span>
+        </div>
         <div class="label">A la entrega</div>
       </div>
     </div>
