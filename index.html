@@ -119,9 +119,10 @@ ul { list-style: none; }
 }
 @supports (backdrop-filter: blur()) {
   .glass-card, .navbar {
-    backdrop-filter: blur(24px) saturate(150%);
-    -webkit-backdrop-filter: blur(24px) saturate(150%);
-    background: rgba(10, 10, 15, 0.55);
+    backdrop-filter: blur(32px) saturate(160%);
+    -webkit-backdrop-filter: blur(32px) saturate(160%);
+    background: rgba(10, 10, 15, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.08);
   }
 }
 .hamburger-btn, .step-number, .resultados-arrow {
@@ -606,9 +607,9 @@ body::after {
   content: '';
   position: fixed;
   inset: 0;
-  background: rgba(10, 10, 15, 0.04);
-  backdrop-filter: blur(12px) saturate(150%);
-  -webkit-backdrop-filter: blur(12px) saturate(150%);
+  background: rgba(10, 10, 15, 0.02);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
   pointer-events: none;
   z-index: -1;
 }
@@ -916,14 +917,19 @@ body::before {
   margin-bottom: 0.15rem;
 }
 .progreso-tag {
-  font-style: italic;
-  text-transform: none;
-  letter-spacing: 0;
-  font-size: 0.7rem;
-  opacity: 0.8;
-  display: block;
-  margin-top: 0.1rem;
-  color: var(--white);
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.6rem;
+  font-weight: 600;
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  margin-top: 0.3rem;
+  color: var(--terracota);
+  border: 1px solid var(--terracota);
+  border-radius: 100px;
+  background: rgba(179, 107, 72, 0.1);
+  line-height: 1;
 }
 .resultado-nombre {
   font-family: var(--font-display);
@@ -2283,7 +2289,7 @@ loader.start();
       <div class="resultado-info">
         <span class="mono resultado-tag">Rotisería · Mar del Plata</span>
         <h3 class="resultado-nombre">Luisito Playa Grande</h3>
-        <em class="progreso-tag">(en progreso)</em>
+        <em class="progreso-tag">en desarrollo</em>
         <a href="https://luisito-playa-grande.vercel.app" class="resultado-link" target="_blank" rel="noopener">Ver el sitio de Luisito →</a>
         <a href="https://luisito-brandbook.vercel.app" class="resultado-link" target="_blank" rel="noopener">Brandbook →</a>
       </div>
@@ -2308,7 +2314,7 @@ loader.start();
       <div class="resultado-info">
         <span class="mono resultado-tag">Verdulería · Mar del Plata</span>
         <h3 class="resultado-nombre">Apolonia</h3>
-        <em class="progreso-tag">(en progreso)</em>
+        <em class="progreso-tag">en desarrollo</em>
         <a href="https://verduleria-apolonia-mar-del-plata.vercel.app" class="resultado-link" target="_blank" rel="noopener">Ver el sitio de Apolonia →</a>
         <a href="https://apolonia-brandbook.vercel.app" class="resultado-link" target="_blank" rel="noopener">Brandbook →</a>
       </div>
@@ -2361,7 +2367,7 @@ loader.start();
       <div class="resultado-info">
         <span class="mono resultado-tag">MedTech · Latinoamérica</span>
         <h3 class="resultado-nombre">Pragma</h3>
-        <em class="progreso-tag">(en desarrollo)</em>
+         <em class="progreso-tag">en desarrollo</em>
         <a href="https://pragma-gules.vercel.app" class="resultado-link" target="_blank" rel="noopener">Ver el sitio de Pragma →</a>
       </div>
     </div>
@@ -2538,7 +2544,7 @@ loader.start();
     <div class="footer-card reveal">
       <div class="footer-card-content">
         <p class="footer-brand"><span>T</span>he Brand Crew</p>
-        <p class="footer-cuit">Hecho por <a href="https://illya-grytsyk.vercel.app" target="_blank" rel="noopener noreferrer" class="footer-illya">Illya</a> <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--terracota)" stroke="none" style="display:inline; vertical-align:middle;"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></p>
+        <p class="footer-cuit">Hecho por <a href="https://illya-grytsyk.vercel.app" target="_blank" rel="noopener noreferrer" class="footer-illya">Illya</a> y <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--terracota)" stroke="none" style="display:inline; vertical-align:middle;"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></p>
         <div class="footer-social">
           <a href="/privacidad">Privacidad</a>
         </div>
