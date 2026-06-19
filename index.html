@@ -590,19 +590,6 @@ a:focus-visible {
 body {
   position: relative;
 }
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 80% 70% at 15% 15%, var(--terracota) 0%, transparent 55%),
-    radial-gradient(ellipse 60% 60% at 80% 25%, var(--ochra) 0%, transparent 50%),
-    radial-gradient(ellipse 50% 50% at 50% 55%, var(--verde) 0%, transparent 55%),
-    radial-gradient(ellipse 70% 60% at 20% 85%, var(--terracota) 0%, transparent 50%);
-  opacity: 0.8;
-  pointer-events: none;
-  z-index: -2;
-}
 body::after {
   content: '';
   position: fixed;
@@ -621,12 +608,14 @@ body::before {
   z-index: -2;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 90% 80% at 5% 10%, rgba(221, 97, 76, 0.35) 0%, transparent 50%),
-    radial-gradient(ellipse 80% 70% at 95% 20%, rgba(218, 161, 68, 0.32) 0%, transparent 50%),
-    radial-gradient(ellipse 70% 60% at 50% 50%, rgba(122, 184, 0, 0.28) 0%, transparent 50%),
-    radial-gradient(ellipse 85% 75% at 30% 85%, rgba(218, 161, 68, 0.30) 0%, transparent 50%),
-    radial-gradient(ellipse 75% 65% at 80% 80%, rgba(221, 97, 76, 0.30) 0%, transparent 50%),
-    radial-gradient(ellipse 80% 60% at 45% 95%, rgba(122, 184, 0, 0.25) 0%, transparent 50%);
+    radial-gradient(ellipse 85% 75% at 8% 12%, rgba(221, 97, 76, 0.42) 0%, transparent 52%),
+    radial-gradient(ellipse 75% 65% at 92% 18%, rgba(218, 161, 68, 0.38) 0%, transparent 48%),
+    radial-gradient(ellipse 65% 55% at 48% 52%, rgba(122, 184, 0, 0.34) 0%, transparent 52%),
+    radial-gradient(ellipse 80% 70% at 25% 82%, rgba(218, 161, 68, 0.36) 0%, transparent 46%),
+    radial-gradient(ellipse 70% 60% at 78% 78%, rgba(221, 97, 76, 0.36) 0%, transparent 48%),
+    radial-gradient(ellipse 75% 55% at 42% 92%, rgba(122, 184, 0, 0.30) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 45% at 65% 35%, rgba(221, 97, 76, 0.22) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 35% at 15% 55%, rgba(122, 184, 0, 0.20) 0%, transparent 58%);
   opacity: 0.95;
 }
 /* Light ray: diagonal beam from isologo direction */
@@ -1732,15 +1721,17 @@ body::before {
     opacity: 0.3;
   }
 }
-@media (min-width: 375px) and (max-width: 420px) {
+@media (min-width: 375px) and (max-width: 480px) {
   .hero-b2b-tags {
-    flex-wrap: nowrap;
-    gap: 0.35rem;
+    flex-wrap: nowrap !important;
+    gap: 0.25rem;
+    justify-content: flex-start;
   }
   .tag-b2b {
-    font-size: 0.6rem;
-    padding: 0.25rem 0.5rem;
+    font-size: 0.55rem;
+    padding: 0.2rem 0.4rem;
     white-space: nowrap;
+    flex-shrink: 0;
   }
 }
 @media (max-width: 380px) {
