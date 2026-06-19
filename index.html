@@ -76,10 +76,8 @@ ul { list-style: none; }
   --verde: var(--oklch-verde);
   --verde-hover: var(--oklch-verde-hover);
   --border: var(--oklch-border);
-  --brand: var(--oklch-terracota);
   --glass-bg: rgba(255,255,255,0.06);
   --glass-border: rgba(255,255,255,0.10);
-  --shadow: 0 4px 24px rgba(0,0,0,0.4);
   --nav-bg: rgba(18,18,18,0.85);
   --accent-glow: rgba(221,97,76,0.15);
   --font-display: 'Rethink Sans', sans-serif;
@@ -93,9 +91,6 @@ ul { list-style: none; }
   --color-verde-subtle: rgba(122, 184, 0, 0.08);
   --color-bg-hero: var(--bg);
   --color-bg-overlay: rgba(10, 10, 15, 0.6);
-  --color-border-glass: var(--glass-border);
-  --color-heading: var(--headline);
-  --color-terracota: var(--terracota);
 }
 [data-theme="light"] {
   --oklch-bg-dark: oklch(0.97 0.005 80);
@@ -112,7 +107,6 @@ ul { list-style: none; }
   --verde-hover: #5C8C00;
   --glass-bg: rgba(0,0,0,0.03);
   --glass-border: rgba(0,0,0,0.08);
-  --shadow: 0 4px 24px rgba(0,0,0,0.1);
   --nav-bg: rgba(245,240,235,0.9);
   --accent-glow: rgba(196,81,62,0.12);
 }
@@ -212,38 +206,6 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
 .btn:focus-visible {
   outline: 2px solid rgba(255, 255, 255, 0.3);
   outline-offset: 2px;
-}
-.btn-primary {
-  background: var(--terracota);
-  color: var(--white);
-}
-.btn-primary:hover, .btn-primary:focus-visible {
-  background: var(--terracota-hover);
-  border-color: var(--terracota-hover);
-  box-shadow: 0 6px 20px rgba(221, 97, 76, 0.15);
-}
-.btn-secondary {
-  --mouse-x: 50%;
-  --mouse-y: 50%;
-  background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), var(--verde-hover) 0%, var(--verde) 40%, rgba(120,184,0,0.6) 80%);
-  background-size: 200% 200%;
-  border: none;
-  color: var(--white);
-  font-weight: 400;
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.15), inset 0 0 6px rgba(255,255,255,0.1);
-}
-.btn-secondary::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(122,184,0,0.4) 0%, transparent 50%);
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-.btn-secondary:hover::before { opacity: 1; }
-.btn-secondary:hover, .btn-secondary:focus-visible {
-  color: var(--white);
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.15), inset 0 0 14px rgba(126,217,87,0.15), 0 6px 20px rgba(37, 211, 102, 0.12);
 }
 .btn-lg {
   font-size: clamp(1.15rem, 2.5vw, 1.4rem);
@@ -438,10 +400,6 @@ a:focus-visible {
 }
 .mobile-menu a:focus-visible {
   color: var(--white);
-}
-.mobile-menu a {
-  will-change: transform, opacity;
-  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.3s, opacity 0.4s cubic-bezier(0.45, 0.05, 0.25, 1);
 }
 .mobile-menu a:active {
   transform: scale(0.92);
@@ -910,7 +868,7 @@ body::after {
   justify-content: center;
 }
 .resultado-avatar.dark-bg {
-  background: #fff;
+  background: var(--white);
   padding: 0.25rem;
 }
 .btn-full-width {
@@ -933,7 +891,7 @@ body::after {
   text-transform: none;
   letter-spacing: 0;
   font-size: 0.7rem;
-  opacity: 0.7;
+  opacity: 0.8;
   display: block;
   margin-top: 0.1rem;
   color: var(--white);
@@ -1316,14 +1274,6 @@ body::after {
 .cta-final h2 {
   margin-bottom: var(--space-md);
 }
-.cta-final .cta-sub {
-  color: var(--body-dim);
-  font-size: clamp(1.1rem, 2.5vw, 1.35rem);
-  margin-bottom: var(--space-xl);
-  max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
-}
 .footer {
   border-top: none;
 }
@@ -1359,7 +1309,7 @@ body::after {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.8rem;
   color: var(--body-dim);
-  opacity: 0.7;
+  opacity: 0.8;
   margin-top: 0.2rem;
 }
 .footer .footer-illya {
@@ -1517,13 +1467,6 @@ body::after {
     padding: 1.3rem 2rem;
     font-size: 1.5rem;
   }
-  .cta-heading {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.2rem;
-    line-height: 1;
-  }
   .cta-dale {
     font-size: 3.2rem;
     font-weight: 700;
@@ -1549,16 +1492,16 @@ body::after {
     padding-bottom: var(--space-lg);
   }
   .hero-title, .hero-sub {
-    font-family: 'Rethink Sans', sans-serif !important;
+    font-family: 'Rethink Sans', sans-serif;
   }
   .hero-title {
-    font-size: clamp(3.5rem, 14vw, 8rem) !important;
+    font-size: clamp(3.5rem, 14vw, 8rem);
     line-height: 1.05;
     margin-bottom: 0.75rem;
     word-spacing: -0.5px;
   }
   .hero-sub {
-    font-size: clamp(1.5rem, 5vw, 3rem) !important;
+    font-size: clamp(1.5rem, 5vw, 3rem);
     text-wrap: balance;
     margin-bottom: 2rem;
   }
@@ -1657,9 +1600,6 @@ body::after {
     gap: var(--space-md);
     align-items: center;
     text-align: center;
-  }
-  .footer-card .cta-heading {
-    display: none;
   }
   .footer .footer-brand {
     font-size: 1rem;
@@ -1786,7 +1726,7 @@ body::after {
   bottom: 0;
   width: 2px;
   height: 13vh;
-  background: linear-gradient(to bottom, #DD614C, #DAA144);
+  background: linear-gradient(to bottom, var(--terracota), var(--ochra));
   clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
   z-index: 50;
   pointer-events: none;
@@ -1800,8 +1740,8 @@ body::after {
   50% { opacity: 0.85; }
 }
 @keyframes aguja-shift {
-  0%, 100% { background: linear-gradient(to bottom, #DD614C, #DAA144); }
-  50% { background: linear-gradient(to bottom, #DAA144, #DD614C); }
+  0%, 100% { background: linear-gradient(to bottom, var(--terracota), var(--ochra)); }
+  50% { background: linear-gradient(to bottom, var(--ochra), var(--terracota)); }
 }
 #preloader-wrapper {
   position: fixed;
@@ -2070,9 +2010,6 @@ body::after {
     align-items: flex-start;
     text-align: left;
   }
-  .footer-card .cta-heading {
-    display: block;
-  }
 }
 
 /* Tablet: more breathing room + larger text */
@@ -2259,7 +2196,7 @@ loader.start();
         <span class="mono resultado-tag">Rotisería · Mar del Plata</span>
         <h3 class="resultado-nombre">Luisito Playa Grande</h3>
         <em class="progreso-tag">(en progreso)</em>
-        <a href="https://luisito-playa-grande.vercel.app" class="resultado-link" target="_blank" rel="noopener">Ver el sitio →</a>
+        <a href="https://luisito-playa-grande.vercel.app" class="resultado-link" target="_blank" rel="noopener">Ver el sitio de Luisito →</a>
         <a href="https://luisito-brandbook.vercel.app" class="resultado-link" target="_blank" rel="noopener">Brandbook →</a>
       </div>
     </div>
@@ -2284,7 +2221,7 @@ loader.start();
         <span class="mono resultado-tag">Verdulería · Mar del Plata</span>
         <h3 class="resultado-nombre">Apolonia</h3>
         <em class="progreso-tag">(en progreso)</em>
-        <a href="https://verduleria-apolonia-mar-del-plata.vercel.app" class="resultado-link" target="_blank" rel="noopener">Ver el sitio →</a>
+        <a href="https://verduleria-apolonia-mar-del-plata.vercel.app" class="resultado-link" target="_blank" rel="noopener">Ver el sitio de Apolonia →</a>
         <a href="https://apolonia-brandbook.vercel.app" class="resultado-link" target="_blank" rel="noopener">Brandbook →</a>
       </div>
     </div>
@@ -2308,7 +2245,7 @@ loader.start();
       <div class="resultado-info">
         <span class="mono resultado-tag">Mayorista · Mar del Plata</span>
         <h3 class="resultado-nombre">Catálogo Hoco</h3>
-        <a href="https://hococatalog.vercel.app" class="resultado-link" target="_blank" rel="noopener">Ver el sitio →</a>
+        <a href="https://hococatalog.vercel.app" class="resultado-link" target="_blank" rel="noopener">Ver el sitio de Hoco →</a>
         <a href="https://hoco-brandbook.vercel.app" class="resultado-link" target="_blank" rel="noopener">Brandbook →</a>
       </div>
     </div>
@@ -2337,7 +2274,7 @@ loader.start();
         <span class="mono resultado-tag">MedTech · Latinoamérica</span>
         <h3 class="resultado-nombre">Pragma</h3>
         <em class="progreso-tag">(en desarrollo)</em>
-        <a href="https://pragma-gules.vercel.app" class="resultado-link" target="_blank" rel="noopener">Ver el sitio →</a>
+        <a href="https://pragma-gules.vercel.app" class="resultado-link" target="_blank" rel="noopener">Ver el sitio de Pragma →</a>
       </div>
     </div>
     <div class="resultado-historia">
