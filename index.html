@@ -217,15 +217,17 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   height: 1.3em;
 }
 .btn-empecemos {
+  background: transparent;
+  color: var(--terracota);
+  border: 2px solid var(--terracota);
+  border-radius: var(--radius-md);
+  box-shadow: none;
+  transition: all 0.3s ease;
+}
+.btn-empecemos:hover, .btn-empecemos:focus-visible {
   background: var(--terracota);
   color: var(--white);
   border-color: var(--terracota);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-button);
-}
-.btn-empecemos:hover, .btn-empecemos:focus-visible {
-  background: var(--terracota-hover);
-  border-color: var(--terracota-hover);
   box-shadow: 0 8px 28px var(--accent-glow);
 }
 .btn-empecemos.btn-lg {
@@ -354,6 +356,10 @@ button:focus-visible,
 a:focus-visible {
   outline: 2px solid rgba(255, 255, 255, 0.3);
   outline-offset: 2px;
+}
+.hamburger-btn:focus-visible,
+.navbar-brand:focus-visible {
+  outline: none;
 }
 
 .mobile-menu {
@@ -1039,6 +1045,45 @@ body::before {
   max-width: 400px;
   margin: 0 auto;
   line-height: 1.6;
+}
+.about-card {
+  padding: 2.5rem 2rem;
+}
+.about-text {
+  color: var(--body-dim);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  max-width: 600px;
+}
+.about-text:last-of-type {
+  margin-bottom: 2rem;
+}
+.about-values {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.about-value {
+  text-align: center;
+  padding: 1.5rem 1rem;
+}
+.about-value-icon {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+.about-value h4 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--headline);
+  margin-bottom: 0.5rem;
+}
+.about-value p {
+  color: var(--body-dim);
+  font-size: 0.85rem;
+  line-height: 1.5;
 }
 .steps-container {
   margin-top: 3rem;
@@ -2536,6 +2581,35 @@ loader.start();
     <div class="blog-icon">🚧</div>
     <h3>Estamos construyendo esto</h3>
     <p>Artículos sobre diseño, desarrollo web y cómo sacarle partido a tu presencia online. Pronto vas a encontrar contenido de valor acá.</p>
+  </div>
+</section>
+<section class="section about reveal" id="about" aria-label="Sobre nosotros">
+  <span class="section-label mono text-ochra">About</span>
+  <h2 class="section-title">Somos <span class="text-terracota">The Brand Crew</span>.</h2>
+  <div class="glass-card about-card fade-in">
+    <p class="about-text">
+      Somos un estudio de diseño y desarrollo web especializado en crear landing pages que convierten visitantes en clientes. No hacemos páginas bonitas por hacer — hacemos páginas que funcionan.
+    </p>
+    <p class="about-text">
+      Trabajamos con negocios locales que quieren potenciar su presencia online sin vueltas. Diseño limpio, código limpio, resultados medibles.
+    </p>
+    <div class="about-values">
+      <div class="about-value">
+        <span class="about-value-icon">🎯</span>
+        <h4>Resultados primero</h4>
+        <p>Cada decisión de diseño está pensada para convertir.</p>
+      </div>
+      <div class="about-value">
+        <span class="about-value-icon">⚡</span>
+        <h4>Rápido y efectivo</h4>
+        <p>Tu página en producción en días, no en meses.</p>
+      </div>
+      <div class="about-value">
+        <span class="about-value-icon">💎</span>
+        <h4>Calidad real</h4>
+        <p>Código limpio, accesible, optimizado para Google.</p>
+      </div>
+    </div>
   </div>
 </section>
 <section class="cta-final reveal" id="contacto" aria-label="Contacto final">
