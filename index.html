@@ -6,7 +6,7 @@
 <meta name="color-scheme" content="dark only">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>The Brand Crew</title>
-<meta name="description" content="Páginas web que garpan, para proyectos que laburan. Diseño + desarrollo + dominio + hosting desde $400.000 ARS. Partner white label para agencias.">
+<meta name="description" content="Páginas web que garpan, para proyectos que laburan. Diseño + desarrollo + dominio + hosting desde $400.000 ARS">
 <meta name="theme-color" content="#121212">
 <meta name="google-site-verification" content="k-kPS76zKdKwT-18dhJwvxuK56oZXsaMpiBEeOmjuQA" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -788,6 +788,7 @@ body::after {
   color: var(--body-dim);
   background: transparent;
 }
+
 .problema {
   position: relative;
   overflow: hidden;
@@ -1186,9 +1187,9 @@ body::after {
   font-weight: 500;
   color: var(--headline);
   display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.15rem;
 }
 .pricing-current {
   color: var(--verde);
@@ -1234,19 +1235,7 @@ body::after {
   width: 1.1rem;
   height: 1.1rem;
 }
-.pricing-b2b {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.75rem;
-  text-align: center;
-  color: var(--body-dim);
-  opacity: 0.7;
-  margin: 1.25rem 0 0.5rem;
-  padding: 0.75rem;
-}
-.pricing-b2b a {
-  color: var(--color-verde);
-  text-decoration: underline;
-}
+
 
 
 .faq {
@@ -1457,40 +1446,7 @@ body::after {
   background: var(--terracota);
   color: var(--white);
 }
-.steps-overlay {
-  position: fixed;
-  inset: 0;
-  background: var(--color-bg-overlay);
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
-  z-index: 50;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.35s ease;
-  -webkit-tap-highlight-color: transparent;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  user-select: none;
-}
-.steps-overlay.is-visible {
-  opacity: 1;
-  pointer-events: all;
-}
-.step.is-active {
-  position: relative;
-  z-index: 60;
-  transform: scale(1.03);
-  outline: 2px solid var(--brand);
-  outline-offset: 6px;
-  border-radius: var(--radius-md);
-}
-.steps-overlay.is-visible ~ .step:not(.is-active) {
-  opacity: 0.3;
-  filter: grayscale(0.5);
-}
-.steps-overlay.is-visible ~ .step::after {
-  display: none;
-}
+
 .skip-link {
   position: absolute;
   top: -100%;
@@ -1705,6 +1661,7 @@ body::after {
     right: 1rem;
     bottom: 1rem;
     left: auto;
+    text-align: right;
     flex-wrap: nowrap;
     justify-content: flex-end;
     gap: 0.35rem;
@@ -2108,7 +2065,7 @@ body::after {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "name": "The Brand Crew",
-  "description": "Páginas web que garpan, para proyectos que laburan. Diseño y desarrollo web para proyectos propios y white label para agencias.",
+  "description": "Páginas web que garpan, para proyectos que laburan. Diseño y desarrollo web para proyectos propios.",
   "url": "https://thebrandcrew.lat",
   "contactPoint": {
     "@type": "ContactPoint",
@@ -2250,6 +2207,7 @@ loader.start();
       <span class="tag-b2b">Clientes directos</span>
       <span class="tag-b2b tag-outline">Partner white label</span>
     </p>
+
   </div>
 </section>
 <section class="section resultados reveal" id="casos" aria-label="Casos de estudio">
@@ -2390,7 +2348,7 @@ loader.start();
     En una semana tenés tu página lista.
   </p>
   <div class="steps-container">
-    <div class="steps-overlay" id="stepsOverlay" aria-hidden="true"></div>
+
     <div class="step fade-in reveal">
       <div class="step-number">1</div>
       <div class="step-content">
@@ -2440,7 +2398,7 @@ loader.start();
         <div class="label">A la entrega</div>
       </div>
     </div>
-    <p class="pricing-b2b">¿Sos agencia? Preferencial por volumen, <a href="https://wa.me/5491124063009?text=Hola%20Illya.%20%C2%BFCom%C3%B3%20est%C3%A1s%3F%20Vi%20tu%20p%C3%A1gina%20y%20me%20encantar%C3%ADa%20que%20colaboremos." target="_blank" rel="noopener">consultame</a></p>
+
     <div class="pricing-includes">
       <h4>Incluye</h4>
       <ul>
@@ -2658,46 +2616,6 @@ loader.start();
     });
   });
 
-  (function() {
-    var overlay = document.getElementById('stepsOverlay');
-    var steps = document.querySelectorAll('.step');
-    var active = false;
-    function activate(step) {
-      if (active) return;
-      active = true;
-      overlay.classList.add('is-visible');
-      step.classList.add('is-active');
-      steps.forEach(function(s) {
-        if (s !== step) s.setAttribute('aria-hidden', 'true');
-      });
-    }
-    function deactivate() {
-      if (!active) return;
-      active = false;
-      overlay.classList.remove('is-visible');
-      steps.forEach(function(s) {
-        s.classList.remove('is-active');
-        s.removeAttribute('aria-hidden');
-      });
-    }
-    steps.forEach(function(step) {
-      step.addEventListener('click', function(e) {
-        if (step.classList.contains('is-active')) {
-          deactivate();
-        } else {
-          deactivate();
-          activate(step);
-        }
-      });
-    });
-    overlay.addEventListener('click', deactivate);
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && active) {
-        deactivate();
-        e.preventDefault();
-      }
-    });
-  })();
   (function() {
     const observer = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
