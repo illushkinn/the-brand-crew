@@ -119,9 +119,9 @@ ul { list-style: none; }
 }
 @supports (backdrop-filter: blur()) {
   .glass-card, .navbar {
-    backdrop-filter: blur(20px) saturate(130%);
-    -webkit-backdrop-filter: blur(20px) saturate(130%);
-    background: rgba(10, 10, 15, 0.35);
+    backdrop-filter: blur(24px) saturate(150%);
+    -webkit-backdrop-filter: blur(24px) saturate(150%);
+    background: rgba(10, 10, 15, 0.55);
   }
 }
 .hamburger-btn, .step-number, .resultados-arrow {
@@ -620,11 +620,13 @@ body::before {
   z-index: -2;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 80% 70% at 15% 15%, var(--terracota) 0%, transparent 55%),
-    radial-gradient(ellipse 60% 60% at 80% 25%, var(--ochra) 0%, transparent 50%),
-    radial-gradient(ellipse 50% 50% at 50% 55%, var(--verde) 0%, transparent 55%),
-    radial-gradient(ellipse 70% 60% at 20% 85%, var(--terracota) 0%, transparent 50%);
-  opacity: 0.8;
+    radial-gradient(ellipse 90% 80% at 5% 10%, rgba(221, 97, 76, 0.35) 0%, transparent 50%),
+    radial-gradient(ellipse 80% 70% at 95% 20%, rgba(218, 161, 68, 0.32) 0%, transparent 50%),
+    radial-gradient(ellipse 70% 60% at 50% 50%, rgba(122, 184, 0, 0.28) 0%, transparent 50%),
+    radial-gradient(ellipse 85% 75% at 30% 85%, rgba(218, 161, 68, 0.30) 0%, transparent 50%),
+    radial-gradient(ellipse 75% 65% at 80% 80%, rgba(221, 97, 76, 0.30) 0%, transparent 50%),
+    radial-gradient(ellipse 80% 60% at 45% 95%, rgba(122, 184, 0, 0.25) 0%, transparent 50%);
+  opacity: 0.95;
 }
 /* Light ray: diagonal beam from isologo direction */
 .hero::before {
@@ -837,7 +839,7 @@ body::before {
 }
 .resultados-grid::-webkit-scrollbar { display: none; }
 .resultados-grid .glass-card {
-  flex: 0 0 calc(85vw - 0.375rem);
+  flex: 0 0 calc(42.5vw - 0.1875rem);
   scroll-snap-align: start;
   margin-bottom: 0;
   transition: border-color 0.3s ease;
