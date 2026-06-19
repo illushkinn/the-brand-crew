@@ -119,9 +119,9 @@ ul { list-style: none; }
 }
 @supports (backdrop-filter: blur()) {
   .glass-card, .navbar {
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    background: rgba(10, 10, 15, 0.25);
+    backdrop-filter: blur(20px) saturate(130%);
+    -webkit-backdrop-filter: blur(20px) saturate(130%);
+    background: rgba(10, 10, 15, 0.35);
   }
 }
 .hamburger-btn, .step-number, .resultados-arrow {
@@ -612,6 +612,21 @@ body::after {
   pointer-events: none;
   z-index: -1;
 }
+/* Full-page colorful gradient layer — makes glassmorphism pop everywhere */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 600px 500px at 10% 15%, rgba(221, 97, 76, 0.18) 0%, transparent 70%),
+    radial-gradient(ellipse 500px 400px at 85% 25%, rgba(218, 161, 68, 0.14) 0%, transparent 70%),
+    radial-gradient(ellipse 400px 350px at 50% 45%, rgba(122, 184, 0, 0.10) 0%, transparent 70%),
+    radial-gradient(ellipse 550px 450px at 20% 65%, rgba(218, 161, 68, 0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 450px 400px at 75% 75%, rgba(221, 97, 76, 0.14) 0%, transparent 70%),
+    radial-gradient(ellipse 500px 350px at 40% 90%, rgba(122, 184, 0, 0.10) 0%, transparent 70%);
+}
 /* Light ray: diagonal beam from isologo direction */
 .hero::before {
   content: '';
@@ -760,6 +775,18 @@ body::after {
   padding-top: 0;
   content-visibility: auto;
   contain-intrinsic-size: 0 600px;
+}
+.problema::before {
+  content: '';
+  position: absolute;
+  top: 20%;
+  right: -10%;
+  width: 400px;
+  height: 350px;
+  background: radial-gradient(ellipse, rgba(221, 97, 76, 0.10) 0%, transparent 70%);
+  filter: blur(50px);
+  pointer-events: none;
+  z-index: 0;
 }
 .problema .section-title {
   margin-top: 2rem;
@@ -974,10 +1001,6 @@ body::after {
   color: var(--body-dim);
   margin-top: 0.15rem;
 }
-.resultado-footer {
-  text-align: center;
-  margin-top: 2rem;
-}
 .resultados .section-label,
 .resultados .section-title { margin-bottom: 2.5rem; }
 .resultados .resultado-tag,
@@ -1087,6 +1110,20 @@ body::after {
 .pricing {
   content-visibility: auto;
   contain-intrinsic-size: 0 600px;
+  position: relative;
+}
+.pricing::before {
+  content: '';
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 450px;
+  height: 350px;
+  background: radial-gradient(ellipse, rgba(122, 184, 0, 0.12) 0%, rgba(218, 161, 68, 0.06) 50%, transparent 70%);
+  filter: blur(50px);
+  pointer-events: none;
+  z-index: 0;
 }
 .pricing-card {
   max-width: 600px;
@@ -1271,6 +1308,20 @@ body::after {
   justify-content: flex-end;
   content-visibility: auto;
   contain-intrinsic-size: 0 600px;
+  position: relative;
+}
+.cta-final::before {
+  content: '';
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500px;
+  height: 400px;
+  background: radial-gradient(ellipse, rgba(221, 97, 76, 0.15) 0%, rgba(218, 161, 68, 0.08) 40%, transparent 70%);
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 0;
 }
 .cta-final h2 {
   margin-bottom: var(--space-md);
