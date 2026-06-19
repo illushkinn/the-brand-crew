@@ -225,14 +225,14 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   transition: all 0.3s ease;
 }
 .btn-empecemos:hover, .btn-empecemos:focus-visible {
-  background: var(--terracota);
-  color: var(--white);
+  background: transparent;
+  color: var(--terracota);
   border-color: var(--terracota);
-  box-shadow: 0 8px 28px var(--accent-glow);
+  box-shadow: none;
 }
 .btn-empecemos.btn-lg {
-  padding: 0.85rem 2rem;
-  font-size: 1.05rem;
+  padding: 0.65rem 1.5rem;
+  font-size: 0.95rem;
   border-radius: var(--radius-md);
 }
 .btn-premium {
@@ -290,22 +290,6 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   align-items: center;
   gap: var(--space-sm);
   z-index: 1001;
-}
-.navbar-brand-mobile {
-  display: none;
-  font-family: var(--font-accent);
-  font-weight: 400;
-  font-size: 1.1rem;
-  color: var(--verde);
-  white-space: nowrap;
-  position: absolute;
-  left: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
-  opacity: 1;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  pointer-events: none;
-  z-index: 1;
 }
 .navbar-brand {
   display: flex;
@@ -428,7 +412,7 @@ a:focus-visible {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 2rem clamp(1.25rem, 5vw, 4rem);
+  padding: 1rem clamp(1rem, 4vw, 3rem);
   position: relative;
   overflow: hidden;
   box-sizing: border-box;
@@ -491,6 +475,66 @@ a:focus-visible {
   animation-delay: -5s;
   animation-name: heroFloatDiag;
   filter: blur(30px);
+  opacity: 0.3;
+}
+.hero-shape:nth-child(5) {
+  width: 180px;
+  height: 160px;
+  border-radius: 45% / 55%;
+  background: linear-gradient(225deg, var(--terracota), rgba(221,97,76,0.3));
+  top: 20%;
+  left: -5%;
+  animation-delay: -10s;
+  animation-name: heroTilt;
+  filter: blur(35px);
+  opacity: 0.5;
+}
+.hero-shape:nth-child(6) {
+  width: 100px;
+  height: 110px;
+  border-radius: 40% / 50%;
+  background: var(--ochra);
+  bottom: 30%;
+  right: 25%;
+  animation-delay: -18s;
+  animation-name: heroPulse;
+  filter: blur(28px);
+  opacity: 0.35;
+}
+.hero-shape:nth-child(7) {
+  width: 140px;
+  height: 130px;
+  border-radius: 50% / 45%;
+  background: linear-gradient(90deg, var(--verde), rgba(122,184,0,0.2));
+  top: 60%;
+  left: 20%;
+  animation-delay: -3s;
+  animation-name: heroFloat;
+  filter: blur(32px);
+  opacity: 0.4;
+}
+.hero-shape:nth-child(8) {
+  width: 80px;
+  height: 90px;
+  border-radius: 50%;
+  background: var(--terracota);
+  top: 10%;
+  right: 20%;
+  animation-delay: -12s;
+  animation-name: heroFloatDiag;
+  filter: blur(22px);
+  opacity: 0.25;
+}
+.hero-shape:nth-child(9) {
+  width: 120px;
+  height: 100px;
+  border-radius: 35% / 45%;
+  background: linear-gradient(315deg, var(--ochra), rgba(218,161,68,0.2));
+  bottom: 5%;
+  left: 35%;
+  animation-delay: -8s;
+  animation-name: heroTilt;
+  filter: blur(26px);
   opacity: 0.3;
 }
 .hero-shape:nth-child(5) {
@@ -688,16 +732,16 @@ body::before {
 }
 .hero-title {
   font-family: var(--font-body);
-  font-size: clamp(2.4rem, 6vw, 4rem);
+  font-size: clamp(2.8rem, 7vw, 4.5rem);
   letter-spacing: 0.02em;
   line-height: 1.1;
 }
 .hero-sub {
   font-family: var(--font-body);
-  font-size: clamp(1.1rem, 2.8vw, 1.8rem);
+  font-size: clamp(1.2rem, 3vw, 2rem);
   color: var(--headline);
-  margin-top: var(--space-lg);
-  margin-bottom: var(--space-md);
+  margin-top: var(--space-md);
+  margin-bottom: var(--space-sm);
 }
 .hero-meta {
   font-size: 0.85rem;
@@ -1047,7 +1091,7 @@ body::before {
   line-height: 1.6;
 }
 .about-card {
-  padding: 2.5rem 2rem;
+  padding: 3.5rem 2rem;
 }
 .about-text {
   color: var(--body-dim);
@@ -1413,6 +1457,14 @@ body::before {
 .footer .footer-illya:hover {
   text-decoration: underline;
 }
+.footer .footer-privacidad {
+  font-family: var(--font-body);
+  color: var(--terracota);
+  text-decoration: none;
+}
+.footer .footer-privacidad:hover {
+  text-decoration: underline;
+}
 .footer .footer-social {
   display: flex;
   align-items: center;
@@ -1565,10 +1617,6 @@ body::before {
   .cta-empecemos {
     font-size: 3.2rem;
     font-weight: 500;
-  }
-  .navbar-brand-mobile {
-    display: block;
-    font-size: 1.6rem;
   }
   .navbar {
     background: rgba(255, 255, 255, 0.01);
@@ -2075,11 +2123,6 @@ body::before {
     font-size: 1rem;
   }
 
-  .navbar-brand-mobile {
-    display: block;
-    left: auto;
-    right: 2rem;
-  }
   .navbar-brand {
     margin-left: auto;
   }
@@ -2595,17 +2638,17 @@ loader.start();
     </p>
     <div class="about-values">
       <div class="about-value">
-        <span class="about-value-icon">🎯</span>
+        <span class="about-value-icon"><i class="ph ph-target"></i></span>
         <h4>Resultados primero</h4>
         <p>Cada decisión de diseño está pensada para convertir.</p>
       </div>
       <div class="about-value">
-        <span class="about-value-icon">⚡</span>
+        <span class="about-value-icon"><i class="ph ph-lightning"></i></span>
         <h4>Rápido y efectivo</h4>
         <p>Tu página en producción en días, no en meses.</p>
       </div>
       <div class="about-value">
-        <span class="about-value-icon">💎</span>
+        <span class="about-value-icon"><i class="ph ph-diamond"></i></span>
         <h4>Calidad real</h4>
         <p>Código limpio, accesible, optimizado para Google.</p>
       </div>
@@ -2622,7 +2665,7 @@ loader.start();
         <p class="footer-brand"><span>T</span>he Brand Crew</p>
         <p class="footer-cuit">Hecho por <a href="https://illya-grytsyk.vercel.app" target="_blank" rel="noopener noreferrer" class="footer-illya">Illya</a> y <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--terracota)" stroke="none" style="display:inline; vertical-align:middle;"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></p>
         <div class="footer-social">
-          <a href="/privacidad">Privacidad</a>
+          <a href="/privacidad" class="footer-privacidad">Privacidad</a>
         </div>
       </div>
     </div>
