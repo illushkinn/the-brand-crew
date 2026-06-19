@@ -19,6 +19,7 @@
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html {
+  font-size: calc(16px * var(--font-scale));
   scroll-behavior: smooth;
   scroll-padding-top: 64px;
   background: var(--bg);
@@ -91,6 +92,7 @@ ul { list-style: none; }
   --color-verde-subtle: rgba(122, 184, 0, 0.08);
   --color-bg-hero: var(--bg);
   --color-bg-overlay: rgba(10, 10, 15, 0.6);
+  --font-scale: 1;
 }
 [data-theme="light"] {
   --oklch-bg-dark: oklch(0.97 0.005 80);
@@ -136,10 +138,10 @@ h1, h2, h3, h4 {
   letter-spacing: -0.03em;
   color: var(--headline);
 }
-h1 { font-size: clamp(2.5rem, 6vw, 5rem); }
-h2 { font-size: clamp(2rem, 5vw, 3.5rem); }
-h3 { font-size: clamp(1.5rem, 3.5vw, 2.5rem); }
-h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
+h1 { font-size: calc(clamp(2.5rem, 6vw, 5rem) * var(--font-scale)); }
+h2 { font-size: calc(clamp(2rem, 5vw, 3.5rem) * var(--font-scale)); }
+h3 { font-size: calc(clamp(1.5rem, 3.5vw, 2.5rem) * var(--font-scale)); }
+h4 { font-size: calc(clamp(1.4rem, 3vw, 2rem) * var(--font-scale)); font-weight: 400; }
 .mono { font-family: 'JetBrains Mono', monospace; }
 .text-terracota { color: var(--terracota); }
 .text-ochra { color: var(--ochra); }
@@ -605,9 +607,9 @@ body::after {
   content: '';
   position: fixed;
   inset: 0;
-  background: rgba(10, 10, 15, 0.08);
-  backdrop-filter: blur(40px) saturate(120%);
-  -webkit-backdrop-filter: blur(40px) saturate(120%);
+  background: rgba(10, 10, 15, 0.03);
+  backdrop-filter: blur(25px) saturate(140%);
+  -webkit-backdrop-filter: blur(25px) saturate(140%);
   pointer-events: none;
   z-index: -1;
 }
@@ -1358,6 +1360,37 @@ body::after {
   display: inline;
   vertical-align: middle;
 }
+
+/* Font Resizer — accessible text size toggle */
+.font-resizer {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.75rem;
+}
+.font-resizer-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--body-dim);
+  border-radius: var(--radius-sm);
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+  font-family: var(--font-display);
+  line-height: 1;
+}
+.font-resizer-btn:first-child { font-size: 0.75rem; }
+.font-resizer-md { font-size: 0.9rem; }
+.font-resizer-lg { font-size: 1.05rem; }
+.font-resizer-btn:hover,
+.font-resizer-btn.active {
+  color: var(--verde);
+  border-color: var(--verde);
+}
+.font-resizer-btn:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.3);
+  outline-offset: 2px;
+}
 .scroll-to-top {
   position: fixed;
   bottom: calc(2px + env(safe-area-inset-bottom, 0px));
@@ -1530,7 +1563,7 @@ body::after {
   }
   .resultados-grid::-webkit-scrollbar { display: none; }
   .resultados-grid .glass-card {
-    flex: 0 0 calc(50% - 0.375rem);
+    flex: 0 0 calc(85vw - 0.375rem);
     scroll-snap-align: start;
   }
   .resultados-nav { display: none; }
@@ -1643,6 +1676,27 @@ body::after {
   }
   .cta-final .footer {
     width: 100%;
+  }
+  .font-resizer { justify-content: center; margin-top: 1rem; }
+}
+@media (orientation: landscape) and (max-height: 500px) {
+  .hero {
+    height: auto;
+    min-height: calc(100dvh - 64px);
+    padding: 1rem clamp(1rem, 5vw, 2rem);
+  }
+  .hero-title {
+    font-size: clamp(1.8rem, 5vw, 3rem);
+  }
+  .hero-sub {
+    font-size: clamp(0.9rem, 2.5vw, 1.3rem);
+    margin-bottom: 1rem;
+  }
+  .hero-actions {
+    margin-bottom: 1.5em;
+  }
+  .hero-shape {
+    opacity: 0.3;
   }
 }
 @media (max-width: 380px) {
@@ -2454,6 +2508,11 @@ loader.start();
         <div class="footer-social">
           <a href="/privacidad">Privacidad</a>
         </div>
+        <div class="font-resizer" role="group" aria-label="Cambiar tamaño de texto">
+          <button class="font-resizer-btn active" data-scale="1" aria-label="Tamaño normal">A</button>
+          <button class="font-resizer-btn font-resizer-md" data-scale="1.12" aria-label="Tamaño mediano">A</button>
+          <button class="font-resizer-btn font-resizer-lg" data-scale="1.25" aria-label="Tamaño grande">A</button>
+        </div>
       </div>
     </div>
   </footer>
@@ -2615,6 +2674,23 @@ loader.start();
     next.addEventListener('click', () => { grid.scrollBy({ left: scrollAmount, behavior: 'smooth' }); });
     prev.addEventListener('click', () => { grid.scrollBy({ left: -scrollAmount, behavior: 'smooth' }); });
   }
+})();
+
+// Font Resizer — accessible text size toggle
+(function() {
+  var saved = localStorage.getItem('tbc-font-scale') || '1';
+  document.documentElement.style.setProperty('--font-scale', saved);
+  var btns = document.querySelectorAll('.font-resizer-btn');
+  btns.forEach(function(btn) {
+    if (btn.dataset.scale === saved) btn.classList.add('active');
+    btn.addEventListener('click', function() {
+      btns.forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      var scale = btn.dataset.scale;
+      document.documentElement.style.setProperty('--font-scale', scale);
+      localStorage.setItem('tbc-font-scale', scale);
+    });
+  });
 })();
 
 
