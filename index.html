@@ -87,7 +87,6 @@ ul { list-style: none; }
   --font-accent: 'Grand Hotel', cursive;
   /* Shadows */
   --shadow-button: 0 4px 16px rgba(221, 97, 76, 0.3);
-  --shadow-button-hover: 0 6px 24px rgba(221, 97, 76, 0.4);
   /* Color aliases (map to OKLCH primitives) */
   --text: var(--body);
   --color-verde: var(--verde);
@@ -201,8 +200,18 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   padding: 0.9rem 2rem;
   border-radius: var(--radius-md);
   border: 2px solid var(--terracota);
-  transition: all 0.25s;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+/* Unified hover: lift + glow — midudev minimalist style */
+.btn:hover {
+  transform: translateY(-2px);
+}
+.btn:focus-visible {
+  outline: 2px solid var(--verde);
+  outline-offset: 2px;
 }
 .btn-primary {
   background: var(--terracota);
@@ -211,7 +220,7 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
 .btn-primary:hover, .btn-primary:focus-visible {
   background: var(--terracota-hover);
   border-color: var(--terracota-hover);
-  transform: scale(1.02);
+  box-shadow: 0 6px 20px rgba(221, 97, 76, 0.35);
 }
 .btn-secondary {
   --mouse-x: 50%;
@@ -221,8 +230,6 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   border: none;
   color: var(--white);
   font-weight: 400;
-  position: relative;
-  overflow: hidden;
   box-shadow: inset 0 0 0 1px rgba(255,255,255,0.15), inset 0 0 6px rgba(255,255,255,0.1);
 }
 .btn-secondary::before {
@@ -236,8 +243,7 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
 .btn-secondary:hover::before { opacity: 1; }
 .btn-secondary:hover, .btn-secondary:focus-visible {
   color: var(--white);
-  transform: scale(1.02);
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.25), inset 0 0 14px rgba(126,217,87,0.3);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.25), inset 0 0 14px rgba(126,217,87,0.3), 0 6px 20px rgba(37, 211, 102, 0.3);
 }
 .btn-lg {
   font-size: clamp(1.15rem, 2.5vw, 1.4rem);
@@ -253,13 +259,11 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   border-color: var(--terracota);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-button);
-  position: relative;
 }
 .btn-empecemos:hover, .btn-empecemos:focus-visible {
   background: var(--terracota-hover);
   border-color: var(--terracota-hover);
-  transform: scale(1.02);
-  box-shadow: var(--shadow-button-hover);
+  box-shadow: 0 8px 28px rgba(221, 97, 76, 0.4);
 }
   .btn-empecemos.btn-lg {
   padding: 0.85rem 2rem;
@@ -277,66 +281,12 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   z-index: 1;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-/* Katana slash — light blade sweeps diagonal on hover */
-.btn-premium::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 60%;
-  height: 100%;
-  background: linear-gradient(
-    105deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.03) 30%,
-    rgba(255, 255, 255, 0.6) 48%,
-    rgba(255, 255, 255, 0.9) 50%,
-    rgba(255, 255, 255, 0.6) 52%,
-    rgba(255, 255, 255, 0.03) 70%,
-    transparent 100%
-  );
-  transform: skewX(-20deg);
-  z-index: 3;
-  pointer-events: none;
-  transition: none;
-}
-.btn-premium:hover::before {
-  animation: katanaSlash 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-/* Glow trail —残り光 (remaining light) after the cut */
-.btn-premium::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(221, 97, 76, 0.15) 40%,
-    rgba(255, 255, 255, 0.2) 50%,
-    rgba(196, 144, 50, 0.15) 60%,
-    transparent 100%
-  );
-  opacity: 0;
-  z-index: 2;
-  pointer-events: none;
-  transition: opacity 0.3s ease 0.4s;
-}
-.btn-premium:hover::after {
-  opacity: 1;
-}
 .btn-premium:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 32px rgba(221, 97, 76, 0.4);
 }
-@keyframes katanaSlash {
-  0% { left: -100%; }
-  45% { left: 120%; }
-  50% { left: 120%; opacity: 1; }
-  100% { left: 120%; opacity: 0; }
-}
 @media (prefers-reduced-motion: reduce) {
-  .btn-premium::before { animation: none; }
-  .btn-premium::after { transition: none; opacity: 0.5; }
+  .btn-premium { transition: none; }
 }
 .navbar {
   position: fixed;
@@ -439,9 +389,6 @@ a:focus-visible {
   outline: 2px solid var(--brand);
   outline-offset: 2px;
 }
-.hamburger-btn:focus-visible {
-  outline: none;
-}
 
 .mobile-menu {
   position: fixed;
@@ -476,7 +423,8 @@ a:focus-visible {
   padding: 0.3rem 1rem;
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.4s cubic-bezier(0.45, 0.05, 0.25, 1), transform 0.4s cubic-bezier(0.45, 0.05, 0.25, 1), color 0.3s;
+  will-change: transform, opacity;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.3s, opacity 0.4s cubic-bezier(0.45, 0.05, 0.25, 1);
 }
 .mobile-menu.is-open a {
   opacity: 1;
@@ -500,9 +448,6 @@ a:focus-visible {
   opacity: 0.7;
   transition: transform 0.1s ease, color 0.2s, opacity 0.2s;
 }
-.mobile-menu a:focus-visible {
-  outline: none;
-}
 .hero {
   height: calc(100vh - 64px - env(safe-area-inset-top, 0px));
   height: calc(100dvh - 64px - env(safe-area-inset-top, 0px));
@@ -512,7 +457,6 @@ a:focus-visible {
   justify-content: center;
   align-items: center;
   padding: 2rem clamp(1.25rem, 5vw, 4rem);
-  background: transparent;
   position: relative;
   overflow: hidden;
   box-sizing: border-box;
@@ -679,7 +623,6 @@ a:focus-visible {
 }
 body {
   position: relative;
-  background: transparent; 
 }
 body::before {
   content: '';
@@ -846,7 +789,6 @@ body::after {
   background: transparent;
 }
 .problema {
-  background: transparent;
   position: relative;
   overflow: hidden;
   padding-top: 0;
@@ -878,21 +820,17 @@ body::after {
   line-height: 1.35;
   text-wrap: pretty;
 }
-.problema-card p {
+.problema-card p,
+.problema-card p.sub {
   color: var(--body-dim);
   line-height: 1.6;
   font-size: 0.95rem;
   text-wrap: pretty;
 }
 .problema-card p.sub {
-  color: var(--body-dim);
-  font-size: 0.95rem;
   margin-top: 0.35rem;
-  line-height: 1.6;
-  text-wrap: pretty;
 }
 .resultados {
-  background: transparent;
   padding-top: 4rem;
   padding-bottom: 2rem;
   content-visibility: auto;
@@ -909,6 +847,10 @@ body::after {
   flex: 0 0 min(380px, 80vw);
   scroll-snap-align: start;
   margin-bottom: 0;
+  transition: border-color 0.3s ease;
+}
+.resultados-grid .glass-card:hover {
+  transform: none;
 }
 .resultados-nav {
   display: flex;
@@ -918,7 +860,7 @@ body::after {
   margin-top: 1.5rem;
 }
 .resultados-arrow {
-  width: 40px; height: 40px;
+  width: 44px; height: 44px;
   border-radius: var(--radius-round);
   background: var(--verde);
   color: var(--black);
@@ -930,9 +872,6 @@ body::after {
 }
 .resultados-arrow:disabled { opacity: 0.3; cursor: default; }
 .resultados-arrow:hover:not(:disabled) { opacity: 0.8; }
-.resultados .glass-card {
-  margin-bottom: 0;
-}
 .resultado-header {
   display: flex;
   align-items: center;
@@ -944,6 +883,31 @@ body::after {
   height: 48px;
   flex-shrink: 0;
   border-radius: var(--radius-sm);
+}
+.resultado-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.resultado-avatar img.invert-dark {
+  filter: brightness(0) invert(1);
+}
+.resultado-avatar.letter-avatar {
+  background: var(--verde);
+  color: #000;
+  font-size: 1.8rem;
+  font-family: var(--font-display);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.resultado-avatar.dark-bg {
+  background: #1a1a2e;
+  padding: 4px;
+}
+.btn-full-width {
+  width: 100%;
+  justify-content: center;
 }
 .resultado-info {
   flex: 1;
@@ -999,7 +963,6 @@ body::after {
 }
 .resultado-historia em {
   color: var(--text);
-  font-style: italic;
 }
 .resultado-metricas {
   display: flex;
@@ -1010,27 +973,21 @@ body::after {
   padding-top: 1rem;
   border-top: 1px solid var(--glass-border);
 }
-/* Neurodivergent-friendly: reduce visual noise, clear hierarchy */
-.resultados-grid .glass-card {
-  transition: border-color 0.3s ease;
-}
-.resultados-grid .glass-card:hover {
-  transform: none;
-}
 .resultado-nombre, .resultado-tag, .resultado-historia p {
   text-wrap: balance;
 }
-.resultados-grid .card-film {
-  display: none;
-}
+
 /* Neurodivergent-friendly: reduce visual noise, clear hierarchy */
 @media (prefers-reduced-motion: reduce) {
-  .glass-card, .resultado-card, .step, .fade-in, .hero-shape {
+  .glass-card, .resultado-card, .step, .fade-in, .hero-shape,
+  .navbar, .mobile-menu, .mobile-menu a, .hamb-line,
+  .scroll-to-top, .gradient-line, .faq-answer, .faq-question svg,
+  .cube-3d, .core-track, .cube-front, .cube-back, .cube-right,
+  .cube-left, .cube-top, .cube-bottom {
     transition: none !important;
     animation: none !important;
   }
 }
-/* Consistent spacing for cognitive load reduction */
 .section-sub {
   margin-bottom: 2rem;
 }
@@ -1069,13 +1026,33 @@ body::after {
   text-decoration: underline;
 }
 .como-funciona {
-  background: transparent;
   content-visibility: auto;
   contain-intrinsic-size: 0 600px;
 }
 .blog {
   content-visibility: auto;
   contain-intrinsic-size: 0 400px;
+}
+.blog-construction {
+  text-align: center;
+  padding: 3rem 2rem;
+}
+.blog-construction .blog-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+.blog-construction h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  margin-bottom: 0.75rem;
+  color: var(--headline);
+}
+.blog-construction p {
+  color: var(--body-dim);
+  font-size: 0.95rem;
+  max-width: 400px;
+  margin: 0 auto;
+  line-height: 1.6;
 }
 .steps-container {
   margin-top: 3rem;
@@ -1093,6 +1070,11 @@ body::after {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   user-select: none;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  cursor: pointer;
 }
 .step::after {
   content: '';
@@ -1134,30 +1116,8 @@ body::after {
   color: var(--body-dim);
   line-height: 1.6;
 }
-.b2b-step {
-  border: 1px dashed var(--color-border-glass);
-  border-radius: var(--radius-lg);
-  padding: var(--space-lg);
-  transition: border-color 0.3s, background 0.3s;
-  cursor: default;
-}
-.b2b-step .b2b-number {
-  display: grid;
-  place-items: center;
-  border-color: var(--verde);
-  color: var(--verde);
-  font-size: 1.6rem;
-  line-height: 1;
-  padding: 0;
-}
-.b2b-step .step-content h3 {
-  color: var(--color-heading);
-}
-.b2b-step .step-content p strong {
-  color: var(--color-terracota);
-}
+
 .pricing {
-  background: transparent;
   content-visibility: auto;
   contain-intrinsic-size: 0 600px;
 }
@@ -1208,10 +1168,6 @@ body::after {
   align-items: baseline;
   padding: 0.75rem 0;
   border-bottom: 1px solid var(--glass-border);
-}
-.pricing-line-domain {
-  padding-bottom: var(--space-lg);
-  margin-bottom: var(--space-sm);
 }
 .pricing-line-label {
   font-family: var(--font-body);
@@ -1278,21 +1234,6 @@ body::after {
   width: 1.1rem;
   height: 1.1rem;
 }
-.pricing-not-includes {
-  font-size: 0.9rem;
-  color: var(--body-dim);
-  margin-bottom: 2rem;
-  padding: var(--space-md);
-  border: 1px dashed var(--border);
-  border-radius: var(--radius-md);
-}
-.pricing-not-includes .not-includes-title {
-  font-weight: 700;
-  margin-bottom: 0.3rem;
-}
-.pricing-not-includes .not-includes-text {
-  color: var(--body-dim);
-}
 .pricing-b2b {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.75rem;
@@ -1309,7 +1250,6 @@ body::after {
 
 
 .faq {
-  background: transparent;
   content-visibility: auto;
   contain-intrinsic-size: 0 600px;
 }
@@ -1365,7 +1305,6 @@ body::after {
   font-size: 0.95rem;
 }
 .cta-final {
-  background: transparent;
   text-align: center;
   padding: 0 clamp(1.25rem, 5vw, 4rem);
   padding-bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
@@ -1390,7 +1329,6 @@ body::after {
   margin-right: auto;
 }
 .footer {
-  background: transparent;
   border-top: none;
 }
 .footer-card {
@@ -1538,13 +1476,6 @@ body::after {
   opacity: 1;
   pointer-events: all;
 }
-.step {
-  border: 1px solid transparent;
-  border-radius: var(--radius-md);
-  padding: var(--space-md);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-  cursor: pointer;
-}
 .step.is-active {
   position: relative;
   z-index: 60;
@@ -1646,16 +1577,6 @@ body::after {
   .mobile-menu {
     background: rgba(10, 10, 15, 0.45);
   }
-  body {
-    font-family: 'Rethink Sans', var(--font-body);
-  }
-  h1, h2, h3, h4, .section-title, .section-sub, .resultado-nombre,
-  .resultado-metrica-valor, .resultado-metrica-label, .faq-question, .faq-answer p {
-    font-family: 'Rethink Sans', sans-serif !important;
-  }
-  .navbar-brand-mobile, .footer-brand, .navbar-brand-text {
-    font-family: var(--font-accent) !important;
-  }
   .hero {
     padding-top: 4.5rem;
     padding-bottom: var(--space-lg);
@@ -1698,7 +1619,7 @@ body::after {
   }
   .resultados-grid::-webkit-scrollbar { display: none; }
   .resultados-grid .glass-card {
-    flex: 0 0 85vw;
+    flex: 0 0 calc(50% - 0.375rem);
     scroll-snap-align: start;
   }
   .resultados-nav { display: none; }
@@ -1719,15 +1640,14 @@ body::after {
     font-size: clamp(1.1rem, 3.5vw, 1.4rem);
     text-wrap: balance;
   }
-  .problema-card p {
+  .problema-card p,
+  .problema-card p.sub {
     font-size: 0.85rem;
     line-height: 1.5;
     text-wrap: balance;
   }
   .problema-card p.sub {
     margin-top: 0.25rem;
-    font-size: 0.85rem;
-    text-wrap: balance;
   }
   .steps-container {
     margin-top: 1.5rem;
@@ -1754,15 +1674,7 @@ body::after {
     padding-bottom: 2.5rem;
   }
   .hero {
-    height: calc(100vh - 64px - env(safe-area-inset-top, 0px));
-    height: calc(100dvh - 64px - env(safe-area-inset-top, 0px));
-    height: calc(100svh - 64px - env(safe-area-inset-top, 0px));
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     padding: 2rem 1rem;
-    box-sizing: border-box;
   }
   .cta-final {
     min-height: auto;
@@ -1770,7 +1682,6 @@ body::after {
     padding-bottom: 3rem;
   }
   .footer {
-    background: transparent;
     border-top: none;
   }
   .footer-card {
@@ -1810,14 +1721,8 @@ body::after {
     border-top: 1px solid var(--border);
   }
   .cta-final {
-    height: 100vh; 
-    height: 100svh;
-    height: 100dvh;
-    display: flex;
-    flex-direction: column;
     justify-content: space-between;
     padding: 2rem var(--space-lg);
-    padding-bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
   }
   .cta-final .cta-content {
     flex: 1;
@@ -1890,6 +1795,17 @@ body::after {
     opacity: 1;
     transform: translateY(0);
     transition: none !important;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      animation: none !important;
+      opacity: 1;
+      transform: none;
+      transition: none !important;
+    }
+    .reveal.visible {
+      animation: none !important;
+    }
   }
 }
 .step:nth-of-type(1) { transition-delay: 0ms; }
@@ -2010,11 +1926,6 @@ body::after {
     box-shadow: 0 0 6px rgba(255,255,255,0.6), 0 0 18px rgba(255,255,255,0.15);
   }
 }
-.diamond--sm {
-  transform: scale(0.35);
-  transform-origin: center;
-  margin: 0 auto;
-}
 .cube-face {
   position: absolute;
   top: 20px;
@@ -2094,19 +2005,7 @@ body::after {
 .preloader-fill { height: 100%; width: 0%; background: linear-gradient(to right, var(--terracota), var(--verde)); border-radius: 2px; transition: width 0.15s ease; }
 .preloader-hint { font-family: var(--font-accent); font-size: 1rem; color: var(--white); opacity: 0; margin-top: 1.5rem; transition: opacity 0.5s ease; }
 .preloader-hint.visible { opacity: 0.8; }
-.card-film {
-  display: none;
-  position: absolute; inset: 0; z-index: 10;
-  background: rgba(10,10,15,0.35);
-  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-  border-radius: inherit;
-  cursor: pointer;
-  transition: opacity 0.8s ease;
-}
-.card-film.dissolve {
-  opacity: 0;
-  pointer-events: none;
-}
+
 @media (min-width: 768px) {
   .hero h1 {
     margin-bottom: calc(var(--space-md) * 0.5);
@@ -2115,21 +2014,17 @@ body::after {
     margin-top: var(--space-md);
   }
   .resultados-grid {
-    display: grid !important;
+    display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    overflow-x: visible !important;
-    overflow-y: visible !important;
-    scroll-snap-type: none !important;
+    overflow-x: visible;
+    overflow-y: visible;
+    scroll-snap-type: none;
   }
   .hero-actions .btn-lg {
     padding: 0.75rem 1.8rem;
     font-size: 1rem;
   }
-.resultados-grid .glass-card:focus-within,
-.resultados-grid .glass-card.is-focused {
-  border-color: var(--verde);
-  box-shadow: 0 0 20px rgba(122,184,0,0.15);
-}
+
   .navbar-brand-mobile {
     display: block;
     left: auto;
@@ -2166,9 +2061,6 @@ body::after {
   }
   .problema-grid { grid-template-columns: 1fr 1fr; }
   .problema-card.tall { grid-column: span 2; }
-  .resultados-grid {
-    overflow-x: visible;
-  }
   .steps-container {
     flex-direction: row;
     gap: 0;
@@ -2278,8 +2170,6 @@ import { createPreloader } from '/src/preloader.js'
 const p = document.getElementById('preloader');
 const loader = createPreloader({ preloader: p, fill: document.getElementById('preloader-fill'), hint: document.getElementById('preloader-hint'), doc: document.documentElement });
 loader.start();
-document.querySelectorAll('.card-film').forEach(cf=>{cf.addEventListener('click',e=>{e.stopPropagation();cf.classList.add('dissolve');setTimeout(()=>cf.remove(),500);});});
-document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListener('click',()=>{document.querySelectorAll('.resultado-card').forEach(c=>c.classList.remove('is-focused'));card.classList.add('is-focused');});});
 </script>
 <script>
   // Fallback: force reveal all content when preloader is dismissed
@@ -2363,12 +2253,11 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
   </div>
 </section>
 <section class="section resultados reveal" id="casos" aria-label="Casos de estudio">
-  <h2 class="section-title" style="color: var(--verde);">Casos de estudio<span style="color: var(--white);">.</span></h2>
+  <h2 class="section-title text-verde">Casos de estudio<span class="text-white">.</span></h2>
   <div class="resultados-grid">
   <article class="glass-card resultado-card fade-in">
-    <div class="card-film"></div>
     <div class="resultado-header">
-      <div class="resultado-avatar"><img src="/assets/logos/luisito.svg" alt="Luisito Playa Grande" style="width:100%;height:100%;object-fit:contain;filter:brightness(0) invert(1);"></div>
+      <div class="resultado-avatar"><img src="/assets/logos/luisito.svg" alt="Luisito Playa Grande" class="invert-dark"></div>
       <div class="resultado-info">
         <span class="mono resultado-tag">Rotisería · Mar del Plata</span>
         <h3 class="resultado-nombre">Luisito Playa Grande</h3>
@@ -2391,10 +2280,9 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
       </div>
     </div>
   </article>
-  <article class="glass-card resultado-card fade-in fade-in-delay-1">
-    <div class="card-film"></div>
+  <article class="glass-card resultado-card fade-in">
     <div class="resultado-header">
-      <div class="resultado-avatar"><img src="/assets/logos/apolonia.svg" alt="Apolonia" style="width:100%;height:100%;object-fit:contain;"></div>
+      <div class="resultado-avatar"><img src="/assets/logos/apolonia.svg" alt="Apolonia"></div>
       <div class="resultado-info">
         <span class="mono resultado-tag">Verdulería · Mar del Plata</span>
         <h3 class="resultado-nombre">Apolonia</h3>
@@ -2417,10 +2305,9 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
       </div>
     </div>
   </article>
-  <article class="glass-card resultado-card fade-in fade-in-delay-2">
-    <div class="card-film"></div>
+  <article class="glass-card resultado-card fade-in">
     <div class="resultado-header">
-      <div class="resultado-avatar" style="background: var(--verde); color: #000; font-size: 1.8rem; font-family: var(--font-display); display: flex; align-items: center; justify-content: center; border-radius: var(--radius-sm);">H</div>
+      <div class="resultado-avatar letter-avatar">H</div>
       <div class="resultado-info">
         <span class="mono resultado-tag">Mayorista · Mar del Plata</span>
         <h3 class="resultado-nombre">Catálogo Hoco</h3>
@@ -2446,10 +2333,9 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
       </div>
     </div>
   </article>
-  <article class="glass-card resultado-card fade-in fade-in-delay-3">
-    <div class="card-film"></div>
+  <article class="glass-card resultado-card fade-in">
     <div class="resultado-header">
-      <div class="resultado-avatar" style="background: #1a1a2e; padding: 4px;"><img src="/assets/logos/pragma.png" alt="Pragma" style="width:100%;height:100%;object-fit:contain;"></div>
+      <div class="resultado-avatar dark-bg"><img src="/assets/logos/pragma.png" alt="Pragma"></div>
       <div class="resultado-info">
         <span class="mono resultado-tag">MedTech · Latinoamérica</span>
         <h3 class="resultado-nombre">Pragma</h3>
@@ -2485,12 +2371,12 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
       <p>Si no aparecés cuando te buscan, <strong>le regalaste el cliente a tu competencia</strong>.</p>
       <p class="sub">Sin web, no te ven. Sin web, no existís para el que te busca.</p>
     </div>
-    <div class="glass-card problema-card fade-in fade-in-delay-1">
+    <div class="glass-card problema-card fade-in">
       <h4>No sabés por dónde arrancar</h4>
       <p>Te ayudo a ordenar las ideas. Lo que sobra, afuera. Lo que suma, adentro.</p>
       <p class="sub">Sin diseño que no vende, sin páginas al pedo, sin vueltas.</p>
     </div>
-    <div class="glass-card problema-card fade-in fade-in-delay-2">
+    <div class="glass-card problema-card fade-in">
       <h4>Una agencia no es para cualquier proyecto</h4>
       <p>Tienen equipo, estructura y costo. Justificado, pero no para todos.</p>
       <p class="sub">Yo resuelvo los proyectos que a ellas no les cierran. Misma calidad, precio justo.</p>
@@ -2512,25 +2398,18 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
         <p>Me escribís y me contás tu idea.</p>
       </div>
     </div>
-    <div class="step fade-in fade-in-delay-1 reveal">
+    <div class="step fade-in reveal">
       <div class="step-number">2</div>
       <div class="step-content">
         <h3>Diseño</h3>
         <p>En 48 horas tenés resultados. Ajustamos.</p>
       </div>
     </div>
-    <div class="step fade-in fade-in-delay-2 reveal">
+    <div class="step fade-in reveal">
       <div class="step-number">3</div>
       <div class="step-content">
         <h3>Estás Online</h3>
         <p>Onboarding y consultoría sin cargo.</p>
-      </div>
-    </div>
-    <div class="step b2b-step reveal fade-in fade-in-delay-3">
-      <div class="step-number b2b-number">★</div>
-      <div class="step-content">
-        <h3>¿Sos agencia?</h3>
-        <p>Te resuelvo landing pages, catálogos y apps. <strong>White label, rápida, sin romper tu marca.</strong></p>
       </div>
     </div>
   </div>
@@ -2575,7 +2454,7 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
         <li>✓ SSL/HTTPS</li>
       </ul>
     </div>
-    <a href="https://wa.me/5491124063009?text=Hola%20Illya.%20%C2%BFCom%C3%B3%20est%C3%A1s%3F%20Vi%20tu%20p%C3%A1gina%20y%20me%20encantar%C3%ADa%20que%20colaboremos." target="_blank" rel="noopener" class="btn btn-empecemos btn-lg" style="width:100%;justify-content:center;">
+    <a href="https://wa.me/5491124063009?text=Hola%20Illya.%20%C2%BFCom%C3%B3%20est%C3%A1s%3F%20Vi%20tu%20p%C3%A1gina%20y%20me%20encantar%C3%ADa%20que%20colaboremos." target="_blank" rel="noopener" class="btn btn-empecemos btn-lg btn-full-width">
       Quiero estar online
     </a>
   </div>
@@ -2627,10 +2506,10 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
 <section class="section blog reveal" id="blog" aria-label="Blog">
   <span class="section-label mono text-ochra">Blog</span>
   <h2 class="section-title">Ideas, historias<br><span class="text-verde">y novedades</span>.</h2>
-  <div class="glass-card blog-construction fade-in" style="text-align: center; padding: 3rem 2rem;">
-    <div style="font-size: 2.5rem; margin-bottom: 1rem;">🚧</div>
-    <h3 style="font-family: var(--font-display); font-size: 1.3rem; margin-bottom: 0.75rem; color: var(--headline);">Estamos construyendo esto</h3>
-    <p style="color: var(--body-dim); font-size: 0.95rem; max-width: 400px; margin: 0 auto; line-height: 1.6;">Artículos sobre diseño, desarrollo web y cómo sacarle partido a tu presencia online. Pronto vas a encontrar contenido de valor acá.</p>
+  <div class="glass-card blog-construction fade-in">
+    <div class="blog-icon">🚧</div>
+    <h3>Estamos construyendo esto</h3>
+    <p>Artículos sobre diseño, desarrollo web y cómo sacarle partido a tu presencia online. Pronto vas a encontrar contenido de valor acá.</p>
   </div>
 </section>
 <section class="cta-final reveal" id="contacto" aria-label="Contacto final">
@@ -2639,7 +2518,6 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
   </div>
   <footer class="footer" role="contentinfo">
     <div class="footer-card reveal">
-      <h2 class="cta-heading"><span class="cta-dale">Dale,</span> <span class="text-terracota cta-empecemos">empecemos</span>.</h2>
       <div class="footer-card-content">
         <p class="footer-brand"><span>T</span>he Brand Crew</p>
         <p class="footer-cuit">Hecho por <a href="https://illya-grytsyk.vercel.app" target="_blank" rel="noopener noreferrer" class="footer-illya">Illya</a></p>
@@ -2649,7 +2527,7 @@ document.querySelectorAll('.resultado-card').forEach(card=>{card.addEventListene
       </div>
     </div>
   </footer>
-  <div class="scroll-to-top" id="scrollToTop" role="button" aria-label="Volver al inicio" title="Volver al inicio" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">
+  <div class="scroll-to-top" id="scrollToTop" role="button" tabindex="0" aria-label="Volver al inicio" title="Volver al inicio" onclick="window.scrollTo({top: 0, behavior: 'smooth'});" onkeydown="if(event.key==='Enter'||event.key===' '){window.scrollTo({top:0,behavior:'smooth'});event.preventDefault();}">
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M12 19V5M5 12l7-7 7 7"/>
     </svg>
