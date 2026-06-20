@@ -684,10 +684,10 @@ body::before {
 }
 .hero-peep {
   position: absolute;
-  right: clamp(0%, 1vw, 2%);
-  bottom: 24px;
-  height: 50vh;
-  max-height: 400px;
+  right: clamp(8%, 10vw, 14%);
+  bottom: 32px;
+  height: 55vh;
+  max-height: 420px;
   width: auto;
   opacity: 0.45;
   pointer-events: none;
@@ -698,17 +698,18 @@ body::before {
 }
 @media (min-width: 481px) {
   .hero-peep {
-    height: 75vh;
-    max-height: 625px;
-    opacity: 0.6;
-    bottom: 20px;
+    height: 60vh;
+    max-height: 480px;
+    opacity: 0.55;
+    bottom: 28px;
+    right: clamp(6%, 8vw, 12%);
     filter: drop-shadow(0 0 24px oklch(0 0 0 / 0.32)) brightness(1.18);
   }
 }
 @media (min-width: 769px) {
   .hero-peep {
-    height: 81vh;
-    max-height: 825px;
+    height: 75vh;
+    max-height: 750px;
     opacity: 0.72;
     right: 3%;
     bottom: 16px;
@@ -717,8 +718,8 @@ body::before {
 }
 @media (min-width: 1025px) {
   .hero-peep {
-    height: 90vh;
-    max-height: 975px;
+    height: 82vh;
+    max-height: 900px;
     opacity: 0.8;
     right: 2%;
     bottom: 8px;
@@ -744,7 +745,7 @@ body::before {
 }
 .tag-b2b.tag-outline {
   border-color: transparent;
-  color: var(--body-dim);
+  color: var(--white);
   background: transparent;
 }
 
@@ -1563,7 +1564,8 @@ body::before {
     margin-bottom: 2rem;
   }
   .hero-actions .btn-lg {
-    padding: var(--space-md) 2rem;
+    padding: 1rem 1.5rem;
+    font-size: 1.1rem;
   }
   .resultados-grid {
     display: flex;
@@ -2248,7 +2250,10 @@ loader.start();
       <span class="tag-b2b tag-outline">White-label partner</span>
     </p>
   </div>
-  <img src="/assets/peep-hero.svg" alt="" class="hero-peep" aria-hidden="true">
+  <picture>
+    <source srcset="/assets/peep-hero.svg" media="(min-width: 769px)">
+    <img src="/assets/peep-hero-mobile.svg" alt="" class="hero-peep" aria-hidden="true">
+  </picture>
 </section>
 <section class="section resultados reveal" id="casos" aria-label="Case Studies">
   <div class="section-heading-row">
