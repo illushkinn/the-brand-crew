@@ -655,16 +655,23 @@ body::before {
 .strike-price::after {
   content: '';
   position: absolute;
-  left: 4px; right: -6px;
+  inset: 0;
   top: 50%;
   height: 2px;
+  margin-top: -1px;
   background: var(--terracota);
-  transform: translateY(-50%);
+  pointer-events: none;
 }
 .current-price {
   color: var(--verde);
   font-weight: 600;
   white-space: nowrap;
+}
+.price-currency {
+  font-size: 0.6em;
+  font-weight: 400;
+  vertical-align: baseline;
+  opacity: 0.75;
 }
 .hero-meta .price-group span {
   white-space: nowrap;
@@ -2240,11 +2247,11 @@ loader.start();
     </div>
     <p class="hero-meta">
       <span class="price-group">
-        <span class="current-price">$140.000&nbsp;ARS</span>
+        <span class="current-price">$140.000&nbsp;<small class="price-currency">ARS</small></span>
         <span class="strike-price" aria-label="Original price">$400.000</span>
       </span>
       <span class="price-group">
-        <span>2 payments of <strong>$70.000&nbsp;ARS</strong></span>
+        <span>2 payments of <strong>$70.000</strong>&nbsp;<small class="price-currency">ARS</small></span>
         <span class="strike-price" aria-label="Original price">$200.000</span>
       </span>
     </p>
