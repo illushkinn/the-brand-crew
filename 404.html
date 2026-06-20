@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 · The Brand Crew</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,200..700&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400..700&display=swap" as="style" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,200..700&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400..700&display=swap" />
+  <link rel="stylesheet" href="/tokens.css" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { overflow-x: hidden; overflow-y: auto; scrollbar-width: thin; scrollbar-gutter: stable; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--body);
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse 90% 80% at 6% 10%, rgba(221, 97, 76, 0.65) 0%, transparent 50%),
+        radial-gradient(ellipse 80% 70% at 94% 16%, rgba(218, 161, 68, 0.55) 0%, transparent 48%),
+        radial-gradient(ellipse 70% 60% at 48% 50%, rgba(122, 184, 0, 0.50) 0%, transparent 50%),
+        radial-gradient(ellipse 85% 75% at 22% 80%, rgba(218, 161, 68, 0.55) 0%, transparent 46%),
+        radial-gradient(ellipse 75% 65% at 76% 75%, rgba(221, 97, 76, 0.55) 0%, transparent 48%);
+      opacity: 0.8;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      padding: 2rem;
+      text-align: center;
+      z-index: 1;
+    }
+    .error-code {
+      font-size: clamp(6rem, 20vw, 12rem);
+      font-family: 'DM Serif Display', serif;
+      font-weight: 400;
+      line-height: 1;
+      background: linear-gradient(135deg, var(--terracota), var(--ochra), var(--verde));
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-weight: 400;
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      color: var(--headline);
+    }
+    p {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--body-dim);
+      max-width: 480px;
+      line-height: 1.6;
+    }
+    .peep-404 {
+      width: clamp(180px, 30vw, 320px);
+      height: auto;
+      opacity: 0.7;
+      pointer-events: none;
+    }
+    .btn-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 2rem;
+      border-radius: 12px;
+      background: var(--terracota);
+      color: #fff;
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 600;
+      font-size: 1.05rem;
+      text-decoration: none;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .btn-home:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(221, 97, 76, 0.3);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .btn-home { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="/assets/peep-hero.svg" alt="" class="peep-404" aria-hidden="true" />
+    <div class="error-code">404</div>
+    <h1>Esta página <span style="color:var(--terracota)">no existe</span>.</h1>
+    <p>O la movimos de lugar, o nunca existió. Volvé al inicio y arrancamos de nuevo.</p>
+    <a href="/" class="btn-home">Volver al inicio →</a>
+  </div>
+</body>
+</html>
