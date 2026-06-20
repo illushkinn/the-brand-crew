@@ -91,7 +91,6 @@ ul { list-style: none; }
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: clamp(2rem, 5vw, 5rem) 0;
 }
 @supports (backdrop-filter: blur()) {
   .glass-card {
@@ -128,7 +127,7 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
 .text-verde { color: var(--verde); }
 .text-white { color: var(--white); }
 .section {
-  padding: 0 clamp(1.25rem, 5vw, 4rem);
+  padding: 2.5rem clamp(1.25rem, 5vw, 4rem);
 }
 .section-label {
   font-family: 'JetBrains Mono', monospace;
@@ -208,8 +207,9 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
 .btn-premium {
   position: relative;
   overflow: hidden;
-  background: var(--terracota);
-  border: 2px solid var(--terracota);
+  background: transparent;
+  border: 2px solid var(--white);
+  border-radius: 0;
   color: var(--white);
   font-weight: 600;
   letter-spacing: 0.02em;
@@ -413,7 +413,7 @@ a:focus-visible {
 .hero-shape:nth-child(1) {
   width: 280px; height: 240px;
   border-radius: 50% / 40%;
-  background: linear-gradient(135deg, var(--terracota), #f0a088, var(--ochra));
+  background: linear-gradient(135deg, var(--terracota), #dd614c, var(--terracota));
   top: -8%; right: -5%;
   animation-delay: 0s;
 }
@@ -537,15 +537,16 @@ body::before {
   z-index: -2;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 120% 100% at 5% 8%, rgba(221, 97, 76, 0.90) 0%, transparent 50%),
+    radial-gradient(ellipse 140% 120% at 5% 8%, rgba(221, 97, 76, 1.0) 0%, transparent 50%),
     radial-gradient(ellipse 110% 90% at 95% 14%, rgba(218, 161, 68, 0.85) 0%, transparent 48%),
     radial-gradient(ellipse 100% 80% at 48% 50%, rgba(122, 184, 0, 0.80) 0%, transparent 50%),
     radial-gradient(ellipse 110% 90% at 20% 82%, rgba(218, 161, 68, 0.85) 0%, transparent 46%),
-    radial-gradient(ellipse 100% 85% at 78% 78%, rgba(221, 97, 76, 0.85) 0%, transparent 48%),
+    radial-gradient(ellipse 120% 100% at 78% 78%, rgba(221, 97, 76, 1.0) 0%, transparent 48%),
     radial-gradient(ellipse 100% 80% at 42% 92%, rgba(122, 184, 0, 0.75) 0%, transparent 50%),
     radial-gradient(ellipse 80% 70% at 62% 30%, rgba(218, 161, 68, 0.70) 0%, transparent 55%),
     radial-gradient(ellipse 70% 60% at 10% 50%, rgba(122, 184, 0, 0.65) 0%, transparent 58%),
-    radial-gradient(ellipse 85% 75% at 85% 48%, rgba(221, 97, 76, 0.75) 0%, transparent 52%),
+    radial-gradient(ellipse 100% 90% at 50% 30%, rgba(221, 97, 76, 0.80) 0%, transparent 45%),
+    radial-gradient(ellipse 85% 75% at 85% 48%, rgba(221, 97, 76, 0.90) 0%, transparent 52%),
     radial-gradient(ellipse 75% 65% at 30% 28%, rgba(218, 161, 68, 0.65) 0%, transparent 55%);
   opacity: 1;
 }
@@ -673,7 +674,7 @@ body::before {
 .hero-peep {
   position: absolute;
   right: clamp(3%, 5vw, 8%);
-  bottom: -10px;
+  bottom: 18px;
   height: 68vh;
   max-height: 580px;
   width: auto;
@@ -689,7 +690,7 @@ body::before {
     height: 60vh;
     max-height: 500px;
     opacity: 0.4;
-    bottom: -24px;
+    bottom: 12px;
   }
 }
 @media (min-width: 769px) {
@@ -698,7 +699,7 @@ body::before {
     max-height: 660px;
     opacity: 0.5;
     right: 6%;
-    bottom: -32px;
+    bottom: 4px;
   }
 }
 @media (min-width: 1025px) {
@@ -707,7 +708,7 @@ body::before {
     max-height: 780px;
     opacity: 0.55;
     right: 8%;
-    bottom: -40px;
+    bottom: -4px;
   }
 }
 .hero-b2b-tags {
@@ -813,7 +814,7 @@ body::before {
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  margin-top: 0.75rem;
+  margin-top: 1.5rem;
 }
 .resultados-arrow {
   width: 44px; height: 44px;
@@ -1025,8 +1026,8 @@ body::before {
 .about-text {
   color: var(--headline);
   font-size: clamp(1.15rem, 2.5vw, 1.5rem);
-  line-height: 1.5;
-  margin-bottom: 0.5rem;
+  line-height: 1.4;
+  margin-bottom: 0.35rem;
   max-width: 720px;
   text-wrap: pretty;
 }
@@ -1080,13 +1081,13 @@ body::before {
 
 .step-number {
   flex-shrink: 0;
-  width: 72px;
-  height: 72px;
+  width: 96px;
+  height: 96px;
   background: transparent;
   color: var(--terracota);
   font-family: var(--font-body);
   font-weight: 500;
-  font-size: 1.8rem;
+  font-size: 2.8rem;
   position: relative;
   z-index: 2;
   display: flex;
@@ -1219,6 +1220,10 @@ body::before {
   gap: 0.6rem;
 }
 @media (min-width: 480px) {
+  .section {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
   .pricing-includes ul {
     grid-template-columns: 1fr 1fr;
   }
@@ -1611,11 +1616,6 @@ body::before {
   .step {
     padding: var(--space-md) 0;
   }
-  .step-number {
-    width: 40px;
-    height: 40px;
-    font-size: 1.2rem;
-  }
   .step-content h3 {
     font-size: clamp(1.1rem, 4vw, 1.4rem);
   }
@@ -1744,7 +1744,6 @@ body::before {
   .hero-meta { font-size: 0.75rem; gap: 0.25rem; }
   .glass-card { padding: 1.25rem; }
   .resultados-grid .glass-card { flex: 0 0 92vw; }
-  .step-number { width: 48px; height: 48px; font-size: 1.4rem; }
   .step { gap: var(--space-sm); }
   .step-content h3 { font-size: clamp(1rem, 5vw, 1.3rem); }
   .step-content p { font-size: 0.85rem; }
@@ -1997,6 +1996,10 @@ body::before {
 .preloader-hint.visible { opacity: 0.8; }
 
 @media (min-width: 768px) {
+  .section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
   .hero h1 {
     margin-bottom: calc(var(--space-md) * 0.5);
   }
@@ -2067,11 +2070,6 @@ body::before {
     text-align: center;
     position: relative;
     padding: 0 1.5rem;
-  }
-  .step-number {
-    width: 64px;
-    height: 64px;
-    font-size: 1.8rem;
     margin-bottom: 1.5rem;
   }
   .footer {
@@ -2528,7 +2526,7 @@ loader.start();
     <div class="footer-card reveal">
       <div class="footer-card-content">
         <p class="footer-brand"><span>T</span>he Brand Crew</p>
-        <p class="footer-cuit">Made by <a href="https://illushkinn.github.io" target="_blank" rel="noopener noreferrer" class="footer-illya">illushkinn</a> friends and <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--terracota)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline; vertical-align:middle;"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg></p>
+        <p class="footer-cuit">Made by <a href="https://illushkinn.github.io" target="_blank" rel="noopener noreferrer" class="footer-illya">illushkinn</a> friends and <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--terracota)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline; vertical-align:-2px;"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg></p>
         <div class="footer-social">
           <a href="/privacidad" class="footer-privacidad">Privacy</a>
         </div>
