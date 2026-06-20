@@ -3,11 +3,11 @@
 ## Implementation Tasks
 
 ### Phase 1: CSS Foundation
-- [ ] 1.1 Add landscape media query for hero section height adjustment
-- [ ] 1.2 Add short landscape (<500px) media query overrides
-- [ ] 1.3 Update mobile menu styles for landscape orientation
-- [ ] 1.4 Adjust section padding for landscape viewports
-- [ ] 1.5 Review and update all vh/dvh/svh usage for landscape compatibility
+- [x] 1.1 Add landscape media query for hero section height adjustment
+- [x] 1.2 Add short landscape (<500px) media query overrides
+- [x] 1.3 Update mobile menu styles for landscape orientation
+- [x] 1.4 Adjust section padding for landscape viewports
+- [x] 1.5 Review and update all vh/dvh/svh usage for landscape compatibility
 
 ### Phase 2: Typography & Spacing
 - [ ] 2.1 Audit all clamp() values for landscape readability

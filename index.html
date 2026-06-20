@@ -69,7 +69,7 @@ ul { list-style: none; }
   --oklch-bg-elevated: oklch(0.11 0.015 280);
   --oklch-headline: oklch(0.95 0.004 280);
   --oklch-body: oklch(0.8 0.008 280);
-  --oklch-body-dim: oklch(0.6 0.012 280);
+  --oklch-body-dim: oklch(0.75 0.012 280);
   --oklch-border: oklch(0.2 0.018 280);
   --oklch-terracota: oklch(0.58 0.18 32);
   --oklch-terracota-hover: oklch(0.5 0.16 32);
@@ -123,9 +123,9 @@ ul { list-style: none; }
     border: 1px solid rgba(179, 107, 72, 0.35);
   }
   .como-funciona {
-    backdrop-filter: blur(32px) saturate(160%);
-    -webkit-backdrop-filter: blur(32px) saturate(160%);
-    background: rgba(10, 10, 15, 0.45);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: transparent;
   }
 }
 .hamburger-btn, .step-number, .resultados-arrow {
@@ -161,6 +161,9 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   margin-bottom: 1rem;
   display: block;
 }
+.faq .section-label {
+  padding-top: 1.5rem;
+}
 .section-title {
   margin-bottom: 1.5rem;
 }
@@ -179,6 +182,10 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   position: relative;
   overflow: hidden;
   transition: border-color 0.3s, transform 0.3s;
+}
+.faq .glass-card {
+  padding-top: 0;
+  padding-bottom: 2rem;
 }
 
 .btn {
@@ -334,7 +341,9 @@ a:focus-visible {
 }
 .hamburger-btn:focus-visible,
 .navbar-brand:focus-visible {
-  outline: none;
+  outline: 2px solid var(--verde);
+  outline-offset: 4px;
+  border-radius: var(--radius-sm);
 }
 
 .mobile-menu {
@@ -637,6 +646,16 @@ body::before {
   row-gap: var(--space-md);
   text-wrap: pretty;
 }
+@media (max-width: 480px) {
+  .hero-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  .hero-meta .price-group {
+    align-self: flex-start;
+  }
+}
 
 .hero-meta .price-group {
   display: inline-flex;
@@ -681,12 +700,12 @@ body::before {
 }
 .hero-peep {
   position: absolute;
-  right: clamp(1%, 2vw, 4%);
+  right: -5%;
   bottom: 32px;
-  height: 55vh;
-  max-height: 420px;
+  height: 68vh;
+  max-height: 500px;
   width: auto;
-  opacity: 0.45;
+  opacity: 0.52;
   pointer-events: none;
   z-index: 0;
   transform: scaleX(-1);
@@ -695,9 +714,9 @@ body::before {
 }
 @media (min-width: 481px) {
   .hero-peep {
-    height: 60vh;
-    max-height: 480px;
-    opacity: 0.55;
+    height: 66vh;
+    max-height: 520px;
+    opacity: 0.58;
     bottom: 28px;
     right: clamp(1%, 2vw, 4%);
     filter: drop-shadow(0 0 24px oklch(0 0 0 / 0.32)) brightness(1.18);
@@ -705,9 +724,9 @@ body::before {
 }
 @media (min-width: 769px) {
   .hero-peep {
-    height: 75vh;
-    max-height: 750px;
-    opacity: 0.72;
+    height: 78vh;
+    max-height: 800px;
+    opacity: 0.75;
     right: 3%;
     bottom: 16px;
     filter: drop-shadow(0 0 28px oklch(0 0 0 / 0.35)) brightness(1.2);
@@ -715,9 +734,9 @@ body::before {
 }
 @media (min-width: 1025px) {
   .hero-peep {
-    height: 82vh;
-    max-height: 900px;
-    opacity: 0.8;
+    height: 85vh;
+    max-height: 950px;
+    opacity: 0.82;
     right: 2%;
     bottom: 8px;
     filter: drop-shadow(0 0 35px oklch(0 0 0 / 0.4)) brightness(1.25);
@@ -966,11 +985,14 @@ body::before {
 @media (prefers-reduced-motion: reduce) {
   .glass-card, .resultado-card, .step, .hero-shape,
   .navbar, .mobile-menu, .mobile-menu a, .hamb-line,
-  .scroll-to-top, .gradient-line, .faq-answer, .faq-question svg,
+  .scroll-to-top, .faq-answer, .faq-question svg,
   .cube-3d, .core-track, .cube-front, .cube-back, .cube-right,
   .cube-left, .cube-top, .cube-bottom {
     transition: none !important;
     animation: none !important;
+  }
+  .hero-shape {
+    display: none;
   }
 }
 .resultado-metrica {
@@ -1011,11 +1033,11 @@ body::before {
 .como-funciona {
   content-visibility: auto;
   contain-intrinsic-size: 0 600px;
-  background: rgba(10, 10, 15, 0.3);
-  backdrop-filter: blur(20px) saturate(140%);
-  -webkit-backdrop-filter: blur(20px) saturate(140%);
-  border-radius: var(--radius-md);
-  margin: 1rem 0;
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-radius: 0;
+  margin: 0;
 }
 .blog {
   content-visibility: auto;
@@ -1255,6 +1277,7 @@ body::before {
 .faq-list {
   max-width: 720px;
   margin: 3rem auto 0;
+  padding: 0;
 }
 .faq-item {
   border-bottom: none;
@@ -1699,6 +1722,58 @@ body::before {
     padding: 0.15rem 0.35rem;
   }
 }
+
+/* General landscape adjustments for mobile devices */
+@media (orientation: landscape) and (max-width: 767px) {
+  /* Sections: reduce min-height to prevent excessive scrolling */
+  .problema, .resultados, .como-funciona, .pricing, .faq {
+    min-height: auto;
+    padding: 1.5rem clamp(1rem, 4vw, 2rem);
+  }
+  
+  /* Mobile menu: adjust for shorter height */
+  .mobile-menu a {
+    font-size: 2rem;
+    padding: 0.2rem 0.8rem;
+  }
+  .mobile-menu {
+    gap: 0.25rem;
+  }
+  .mobile-link-empecemos {
+    font-size: 1.2rem !important;
+    padding: 0.3rem 1.2rem !important;
+  }
+  
+  /* Hero adjustments for general landscape */
+  .hero {
+    padding: 1rem clamp(1rem, 4vw, 2rem);
+  }
+  .hero-peep {
+    height: 50vh;
+    max-height: 350px;
+  }
+  
+  /* Reduce vertical spacing in sections */
+  .section {
+    padding: 1.5rem clamp(1rem, 4vw, 2rem);
+  }
+  
+  /* Steps container: horizontal layout works better in landscape */
+  .steps-container {
+    flex-direction: row;
+    gap: 1rem;
+  }
+  .step {
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .step-number {
+    margin-bottom: 0.5rem;
+  }
+}
+
 @media (min-width: 375px) and (max-width: 480px) {
   .hero-b2b-tags {
     flex-wrap: nowrap !important;
@@ -1729,6 +1804,7 @@ body::before {
   .hero-sub { font-size: clamp(0.75rem, 3.5vw, 0.9rem); }
   .hero-meta { font-size: 0.75rem; gap: 0.25rem; }
   .glass-card { padding: 1.25rem; }
+  .faq .glass-card { padding: 1rem 0.75rem; }
   .resultados-grid .glass-card { flex: 0 0 92vw; }
   .step { gap: var(--space-sm); }
   .step-content h3 { font-size: clamp(1rem, 5vw, 1.3rem); }
@@ -1786,37 +1862,15 @@ body::before {
 .step:nth-of-type(1) { transition-delay: 0ms; }
 .step:nth-of-type(2) { transition-delay: 0ms; }
 .step:nth-of-type(3) { transition-delay: 0ms; }
-.gradient-line {
-  display: none;
-  position: fixed;
-  right: 16px;
-  bottom: 0;
-  width: 2px;
-  height: 13vh;
-  background: linear-gradient(to bottom, oklch(0.58 0.18 32), oklch(0.5 0.16 32), oklch(0.42 0.14 32));
-  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
-  z-index: 50;
-  pointer-events: none;
-  opacity: 0.5;
-  transition: opacity 0.3s ease;
-  animation: aguja-breathe 4s ease-in-out infinite, aguja-shift 8s ease-in-out infinite;
-  box-shadow: 0 0 20px oklch(0.58 0.18 32 / 0.5), 0 0 40px oklch(0.58 0.18 32 / 0.15);
-}
-@keyframes aguja-breathe {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 0.85; }
-}
-@keyframes aguja-shift {
-  0%, 100% { background: linear-gradient(to bottom, oklch(0.58 0.18 32), oklch(0.5 0.16 32), oklch(0.42 0.14 32)); }
-  50% { background: linear-gradient(to bottom, oklch(0.42 0.14 32), oklch(0.5 0.16 32), oklch(0.58 0.18 32)); }
-}
+
+/* ===== PRELOADER ===== */
 #preloader-wrapper {
   position: fixed;
   top: 0; left: 0;
   width: 100vw; height: 100vh;
   z-index: 99999;
   isolation: isolate;
-  pointer-events: none; 
+  pointer-events: none;
 }
 #preloader-wrapper.is-dismissed {
   display: none !important;
@@ -1830,7 +1884,7 @@ body::before {
   will-change: opacity, transform;
   transform: translateZ(0);
   backface-visibility: hidden;
-  pointer-events: auto; 
+  pointer-events: auto;
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -1840,11 +1894,11 @@ body::before {
 .preloader-glass { position: absolute; inset: 0; background: radial-gradient(ellipse 30% 40% at 50% 50%, rgba(255,255,255,0.03) 0%, transparent 70%); pointer-events: none; }
 .diamond-wrap {
   position: relative;
-  width: 120px;
-  height: 120px;
+  width: 100px;
+  height: 100px;
   margin-bottom: 2rem;
   perspective: 600px;
-  filter: drop-shadow(0 0 18px oklch(0.58 0.18 32 / 0.35)) drop-shadow(0 0 40px oklch(0.82 0.2 125 / 0.1));
+  filter: drop-shadow(0 0 12px oklch(0.58 0.18 32 / 0.25)) drop-shadow(0 0 28px oklch(0.58 0.18 32 / 0.08));
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }
@@ -1902,71 +1956,56 @@ body::before {
     box-shadow: 0 0 6px rgba(255,255,255,0.6), 0 0 18px rgba(255,255,255,0.15);
   }
 }
+@keyframes facePulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.75; }
+}
 .cube-face {
   position: absolute;
-  top: 20px;
-  left: 20px;
-  width: 80px;
-  height: 80px;
+  top: 17px;
+  left: 17px;
+  width: 66px;
+  height: 66px;
   backface-visibility: hidden;
   background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 2px;
+  will-change: opacity;
 }
 .cube-front {
-  transform: translateZ(40px);
+  transform: translateZ(33px);
   background: linear-gradient(135deg, oklch(0.58 0.18 32 / 0.15), rgba(255,255,255,0.03));
-  box-shadow: inset 0 0 20px oklch(0.58 0.18 32 / 0.2);
-  animation: facePulseTerracota 2s ease-in-out infinite;
+  animation: facePulse 2s ease-in-out infinite;
 }
 .cube-back {
-  transform: rotateY(180deg) translateZ(40px);
+  transform: rotateY(180deg) translateZ(33px);
   background: linear-gradient(135deg, oklch(0.58 0.18 32 / 0.08), rgba(255,255,255,0.02));
-  box-shadow: inset 0 0 20px oklch(0.58 0.18 32 / 0.1);
-  animation: facePulseTerracota 2s ease-in-out infinite;
+  animation: facePulse 2s ease-in-out infinite;
   animation-delay: 0.3s;
 }
 .cube-right {
-  transform: rotateY(90deg) translateZ(40px);
+  transform: rotateY(90deg) translateZ(33px);
   background: linear-gradient(135deg, oklch(0.82 0.2 125 / 0.15), rgba(255,255,255,0.03));
-  box-shadow: inset 0 0 20px oklch(0.82 0.2 125 / 0.2);
-  animation: facePulseVerde 2s ease-in-out infinite;
+  animation: facePulse 2s ease-in-out infinite;
   animation-delay: 0.6s;
 }
 .cube-left {
-  transform: rotateY(-90deg) translateZ(40px);
+  transform: rotateY(-90deg) translateZ(33px);
   background: linear-gradient(135deg, oklch(0.82 0.2 125 / 0.1), rgba(255,255,255,0.02));
-  box-shadow: inset 0 0 20px oklch(0.82 0.2 125 / 0.15);
-  animation: facePulseVerde 2s ease-in-out infinite;
+  animation: facePulse 2s ease-in-out infinite;
   animation-delay: 0.9s;
 }
 .cube-top {
-  transform: rotateX(90deg) translateZ(40px);
+  transform: rotateX(90deg) translateZ(33px);
   background: linear-gradient(135deg, oklch(0.58 0.18 32 / 0.08), rgba(255,255,255,0.03));
-  box-shadow: inset 0 0 20px oklch(0.58 0.18 32 / 0.10);
-  animation: facePulseOcre 2s ease-in-out infinite;
+  animation: facePulse 2s ease-in-out infinite;
   animation-delay: 1.2s;
 }
 .cube-bottom {
-  transform: rotateX(-90deg) translateZ(40px);
+  transform: rotateX(-90deg) translateZ(33px);
   background: linear-gradient(135deg, oklch(0.58 0.18 32 / 0.06), rgba(255,255,255,0.02));
-  box-shadow: inset 0 0 20px oklch(0.58 0.18 32 / 0.08);
-  animation: facePulseOcre 2s ease-in-out infinite;
+  animation: facePulse 2s ease-in-out infinite;
   animation-delay: 1.5s;
-}
-@keyframes facePulseTerracota {
-  0%, 100% { box-shadow: inset 0 0 20px oklch(0.58 0.18 32 / 0.2); }
-  50% { box-shadow: inset 0 0 35px oklch(0.58 0.18 32 / 0.5); }
-}
-@keyframes facePulseVerde {
-  0%, 100% { box-shadow: inset 0 0 20px oklch(0.82 0.2 125 / 0.2); }
-  50% { box-shadow: inset 0 0 35px oklch(0.82 0.2 125 / 0.5); }
-}
-@keyframes facePulseOcre {
-  0%, 100% { box-shadow: inset 0 0 20px oklch(0.58 0.18 32 / 0.10); }
-  50% { box-shadow: inset 0 0 35px oklch(0.58 0.18 32 / 0.35); }
 }
 @keyframes cube3d {
   0%   { transform: rotateX(-15deg) rotateY(0deg)   translateY(0px);  }
@@ -2226,7 +2265,6 @@ loader.start();
       </span>
       <span class="price-group">
         <span>2 payments of <strong>$70.000</strong>&nbsp;<small class="price-currency">ARS</small></span>
-        <span class="strike-price" aria-label="Original price">$200.000</span>
       </span>
     </p>
     <p class="hero-b2b-tags">
@@ -2375,31 +2413,33 @@ loader.start();
 </section>
 </div>
 <section class="section como-funciona reveal" id="resultados" aria-label="How it works">
-  <h2 class="section-title">Three steps.<br><span class="text-verde">No fluff</span>.</h2>
-  <p class="section-sub">
-    Your site ready in one week.
-  </p>
-  <div class="steps-container">
+  <div class="glass-card">
+    <h2 class="section-title">Three steps.<br><span class="text-verde">No fluff</span>.</h2>
+    <p class="section-sub">
+      Your site ready in one week.
+    </p>
+    <div class="steps-container">
 
-    <div class="step reveal">
-      <div class="step-number">1</div>
-      <div class="step-content">
-        <h3>We talk</h3>
-        <p>You reach out and tell me your idea.</p>
+      <div class="step reveal">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>We talk</h3>
+          <p>You reach out and tell me your idea.</p>
+        </div>
       </div>
-    </div>
-    <div class="step reveal">
-      <div class="step-number">2</div>
-      <div class="step-content">
-        <h3>Design</h3>
-        <p>Results in 48 hours. We tweak. No upfront.</p>
+      <div class="step reveal">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h3>Design</h3>
+          <p>Results in 48 hours. We tweak. No upfront.</p>
+        </div>
       </div>
-    </div>
-    <div class="step reveal">
-      <div class="step-number">3</div>
-      <div class="step-content">
-        <h3>You're live</h3>
-        <p>Onboarding & free consulting.</p>
+      <div class="step reveal">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h3>You're live</h3>
+          <p>Onboarding & free consulting.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -2417,14 +2457,12 @@ loader.start();
     <div class="pricing-split">
       <div class="pricing-split-item">
         <div class="amount">
-          <span class="strike-price pricing-strike">$200.000</span>
           <span class="pricing-current">$70.000&nbsp;<small class="price-currency">ARS</small></span>
         </div>
         <div class="label">At start</div>
       </div>
       <div class="pricing-split-item">
         <div class="amount">
-          <span class="strike-price pricing-strike">$200.000</span>
           <span class="pricing-current">$70.000&nbsp;<small class="price-currency">ARS</small></span>
         </div>
         <div class="label">At delivery</div>
@@ -2449,37 +2487,39 @@ loader.start();
     </a>
   </div>
 </section>
-<section class="section faq reveal" id="faq" aria-label="Frequently Asked Questions">
-  <span class="section-label mono text-terracota">
-    FAQ
-  </span>
-  <h2 class="section-title">Frequently <span class="text-terracota">Asked Questions</span></h2>
-  <div class="faq-list">
-    <div class="faq-item">
-      <button class="faq-question" aria-expanded="false">
-        What if I don't like it?
-        <i data-lucide="plus"></i>
-      </button>
-      <div class="faq-answer">
-        <p>We work until you love it.</p>
+<section class="section faq reveal" id="faq" aria-label="The usual suspects">
+  <div class="glass-card">
+    <span class="section-label mono text-terracota">
+      FAQ
+    </span>
+    <h2 class="section-title">The usual <span class="text-terracota">suspects</span></h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          What if I don't like it?
+          <i data-lucide="plus"></i>
+        </button>
+        <div class="faq-answer">
+          <p>We work until you love it.</p>
+        </div>
       </div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-question" aria-expanded="false">
-        Can I update it later?
-        <i data-lucide="plus"></i>
-      </button>
-      <div class="faq-answer">
-        <p>Yes. Basic changes I'll teach you. Big stuff, we talk.</p>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Can I update it later?
+          <i data-lucide="plus"></i>
+        </button>
+        <div class="faq-answer">
+          <p>Yes. Basic changes I'll teach you. Big stuff, we talk.</p>
+        </div>
       </div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-question" aria-expanded="false">
-        What do you need from me to start?
-        <i data-lucide="plus"></i>
-      </button>
-      <div class="faq-answer">
-        <p>Tell me about your business. Got a logo, photos, colors? Even better. If not, we create them together.</p>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          What do you need from me to start?
+          <i data-lucide="plus"></i>
+        </button>
+        <div class="faq-answer">
+          <p>Tell me about your business. Got a logo, photos, colors? Even better. If not, we create them together.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -2527,8 +2567,7 @@ loader.start();
 (function() {
   'use strict';
   const state = {
-    menuOpen: false,
-    lastInteraction: 0,
+    menuOpen: false
   };
   const hamburgerBtn = document.getElementById('hamburgerBtn');
   const mobileMenu = document.getElementById('mobileMenu');
@@ -2692,6 +2731,5 @@ loader.start();
 
 
 </script>
-<div class="gradient-line" aria-hidden="true"></div>
 </body>
 </html>
