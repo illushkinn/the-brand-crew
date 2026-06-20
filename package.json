@@ -3,11 +3,13 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "vitest run",
+    "test": "playwright test",
     "test:watch": "vitest",
-    "test:ui": "vitest --ui"
+    "test:ui": "vitest --ui",
+    "test:headed": "playwright test --headed"
   },
   "devDependencies": {
+    "@playwright/test": "^1.61.0",
     "jsdom": "^25.0.1",
     "vitest": "^2.1.9"
   }

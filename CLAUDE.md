@@ -49,7 +49,7 @@ Every project MUST have: tokens.css (3-layer), specs/ (foundations + components)
 - Default theme: dark (`<html data-theme="dark">`)
 - Primary brand color: Terracota (OKLCH `oklch(0.58 0.18 32)`, approx #DD614C)
 - The OLD `rgba(226,92,58,...)` terracota shadow values are WRONG — use canonical OKLCH terracota
-- Canvas: Single-page landing page at `site/index.html`
+- Canvas: Single-page landing page at `index.html`
 - Stack: Vanilla HTML/CSS/JS, no framework
 - Icons: Lucide + Phosphor
 - Hosting: Vercel

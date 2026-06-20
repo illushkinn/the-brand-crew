@@ -9,12 +9,35 @@
 <meta name="description" content="Websites that actually work. For businesses that mean business. Design + development + domain + hosting.">
 <meta name="theme-color" content="#c47a68">
 <meta name="google-site-verification" content="k-kPS76zKdKwT-18dhJwvxuK56oZXsaMpiBEeOmjuQA" />
+<meta property="og:title" content="The Brand Crew — Websites That Actually Work">
+<meta property="og:description" content="Websites that actually work. For businesses that mean business. Design + development + domain + hosting.">
+<meta property="og:url" content="https://www.thebrandcrew.lat">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://www.thebrandcrew.lat/favicon.svg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Brand Crew — Websites That Actually Work">
+<meta name="twitter:description" content="Websites that actually work. For businesses that mean business. Design + development + domain + hosting.">
+<link rel="canonical" href="https://www.thebrandcrew.lat">
+<meta name="robots" content="index, follow">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "The Brand Crew",
+  "url": "https://www.thebrandcrew.lat",
+  "description": "Websites that actually work. For businesses that mean business.",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://www.thebrandcrew.lat/?s={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rethink+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Grand+Hotel&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script defer src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/index.js"></script>
 
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -73,11 +96,10 @@ ul { list-style: none; }
   --terracota-hover: var(--oklch-terracota-hover);
   --ochra: var(--oklch-ocre);
   --verde: var(--oklch-verde);
-  --verde-hover: var(--oklch-verde-hover);
+  --bg-elevated: var(--oklch-bg-elevated);
   --border: var(--oklch-border);
   --glass-bg: rgba(255,255,255,0.06);
   --glass-border: rgba(255,255,255,0.10);
-  --nav-bg: rgba(18,18,18,0.85);
   --accent-glow: rgba(221,97,76,0.15);
   --font-display: 'Rethink Sans', sans-serif;
   --font-body: 'Rethink Sans', sans-serif;
@@ -271,21 +293,6 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   font-size: 1.5rem;
   letter-spacing: 0.02em;
   color: var(--white);
-  white-space: nowrap;
-}
-.navbar-tag {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.6rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--verde);
-  background: rgba(122, 184, 0, 0.15);
-  border: 1px solid rgba(122, 184, 0, 0.3);
-  border-radius: 4px;
-  padding: 1px 6px;
-  margin-left: 6px;
-  line-height: 1.3;
   white-space: nowrap;
 }
 .hamburger-btn {
@@ -598,21 +605,6 @@ body::before {
 .hero h1 {
   margin-bottom: var(--space-md);
 }
-.hero h1 .highlight {
-  color: var(--terracota);
-  display: inline-block;
-  position: relative;
-}
-.hero h1 .highlight::after {
-  content: '';
-  position: absolute;
-  bottom: 4px;
-  left: 0;
-  right: 0;
-  height: 8px;
-  background: var(--accent-glow);
-  border-radius: 4px;
-}
 .hero-title {
   font-family: var(--font-body);
   font-size: clamp(2.8rem, 7vw, 4.5rem);
@@ -777,12 +769,6 @@ body::before {
 }
 .problema-card {
   pointer-events: none;
-}
-.problema-card .card-icon {
-  width: 2.5rem;
-  height: 2.5rem;
-  margin-bottom: var(--space-md);
-  color: var(--terracota);
 }
 .problema-card h4 {
   margin-bottom: var(--space-sm);
@@ -1048,32 +1034,6 @@ body::before {
 .about-text strong {
   color: var(--terracota);
   font-weight: 600;
-}
-.about-values {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-.about-value {
-  text-align: center;
-  padding: 1.5rem 1rem;
-}
-.about-value-icon {
-  font-size: 2rem;
-  display: block;
-  margin-bottom: 0.75rem;
-}
-.about-value h4 {
-  font-family: var(--font-display);
-  font-size: 1rem;
-  color: var(--headline);
-  margin-bottom: 0.5rem;
-}
-.about-value p {
-  color: var(--body-dim);
-  font-size: 0.85rem;
-  line-height: 1.5;
 }
 .steps-container {
   margin-top: 1.5rem;
@@ -1404,25 +1364,6 @@ body::before {
 .footer .footer-social a:focus-visible {
   text-decoration: underline;
 }
-.footer .footer-sep {
-  color: var(--terracota);
-  font-size: 0.85rem;
-  opacity: 0.6;
-}
-.footer .footer-credit {
-  font-family: var(--font-body);
-  font-size: 0.85rem;
-  color: var(--body-dim);
-  padding-top: 0.75rem;
-  border-top: 1px solid var(--border);
-  width: 100%;
-  max-width: 100%;
-  margin-top: auto;
-}
-.footer .footer-credit svg {
-  display: inline;
-  vertical-align: middle;
-}
 
 .scroll-to-top {
   position: fixed;
@@ -1601,11 +1542,6 @@ body::before {
     margin-top: 1.25rem;
     gap: var(--space-sm);
   }
-  .problema-card .card-icon {
-    width: 2rem;
-    height: 2rem;
-    margin-bottom: 0.5rem;
-  }
   .problema-card h4 {
     margin-bottom: 0.25rem;
     font-size: clamp(1.1rem, 3.5vw, 1.4rem);
@@ -1665,17 +1601,6 @@ body::before {
   .footer .footer-social {
     justify-content: center;
     gap: 0.35rem;
-  }
-  .footer .footer-sep {
-    flex-shrink: 0;
-  }
-  .footer .footer-credit {
-    white-space: normal;
-    width: 100%;
-    padding-top: 0.75rem;
-    margin-top: 0.5rem;
-    font-size: 0.8rem;
-    border-top: 1px solid var(--border);
   }
   .cta-final {
     justify-content: space-between;
@@ -2280,7 +2205,7 @@ loader.start();
     <button class="resultados-arrow" id="resultadosNext" aria-label="Next">›</button>
   </div>
   <div class="resultados-grid">
-  <article class="glass-card resultado-card fade-in">
+  <article class="glass-card resultado-card">
     <div class="resultado-header">
       <div class="resultado-avatar"><img src="/assets/logos/luisito.svg" alt="Luisito Playa Grande" class="invert-dark"></div>
       <div class="resultado-info">
@@ -2305,7 +2230,7 @@ loader.start();
       </div>
     </div>
   </article>
-  <article class="glass-card resultado-card fade-in">
+  <article class="glass-card resultado-card">
     <div class="resultado-header">
       <div class="resultado-avatar"><img src="/assets/logos/apolonia.svg" alt="Apolonia"></div>
       <div class="resultado-info">
@@ -2330,7 +2255,7 @@ loader.start();
       </div>
     </div>
   </article>
-  <article class="glass-card resultado-card fade-in">
+  <article class="glass-card resultado-card">
     <div class="resultado-header">
       <div class="resultado-avatar letter-avatar">H</div>
       <div class="resultado-info">
@@ -2360,7 +2285,7 @@ loader.start();
       </div>
     </div>
   </article>
-  <article class="glass-card resultado-card fade-in">
+  <article class="glass-card resultado-card">
     <div class="resultado-header">
       <div class="resultado-avatar dark-bg"><img src="/assets/logos/pragma.png" alt="Pragma"></div>
       <div class="resultado-info">
@@ -2389,17 +2314,17 @@ loader.start();
 <section class="section problema reveal" id="servicios" aria-label="The problem we solve">
   <h2 class="section-title">A business not on the internet,<br><span class="text-terracota">doesn't exist</span>.</h2>
   <div class="problema-grid">
-    <div class="glass-card problema-card tall fade-in">
+    <div class="glass-card problema-card tall">
       <h4>They can't find you</h4>
       <p>If you don't show up when they search, <strong>you just gave your customer to your competitor</strong>.</p>
       <p class="sub">No website, no visibility. No website, you don't exist for those looking for you.</p>
     </div>
-    <div class="glass-card problema-card fade-in">
+    <div class="glass-card problema-card">
       <h4>Don't know where to start</h4>
       <p>I help you sort out your ideas. What's extra? Out. What adds value? In.</p>
       <p class="sub">No design that doesn't sell, no pointless pages, no fluff.</p>
     </div>
-    <div class="glass-card problema-card fade-in">
+    <div class="glass-card problema-card">
       <h4>An agency isn't for every project</h4>
       <p>They have teams, structure, and costs. Justified, but not for everyone.</p>
       <p class="sub">I handle the projects that don't fit them. Same quality, fair price.</p>
@@ -2414,21 +2339,21 @@ loader.start();
   </p>
   <div class="steps-container">
 
-    <div class="step fade-in reveal">
+    <div class="step reveal">
       <div class="step-number">1</div>
       <div class="step-content">
         <h3>We talk</h3>
         <p>You reach out and tell me your idea.</p>
       </div>
     </div>
-    <div class="step fade-in reveal">
+    <div class="step reveal">
       <div class="step-number">2</div>
       <div class="step-content">
         <h3>Design</h3>
         <p>Results in 48 hours. We tweak. No upfront.</p>
       </div>
     </div>
-    <div class="step fade-in reveal">
+    <div class="step reveal">
       <div class="step-number">3</div>
       <div class="step-content">
         <h3>You're live</h3>
@@ -2439,7 +2364,7 @@ loader.start();
 </section>
 <section class="section pricing reveal" id="precios" aria-label="Pricing">
   <h2 class="section-title"><span class="text-verde">A steal</span>.</h2>
-  <div class="glass-card pricing-card fade-in">
+  <div class="glass-card pricing-card">
     <div class="pricing-line">
       <span class="pricing-line-label">Design + Development<br><small>+ Domain (2 years)</small></span>
       <span class="pricing-line-price">
@@ -2520,7 +2445,7 @@ loader.start();
 <section class="section blog reveal" id="blog" aria-label="Blog">
   <span class="section-label mono text-terracota">Blog</span>
   <h2 class="section-title">Ideas, stories<br><span class="text-verde">and news</span>.</h2>
-  <div class="glass-card blog-construction fade-in">
+  <div class="glass-card blog-construction">
     <div class="blog-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--terracota)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg></div>
     <h3>We're building this</h3>
     <p>Articles about design, web development, and making the most of your online presence. Soon you'll find valuable content here.</p>
@@ -2529,7 +2454,7 @@ loader.start();
 <section class="section about reveal" id="about" aria-label="About us">
   <span class="section-label mono text-terracota">About</span>
   <h2 class="section-title">We're <span class="text-terracota">The Brand Crew</span>.</h2>
-  <div class="glass-card about-card fade-in">
+  <div class="glass-card about-card">
     <p class="about-text">
       We're a crew of professionals who build websites. Sites that convert, load fast, and look great on mobile. No crazy budgets. Clean design, clean code, and results you can measure.
     </p>
