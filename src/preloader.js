@@ -1,17 +1,20 @@
 /**
  * Preloader — loading simulation + dismiss transition
  *
+ * Scrollbar estable vía scrollbar-gutter: stable en CSS.
+ * No se altera overflow del <html> en ningún momento.
+ * Scroll bloqueado con event listener en el preloader.
+ *
  * Usage:
  *   const preloader = createPreloader({
  *     preloader: document.getElementById('preloader'),
  *     fill:       document.getElementById('preloader-fill'),
  *     hint:       document.getElementById('preloader-hint'),
- *     doc:        document.documentElement,
  *   })
  *   preloader.start()
  */
 
-export function createPreloader({ preloader, fill, hint, doc } = {}) {
+export function createPreloader({ preloader, fill, hint } = {}) {
   let loaded = 0
   let interval = null
 
@@ -19,6 +22,10 @@ export function createPreloader({ preloader, fill, hint, doc } = {}) {
     start,
     complete,
     dismiss,
+  }
+
+  function preventScroll(e) {
+    e.preventDefault()
   }
 
   function tick() {
@@ -34,6 +41,10 @@ export function createPreloader({ preloader, fill, hint, doc } = {}) {
 
   function start() {
     if (fill) fill.style.width = '0%'
+    if (preloader) {
+      preloader.addEventListener('wheel', preventScroll, { passive: false })
+      preloader.addEventListener('touchmove', preventScroll, { passive: false })
+    }
     interval = setInterval(tick, 100)
   }
 
@@ -42,20 +53,20 @@ export function createPreloader({ preloader, fill, hint, doc } = {}) {
     api._completed = true
     if (hint) hint.classList.add('visible')
     if (preloader) preloader.addEventListener('click', api.dismiss)
-    // Latido del core cuando la carga termina
     const coreTrack = preloader ? preloader.querySelector('.core-track') : null
     if (coreTrack) coreTrack.classList.add('is-ready')
   }
 
   function dismiss() {
     if (!preloader) return
-    // Compensar scrollbar width para que el hero NO se mueva
-    // al pasar de overflow:hidden → overflow-y:scroll
-    var scrollW = window.innerWidth - document.documentElement.clientWidth
-    if (scrollW > 0) document.body.style.paddingRight = scrollW + 'px'
-
-    // Buscar wrapper si existe (para aislamiento de capas en LT Browser)
     var wrapper = document.getElementById('preloader-wrapper')
+
+    // Liberar scroll
+    preloader.removeEventListener('wheel', preventScroll)
+    preloader.removeEventListener('touchmove', preventScroll)
+
+    // Liberar reveal elements
+    document.documentElement.classList.remove('preloading')
 
     preloader.style.opacity = '0'
     preloader.style.transform = 'scale(0.97)'
@@ -67,15 +78,6 @@ export function createPreloader({ preloader, fill, hint, doc } = {}) {
         wrapper.classList.add('is-dismissed')
         wrapper.style.display = 'none'
         wrapper.style.pointerEvents = 'none'
-      }
-      if (doc) {
-        doc.classList.remove('preloading')
-        // Sacar el padding después que el layout se estabilice
-        requestAnimationFrame(function() {
-          requestAnimationFrame(function() {
-            document.body.style.paddingRight = ''
-          })
-        })
       }
     }, 450)
   }
