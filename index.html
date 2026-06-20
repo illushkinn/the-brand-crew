@@ -234,7 +234,7 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
   border-bottom: 1px solid transparent;
-  transition: background 0.4s ease, backdrop-filter 0.4s ease, border-color 0.4s ease, transform 0.35s ease, opacity 0.35s ease;
+  transition: background 0.25s ease, backdrop-filter 0.25s ease, border-color 0.25s ease, transform 0.3s ease, opacity 0.3s ease;
 }
 .navbar.scrolled {
   background: rgba(10, 10, 15, 0.55);
@@ -306,7 +306,7 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   height: 2px;
   background: currentColor;
   border-radius: 2px;
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease;
+  transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.2s ease;
   transform-origin: center;
   will-change: transform;
 }
@@ -344,7 +344,7 @@ a:focus-visible {
   clip-path: circle(0% at top right);
   -webkit-clip-path: circle(0% at top right);
   pointer-events: none;
-  transition: clip-path 0.5s cubic-bezier(0.45, 0.05, 0.25, 1), -webkit-clip-path 0.5s cubic-bezier(0.45, 0.05, 0.25, 1);
+  transition: clip-path 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), -webkit-clip-path 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .mobile-menu.is-open {
   clip-path: circle(150% at top right);
@@ -360,7 +360,7 @@ a:focus-visible {
   opacity: 0;
   transform: translateY(20px);
   will-change: transform, opacity;
-  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.3s, opacity 0.4s cubic-bezier(0.45, 0.05, 0.25, 1);
+  transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94), color 0.3s, opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .mobile-menu.is-open a {
   opacity: 1;
@@ -642,7 +642,7 @@ body::before {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  flex-wrap: wrap;
+  white-space: nowrap;
 }
 .strike-price {
   text-decoration: line-through;
@@ -655,7 +655,7 @@ body::before {
 .strike-price::after {
   content: '';
   position: absolute;
-  left: -2px; right: -2px;
+  left: 4px; right: -6px;
   top: 50%;
   height: 2px;
   background: var(--terracota);
@@ -1814,7 +1814,7 @@ body::before {
   pointer-events: none;
   opacity: 0.5;
   transition: opacity 0.3s ease;
-  animation: aguja-breathe 2s ease-in-out infinite, aguja-shift 4s ease-in-out infinite;
+  animation: aguja-breathe 4s ease-in-out infinite, aguja-shift 8s ease-in-out infinite;
   box-shadow: 0 0 20px rgba(221,97,76,0.5), 0 0 40px rgba(218,161,68,0.2);
 }
 @keyframes aguja-breathe {
@@ -2240,12 +2240,12 @@ loader.start();
       Domain + hosting
       <span class="price-group">
         <span class="strike-price" aria-label="Original price">$400.000</span>
-        <span class="current-price">$140.000</span>
+        <span class="current-price">$140.000 ARS</span>
       </span>
       ·
       <span class="price-group">
         <span class="strike-price" aria-label="Original price">$200.000</span>
-        <span>2 payments of <strong>$70.000</strong></span>
+        <span>2 payments of <strong>$70.000 ARS</strong></span>
       </span>
     </p>
     <p class="hero-b2b-tags">
@@ -2556,8 +2556,8 @@ loader.start();
     var len = mobileLinks.length;
     mobileLinks.forEach(function(link, i) {
       var delay = open
-        ? 0.08 + i * 0.05
-        : 0.08 + (len - 1 - i) * 0.05;
+        ? 0.04 + i * 0.04
+        : 0.04 + (len - 1 - i) * 0.04;
       link.style.transitionDelay = delay + 's';
     });
   }
