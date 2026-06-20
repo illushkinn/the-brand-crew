@@ -4,7 +4,6 @@ __pycache__/
 .DS_Store
 node_modules/
 assets/ilustraciones/
-assets/error-404-image/
 *.fig
 *.sketch
 *.studio

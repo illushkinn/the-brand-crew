@@ -28,7 +28,7 @@ html {
   scrollbar-gutter: stable;
 }
 
-body { font-family: var(--font-body); background: var(--bg); font-weight: 300; overflow-y: auto; }
+body { font-family: var(--font-body); background: var(--bg); font-weight: 300; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .resultados-grid { scroll-snap-type: none; }
@@ -673,7 +673,7 @@ body::before {
 .hero-peep {
   position: absolute;
   right: clamp(3%, 5vw, 8%);
-  bottom: -40px;
+  bottom: -10px;
   height: 68vh;
   max-height: 580px;
   width: auto;
@@ -689,7 +689,7 @@ body::before {
     height: 60vh;
     max-height: 500px;
     opacity: 0.4;
-    bottom: -60px;
+    bottom: -24px;
   }
 }
 @media (min-width: 769px) {
@@ -698,7 +698,7 @@ body::before {
     max-height: 660px;
     opacity: 0.5;
     right: 6%;
-    bottom: -80px;
+    bottom: -32px;
   }
 }
 @media (min-width: 1025px) {
@@ -707,7 +707,7 @@ body::before {
     max-height: 780px;
     opacity: 0.55;
     right: 8%;
-    bottom: -100px;
+    bottom: -40px;
   }
 }
 .hero-b2b-tags {
