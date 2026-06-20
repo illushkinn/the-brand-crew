@@ -1209,6 +1209,7 @@ body::before {
   color: var(--verde);
   font-weight: 600;
   font-size: 1.1em;
+  white-space: nowrap;
 }
 .pricing-strike.strike-price {
   font-size: 0.85em;
@@ -1548,6 +1549,23 @@ body::before {
     padding-top: 4.5rem;
     padding-bottom: var(--space-lg);
   }
+  .hero-content {
+    text-align: center;
+    margin-left: 0;
+  }
+  .hero-actions {
+    margin-bottom: 3em;
+    justify-content: center;
+  }
+  .hero-meta {
+    margin-bottom: var(--space-lg);
+    justify-content: center;
+    align-items: center;
+    gap: 0.35rem;
+  }
+  .hero-b2b-tags {
+    justify-content: center;
+  }
   .hero-title, .hero-sub {
     font-family: 'Rethink Sans', sans-serif;
   }
@@ -1699,31 +1717,45 @@ body::before {
   .hero {
     height: auto;
     min-height: calc(100dvh - 64px);
-    padding: 0.75rem clamp(1rem, 5vw, 2rem);
+    padding: 0.5rem clamp(1rem, 5vw, 2rem);
     justify-content: center;
     overflow: hidden;
   }
+  .hero-content {
+    max-width: 70%;
+  }
   .hero-title {
     font-size: clamp(1.6rem, 4vw, 2.5rem);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.4rem;
   }
   .hero-sub {
-    font-size: clamp(0.8rem, 2vw, 1.1rem);
-    margin-bottom: 0.75rem;
+    font-size: clamp(0.75rem, 2vw, 1.1rem);
+    margin-bottom: 0.5rem;
+    margin-top: var(--space-sm);
   }
   .hero-meta {
     font-size: 0.75rem;
     margin-bottom: 0.5rem;
   }
   .hero-actions {
-    margin-bottom: 1em;
+    margin-bottom: 0.5em;
   }
   .hero-actions .btn-lg {
-    padding: 0.6rem 1.5rem;
-    font-size: 0.95rem;
+    padding: 0.5rem 1.2rem;
+    font-size: 0.9rem;
+  }
+  .hero-peep {
+    display: none;
   }
   .hero-shape {
-    opacity: 0.3;
+    opacity: 0.2;
+  }
+  .hero-b2b-tags {
+    margin-top: 0.25rem;
+  }
+  .tag-b2b {
+    font-size: 0.55rem;
+    padding: 0.15rem 0.35rem;
   }
 }
 @media (min-width: 375px) and (max-width: 480px) {
@@ -2256,7 +2288,6 @@ loader.start();
       </span>
     </p>
     <p class="hero-b2b-tags">
-      <span class="tag-b2b">Direct clients</span>
       <span class="tag-b2b tag-outline">White-label partner</span>
     </p>
   </div>
@@ -2433,21 +2464,21 @@ loader.start();
       <span class="pricing-line-label">Design + Development<br><small>+ Domain (2 years)</small></span>
       <span class="pricing-line-price">
         <span class="strike-price pricing-strike">$400.000 ARS</span>
-        <span class="pricing-current">$140.000 ARS</span>
+        <span class="pricing-current">$140.000&nbsp;<small class="price-currency">ARS</small></span>
       </span>
     </div>
     <div class="pricing-split">
       <div class="pricing-split-item">
         <div class="amount">
           <span class="strike-price pricing-strike">$200.000</span>
-          <span class="pricing-current">$70.000</span>
+          <span class="pricing-current">$70.000&nbsp;<small class="price-currency">ARS</small></span>
         </div>
         <div class="label">At start</div>
       </div>
       <div class="pricing-split-item">
         <div class="amount">
           <span class="strike-price pricing-strike">$200.000</span>
-          <span class="pricing-current">$70.000</span>
+          <span class="pricing-current">$70.000&nbsp;<small class="price-currency">ARS</small></span>
         </div>
         <div class="label">At delivery</div>
       </div>
