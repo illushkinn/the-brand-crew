@@ -420,7 +420,7 @@ a:focus-visible {
 .hero-shape:nth-child(2) {
   width: 200px; height: 220px;
   border-radius: 40% / 50%;
-  background: linear-gradient(225deg, var(--ochra), #f0d090, #f5e6b8);
+  background: linear-gradient(225deg, var(--terracota), #c47a68, #e8a085);
   bottom: -6%; left: -5%;
   animation-delay: -7s;
   animation-name: heroTilt;
@@ -454,7 +454,7 @@ a:focus-visible {
   .hero-shape:nth-child(6) {
     width: 200px; height: 180px;
     border-radius: 55% / 45%;
-    background: linear-gradient(180deg, var(--ochra), #f0d090, #f5e6b8);
+    background: linear-gradient(180deg, var(--terracota), #c47a68, #e8a085);
     bottom: -8%; right: -8%;
     animation-delay: -9s;
     animation-name: heroPulse;
@@ -478,7 +478,7 @@ a:focus-visible {
   .hero-shape:nth-child(9) {
     width: 220px; height: 190px;
     border-radius: 50% / 50%;
-    background: linear-gradient(315deg, var(--ochra), #f5e6b8, #fff8e0);
+    background: linear-gradient(315deg, var(--terracota), #c47a68, #e8a085);
     bottom: 15%; left: -8%;
     animation-delay: -11s;
     animation-name: heroTilt;
@@ -538,16 +538,16 @@ body::before {
   pointer-events: none;
   background:
     radial-gradient(ellipse 140% 120% at 5% 8%, rgba(221, 97, 76, 1.0) 0%, transparent 50%),
-    radial-gradient(ellipse 110% 90% at 95% 14%, rgba(218, 161, 68, 0.85) 0%, transparent 48%),
+    radial-gradient(ellipse 110% 90% at 95% 14%, rgba(221, 97, 76, 0.70) 0%, transparent 48%),
     radial-gradient(ellipse 100% 80% at 48% 50%, rgba(122, 184, 0, 0.80) 0%, transparent 50%),
-    radial-gradient(ellipse 110% 90% at 20% 82%, rgba(218, 161, 68, 0.85) 0%, transparent 46%),
+    radial-gradient(ellipse 110% 90% at 20% 82%, rgba(221, 97, 76, 0.70) 0%, transparent 46%),
     radial-gradient(ellipse 120% 100% at 78% 78%, rgba(221, 97, 76, 1.0) 0%, transparent 48%),
     radial-gradient(ellipse 100% 80% at 42% 92%, rgba(122, 184, 0, 0.75) 0%, transparent 50%),
-    radial-gradient(ellipse 80% 70% at 62% 30%, rgba(218, 161, 68, 0.70) 0%, transparent 55%),
+    radial-gradient(ellipse 80% 70% at 62% 30%, rgba(221, 97, 76, 0.55) 0%, transparent 55%),
     radial-gradient(ellipse 70% 60% at 10% 50%, rgba(122, 184, 0, 0.65) 0%, transparent 58%),
     radial-gradient(ellipse 100% 90% at 50% 30%, rgba(221, 97, 76, 0.80) 0%, transparent 45%),
     radial-gradient(ellipse 85% 75% at 85% 48%, rgba(221, 97, 76, 0.90) 0%, transparent 52%),
-    radial-gradient(ellipse 75% 65% at 30% 28%, rgba(218, 161, 68, 0.65) 0%, transparent 55%);
+    radial-gradient(ellipse 75% 65% at 30% 28%, rgba(221, 97, 76, 0.50) 0%, transparent 55%);
   opacity: 1;
 }
 /* Light ray: diagonal beam from isologo direction */
@@ -664,6 +664,10 @@ body::before {
 .current-price {
   color: var(--verde);
   font-weight: 600;
+  white-space: nowrap;
+}
+.hero-meta .price-group span {
+  white-space: nowrap;
 }
 .hero-actions {
   display: flex;
@@ -914,7 +918,7 @@ body::before {
   margin-top: 0.25rem;
 }
 .resultado-historia {
-  background: linear-gradient(135deg, rgba(221,97,76,0.06) 0%, rgba(218,161,68,0.04) 100%);
+  background: linear-gradient(135deg, rgba(221,97,76,0.06) 0%, rgba(221,97,76,0.04) 100%);
   margin-bottom: 1.25rem;
   padding: 1rem 1.25rem;
   border-left: 3px solid var(--terracota);
@@ -1138,7 +1142,7 @@ body::before {
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, var(--terracota), var(--ochra), var(--verde));
+  background: linear-gradient(90deg, var(--terracota), var(--bg-elevated), var(--verde));
 }
 .pricing-split {
   display: flex;
@@ -1808,22 +1812,22 @@ body::before {
   bottom: 0;
   width: 2px;
   height: 13vh;
-  background: linear-gradient(to bottom, var(--terracota), var(--ochra));
+  background: linear-gradient(to bottom, var(--terracota), var(--terracota-hover));
   clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
   z-index: 50;
   pointer-events: none;
   opacity: 0.5;
   transition: opacity 0.3s ease;
   animation: aguja-breathe 4s ease-in-out infinite, aguja-shift 8s ease-in-out infinite;
-  box-shadow: 0 0 20px rgba(221,97,76,0.5), 0 0 40px rgba(218,161,68,0.2);
+  box-shadow: 0 0 20px rgba(221,97,76,0.5), 0 0 40px rgba(221,97,76,0.15);
 }
 @keyframes aguja-breathe {
   0%, 100% { opacity: 0.3; }
   50% { opacity: 0.85; }
 }
 @keyframes aguja-shift {
-  0%, 100% { background: linear-gradient(to bottom, var(--terracota), var(--ochra)); }
-  50% { background: linear-gradient(to bottom, var(--ochra), var(--terracota)); }
+  0%, 100% { background: linear-gradient(to bottom, var(--terracota), var(--terracota-hover)); }
+  50% { background: linear-gradient(to bottom, var(--terracota-hover), var(--terracota)); }
 }
 #preloader-wrapper {
   position: fixed;
@@ -1959,15 +1963,15 @@ body::before {
 }
 .cube-top {
   transform: rotateX(90deg) translateZ(40px);
-  background: linear-gradient(135deg, rgba(218,161,68,0.12), rgba(255,255,255,0.03));
-  box-shadow: inset 0 0 20px rgba(218,161,68,0.15);
+  background: linear-gradient(135deg, rgba(221,97,76,0.08), rgba(255,255,255,0.03));
+  box-shadow: inset 0 0 20px rgba(221,97,76,0.10);
   animation: facePulseOcre 2s ease-in-out infinite;
   animation-delay: 1.2s;
 }
 .cube-bottom {
   transform: rotateX(-90deg) translateZ(40px);
-  background: linear-gradient(135deg, rgba(218,161,68,0.08), rgba(255,255,255,0.02));
-  box-shadow: inset 0 0 20px rgba(218,161,68,0.1);
+  background: linear-gradient(135deg, rgba(221,97,76,0.06), rgba(255,255,255,0.02));
+  box-shadow: inset 0 0 20px rgba(221,97,76,0.08);
   animation: facePulseOcre 2s ease-in-out infinite;
   animation-delay: 1.5s;
 }
@@ -1980,8 +1984,8 @@ body::before {
   50% { box-shadow: inset 0 0 35px rgba(122,184,0,0.5); }
 }
 @keyframes facePulseOcre {
-  0%, 100% { box-shadow: inset 0 0 20px rgba(218,161,68,0.15); }
-  50% { box-shadow: inset 0 0 35px rgba(218,161,68,0.45); }
+  0%, 100% { box-shadow: inset 0 0 20px rgba(221,97,76,0.10); }
+  50% { box-shadow: inset 0 0 35px rgba(221,97,76,0.35); }
 }
 @keyframes cube3d {
   0%   { transform: rotateX(-15deg) rotateY(0deg)   translateY(0px);  }
@@ -2235,17 +2239,13 @@ loader.start();
       </a>
     </div>
     <p class="hero-meta">
-      Design + development
-      ·
-      Domain + hosting
       <span class="price-group">
+        <span class="current-price">$140.000&nbsp;ARS</span>
         <span class="strike-price" aria-label="Original price">$400.000</span>
-        <span class="current-price">$140.000 ARS</span>
       </span>
-      ·
       <span class="price-group">
+        <span>2 payments of <strong>$70.000&nbsp;ARS</strong></span>
         <span class="strike-price" aria-label="Original price">$200.000</span>
-        <span>2 payments of <strong>$70.000 ARS</strong></span>
       </span>
     </p>
     <p class="hero-b2b-tags">
@@ -2468,7 +2468,7 @@ loader.start();
   <span class="section-label mono text-terracota">
     FAQ
   </span>
-  <h2 class="section-title">Frequently <span class="text-ochra">Asked Questions</span></h2>
+  <h2 class="section-title">Frequently <span class="text-terracota">Asked Questions</span></h2>
   <div class="faq-list">
     <div class="faq-item">
       <button class="faq-question" aria-expanded="false">
@@ -2500,7 +2500,7 @@ loader.start();
   </div>
 </section>
 <section class="section blog reveal" id="blog" aria-label="Blog">
-  <span class="section-label mono text-ochra">Blog</span>
+  <span class="section-label mono text-terracota">Blog</span>
   <h2 class="section-title">Ideas, stories<br><span class="text-verde">and news</span>.</h2>
   <div class="glass-card blog-construction fade-in">
     <div class="blog-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--terracota)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg></div>
@@ -2509,7 +2509,7 @@ loader.start();
   </div>
 </section>
 <section class="section about reveal" id="about" aria-label="About us">
-  <span class="section-label mono text-ochra">About</span>
+  <span class="section-label mono text-terracota">About</span>
   <h2 class="section-title">We're <span class="text-terracota">The Brand Crew</span>.</h2>
   <div class="glass-card about-card fade-in">
     <p class="about-text">
@@ -2630,11 +2630,11 @@ loader.start();
     } else {
       navbar.classList.remove('scrolled');
     }
-    // Scroll-to-top visibility
-    if (scrollY > 400 && !scrollToTopVisible) {
+    // Scroll-to-top visibility with hysteresis (dead zone 300-450 to prevent flicker)
+    if (scrollY > 450 && !scrollToTopVisible) {
       scrollToTopVisible = true;
       scrollToTop.classList.add('is-visible');
-    } else if (scrollY <= 400 && scrollToTopVisible) {
+    } else if (scrollY < 300 && scrollToTopVisible) {
       scrollToTopVisible = false;
       scrollToTop.classList.remove('is-visible');
     }
