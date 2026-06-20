@@ -1753,24 +1753,78 @@ body::before {
     max-height: 350px;
   }
   
+  /* Typography: optimize for landscape readability */
+  .hero-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    line-height: 1.1;
+  }
+  .hero-sub {
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    margin-top: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .hero-meta {
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+  }
+  
+  /* Section titles in landscape */
+  h2 {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+  }
+  h3 {
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+  }
+  
   /* Reduce vertical spacing in sections */
   .section {
     padding: 1.5rem clamp(1rem, 4vw, 2rem);
+  }
+  .section-title {
+    margin-bottom: 1rem;
+  }
+  .section-sub {
+    font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Hero content spacing */
+  .hero-content {
+    max-width: 85%;
+  }
+  .hero-actions {
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+  .hero-actions .btn-lg {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
   }
   
   /* Steps container: horizontal layout works better in landscape */
   .steps-container {
     flex-direction: row;
     gap: 1rem;
+    margin-top: 1.5rem;
   }
   .step {
     flex: 1;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    padding: 1rem 0.75rem;
   }
   .step-number {
     margin-bottom: 0.5rem;
+    width: 80px;
+    height: 80px;
+    font-size: 2.2rem;
+  }
+  .step-content h3 {
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  }
+  .step-content p {
+    font-size: 0.9rem;
   }
 }
 

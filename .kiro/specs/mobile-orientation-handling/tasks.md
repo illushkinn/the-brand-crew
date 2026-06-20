@@ -10,11 +10,11 @@
 - [x] 1.5 Review and update all vh/dvh/svh usage for landscape compatibility
 
 ### Phase 2: Typography & Spacing
-- [ ] 2.1 Audit all clamp() values for landscape readability
-- [ ] 2.2 Add landscape-specific font size overrides where needed
-- [ ] 2.3 Adjust hero content spacing for landscape
-- [ ] 2.4 Update mobile menu link spacing for landscape
-- [ ] 2.5 Test minimum font sizes across orientations
+- [x] 2.1 Audit all clamp() values for landscape readability
+- [x] 2.2 Add landscape-specific font size overrides where needed
+- [x] 2.3 Adjust hero content spacing for landscape
+- [x] 2.4 Update mobile menu link spacing for landscape
+- [x] 2.5 Test minimum font sizes across orientations
 
 ### Phase 3: Component Refinements
 - [ ] 3.1 Handle hero peep illustration in landscape (hide or scale)
