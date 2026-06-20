@@ -677,7 +677,7 @@ body::before {
 }
 .hero-peep {
   position: absolute;
-  right: clamp(3%, 5vw, 8%);
+  right: clamp(6%, 8vw, 12%);
   bottom: 24px;
   height: 85vh;
   max-height: 725px;
@@ -703,7 +703,7 @@ body::before {
     height: 81vh;
     max-height: 825px;
     opacity: 0.72;
-    right: 6%;
+    right: 10%;
     bottom: 16px;
     filter: drop-shadow(0 0 28px oklch(0 0 0 / 0.35)) brightness(1.2);
   }
@@ -713,7 +713,7 @@ body::before {
     height: 90vh;
     max-height: 975px;
     opacity: 0.8;
-    right: 8%;
+    right: 14%;
     bottom: 8px;
     filter: drop-shadow(0 0 35px oklch(0 0 0 / 0.4)) brightness(1.25);
   }
@@ -1770,27 +1770,28 @@ body::before {
 .step:nth-of-type(2) { transition-delay: 0ms; }
 .step:nth-of-type(3) { transition-delay: 0ms; }
 .gradient-line {
+  display: none;
   position: fixed;
   right: 16px;
   bottom: 0;
   width: 2px;
   height: 13vh;
-  background: linear-gradient(to bottom, var(--terracota), var(--terracota-hover));
+  background: linear-gradient(to bottom, oklch(0.58 0.18 32), oklch(0.5 0.16 32), oklch(0.42 0.14 32));
   clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
   z-index: 50;
   pointer-events: none;
   opacity: 0.5;
   transition: opacity 0.3s ease;
   animation: aguja-breathe 4s ease-in-out infinite, aguja-shift 8s ease-in-out infinite;
-  box-shadow: 0 0 20px rgba(221,97,76,0.5), 0 0 40px rgba(221,97,76,0.15);
+  box-shadow: 0 0 20px oklch(0.58 0.18 32 / 0.5), 0 0 40px oklch(0.58 0.18 32 / 0.15);
 }
 @keyframes aguja-breathe {
   0%, 100% { opacity: 0.3; }
   50% { opacity: 0.85; }
 }
 @keyframes aguja-shift {
-  0%, 100% { background: linear-gradient(to bottom, var(--terracota), var(--terracota-hover)); }
-  50% { background: linear-gradient(to bottom, var(--terracota-hover), var(--terracota)); }
+  0%, 100% { background: linear-gradient(to bottom, oklch(0.58 0.18 32), oklch(0.5 0.16 32), oklch(0.42 0.14 32)); }
+  50% { background: linear-gradient(to bottom, oklch(0.42 0.14 32), oklch(0.5 0.16 32), oklch(0.58 0.18 32)); }
 }
 #preloader-wrapper {
   position: fixed;
