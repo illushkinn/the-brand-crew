@@ -682,18 +682,18 @@ body::before {
   height: 68vh;
   max-height: 580px;
   width: auto;
-  opacity: 0.3;
+  opacity: 0.45;
   pointer-events: none;
   z-index: 2;
-  display: none;
   transform: scaleX(-1);
+  filter: drop-shadow(0 0 20px oklch(0 0 0 / 0.3)) brightness(1.15);
+  transition: opacity 0.4s ease;
 }
 @media (min-width: 481px) {
   .hero-peep {
-    display: block;
     height: 60vh;
     max-height: 500px;
-    opacity: 0.4;
+    opacity: 0.6;
     bottom: 20px;
   }
 }
@@ -701,18 +701,20 @@ body::before {
   .hero-peep {
     height: 65vh;
     max-height: 660px;
-    opacity: 0.5;
+    opacity: 0.72;
     right: 6%;
     bottom: 16px;
+    filter: drop-shadow(0 0 28px oklch(0 0 0 / 0.35)) brightness(1.2);
   }
 }
 @media (min-width: 1025px) {
   .hero-peep {
     height: 72vh;
     max-height: 780px;
-    opacity: 0.55;
+    opacity: 0.8;
     right: 8%;
     bottom: 8px;
+    filter: drop-shadow(0 0 35px oklch(0 0 0 / 0.4)) brightness(1.25);
   }
 }
 .hero-b2b-tags {
@@ -2228,13 +2230,9 @@ loader.start();
         <span class="mono resultado-tag">Rotisería · Mar del Plata</span>
         <h3 class="resultado-nombre">Luisito Playa Grande</h3>
         <a href="https://luisito-playa-grande.vercel.app" class="resultado-link" target="_blank" rel="noopener">View Luisito's site →</a>
+        <em class="progreso-tag">in development</em>
         <a href="https://luisito-brandbook.vercel.app" class="resultado-link" target="_blank" rel="noopener">Brandbook →</a>
       </div>
-    </div>
-    <div class="resultado-historia">
-      <p>It started with a spinach tart.</p>
-      <blockquote>«Las mejores tartas de espinaca están acá. Son como un alfajor de espinaca y pascualina, literal. Gorditas, explotadas de espinaca, con un toque de huevo cocido. Me encantan estas tartas. Ah, sí: por supuesto me atendieron muy bien.»</blockquote>
-      <p>That's how we met Luisito — as customers. We tried his food, loved it, and asked if he had a website. He didn't. So we built one: digital menu, online ordering, brand identity. All connected to WhatsApp.</p>
     </div>
     <div class="resultado-metricas">
       <div class="resultado-metrica">
