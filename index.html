@@ -642,7 +642,7 @@ body::before {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  white-space: nowrap;
+  flex-wrap: wrap;
 }
 .strike-price {
   text-decoration: line-through;
@@ -672,9 +672,6 @@ body::before {
   font-weight: 400;
   vertical-align: baseline;
   opacity: 0.75;
-}
-.hero-meta .price-group span {
-  white-space: nowrap;
 }
 .hero-actions {
   display: flex;
@@ -1002,22 +999,6 @@ body::before {
 }
 .section-heading-row .section-title {
   margin-bottom: 0;
-}
-.heading-isologo {
-  font-family: var(--font-accent);
-  font-size: 0.7rem;
-  font-weight: 300;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--body-dim);
-  white-space: nowrap;
-  opacity: 0.5;
-  display: none;
-}
-@media (min-width: 769px) {
-  .heading-isologo {
-    display: block;
-  }
 }
 .resultados .resultado-tag,
 .resultados .resultado-link,
@@ -2259,7 +2240,6 @@ loader.start();
 </section>
 <section class="section resultados reveal" id="casos" aria-label="Case Studies">
   <div class="section-heading-row">
-    <span class="heading-isologo">The Brand Crew</span>
     <h2 class="section-title text-verde">Case Studies<span class="text-white">.</span></h2>
   </div>
   <div class="resultados-nav">
