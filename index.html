@@ -635,6 +635,11 @@ body::before {
     0 1px 3px oklch(0 0 0 / 0.2),
     0 4px 8px oklch(0 0 0 / 0.08);
 }
+@media (max-width: 767px) {
+  .hero-sub {
+    font-size: clamp(1rem, 2.8vw, 1.4rem);
+  }
+}
 .hero-meta {
   font-size: 0.85rem;
   color: var(--body-dim);
@@ -1104,6 +1109,12 @@ body::before {
   position: relative;
   padding: var(--space-lg) 0;
 }
+@media (max-width: 767px) {
+  .step {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
 
 .step-number {
   flex-shrink: 0;
@@ -1278,6 +1289,12 @@ body::before {
   max-width: 720px;
   margin: 3rem auto 0;
   padding: 0;
+}
+@media (min-width: 768px) {
+  .faq-list {
+    max-width: none;
+    margin: 3rem 0 0;
+  }
 }
 .faq-item {
   border-bottom: none;
@@ -2011,7 +2028,7 @@ body::before {
   }
 }
 @keyframes facePulse {
-  0%, 100% { opacity: 0.5; }
+  0%, 100% { opacity: 0.7; }
   50% { opacity: 0.75; }
 }
 .cube-face {
@@ -2024,42 +2041,41 @@ body::before {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 2px;
-  will-change: opacity;
+  will-change: transform;
 }
 .cube-front {
   transform: translateZ(33px);
   background: linear-gradient(135deg, oklch(0.58 0.18 32 / 0.15), rgba(255,255,255,0.03));
-  animation: facePulse 2s ease-in-out infinite;
+  animation: facePulse 4s ease-in-out infinite;
 }
 .cube-back {
   transform: rotateY(180deg) translateZ(33px);
   background: linear-gradient(135deg, oklch(0.58 0.18 32 / 0.08), rgba(255,255,255,0.02));
-  animation: facePulse 2s ease-in-out infinite;
-  animation-delay: 0.3s;
+  animation: facePulse 4s ease-in-out infinite;
+  animation-delay: 0.666s;
 }
 .cube-right {
   transform: rotateY(90deg) translateZ(33px);
   background: linear-gradient(135deg, oklch(0.82 0.2 125 / 0.15), rgba(255,255,255,0.03));
-  animation: facePulse 2s ease-in-out infinite;
-  animation-delay: 0.6s;
+  animation: facePulse 4s ease-in-out infinite;
+  animation-delay: 1.333s;
 }
 .cube-left {
   transform: rotateY(-90deg) translateZ(33px);
   background: linear-gradient(135deg, oklch(0.82 0.2 125 / 0.1), rgba(255,255,255,0.02));
-  animation: facePulse 2s ease-in-out infinite;
-  animation-delay: 0.9s;
+  animation: facePulse 4s ease-in-out infinite;
+  animation-delay: 2s;
 }
 .cube-top {
   transform: rotateX(90deg) translateZ(33px);
   background: linear-gradient(135deg, oklch(0.58 0.18 32 / 0.08), rgba(255,255,255,0.03));
-  animation: facePulse 2s ease-in-out infinite;
-  animation-delay: 1.2s;
+  opacity: 0.75;
 }
 .cube-bottom {
   transform: rotateX(-90deg) translateZ(33px);
   background: linear-gradient(135deg, oklch(0.58 0.18 32 / 0.06), rgba(255,255,255,0.02));
-  animation: facePulse 2s ease-in-out infinite;
-  animation-delay: 1.5s;
+  animation: facePulse 4s ease-in-out infinite;
+  animation-delay: 3.333s;
 }
 @keyframes cube3d {
   0%   { transform: rotateX(-15deg) rotateY(0deg)   translateY(0px);  }
@@ -2477,8 +2493,8 @@ loader.start();
       <div class="step reveal">
         <div class="step-number">1</div>
         <div class="step-content">
-          <h3>We talk</h3>
-          <p>You reach out and tell me your idea.</p>
+          <h3>Let's talk</h3>
+          <p>You reach out and tell us your idea.</p>
         </div>
       </div>
       <div class="step reveal">
@@ -2563,7 +2579,7 @@ loader.start();
           <i data-lucide="plus"></i>
         </button>
         <div class="faq-answer">
-          <p>Yes. Basic changes I'll teach you. Big stuff, we talk.</p>
+          <p>Yes. Basic changes we'll teach you. Big stuff, we talk.</p>
         </div>
       </div>
       <div class="faq-item">
