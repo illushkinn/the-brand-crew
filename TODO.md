@@ -2,16 +2,19 @@
 
 ## High Priority
 
-### Responsive Optimization
-- [ ] **iPhone SE optimization** - Fix 1/4 black screen issue after hero pricing
-  - Change hero from `height: 100vh` to `min-height: 100vh`
-  - Add media query `@media (max-height: 700px) and (max-width: 400px)`
-  - Reduce padding/spacing in hero meta and pricing for small screens
-  - Compact font sizes for hero title/subtitle on very small devices
+### Open Graph Optimization
+- [x] ✅ Create OG meta tags (complete)
+- [x] ✅ Create og-card.html template (complete)
+- [ ] **Generate OG image** - Screenshot og-card.html at 1200x630px
+- [ ] Save as `assets/og-image.jpg`
+- [ ] Test with Facebook Debugger
+- [ ] Test with Twitter Card Validator
 
-- [ ] **Unify Steps layout** - Make "Three steps. No fluff" consistent across mobile/desktop
-  - Currently left-aligned on mobile, centered on desktop
-  - Decide on single layout approach (recommend: centered on both)
+### Responsive Optimization
+- [x] ✅ iPhone SE optimization (min-height strategy)
+- [x] ✅ Unify Steps layout (centered on mobile/desktop)
+- [x] ✅ Hero content centered better on desktop
+- [ ] Test on real devices (iPhone SE, Galaxy S8+)
 
 - [ ] **Test on real devices**
   - iPhone SE (375x667px) - portrait
@@ -55,12 +58,11 @@
 
 ## Completed Recently ✅
 
-- [x] Fix production domain (thebrandcrew.lat) - DNS configuration issue
-- [x] Remove hero peep illustration
-- [x] Fix preloader flickering
-- [x] Align FAQ questions with title on desktop
-- [x] Reduce hero subtitle size on mobile
-- [x] Align steps to left on mobile
-- [x] Update copy to agency tone (We → us)
-- [x] Implement landscape orientation support (Phases 1-2)
-- [x] Create mobile orientation handling spec
+- [x] Optimize Open Graph meta tags (og:site_name, locale, dimensions, Twitter card)
+- [x] Create og-card.html template for OG image generation
+- [x] Move Steps title outside glass-card (like FAQ)
+- [x] Center hero content on desktop (better spacing from navbar)
+- [x] Code cleanup: remove 43 dead files (-700KB, 28% repo reduction)
+- [x] Replace Lucide library with inline SVG (-100KB transfer)
+- [x] Update .gitignore (test artifacts, generated files)
+- [x] Implement responsive design philosophy (iPhone SE optimization)
