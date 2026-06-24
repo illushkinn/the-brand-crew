@@ -704,50 +704,6 @@ body::before {
   flex-wrap: wrap;
   margin-bottom: var(--space-lg);
 }
-.hero-peep {
-  position: absolute;
-  right: -5%;
-  bottom: 32px;
-  height: 68vh;
-  max-height: 500px;
-  width: auto;
-  opacity: 0.52;
-  pointer-events: none;
-  z-index: 0;
-  transform: scaleX(-1);
-  filter: drop-shadow(0 0 20px oklch(0 0 0 / 0.3)) brightness(1.15);
-  transition: opacity 0.4s ease;
-}
-@media (min-width: 481px) {
-  .hero-peep {
-    height: 66vh;
-    max-height: 520px;
-    opacity: 0.58;
-    bottom: 28px;
-    right: clamp(1%, 2vw, 4%);
-    filter: drop-shadow(0 0 24px oklch(0 0 0 / 0.32)) brightness(1.18);
-  }
-}
-@media (min-width: 769px) {
-  .hero-peep {
-    height: 78vh;
-    max-height: 800px;
-    opacity: 0.75;
-    right: 3%;
-    bottom: 16px;
-    filter: drop-shadow(0 0 28px oklch(0 0 0 / 0.35)) brightness(1.2);
-  }
-}
-@media (min-width: 1025px) {
-  .hero-peep {
-    height: 85vh;
-    max-height: 950px;
-    opacity: 0.82;
-    right: 2%;
-    bottom: 8px;
-    filter: drop-shadow(0 0 35px oklch(0 0 0 / 0.4)) brightness(1.25);
-  }
-}
 .hero-b2b-tags {
   display: flex;
   gap: 0.5rem;
@@ -1726,9 +1682,6 @@ body::before {
     padding: 0.5rem 1.2rem;
     font-size: 0.9rem;
   }
-  .hero-peep {
-    display: none;
-  }
   .hero-shape {
     opacity: 0.2;
   }
@@ -1765,10 +1718,6 @@ body::before {
   /* Hero adjustments for general landscape */
   .hero {
     padding: 1rem clamp(1rem, 4vw, 2rem);
-  }
-  .hero-peep {
-    height: 50vh;
-    max-height: 350px;
   }
   
   /* Typography: optimize for landscape readability */
@@ -2342,10 +2291,6 @@ loader.start();
       <span class="tag-b2b tag-outline">White-label partner</span>
     </p>
   </div>
-  <picture>
-    <source srcset="/assets/hero-variant.svg" media="(min-width: 769px)">
-    <img src="/assets/peep-hero.svg" alt="" class="hero-peep" aria-hidden="true">
-  </picture>
 </section>
 <section class="section resultados reveal" id="casos" aria-label="Case Studies">
   <div class="section-heading-row">
