@@ -167,7 +167,7 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   display: block;
 }
 .faq .section-label {
-  padding-top: 1.5rem;
+  padding-top: 0;
 }
 .section-title {
   margin-bottom: 1.5rem;
@@ -189,8 +189,7 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   transition: border-color 0.3s, transform 0.3s;
 }
 .faq .glass-card {
-  padding-top: 0;
-  padding-bottom: 2rem;
+  padding: 2rem;
 }
 
 .btn {
@@ -2508,11 +2507,11 @@ loader.start();
   </div>
 </section>
 <section class="section faq reveal" id="faq" aria-label="The usual suspects">
+  <span class="section-label mono text-terracota">
+    FAQ
+  </span>
+  <h2 class="section-title">The usual <span class="text-terracota">suspects</span></h2>
   <div class="glass-card">
-    <span class="section-label mono text-terracota">
-      FAQ
-    </span>
-    <h2 class="section-title">The usual <span class="text-terracota">suspects</span></h2>
     <div class="faq-list">
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false">
