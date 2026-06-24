@@ -5,8 +5,8 @@
 ### Open Graph Optimization
 - [x] ✅ Create OG meta tags (complete)
 - [x] ✅ Create og-card.html template (complete)
-- [ ] **Generate OG image** - Screenshot og-card.html at 1200x630px
-- [ ] Save as `assets/og-image.jpg`
+- [x] ✅ Generate OG image (complete - assets/og-image.png)
+- [x] ✅ Deploy OG image (complete)
 - [ ] Test with Facebook Debugger
 - [ ] Test with Twitter Card Validator
 
