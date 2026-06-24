@@ -9,3 +9,14 @@ assets/ilustraciones/
 *.studio
 *.zip
 :Zone.Identifier
+
+# Test artifacts
+playwright-report/
+test-results/
+.playwright/
+
+# Generated files
+*.pdf
+OPTIMIZATION-SUMMARY.md
+PRELOADER-OPTIMIZATION.md
+AUDIT-REPORT.md
