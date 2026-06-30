@@ -111,7 +111,6 @@ ul { list-style: none; }
   --body-dim: var(--oklch-body-dim);
   --terracota: var(--oklch-terracota);
   --terracota-hover: var(--oklch-terracota-hover);
-  --ochra: var(--oklch-ocre);
   --verde: var(--oklch-verde);
   --bg-elevated: var(--oklch-bg-elevated);
   --border: var(--oklch-border);
@@ -122,8 +121,8 @@ ul { list-style: none; }
   --font-body: 'Rethink Sans', sans-serif;
   --font-accent: 'Grand Hotel', cursive;
   /* Color aliases (map to OKLCH primitives) */
-  --text: var(--body);
   --color-verde: var(--verde);
+  --glass-effect: blur(32px) saturate(160%);
 }
 .hero, .problema, .resultados, .como-funciona, .pricing, .faq {
   min-height: 100dvh;
@@ -133,10 +132,10 @@ ul { list-style: none; }
 }
 @supports (backdrop-filter: blur()) {
   .glass-card {
-    backdrop-filter: blur(32px) saturate(160%);
-    -webkit-backdrop-filter: blur(32px) saturate(160%);
+    backdrop-filter: var(--glass-effect);
+    -webkit-backdrop-filter: var(--glass-effect);
     background: rgba(10, 10, 15, 0.45);
-    border: 1px solid rgba(179, 107, 72, 0.35);
+    border: 1px solid oklch(0.58 0.18 32 / 0.35);
   }
   .como-funciona {
     backdrop-filter: none;
@@ -162,7 +161,6 @@ h3 { font-size: clamp(1.5rem, 3.5vw, 2.5rem); }
 h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
 .mono { font-family: 'JetBrains Mono', monospace; }
 .text-terracota { color: var(--terracota); }
-.text-ochra { color: var(--ochra); }
 .text-verde { color: var(--verde); }
 .text-white { color: var(--white); }
 .section {
@@ -919,7 +917,7 @@ body::before {
   font-style: normal;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  font-size: 0.6rem;
+  font-size: 0.7rem;
   font-weight: 600;
   display: inline-block;
   padding: 0.15rem 0.5rem;
@@ -927,7 +925,7 @@ body::before {
   color: var(--terracota);
   border: 1px solid var(--terracota);
   border-radius: 100px;
-  background: rgba(179, 107, 72, 0.1);
+  background: oklch(0.58 0.18 32 / 0.1);
   line-height: 1;
 }
 .resultado-nombre {
@@ -966,18 +964,7 @@ body::before {
   margin: 0;
 }
 .resultado-historia em {
-  color: var(--text);
-}
-.resultado-historia blockquote {
-  font-size: 0.9rem;
-  line-height: 1.6;
-  color: var(--terracota);
-  font-style: normal;
-  border-left: 2px solid var(--terracota);
-  padding-left: var(--space-md);
-  margin: 0.75rem 0;
-  background: oklch(0.58 0.18 32 / 0.04);
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  color: var(--body);
 }
 .resultado-historia p strong {
   color: var(--white);
@@ -1016,7 +1003,7 @@ body::before {
   display: block;
   font-weight: 700;
   font-size: 0.95rem;
-  color: var(--text);
+  color: var(--body);
 }
 .resultado-metrica-label {
   display: block;
@@ -1118,15 +1105,15 @@ body::before {
 }
 .glass-step {
   background: rgba(10, 10, 15, 0.55);
-  border: 1px solid rgba(179, 107, 72, 0.35);
+  border: 1px solid oklch(0.58 0.18 32 / 0.35);
   border-radius: var(--radius-lg);
   padding: var(--space-xl) var(--space-lg);
   position: relative;
 }
 @supports (backdrop-filter: blur()) {
   .glass-step {
-    backdrop-filter: blur(32px) saturate(160%);
-    -webkit-backdrop-filter: blur(32px) saturate(160%);
+    backdrop-filter: var(--glass-effect);
+    -webkit-backdrop-filter: var(--glass-effect);
   }
 }
 .step-number {
@@ -1135,7 +1122,7 @@ body::before {
   height: 48px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(179, 107, 72, 0.3);
+  border: 1px solid oklch(0.58 0.18 32 / 0.3);
   color: var(--terracota);
   font-family: var(--font-body);
   font-weight: 600;
@@ -1296,13 +1283,13 @@ body::before {
 
 .faq-list {
   max-width: 720px;
-  margin: 3rem auto 0;
+  margin: 1.5rem auto 0;
   padding: 0;
 }
 @media (min-width: 768px) {
   .faq-list {
     max-width: none;
-    margin: 3rem 0 0;
+    margin: 1.5rem 0 0;
   }
 }
 .faq-item {
@@ -1362,8 +1349,6 @@ body::before {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  content-visibility: auto;
-  contain-intrinsic-size: 0 600px;
   position: relative;
 }
 .cta-final::before {
@@ -1761,10 +1746,6 @@ body::before {
   .mobile-menu {
     gap: 0.25rem;
   }
-  .mobile-link-empecemos {
-    font-size: 1.2rem !important;
-    padding: 0.3rem 1.2rem !important;
-  }
   
   /* Hero adjustments for general landscape */
   .hero {
@@ -1889,7 +1870,8 @@ body::before {
   .btn { padding: 0.7rem 1.5rem; font-size: 1rem; }
   .btn-empecemos.btn-lg { padding: 0.75rem 1.5rem; font-size: 1.05rem; }
   .preloader-title { font-size: 1.4rem; }
-  .preloader-hint { font-size: 0.9rem; }
+  .hint-arrow { transform: scale(0.85); }
+  .hint-text { font-size: 1rem; }
 }
 .hero-problema-wrap {
   position: relative;
@@ -1941,7 +1923,8 @@ body::before {
 #preloader-wrapper {
   position: fixed;
   top: 0; left: 0;
-  width: 100vw; height: 100vh;
+  width: 100vw;
+  height: 100vh; height: 100dvh;
   z-index: 99999;
   isolation: isolate;
   pointer-events: none;
@@ -1965,7 +1948,7 @@ body::before {
   user-select: none;
   touch-action: manipulation;
 }
-.preloader-glass { position: absolute; inset: 0; background: radial-gradient(ellipse 30% 40% at 50% 50%, rgba(255,255,255,0.03) 0%, transparent 70%); pointer-events: none; }
+.preloader-glass { position: absolute; inset: 0; background: radial-gradient(ellipse 35% 45% at 50% 50%, oklch(0.58 0.18 32 / 0.07) 0%, rgba(255,255,255,0.02) 35%, transparent 70%); pointer-events: none; }
 .diamond-wrap {
   position: relative;
   width: 100px;
@@ -1999,10 +1982,10 @@ body::before {
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: radial-gradient(circle at center, #fff 0%, rgba(255,255,255,0.4) 40%, transparent 70%);
+  background: radial-gradient(circle at center, #fff 0%, rgba(255,255,255,0.5) 40%, transparent 70%);
   box-shadow:
-    0 0 6px rgba(255,255,255,0.7),
-    0 0 18px rgba(255,255,255,0.2);
+    0 0 10px rgba(255,255,255,0.8),
+    0 0 28px rgba(255,255,255,0.3);
   animation: none;
   transition: box-shadow 0.4s ease;
 }
@@ -2019,15 +2002,15 @@ body::before {
 @keyframes coreReadyPulse {
   0% {
     transform: scale(1);
-    box-shadow: 0 0 6px rgba(255,255,255,0.6), 0 0 18px rgba(255,255,255,0.15);
+    box-shadow: 0 0 10px rgba(255,255,255,0.8), 0 0 28px rgba(255,255,255,0.3);
   }
   50% {
-    transform: scale(2.8);
-    box-shadow: 0 0 25px rgba(255,255,255,1), 0 0 70px rgba(255,255,255,0.45), 0 0 120px rgba(255,255,255,0.25);
+    transform: scale(3);
+    box-shadow: 0 0 40px rgba(255,255,255,1), 0 0 90px rgba(255,255,255,0.6), 0 0 160px rgba(255,255,255,0.3);
   }
   100% {
     transform: scale(1);
-    box-shadow: 0 0 6px rgba(255,255,255,0.6), 0 0 18px rgba(255,255,255,0.15);
+    box-shadow: 0 0 10px rgba(255,255,255,0.8), 0 0 28px rgba(255,255,255,0.3);
   }
 }
 @keyframes facePulse {
@@ -2041,42 +2024,42 @@ body::before {
   width: 66px;
   height: 66px;
   backface-visibility: hidden;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 2px;
   will-change: transform;
 }
 .cube-front {
   transform: translateZ(33px);
-  background: linear-gradient(135deg, oklch(0.58 0.18 32 / 0.15), rgba(255,255,255,0.03));
+  background: linear-gradient(135deg, oklch(0.58 0.18 32 / 0.25), rgba(255,255,255,0.08));
   animation: facePulse 4s ease-in-out infinite;
 }
 .cube-back {
   transform: rotateY(180deg) translateZ(33px);
-  background: linear-gradient(135deg, oklch(0.58 0.18 32 / 0.08), rgba(255,255,255,0.02));
+  background: linear-gradient(135deg, oklch(0.58 0.18 32 / 0.15), rgba(255,255,255,0.06));
   animation: facePulse 4s ease-in-out infinite;
   animation-delay: 0.666s;
 }
 .cube-right {
   transform: rotateY(90deg) translateZ(33px);
-  background: linear-gradient(135deg, oklch(0.82 0.2 125 / 0.15), rgba(255,255,255,0.03));
+  background: linear-gradient(135deg, oklch(0.82 0.2 125 / 0.25), rgba(255,255,255,0.08));
   animation: facePulse 4s ease-in-out infinite;
   animation-delay: 1.333s;
 }
 .cube-left {
   transform: rotateY(-90deg) translateZ(33px);
-  background: linear-gradient(135deg, oklch(0.82 0.2 125 / 0.1), rgba(255,255,255,0.02));
+  background: linear-gradient(135deg, oklch(0.82 0.2 125 / 0.18), rgba(255,255,255,0.06));
   animation: facePulse 4s ease-in-out infinite;
   animation-delay: 2s;
 }
 .cube-top {
   transform: rotateX(90deg) translateZ(33px);
-  background: linear-gradient(135deg, oklch(0.58 0.18 32 / 0.08), rgba(255,255,255,0.03));
-  opacity: 0.75;
+  background: linear-gradient(135deg, oklch(0.58 0.18 32 / 0.15), rgba(255,255,255,0.06));
+  opacity: 0.8;
 }
 .cube-bottom {
   transform: rotateX(-90deg) translateZ(33px);
-  background: linear-gradient(135deg, oklch(0.58 0.18 32 / 0.06), rgba(255,255,255,0.02));
+  background: linear-gradient(135deg, oklch(0.58 0.18 32 / 0.12), rgba(255,255,255,0.05));
   animation: facePulse 4s ease-in-out infinite;
   animation-delay: 3.333s;
 }
@@ -2087,12 +2070,96 @@ body::before {
   75%  { transform: rotateX(-20deg) rotateY(270deg) translateY(-3px); }
   100% { transform: rotateX(-15deg) rotateY(360deg) translateY(0px);  }
 }
-#preloader-ui { position: absolute; bottom: 10%; left: 50%; transform: translateX(-50%); text-align: center; width: 260px; }
-.preloader-title { font-family: var(--font-accent); font-size: 1.8rem; color: var(--white); margin-bottom: 1rem; }
-.preloader-bar { width: 100%; height: 3px; background: rgba(255,255,255,0.08); border-radius: 2px; overflow: hidden; }
-.preloader-fill { height: 100%; width: 0%; background: linear-gradient(to right, var(--terracota), var(--verde)); border-radius: 2px; transition: width 0.15s ease; }
-.preloader-hint { font-family: var(--font-accent); font-size: 1.25rem; color: var(--terracota); opacity: 0; margin-top: 1.5rem; transition: opacity 0.5s ease; letter-spacing: 0.04em; }
-.preloader-hint.visible { opacity: 1; }
+.preloader-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 1;
+  pointer-events: none;
+}
+.preloader-hint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  color: var(--terracota);
+  pointer-events: auto;
+}
+.preloader-hint.visible {
+  opacity: 1;
+}
+.hint-arrow {
+  display: block;
+  margin-bottom: 0.15rem;
+}
+.hint-arrow-shaft {
+  stroke-dasharray: 40;
+  stroke-dashoffset: 40;
+}
+.preloader-hint.visible .hint-arrow-shaft {
+  animation: drawShaft 0.55s ease-out forwards;
+}
+.hint-arrow-head {
+  stroke-dasharray: 35;
+  stroke-dashoffset: 35;
+}
+.preloader-hint.visible .hint-arrow-head {
+  animation: drawHead 0.4s ease-out 0.3s forwards;
+}
+.hint-text {
+  font-family: var(--font-accent);
+  font-size: 1.25rem;
+  letter-spacing: 0.04em;
+  opacity: 0;
+}
+.preloader-hint.visible .hint-text {
+  animation: fadeTextIn 0.4s ease-out 0.3s forwards;
+}
+@keyframes drawShaft {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes drawHead {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes fadeTextIn {
+  to { opacity: 1; }
+}
+#preloader-ui {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 260px;
+  z-index: 1;
+}
+.preloader-title {
+  font-family: var(--font-accent);
+  font-size: 1.8rem;
+  color: var(--white);
+  margin-bottom: 1rem;
+}
+.preloader-bar {
+  width: 100%;
+  height: 3px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.preloader-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(to right, var(--terracota), var(--verde));
+  border-radius: 2px;
+  transition: width 0.15s ease;
+}
 
 @media (min-width: 768px) {
   .section {
@@ -2238,30 +2305,38 @@ body::before {
 <body>
 <div id="preloader-wrapper">
 <div id="preloader">
-  <div class="diamond-wrap">
-    <div class="cube-3d">
-      <div class="cube-face cube-front"></div>
-      <div class="cube-face cube-back"></div>
-      <div class="cube-face cube-left"></div>
-      <div class="cube-face cube-right"></div>
-      <div class="cube-face cube-top"></div>
-      <div class="cube-face cube-bottom"></div>
+  <div class="preloader-center">
+    <div class="diamond-wrap">
+      <div class="cube-3d">
+        <div class="cube-face cube-front"></div>
+        <div class="cube-face cube-back"></div>
+        <div class="cube-face cube-left"></div>
+        <div class="cube-face cube-right"></div>
+        <div class="cube-face cube-top"></div>
+        <div class="cube-face cube-bottom"></div>
+      </div>
+      <div class="core-track"><div class="diamond-core"></div></div>
     </div>
-    <div class="core-track"><div class="diamond-core"></div></div>
+    <div class="preloader-hint" id="preloader-hint">
+      <svg class="hint-arrow" width="26" height="48" viewBox="0 0 26 48" fill="none" aria-hidden="true">
+        <path class="hint-arrow-shaft" d="M13 46 C18 40 8 34 16 28 C21 24 9 18 13 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <path class="hint-arrow-head" d="M6 14 C9 12 11 8 13 5 C15 8 18 12 20 14 L6 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="hint-text">Tap the cube</span>
+    </div>
   </div>
   <div class="preloader-glass"></div>
   <div id="preloader-ui">
     <div class="preloader-title">The Brand Crew</div>
     <div class="preloader-bar"><div class="preloader-fill" id="preloader-fill"></div></div>
-    <div class="preloader-hint" id="preloader-hint">Tap the cube</div>
   </div>
 </div>
 </div>
 <script>window.scrollTo(0,0);</script>
 <script type="module">
 import { createPreloader } from '/src/preloader.js'
-const p = document.getElementById('preloader');
-const loader = createPreloader({ preloader: p, fill: document.getElementById('preloader-fill'), hint: document.getElementById('preloader-hint') });
+const preloaderEl = document.getElementById('preloader');
+const loader = createPreloader({ preloader: preloaderEl, fill: document.getElementById('preloader-fill'), hint: document.getElementById('preloader-hint') });
 loader.start();
 </script>
 <script>
@@ -2623,11 +2698,11 @@ loader.start();
       </div>
     </div>
   </footer>
-  <div class="scroll-to-top" id="scrollToTop" role="button" tabindex="0" aria-label="Back to top" title="Back to top" onclick="window.scrollTo({top: 0, behavior: 'smooth'});" onkeydown="if(event.key==='Enter'||event.key===' '){window.scrollTo({top:0,behavior:'smooth'});event.preventDefault();}">
+  <button class="scroll-to-top" id="scrollToTop" aria-label="Back to top" title="Back to top">
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M12 19V5M5 12l7-7 7 7"/>
     </svg>
-  </div>
+  </button>
 </section>
 </main>
 <script>
@@ -2639,6 +2714,9 @@ loader.start();
   const hamburgerBtn = document.getElementById('hamburgerBtn');
   const mobileMenu = document.getElementById('mobileMenu');
   const scrollToTop = document.getElementById('scrollToTop');
+  scrollToTop.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
   const faqItems = document.querySelectorAll('.faq-item');
   const mobileLinks = mobileMenu.querySelectorAll('.mobile-link');
   const navbar = document.querySelector('.navbar');
@@ -2660,7 +2738,6 @@ loader.start();
     var scrollW = window.innerWidth - document.documentElement.clientWidth;
     document.body.style.paddingRight = scrollW + 'px';
     document.body.style.overflow = 'hidden';
-    document.activeElement.blur();
     setTimeout(function() { mobileLinks[0]?.focus(); }, 200);
   }
   function closeMenu() {
@@ -2671,7 +2748,6 @@ loader.start();
     hamburgerBtn.setAttribute('aria-expanded', 'false');
     document.body.style.paddingRight = '';
     document.body.style.overflow = '';
-    document.activeElement.blur();
     hamburgerBtn.focus();
   }
   function toggleMenu() {
