@@ -62,10 +62,10 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: 64px;
   background: var(--bg);
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow-y: scroll;
   scrollbar-width: thin;
   scrollbar-gutter: stable;
+  overflow-x: clip;
 }
 
 body { font-family: var(--font-body); background: var(--bg); font-weight: 300; }
@@ -1105,6 +1105,7 @@ body::before {
   margin-top: 1.5rem;
   display: flex;
   flex-direction: column;
+  gap: 0.875rem;
   position: relative;
   padding: 0;
 }
@@ -1114,23 +1115,35 @@ body::before {
   align-items: center;
   text-align: center;
   gap: var(--space-sm);
+}
+.glass-step {
+  background: rgba(10, 10, 15, 0.55);
+  border: 1px solid rgba(179, 107, 72, 0.25);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl) var(--space-lg);
   position: relative;
-  padding: var(--space-lg) 0;
+}
+@supports (backdrop-filter: blur()) {
+  .glass-step {
+    backdrop-filter: blur(32px) saturate(160%);
+    -webkit-backdrop-filter: blur(32px) saturate(160%);
+  }
 }
 .step-number {
   flex-shrink: 0;
-  width: 96px;
-  height: 96px;
-  background: transparent;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(179, 107, 72, 0.3);
   color: var(--terracota);
   font-family: var(--font-body);
-  font-weight: 500;
-  font-size: 2.8rem;
-  position: relative;
-  z-index: 2;
+  font-weight: 600;
+  font-size: 1.35rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 0.25rem;
 }
 .step-content h3 {
   font-size: clamp(1.3rem, 3vw, 1.6rem);
@@ -1281,11 +1294,6 @@ body::before {
 }
 
 
-
-.faq {
-  content-visibility: auto;
-  contain-intrinsic-size: 0 600px;
-}
 .faq-list {
   max-width: 720px;
   margin: 3rem auto 0;
@@ -1635,10 +1643,9 @@ body::before {
   }
   .steps-container {
     margin-top: 1.5rem;
-    padding: 0 var(--space-md);
   }
-  .step {
-    padding: var(--space-md) 0;
+  .glass-step {
+    padding: var(--space-lg) var(--space-md);
   }
   .step-content h3 {
     font-size: clamp(1.1rem, 4vw, 1.4rem);
@@ -1815,7 +1822,7 @@ body::before {
   /* Steps container: horizontal layout works better in landscape */
   .steps-container {
     flex-direction: row;
-    gap: 1rem;
+    gap: 0.75rem;
     margin-top: 1.5rem;
   }
   .step {
@@ -1823,13 +1830,15 @@ body::before {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 1rem 0.75rem;
+  }
+  .glass-step {
+    padding: var(--space-lg) var(--space-md);
   }
   .step-number {
-    margin-bottom: 0.5rem;
-    width: 80px;
-    height: 80px;
-    font-size: 2.2rem;
+    margin-bottom: 0.25rem;
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
   }
   .step-content h3 {
     font-size: clamp(1.1rem, 2.5vw, 1.4rem);
@@ -2151,16 +2160,16 @@ body::before {
   .problema-card.tall { grid-column: span 2; }
   .steps-container {
     flex-direction: row;
-    gap: 0;
+    gap: 1rem;
   }
   .step {
     flex: 1;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    position: relative;
-    padding: 0 1.5rem;
-    margin-bottom: 1.5rem;
+  }
+  .glass-step {
+    height: 100%;
   }
   .footer {
     flex-direction: column;
@@ -2477,29 +2486,27 @@ loader.start();
   <p class="section-sub">
     Your site ready in one week.
   </p>
-  <div class="glass-card">
-    <div class="steps-container">
+  <div class="steps-container">
 
-      <div class="step reveal">
-        <div class="step-number">1</div>
-        <div class="step-content">
-          <h3>Let's talk</h3>
-          <p>You reach out and tell us your idea.</p>
-        </div>
+    <div class="step reveal glass-step">
+      <div class="step-number">1</div>
+      <div class="step-content">
+        <h3>Let's talk</h3>
+        <p>You reach out and tell us your idea.</p>
       </div>
-      <div class="step reveal">
-        <div class="step-number">2</div>
-        <div class="step-content">
-          <h3>Design</h3>
-          <p>Results in 48 hours. We tweak. No upfront.</p>
-        </div>
+    </div>
+    <div class="step reveal glass-step">
+      <div class="step-number">2</div>
+      <div class="step-content">
+        <h3>Design</h3>
+        <p>Results in 48 hours. We tweak. No upfront.</p>
       </div>
-      <div class="step reveal">
-        <div class="step-number">3</div>
-        <div class="step-content">
-          <h3>You're live</h3>
-          <p>Onboarding & free consulting.</p>
-        </div>
+    </div>
+    <div class="step reveal glass-step">
+      <div class="step-number">3</div>
+      <div class="step-content">
+        <h3>You're live</h3>
+        <p>Onboarding & free consulting.</p>
       </div>
     </div>
   </div>
