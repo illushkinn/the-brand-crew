@@ -105,6 +105,13 @@ body {
 /* Disable smooth scroll on mobile for better performance */
 @media (max-width: 767px) {
   html { scroll-behavior: auto; }
+  .hero-shape {
+    filter: blur(25px);
+  }
+  .pricing-shape, .faq-shape, .cta-shape {
+    filter: blur(28px);
+    opacity: 0.22;
+  }
 }
 h1, h2, h3, h4 { text-wrap: balance; }
 p { text-wrap: pretty; }
@@ -162,6 +169,49 @@ ul { list-style: none; }
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+.faq {
+  position: relative;
+  overflow: hidden;
+}
+.faq-shapes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+  contain: layout style paint;
+}
+.faq-shape {
+  position: absolute;
+  filter: blur(38px);
+  opacity: 0.28;
+  will-change: transform;
+  animation: heroFloat 23s cubic-bezier(0.45, 0.05, 0.25, 1) infinite;
+}
+.faq-shape:nth-child(1) {
+  width: 200px; height: 180px;
+  border-radius: 50% / 45%;
+  background: linear-gradient(135deg, var(--verde), #8cd44a, oklch(0.82 0.2 125 / 0.75));
+  top: 15%; left: -5%;
+  animation-delay: -9s;
+  animation-name: heroTilt;
+}
+.faq-shape:nth-child(2) {
+  width: 170px; height: 160px;
+  border-radius: 45% / 50%;
+  background: linear-gradient(225deg, var(--terracota), #f0a088, oklch(0.58 0.18 32 / 0.65));
+  bottom: 20%; right: 10%;
+  animation-delay: -5s;
+}
+.faq-shape:nth-child(3) {
+  width: 140px; height: 130px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, var(--terracota), #c47a68, #e8a085);
+  top: 50%; left: 50%;
+  transform: translateX(-50%);
+  animation-delay: -15s;
+  animation-name: heroPulse;
 }
 @supports (backdrop-filter: blur()) {
   .glass-card {
@@ -981,6 +1031,7 @@ body::before {
 /* Neurodivergent-friendly: reduce visual noise, clear hierarchy */
 @media (prefers-reduced-motion: reduce) {
   .glass-card, .resultado-card, .step, .hero-shape,
+  .pricing-shape, .faq-shape, .cta-shape,
   .navbar, .mobile-menu, .mobile-menu a, .hamb-line,
   .scroll-to-top, .faq-answer, .faq-question svg,
   .cube-3d, .core-track, .cube-front, .cube-back, .cube-right,
@@ -988,7 +1039,7 @@ body::before {
     transition: none !important;
     animation: none !important;
   }
-  .hero-shape {
+  .hero-shape, .pricing-shape, .faq-shape, .cta-shape {
     display: none;
   }
 }
@@ -1144,19 +1195,45 @@ body::before {
   content-visibility: auto;
   contain-intrinsic-size: 0 600px;
   position: relative;
+  overflow: hidden;
 }
-.pricing::before {
-  content: '';
+.pricing-shapes {
   position: absolute;
-  top: 30%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 450px;
-  height: 350px;
-  background: radial-gradient(ellipse, oklch(0.82 0.2 125 / 0.12) 0%, oklch(0.72 0.12 75 / 0.06) 50%, transparent 70%);
-  filter: blur(50px);
+  inset: 0;
   pointer-events: none;
+  overflow: hidden;
   z-index: 0;
+  contain: layout style paint;
+}
+.pricing-shape {
+  position: absolute;
+  filter: blur(40px);
+  opacity: 0.25;
+  will-change: transform;
+  animation: heroFloatSlow 26s cubic-bezier(0.45, 0.05, 0.25, 1) infinite;
+}
+.pricing-shape:nth-child(1) {
+  width: 220px; height: 200px;
+  border-radius: 45% / 55%;
+  background: linear-gradient(135deg, var(--verde), #8cd44a, oklch(0.82 0.2 125 / 0.7));
+  top: -5%; left: 10%;
+  animation-delay: -4s;
+}
+.pricing-shape:nth-child(2) {
+  width: 180px; height: 170px;
+  border-radius: 50% / 40%;
+  background: linear-gradient(225deg, var(--terracota), #f0a088, oklch(0.58 0.18 32 / 0.6));
+  bottom: 15%; right: 8%;
+  animation-delay: -11s;
+  animation-name: heroTilt;
+}
+.pricing-shape:nth-child(3) {
+  width: 160px; height: 150px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, var(--verde), oklch(0.82 0.2 125 / 0.8));
+  top: 40%; right: 15%;
+  animation-delay: -7s;
+  animation-name: heroPulse;
 }
 .pricing-card {
   max-width: 600px;
@@ -1349,19 +1426,46 @@ body::before {
   flex-direction: column;
   justify-content: flex-end;
   position: relative;
+  overflow: hidden;
 }
-.cta-final::before {
-  content: '';
+.cta-shapes {
   position: absolute;
-  bottom: 20%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 500px;
-  height: 400px;
-  background: radial-gradient(ellipse, oklch(0.58 0.18 32 / 0.15) 0%, oklch(0.72 0.12 75 / 0.08) 40%, transparent 70%);
-  filter: blur(60px);
+  inset: 0;
   pointer-events: none;
+  overflow: hidden;
   z-index: 0;
+  contain: layout style paint;
+}
+.cta-shape {
+  position: absolute;
+  filter: blur(45px);
+  opacity: 0.3;
+  will-change: transform;
+  animation: heroFloat 24s cubic-bezier(0.45, 0.05, 0.25, 1) infinite;
+}
+.cta-shape:nth-child(1) {
+  width: 280px; height: 250px;
+  border-radius: 50% / 45%;
+  background: linear-gradient(135deg, var(--terracota), #dd614c, oklch(0.58 0.18 32 / 0.7));
+  bottom: 10%; left: -8%;
+  animation-delay: -6s;
+}
+.cta-shape:nth-child(2) {
+  width: 200px; height: 190px;
+  border-radius: 45% / 50%;
+  background: linear-gradient(180deg, var(--verde), #a0e060, oklch(0.82 0.2 125 / 0.8));
+  top: 25%; right: -5%;
+  animation-delay: -13s;
+  animation-name: heroFloatDiag;
+}
+.cta-shape:nth-child(3) {
+  width: 150px; height: 140px;
+  border-radius: 50%;
+  background: linear-gradient(225deg, var(--terracota), #c47a68, #e8a085);
+  bottom: 35%; left: 50%;
+  transform: translateX(-50%);
+  animation-delay: -2s;
+  animation-name: heroPulse;
 }
 .cta-final h2 {
   margin-bottom: var(--space-md);
@@ -2571,6 +2675,11 @@ loader.start();
   </div>
 </section>
 <section class="section pricing reveal" id="precios" aria-label="Pricing">
+  <div class="pricing-shapes" aria-hidden="true">
+    <div class="pricing-shape"></div>
+    <div class="pricing-shape"></div>
+    <div class="pricing-shape"></div>
+  </div>
   <h2 class="section-title"><span class="text-verde">A steal</span>.</h2>
   <div class="glass-card pricing-card">
     <div class="pricing-line">
@@ -2614,6 +2723,11 @@ loader.start();
   </div>
 </section>
 <section class="section faq reveal" id="faq" aria-label="The usual suspects">
+  <div class="faq-shapes" aria-hidden="true">
+    <div class="faq-shape"></div>
+    <div class="faq-shape"></div>
+    <div class="faq-shape"></div>
+  </div>
   <span class="section-label mono text-terracota">
     FAQ
   </span>
@@ -2669,6 +2783,11 @@ loader.start();
   </div>
 </section>
 <section class="cta-final reveal" id="contacto" aria-label="Contact">
+  <div class="cta-shapes" aria-hidden="true">
+    <div class="cta-shape"></div>
+    <div class="cta-shape"></div>
+    <div class="cta-shape"></div>
+  </div>
   <div class="cta-content">
     <h2><span class="cta-dale">Let's</span> <span class="text-terracota cta-empecemos">get started</span>.</h2>
   </div>
