@@ -22,13 +22,21 @@
   - iPhone 14 Pro Max (430x932px)
   - Samsung Galaxy S8+ (360x740px)
 
+## High Priority
+
 ### Performance
 - [x] ✅ Enable Vercel Speed Insights
 - [x] ✅ Enable Vercel Analytics
+- [x] ✅ Optimize scroll performance (scrollbar, terracota color, mobile)
+- [x] ✅ Premium navbar (transparent initially, dark on scroll)
+- [x] ✅ Add glassmorphic shapes to pricing, FAQ, footer
+- [ ] Test FPS performance on real devices after shapes update
 - [ ] Wait for Speed Insights data and optimize based on metrics
 
 ### Design Polish
 - [x] ✅ Move FAQ title outside glass-card box
+- [x] ✅ Add glassmorphic floating shapes to pricing, FAQ, footer sections
+- [x] ✅ Optimize shapes for mobile performance (reduced blur)
 - [ ] Review hero spacing on tablet (768px-1024px)
 - [ ] Consider adding subtle animations for FAQ expand/collapse
 
@@ -58,6 +66,10 @@
 
 ## Completed Recently ✅
 
+- [x] Glassmorphic shapes in pricing, FAQ, footer (brand identity reinforcement)
+- [x] Performance optimization: reduced blur on mobile, CSS containment
+- [x] Premium navbar: transparent initially, terracota scrollbar
+- [x] Scroll performance optimization (gutter, touch-action, smooth scroll)
 - [x] Code cleanup: remove 43 dead files (-700KB, 28% repo reduction)
 - [x] Replace Lucide library with inline SVG (-100KB transfer)
 - [x] Replace 4 rgba(179,107,72) instances with canonical OKLCH terracota
