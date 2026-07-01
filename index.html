@@ -181,7 +181,7 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
 .section {
   padding: 2.5rem clamp(1.25rem, 5vw, 4rem);
   content-visibility: auto;
-  contain-intrinsic-size: 0 600px;
+  contain-intrinsic-size: auto 600px;
 }
 .section-label {
   font-family: 'JetBrains Mono', monospace;
@@ -294,7 +294,7 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
   border-bottom: 1px solid transparent;
-  transition: background 0.25s ease, backdrop-filter 0.25s ease, border-color 0.25s ease, transform 0.3s ease, opacity 0.3s ease;
+  transition: background 0.2s ease, backdrop-filter 0.2s ease, border-color 0.2s ease;
 }
 .navbar.scrolled {
   background: rgba(10, 10, 15, 0.55);
@@ -624,7 +624,7 @@ body::before {
   .hero {
     align-items: flex-start;
     padding-left: clamp(1.5rem, 6vw, 6rem);
-    padding-top: 6rem;
+    padding-top: 5rem;
   }
   .hero-content {
     margin-left: -2rem;
@@ -636,7 +636,7 @@ body::before {
 }
 .hero-title {
   font-family: var(--font-body);
-  font-size: clamp(3.2rem, 8vw, 5.5rem);
+  font-size: clamp(3rem, 7.5vw, 5rem);
   letter-spacing: 0.02em;
   line-height: 1.1;
   text-shadow:
@@ -646,9 +646,9 @@ body::before {
 }
 .hero-sub {
   font-family: var(--font-body);
-  font-size: clamp(1.4rem, 3.5vw, 2.4rem);
+  font-size: clamp(1.3rem, 3.2vw, 2.2rem);
   color: var(--headline);
-  margin-top: var(--space-lg);
+  margin-top: var(--space-md);
   margin-bottom: var(--space-sm);
   text-shadow:
     0 1px 3px oklch(0 0 0 / 0.2),
@@ -660,13 +660,13 @@ body::before {
   }
 }
 .hero-meta {
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: var(--body-dim);
   margin-bottom: var(--space-xl);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.5rem;
+  gap: 0.35rem;
   text-wrap: pretty;
 }
 
@@ -748,7 +748,7 @@ body::before {
   display: flex;
   gap: var(--space-md);
   flex-wrap: wrap;
-  margin-bottom: var(--space-xl);
+  margin-bottom: 2rem;
 }
 .hero-b2b-tags {
   display: flex;
@@ -1547,8 +1547,8 @@ body::before {
     background: rgba(10, 10, 15, 0.45);
   }
   .hero {
-    padding-top: 6rem;
-    padding-bottom: var(--space-xl);
+    padding-top: 5rem;
+    padding-bottom: var(--space-lg);
     justify-content: flex-start;
   }
   .hero-content {
@@ -1556,12 +1556,12 @@ body::before {
     margin-top: 2rem;
   }
   .hero-actions {
-    margin-bottom: 2em;
+    margin-bottom: 1.5em;
   }
   .hero-meta {
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.35rem;
+    gap: 0.25rem;
     margin-bottom: var(--space-lg);
   }
   .hero-meta .price-group:first-child {
@@ -1576,22 +1576,22 @@ body::before {
     font-family: 'Rethink Sans', sans-serif;
   }
   .hero-title {
-    font-size: clamp(3.8rem, 15vw, 8.5rem);
+    font-size: clamp(3.5rem, 14vw, 8rem);
     line-height: 1.05;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
     word-spacing: -0.5px;
   }
   .hero-sub {
-    font-size: clamp(1.6rem, 5.5vw, 3.2rem);
+    font-size: clamp(1.5rem, 5vw, 3rem);
     text-wrap: balance;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
   }
   .hero-meta {
-    font-size: 1.05rem;
+    font-size: 1rem;
   }
   .hero-actions .btn-lg {
-    padding: 1.1rem 1.8rem;
-    font-size: 1.15rem;
+    padding: 1rem 1.5rem;
+    font-size: 1.1rem;
   }
   .resultados-grid {
     display: flex;
@@ -2769,11 +2769,10 @@ loader.start();
   });
 
   let scrollToTopVisible = false;
-  let lastScrollY = 0;
   function handleScroll() {
     const scrollY = window.scrollY || window.pageYOffset;
     
-    // Navbar scrolled class
+    // Navbar scrolled class (glass background)
     if (scrollY > 60) {
       navbar.classList.add('scrolled');
     } else {
@@ -2787,15 +2786,6 @@ loader.start();
       scrollToTopVisible = false;
       scrollToTop.classList.remove('is-visible');
     }
-    
-    // Hide navbar on scroll down, show on scroll up
-    // 8px hysteresis prevents flicker from scroll anchoring on dynamic content (FAQ, etc.)
-    if (scrollY > 200 && scrollY > lastScrollY + 8) {
-      navbar.classList.add('is-hidden');
-    } else if (scrollY < lastScrollY - 8) {
-      navbar.classList.remove('is-hidden');
-    }
-    lastScrollY = scrollY;
   }
   let ticking = false;
   window.addEventListener('scroll', function() {
