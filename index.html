@@ -61,7 +61,10 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 64px;
-  background: var(--bg);
+  background:
+    radial-gradient(ellipse 90% 60% at 5% 10%, oklch(0.58 0.18 32 / 0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 80% at 90% 85%, oklch(0.82 0.2 125 / 0.07) 0%, transparent 50%),
+    var(--bg);
   overflow-x: hidden;
   overflow-y: auto;
   overscroll-behavior-x: none;
@@ -69,7 +72,7 @@ html {
 
 body {
   font-family: var(--font-body);
-  background: var(--bg);
+  background: transparent;
   font-weight: 300;
   overflow-x: hidden;
   position: relative;
@@ -572,7 +575,7 @@ body::before {
     radial-gradient(ellipse 100% 90% at 50% 30%, oklch(0.58 0.18 32 / 0.80) 0%, transparent 45%),
     radial-gradient(ellipse 85% 75% at 85% 48%, oklch(0.58 0.18 32 / 0.90) 0%, transparent 52%),
     radial-gradient(ellipse 75% 65% at 30% 28%, oklch(0.58 0.18 32 / 0.50) 0%, transparent 55%);
-  opacity: 1;
+  opacity: 0.2;
 }
 /* Light ray: diagonal beam from isologo direction */
 .hero::before {
