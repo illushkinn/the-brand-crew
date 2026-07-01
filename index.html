@@ -7,7 +7,7 @@
 <meta name="color-scheme" content="dark only">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>The Brand Crew — Websites That Actually Work</title>
-<meta name="description" content="Websites that actually work. For businesses that mean business. Design + development + domain + hosting from $140.000 ARS.">
+<meta name="description" content="Websites that actually work. For businesses that mean business. Design + development + domain + hosting from $240.000 ARS.">
 <meta name="theme-color" content="#c47a68">
 <meta name="google-site-verification" content="k-kPS76zKdKwT-18dhJwvxuK56oZXsaMpiBEeOmjuQA" />
 
@@ -16,7 +16,7 @@
 <meta property="og:url" content="https://thebrandcrew.lat">
 <meta property="og:site_name" content="The Brand Crew">
 <meta property="og:title" content="The Brand Crew — Websites That Actually Work">
-<meta property="og:description" content="Websites that actually work. For businesses that mean business. Design + development + domain + hosting from $140.000 ARS.">
+<meta property="og:description" content="Websites that actually work. For businesses that mean business. Design + development + domain + hosting from $240.000 ARS.">
 <meta property="og:image" content="https://thebrandcrew.lat/assets/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -27,7 +27,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://thebrandcrew.lat">
 <meta name="twitter:title" content="The Brand Crew — Websites That Actually Work">
-<meta name="twitter:description" content="Websites that actually work. For businesses that mean business. Design + development + domain + hosting from $140.000 ARS.">
+<meta name="twitter:description" content="Websites that actually work. For businesses that mean business. Design + development + domain + hosting from $240.000 ARS.">
 <meta name="twitter:image" content="https://thebrandcrew.lat/assets/og-image.png">
 <meta name="twitter:image:alt" content="The Brand Crew - Websites That Actually Work">
 
@@ -74,8 +74,12 @@ html {
 }
 html::-webkit-scrollbar {
   display: none;
+  width: 0;
+  height: 0;
 }
-
+html {
+  scrollbar-color: transparent transparent;
+}
 body {
   font-family: var(--font-body);
   background: transparent;
@@ -285,23 +289,20 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   left: 0;
   right: 0;
   z-index: 1000;
-  padding: 0 clamp(1.25rem, 5vw, 4rem);
-  padding-top: env(safe-area-inset-top, 0px);
+  padding: 0.75rem clamp(1.25rem, 5vw, 4rem);
+  padding-top: calc(0.75rem + env(safe-area-inset-top, 0px));
   min-height: 64px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: transparent;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  border-bottom: 1px solid transparent;
-  transition: background 0.2s ease, backdrop-filter 0.2s ease, border-color 0.2s ease;
+  background: rgba(10, 10, 15, 0.75);
+  backdrop-filter: blur(16px) saturate(120%);
+  -webkit-backdrop-filter: blur(16px) saturate(120%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  transition: background 0.2s ease, border-color 0.2s ease;
 }
 .navbar.scrolled {
-  background: rgba(10, 10, 15, 0.55);
-  backdrop-filter: blur(12px) saturate(120%);
-  -webkit-backdrop-filter: blur(12px) saturate(120%);
-  border-bottom-color: transparent;
+  background: rgba(10, 10, 15, 0.88);
 }
 .navbar.is-hidden {
   opacity: 0;
@@ -322,12 +323,13 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   text-decoration: none;
 }
 .navbar-brand-text {
-  font-family: var(--font-accent);
-  font-weight: 400;
-  font-size: 1.5rem;
-  letter-spacing: 0.02em;
-  color: var(--white);
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  color: var(--body-dim);
   white-space: nowrap;
+  text-transform: uppercase;
 }
 .hamburger-btn {
   width: 44px;
@@ -609,7 +611,7 @@ body::before {
   position: relative;
   z-index: 1;
   max-width: 900px;
-  margin-top: 0;
+  margin-top: 1rem;
   margin-left: -1.5rem;
   padding: 0;
 }
@@ -1542,13 +1544,13 @@ body::before {
     background: rgba(10, 10, 15, 0.45);
   }
   .hero {
-    padding-top: 4rem;
-    padding-bottom: 0;
-    justify-content: center;
+    padding-top: 6rem;
+    padding-bottom: 2rem;
+    justify-content: flex-start;
   }
   .hero-content {
     margin-left: -1rem;
-    margin-top: 0;
+    margin-top: 1rem;
   }
   .hero-actions {
     margin-bottom: 1.5em;
@@ -1566,6 +1568,9 @@ body::before {
   }
   .tag-b2b {
     padding-left: 0;
+  }
+  .navbar-brand-text {
+    display: none;
   }
   .hero-title, .hero-sub {
     font-family: 'Rethink Sans', sans-serif;
@@ -2162,11 +2167,11 @@ body::before {
   .navbar-desktop-links {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
+    gap: 2rem;
   }
   .navbar-desktop-links a {
     color: var(--body-dim);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 400;
     transition: color 0.2s;
   }
@@ -2265,7 +2270,7 @@ body::before {
       "@type": "Offer",
       "name": "Web Design & Development",
       "description": "Professional website with domain, hosting, SEO, and responsive design",
-      "price": "140000.00",
+      "price": "240000.00",
       "priceCurrency": "ARS"
     },
     {
@@ -2385,11 +2390,11 @@ loader.start();
     </div>
     <p class="hero-meta">
       <span class="price-group">
-        <span class="current-price">$140.000&nbsp;<small class="price-currency">ARS</small></span>
+        <span class="current-price">$240.000&nbsp;<small class="price-currency">ARS</small></span>
         <span class="strike-price" aria-label="Original price">$400.000</span>
       </span>
       <span class="price-group">
-        <span>2 payments of <strong>$70.000</strong>&nbsp;<small class="price-currency">ARS</small></span>
+        <span>2 payments of <strong>$120.000</strong>&nbsp;<small class="price-currency">ARS</small></span>
       </span>
     </p>
     <p class="hero-b2b-tags">
@@ -2570,19 +2575,19 @@ loader.start();
       <span class="pricing-line-label">Design + Development<br><small>+ Domain (2 years)</small></span>
       <span class="pricing-line-price">
         <span class="strike-price pricing-strike">$400.000 ARS</span>
-        <span class="pricing-current">$140.000&nbsp;<small class="price-currency">ARS</small></span>
+        <span class="pricing-current">$240.000&nbsp;<small class="price-currency">ARS</small></span>
       </span>
     </div>
     <div class="pricing-split">
       <div class="pricing-split-item">
         <div class="amount">
-          <span class="pricing-current">$70.000&nbsp;<small class="price-currency">ARS</small></span>
+          <span class="pricing-current">$120.000&nbsp;<small class="price-currency">ARS</small></span>
         </div>
         <div class="label">At start</div>
       </div>
       <div class="pricing-split-item">
         <div class="amount">
-          <span class="pricing-current">$70.000&nbsp;<small class="price-currency">ARS</small></span>
+          <span class="pricing-current">$120.000&nbsp;<small class="price-currency">ARS</small></span>
         </div>
         <div class="label">At delivery</div>
       </div>
@@ -2712,9 +2717,7 @@ loader.start();
     mobileMenu.classList.add('is-open');
     mobileMenu.removeAttribute('inert');
     hamburgerBtn.setAttribute('aria-expanded', 'true');
-    var scrollW = window.innerWidth - document.documentElement.clientWidth;
-    document.documentElement.style.paddingRight = scrollW + 'px';
-    document.documentElement.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'clip';
     setTimeout(function() { mobileLinks[0]?.focus(); }, 200);
   }
   function closeMenu() {
@@ -2723,7 +2726,6 @@ loader.start();
     mobileMenu.classList.remove('is-open');
     mobileMenu.setAttribute('inert', '');
     hamburgerBtn.setAttribute('aria-expanded', 'false');
-    document.documentElement.style.paddingRight = '';
     document.documentElement.style.overflow = '';
     hamburgerBtn.focus();
   }
@@ -2734,6 +2736,14 @@ loader.start();
       openMenu();
     }
   }
+  // Close menu on viewport resize above mobile breakpoint
+  // Prevents overflow:hidden getting stuck when resizing from mobile to desktop
+  const mq = window.matchMedia('(min-width: 768px)');
+  mq.addEventListener('change', function(e) {
+    if (e.matches && state.menuOpen) {
+      closeMenu();
+    }
+  });
   hamburgerBtn.addEventListener('click', toggleMenu);
   hamburgerBtn.addEventListener('touchstart', function(e) {
     e.preventDefault();
