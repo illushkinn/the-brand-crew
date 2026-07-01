@@ -137,7 +137,7 @@ ul { list-style: none; }
   --font-accent: 'Grand Hotel', cursive;
   /* Color aliases (map to OKLCH primitives) */
   --color-verde: var(--verde);
-  --glass-effect: blur(32px) saturate(160%);
+  --glass-effect: blur(12px) saturate(120%);
 }
 .hero, .problema, .resultados, .como-funciona, .pricing, .faq {
   min-height: 100dvh;
@@ -180,6 +180,8 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
 .text-white { color: var(--white); }
 .section {
   padding: 2.5rem clamp(1.25rem, 5vw, 4rem);
+  content-visibility: auto;
+  contain-intrinsic-size: 0 600px;
 }
 .section-label {
   font-family: 'JetBrains Mono', monospace;
@@ -296,8 +298,8 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
 }
 .navbar.scrolled {
   background: rgba(10, 10, 15, 0.55);
-  backdrop-filter: blur(32px) saturate(160%);
-  -webkit-backdrop-filter: blur(32px) saturate(160%);
+  backdrop-filter: blur(12px) saturate(120%);
+  -webkit-backdrop-filter: blur(12px) saturate(120%);
   border-bottom-color: transparent;
 }
 .navbar.is-hidden {
@@ -1341,6 +1343,8 @@ body::before {
   height: 100svh;
   height: 100dvh;
   display: flex;
+  content-visibility: auto;
+  contain-intrinsic-size: 0 600px;
   flex-direction: column;
   justify-content: flex-end;
   position: relative;
