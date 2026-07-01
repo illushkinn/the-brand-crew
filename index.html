@@ -302,10 +302,23 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   transition: background 0.2s ease, backdrop-filter 0.2s ease, border-color 0.2s ease;
 }
 .navbar.scrolled {
-  background: rgba(10, 10, 15, 0.75);
+  background: rgba(10, 10, 15, 0.85);
   backdrop-filter: blur(16px) saturate(120%);
   -webkit-backdrop-filter: blur(16px) saturate(120%);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+/* Fallback para Brave y navegadores sin backdrop-filter */
+@supports not (backdrop-filter: blur(1px)) {
+  .navbar.scrolled {
+    background: rgba(10, 10, 15, 0.95);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .mobile-menu {
+    background: rgba(10, 10, 15, 0.95);
+  }
+  .glass-card {
+    background: rgba(10, 10, 15, 0.75);
+  }
 }
 .navbar.is-hidden {
   opacity: 0;
