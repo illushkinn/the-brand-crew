@@ -57,7 +57,12 @@
 <script defer src="/_vercel/insights/script.js"></script>
 
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 64px;
@@ -66,32 +71,40 @@ html {
     radial-gradient(ellipse 70% 80% at 90% 85%, oklch(0.82 0.2 125 / 0.07) 0%, transparent 50%),
     var(--bg);
   overflow-x: hidden;
-  overflow-y: auto;
-  overscroll-behavior-x: none;
+  overscroll-behavior: none;
+  scrollbar-width: thin;
   scrollbar-gutter: stable;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+  scrollbar-color: var(--border) var(--bg);
 }
 html::-webkit-scrollbar {
-  display: none;
-  width: 0;
-  height: 0;
+  width: 8px;
 }
-html {
-  scrollbar-color: transparent transparent;
+html::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+html::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+html::-webkit-scrollbar-thumb:hover {
+  background: var(--body-dim);
 }
 body {
   font-family: var(--font-body);
   background: transparent;
   font-weight: 300;
-  overflow-x: hidden;
   position: relative;
   width: 100%;
   min-width: 0;
+  touch-action: manipulation;
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .resultados-grid { scroll-snap-type: none; }
+}
+/* Disable smooth scroll on mobile for better performance */
+@media (max-width: 767px) {
+  html { scroll-behavior: auto; }
 }
 h1, h2, h3, h4 { text-wrap: balance; }
 p { text-wrap: pretty; }
@@ -284,52 +297,21 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   .btn-premium { transition: none; }
 }
 .navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
   padding: 0.75rem clamp(1.25rem, 5vw, 4rem);
   padding-top: calc(0.75rem + env(safe-area-inset-top, 0px));
   min-height: 64px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: transparent;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  border-bottom: 1px solid transparent;
-  transition: background 0.2s ease, backdrop-filter 0.2s ease, border-color 0.2s ease;
-}
-.navbar.scrolled {
-  background: rgba(10, 10, 15, 0.85);
+  background: rgba(10, 10, 15, 0.75);
   backdrop-filter: blur(16px) saturate(120%);
   -webkit-backdrop-filter: blur(16px) saturate(120%);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-}
-/* Fallback para Brave y navegadores sin backdrop-filter */
-@supports not (backdrop-filter: blur(1px)) {
-  .navbar.scrolled {
-    background: rgba(10, 10, 15, 0.95);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  }
-  .mobile-menu {
-    background: rgba(10, 10, 15, 0.95);
-  }
-  .glass-card {
-    background: rgba(10, 10, 15, 0.75);
-  }
-}
-.navbar.is-hidden {
-  opacity: 0;
-  transform: translateY(-100%);
-  pointer-events: none;
 }
 .navbar-actions {
   display: flex;
   align-items: center;
   gap: var(--space-sm);
-  z-index: 1001;
 }
 .navbar-desktop-links { display: none; }
 .navbar-brand {
@@ -1398,12 +1380,10 @@ body::before {
   font-size: 0.9rem;
 }
 .footer .footer-brand {
-  font-family: var(--font-body);
-  font-weight: 500;
-  font-size: 0.9rem;
-  letter-spacing: 0.04em;
+  font-family: var(--font-accent);
+  font-weight: 400;
+  font-size: 1.3rem;
   color: var(--headline);
-  text-transform: uppercase;
 }
 .footer .footer-brand span { color: var(--headline); }
 .footer .footer-cuit {
@@ -1556,13 +1536,13 @@ body::before {
     background: rgba(10, 10, 15, 0.45);
   }
   .hero {
-    padding-top: calc(12rem + env(safe-area-inset-top, 0px));
+    padding-top: 4rem;
     padding-bottom: 2rem;
     justify-content: flex-start;
   }
   .hero-content {
     margin-left: -1rem;
-    margin-top: 3rem;
+    margin-top: 1.5rem;
   }
   .hero-actions {
     margin-bottom: 1.5em;
@@ -1706,6 +1686,19 @@ body::before {
   }
   .cta-final .footer {
     width: 100%;
+  }
+}
+/* Fallback para Brave y navegadores sin backdrop-filter */
+@supports not (backdrop-filter: blur(1px)) {
+  .navbar {
+    background: rgba(10, 10, 15, 0.92);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .mobile-menu {
+    background: rgba(10, 10, 15, 0.95);
+  }
+  .glass-card {
+    background: rgba(10, 10, 15, 0.75);
   }
 }
 @media (orientation: landscape) and (max-height: 500px) {
@@ -2774,13 +2767,6 @@ loader.start();
   let scrollToTopVisible = false;
   function handleScroll() {
     const scrollY = window.scrollY || window.pageYOffset;
-    
-    // Navbar scrolled class (glass background)
-    if (scrollY > 60) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
-    }
     // Scroll-to-top visibility with hysteresis (dead zone 300-450 to prevent flicker)
     if (scrollY > 450 && !scrollToTopVisible) {
       scrollToTopVisible = true;

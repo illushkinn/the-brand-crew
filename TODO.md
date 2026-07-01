@@ -58,11 +58,19 @@
 
 ## Completed Recently ✅
 
+- [x] Code cleanup: remove 43 dead files (-700KB, 28% repo reduction)
+- [x] Replace Lucide library with inline SVG (-100KB transfer)
+- [x] Replace 4 rgba(179,107,72) instances with canonical OKLCH terracota
+- [x] Fix scroll-to-top: <div role=button> → <button>, inline handlers → addEventListener
+- [x] Remove dead CSS: .text-ochra, .mobile-link-empecemos, .resultado-historia blockquote, --text alias
+- [x] Extract backdrop-filter pattern to CSS variable --glass-effect (DRY)
+- [x] Reduce FAQ list margin from 3rem to 1.5rem (tighten spacing above first question)
+- [x] Increase .progreso-tag font-size from 0.6rem to 0.7rem (WCAG readability)
+- [x] Remove redundant document.activeElement.blur() calls in menu toggle
+- [x] Rename variable 'p' to 'preloaderEl'
 - [x] Optimize Open Graph meta tags (og:site_name, locale, dimensions, Twitter card)
 - [x] Create og-card.html template for OG image generation
 - [x] Move Steps title outside glass-card (like FAQ)
 - [x] Center hero content on desktop (better spacing from navbar)
-- [x] Code cleanup: remove 43 dead files (-700KB, 28% repo reduction)
-- [x] Replace Lucide library with inline SVG (-100KB transfer)
 - [x] Update .gitignore (test artifacts, generated files)
 - [x] Implement responsive design philosophy (iPhone SE optimization)
