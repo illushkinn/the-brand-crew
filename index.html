@@ -1544,11 +1544,18 @@ body::before {
     margin-bottom: 2.5em;
   }
   .hero-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.15rem;
     margin-bottom: var(--space-lg);
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.35rem;
+  }
+  .hero-meta .price-group:first-child {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+  }
+  .tag-b2b {
+    padding-left: 0;
   }
   .hero-title, .hero-sub {
     font-family: 'Rethink Sans', sans-serif;
