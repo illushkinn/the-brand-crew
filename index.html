@@ -65,9 +65,10 @@ html {
   overflow-y: scroll;
   overflow-x: clip;
   overscroll-behavior-x: none;
+  -webkit-overflow-scrolling: touch;
 }
 
-body { font-family: var(--font-body); background: var(--bg); font-weight: 300; overflow-x: hidden; width: 100%; position: relative; }
+body { font-family: var(--font-body); background: var(--bg); font-weight: 300; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .resultados-grid { scroll-snap-type: none; }
@@ -289,12 +290,6 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   transform: translateY(-100%);
   pointer-events: none;
 }
-.navbar-links {
-  display: none;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
 .navbar-actions {
   display: flex;
   align-items: center;
@@ -353,8 +348,8 @@ a:focus-visible {
 }
 .hamburger-btn:focus-visible,
 .navbar-brand:focus-visible {
-  outline: 2px solid var(--verde);
-  outline-offset: 4px;
+  outline: 1.5px solid oklch(0.58 0.18 32 / 0.5);
+  outline-offset: 2px;
   border-radius: var(--radius-sm);
 }
 
@@ -1282,13 +1277,13 @@ body::before {
 
 .faq-list {
   max-width: 720px;
-  margin: 1.5rem auto 0;
+  margin: 0.75rem auto 0;
   padding: 0;
 }
 @media (min-width: 768px) {
   .faq-list {
     max-width: none;
-    margin: 1.5rem 0 0;
+    margin: 0.75rem 0 0;
   }
 }
 .faq-item {
@@ -2190,38 +2185,7 @@ body::before {
     font-size: 1rem;
   }
 
-  .navbar-brand {
-    margin-left: auto;
-  }
-  .hamburger-btn { display: none; }
-  .navbar-links {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  .navbar-links a {
-    font-size: 0.95rem;
-    color: var(--body);
-    transition: color 0.3s;
-    position: relative;
-    padding: 0.25rem 0;
-  }
-  .navbar-links a::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--terracota);
-    transition: width 0.3s;
-  }
-  .navbar-links a:hover::after, .navbar-links a:focus-visible::after {
-    width: 100%;
-  }
+
   .problema-grid { grid-template-columns: 1fr 1fr; }
   .problema-card.tall { grid-column: span 2; }
   .steps-container {
@@ -2359,12 +2323,6 @@ loader.start();
 <a href="#main-content" class="skip-link">Skip to main content</a>
 <header>
 <nav class="navbar" role="navigation" aria-label="Main navigation">
-  <ul class="navbar-links" id="navLinks">
-    <li><a href="#casos">Case Studies</a></li>
-    <li><a href="#precios">Pricing</a></li>
-    <li><a href="#faq">FAQ</a></li>
-    <li><a href="#contacto">Let's start</a></li>
-  </ul>
   <div class="navbar-actions">
     <button class="hamburger-btn" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
       <span class="hamb-line"></span>
