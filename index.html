@@ -62,7 +62,6 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: 64px;
   background: var(--bg);
-  overflow-x: hidden;
   overscroll-behavior-x: none;
 }
 
@@ -551,11 +550,6 @@ a:focus-visible {
     opacity: 1;
     transform: translateY(0);
   }
-}
-body {
-  position: relative;
-  /* body::after eliminado — el blur fullscreen mataba los colores del hero */
-  /* Las glass cards ya tienen su propio backdrop-filter */
 }
 /* Full-page colorful gradient layer — makes glassmorphism pop everywhere */
 body::before {
