@@ -68,6 +68,7 @@ html {
   overflow-x: hidden;
   overflow-y: auto;
   overscroll-behavior-x: none;
+  scrollbar-gutter: stable;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
@@ -425,9 +426,8 @@ a:focus-visible {
   transition: transform 0.1s ease, color 0.2s, opacity 0.2s;
 }
 .hero {
-  min-height: calc(100vh - 64px - env(safe-area-inset-top, 0px));
+  min-height: calc(100lvh - 64px - env(safe-area-inset-top, 0px));
   min-height: calc(100dvh - 64px - env(safe-area-inset-top, 0px));
-  min-height: calc(100svh - 64px - env(safe-area-inset-top, 0px));
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -673,7 +673,8 @@ body::before {
 /* iPhone SE and small devices optimization */
 @media (max-height: 700px) and (max-width: 400px) {
   .hero {
-    padding: 0.75rem 1rem;
+    padding: 2rem 1rem;
+    justify-content: center;
   }
   .hero-title {
     font-size: clamp(2rem, 6vw, 2.5rem);
@@ -1547,13 +1548,13 @@ body::before {
     background: rgba(10, 10, 15, 0.45);
   }
   .hero {
-    padding-top: 5rem;
-    padding-bottom: var(--space-lg);
-    justify-content: flex-start;
+    padding-top: 4rem;
+    padding-bottom: 0;
+    justify-content: center;
   }
   .hero-content {
     margin-left: -1rem;
-    margin-top: 2rem;
+    margin-top: 0;
   }
   .hero-actions {
     margin-bottom: 1.5em;
@@ -1699,7 +1700,7 @@ body::before {
 @media (orientation: landscape) and (max-height: 500px) {
   .hero {
     height: auto;
-    min-height: calc(100dvh - 64px);
+    min-height: calc(100lvh - 64px);
     padding: 0.5rem clamp(1rem, 5vw, 2rem);
     justify-content: center;
     overflow: hidden;
@@ -1857,9 +1858,8 @@ body::before {
   .section { padding: clamp(1rem, 3vw, 2rem) clamp(0.75rem, 3vw, 1rem); }
   .section-label { font-size: 0.65rem; }
   .hero {
-    padding: 1rem 0.75rem;
-    height: auto;
-    min-height: calc(100dvh - 64px - env(safe-area-inset-top, 0px));
+    padding: 0.75rem 0.75rem;
+    min-height: calc(100lvh - 64px - env(safe-area-inset-top, 0px));
   }
   .hero-content {
     margin-top: 0;
