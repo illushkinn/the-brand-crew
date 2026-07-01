@@ -657,21 +657,10 @@ body::before {
   color: var(--body-dim);
   margin-bottom: var(--space-xl);
   display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-  flex-wrap: wrap;
-  row-gap: var(--space-md);
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
   text-wrap: pretty;
-}
-@media (max-width: 480px) {
-  .hero-meta {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
-  }
-  .hero-meta .price-group {
-    align-self: flex-start;
-  }
 }
 
 /* iPhone SE and small devices optimization */
@@ -717,7 +706,7 @@ body::before {
   flex-wrap: wrap;
 }
 .hero-meta .price-group:first-child {
-  font-size: 3em;
+  font-size: 2.2em;
 }
 .strike-price {
   text-decoration: line-through;
