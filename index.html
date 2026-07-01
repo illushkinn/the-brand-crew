@@ -63,13 +63,11 @@ html {
   scroll-padding-top: 64px;
   background: var(--bg);
   overflow-y: scroll;
-  scrollbar-width: thin;
-  scrollbar-gutter: stable;
   overflow-x: clip;
   overscroll-behavior-x: none;
 }
 
-body { font-family: var(--font-body); background: var(--bg); font-weight: 300; max-width: 100vw; }
+body { font-family: var(--font-body); background: var(--bg); font-weight: 300; overflow-x: hidden; width: 100%; position: relative; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .resultados-grid { scroll-snap-type: none; }
@@ -1106,7 +1104,8 @@ body::before {
   gap: var(--space-sm);
 }
 .glass-step {
-  background: rgba(10, 10, 15, 0.55);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
   border-radius: var(--radius-lg);
   padding: var(--space-xl) var(--space-lg);
   position: relative;
@@ -1123,7 +1122,7 @@ body::before {
   height: 48px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.06);
-  color: var(--terracota);
+  color: var(--headline);
   font-family: var(--font-body);
   font-weight: 600;
   font-size: 1.35rem;
