@@ -62,7 +62,7 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: 64px;
   background: var(--bg);
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
   overscroll-behavior-x: none;
 }
@@ -716,6 +716,9 @@ body::before {
   align-items: center;
   gap: 0.35rem;
   flex-wrap: wrap;
+}
+.hero-meta .price-group:first-child {
+  font-size: 3em;
 }
 .strike-price {
   text-decoration: line-through;
