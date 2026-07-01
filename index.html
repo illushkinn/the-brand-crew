@@ -428,8 +428,8 @@ a:focus-visible {
   transition: transform 0.1s ease, color 0.2s, opacity 0.2s;
 }
 .hero {
-  min-height: calc(100lvh - 64px - env(safe-area-inset-top, 0px));
-  min-height: calc(100dvh - 64px - env(safe-area-inset-top, 0px));
+  min-height: calc(100lvh - 64px - 0.75rem - env(safe-area-inset-top, 0px));
+  min-height: calc(100dvh - 64px - 0.75rem - env(safe-area-inset-top, 0px));
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1417,11 +1417,12 @@ body::before {
   font-size: 0.9rem;
 }
 .footer .footer-brand {
-  font-family: var(--font-accent);
-  font-weight: 400;
-  font-size: 1.2rem;
-  letter-spacing: 0.02em;
-  color: var(--headline);
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  color: var(--body-dim);
+  text-transform: uppercase;
 }
 .footer .footer-brand span { color: var(--headline); }
 .footer .footer-cuit {
@@ -1574,7 +1575,7 @@ body::before {
     background: rgba(10, 10, 15, 0.45);
   }
   .hero {
-    padding-top: 6rem;
+    padding-top: calc(5rem + env(safe-area-inset-top, 0px));
     padding-bottom: 2rem;
     justify-content: flex-start;
   }
