@@ -1546,13 +1546,13 @@ body::before {
     background: rgba(10, 10, 15, 0.45);
   }
   .hero {
-    padding-top: calc(7rem + env(safe-area-inset-top, 0px));
+    padding-top: calc(12rem + env(safe-area-inset-top, 0px));
     padding-bottom: 2rem;
     justify-content: flex-start;
   }
   .hero-content {
     margin-left: -1rem;
-    margin-top: 1rem;
+    margin-top: 2rem;
   }
   .hero-actions {
     margin-bottom: 1.5em;
@@ -1704,7 +1704,7 @@ body::before {
     min-height: calc(100lvh - 64px);
     padding: 0.5rem clamp(1rem, 5vw, 2rem);
     justify-content: center;
-    overflow: hidden;
+  overflow: clip;
   }
   .hero-content {
     max-width: 70%;
