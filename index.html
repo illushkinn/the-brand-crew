@@ -68,6 +68,11 @@ html {
   overflow-x: hidden;
   overflow-y: auto;
   overscroll-behavior-x: none;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+html::-webkit-scrollbar {
+  display: none;
 }
 
 body {
@@ -439,7 +444,7 @@ a:focus-visible {
 .hero-shape {
   position: absolute;
   filter: blur(35px);
-  opacity: 1;
+  opacity: 0.35;
   animation: heroFloat 22s cubic-bezier(0.45, 0.05, 0.25, 1) infinite;
 }
 .hero-shape:nth-child(1) {
