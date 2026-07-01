@@ -63,7 +63,7 @@ html {
   scroll-padding-top: 64px;
   background: var(--bg);
   overflow-y: scroll;
-  overflow-x: clip;
+  overflow-x: hidden;
   overscroll-behavior-x: none;
   -webkit-overflow-scrolling: touch;
 }
@@ -348,9 +348,7 @@ a:focus-visible {
 }
 .hamburger-btn:focus-visible,
 .navbar-brand:focus-visible {
-  outline: 1.5px solid oklch(0.58 0.18 32 / 0.5);
-  outline-offset: 2px;
-  border-radius: var(--radius-sm);
+  outline: none;
 }
 
 .mobile-menu {
