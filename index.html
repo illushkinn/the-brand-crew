@@ -745,7 +745,37 @@ body::before {
   display: flex;
   gap: var(--space-md);
   flex-wrap: wrap;
-  margin-bottom: 2.5rem;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.hero-actions .btn-outline {
+  color: var(--body-dim);
+  border: 1px solid var(--border);
+  padding: 0.65rem 1.4rem;
+  font-size: 1rem;
+  transition: color 0.2s, border-color 0.2s;
+}
+.hero-actions .btn-outline:hover {
+  color: var(--terracota);
+  border-color: var(--terracota);
+}
+.hero-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.2rem;
+  margin-bottom: 2rem;
+  font-size: 0.75rem;
+  font-family: 'JetBrains Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--body-dim);
+}
+.hero-stats span {
+  white-space: nowrap;
+}
+.hero-stats .stat-num {
+  color: var(--terracota);
+  font-weight: 600;
 }
 .hero-b2b-tags {
   display: flex;
@@ -2387,7 +2417,13 @@ loader.start();
       <a href="https://wa.me/5491124063009?text=Hey%20Illya!%20I%20saw%20your%20site%20and%20I'd%20love%20to%20work%20together." target="_blank" rel="noopener" class="btn btn-empecemos btn-lg btn-premium">
         Let's go online
       </a>
+      <a href="#contacto" class="btn-outline">Book a free call →</a>
     </div>
+    <p class="hero-stats">
+      <span><span class="stat-num">12</span> websites delivered</span>
+      <span><span class="stat-num">100%</span> satisfaction</span>
+      <span><span class="stat-num">2yr</span> avg retention</span>
+    </p>
     <p class="hero-meta">
       <span class="price-group">
         <span class="current-price">$240.000&nbsp;<small class="price-currency">ARS</small></span>
@@ -2522,18 +2558,18 @@ loader.start();
   <div class="problema-grid">
     <div class="glass-card problema-card tall">
       <h4>They can't find you</h4>
-      <p>If you don't show up when they search, <strong>you just gave your customer to your competitor</strong>.</p>
-      <p class="sub">No website, no visibility. No website, you don't exist for those looking for you.</p>
+      <p>When someone searches for what you sell, your competitor shows up. <strong>You just lost a customer you never knew existed.</strong></p>
+      <p class="sub">No website = invisible. Not showing up on Google = invisible. If they can't find you, they can't buy you.</p>
     </div>
     <div class="glass-card problema-card">
-      <h4>Don't know where to start</h4>
-      <p>I help you sort out your ideas. What's extra? Out. What adds value? In.</p>
-      <p class="sub">No design that doesn't sell, no pointless pages, no fluff.</p>
+      <h4>They don't trust you</h4>
+      <p>A visitor judges your business in under 3 seconds. An outdated site, a slow loader, a broken layout — <strong>that's the last impression you get.</strong></p>
+      <p class="sub">Design is trust. A $200 template screams "I don't care." Your customers notice.</p>
     </div>
     <div class="glass-card problema-card">
-      <h4>An agency isn't for every project</h4>
-      <p>They have teams, structure, and costs. Justified, but not for everyone.</p>
-      <p class="sub">I handle the projects that don't fit them. Same quality, fair price.</p>
+      <h4>They don't buy</h4>
+      <p>Traffic without conversion is just a metric. If your site doesn't guide, persuade, and close — <strong>you're paying for visits that leave.</strong></p>
+      <p class="sub">No clear CTA, no social proof, no urgency. A beautiful brochure that collects dust.</p>
     </div>
   </div>
 </section>
