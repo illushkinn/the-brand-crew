@@ -624,7 +624,7 @@ body::before {
   .hero {
     align-items: flex-start;
     padding-left: clamp(1.5rem, 6vw, 6rem);
-    padding-top: 5rem;
+    padding-top: calc(5rem + 16px);
   }
   .hero-content {
     margin-left: -2rem;
@@ -632,7 +632,7 @@ body::before {
   }
 }
 .hero h1 {
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-lg);
 }
 .hero-title {
   font-family: var(--font-body);
@@ -748,7 +748,7 @@ body::before {
   display: flex;
   gap: var(--space-md);
   flex-wrap: wrap;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 .hero-b2b-tags {
   display: flex;
