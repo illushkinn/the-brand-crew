@@ -564,7 +564,7 @@ a:focus-visible {
     transform: translateY(0);
   }
 }
-/* Full-page colorful gradient layer — makes glassmorphism pop everywhere */
+/* Full-page uniform ambient glow — consistent coverage across viewport */
 body::before {
   content: '';
   position: fixed;
@@ -572,18 +572,12 @@ body::before {
   z-index: -2;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 140% 120% at 5% 8%, oklch(0.58 0.18 32 / 1) 0%, transparent 50%),
-    radial-gradient(ellipse 110% 90% at 95% 14%, oklch(0.58 0.18 32 / 0.70) 0%, transparent 48%),
-    radial-gradient(ellipse 100% 80% at 48% 50%, oklch(0.82 0.2 125 / 0.80) 0%, transparent 50%),
-    radial-gradient(ellipse 110% 90% at 20% 82%, oklch(0.58 0.18 32 / 0.70) 0%, transparent 46%),
-    radial-gradient(ellipse 120% 100% at 78% 78%, oklch(0.58 0.18 32 / 1) 0%, transparent 48%),
-    radial-gradient(ellipse 100% 80% at 42% 92%, oklch(0.82 0.2 125 / 0.75) 0%, transparent 50%),
-    radial-gradient(ellipse 80% 70% at 62% 30%, oklch(0.58 0.18 32 / 0.55) 0%, transparent 55%),
-    radial-gradient(ellipse 70% 60% at 10% 50%, oklch(0.82 0.2 125 / 0.65) 0%, transparent 58%),
-    radial-gradient(ellipse 100% 90% at 50% 30%, oklch(0.58 0.18 32 / 0.80) 0%, transparent 45%),
-    radial-gradient(ellipse 85% 75% at 85% 48%, oklch(0.58 0.18 32 / 0.90) 0%, transparent 52%),
-    radial-gradient(ellipse 75% 65% at 30% 28%, oklch(0.58 0.18 32 / 0.50) 0%, transparent 55%);
-  opacity: 0.2;
+    radial-gradient(ellipse 120% 90% at 15% 25%, oklch(0.58 0.18 32 / 0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 100% 80% at 85% 20%, oklch(0.58 0.18 32 / 0.10) 0%, transparent 65%),
+    radial-gradient(ellipse 110% 90% at 50% 50%, oklch(0.82 0.2 125 / 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 120% 90% at 20% 80%, oklch(0.58 0.18 32 / 0.10) 0%, transparent 65%),
+    radial-gradient(ellipse 100% 80% at 80% 80%, oklch(0.58 0.18 32 / 0.10) 0%, transparent 70%);
+  opacity: 1;
 }
 /* Light ray: diagonal beam from isologo direction */
 .hero::before {
