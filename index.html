@@ -2675,8 +2675,8 @@ loader.start();
     mobileMenu.removeAttribute('inert');
     hamburgerBtn.setAttribute('aria-expanded', 'true');
     var scrollW = window.innerWidth - document.documentElement.clientWidth;
-    document.body.style.paddingRight = scrollW + 'px';
-    document.body.style.overflow = 'hidden';
+    document.documentElement.style.paddingRight = scrollW + 'px';
+    document.documentElement.style.overflow = 'hidden';
     setTimeout(function() { mobileLinks[0]?.focus(); }, 200);
   }
   function closeMenu() {
@@ -2685,8 +2685,8 @@ loader.start();
     mobileMenu.classList.remove('is-open');
     mobileMenu.setAttribute('inert', '');
     hamburgerBtn.setAttribute('aria-expanded', 'false');
-    document.body.style.paddingRight = '';
-    document.body.style.overflow = '';
+    document.documentElement.style.paddingRight = '';
+    document.documentElement.style.overflow = '';
     hamburgerBtn.focus();
   }
   function toggleMenu() {
