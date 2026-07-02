@@ -3,10 +3,18 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
     "test": "playwright test",
     "test:watch": "vitest",
     "test:ui": "vitest --ui",
     "test:headed": "playwright test --headed"
+  },
+  "dependencies": {
+    "astro": "^5.1.5",
+    "@astrojs/vercel": "^8.1.0"
   },
   "devDependencies": {
     "@playwright/test": "^1.61.0",
