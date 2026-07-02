@@ -16,7 +16,7 @@
         </div>
         <div class="core-track"><div class="diamond-core"></div></div>
       </div>
-      <div class="preloader-hint">
+      <div class="preloader-hint" id="preloader-hint">
         <svg class="hint-arrow" width="26" height="48" viewBox="0 0 26 48" fill="none" aria-hidden="true">
           <path class="hint-arrow-shaft" d="M13 46 C18 40 8 34 16 28 C21 24 9 18 13 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
           <path class="hint-arrow-head" d="M6 14 C9 12 11 8 13 5 C15 8 18 12 20 14 L6 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -47,11 +47,29 @@
     preloader.addEventListener('wheel', preventScroll, { passive: false });
     preloader.addEventListener('touchmove', preventScroll, { passive: false });
 
-    // Auto-dismiss after 2s (enough for cube animation + load)
-    setTimeout(function() {
-      document.documentElement.classList.remove('preloading');
+    // Allow early dismiss on click/tap
+    preloader.addEventListener('click', dismiss);
+
+    // Show hint after CSS bar animation completes (1.5s)
+    var hintTimer = setTimeout(function() {
+      if (hint) hint.classList.add('visible');
+      var coreTrack = preloader.querySelector('.core-track');
+      if (coreTrack) coreTrack.classList.add('is-ready');
+    }, 1500);
+
+    // Auto-dismiss at 2.5s (hint has ~1s to animate before fade)
+    var dismissTimer = setTimeout(function() {
+      dismiss();
+    }, 2500);
+
+    function dismiss() {
+      clearTimeout(hintTimer);
+      clearTimeout(dismissTimer);
       preloader.removeEventListener('wheel', preventScroll);
       preloader.removeEventListener('touchmove', preventScroll);
+      preloader.removeEventListener('click', dismiss);
+      
+      document.documentElement.classList.remove('preloading');
       preloader.style.opacity = '0';
       preloader.style.transform = 'scale(0.97)';
       preloader.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
@@ -70,6 +88,6 @@
           }
         });
       }, 450);
-    }, 2000);
+    }
   })();
 </script>
