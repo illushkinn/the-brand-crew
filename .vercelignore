@@ -1,0 +1,10 @@
+# Ignore Astro files - treat as static HTML site
+astro.config.mjs
+package.json
+package-lock.json
+node_modules
+src/
+tests/
+playwright.config.ts
+vitest.config.js
+pnpm-workspace.yaml
