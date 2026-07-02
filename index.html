@@ -109,8 +109,7 @@ body {
     filter: blur(25px);
   }
   .pricing-shape, .faq-shape, .cta-shape {
-    filter: blur(28px);
-    opacity: 0.22;
+    display: none;
   }
 }
 h1, h2, h3, h4 { text-wrap: balance; }
@@ -164,8 +163,7 @@ ul { list-style: none; }
   --color-verde: var(--verde);
   --glass-effect: blur(12px) saturate(120%);
 }
-.hero, .problema, .resultados, .como-funciona, .pricing, .faq {
-  min-height: 100dvh;
+85dvh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -187,7 +185,7 @@ ul { list-style: none; }
   filter: blur(38px);
   opacity: 0.28;
   will-change: transform;
-  animation: heroFloat 23s cubic-bezier(0.45, 0.05, 0.25, 1) infinite;
+  animation: heroFloat 26s cubic-bezier(0.45, 0.05, 0.25, 1) infinite;
 }
 .faq-shape:nth-child(1) {
   width: 200px; height: 180px;
@@ -246,8 +244,7 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
 .text-terracota { color: var(--terracota); }
 .text-verde { color: var(--verde); }
 .text-white { color: var(--white); }
-.section {
-  padding: 2.5rem clamp(1.25rem, 5vw, 4rem);
+$14rem clamp(1.25rem, 5vw, 4rem);
   content-visibility: auto;
   contain-intrinsic-size: auto 600px;
 }
@@ -265,6 +262,18 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
 }
 .section-title {
   margin-bottom: 1.5rem;
+}
+.section-separator {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--border) 50%, transparent 100%);
+  margin: 3rem 0;
+  opacity: 0.3;
+}
+@media (max-width: 767px) {
+  .section-separator {
+    margin: 2rem 0;
+  }
 }
 .section-sub {
   font-size: clamp(1rem, 2vw, 1.2rem);
@@ -342,9 +351,53 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   font-weight: 600;
   letter-spacing: 0.02em;
   z-index: 1;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+}
+.btn-premium:hover {
+  background: var(--verde);
+  color: var(--black);
+  border-color: var(--verde);
+  transform: translateY(-2px);
+}
+.btn-premium:active {
+  transform: translateY(0);
+}
+.btn-premium:hover {
+  background: var(--verde);
+  color: var(--black);
+  border-color: var(--verde);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px oklch(0.82 0.2 125 / 0.3);
 }
 @media (prefers-reduced-motion: reduce) {
-  .btn-premium { transition: none; }
+  .btn-premium {
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+  border: 2px solid var(--white);
+  border-radius: 0;
+  color: var(--white);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  z-index: 1;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+}
+.btn-premium:hover {
+  background: var(--verde);
+  color: var(--black);
+  border-color: var(--verde);
+  transform: translateY(-2px);
+}
+.btn-premium:active {
+  transform: translateY(0);
+}
+.btn-premium:hover {
+  background: var(--verde);
+  color: var(--black);
+  border-color: var(--verde);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px oklch(0.82 0.2 125 / 0.3);
+}
 }
 .navbar {
   position: fixed;
@@ -479,9 +532,7 @@ a:focus-visible {
   opacity: 0.7;
   transition: transform 0.1s ease, color 0.2s, opacity 0.2s;
 }
-.hero {
-  min-height: 100vh;
-  min-height: 100dvh;
+100dvh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -502,7 +553,7 @@ a:focus-visible {
   position: absolute;
   filter: blur(35px);
   opacity: 0.35;
-  animation: heroFloat 22s cubic-bezier(0.45, 0.05, 0.25, 1) infinite;
+  animation: heroFloat 24s cubic-bezier(0.45, 0.05, 0.25, 1) infinite;
 }
 .hero-shape:nth-child(1) {
   width: 280px; height: 240px;
@@ -682,15 +733,10 @@ body::before {
 .hero h1 {
   margin-bottom: var(--space-lg);
 }
-.hero-title {
-  font-family: var(--font-body);
-  font-size: clamp(3rem, 7.5vw, 5rem);
-  letter-spacing: 0.02em;
-  line-height: 1.1;
-  text-shadow:
-    0 1px 2px oklch(0 0 0 / 0.25),
-    0 3px 6px oklch(0 0 0 / 0.12),
-    0 6px 12px oklch(0 0 0 / 0.06);
+$10 2px 4px oklch(0 0 0 / 0.4),
+    0 4px 8px oklch(0 0 0 / 0.25),
+    0 8px 16px oklch(0 0 0 / 0.15),
+    0 16px 32px oklch(0 0 0 / 0.1);
 }
 .hero-sub {
   font-family: var(--font-body);
@@ -1210,7 +1256,7 @@ body::before {
   filter: blur(40px);
   opacity: 0.25;
   will-change: transform;
-  animation: heroFloatSlow 26s cubic-bezier(0.45, 0.05, 0.25, 1) infinite;
+  animation: heroFloatSlow 28s cubic-bezier(0.45, 0.05, 0.25, 1) infinite;
 }
 .pricing-shape:nth-child(1) {
   width: 220px; height: 200px;
@@ -1396,9 +1442,7 @@ body::before {
   color: var(--terracota);
   stroke-width: 2.5px;
 }
-.faq-question[aria-expanded="true"] svg {
-  transform: rotate(45deg);
-}
+.faq-question[aria-expanded="true"] .faq-chevron {`n  transform: rotate(180deg);`n}
 .faq-answer {
   overflow: hidden;
   max-height: 0;
@@ -1441,7 +1485,7 @@ body::before {
   filter: blur(45px);
   opacity: 0.3;
   will-change: transform;
-  animation: heroFloat 24s cubic-bezier(0.45, 0.05, 0.25, 1) infinite;
+  animation: heroFloat 26s cubic-bezier(0.45, 0.05, 0.25, 1) infinite;
 }
 .cta-shape:nth-child(1) {
   width: 280px; height: 250px;
@@ -1514,6 +1558,46 @@ body::before {
 }
 .footer .footer-illya:hover {
   text-decoration: underline;
+}
+.footer .footer-links {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+}
+.footer .footer-link {
+  color: var(--body-dim);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer .footer-link:hover {
+  color: var(--terracota);
+  text-decoration: underline;
+}
+.footer .footer-separator {
+  color: var(--body-dim);
+  opacity: 0.5;
+}
+.footer .footer-links {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+}
+.footer .footer-link {
+  color: var(--body-dim);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer .footer-link:hover {
+  color: var(--terracota);
+  text-decoration: underline;
+}
+.footer .footer-separator {
+  color: var(--body-dim);
+  opacity: 0.5;
 }
 .footer .footer-social {
   display: flex;
@@ -1904,8 +1988,7 @@ body::before {
   }
   
   /* Reduce vertical spacing in sections */
-  .section {
-    padding: 1.5rem clamp(1rem, 4vw, 2rem);
+  .section {`n  padding: 3rem clamp(1.25rem, 5vw, 4rem);
   }
   .section-title {
     margin-bottom: 1rem;
@@ -1973,7 +2056,7 @@ body::before {
 @media (max-width: 380px) {
   h1 { font-size: clamp(1.8rem, 8vw, 2.5rem); }
   h2 { font-size: clamp(1.4rem, 6vw, 2rem); }
-  .section { padding: clamp(1rem, 3vw, 2rem) clamp(0.75rem, 3vw, 1rem); }
+  .section {`n  padding: 3rem clamp(1.25rem, 5vw, 4rem); }
   .section-label { font-size: 0.65rem; }
   .hero {
     padding: 0.75rem 0.75rem;
@@ -2351,6 +2434,19 @@ body::before {
     padding-bottom: 4rem;
   }
 }
+@media (max-width: 767px) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .hero-shapes, .pricing-shapes, .faq-shapes, .cta-shapes {
+    display: none !important;
+  }
+  body::before {
+    display: none !important;
+  }
+}
 </style>
 <script type="application/ld+json">
 {
@@ -2470,6 +2566,7 @@ loader.start();
   <a href="#casos" class="mobile-link">Case Studies</a>
   <a href="#precios" class="mobile-link">Pricing</a>
   <a href="#faq" class="mobile-link">FAQ</a>
+  <a href="#about" class="mobile-link">About</a>
   <a href="#contacto" class="mobile-link">Let's start</a>
 </div>
 <main id="main-content">
@@ -2674,12 +2771,14 @@ loader.start();
     </div>
   </div>
 </section>
+<div class="section-separator" aria-hidden="true"></div>
 <section class="section pricing reveal" id="precios" aria-label="Pricing">
   <div class="pricing-shapes" aria-hidden="true">
     <div class="pricing-shape"></div>
     <div class="pricing-shape"></div>
     <div class="pricing-shape"></div>
   </div>
+  <span class="section-label mono text-terracota">Pricing</span>
   <h2 class="section-title"><span class="text-verde">A steal</span>.</h2>
   <div class="glass-card pricing-card">
     <div class="pricing-line">
@@ -2737,7 +2836,7 @@ loader.start();
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false">
           What if I don't like it?
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="faq-chevron"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div class="faq-answer">
           <p>We work until you love it.</p>
@@ -2746,7 +2845,7 @@ loader.start();
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false">
           Can I update it later?
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="faq-chevron"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div class="faq-answer">
           <p>Yes. Basic changes we'll teach you. Big stuff, we talk.</p>
@@ -2755,7 +2854,7 @@ loader.start();
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false">
           What do you need from me to start?
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="faq-chevron"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div class="faq-answer">
           <p>Tell me about your business. Got a logo, photos, colors? Even better. If not, we create them together.</p>
@@ -2796,6 +2895,11 @@ loader.start();
       <div class="footer-card-content">
         <p class="footer-brand"><span>T</span>he Brand Crew</p>
         <p class="footer-cuit">Made by <a href="https://illushkinn.github.io" target="_blank" rel="noopener noreferrer" class="footer-illya">illushkinn</a> friends and <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--terracota)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline; vertical-align:-2px;"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg></p>
+        <div class="footer-links">
+          <a href="/privacy.html" class="footer-link">Privacy Policy</a>
+          <span class="footer-separator">•</span>
+          <a href="/terms.html" class="footer-link">Terms of Service</a>
+        </div>
         <div class="footer-social">
         </div>
       </div>
