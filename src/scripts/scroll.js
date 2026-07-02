@@ -1,29 +1,44 @@
-// scroll.js - Scroll-to-top button visibility and smooth scroll logic
+// scroll.js - Scroll-to-top button visibility, navbar background, and smooth scroll logic
 (function() {
   'use strict';
   
   const scrollToTop = document.getElementById('scrollToTop');
+  const navbar = document.querySelector('.navbar');
   
-  if (!scrollToTop) return;
+  // --- Scroll-to-top ---
+  if (scrollToTop) {
+    scrollToTop.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
   
-  // Click handler for smooth scroll to top
-  scrollToTop.addEventListener('click', function() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
+  // --- Navbar scroll effect ---
+  function handleNavbar(scrollY) {
+    if (!navbar) return;
+    if (scrollY > 60) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  }
   
-  // Visibility toggle with hysteresis (dead zone 300-450 to prevent flicker)
+  // --- Visibility toggle with hysteresis (dead zone 300-450 to prevent flicker) ---
   let scrollToTopVisible = false;
   
   function handleScroll() {
     const scrollY = window.scrollY || window.pageYOffset;
     
-    if (scrollY > 450 && !scrollToTopVisible) {
-      scrollToTopVisible = true;
-      scrollToTop.classList.add('is-visible');
-    } else if (scrollY < 300 && scrollToTopVisible) {
-      scrollToTopVisible = false;
-      scrollToTop.classList.remove('is-visible');
+    if (scrollToTop) {
+      if (scrollY > 450 && !scrollToTopVisible) {
+        scrollToTopVisible = true;
+        scrollToTop.classList.add('is-visible');
+      } else if (scrollY < 300 && scrollToTopVisible) {
+        scrollToTopVisible = false;
+        scrollToTop.classList.remove('is-visible');
+      }
     }
+    
+    handleNavbar(scrollY);
   }
   
   // Use requestAnimationFrame for better performance

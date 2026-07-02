@@ -2315,6 +2315,43 @@ body::before {
     padding-top: 4rem;
     padding-bottom: 4rem;
   }
+  .navbar-desktop-links {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+  }
+  .navbar-desktop-links a {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--body);
+    transition: color 0.2s ease;
+    letter-spacing: 0.02em;
+  }
+  .navbar-desktop-links a:hover {
+    color: var(--terracota);
+  }
+  .navbar-desktop-links a:last-child {
+    color: var(--verde);
+    font-weight: 600;
+  }
+  .navbar-desktop-links a:last-child:hover {
+    color: var(--verde-hover);
+  }
+  .navbar-brand {
+    display: flex;
+    align-items: center;
+    margin-right: auto;
+  }
+  .navbar-brand-text {
+    font-family: 'Rethink Sans', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: -0.02em;
+    color: var(--headline);
+  }
+  .hamburger-btn {
+    display: none;
+  }
   .hero h1 {
     margin-bottom: calc(var(--space-md) * 0.5);
   }

@@ -1,5 +1,5 @@
 ---
-// Preloader component - Loading screen with auto-dismiss
+// Preloader component - Loading screen with 3D cube + bar
 ---
 
 <div id="preloader-wrapper">
@@ -15,13 +15,6 @@
           <div class="cube-face cube-bottom"></div>
         </div>
         <div class="core-track"><div class="diamond-core"></div></div>
-      </div>
-      <div class="preloader-hint" id="preloader-hint">
-        <svg class="hint-arrow" width="26" height="48" viewBox="0 0 26 48" fill="none" aria-hidden="true">
-          <path class="hint-arrow-shaft" d="M13 46 C18 40 8 34 16 28 C21 24 9 18 13 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          <path class="hint-arrow-head" d="M6 14 C9 12 11 8 13 5 C15 8 18 12 20 14 L6 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <span class="hint-text">Tap the cube</span>
       </div>
     </div>
     <div class="preloader-glass"></div>
@@ -39,7 +32,6 @@
     'use strict';
     var preloader = document.getElementById('preloader');
     var wrapper = document.getElementById('preloader-wrapper');
-    var hint = document.getElementById('preloader-hint');
     if (!preloader) return;
 
     // Prevent scroll while preloader is active
@@ -47,28 +39,16 @@
     preloader.addEventListener('wheel', preventScroll, { passive: false });
     preloader.addEventListener('touchmove', preventScroll, { passive: false });
 
-    // Allow early dismiss on click/tap
-    preloader.addEventListener('click', dismiss);
-
-    // Show hint after CSS bar animation completes (1.5s)
-    var hintTimer = setTimeout(function() {
-      if (hint) hint.classList.add('visible');
+    // Pulse the diamond core once bar finishes
+    setTimeout(function() {
       var coreTrack = preloader.querySelector('.core-track');
       if (coreTrack) coreTrack.classList.add('is-ready');
     }, 1500);
 
-    // Auto-dismiss at 2.5s (hint has ~1s to animate before fade)
-    var dismissTimer = setTimeout(function() {
-      dismiss();
-    }, 2500);
-
-    function dismiss() {
-      clearTimeout(hintTimer);
-      clearTimeout(dismissTimer);
+    // Auto-dismiss at 2s (cube animates ~1.5s, bar fills ~1.5s)
+    setTimeout(function dismiss() {
       preloader.removeEventListener('wheel', preventScroll);
       preloader.removeEventListener('touchmove', preventScroll);
-      preloader.removeEventListener('click', dismiss);
-      
       document.documentElement.classList.remove('preloading');
       preloader.style.opacity = '0';
       preloader.style.transform = 'scale(0.97)';
@@ -88,6 +68,6 @@
           }
         });
       }, 450);
-    }
+    }, 2000);
   })();
 </script>
