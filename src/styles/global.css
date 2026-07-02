@@ -104,10 +104,17 @@ ul { list-style: none; }
   --color-verde: var(--verde);
   --glass-effect: blur(12px) saturate(120%);
 }
-85dvh;
+.hero {
+  min-height: 85dvh;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  padding: 1.5rem clamp(1rem, 4vw, 3rem);
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  z-index: 1;
 }
 .faq {
   position: relative;
@@ -185,7 +192,8 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
 .text-terracota { color: var(--terracota); }
 .text-verde { color: var(--verde); }
 .text-white { color: var(--white); }
-$14rem clamp(1.25rem, 5vw, 4rem);
+.section {
+  padding: 4rem clamp(1.25rem, 5vw, 4rem);
   content-visibility: auto;
   contain-intrinsic-size: auto 600px;
 }
@@ -473,17 +481,6 @@ a:focus-visible {
   opacity: 0.7;
   transition: transform 0.1s ease, color 0.2s, opacity 0.2s;
 }
-100dvh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 1.5rem clamp(1rem, 4vw, 3rem);
-  position: relative;
-  overflow: hidden;
-  box-sizing: border-box;
-  z-index: 1;
-}
 .hero-shapes {
   position: absolute;
   inset: 0;
@@ -673,11 +670,10 @@ body::before {
 }
 .hero h1 {
   margin-bottom: var(--space-lg);
-}
-$10 2px 4px oklch(0 0 0 / 0.4),
-    0 4px 8px oklch(0 0 0 / 0.25),
-    0 8px 16px oklch(0 0 0 / 0.15),
-    0 16px 32px oklch(0 0 0 / 0.1);
+  box-shadow: 10px 2px 4px oklch(0 0 0 / 0.4),
+              0 4px 8px oklch(0 0 0 / 0.25),
+              0 8px 16px oklch(0 0 0 / 0.15),
+              0 16px 32px oklch(0 0 0 / 0.1);
 }
 .hero-sub {
   font-family: var(--font-body);
@@ -1383,7 +1379,9 @@ $10 2px 4px oklch(0 0 0 / 0.4),
   color: var(--terracota);
   stroke-width: 2.5px;
 }
-.faq-question[aria-expanded="true"] .faq-chevron {`n  transform: rotate(180deg);`n}
+.faq-question[aria-expanded="true"] .faq-chevron {
+  transform: rotate(180deg);
+}
 .faq-answer {
   overflow: hidden;
   max-height: 0;
@@ -1929,7 +1927,8 @@ $10 2px 4px oklch(0 0 0 / 0.4),
   }
   
   /* Reduce vertical spacing in sections */
-  .section {`n  padding: 3rem clamp(1.25rem, 5vw, 4rem);
+  .section {
+  padding: 3rem clamp(1.25rem, 5vw, 4rem);
   }
   .section-title {
     margin-bottom: 1rem;
@@ -1997,7 +1996,8 @@ $10 2px 4px oklch(0 0 0 / 0.4),
 @media (max-width: 380px) {
   h1 { font-size: clamp(1.8rem, 8vw, 2.5rem); }
   h2 { font-size: clamp(1.4rem, 6vw, 2rem); }
-  .section {`n  padding: 3rem clamp(1.25rem, 5vw, 4rem); }
+  .section {
+  padding: 3rem clamp(1.25rem, 5vw, 4rem); }
   .section-label { font-size: 0.65rem; }
   .hero {
     padding: 0.75rem 0.75rem;
@@ -2302,7 +2302,12 @@ $10 2px 4px oklch(0 0 0 / 0.4),
   width: 0%;
   background: linear-gradient(to right, var(--terracota), var(--verde));
   border-radius: 2px;
-  transition: width 0.15s ease;
+  animation: preloaderFill 1.5s ease-out forwards;
+}
+
+@keyframes preloaderFill {
+  from { width: 0%; }
+  to { width: 100%; }
 }
 
 @media (min-width: 768px) {
