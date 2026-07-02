@@ -33,33 +33,6 @@
 
 <script is:inline>
   window.scrollTo(0,0);
-</script>
-
-<script>
-  // Initialize preloader module
-  import { createPreloader } from '../scripts/preloader.js';
-  
-  const preloaderEl = document.getElementById('preloader');
-  const loader = createPreloader({
-    preloader: preloaderEl,
-    fill: document.getElementById('preloader-fill'),
-    hint: document.getElementById('preloader-hint')
-  });
-  loader.start();
-  
-  // Set preloading class for scroll lock and reveal animation timing
+  // Set preloading class immediately
   document.documentElement.classList.add('preloading');
-  
-  // Wait for preloader dismiss, then reveal visible elements
-  const checkInterval = setInterval(() => {
-    if (!document.documentElement.classList.contains('preloading')) {
-      clearInterval(checkInterval);
-      // Reveal elements already in viewport when preloader covered them
-      document.querySelectorAll('.reveal').forEach((el) => {
-        if (el.getBoundingClientRect().top < window.innerHeight) {
-          el.classList.add('visible');
-        }
-      });
-    }
-  }, 100);
 </script>
