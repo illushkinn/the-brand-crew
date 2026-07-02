@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import CaseStudies from '../components/CaseStudies.astro';
+import Problema from '../components/Problema.astro';
+import ComoFunciona from '../components/ComoFunciona.astro';
+import Pricing from '../components/Pricing.astro';
+import FAQ from '../components/FAQ.astro';
+import Blog from '../components/Blog.astro';
+import About from '../components/About.astro';
+import CTA from '../components/CTA.astro';
+import Footer from '../components/Footer.astro';
+import ScrollToTop from '../components/ScrollToTop.astro';
+---
+
+<BaseLayout>
+  <main id="main-content">
+    <Hero />
+    <CaseStudies />
+    <Problema />
+    <ComoFunciona />
+    <Pricing />
+    <FAQ />
+    <Blog />
+    <About />
+  </main>
+  <CTA />
+  <Footer />
+  <ScrollToTop />
+</BaseLayout>

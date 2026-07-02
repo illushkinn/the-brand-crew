@@ -12,5 +12,10 @@ export default defineConfig({
     build: {
       cssCodeSplit: false,
     },
+    resolve: {
+      alias: {
+        '/src': '/src'
+      }
+    }
   },
 });

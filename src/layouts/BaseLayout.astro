@@ -1,0 +1,135 @@
+---
+import Preloader from '../components/Preloader.astro';
+import Navbar from '../components/Navbar.astro';
+import MobileMenu from '../components/MobileMenu.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  canonicalURL?: string;
+}
+
+const {
+  title = "Websites That Actually Work",
+  description = "Websites that actually work. For businesses that mean business. Design + development + domain + hosting from $240.000 ARS.",
+  ogImage = "https://thebrandcrew.lat/assets/og-image.png",
+  canonicalURL = "https://thebrandcrew.lat"
+} = Astro.props;
+
+const businessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "The Brand Crew",
+  "description": "Websites that actually work for businesses that mean business. Web design and development for your own projects.",
+  "url": "https://thebrandcrew.lat",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+54-9-11-2406-3009",
+    "contactType": "sales",
+    "availableLanguage": ["English", "Spanish"]
+  },
+  "sameAs": [],
+  "foundingDate": "2026",
+  "founder": {
+    "@type": "Person",
+    "name": "Illya Grytsyk"
+  },
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Web Design & Development",
+      "description": "Professional website with domain, hosting, SEO, and responsive design",
+      "price": "240000.00",
+      "priceCurrency": "ARS"
+    },
+    {
+      "@type": "Offer",
+      "name": "Domain & Hosting",
+      "description": ".com domain + fast hosting for 2 years",
+      "price": "20000.00",
+      "priceCurrency": "ARS"
+    }
+  ],
+  "knowsAbout": ["Web Design", "Web Development", "SEO", "E-commerce", "UI/UX Design"]
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "The Brand Crew",
+  "url": "https://www.thebrandcrew.lat",
+  "description": "Websites that actually work. For businesses that mean business.",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://www.thebrandcrew.lat/?s={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+};
+---
+
+<!DOCTYPE html>
+<html lang="en" data-theme="terracotta" class="preloading">
+<head>
+  <script is:inline>history.scrollRestoration='manual';</script>
+  <meta charset="UTF-8">
+  <meta name="color-scheme" content="dark only">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  <meta name="theme-color" content="#c47a68">
+  <meta name="google-site-verification" content="k-kPS76zKdKwT-18dhJwvxuK56oZXsaMpiBEeOmjuQA" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content={canonicalURL}>
+  <meta property="og:site_name" content="The Brand Crew">
+  <meta property="og:title" content={`The Brand Crew — ${title}`}>
+  <meta property="og:description" content={description}>
+  <meta property="og:image" content={ogImage}>
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="The Brand Crew - Websites That Actually Work">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content={canonicalURL}>
+  <meta name="twitter:title" content={`The Brand Crew — ${title}`}>
+  <meta name="twitter:description" content={description}>
+  <meta name="twitter:image" content={ogImage}>
+  <meta name="twitter:image:alt" content="The Brand Crew - Websites That Actually Work">
+
+  <link rel="canonical" href={canonicalURL}>
+  <meta name="robots" content="index, follow">
+  
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(websiteSchema)}></script>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(businessSchema)}></script>
+  
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rethink+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Grand+Hotel&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Vercel Speed Insights -->
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+  <!-- Vercel Analytics -->
+  <script defer src="/_vercel/insights/script.js"></script>
+  
+  <style is:global>
+    @import '../styles/global.css';
+  </style>
+</head>
+<body>
+  <Preloader />
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <Navbar />
+  <MobileMenu />
+  <slot />
+  <script src="../scripts/navigation.js"></script>
+  <script src="../scripts/carousel.js"></script>
+  <script src="../scripts/faq.js"></script>
+  <script src="../scripts/scroll.js"></script>
+  <script src="../scripts/reveal.js"></script>
+</body>
+</html>

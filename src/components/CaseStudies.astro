@@ -1,0 +1,128 @@
+---
+// CaseStudies.astro - Case study carousel with navigation
+---
+
+<section class="section resultados reveal" id="casos" aria-label="Case Studies">
+  <div class="section-heading-row">
+    <h2 class="section-title text-verde">Case Studies<span class="text-white">.</span></h2>
+  </div>
+  <div class="resultados-nav">
+    <button class="resultados-arrow" id="resultadosPrev" aria-label="Previous">‹</button>
+    <button class="resultados-arrow" id="resultadosNext" aria-label="Next">›</button>
+  </div>
+  <div class="resultados-grid">
+  
+  <!-- Luisito -->
+  <article class="glass-card resultado-card">
+    <div class="resultado-header">
+      <div class="resultado-avatar"><img src="/assets/logos/luisito.svg" alt="Luisito Playa Grande" class="invert-dark"></div>
+      <div class="resultado-info">
+        <span class="mono resultado-tag">Rotisería · Mar del Plata</span>
+        <h3 class="resultado-nombre">Luisito Playa Grande</h3>
+        <em class="progreso-tag">in development</em>
+        <a href="https://luisito-playa-grande.vercel.app" class="resultado-link" target="_blank" rel="noopener">View Luisito's site →</a>
+        <a href="https://luisito-brandbook.vercel.app" class="resultado-link" target="_blank" rel="noopener">Brandbook →</a>
+      </div>
+    </div>
+    <div class="resultado-historia">
+      <p>"They say that all love — the real kind — starts with a full belly and a happy heart. With Luisito it was exactly that: we walked in as customers, stayed for the food, and left asking if they had a website. They didn't. So we built one: digital menu, online ordering, brand identity. All connected to WhatsApp."</p>
+    </div>
+    <div class="resultado-metricas">
+      <div class="resultado-metrica">
+        <span class="resultado-metrica-valor">Digital Menu</span>
+        <span class="resultado-metrica-label">Online menu + orders</span>
+      </div>
+      <div class="resultado-metrica">
+        <span class="resultado-metrica-valor">4.7 ★</span>
+        <span class="resultado-metrica-label">Google Reviews</span>
+      </div>
+    </div>
+  </article>
+  
+  <!-- Apolonia -->
+  <article class="glass-card resultado-card">
+    <div class="resultado-header">
+      <div class="resultado-avatar"><img src="/assets/logos/apolonia.svg" alt="Apolonia"></div>
+      <div class="resultado-info">
+        <span class="mono resultado-tag">Greengrocer · Mar del Plata</span>
+        <h3 class="resultado-nombre">Apolonia</h3>
+        <em class="progreso-tag">in development</em>
+        <a href="https://verduleria-apolonia-mar-del-plata.vercel.app" class="resultado-link" target="_blank" rel="noopener">View Apolonia's site →</a>
+        <a href="https://apolonia-brandbook.vercel.app" class="resultado-link" target="_blank" rel="noopener">Brandbook →</a>
+      </div>
+    </div>
+    <div class="resultado-historia">
+      <p>"I went to buy firewood for the fireplace and met the owner of Apolonia, a seasonal greengrocer in Playa Grande. He wanted to let his customers know which fruits and veggies were at their best with a simple app designed for older folks."</p>
+    </div>
+    <div class="resultado-metricas">
+      <div class="resultado-metrica">
+        <span class="resultado-metrica-valor">Online Catalog</span>
+        <span class="resultado-metrica-label">Products + pricing</span>
+      </div>
+      <div class="resultado-metrica">
+        <span class="resultado-metrica-valor">First Branding</span>
+        <span class="resultado-metrica-label">No templates</span>
+      </div>
+    </div>
+  </article>
+  
+  <!-- Hoco -->
+  <article class="glass-card resultado-card">
+    <div class="resultado-header">
+      <div class="resultado-avatar letter-avatar">H</div>
+      <div class="resultado-info">
+        <span class="mono resultado-tag">Wholesale · Mar del Plata</span>
+        <h3 class="resultado-nombre">Catálogo Hoco</h3>
+        <div class="resultado-links">
+          <a href="https://hococatalog.vercel.app" class="resultado-link" target="_blank" rel="noopener">Visit Hoco's site →</a>
+          <a href="https://hoco-brandbook.vercel.app" class="resultado-link" target="_blank" rel="noopener">Brandbook →</a>
+        </div>
+      </div>
+    </div>
+    <div class="resultado-historia">
+      <p>"What used to be a PDF sent over WhatsApp is now a website that runs itself."</p>
+    </div>
+    <div class="resultado-metricas">
+      <div class="resultado-metrica">
+        <span class="resultado-metrica-valor">Online catalog</span>
+        <span class="resultado-metrica-label">Products + pricing</span>
+      </div>
+      <div class="resultado-metrica">
+        <span class="resultado-metrica-valor">Wholesale</span>
+        <span class="resultado-metrica-label">Phone accessories</span>
+      </div>
+      <div class="resultado-metrica">
+        <span class="resultado-metrica-valor">Shipping</span>
+        <span class="resultado-metrica-label">Nationwide</span>
+      </div>
+    </div>
+  </article>
+  
+  <!-- Pragma -->
+  <article class="glass-card resultado-card">
+    <div class="resultado-header">
+      <div class="resultado-avatar dark-bg"><img src="/assets/logos/pragma.png" alt="Pragma"></div>
+      <div class="resultado-info">
+        <span class="mono resultado-tag">MedTech · Latin America</span>
+        <h3 class="resultado-nombre">Pragma</h3>
+         <em class="progreso-tag">in development</em>
+        <a href="https://pragma-gules.vercel.app" class="resultado-link" target="_blank" rel="noopener">Visit Pragma's site →</a>
+      </div>
+    </div>
+    <div class="resultado-historia">
+      <p>"On-premise clinical AI platform for healthcare centers. Evidence-based chatbot, image analysis, and WhatsApp appointment management. Team of 4: DevOps, design, n8n automations, and development."</p>
+    </div>
+    <div class="resultado-metricas">
+      <div class="resultado-metrica">
+        <span class="resultado-metrica-valor">On-premise</span>
+        <span class="resultado-metrica-label">100% privacy</span>
+      </div>
+      <div class="resultado-metrica">
+        <span class="resultado-metrica-valor">HIPAA/GDPR</span>
+        <span class="resultado-metrica-label">Compliant</span>
+      </div>
+    </div>
+  </article>
+  
+  </div>
+</section>

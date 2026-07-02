@@ -1,0 +1,24 @@
+---
+// Navbar.astro - Main navigation bar with desktop links and mobile menu toggle
+---
+
+<header>
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <a href="#" class="navbar-brand" aria-label="The Brand Crew — home">
+      <span class="navbar-brand-text">The Brand Crew</span>
+    </a>
+    <div class="navbar-actions">
+      <div class="navbar-desktop-links">
+        <a href="#casos">Case Studies</a>
+        <a href="#precios">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contacto">Let's start</a>
+      </div>
+      <button class="hamburger-btn" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
+        <span class="hamb-line"></span>
+        <span class="hamb-line"></span>
+        <span class="hamb-line"></span>
+      </button>
+    </div>
+  </nav>
+</header>

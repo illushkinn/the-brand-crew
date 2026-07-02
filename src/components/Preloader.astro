@@ -1,0 +1,65 @@
+---
+// Preloader component - Animated loading screen with 3D cube
+---
+
+<div id="preloader-wrapper">
+  <div id="preloader">
+    <div class="preloader-center">
+      <div class="diamond-wrap">
+        <div class="cube-3d">
+          <div class="cube-face cube-front"></div>
+          <div class="cube-face cube-back"></div>
+          <div class="cube-face cube-left"></div>
+          <div class="cube-face cube-right"></div>
+          <div class="cube-face cube-top"></div>
+          <div class="cube-face cube-bottom"></div>
+        </div>
+        <div class="core-track"><div class="diamond-core"></div></div>
+      </div>
+      <div class="preloader-hint" id="preloader-hint">
+        <svg class="hint-arrow" width="26" height="48" viewBox="0 0 26 48" fill="none" aria-hidden="true">
+          <path class="hint-arrow-shaft" d="M13 46 C18 40 8 34 16 28 C21 24 9 18 13 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path class="hint-arrow-head" d="M6 14 C9 12 11 8 13 5 C15 8 18 12 20 14 L6 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="hint-text">Tap the cube</span>
+      </div>
+    </div>
+    <div class="preloader-glass"></div>
+    <div id="preloader-ui">
+      <div class="preloader-bar"><div class="preloader-fill" id="preloader-fill"></div></div>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  window.scrollTo(0,0);
+</script>
+
+<script>
+  // Initialize preloader module
+  import { createPreloader } from '../scripts/preloader.js';
+  
+  const preloaderEl = document.getElementById('preloader');
+  const loader = createPreloader({
+    preloader: preloaderEl,
+    fill: document.getElementById('preloader-fill'),
+    hint: document.getElementById('preloader-hint')
+  });
+  loader.start();
+  
+  // Set preloading class for scroll lock and reveal animation timing
+  document.documentElement.classList.add('preloading');
+  
+  // Wait for preloader dismiss, then reveal visible elements
+  const checkInterval = setInterval(() => {
+    if (!document.documentElement.classList.contains('preloading')) {
+      clearInterval(checkInterval);
+      // Reveal elements already in viewport when preloader covered them
+      document.querySelectorAll('.reveal').forEach((el) => {
+        if (el.getBoundingClientRect().top < window.innerHeight) {
+          el.classList.add('visible');
+        }
+      });
+    }
+  }, 100);
+</script>
