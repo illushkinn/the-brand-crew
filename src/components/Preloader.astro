@@ -35,4 +35,91 @@
   window.scrollTo(0,0);
   // Set preloading class immediately
   document.documentElement.classList.add('preloading');
+  
+  // Inline preloader logic to avoid module loading issues
+  (function() {
+    'use strict';
+    
+    function preventScroll(e) {
+      e.preventDefault();
+    }
+    
+    function initPreloader() {
+      const preloader = document.getElementById('preloader');
+      const fill = document.getElementById('preloader-fill');
+      const hint = document.getElementById('preloader-hint');
+      
+      if (!preloader) return;
+      
+      let loaded = 0;
+      let interval = null;
+      
+      function tick() {
+        loaded += Math.random() * 8;
+        if (loaded >= 100) {
+          loaded = 100;
+          clearInterval(interval);
+          interval = null;
+          complete();
+        }
+        if (fill) fill.style.width = loaded + '%';
+      }
+      
+      function complete() {
+        if (hint) hint.classList.add('visible');
+        preloader.addEventListener('click', dismiss);
+        const coreTrack = preloader.querySelector('.core-track');
+        if (coreTrack) coreTrack.classList.add('is-ready');
+      }
+      
+      function dismiss() {
+        const wrapper = document.getElementById('preloader-wrapper');
+        
+        // Liberar scroll
+        preloader.removeEventListener('wheel', preventScroll);
+        preloader.removeEventListener('touchmove', preventScroll);
+        
+        // Liberar reveal elements
+        document.documentElement.classList.remove('preloading');
+        
+        preloader.style.opacity = '0';
+        preloader.style.transform = 'scale(0.97)';
+        preloader.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+        
+        setTimeout(function() {
+          preloader.style.display = 'none';
+          if (wrapper) {
+            wrapper.classList.add('is-dismissed');
+            wrapper.style.display = 'none';
+            wrapper.style.pointerEvents = 'none';
+          }
+        }, 450);
+      }
+      
+      // Start
+      if (fill) fill.style.width = '0%';
+      preloader.addEventListener('wheel', preventScroll, { passive: false });
+      preloader.addEventListener('touchmove', preventScroll, { passive: false });
+      interval = setInterval(tick, 100);
+    }
+    
+    // Init when DOM ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initPreloader);
+    } else {
+      initPreloader();
+    }
+    
+    // Reveal animation for elements in viewport after preloader
+    const checkInterval = setInterval(function() {
+      if (!document.documentElement.classList.contains('preloading')) {
+        clearInterval(checkInterval);
+        document.querySelectorAll('.reveal').forEach(function(el) {
+          if (el.getBoundingClientRect().top < window.innerHeight) {
+            el.classList.add('visible');
+          }
+        });
+      }
+    }, 100);
+  })();
 </script>
