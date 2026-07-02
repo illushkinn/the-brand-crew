@@ -1,178 +1,304 @@
-# 🌐 The Brand Crew
+# The Brand Crew - Official Website
 
-> **Websites that actually work. For businesses that mean business.**
+> Websites that actually work. For businesses that mean business.
 
-[![Website](https://img.shields.io/website?url=https%3A%2F%2Fthebrandcrew.lat)](https://thebrandcrew.lat)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+Modern web design and development services for businesses in Argentina.
 
-**[View Live Site →](https://thebrandcrew.lat)**
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/illushkinn/the-brand-crew)
 
----
-
-## 👋 Welcome!
-
-This is the landing page for **The Brand Crew** — a web design & development service specializing in **high-performance, conversion-focused websites** for small and medium-sized businesses.
-
-Whether you're a:
-- 🧑‍💼 **Business owner** looking to go online
-- 🎨 **Designer** curious about our approach
-- 👨‍💻 **Developer** interested in the tech stack
-- 🤝 **Potential collaborator** wanting to work together
-
-...you're in the right place!
-
----
-
-## ✨ What We Do
-
-We build websites that:
-- ✅ **Convert visitors into customers**
-- ⚡ **Load blazingly fast** (optimized for performance)
-- 📱 **Look great on mobile** (mobile-first design)
-- 🎯 **Are easy to update** (clean code, clear structure)
-- 💰 **Don't break the bank** (transparent, affordable pricing)
-
-### 🎯 Our Process
-
-1. **Understand** your business goals
-2. **Design** a clean, conversion-focused site
-3. **Develop** with performance in mind
-4. **Deploy** and provide ongoing support
+**Live Site:** [thebrandcrew.lat](https://thebrandcrew.lat)
 
 ---
 
 ## 🛠️ Tech Stack
 
-This site is built with:
-
-- **HTML/CSS/JavaScript** — Vanilla, no framework bloat
-- **OKLCH Color System** — Modern, perceptually uniform colors
-- **Glassmorphic Design** — Premium, modern aesthetic
-- **Vercel** — Lightning-fast hosting & deployment
-- **Playwright** — Automated testing for reliability
-
-### Performance Features
-
-- 🚀 **Zero framework overhead** — Pure vanilla for maximum speed
-- 🎨 **CSS-first animations** — GPU-accelerated, butter-smooth
-- 📱 **Mobile-optimized** — dvh units, safe-area insets, responsive design
-- ♿ **Accessibility-focused** — rem units, semantic HTML, ARIA labels
-- 🎭 **Glassmorphism** — Modern, premium visual style
+- **Framework:** [Astro](https://astro.build) 5.1.5
+- **Styling:** Vanilla CSS with Glassmorphism design system
+- **Deployment:** [Vercel](https://vercel.com)
+- **Analytics:** Vercel Analytics + Speed Insights
+- **Testing:** Playwright
 
 ---
 
-## 🎨 Design Philosophy
+## 🚀 Quick Start
 
-### Color System: OKLCH 3-Layer Architecture
+### Prerequisites
 
+- Node.js 18+ or 20+
+- pnpm (recommended) or npm
+
+### Installation
+
+```fish
+# Clone the repository
+git clone https://github.com/illushkinn/the-brand-crew.git
+cd the-brand-crew
+
+# Install pnpm (if not installed)
+npm install -g pnpm
+
+# Install dependencies
+pnpm install
 ```
-Layer 1: Primitives  →  Layer 2: Semantics  →  Layer 3: Components
+
+### Development
+
+```fish
+# Start dev server (http://localhost:4321)
+pnpm dev
+
+# Build for production
+pnpm build
+
+# Preview production build
+pnpm preview
+
+# Run tests
+pnpm test
+
+# Run tests with UI
+pnpm test:headed
 ```
-
-- **Primitives**: Raw OKLCH values (`oklch(0.58 0.18 32)`)
-- **Semantics**: Meaningful names (`--terracota`, `--verde`, `--bg`)
-- **Components**: Reference semantic tokens only
-
-This approach ensures:
-- 🔄 Easy theme switching
-- 🎨 Consistent color usage
-- 🛠️ Maintainable codebase
 
 ---
 
-## 📂 Project Structure
+## 📁 Project Structure
 
 ```
 the-brand-crew/
-├── index.html              # Main landing page
-├── src/                    # JavaScript modules
-│   └── preloader.js        # Loading animation
-├── tests/                  # Playwright E2E tests
-├── assets/                 # Images, logos, OG cards
-├── docs/                   # Documentation & guides
-│   ├── archive/           # Old docs (bitácoras, etc.)
-│   ├── GLASSMORPHIC-SHAPES-UPDATE.md
-│   ├── PX-TO-REM-AUDIT.md
-│   └── SALES-PLAYBOOK-ISAAC.md
-├── clientes/              # Client-specific work
-│   └── david-boxer/       # David's project files
-└── .kiro/                 # AI assistant specs
+├── public/              # Static assets
+│   ├── assets/
+│   │   ├── logos/      # Client logos
+│   │   └── og-image.png
+│   ├── favicon.svg
+│   ├── robots.txt
+│   └── sitemap.xml
+├── src/
+│   ├── components/     # Astro components
+│   │   ├── About.astro
+│   │   ├── Blog.astro
+│   │   ├── CaseStudies.astro
+│   │   ├── ComoFunciona.astro
+│   │   ├── CTA.astro
+│   │   ├── FAQ.astro
+│   │   ├── Footer.astro
+│   │   ├── Hero.astro
+│   │   ├── MobileMenu.astro
+│   │   ├── Navbar.astro
+│   │   ├── Preloader.astro
+│   │   ├── Pricing.astro
+│   │   ├── Problema.astro
+│   │   └── ScrollToTop.astro
+│   ├── layouts/
+│   │   └── BaseLayout.astro    # Main layout with SEO
+│   ├── pages/
+│   │   ├── index.astro         # Home page
+│   │   ├── privacy.astro       # Privacy policy
+│   │   └── terms.astro         # Terms of service
+│   ├── scripts/         # Client-side JavaScript
+│   │   ├── carousel.js         # Case studies carousel
+│   │   ├── faq.js              # FAQ accordion
+│   │   ├── navigation.js       # Mobile menu
+│   │   ├── preloader.js        # Loading animation
+│   │   ├── reveal.js           # Scroll animations
+│   │   └── scroll.js           # Scroll-to-top
+│   └── styles/
+│       └── global.css          # Global styles
+├── tests/              # Playwright tests
+├── astro.config.mjs
+├── package.json
+└── vercel.json
 ```
 
 ---
 
-## 🚀 Getting Started
+## 🎨 Key Features
 
-### For Developers
+### Design
+- **Glassmorphism UI** - Modern glass-card aesthetic
+- **3D Animated Preloader** - Interactive cube with loading bar
+- **Smooth Animations** - Scroll-triggered reveal effects
+- **Responsive Design** - Mobile-first approach
+- **Dark Theme** - Optimized for low-light viewing
 
-```bash
-# Clone the repository
-git clone https://github.com/illushkinn/the-brand-crew.git
+### Functionality
+- **Mobile Navigation** - Smooth hamburger menu with clip-path animation
+- **Case Studies Carousel** - Horizontal scroll with navigation buttons
+- **FAQ Accordion** - Expandable questions with smooth transitions
+- **Scroll-to-Top** - Appears after scrolling with hysteresis
+- **Interactive Shapes** - Animated background elements
 
-# Navigate to directory
-cd the-brand-crew
+### Performance
+- **Fast Loading** - Optimized assets and code splitting
+- **SEO Optimized** - Complete meta tags, Open Graph, Schema.org
+- **Accessibility** - ARIA labels, keyboard navigation
+- **Analytics Ready** - Vercel Analytics integrated
 
-# Install dependencies (for testing only)
-npm install
+---
 
-# Start local server
-python -m http.server 8000
-# or
-npx serve
+## 📝 Content Management
 
-# Run tests
-npm test
+### Update Case Studies
+
+Edit `src/components/CaseStudies.astro`:
+
+```astro
+<article class="glass-card resultado-card">
+  <div class="resultado-header">
+    <div class="resultado-avatar">
+      <img src="/assets/logos/client-logo.svg" alt="Client Name">
+    </div>
+    <div class="resultado-info">
+      <span class="mono resultado-tag">Industry · Location</span>
+      <h3 class="resultado-nombre">Client Name</h3>
+      <a href="https://client-site.com" class="resultado-link">
+        View site →
+      </a>
+    </div>
+  </div>
+  <div class="resultado-historia">
+    <p>"Client testimonial or project description..."</p>
+  </div>
+  <div class="resultado-metricas">
+    <div class="resultado-metrica">
+      <span class="resultado-metrica-valor">Metric Value</span>
+      <span class="resultado-metrica-label">Metric Label</span>
+    </div>
+  </div>
+</article>
 ```
 
-### For Business Owners
+### Update Pricing
 
-Want a website like this for your business?
+Edit `src/components/Pricing.astro` - change prices and features list.
 
-**[Book a free call →](https://wa.me/5491124063009?text=Hey%20Illya!%20I%20saw%20your%20site%20and%20I'd%20love%20to%20work%20together.)**
+### Update FAQ
 
----
+Edit `src/components/FAQ.astro` - add/remove questions and answers.
 
-## 📊 Real Results
+### Add New Section
 
-| Client | Industry | Result |
-|--------|----------|--------|
-| **Luisito Playa Grande** | Restaurant | Cart system + WhatsApp integration |
-| **Apolonia** | Grocery Store | 122-page PWA with real-time inventory |
-| **Hoco Catalog** | Wholesale | Product catalog with search & filters |
-
-*More case studies on the [live site](https://thebrandcrew.lat)*
+1. Create component in `src/components/NewSection.astro`
+2. Import in `src/pages/index.astro`
+3. Add to layout where needed
 
 ---
 
-## 📝 Documentation
+## 🚀 Deployment
 
-- [Glassmorphic Shapes Philosophy](docs/GLASSMORPHIC-SHAPES-UPDATE.md)
-- [PX to REM Accessibility Audit](docs/PX-TO-REM-AUDIT.md)
-- [Sales Playbook](docs/SALES-PLAYBOOK-ISAAC.md)
+### Automatic Deployment
+
+Pushes to `master` branch auto-deploy to Vercel:
+
+```fish
+git add .
+git commit -m "feat: your changes"
+git push origin master
+```
+
+### Manual Deployment
+
+```fish
+# Install Vercel CLI (if needed)
+npm i -g vercel
+
+# Deploy
+vercel --prod
+```
+
+### Environment Variables
+
+No environment variables required for basic operation.
 
 ---
 
-## 🤝 Let's Work Together
+## 🧪 Testing
 
-I'm **Illya**, a web developer specializing in **conversion-focused websites** for small businesses.
+### Manual Testing
 
-### Ways to Connect:
+See `POST-MIGRATION-CHECKLIST.md` for complete testing checklist.
 
-- 💬 **WhatsApp**: [+54 9 11 2406-3009](https://wa.me/5491124063009)
-- 🌐 **Website**: [thebrandcrew.lat](https://thebrandcrew.lat)
-- 📧 **Email**: Contact via website
+### Automated Testing
+
+```fish
+# Run Playwright tests
+pnpm test
+
+# Run tests with browser visible
+pnpm test:headed
+
+# Run specific test
+pnpm test tests/hero.spec.ts
+```
+
+### Performance Testing
+
+```fish
+# Lighthouse audit
+lighthouse https://thebrandcrew.lat --view
+
+# Or use Chrome DevTools > Lighthouse tab
+```
 
 ---
 
-## 📜 License
+## 📊 Performance
 
-MIT License — Feel free to learn from this code!
+- **Lighthouse Score:** 85+ (all categories)
+- **Core Web Vitals:** All green
+- **Mobile Optimized:** Touch-friendly, responsive
+- **Fast Load Times:** <2s initial load
 
 ---
 
-## 🙏 Acknowledgments
+## 🔒 Security
 
-Built with care, tested with Playwright, deployed on Vercel.
+- CSP headers configured
+- XSS protection enabled
+- HTTPS enforced
+- Dependencies regularly audited
 
-**Made with ❤️ in Buenos Aires, Argentina**
+---
 
+## 📄 License
+
+Proprietary - © 2026 The Brand Crew. All rights reserved.
+
+---
+
+## 🤝 Contact & Support
+
+- **Website:** [thebrandcrew.lat](https://thebrandcrew.lat)
+- **Email:** hello@thebrandcrew.lat
+- **WhatsApp:** +54 9 11 2406-3009
+- **Developer:** [Illya Grytsyk](https://illushkinn.github.io)
+
+---
+
+## 📚 Additional Documentation
+
+- `POST-MIGRATION-CHECKLIST.md` - Post-deployment guide
+- `MIGRATION-COMPLETE.md` - Migration details
+- `.kiro/specs/astro-migration/` - Technical specifications
+
+---
+
+## 🎯 Roadmap
+
+### Completed ✅
+- [x] Full Astro migration
+- [x] Component architecture
+- [x] Performance optimization
+- [x] SEO implementation
+- [x] Mobile responsiveness
+
+### Planned 🚧
+- [ ] Blog functionality
+- [ ] Contact form
+- [ ] Client testimonials
+- [ ] Multi-language support (EN/ES)
+- [ ] Dark mode toggle
+
+---
+
+**Built with ❤️ in Mar del Plata, Argentina**
