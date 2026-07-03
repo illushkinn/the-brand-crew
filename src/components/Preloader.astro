@@ -43,9 +43,9 @@
     setTimeout(function() {
       var coreTrack = preloader.querySelector('.core-track');
       if (coreTrack) coreTrack.classList.add('is-ready');
-    }, 1500);
+    }, 1000);
 
-    // Auto-dismiss at 2s (cube animates ~1.5s, bar fills ~1.5s)
+    // Auto-dismiss at 1.2s (cube animates ~1s, bar fills ~1.5s but page loads faster)
     setTimeout(function dismiss() {
       preloader.removeEventListener('wheel', preventScroll);
       preloader.removeEventListener('touchmove', preventScroll);
