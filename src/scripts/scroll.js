@@ -9,19 +9,27 @@
   // Flag to prevent observer from re-showing arrow during smooth scroll
   var dismissLock = false;
   
+  var dismissTimeout = null;
+
   // --- Scroll-to-top click ---
   if (scrollToTop) {
     scrollToTop.addEventListener('click', function() {
       scrollToTop.classList.remove('is-visible');
       dismissLock = true;
+      clearTimeout(dismissTimeout);
+      // Safety fallback: release lock after 2s even if scrollend doesn't fire
+      // (scrollend has partial support on older iOS/Android browsers)
+      dismissTimeout = setTimeout(function() {
+        dismissLock = false;
+      }, 2000);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
-  
-  // Release lock only when smooth scroll COMPLETELY finishes
-  // scrollend fires AFTER programmatic smooth scroll resolves
+
+  // Release lock when smooth scroll actually finishes
   window.addEventListener('scrollend', function() {
     dismissLock = false;
+    clearTimeout(dismissTimeout);
   });
   
   // --- Scroll-to-top visibility: only when footer is in view ---

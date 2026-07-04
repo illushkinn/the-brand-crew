@@ -73,10 +73,19 @@
   // Hamburger button click handler
   hamburgerBtn.addEventListener('click', toggleMenu);
   
-  // Close menu when clicking a link
+  // Close menu when clicking a link — wait for close animation before scrolling
   mobileLinks.forEach(function(link) {
-    link.addEventListener('click', function() {
+    link.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
       closeMenu();
+      // Wait for menu close animation (400ms clip-path) before scrolling to target
+      // Prevents scroll landing incorrectly due to menu overlay still animating
+      if (href && href.startsWith('#')) {
+        e.preventDefault();
+        setTimeout(function() {
+          document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+        }, 420);
+      }
     });
     
     // Add visual feedback for touch events
