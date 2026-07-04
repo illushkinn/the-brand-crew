@@ -123,6 +123,7 @@ ul { list-style: none; }
   overflow: hidden;
   box-sizing: border-box;
   z-index: 1;
+  contain: layout style paint;
 }
 .faq {
   position: relative;
@@ -494,11 +495,13 @@ a:focus-visible {
   inset: 0;
   pointer-events: none;
   overflow: hidden;
+  contain: layout style paint;
 }
 .hero-shape {
   position: absolute;
   filter: blur(35px);
   opacity: 0.35;
+  will-change: transform;
   animation: heroFloat 24s cubic-bezier(0.45, 0.05, 0.25, 1) infinite;
 }
 .hero-shape:nth-child(1) {
@@ -629,6 +632,7 @@ body::before {
     radial-gradient(ellipse 120% 90% at 20% 80%, oklch(0.58 0.18 32 / 0.10) 0%, transparent 65%),
     radial-gradient(ellipse 100% 80% at 80% 80%, oklch(0.58 0.18 32 / 0.10) 0%, transparent 70%);
   opacity: 1;
+  will-change: transform; /* promote to compositor layer — avoid repaint on scroll */
 }
 /* Light ray: diagonal beam from isologo direction */
 .hero::before {
@@ -1455,6 +1459,8 @@ body::before {
 }
 .footer {
   border-top: none;
+  content-visibility: auto;
+  contain-intrinsic-size: 0 300px;
 }
 .footer-card {
   background: var(--bg-card);
