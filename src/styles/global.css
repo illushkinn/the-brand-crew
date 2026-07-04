@@ -47,10 +47,11 @@ body {
 @media (max-width: 767px) {
   html { scroll-behavior: auto; }
   .hero-shape {
-    filter: blur(25px);
+    filter: blur(35px);
   }
   .pricing-shape, .faq-shape, .cta-shape {
-    display: none;
+    opacity: 0.35;
+    filter: blur(20px);
   }
 }
 h1, h2, h3, h4 { text-wrap: balance; }
