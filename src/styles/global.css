@@ -321,7 +321,14 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
 .pricing-card .btn-empecemos {
   background: transparent;
   color: var(--white);
-  border: 2px solid var(--terracota);
+  border: 1px solid var(--white);
+}
+.pricing-card .btn-empecemos::before {
+  display: none;
+}
+.pricing-card .btn-empecemos:hover {
+  color: var(--white);
+  border-color: var(--verde);
 }
 .btn-premium {
   position: relative;
