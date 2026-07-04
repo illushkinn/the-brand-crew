@@ -12,7 +12,16 @@
     });
   }
   
-  // --- Navbar scroll effect ---
+  // --- Scroll-to-top visibility (no hysteresis, clean thresholds) ---
+  function handleScrollToTop(scrollY) {
+    if (!scrollToTop) return;
+    if (scrollY > 500) {
+      scrollToTop.classList.add('is-visible');
+    } else {
+      scrollToTop.classList.remove('is-visible');
+    }
+  }
+  
   function handleNavbar(scrollY) {
     if (!navbar) return;
     if (scrollY > 60) {
@@ -22,22 +31,9 @@
     }
   }
   
-  // --- Visibility toggle with hysteresis (dead zone 300-450 to prevent flicker) ---
-  let scrollToTopVisible = false;
-  
   function handleScroll() {
     const scrollY = window.scrollY || window.pageYOffset;
-    
-    if (scrollToTop) {
-      if (scrollY > 450 && !scrollToTopVisible) {
-        scrollToTopVisible = true;
-        scrollToTop.classList.add('is-visible');
-      } else if (scrollY < 300 && scrollToTopVisible) {
-        scrollToTopVisible = false;
-        scrollToTop.classList.remove('is-visible');
-      }
-    }
-    
+    handleScrollToTop(scrollY);
     handleNavbar(scrollY);
   }
   

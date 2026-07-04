@@ -45,12 +45,18 @@ body {
 }
 /* Disable smooth scroll on mobile for better performance */
 @media (max-width: 767px) {
-  html { scroll-behavior: auto; }
+  html {
+    scroll-behavior: auto;
+    background:
+      radial-gradient(ellipse 90% 60% at 5% 10%, oklch(0.58 0.18 32 / 0.15) 0%, transparent 60%),
+      radial-gradient(ellipse 70% 80% at 90% 85%, oklch(0.82 0.2 125 / 0.10) 0%, transparent 50%),
+      oklch(0.08 0.006 280);
+  }
   .hero-shape {
     filter: blur(35px);
   }
   .pricing-shape, .faq-shape, .cta-shape {
-    opacity: 0.35;
+    opacity: 0.5;
     filter: blur(20px);
   }
 }
