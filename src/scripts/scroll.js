@@ -6,11 +6,19 @@
   const footer = document.querySelector('.footer');
   const navbar = document.querySelector('.navbar');
   
+  // Flag to prevent observer from re-showing arrow during smooth scroll
+  var dismissLock = false;
+  
   // --- Scroll-to-top click ---
   if (scrollToTop) {
     scrollToTop.addEventListener('click', function() {
       scrollToTop.classList.remove('is-visible');
+      dismissLock = true;
       window.scrollTo({ top: 0, behavior: 'smooth' });
+      // Release lock after smooth scroll should complete (~600ms for full page)
+      setTimeout(function() {
+        dismissLock = false;
+      }, 700);
     });
   }
   
@@ -18,6 +26,7 @@
   if (scrollToTop && footer) {
     var observer = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
+        if (dismissLock) return;
         if (entry.isIntersecting) {
           scrollToTop.classList.add('is-visible');
         } else {
