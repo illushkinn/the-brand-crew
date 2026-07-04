@@ -131,7 +131,7 @@ ul { list-style: none; }
   position: relative;
   overflow: hidden;
   padding-top: 6rem;
-  scroll-margin-top: 5rem;
+  scroll-margin-top: 7rem;
 }
 .faq-shapes {
   position: absolute;
@@ -1921,10 +1921,16 @@ body::before {
     font-size: 0.9rem;
   }
   .hero-shape {
-    opacity: 0.5;
+    opacity: 0.65;
   }
   .pricing-shape, .faq-shape, .cta-shape {
-    opacity: 0.4;
+    opacity: 0.5;
+  }
+  .hero-shapes, .pricing-shapes, .faq-shapes, .cta-shapes {
+    filter: blur(20px);
+  }
+  body::before {
+    opacity: 0.6;
   }
   .hero-b2b-tags {
     margin-top: 0.25rem;
@@ -2126,7 +2132,6 @@ body::before {
 /* ===== PRELOADER ===== */
 html.preloading {
   overflow: hidden !important;
-  scrollbar-gutter: auto !important;
   scrollbar-width: none !important;
   -ms-overflow-style: none !important;
 }
