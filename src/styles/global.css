@@ -53,7 +53,7 @@ body {
       radial-gradient(ellipse 80% 50% at 50% 40%, oklch(0.58 0.18 32 / 0.08) 0%, transparent 70%),
       radial-gradient(ellipse 90% 60% at 5% 10%, oklch(0.58 0.18 32 / 0.15) 0%, transparent 60%),
       radial-gradient(ellipse 70% 80% at 90% 85%, oklch(0.82 0.2 125 / 0.10) 0%, transparent 50%),
-      oklch(0.08 0.006 280);
+      oklch(0.10 0.008 280);
   }
   .hero-shape {
     filter: blur(35px);
@@ -2360,15 +2360,18 @@ body::before {
   }
 }
 @media (max-width: 767px) {
+  :root {
+    --oklch-bg-dark: oklch(0.10 0.008 280);
+    --glass-bg: rgba(255,255,255,0.08);
+  }
   * {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
   .hero-shapes, .pricing-shapes, .faq-shapes, .cta-shapes {
-    display: none !important;
-  }
-  body::before {
-    display: none !important;
+    display: block;
+    opacity: 0.12;
+    filter: blur(30px);
   }
 }
