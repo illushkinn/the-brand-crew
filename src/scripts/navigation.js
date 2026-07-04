@@ -73,12 +73,6 @@
   // Hamburger button click handler
   hamburgerBtn.addEventListener('click', toggleMenu);
   
-  // Hamburger button touch handler (for mobile)
-  hamburgerBtn.addEventListener('touchstart', function(e) {
-    e.preventDefault();
-    toggleMenu();
-  }, {passive: false});
-  
   // Close menu when clicking a link
   mobileLinks.forEach(function(link) {
     link.addEventListener('click', function() {

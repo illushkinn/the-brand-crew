@@ -15,12 +15,14 @@
       scrollToTop.classList.remove('is-visible');
       dismissLock = true;
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      // Release lock after smooth scroll should complete (~600ms for full page)
-      setTimeout(function() {
-        dismissLock = false;
-      }, 700);
     });
   }
+  
+  // Release lock only when smooth scroll COMPLETELY finishes
+  // scrollend fires AFTER programmatic smooth scroll resolves
+  window.addEventListener('scrollend', function() {
+    dismissLock = false;
+  });
   
   // --- Scroll-to-top visibility: only when footer is in view ---
   if (scrollToTop && footer) {
