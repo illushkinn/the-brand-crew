@@ -65,13 +65,13 @@ export function createPreloader({ preloader, fill, hint } = {}) {
     preloader.removeEventListener('wheel', preventScroll)
     preloader.removeEventListener('touchmove', preventScroll)
 
-    // Liberar reveal elements
-    document.documentElement.classList.remove('preloading')
-
+    // Liberar reveal elements — AFTER fade completes
     preloader.style.opacity = '0'
     preloader.style.transform = 'scale(0.97)'
     preloader.style.transition = 'opacity 0.4s ease, transform 0.4s ease'
     setTimeout(() => {
+      document.documentElement.classList.remove('preloading')
+      document.body.classList.remove('preloading')
       preloader.style.display = 'none'
       preloader.style.transform = ''
       if (wrapper) {

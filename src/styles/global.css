@@ -2100,7 +2100,8 @@ body::before {
 .step:nth-of-type(3) { transition-delay: 0ms; }
 
 /* ===== PRELOADER ===== */
-html.preloading {
+html.preloading,
+body.preloading {
   overflow: hidden !important;
 }
 #preloader-wrapper {
