@@ -1,27 +1,34 @@
-// scroll.js - Scroll-to-top button visibility, navbar background, and smooth scroll logic
+// scroll.js - Navbar background and scroll-to-top visibility via footer IntersectionObserver
 (function() {
   'use strict';
   
   const scrollToTop = document.getElementById('scrollToTop');
+  const footer = document.querySelector('.footer');
   const navbar = document.querySelector('.navbar');
   
-  // --- Scroll-to-top ---
+  // --- Scroll-to-top click ---
   if (scrollToTop) {
     scrollToTop.addEventListener('click', function() {
+      scrollToTop.classList.remove('is-visible');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
   
-  // --- Scroll-to-top visibility (no hysteresis, clean thresholds) ---
-  function handleScrollToTop(scrollY) {
-    if (!scrollToTop) return;
-    if (scrollY > 500) {
-      scrollToTop.classList.add('is-visible');
-    } else {
-      scrollToTop.classList.remove('is-visible');
-    }
+  // --- Scroll-to-top visibility: only when footer is in view ---
+  if (scrollToTop && footer) {
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          scrollToTop.classList.add('is-visible');
+        } else {
+          scrollToTop.classList.remove('is-visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    observer.observe(footer);
   }
   
+  // --- Navbar background threshold ---
   function handleNavbar(scrollY) {
     if (!navbar) return;
     if (scrollY > 60) {
@@ -33,11 +40,9 @@
   
   function handleScroll() {
     const scrollY = window.scrollY || window.pageYOffset;
-    handleScrollToTop(scrollY);
     handleNavbar(scrollY);
   }
   
-  // Use requestAnimationFrame for better performance
   let ticking = false;
   window.addEventListener('scroll', function() {
     if (!ticking) {
@@ -49,6 +54,5 @@
     }
   });
   
-  // Initial check
   handleScroll();
 })();

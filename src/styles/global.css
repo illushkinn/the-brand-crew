@@ -131,6 +131,7 @@ ul { list-style: none; }
   position: relative;
   overflow: hidden;
   padding-top: 6rem;
+  scroll-margin-top: 5rem;
 }
 .faq-shapes {
   position: absolute;
@@ -265,12 +266,15 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   font-size: 1.15rem;
   letter-spacing: -0.02em;
   padding: 0.9rem 2rem;
-  border-radius: 4px;
+  border-radius: 10px;
   border: 2.5px solid var(--terracota);
   cursor: pointer;
   position: relative;
+  overflow: hidden;
   z-index: 1;
-  transition: transform 0.15s ease;
+  transition: transform 0.15s ease, background 0.3s ease, box-shadow 0.3s ease;
+  background: transparent;
+  color: var(--terracota);
 }
 .btn:focus-visible {
   outline: 2px solid rgba(255, 255, 255, 0.3);
@@ -284,57 +288,24 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   width: 1.3em;
   height: 1.3em;
 }
-.btn::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: var(--terracota);
-  opacity: 0.75;
-  transform: scaleY(0);
-  transform-origin: bottom;
-  transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  z-index: -1;
-  will-change: transform;
-  border-radius: 4px;
-  clip-path: inset(0 round 4px);
-}
-.btn::after {
-  content: '';
-  position: absolute;
-  inset: -7px;
-  border-radius: 10px;
-  border: 2.5px solid var(--terracota);
-  box-shadow:
-    0 0 18px oklch(0.58 0.18 32 / 0.25),
-    0 0 45px oklch(0.58 0.18 32 / 0.06);
-  opacity: 0;
-  transform: scale(0.92);
-  transition:
-    opacity 0.5s ease,
-    transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  pointer-events: none;
-  z-index: 0;
-  will-change: transform, opacity;
-}
-.btn:hover::before {
-  transform: scaleY(1);
-}
-.btn:hover::after {
-  opacity: 1;
-  transform: scale(1);
-}
 .btn:hover {
-  color: var(--white);
-  box-shadow: 0 0 24px oklch(0.58 0.18 32 / 0.35);
+  background: oklch(0.58 0.18 32 / 0.08);
 }
 .btn:active {
   transform: scale(0.96);
 }
+
+/* ===== CTA PRIMARIO — FILLED ===== */
 .btn-empecemos {
-  background: transparent;
-  color: var(--terracota);
-  border: 2.5px solid var(--terracota);
+  background: var(--terracota);
+  color: var(--white);
+  border: none;
   box-shadow: none;
+}
+.btn-empecemos:hover {
+  background: var(--terracota-hover);
+  color: var(--white);
+  box-shadow: 0 0 24px oklch(0.58 0.18 32 / 0.35);
 }
 .btn-empecemos.btn-lg {
   padding: 0.65rem 1.5rem;
@@ -342,24 +313,14 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   margin-top: 1.5rem;
   margin-bottom: 1rem;
 }
-.pricing-card .btn-empecemos {
-  background: transparent;
-  color: var(--white);
-  border: 2px solid var(--white);
-}
-.pricing-card .btn-empecemos::before {
-  display: none;
-}
-.pricing-card .btn-empecemos:hover {
-  color: var(--white);
-  border-color: var(--terracota);
-  box-shadow: 0 0 24px oklch(0.58 0.18 32 / 0.35);
-}
+
+/* ===== CTA SECUNDARIO — OUTLINE + INK DROP ===== */
 .btn-premium {
   position: relative;
+  overflow: hidden;
   background: transparent;
   border: 2.5px solid var(--white);
-  border-radius: 4px;
+  border-radius: 10px;
   color: var(--white);
   font-weight: 500;
   letter-spacing: 0.02em;
@@ -367,7 +328,19 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   transition: border-color 0.3s ease;
 }
 .btn-premium::before {
-  display: none;
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--terracota);
+  opacity: 0.75;
+  border-radius: 10px;
+  clip-path: circle(0% at 50% 50%);
+  transition: clip-path 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: -1;
+  will-change: clip-path;
+}
+.btn-premium:hover::before {
+  clip-path: circle(100% at 50% 50%);
 }
 .btn-premium:hover {
   color: var(--white);
@@ -379,31 +352,34 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   border-color: var(--terracota);
   box-shadow: 0 0 24px oklch(0.58 0.18 32 / 0.35);
 }
+
+/* ===== REDUCED MOTION — kill ink drop animation ===== */
 @media (prefers-reduced-motion: reduce) {
-.btn-premium {
-  position: relative;
-  overflow: hidden;
-  background: transparent;
-  border: 1px solid var(--white);
-  border-radius: 0;
-  color: var(--white);
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  z-index: 1;
+  .btn-premium::before {
+    opacity: 0;
+  }
+  .btn-premium:hover {
+    background: var(--terracota);
+    color: var(--white);
+    border-color: transparent;
+  }
 }
-.btn-premium::before {
+
+/* ===== PRICING CARD CTA ===== */
+.pricing-card .btn-empecemos {
+  background: transparent;
+  color: var(--white);
+  border: 2px solid var(--white);
+  border-radius: 10px;
+}
+.pricing-card .btn-empecemos::before {
   display: none;
 }
-.btn-premium:hover {
+.pricing-card .btn-empecemos:hover {
+  background: var(--terracota);
   color: var(--white);
-  border-color: var(--terracota);
+  border-color: transparent;
   box-shadow: 0 0 24px oklch(0.58 0.18 32 / 0.35);
-}
-.btn-premium:active {
-  color: var(--white);
-  border-color: var(--terracota);
-  box-shadow: 0 0 24px oklch(0.58 0.18 32 / 0.35);
-}
 }
 .navbar {
   position: fixed;
@@ -1421,8 +1397,10 @@ body::before {
   z-index: 1;
   transition: color 0.3s;
 }
-.faq-question:hover {
-  color: var(--terracota);
+@media (hover: hover) {
+  .faq-question:hover {
+    color: var(--terracota);
+  }
 }
 .faq-question svg {
   width: 1.5rem;
@@ -1505,6 +1483,7 @@ body::before {
 }
 .cta-final h2 {
   margin-bottom: var(--space-md);
+  white-space: nowrap;
 }
 .footer {
   border-top: none;
@@ -1832,8 +1811,8 @@ body::before {
   }
   .problema, .resultados, .como-funciona, .pricing, .faq {
     min-height: auto;
-    padding-top: 2.5rem;
-    padding-bottom: 2.5rem;
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
   }
   .hero {
     padding: 2rem 1rem;
@@ -2121,6 +2100,9 @@ body::before {
 .step:nth-of-type(3) { transition-delay: 0ms; }
 
 /* ===== PRELOADER ===== */
+html.preloading {
+  overflow: hidden !important;
+}
 #preloader-wrapper {
   position: fixed;
   top: 0; left: 0;
