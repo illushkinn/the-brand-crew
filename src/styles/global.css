@@ -560,78 +560,98 @@ a:focus-visible {
   animation-delay: -5s;
   animation-name: heroFloatDiag;
 }
-/* ≈ escritorio: shapes más grandes y expandidas */
-@media (min-width: 769px) {
-  .hero-shape:nth-child(5) {
-    width: 260px; height: 230px;
-    border-radius: 45% / 55%;
-    background: linear-gradient(225deg, var(--terracota), #f0a088, oklch(0.58 0.18 32 / 0.7));
-    top: 15%; left: -10%;
-    animation-delay: -3s;
-    animation-name: heroFloatSlow;
-  }
-  .hero-shape:nth-child(6) {
-    width: 200px; height: 180px;
-    border-radius: 55% / 45%;
-    background: linear-gradient(180deg, var(--terracota), #c47a68, #e8a085);
-    bottom: -8%; right: -8%;
-    animation-delay: -9s;
-    animation-name: heroPulse;
-  }
-  .hero-shape:nth-child(7) {
-    width: 170px; height: 150px;
-    border-radius: 50% / 40%;
-    background: linear-gradient(90deg, var(--verde), #8cd44a, oklch(0.82 0.2 125 / 0.7));
-    top: 55%; right: 20%;
-    animation-delay: -2s;
-    animation-name: heroFloatSlow;
-  }
-  .hero-shape:nth-child(8) {
-    width: 120px; height: 130px;
-    border-radius: 40% / 50%;
-    background: linear-gradient(135deg, var(--terracota), #f0a088, #f5e6b8);
-    top: 8%; left: 35%;
-    animation-delay: -6s;
-    animation-name: heroPulse;
-  }
-  .hero-shape:nth-child(9) {
-    width: 220px; height: 190px;
-    border-radius: 50% / 50%;
-    background: linear-gradient(315deg, var(--terracota), #c47a68, #e8a085);
-    bottom: 15%; left: -8%;
-    animation-delay: -11s;
-    animation-name: heroTilt;
-  }
+.hero-shape:nth-child(5) {
+  width: 260px; height: 230px;
+  border-radius: 45% / 55%;
+  background: linear-gradient(225deg, var(--terracota), #f0a088, oklch(0.58 0.18 32 / 0.7));
+  top: 15%; left: -10%;
+  animation-delay: -3s;
+  animation-name: heroFloatSlow;
+}
+.hero-shape:nth-child(6) {
+  width: 200px; height: 180px;
+  border-radius: 55% / 45%;
+  background: linear-gradient(180deg, var(--terracota), #c47a68, #e8a085);
+  bottom: -8%; right: -8%;
+  animation-delay: -9s;
+  animation-name: heroPulse;
+}
+.hero-shape:nth-child(7) {
+  width: 170px; height: 150px;
+  border-radius: 50% / 40%;
+  background: linear-gradient(90deg, var(--verde), #8cd44a, oklch(0.82 0.2 125 / 0.7));
+  top: 55%; right: 20%;
+  animation-delay: -2s;
+  animation-name: heroFloatSlow;
+}
+.hero-shape:nth-child(8) {
+  width: 120px; height: 130px;
+  border-radius: 40% / 50%;
+  background: linear-gradient(135deg, var(--terracota), #f0a088, #f5e6b8);
+  top: 8%; left: 35%;
+  animation-delay: -6s;
+  animation-name: heroPulse;
+}
+.hero-shape:nth-child(9) {
+  width: 220px; height: 190px;
+  border-radius: 50% / 50%;
+  background: linear-gradient(315deg, var(--terracota), #c47a68, #e8a085);
+  bottom: 15%; left: -8%;
+  animation-delay: -11s;
+  animation-name: heroTilt;
+}
+
+/* Reduce sizes on mobile so 9 shapes don't overwhelm the viewport */
+@media (max-width: 768px) {
+  .hero-shape:nth-child(1) { width: 180px; height: 160px; }
+  .hero-shape:nth-child(2) { width: 140px; height: 150px; }
+  .hero-shape:nth-child(3) { width: 120px; height: 130px; }
+  .hero-shape:nth-child(4) { width: 100px; height: 110px; }
+  .hero-shape:nth-child(5) { width: 170px; height: 150px; }
+  .hero-shape:nth-child(6) { width: 140px; height: 130px; }
+  .hero-shape:nth-child(7) { width: 120px; height: 110px; }
+  .hero-shape:nth-child(8) { width: 90px; height: 100px; }
+  .hero-shape:nth-child(9) { width: 150px; height: 130px; }
 }
 @keyframes heroFloatSlow {
   0%, 100% { transform: translate(0, 0) scale(1); }
-  25% { transform: translate(-40px, -20px) scale(1.05); }
-  50% { transform: translate(30px, 25px) scale(0.95); }
-  75% { transform: translate(-20px, -35px) scale(1.03); }
+  15% { transform: translate(-80px, -50px) scale(1.12); }
+  30% { transform: translate(70px, 60px) scale(0.88); }
+  50% { transform: translate(-60px, -70px) scale(1.08); }
+  70% { transform: translate(80px, 40px) scale(0.92); }
+  85% { transform: translate(-40px, -30px) scale(1.05); }
 }
 @keyframes heroFloat {
   0%, 100% { transform: translate(0, 0) scale(1); }
-  20% { transform: translate(30px, -40px) scale(1.07); }
-  40% { transform: translate(-30px, 15px) scale(0.93); }
-  60% { transform: translate(20px, 35px) scale(1.04); }
-  80% { transform: translate(-25px, -20px) scale(0.96); }
+  12% { transform: translate(70px, -90px) scale(1.15); }
+  25% { transform: translate(-60px, 40px) scale(0.88); }
+  40% { transform: translate(90px, 70px) scale(1.1); }
+  55% { transform: translate(-80px, -60px) scale(0.92); }
+  72% { transform: translate(50px, 80px) scale(1.12); }
+  88% { transform: translate(-50px, -40px) scale(0.95); }
 }
 @keyframes heroTilt {
   0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
-  25% { transform: translate(25px, -20px) rotate(8deg) scale(1.05); }
-  50% { transform: translate(-15px, 30px) rotate(-5deg) scale(0.95); }
-  75% { transform: translate(-30px, -10px) rotate(4deg) scale(1.02); }
+  15% { transform: translate(60px, -50px) rotate(18deg) scale(1.12); }
+  30% { transform: translate(-50px, 70px) rotate(-14deg) scale(0.88); }
+  50% { transform: translate(80px, -40px) rotate(12deg) scale(1.08); }
+  70% { transform: translate(-70px, 60px) rotate(-16deg) scale(0.9); }
+  85% { transform: translate(40px, -30px) rotate(6deg) scale(1.05); }
 }
 @keyframes heroPulse {
-  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
-  33% { transform: translate(10px, -25px) scale(1.12); opacity: 0.45; }
-  66% { transform: translate(-20px, 15px) scale(0.88); opacity: 0.25; }
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.35; }
+  20% { transform: translate(40px, -60px) scale(1.25); opacity: 0.55; }
+  40% { transform: translate(-50px, 50px) scale(0.8); opacity: 0.25; }
+  60% { transform: translate(60px, -30px) scale(1.2); opacity: 0.5; }
+  80% { transform: translate(-40px, 40px) scale(0.85); opacity: 0.3; }
 }
 @keyframes heroFloatDiag {
   0%, 100% { transform: translate(0, 0) scale(1); }
-  25% { transform: translate(-45px, 30px) scale(1.1); }
-  50% { transform: translate(35px, -35px) scale(0.93); }
-  75% { transform: translate(-20px, -40px) scale(1.06); }
+  15% { transform: translate(-90px, 70px) scale(1.18); }
+  30% { transform: translate(70px, -80px) scale(0.85); }
+  50% { transform: translate(-60px, -50px) scale(1.15); }
+  70% { transform: translate(80px, 60px) scale(0.9); }
+  85% { transform: translate(-50px, 40px) scale(1.1); }
 }
 @keyframes reveal-in {
   from {
@@ -1901,7 +1921,10 @@ body::before {
     font-size: 0.9rem;
   }
   .hero-shape {
-    opacity: 0.2;
+    opacity: 0.5;
+  }
+  .pricing-shape, .faq-shape, .cta-shape {
+    opacity: 0.4;
   }
   .hero-b2b-tags {
     margin-top: 0.25rem;
