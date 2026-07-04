@@ -168,7 +168,8 @@ ul { list-style: none; }
   border-radius: 50%;
   background: linear-gradient(180deg, var(--terracota), #c47a68, #e8a085);
   top: 50%; left: 50%;
-  transform: translateX(-50%);
+  margin-left: -70px;
+  margin-top: -65px;
   animation-delay: -15s;
   animation-name: heroPulse;
 }
@@ -1726,6 +1727,8 @@ body::before {
   }
   .mobile-menu {
     background: rgba(10, 10, 15, 0.45);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
   }
   .hero {
     padding-top: 5rem;

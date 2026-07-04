@@ -50,17 +50,17 @@
       preloader.removeEventListener('wheel', preventScroll);
       preloader.removeEventListener('touchmove', preventScroll);
 
-      // Release position:fixed BEFORE fade starts — preloader still covers the view
-      // Keeps overflow:hidden to prevent scrollbar from appearing
-      document.body.classList.remove('preloading');
-
+      // Start fade — keep BOTH body+html locked during the entire fade
+      // Hero section is NOT visible yet (covered by fading preloader)
       preloader.style.opacity = '0';
       preloader.style.transform = 'scale(0.97)';
       preloader.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
 
       setTimeout(function() {
-        // Remove overflow:hidden ONLY after preloader fade completes
+        // After fade completes: release EVERYTHING simultaneously
+        // Hero section UI + scrollbar appear in the SAME frame
         document.documentElement.classList.remove('preloading');
+        document.body.classList.remove('preloading');
         preloader.style.display = 'none';
         if (wrapper) {
           wrapper.classList.add('is-dismissed');
