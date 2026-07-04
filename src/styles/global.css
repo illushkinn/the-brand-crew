@@ -328,8 +328,8 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
 }
 .pricing-card .btn-empecemos:hover {
   color: var(--white);
-  border-color: rgba(255, 255, 255, 0.8);
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.08);
+  border-color: oklch(0.95 0.005 55 / 0.7);
+  box-shadow: 0 0 20px oklch(0.95 0.005 55 / 0.1);
 }
 .btn-premium {
   position: relative;
@@ -348,13 +348,13 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
 }
 .btn-premium:hover {
   color: var(--white);
-  border-color: rgba(255, 255, 255, 0.8);
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.08);
+  border-color: oklch(0.95 0.005 55 / 0.7);
+  box-shadow: 0 0 20px oklch(0.95 0.005 55 / 0.1);
 }
 .btn-premium:active {
   color: var(--white);
-  border-color: rgba(255, 255, 255, 0.8);
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.08);
+  border-color: oklch(0.95 0.005 55 / 0.7);
+  box-shadow: 0 0 20px oklch(0.95 0.005 55 / 0.1);
 }
 @media (prefers-reduced-motion: reduce) {
 .btn-premium {
@@ -373,13 +373,13 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
 }
 .btn-premium:hover {
   color: var(--white);
-  border-color: rgba(255, 255, 255, 0.8);
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.08);
+  border-color: oklch(0.95 0.005 55 / 0.7);
+  box-shadow: 0 0 20px oklch(0.95 0.005 55 / 0.1);
 }
 .btn-premium:active {
   color: var(--white);
-  border-color: rgba(255, 255, 255, 0.8);
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.08);
+  border-color: oklch(0.95 0.005 55 / 0.7);
+  box-shadow: 0 0 20px oklch(0.95 0.005 55 / 0.1);
 }
 }
 .navbar {
