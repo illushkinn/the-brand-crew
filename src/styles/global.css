@@ -328,7 +328,8 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
 }
 .pricing-card .btn-empecemos:hover {
   color: var(--white);
-  border-color: var(--verde);
+  border-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.08);
 }
 .btn-premium {
   position: relative;
@@ -337,7 +338,7 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   border: 1px solid var(--white);
   border-radius: 0;
   color: var(--white);
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 0.02em;
   z-index: 1;
   transition: border-color 0.3s ease;
@@ -347,11 +348,13 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
 }
 .btn-premium:hover {
   color: var(--white);
-  border-color: var(--verde);
+  border-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.08);
 }
 .btn-premium:active {
   color: var(--white);
-  border-color: var(--verde);
+  border-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.08);
 }
 @media (prefers-reduced-motion: reduce) {
 .btn-premium {
@@ -361,7 +364,7 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   border: 1px solid var(--white);
   border-radius: 0;
   color: var(--white);
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 0.02em;
   z-index: 1;
 }
@@ -370,11 +373,13 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
 }
 .btn-premium:hover {
   color: var(--white);
-  border-color: var(--verde);
+  border-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.08);
 }
 .btn-premium:active {
   color: var(--white);
-  border-color: var(--verde);
+  border-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.08);
 }
 }
 .navbar {
