@@ -130,6 +130,7 @@ ul { list-style: none; }
 .faq {
   position: relative;
   overflow: hidden;
+  padding-top: 6rem;
 }
 .faq-shapes {
   position: absolute;
