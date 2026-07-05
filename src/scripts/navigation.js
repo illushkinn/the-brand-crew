@@ -26,14 +26,22 @@
   
   /**
    * Sets the clip-path circle origin to the hamburger button position
-   * So the circle expands from the button center (Looney Tunes style)
+   * Uses inline style to override CSS with precise pixel coordinates
    */
   function setClipOrigin() {
     const rect = hamburgerBtn.getBoundingClientRect();
-    const cx = rect.left + rect.width / 2;
-    const cy = rect.top + rect.height / 2;
-    mobileMenu.style.setProperty('--clip-origin-x', cx + 'px');
-    mobileMenu.style.setProperty('--clip-origin-y', cy + 'px');
+    const cx = Math.round(rect.left + rect.width / 2);
+    const cy = Math.round(rect.top + rect.height / 2);
+    mobileMenu.style.clipPath = 'circle(150% at ' + cx + 'px ' + cy + 'px)';
+    mobileMenu.style.webkitClipPath = 'circle(150% at ' + cx + 'px ' + cy + 'px)';
+  }
+
+  /**
+   * Resets inline clip-path so CSS class takes over for closing animation
+   */
+  function resetClipOrigin() {
+    mobileMenu.style.clipPath = '';
+    mobileMenu.style.webkitClipPath = '';
   }
 
   /**
@@ -42,8 +50,17 @@
   function openMenu() {
     state.menuOpen = true;
     setLinkDelays(true);
-    setClipOrigin();
-    mobileMenu.classList.add('is-open');
+    // Set clip origin BEFORE adding is-open so the circle starts from 0%
+    mobileMenu.style.clipPath = 'circle(0% at ' + (function() {
+      const rect = hamburgerBtn.getBoundingClientRect();
+      return Math.round(rect.left + rect.width / 2) + 'px ' + Math.round(rect.top + rect.height / 2) + 'px';
+    })() + ')';
+    mobileMenu.style.webkitClipPath = mobileMenu.style.clipPath;
+    // Use rAF to ensure the 0% circle renders before transitioning to 150%
+    requestAnimationFrame(function() {
+      mobileMenu.classList.add('is-open');
+      setClipOrigin();
+    });
     mobileMenu.removeAttribute('inert');
     hamburgerBtn.setAttribute('aria-expanded', 'true');
     document.documentElement.style.overflow = 'clip';
@@ -56,6 +73,7 @@
   function closeMenu() {
     state.menuOpen = false;
     setLinkDelays(false);
+    resetClipOrigin();
     mobileMenu.classList.remove('is-open');
     mobileMenu.setAttribute('inert', '');
     hamburgerBtn.setAttribute('aria-expanded', 'false');

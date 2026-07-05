@@ -474,15 +474,15 @@ a:focus-visible {
   align-items: center;
   justify-content: center;
   gap: var(--space-sm);
-  clip-path: circle(0% at var(--clip-origin-x, top right) var(--clip-origin-y, top right));
-  -webkit-clip-path: circle(0% at var(--clip-origin-x, top right) var(--clip-origin-y, top right));
+  clip-path: circle(0% at top right);
+  -webkit-clip-path: circle(0% at top right);
   pointer-events: none;
   will-change: clip-path;
   transition: clip-path 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), -webkit-clip-path 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .mobile-menu.is-open {
-  clip-path: circle(150% at var(--clip-origin-x, top right) var(--clip-origin-y, top right));
-  -webkit-clip-path: circle(150% at var(--clip-origin-x, top right) var(--clip-origin-y, top right));
+  clip-path: circle(150% at top right);
+  -webkit-clip-path: circle(150% at top right);
   pointer-events: all;
 }
 .mobile-menu a {
