@@ -133,6 +133,10 @@ ul { list-style: none; }
 .faq {
   position: relative;
   overflow: hidden;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   padding-top: 7rem;
   padding-bottom: 5rem;
   scroll-margin-top: 5rem;
@@ -1771,13 +1775,13 @@ body::before {
     font-family: 'Rethink Sans', sans-serif;
   }
   .hero-title {
-    font-size: clamp(4.5rem, 16vw, 10rem);
+    font-size: clamp(3rem, 14vw, 8rem);
     line-height: 1.05;
     margin-bottom: 0.75rem;
     word-spacing: -0.5px;
   }
   .hero-sub {
-    font-size: clamp(1.5rem, 5vw, 3rem);
+    font-size: clamp(1rem, 4vw, 2rem);
     text-wrap: balance;
     margin-bottom: 2rem;
   }
@@ -2064,7 +2068,7 @@ body::before {
     flex-shrink: 0;
   }
 }
-@media (max-width: 380px) {
+@media (max-width: 380px) and (max-height: 700px) {
   h1 { font-size: clamp(1.8rem, 8vw, 2.5rem); }
   h2 { font-size: clamp(1.4rem, 6vw, 2rem); }
   .section {
