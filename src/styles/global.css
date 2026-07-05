@@ -139,7 +139,6 @@ ul { list-style: none; }
   justify-content: flex-start;
   padding-top: 7rem;
   padding-bottom: 5rem;
-  scroll-margin-top: 5rem;
 }
 @media (min-width: 768px) {
   .faq {
