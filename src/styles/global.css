@@ -133,7 +133,6 @@ ul { list-style: none; }
 .faq {
   position: relative;
   overflow: hidden;
-  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -335,8 +334,7 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   color: var(--white);
   font-weight: 500;
   letter-spacing: 0.02em;
-  transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.3s ease;
-  transform: translateY(0);
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
 }
 .btn-premium::before {
   display: none;
@@ -346,14 +344,12 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   box-shadow:
     0 0 0 1px var(--terracota),
     0 4px 28px oklch(0.58 0.18 32 / 0.25);
-  transform: translateY(-1px);
 }
 .btn-premium:active {
   border-color: var(--terracota);
   box-shadow:
     0 0 0 1px var(--terracota),
     0 2px 12px oklch(0.58 0.18 32 / 0.15);
-  transform: translateY(0);
 }
 
 /* ===== REDUCED MOTION — kill animations ===== */
@@ -380,7 +376,6 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   box-shadow:
     0 0 0 1px var(--terracota),
     0 4px 28px oklch(0.58 0.18 32 / 0.25);
-  transform: translateY(-1px);
 }
 /* ========================================
    🧠 ORGANISMS — Navigation
