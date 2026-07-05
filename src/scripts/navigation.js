@@ -25,11 +25,24 @@
   }
   
   /**
+   * Sets the clip-path circle origin to the hamburger button position
+   * So the circle expands from the button center (Looney Tunes style)
+   */
+  function setClipOrigin() {
+    const rect = hamburgerBtn.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+    mobileMenu.style.setProperty('--clip-origin-x', cx + 'px');
+    mobileMenu.style.setProperty('--clip-origin-y', cy + 'px');
+  }
+
+  /**
    * Opens the mobile menu with animation
    */
   function openMenu() {
     state.menuOpen = true;
     setLinkDelays(true);
+    setClipOrigin();
     mobileMenu.classList.add('is-open');
     mobileMenu.removeAttribute('inert');
     hamburgerBtn.setAttribute('aria-expanded', 'true');
