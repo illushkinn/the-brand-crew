@@ -20,6 +20,9 @@ dist/
 
 # Generated files
 *.pdf
+
+# Astro cache
+.astro/
 OPTIMIZATION-SUMMARY.md
 PRELOADER-OPTIMIZATION.md
 AUDIT-REPORT.md
