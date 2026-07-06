@@ -303,40 +303,49 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   transform: scale(0.96);
 }
 
-/* ===== CTA — OUTLINE + PREMIUM GLOW (UNIFIED) ===== */
+/* ===== CTA — GLOW PULSE ===== */
 .btn-premium {
-  background: transparent;
-  border: 2.5px solid rgba(255, 255, 255, 0.2);
+  background: oklch(0.58 0.18 32);
+  border: none;
   border-radius: 10px;
   color: var(--white);
   font-weight: 500;
   letter-spacing: 0.02em;
-  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+  transition: box-shadow 0.3s ease;
+  box-shadow: 0 0 0 0 oklch(0.58 0.18 32 / 0.6);
 }
 .btn-premium::before {
   display: none;
 }
 .btn-premium:hover {
-  border-color: var(--terracota);
-  box-shadow:
-    0 0 0 1px var(--terracota),
-    0 4px 28px oklch(0.58 0.18 32 / 0.25);
+  box-shadow: 0 0 15px 4px oklch(0.58 0.18 32 / 0.6);
+  animation: glowPulse 2s ease-in-out infinite;
 }
 .btn-premium:active {
-  border-color: var(--terracota);
-  box-shadow:
-    0 0 0 1px var(--terracota),
-    0 2px 12px oklch(0.58 0.18 32 / 0.15);
+  transform: scale(0.96);
+  animation: none;
+  box-shadow: 0 0 8px 2px oklch(0.58 0.18 32 / 0.4);
 }
 
-/* ===== REDUCED MOTION — kill animations ===== */
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 oklch(0.58 0.18 32 / 0.5);
+  }
+  50% {
+    box-shadow: 0 0 15px 4px oklch(0.58 0.18 32 / 0.7);
+  }
+}
+
+/* ===== REDUCED MOTION — static glow only, no pulse ===== */
 @media (prefers-reduced-motion: reduce) {
   .btn-premium {
     transition: none;
+    animation: none;
+    box-shadow: 0 0 0 4px oklch(0.58 0.18 32 / 0.3);
   }
   .btn-premium:hover {
-    border-color: var(--terracota);
-    color: var(--white);
+    animation: none;
+    box-shadow: 0 0 0 4px oklch(0.58 0.18 32 / 0.3);
   }
 }
 
@@ -494,88 +503,62 @@ a:focus-visible {
   animation: heroFloat 24s cubic-bezier(0.45, 0.05, 0.25, 1) infinite;
 }
 .hero-shape:nth-child(1) {
+  /* Large — terracota, slow float */
   width: 280px; height: 240px;
   border-radius: 50% / 40%;
   background: linear-gradient(135deg, var(--terracota), #dd614c, var(--terracota));
   top: -8%; right: -5%;
   animation-delay: 0s;
+  animation-duration: 28s;
 }
 .hero-shape:nth-child(2) {
+  /* Medium — verde, pulse */
   width: 200px; height: 220px;
   border-radius: 40% / 50%;
-  background: linear-gradient(225deg, var(--terracota), #c47a68, #e8a085);
+  background: linear-gradient(225deg, oklch(0.82 0.2 125), #8cd44a, oklch(0.72 0.18 125));
   bottom: -6%; left: -5%;
   animation-delay: -7s;
-  animation-name: heroTilt;
+  animation-name: heroPulse;
+  animation-duration: 20s;
 }
 .hero-shape:nth-child(3) {
-  width: 160px; height: 170px;
+  /* Medium — ocre, tilt */
+  width: 180px; height: 170px;
   border-radius: 35% / 45%;
-  background: linear-gradient(180deg, var(--verde), #8cd44a, oklch(0.82 0.2 125 / 0.8));
+  background: linear-gradient(180deg, oklch(0.72 0.12 75), #e8c86a, oklch(0.76 0.14 80 / 0.8));
   top: 30%; left: 55%;
   animation-delay: -14s;
-  animation-name: heroPulse;
+  animation-name: heroTilt;
+  animation-duration: 22s;
 }
 .hero-shape:nth-child(4) {
+  /* Small — terracota accent, diagonal */
   width: 130px; height: 140px;
   border-radius: 50%;
-  background: linear-gradient(45deg, var(--verde), #a0e060);
-  bottom: 10%; right: 12%;
+  background: linear-gradient(45deg, var(--terracota), #f0a088, #f5e6b8);
+  bottom: 15%; right: 15%;
   animation-delay: -5s;
   animation-name: heroFloatDiag;
+  animation-duration: 18s;
 }
 .hero-shape:nth-child(5) {
-  width: 260px; height: 230px;
-  border-radius: 45% / 55%;
-  background: linear-gradient(225deg, var(--terracota), #f0a088, oklch(0.58 0.18 32 / 0.7));
-  top: 15%; left: -10%;
+  /* Small — verde accent, slow float */
+  width: 150px; height: 130px;
+  border-radius: 50% / 40%;
+  background: linear-gradient(90deg, oklch(0.82 0.2 125), #a0e060, oklch(0.72 0.18 125 / 0.7));
+  top: 55%; left: 10%;
   animation-delay: -3s;
   animation-name: heroFloatSlow;
-}
-.hero-shape:nth-child(6) {
-  width: 200px; height: 180px;
-  border-radius: 55% / 45%;
-  background: linear-gradient(180deg, var(--terracota), #c47a68, #e8a085);
-  bottom: -8%; right: -8%;
-  animation-delay: -9s;
-  animation-name: heroPulse;
-}
-.hero-shape:nth-child(7) {
-  width: 170px; height: 150px;
-  border-radius: 50% / 40%;
-  background: linear-gradient(90deg, var(--verde), #8cd44a, oklch(0.82 0.2 125 / 0.7));
-  top: 55%; right: 20%;
-  animation-delay: -2s;
-  animation-name: heroFloatSlow;
-}
-.hero-shape:nth-child(8) {
-  width: 120px; height: 130px;
-  border-radius: 40% / 50%;
-  background: linear-gradient(135deg, var(--terracota), #f0a088, #f5e6b8);
-  top: 8%; left: 35%;
-  animation-delay: -6s;
-  animation-name: heroPulse;
-}
-.hero-shape:nth-child(9) {
-  width: 220px; height: 190px;
-  border-radius: 50% / 50%;
-  background: linear-gradient(315deg, var(--terracota), #c47a68, #e8a085);
-  bottom: 15%; left: -8%;
-  animation-delay: -11s;
-  animation-name: heroTilt;
+  animation-duration: 26s;
 }
 
-/* Reduce sizes on mobile so 9 shapes don't overwhelm the viewport */
+/* Reduce sizes on mobile */
 @media (max-width: 768px) {
   .hero-shape:nth-child(1) { width: 180px; height: 160px; }
   .hero-shape:nth-child(2) { width: 140px; height: 150px; }
   .hero-shape:nth-child(3) { width: 120px; height: 130px; }
   .hero-shape:nth-child(4) { width: 100px; height: 110px; }
-  .hero-shape:nth-child(5) { width: 170px; height: 150px; }
-  .hero-shape:nth-child(6) { width: 140px; height: 130px; }
-  .hero-shape:nth-child(7) { width: 120px; height: 110px; }
-  .hero-shape:nth-child(8) { width: 90px; height: 100px; }
-  .hero-shape:nth-child(9) { width: 150px; height: 130px; }
+  .hero-shape:nth-child(5) { width: 110px; height: 100px; }
 }
 @keyframes heroFloatSlow {
   0%, 100% { transform: translate(0, 0) scale(1); }
