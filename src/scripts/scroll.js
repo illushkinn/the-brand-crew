@@ -1,50 +1,55 @@
-// scroll.js - Navbar background and scroll-to-top visibility via footer IntersectionObserver
+// scroll.js - Navbar background and scroll-to-top visibility
 (function() {
   'use strict';
   
   const scrollToTop = document.getElementById('scrollToTop');
-  const footer = document.querySelector('.footer');
   const navbar = document.querySelector('.navbar');
-  
-  // Flag to prevent observer from re-showing arrow during smooth scroll
   var dismissLock = false;
   
-  var dismissTimeout = null;
-
   // --- Scroll-to-top click ---
   if (scrollToTop) {
     scrollToTop.addEventListener('click', function() {
+      // Immediately hide, lock to prevent re-show during animation
       scrollToTop.classList.remove('is-visible');
       dismissLock = true;
-      clearTimeout(dismissTimeout);
-      // Safety fallback: release lock after 2s even if scrollend doesn't fire
-      // (scrollend has partial support on older iOS/Android browsers)
-      dismissTimeout = setTimeout(function() {
-        dismissLock = false;
-      }, 2000);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
-
-  // Release lock when smooth scroll actually finishes
-  window.addEventListener('scrollend', function() {
-    dismissLock = false;
-    clearTimeout(dismissTimeout);
-  });
   
-  // --- Scroll-to-top visibility: only when footer is in view ---
-  if (scrollToTop && footer) {
-    var observer = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (dismissLock) return;
-        if (entry.isIntersecting) {
-          scrollToTop.classList.add('is-visible');
-        } else {
-          scrollToTop.classList.remove('is-visible');
-        }
-      });
-    }, { threshold: 0.1 });
-    observer.observe(footer);
+  // Release lock when smooth scroll lands at the top
+  function releaseDismissLock() {
+    var scrollY = window.scrollY || window.pageYOffset;
+    if (scrollY <= 50) {
+      // Near top — safe to release
+      dismissLock = false;
+      // Force re-check (button should stay hidden since we're at the top)
+      handleScrollToTop();
+    } else {
+      // Still far from top — keep lock, check again later
+      setTimeout(releaseDismissLock, 300);
+    }
+  }
+  
+  // --- Scroll-to-top visibility via scroll position ---
+  function handleScrollToTop() {
+    if (!scrollToTop) return;
+    
+    var scrollY = window.scrollY || window.pageYOffset;
+    
+    // If we're near the top, always hide (overrides dismissLock for edge cases)
+    if (scrollY <= 50) {
+      scrollToTop.classList.remove('is-visible');
+      return;
+    }
+    
+    if (dismissLock) return; // Don't re-show during animation to top
+    
+    // Show when scrolled past 60% of viewport height
+    if (scrollY > window.innerHeight * 0.6) {
+      scrollToTop.classList.add('is-visible');
+    } else {
+      scrollToTop.classList.remove('is-visible');
+    }
   }
   
   // --- Navbar background threshold ---
@@ -58,12 +63,23 @@
   }
   
   function handleScroll() {
-    const scrollY = window.scrollY || window.pageYOffset;
+    var scrollY = window.scrollY || window.pageYOffset;
     handleNavbar(scrollY);
+    handleScrollToTop();
   }
   
-  let ticking = false;
+  // Listen for scrollend to release the dismiss lock
+  window.addEventListener('scrollend', function() {
+    if (dismissLock) releaseDismissLock();
+  });
+  
+  // Fallback: also check on every scroll tick (handles browsers without scrollend support)
+  var ticking = false;
   window.addEventListener('scroll', function() {
+    if (dismissLock) {
+      // On mobile, smooth scroll might not fire scrollend. Check periodically.
+      releaseDismissLock();
+    }
     if (!ticking) {
       window.requestAnimationFrame(function() {
         handleScroll();

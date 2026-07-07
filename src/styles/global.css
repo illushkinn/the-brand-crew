@@ -56,7 +56,8 @@ body {
       oklch(0.10 0.008 280);
   }
   .hero-shape {
-    filter: blur(35px);
+    filter: blur(20px);
+    opacity: 0.25;
   }
   .pricing-shape, .faq-shape, .cta-shape {
     opacity: 0.25;
@@ -81,7 +82,7 @@ ul { list-style: none; }
   --oklch-terracota-hover: oklch(0.5 0.16 32);
   --oklch-verde: oklch(0.82 0.2 125);
   --oklch-verde-hover: oklch(0.72 0.18 125);
-  --oklch-ocre: oklch(0.72 0.12 75);
+  --oklch-teal: oklch(0.52 0.14 190);
   --space-xs: 0.25rem;
   --space-sm: 0.5rem;
   --space-md: 1rem;
@@ -107,12 +108,27 @@ ul { list-style: none; }
   --glass-bg: rgba(255,255,255,0.06);
   --glass-border: rgba(255,255,255,0.10);
   --accent-glow: oklch(0.58 0.18 32 / 0.15);
-  --font-display: 'Rethink Sans', sans-serif;
-  --font-body: 'Rethink Sans', sans-serif;
-  --font-accent: 'Grand Hotel', cursive;
+  --font-display: 'Onest', sans-serif;
+  --font-body: 'Onest', sans-serif;
+  --font-accent: 'Onest', sans-serif;
   /* Color aliases (map to OKLCH primitives) */
   --color-verde: var(--verde);
   --glass-effect: blur(12px) saturate(120%);
+
+  /* ── Extended spacing (shared scale, new names) ── */
+  --space-3xs: 0.25rem;   /*  4px */
+  --space-2xs: 0.5rem;    /*  8px */
+
+  /* ── Shared transition tokens ── */
+  --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --duration-slow: 400ms;
+
+  /* ── Shared layout ── */
+  --content-max: 1040px;
+  --content-narrow: 720px;
 }
 /* ========================================
    🧠 ORGANISMS — Hero, FAQ, Section Shapes
@@ -414,23 +430,28 @@ a:focus-visible {
   position: fixed;
   inset: 0;
   z-index: 999;
-  background: rgba(0, 0, 0, 0.88);
-  backdrop-filter: blur(24px) saturate(140%);
-  -webkit-backdrop-filter: blur(24px) saturate(140%);
+  background: rgba(10, 10, 20, 0.55);
+  backdrop-filter: blur(32px) saturate(140%);
+  -webkit-backdrop-filter: blur(32px) saturate(140%);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: var(--space-sm);
-  clip-path: circle(0% at top right);
-  -webkit-clip-path: circle(0% at top right);
+  --origin-x: right;
+  --origin-y: top;
+  clip-path: circle(0% at var(--origin-x) var(--origin-y));
+  -webkit-clip-path: circle(0% at var(--origin-x) var(--origin-y));
   pointer-events: none;
   will-change: clip-path;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
   transition: clip-path 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), -webkit-clip-path 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .mobile-menu.is-open {
-  clip-path: circle(150% at top right);
-  -webkit-clip-path: circle(150% at top right);
+  clip-path: circle(150% at var(--origin-x) var(--origin-y));
+  -webkit-clip-path: circle(150% at var(--origin-x) var(--origin-y));
   pointer-events: all;
 }
 .mobile-menu a {
@@ -500,10 +521,10 @@ a:focus-visible {
   animation-duration: 20s;
 }
 .hero-shape:nth-child(3) {
-  /* Medium — ocre, tilt */
+  /* Medium — teal, tilt */
   width: 180px; height: 170px;
   border-radius: 35% / 45%;
-  background: linear-gradient(180deg, oklch(0.72 0.12 75), #e8c86a, oklch(0.76 0.14 80 / 0.8));
+  background: linear-gradient(180deg, oklch(0.52 0.14 190), #3a9e9e, oklch(0.55 0.12 190 / 0.8));
   top: 30%; left: 55%;
   animation-delay: -14s;
   animation-name: heroTilt;
@@ -532,11 +553,12 @@ a:focus-visible {
 
 /* Reduce sizes on mobile */
 @media (max-width: 768px) {
-  .hero-shape:nth-child(1) { width: 180px; height: 160px; }
-  .hero-shape:nth-child(2) { width: 140px; height: 150px; }
-  .hero-shape:nth-child(3) { width: 120px; height: 130px; }
-  .hero-shape:nth-child(4) { width: 100px; height: 110px; }
-  .hero-shape:nth-child(5) { width: 110px; height: 100px; }
+  .hero-shape { filter: blur(20px); opacity: 0.25; }
+  .hero-shape:nth-child(1) { width: 120px; height: 100px; }
+  .hero-shape:nth-child(2) { width: 100px; height: 110px; }
+  .hero-shape:nth-child(3) { width: 90px; height: 80px; }
+  .hero-shape:nth-child(4) { width: 70px; height: 80px; top: 20%; right: 5%; }
+  .hero-shape:nth-child(5) { width: 80px; height: 70px; }
 }
 @keyframes heroFloatSlow {
   0%, 100% { transform: translate(0, 0) scale(1); }
@@ -620,7 +642,7 @@ body::before {
     oklch(0.58 0.18 32 / 0.04) 20%,
     oklch(0.58 0.18 32 / 0.08) 35%,
     oklch(0.82 0.2 125 / 0.05) 50%,
-    oklch(0.72 0.12 75 / 0.06) 65%,
+    oklch(0.52 0.14 190 / 0.06) 65%,
     transparent 80%
   );
   transform: rotate(-15deg);
@@ -1680,28 +1702,32 @@ body::before {
   }
   .tag-b2b {
     padding-left: 0;
+    font-size: 0.8rem;
+    padding: 0.4rem 0.85rem;
   }
   .navbar-brand-text {
     display: none;
   }
   .hero-title, .hero-sub {
-    font-family: 'Rethink Sans', sans-serif;
+    font-family: 'Onest', sans-serif;
   }
   .hero-title {
-    font-size: clamp(3.6rem, 16vw, 8rem);
+    font-size: clamp(2.6rem, 12vw, 4.5rem);
     line-height: 1.0;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.35rem;
     word-spacing: -1px;
     letter-spacing: -0.03em;
   }
   .hero-sub {
-    font-size: clamp(1rem, 3.8vw, 1.8rem);
+    font-size: clamp(1.1rem, 4.5vw, 1.8rem);
     text-wrap: balance;
+    margin-top: 0.75rem;
     margin-bottom: 0.75rem;
   }
   .hero-meta {
     font-size: 0.85rem;
-    margin-bottom: 0.75rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
     gap: 0.15rem;
   }
   .hero-actions .btn-lg {
@@ -1709,7 +1735,10 @@ body::before {
     font-size: 1.05rem;
   }
   .hero-actions {
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+  .hero-b2b-tags {
+    margin-top: 0.75rem;
   }
   .resultados-grid {
     display: flex;

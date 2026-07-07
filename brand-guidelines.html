@@ -1,825 +1,773 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es-AR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Brand Crew — Brand Guidelines</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Rethink+Sans:wght@300;400;500;600;700&family=Grand+Hotel&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@300..800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 /* ============================================
    THE BRAND CREW — BRAND GUIDELINES
-   Screen + Print Styles
+   GovTech + Accessibility Branding Studio
+   Fundado por Illya Grytsyk · 2026
    ============================================ */
 
 :root {
-  --terracota: #C95A4A;
-  --terracota-oklch: oklch(0.58 0.18 32);
-  --verde: #A8E060;
-  --verde-oklch: oklch(0.82 0.2 125);
-  --ocre: #D4A843;
-  --ocre-oklch: oklch(0.72 0.12 75);
-  --bg-dark: #0A0A0F;
-  --bg-card: #12121A;
-  --bg-elevated: #1A1A26;
-  --headline: #F0F0F5;
-  --body: #C8C8D0;
-  --body-dim: #9A9AA8;
-  --glass-bg: rgba(255,255,255,0.06);
-  --glass-border: rgba(255,255,255,0.10);
-  --font-display: 'Rethink Sans', sans-serif;
-  --font-accent: 'Grand Hotel', cursive;
+  --teal: oklch(0.52 0.14 190);
+  --teal-hover: oklch(0.48 0.16 190);
+  --terracota: oklch(0.58 0.18 32);
+  --terracota-hover: oklch(0.5 0.16 32);
+  --verde: oklch(0.82 0.2 125);
+  --verde-hover: oklch(0.72 0.18 125);
+  --bg: oklch(0.06 0.006 280);
+  --bg-card: oklch(0.08 0.012 280);
+  --headline: oklch(0.95 0.004 280);
+  --body: oklch(0.8 0.008 280);
+  --body-dim: oklch(0.75 0.012 280);
+  --glass-bg: rgba(255,255,255,0.05);
+  --glass-border: rgba(255,255,255,0.08);
+  --glass-hover: rgba(255,255,255,0.09);
+  --font-display: 'Onest', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
-  --radius: 12px;
-  --page-w: 210mm;
-  --page-h: 297mm;
+  --radius: 16px;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+/* ---------- Reset & Base ---------- */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
 body {
   font-family: var(--font-display);
-  background: var(--bg-dark);
+  background: var(--bg);
   color: var(--body);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
+  line-height: 1.65;
+  font-weight: 350;
 }
 
-/* ========== SCREEN LAYOUT ========== */
-.page {
-  max-width: 900px;
-  margin: 2rem auto;
-  padding: 3rem 2.5rem;
-  background: var(--bg-card);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius);
-  position: relative;
-  overflow: hidden;
-  min-height: 500px;
+/* ---------- Layout ---------- */
+.container {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
 }
 
-.page::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--terracota), var(--ocre), var(--verde));
-  opacity: 0.6;
+section {
+  margin-bottom: 4.5rem;
 }
 
-.page-label {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--terracota);
-  margin-bottom: 1.5rem;
-}
-
+/* ---------- Typography ---------- */
 h1 {
   font-family: var(--font-display);
-  font-weight: 500;
-  font-size: 3rem;
+  font-weight: 600;
+  font-size: clamp(2.8rem, 8vw, 5rem);
   color: var(--headline);
   line-height: 0.92;
-  letter-spacing: -0.03em;
-  margin-bottom: 1rem;
+  letter-spacing: -0.04em;
+  margin-bottom: 0.75rem;
 }
 
 h2 {
   font-family: var(--font-display);
-  font-weight: 500;
-  font-size: 2.2rem;
+  font-weight: 600;
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
   color: var(--headline);
-  line-height: 0.95;
+  line-height: 1.1;
   letter-spacing: -0.03em;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
 }
 
 h3 {
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: 1.4rem;
+  font-size: clamp(1.25rem, 3vw, 1.6rem);
   color: var(--headline);
-  margin-bottom: 0.75rem;
+  line-height: 1.2;
   letter-spacing: -0.02em;
+  margin-bottom: 0.75rem;
 }
 
-h4 {
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: 1.1rem;
-  color: var(--headline);
-  margin-bottom: 0.5rem;
+p {
+  margin-bottom: 1rem;
+  color: var(--body);
+  font-weight: 350;
 }
 
-p { margin-bottom: 1rem; color: var(--body); }
 p strong { color: var(--headline); font-weight: 600; }
+a { color: var(--teal); text-decoration: none; }
+a:hover { color: var(--teal-hover); }
 
-.terracota { color: var(--terracota); }
-.verde { color: var(--verde); }
-.ocre { color: var(--ocre); }
-.mono { font-family: var(--font-mono); }
-.accent { font-family: var(--font-accent); }
-
-.tag {
-  display: inline-block;
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   font-family: var(--font-mono);
   font-size: 0.65rem;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  padding: 0.25rem 0.75rem;
+  letter-spacing: 0.12em;
+  color: var(--teal);
+  margin-bottom: 1rem;
+  padding: 0.3rem 0.75rem;
+  border: 1px solid color-mix(in oklch, var(--teal) 30%, transparent);
   border-radius: 100px;
-  border: 1px solid var(--terracota);
-  color: var(--terracota);
-  margin-bottom: 1.5rem;
 }
 
-/* Color swatches */
-.swatch-group { display: flex; gap: 1rem; flex-wrap: wrap; margin: 1.5rem 0; }
-.swatch {
-  flex: 1; min-width: 120px;
-  padding: 1rem;
-  border-radius: var(--radius);
-  border: 1px solid var(--glass-border);
+.section-label svg {
+  width: 12px;
+  height: 12px;
 }
-.swatch-color {
-  height: 60px;
-  border-radius: 8px;
-  margin-bottom: 0.75rem;
-}
-.swatch-name { font-weight: 600; color: var(--headline); font-size: 0.9rem; }
-.swatch-value { font-family: var(--font-mono); font-size: 0.75rem; color: var(--body-dim); }
 
-/* Tables */
-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
-th { text-align: left; padding: 0.6rem 0.75rem; font-weight: 600; color: var(--headline); border-bottom: 1px solid var(--glass-border); }
-td { padding: 0.6rem 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--body); }
-tr:last-child td { border-bottom: none; }
-
-/* Glass card inside pages */
+/* ---------- Glass Card ---------- */
 .glass-card {
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-radius: var(--radius);
-  padding: 1.5rem;
+  padding: 1.75rem;
   margin: 1.5rem 0;
+  transition: border-color 0.3s, background 0.3s;
+}
+
+.glass-card:hover {
+  border-color: rgba(255,255,255,0.15);
+  background: var(--glass-hover);
 }
 
 .glass-card p:last-child { margin-bottom: 0; }
 
-/* Shape decoration */
-.shape-blob {
-  position: absolute;
+/* ---------- Section Header ---------- */
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.section-header svg {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+/* ---------- Color Swatches ---------- */
+.swatch-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.swatch {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  padding: 1rem;
+  transition: border-color 0.3s;
+}
+
+.swatch:hover {
+  border-color: rgba(255,255,255,0.15);
+}
+
+.swatch-preview {
+  height: 80px;
+  border-radius: 10px;
+  margin-bottom: 0.75rem;
+}
+
+.swatch-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--headline);
+  margin-bottom: 0.25rem;
+}
+
+.swatch-value {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--body-dim);
+  line-height: 1.6;
+}
+
+/* ---------- Typography Samples ---------- */
+.type-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin: 1rem 0;
+}
+
+.type-card h3 { margin-bottom: 0.25rem; }
+
+.type-specs {
+  list-style: none;
+  margin-top: 0.75rem;
+}
+
+.type-specs li {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--body-dim);
+  padding: 0.3rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+.type-specs li:last-child { border-bottom: none; }
+
+.type-sample-text {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--headline);
+  letter-spacing: -0.03em;
+  margin: 0.75rem 0 0.25rem;
+}
+
+.type-sample-body {
+  font-size: 1rem;
+  color: var(--body);
+  margin: 0.75rem 0 0.25rem;
+}
+
+.mono-sample {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--teal);
+  margin: 0.75rem 0 0.25rem;
+}
+
+/* ---------- Logo Usage ---------- */
+.logo-display {
+  background: var(--bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  padding: 2.5rem 2rem;
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+.logo-display .logo-text {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: var(--headline);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.logo-display .logo-tagline {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(0.8rem, 2vw, 1rem);
+  color: var(--body-dim);
+  margin-top: 0.5rem;
+  letter-spacing: 0.05em;
+}
+
+.logo-rule {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+.logo-rule:last-child { border-bottom: none; }
+
+.logo-rule svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.logo-rule p { font-size: 0.9rem; margin: 0; }
+
+/* ---------- Tone Table ---------- */
+.tone-grid {
+  display: grid;
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+}
+
+.tone-item {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  padding: 1rem 1.25rem;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+}
+
+.tone-item svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.tone-item h4 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--headline);
+  margin-bottom: 0.2rem;
+}
+
+.tone-item p {
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+/* ---------- Divider ---------- */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--glass-border), transparent);
+  margin: 3rem 0;
+}
+
+/* ---------- Gradient Accent Bar ---------- */
+.accent-bar {
+  height: 3px;
+  background: linear-gradient(90deg, var(--terracota), var(--teal), var(--verde));
+  opacity: 0.5;
+  border-radius: 2px;
+  margin-bottom: 3rem;
+}
+
+/* ---------- Blob Decorations ---------- */
+.blob {
+  position: fixed;
   border-radius: 50%;
-  filter: blur(40px);
-  opacity: 0.12;
+  filter: blur(80px);
+  opacity: 0.08;
   pointer-events: none;
-  z-index: 0;
-}
-.shape-1 { width: 200px; height: 180px; background: var(--terracota); top: -10%; right: -5%; }
-.shape-2 { width: 150px; height: 160px; background: var(--verde); bottom: -8%; left: -5%; }
-.shape-3 { width: 120px; height: 110px; background: var(--ocre); top: 40%; left: 60%; }
-
-.page-content { position: relative; z-index: 1; }
-
-/* Print-specific styles */
-@media print {
-  @page {
-    size: A4;
-    margin: 1.5cm 2cm;
-  }
-
-  body {
-    background: white;
-    color: #1a1a1a;
-    font-size: 10pt;
-    line-height: 1.5;
-  }
-
-  .page {
-    max-width: none;
-    margin: 0;
-    padding: 0;
-    background: white;
-    border: none;
-    border-radius: 0;
-    min-height: 0;
-    page-break-after: always;
-    page-break-inside: avoid;
-    box-shadow: none;
-  }
-
-  .page::before { display: none; }
-  .shape-blob { display: none; }
-  .no-print { display: none !important; }
-
-  h1 { font-size: 28pt; color: #1a1a1a; }
-  h2 { font-size: 18pt; color: #1a1a1a; }
-  h3 { font-size: 14pt; color: #1a1a1a; }
-  h4 { font-size: 12pt; color: #1a1a1a; }
-  p { color: #333; }
-
-  .terracota { color: #C95A4A; }
-  .verde { color: #6BA33E; }
-  .ocre { color: #D4A843; }
-
-  .tag { border-color: #C95A4A; color: #C95A4A; }
-
-  .glass-card {
-    background: #f5f5f5;
-    border: 1px solid #ddd;
-    padding: 1rem;
-  }
-
-  .swatch { border: 1px solid #ddd; }
-  .swatch-name { color: #1a1a1a; }
-  .swatch-value { color: #666; }
-
-  table { font-size: 9pt; }
-  th { color: #1a1a1a; border-bottom-color: #ccc; }
-  td { color: #333; }
-
-  .page-label { color: #C95A4A; }
-
-  /* Color swatches print */
-  .swatch-primary .swatch-color { background: #C95A4A !important; }
-  .swatch-secondary .swatch-color { background: #A8E060 !important; }
-  .swatch-tertiary .swatch-color { background: #D4A843 !important; }
-  .swatch-bg .swatch-color { background: #0A0A0F !important; border: 1px solid #ccc; }
-  .swatch-text .swatch-color { background: #F0F0F5 !important; border: 1px solid #ccc; }
-  .swatch-body .swatch-color { background: #C8C8D0 !important; border: 1px solid #ccc; }
-
-  .cover-page {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    min-height: 25cm;
-    page-break-after: always;
-  }
-
-  .cover-page h1 { font-size: 36pt; margin-bottom: 0.5cm; }
-  .cover-page .cover-sub { font-size: 14pt; color: #666; }
+  z-index: -1;
 }
 
-/* Cover page screen */
-.cover-page {
+.blob-1 { width: 350px; height: 300px; background: var(--terracota); top: -8%; right: -10%; }
+.blob-2 { width: 280px; height: 280px; background: var(--teal); bottom: 10%; left: -8%; }
+.blob-3 { width: 200px; height: 200px; background: var(--verde); top: 50%; right: -5%; }
+
+/* ---------- Section Divider Heading ---------- */
+.section-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.section-heading svg {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  min-height: 70vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  min-height: 70vh;
+  padding: 3rem 0;
 }
 
-.cover-page h1 { font-size: 4rem; margin-bottom: 0.5rem; }
-.cover-page .cover-sub { font-size: 1.4rem; color: var(--body-dim); margin-bottom: 0.5rem; }
-.cover-page .cover-date { font-family: var(--font-mono); font-size: 0.8rem; color: var(--body-dim); opacity: 0.6; }
-.cover-page .cover-brand { font-family: var(--font-accent); font-size: 1.2rem; color: var(--terracota); margin-top: 2rem; }
+.hero-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--teal);
+  border: 1px solid color-mix(in oklch, var(--teal) 30%, transparent);
+  padding: 0.35rem 1rem;
+  border-radius: 100px;
+  margin-bottom: 1.5rem;
+}
 
-/* TOC */
-.toc-list { list-style: none; margin-top: 1rem; }
-.toc-list li {
-  padding: 0.6rem 0;
-  border-bottom: 1px solid rgba(255,255,255,0.04);
+.hero-sub {
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  color: var(--body-dim);
+  max-width: 550px;
+  margin-bottom: 0.5rem;
+}
+
+.hero-date {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--body-dim);
+  opacity: 0.5;
+}
+
+/* ---------- Misión/Visión/Raison grid ---------- */
+.mvr-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+@media (min-width: 640px) {
+  .mvr-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .mvr-grid .glass-card:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ---------- Historia ---------- */
+.historia-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  margin: 1rem 0;
+}
+
+.historia-item {
   display: flex;
   gap: 0.75rem;
-  align-items: baseline;
+  align-items: flex-start;
+  padding: 0.75rem 1rem;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
 }
-.toc-num { font-family: var(--font-mono); font-size: 0.8rem; color: var(--terracota); min-width: 2rem; }
-.toc-title { color: var(--headline); }
 
-/* Values grid */
-.values-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
-.value-card { padding: 1.25rem; border-radius: var(--radius); background: var(--glass-bg); border: 1px solid var(--glass-border); }
-.value-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
-.value-card h4 { margin-bottom: 0.35rem; }
-.value-card p { font-size: 0.85rem; margin-bottom: 0; }
+.historia-item svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
 
-/* Logo placeholder */
-.logo-placeholder { padding: 2rem; text-align: center; margin: 1.5rem 0; }
-.logo-placeholder.dark-bg { background: var(--bg-dark); border-radius: var(--radius); }
-.logo-placeholder.light-bg { background: #f0f0f0; border-radius: var(--radius); }
-.logo-text { font-family: var(--font-display); font-weight: 500; font-size: 2.5rem; letter-spacing: -0.02em; }
-.logo-text.white { color: white; }
-.logo-text.dark { color: #1a1a1a; }
-.logo-tagline { font-family: var(--font-accent); font-size: 1rem; opacity: 0.7; margin-top: 0.25rem; }
-.logo-tagline.white { color: white; }
-.logo-tagline.dark { color: #1a1a1a; }
+.historia-item p {
+  font-size: 0.85rem;
+  margin: 0;
+}
 
-/* Misuse */
-.misuse-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
-.misuse-item { padding: 1.5rem; text-align: center; border-radius: var(--radius); background: rgba(255,255,255,0.02); border: 1px solid rgba(255,0,0,0.1); }
-.misuse-item .logo-text { font-size: 1.8rem; }
-.misuse-item .misuse-label { font-family: var(--font-mono); font-size: 0.7rem; color: #ff6b6b; margin-top: 0.75rem; display: block; }
-.misuse-item.stretched { transform: scaleX(1.3); }
-.misuse-item.rotated { transform: rotate(15deg); }
-.misuse-item.skewed { transform: skewX(-10deg); }
+/* ---------- Responsive ---------- */
+@media (max-width: 600px) {
+  .container { padding: 1.5rem 1rem 3rem; }
+  .swatch-grid { grid-template-columns: 1fr; }
+  section { margin-bottom: 3rem; }
+  .hero { min-height: 60vh; padding: 2rem 0; }
+  .glass-card { padding: 1.25rem; }
+}
 
-/* Typography samples */
-.type-sample { margin: 1.5rem 0; }
-.type-sample .sample { margin-bottom: 0.5rem; }
-.type-sample .sample-label { font-family: var(--font-mono); font-size: 0.7rem; color: var(--body-dim); }
-
-/* Responsive */
-@media (max-width: 768px) {
-  .page { margin: 1rem; padding: 2rem 1.5rem; }
-  h1 { font-size: 2.2rem; }
-  h2 { font-size: 1.6rem; }
-  .values-grid { grid-template-columns: 1fr; }
-  .swatch-group { flex-direction: column; }
-  .misuse-grid { grid-template-columns: 1fr; }
+/* ---------- OKLCH Note ---------- */
+.oklch-note {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--body-dim);
+  opacity: 0.6;
+  margin-top: 1rem;
+  line-height: 1.5;
 }
 </style>
 </head>
 <body>
 
-<!-- ============================== PAGE 1: COVER ============================== -->
-<div class="page cover-page">
-  <div class="shape-blob shape-1"></div>
-  <div class="shape-blob shape-2"></div>
-  <div class="page-content">
-    <div class="tag">Brand Guidelines</div>
-    <h1>The Brand <span class="terracota">Crew</span></h1>
-    <p class="cover-sub">Visiones hechas realidad</p>
-    <p class="cover-date">Julio 2026</p>
-    <p class="cover-brand">— Fundado por <strong>Illushkinn</strong> —</p>
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+<div class="blob blob-3"></div>
+
+<div class="container">
+
+<!-- ============================== HERO ============================== -->
+<section class="hero">
+  <span class="hero-tag">Brand Guidelines</span>
+  <h1>The Brand <span style="color:var(--terracota);">Crew</span></h1>
+  <p class="hero-sub">GovTech + accesibilidad · Hecho en Mar del Plata, AR</p>
+  <p class="hero-date">Julio 2026 · v1.0</p>
+</section>
+
+<div class="accent-bar"></div>
+
+<!-- ============================== HISTORIA ============================== -->
+<section>
+  <span class="section-label">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+    Nuestra Historia
+  </span>
+  <div class="section-header">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    <h2>The Brand <span style="color:var(--terracota);">Crew</span></h2>
   </div>
-</div>
 
-<!-- ============================== PAGE 2: INTRODUCTION ============================== -->
-<div class="page">
-  <div class="shape-blob shape-3"></div>
-  <div class="page-content">
-    <span class="page-label">01 · Introduction</span>
-    <h2>Welcome to the <span class="terracota">Brand</span></h2>
+  <div class="glass-card">
+    <p><strong>The Brand Crew (TBC)</strong> nace en 2026. No es una agencia más: es la confluencia de todo lo que Illya Grytsyk aprendió en más de una década cruzando ventas, tecnología, accesibilidad y diseño.</p>
+    <p>Illya se formó de manera autodidacta en diseño. Antes de fundar TBC, pasó 5 años en <strong>Stock para tu Negocio</strong> construyendo relaciones con clientes desde las ventas. Trabajó como AI Trainer en <strong>Scale AI</strong>, co-fundó <strong>Pragma</strong>, fue PM/UX Designer para <strong>Apple Service</strong> y Community Manager para <strong>CoinCustody</strong>.</p>
+    <p>Habla español, ucraniano, ruso e inglés. Es traductor voluntario para las <strong>Naciones Unidas</strong>. Toda esa experiencia confluye en The Brand Crew: un estudio donde la accesibilidad (WCAG), el GovTech, la inteligencia artificial y el diseño se encuentran.</p>
+  </div>
 
-    <div class="glass-card">
-      <p>Bienvenido a las Brand Guidelines de <strong>The Brand Crew</strong>.</p>
-      <p>Este documento es la brújula de nuestra identidad. No es solo un manual de estilo: es la expresión visual de una forma de hacer las cosas.</p>
-      <p><strong>The Brand Crew</strong> nace de una convicción: toda gran idea merece una identidad que la honre. Somos el faro que guía las corazonadas de emprendedores, creadores y visionarios que quieren construir algo estratégico, mantenible y rentable en el tiempo.</p>
-      <p>Detrás de TBC está <strong>Illushkinn</strong> — la visión de Illya Grytsyk, ingeniero en accesibilidad y estratega digital. Esto significa que cada proyecto que pasa por nuestras manos lleva incorporado un ADN de calidad, inclusión y pensamiento estratégico desde el primer día.</p>
-      <p>Estas guías son tu recurso esencial para entender, aplicar y extender nuestra identidad visual. Dentro vas a encontrar desde nuestro logo y paleta de colores hasta nuestra tipografía y fotografía.</p>
-      <p><em>Consistencia no es limitación. Es confianza.</em></p>
+  <div class="historia-grid">
+    <div class="historia-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      <p><strong>5 años</strong> en ventas — Stock para tu Negocio</p>
+    </div>
+    <div class="historia-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      <p><strong>AI Trainer</strong> — Scale AI</p>
+    </div>
+    <div class="historia-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      <p><strong>Co-fundador</strong> — Pragma</p>
+    </div>
+    <div class="historia-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      <p><strong>PM/UX Designer</strong> — Apple Service</p>
+    </div>
+    <div class="historia-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      <p><strong>Community Manager</strong> — CoinCustody</p>
+    </div>
+    <div class="historia-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      <p><strong>Traductor voluntario</strong> — Naciones Unidas (ES, UA, RU, EN)</p>
     </div>
   </div>
-</div>
+</section>
 
-<!-- ============================== PAGE 3: TABLE OF CONTENTS ============================== -->
-<div class="page">
-  <div class="page-content">
-    <span class="page-label">02 · Contents</span>
-    <h2>Table of <span class="terracota">Contents</span></h2>
+<div class="divider"></div>
 
-    <ul class="toc-list">
-      <li><span class="toc-num">01</span><span class="toc-title">Brand Overview</span></li>
-      <li><span class="toc-num">02</span><span class="toc-title">Logo</span></li>
-      <li><span class="toc-num">03</span><span class="toc-title">Colors</span></li>
-      <li><span class="toc-num">04</span><span class="toc-title">Typography</span></li>
-      <li><span class="toc-num">05</span><span class="toc-title">Visual Elements</span></li>
-      <li><span class="toc-num">06</span><span class="toc-title">Corporate Assets</span></li>
-      <li><span class="toc-num">07</span><span class="toc-title">Photography</span></li>
-      <li><span class="toc-num">08</span><span class="toc-title">Applications</span></li>
-      <li><span class="toc-num">09</span><span class="toc-title">Thank You</span></li>
+<!-- ============================== MISIÓN + VISIÓN + RAZÓN DE SER ============================== -->
+<section>
+  <span class="section-label">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+    Propósito
+  </span>
+
+  <div class="mvr-grid">
+
+    <!-- Misión -->
+    <div class="glass-card">
+      <div class="section-heading">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--terracota)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+        <h3>Misión</h3>
+      </div>
+      <p>Hacer que la <strong>accesibilidad digital</strong> y el <strong>diseño inclusivo</strong> sean el estándar, no una ocurrencia tardía. Cada proyecto que pasa por TBC tiene WCAG en su ADN desde el primer wireframe, no como auditoría final.</p>
+    </div>
+
+    <!-- Visión -->
+    <div class="glass-card">
+      <div class="section-heading">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--verde)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        <h3>Visión</h3>
+      </div>
+      <p>Ser el <strong>estudio de referencia en LATAM</strong> para GovTech accesible. Que cuando un gobierno o una organización pública quiera construir una plataforma digital que realmente funcione para todas las personas, piensen en The Brand Crew.</p>
+    </div>
+
+    <!-- Razón de ser -->
+    <div class="glass-card">
+      <div class="section-heading">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        <h3>Razón de ser</h3>
+      </div>
+      <p>TBC existe porque el diseño digital, cuando se hace bien, no excluye. Arrancó con una intuición: si entendés de ventas, de código, de accesibilidad y de personas, podés construir cosas que realmente funcionen. Illya juntó todo eso en un solo lugar para que gobiernos, organizaciones y proyectos con impacto tengan un interlocutor que entienda el problema completo, no solo una parte.</p>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ============================== COLOR PALETTE ============================== -->
+<section>
+  <span class="section-label">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.93 0 1.5-.6 1.5-1.5 0-.4-.15-.75-.4-1.02-.3-.3-.5-.7-.5-1.15 0-1.1.9-2 2-2h1.5c3.3 0 6-2.7 6-6 0-4.42-3.58-8-8-8z"/></svg>
+    Identidad Visual
+  </span>
+  <div class="section-header">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.93 0 1.5-.6 1.5-1.5 0-.4-.15-.75-.4-1.02-.3-.3-.5-.7-.5-1.15 0-1.1.9-2 2-2h1.5c3.3 0 6-2.7 6-6 0-4.42-3.58-8-8-8z"/></svg>
+    <h2>Paleta de <span style="color:var(--terracota);">Colores</span></h2>
+  </div>
+
+  <p>TBC usa <strong>OKLCH</strong> como sistema cromático porque es perceptualmente uniforme: lo que diseñás en tu monitor es lo que se ve en cualquier pantalla. No hay sorpresas de renderizado.</p>
+
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-preview" style="background: var(--terracota);"></div>
+      <div class="swatch-name">Terracota</div>
+      <div class="swatch-value">oklch(0.58 0.18 32)</div>
+      <div class="swatch-value">Hover: oklch(0.5 0.16 32)</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-preview" style="background: var(--teal);"></div>
+      <div class="swatch-name">Teal</div>
+      <div class="swatch-value">oklch(0.52 0.14 190)</div>
+      <div class="swatch-value">Hover: oklch(0.48 0.16 190)</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-preview" style="background: var(--verde);"></div>
+      <div class="swatch-name">Verde</div>
+      <div class="swatch-value">oklch(0.82 0.2 125)</div>
+      <div class="swatch-value">Hover: oklch(0.72 0.18 125)</div>
+    </div>
+  </div>
+
+  <div class="glass-card">
+    <p style="font-size:0.9rem;"><strong>Uso:</strong> Terracota es el color de énfasis principal — CTA, iconos, bordes. Teal es acento secundario — tags, links metadatos. Verde es el color de éxito o progreso — badges, estados activos. Los tres conviven en gradientes y fondos decorativos.</p>
+  </div>
+
+  <p class="oklch-note">OKLCH es un espacio de color perceptualmente uniforme: el valor que ves es el color que se renderiza, en cualquier dispositivo. Más predecible que HSL o RGB.</p>
+</section>
+
+<div class="divider"></div>
+
+<!-- ============================== TYPOGRAPHY ============================== -->
+<section>
+  <span class="section-label">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+    Tipografía
+  </span>
+  <div class="section-header">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+    <h2>Sistema <span style="color:var(--terracota);">Tipográfico</span></h2>
+  </div>
+
+  <p>Dos familias tipográficas cubren todo el ecosistema TBC. Sin ruido, sin fuentes decorativas innecesarias. Legibilidad ante todo.</p>
+
+  <!-- Onest -->
+  <div class="type-card" style="border-left: 3px solid var(--terracota);">
+    <h3>Onest</h3>
+    <p style="font-size:0.85rem; color:var(--body-dim);">Display + Body · Grotesk moderna, clara, accesible</p>
+    <div class="type-sample-text" style="font-family:'Onest',sans-serif;">The Brand Crew</div>
+    <div class="type-sample-body" style="font-family:'Onest',sans-serif;">El diseño inclusivo no es una característica, es la base. Si no funciona para todes, no funciona.</div>
+    <ul class="type-specs">
+      <li>Headlines: Weight 600 · Letter-spacing -0.04em · Line-height 0.92</li>
+      <li>Subheadings: Weight 500 · Letter-spacing -0.02em · Line-height 1.1</li>
+      <li>Body: Weight 350 · Line-height 1.65 · Tamaño base 1rem</li>
+      <li>Rango: 300 a 800 · Variable font</li>
     </ul>
   </div>
-</div>
 
-<!-- ============================== PAGE 4: BRAND OVERVIEW ============================== -->
-<div class="page">
-  <div class="shape-blob shape-1"></div>
-  <div class="page-content">
-    <span class="page-label">03 · Brand Overview</span>
-    <h2>Why we <span class="terracota">exist</span></h2>
-
-    <div class="glass-card">
-      <h4>Purpose</h4>
-      <p>Ayudar a emprendedores y empresas a dar a luz su <strong>corazonada</strong> — esa idea que los desvela — y convertirla en una identidad estratégica, mantenible y rentable.</p>
-    </div>
-
-    <div class="glass-card">
-      <h4>Vision</h4>
-      <p>Ser el <strong>faro de luz</strong> para quienes se atreven a soñar. Un partner creativo que transforma la intuición en impacto, con claridad y confianza en cada paso.</p>
-    </div>
-
-    <div class="glass-card">
-      <h4>Mission</h4>
-      <p>Entregar experiencias de marca y web estratégicamente sólidas, visualmente hermosas y construidas para perdurar. Con <strong>accesibilidad, claridad y confianza</strong> como pilares no negociables.</p>
-    </div>
-
-    <p style="margin-top:1rem; font-size:0.85rem; color:var(--body-dim);">
-      <em>— Fundado por Illushkinn · Donde la estrategia encuentra la ejecución —</em>
-    </p>
-  </div>
-</div>
-
-<!-- ============================== PAGE 5: CORE VALUES ============================== -->
-<div class="page">
-  <div class="shape-blob shape-2"></div>
-  <div class="page-content">
-    <span class="page-label">04 · Core Values</span>
-    <h2>What we stand <span class="terracota">for</span></h2>
-
-    <div class="values-grid">
-      <div class="value-card">
-        <div class="value-icon">✨</div>
-        <h4>Audacia Creativa</h4>
-        <p>Abrazar ideas frescas y pensamiento innovador para inspirar crecimiento y transformación.</p>
-      </div>
-      <div class="value-card">
-        <div class="value-icon">🎯</div>
-        <h4>Precisión Estratégica</h4>
-        <p>Cada decisión visual tiene un "por qué". No decoramos, resolvemos.</p>
-      </div>
-      <div class="value-card">
-        <div class="value-icon">💡</div>
-        <h4>Claridad Radical</h4>
-        <p>Comunicamos sin jargon. Si el cliente no lo entiende en 5 segundos, no está listo.</p>
-      </div>
-      <div class="value-card">
-        <div class="value-icon">🧠</div>
-        <h4>Centrado en Humanos</h4>
-        <p>Diseñamos para personas reales, con principios de accesibilidad cognitiva y WCAG.</p>
-      </div>
-      <div class="value-card">
-        <div class="value-icon">🌱</div>
-        <h4>Accesible por Defecto</h4>
-        <p>No es un feature, es la base. Tipografía legible, contraste suficiente, jerarquía clara.</p>
-      </div>
-      <div class="value-card">
-        <div class="value-icon">🤝</div>
-        <h4>Confianza Relacional</h4>
-        <p>Cada interacción construye confianza. Claridad en precios, plazos y entregables.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ============================== PAGE 6: TONE OF VOICE ============================== -->
-<div class="page">
-  <div class="shape-blob shape-3"></div>
-  <div class="page-content">
-    <span class="page-label">05 · Tone of Voice</span>
-    <h2>How we <span class="terracota">speak</span></h2>
-
-    <table>
-      <tr><th style="width:30%">Característica</th><th>Cómo suena TBC</th></tr>
-      <tr><td><strong>Cálido pero profesional</strong></td><td>"Contame de tu proyecto. Vamos a construir algo que te represente."</td></tr>
-      <tr><td><strong>Claro, sin jargon</strong></td><td>No decimos "breakpoints responsive". Decimos "se ve bien en celular y computadora".</td></tr>
-      <tr><td><strong>Inspirador pero concreto</strong></td><td>"Tu visión, hecha realidad." No es eslogan vacío — mostramos el cómo.</td></tr>
-      <tr><td><strong>Accesible cognitivamente</strong></td><td>Frases cortas. Ideas claras. Sin metáforas rebuscadas.</td></tr>
-      <tr><td><strong>Fundacional (illushkinn)</strong></td><td>Cada comunicación lleva implícito el ADN de calidad y estrategia de Illushkinn.</td></tr>
-    </table>
-
-    <div class="glass-card" style="margin-top:1.5rem;">
-      <p style="font-size:0.9rem;"><strong>Regla de oro:</strong> Si el cliente necesita un diccionario técnico para entender la propuesta, no está lista. Reescribila hasta que su abuela la entienda.</p>
-    </div>
-  </div>
-</div>
-
-<!-- ============================== PAGE 7: LOGO ============================== -->
-<div class="page">
-  <div class="page-content">
-    <span class="page-label">06 · Logo</span>
-    <h2>The <span class="terracota">wordmark</span></h2>
-
-    <p>El sistema de logo de The Brand Crew es simple por decisión, no por limitación.</p>
-    <p>Nuestra marca es <strong>texto</strong>. No necesitamos un ícono abstracto que nadie va a recordar. El nombre mismo — <strong>"The Brand Crew"</strong> — es nuestro identificador más poderoso.</p>
-    <p>Detrás de cada proyecto TBC está <strong>illushkinn</strong>, la visión de Illya Grytsyk. Cuando ves "The Brand Crew", ves el resultado de años de experiencia en accesibilidad, estrategia digital y diseño con propósito.</p>
-
-    <div class="logo-placeholder dark-bg">
-      <div class="logo-text white">The Brand Crew</div>
-      <div class="logo-tagline white">visiones hechas realidad</div>
-    </div>
-  </div>
-</div>
-
-<!-- ============================== PAGE 8: LOGO VARIATIONS ============================== -->
-<div class="page">
-  <div class="page-content">
-    <span class="page-label">07 · Logo Variations</span>
-    <h2>Usage &amp; <span class="terracota">variants</span></h2>
-
-    <h4>Logotype</h4>
-    <p>El logotipo "The Brand Crew" se compone en <strong>Rethink Sans</strong>, peso Medium o Bold. Tracking ligeramente expandido (0.02em a 0.05em) en usos display. Color blanco sobre fondo oscuro. Terracota como énfasis.</p>
-    <p class="mono" style="color:var(--terracota); font-size:0.85rem;">Nunca: Negro sobre fondo claro. TBC vive en la oscuridad con luz propia.</p>
-
-    <div class="logo-placeholder dark-bg">
-      <div class="logo-text white" style="font-size:1.8rem;">The Brand Crew</div>
-    </div>
-
-    <h4 style="margin-top:1.5rem;">Logomark Alternativo</h4>
-    <p>TBC no tiene un logomark separado. Nuestro "marcador" visual es la <strong>tipografía en sí</strong> y los <strong>elementos orgánicos</strong> (círculos, formas flotantes, el diamante 3D del preloader) que crean la atmósfera de la marca.</p>
-    <p>En espacios donde se necesita un identificador mínimo (favicon, avatar social), usamos la inicial <strong>"T"</strong> en Rethink Sans Bold sobre fondo oscuro.</p>
-
-    <h4 style="margin-top:1.5rem;">Minimum Size</h4>
-    <table>
-      <tr><th>Formato</th><th>Tamaño mínimo</th></tr>
-      <tr><td>Digital</td><td>120px de ancho</td></tr>
-      <tr><td>Print</td><td>30mm de ancho</td></tr>
-    </table>
-
-    <h4 style="margin-top:1.5rem;">Clear Space</h4>
-    <p>El espacio de respiro alrededor del logo equivale a la altura de la letra <strong>"T"</strong> mayúscula. Ningún otro elemento visual debe invadir este espacio.</p>
-  </div>
-</div>
-
-<!-- ============================== PAGE 9: LOGO BACKGROUNDS & MISUSE ============================== -->
-<div class="page">
-  <div class="page-content">
-    <span class="page-label">08 · Logo Backgrounds</span>
-    <h2>Where it <span class="terracota">lives</span></h2>
-
-    <p>El logo debe usarse <strong>SIEMPRE</strong> sobre:</p>
-    <ul style="margin:1rem 0; padding-left:1.5rem; color:var(--body);">
-      <li>Fondo oscuro (fondo primario: <code class="mono" style="color:var(--terracota);">#0A0A0F</code>)</li>
-      <li>Glass card (<code class="mono" style="color:var(--terracota);">rgba(255,255,255,0.06)</code> con backdrop-filter)</li>
-      <li>Gradientes oscuros con formas orgánicas de fondo</li>
-      <li>Imágenes oficiales como portada-whop-app.png y profile-11.png</li>
+  <!-- JetBrains Mono -->
+  <div class="type-card" style="border-left: 3px solid var(--teal);">
+    <h3>JetBrains Mono</h3>
+    <p style="font-size:0.85rem; color:var(--body-dim);">Mono · Labels, código, datos técnicos</p>
+    <div class="mono-sample">Section Label · 0.8rem · Uppercase · 0.12em</div>
+    <ul class="type-specs">
+      <li>Weights: 400, 500, 600</li>
+      <li>Uso: labels de sección, código, valores de color, datos</li>
+      <li>Text-transform: uppercase · Letter-spacing: 0.12em</li>
+      <li>NUNCA en body text o títulos largos</li>
     </ul>
-    <p class="mono" style="color:var(--terracota); font-size:0.85rem;"><strong>Nunca sobre fondo blanco o colores claros.</strong></p>
+  </div>
+</section>
 
-    <h4 style="margin-top:2rem;">Logo Misuse</h4>
-    <p>Para proteger la integridad de la marca, el logo nunca debe ser:</p>
-    <div class="misuse-grid">
-      <div class="misuse-item stretched">
-        <div class="logo-text white" style="font-size:1.5rem;">The Brand Crew</div>
-        <span class="misuse-label">✗ Estirado</span>
+<div class="divider"></div>
+
+<!-- ============================== LOGO ============================== -->
+<section>
+  <span class="section-label">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+    Marca
+  </span>
+  <div class="section-header">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+    <h2>Uso del <span style="color:var(--terracota);">Logo</span></h2>
+  </div>
+
+  <p>El logo de TBC es tipográfico por decisión, no por falta de opciones. Nuestro identificador más poderoso es el nombre mismo.</p>
+
+  <div class="logo-display">
+    <div class="logo-text">The Brand <span style="color:var(--terracota);">Crew</span></div>
+    <div class="logo-tagline">GovTech · Accesibilidad · Diseño</div>
+  </div>
+
+  <div class="glass-card">
+    <div class="logo-rule">
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--verde)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      <p><strong>Siempre</strong> sobre fondo oscuro. El logo vive en la oscuridad con luz propia.</p>
+    </div>
+    <div class="logo-rule">
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--verde)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      <p><strong>Onest</strong> Weight 600 para el wordmark. Sin comprimir, sin estirar, sin rotar.</p>
+    </div>
+    <div class="logo-rule">
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--verde)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      <p>Espacio de respiro: la altura de la <strong>T</strong> mayúscula alrededor del logo.</p>
+    </div>
+    <div class="logo-rule">
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--terracota)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      <p><strong>Nunca</strong> sobre fondo blanco, rotado, deformado, con sombras externas, ni en colores que no sean de la paleta.</p>
+    </div>
+  </div>
+
+  <p style="font-size:0.85rem; color:var(--body-dim); margin-top:0.75rem;">Tamaño mínimo digital: 140px de ancho. Print: 35mm.</p>
+</section>
+
+<div class="divider"></div>
+
+<!-- ============================== TONO Y VOZ ============================== -->
+<section>
+  <span class="section-label">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    Comunicación
+  </span>
+  <div class="section-header">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    <h2>Tono y <span style="color:var(--terracota);">Voz</span></h2>
+  </div>
+
+  <p>En TBC hablamos como somos: <strong>spec-first, human-led</strong>. Cada palabra que usamos tiene un propósito. No decoramos con texto, comunicamos.</p>
+
+  <div class="tone-grid">
+    <div class="tone-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--terracota)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <div>
+        <h4>Spec-first</h4>
+        <p>Todo tiene un por qué técnico. No opinionamos, demostramos. WCAG, OKLCH, contraste, jerarquía — no son conceptos de marketing, son requisitos de entrega.</p>
       </div>
-      <div class="misuse-item rotated">
-        <div class="logo-text white" style="font-size:1.5rem;">The Brand Crew</div>
-        <span class="misuse-label">✗ Rotado</span>
+    </div>
+    <div class="tone-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--verde)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <div>
+        <h4>Human-led</h4>
+        <p>Detrás de cada línea de código hay una persona. Hablamos claro, sin jargon innecesario. Si tu abuela no entiende la propuesta, no está lista.</p>
       </div>
-      <div class="misuse-item skewed">
-        <div class="logo-text white" style="font-size:1.5rem;">The Brand Crew</div>
-        <span class="misuse-label">✗ Deformado</span>
-      </div>
-      <div class="misuse-item">
-        <div class="logo-text white" style="font-size:1.5rem; filter:drop-shadow(0 4px 8px rgba(255,255,255,0.3));">The Brand Crew</div>
-        <span class="misuse-label">✗ Sombras externas</span>
+    </div>
+    <div class="tone-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <div>
+        <h4>Warm + directo</h4>
+        <p>Somos profesionales, no máquinas. "Contame de tu proyecto", "vamos a construir esto", "dale que lo hacemos". Cálidos sin ser informales, precisos sin ser fríos.</p>
       </div>
     </div>
   </div>
-</div>
 
-<!-- ============================== PAGE 10: COLORS ============================== -->
-<div class="page">
-  <div class="shape-blob shape-2"></div>
-  <div class="page-content">
-    <span class="page-label">09 · Colors</span>
-    <h2>The <span class="terracota">palette</span></h2>
-
-    <p>El color en TBC no es decorativo. Es lenguaje. Usamos <strong>OKLCH</strong> como sistema cromático porque es perceptualmente uniforme — lo que ves en diseño es lo que se renderiza en pantalla.</p>
-
-    <h4>Primary</h4>
-    <div class="swatch-group">
-      <div class="swatch swatch-primary">
-        <div class="swatch-color" style="background:oklch(0.58 0.18 32);"></div>
-        <div class="swatch-name">Terracota</div>
-        <div class="swatch-value">oklch(0.58 0.18 32)</div>
-        <div class="swatch-value">#C95A4A</div>
-      </div>
-      <div class="swatch swatch-secondary">
-        <div class="swatch-color" style="background:oklch(0.82 0.2 125);"></div>
-        <div class="swatch-name">Verde</div>
-        <div class="swatch-value">oklch(0.82 0.2 125)</div>
-        <div class="swatch-value">#A8E060</div>
-      </div>
-      <div class="swatch swatch-tertiary">
-        <div class="swatch-color" style="background:oklch(0.72 0.12 75);"></div>
-        <div class="swatch-name">Ocre</div>
-        <div class="swatch-value">oklch(0.72 0.12 75)</div>
-        <div class="swatch-value">#D4A843</div>
-      </div>
-    </div>
-
-    <h4>Backgrounds &amp; Text</h4>
-    <div class="swatch-group">
-      <div class="swatch swatch-bg">
-        <div class="swatch-color" style="background:oklch(0.06 0.006 280);"></div>
-        <div class="swatch-name">Background</div>
-        <div class="swatch-value">oklch(0.06 0.006 280)</div>
-        <div class="swatch-value">#0A0A0F</div>
-      </div>
-      <div class="swatch swatch-text">
-        <div class="swatch-color" style="background:oklch(0.95 0.004 280);"></div>
-        <div class="swatch-name">Headlines</div>
-        <div class="swatch-value">oklch(0.95 0.004 280)</div>
-        <div class="swatch-value">#F0F0F5</div>
-      </div>
-      <div class="swatch swatch-body">
-        <div class="swatch-color" style="background:oklch(0.8 0.008 280);"></div>
-        <div class="swatch-name">Body Text</div>
-        <div class="swatch-value">oklch(0.8 0.008 280)</div>
-        <div class="swatch-value">#C8C8D0</div>
-      </div>
-    </div>
+  <div class="glass-card" style="border-left: 3px solid var(--verde);">
+    <p style="font-size:0.9rem;"><strong>Regla de oro:</strong> Si el cliente necesita un diccionario técnico para entender la propuesta, no está lista. Reescribila hasta que cualquier persona la entienda en 5 segundos.</p>
   </div>
-</div>
+</section>
 
-<!-- ============================== PAGE 11: TYPOGRAPHY ============================== -->
-<div class="page">
-  <div class="page-content">
-    <span class="page-label">10 · Typography</span>
-    <h2>How we <span class="terracota">write</span></h2>
+<div class="divider"></div>
 
-    <p>La tipografía de TBC es clara, moderna, y accesible. Tres familias cubren todas las necesidades sin ruido innecesario.</p>
-
-    <h4>Primary — Rethink Sans</h4>
-    <table>
-      <tr><th>Uso</th><th>Peso</th><th>Tamaño</th></tr>
-      <tr><td>Heading h1</td><td>Weight 500</td><td><code>clamp(2.5rem, 6vw, 5rem)</code></td></tr>
-      <tr><td>Heading h2</td><td>Weight 500</td><td><code>clamp(2rem, 5vw, 3.5rem)</code></td></tr>
-      <tr><td>Heading h3</td><td>Weight 500</td><td><code>clamp(1.5rem, 3.5vw, 2.5rem)</code></td></tr>
-      <tr><td>Body text</td><td>Weight 300</td><td>1rem base</td></tr>
-      <tr><td>Buttons</td><td>Weight 500</td><td>1.15rem</td></tr>
-    </table>
-
-    <div class="glass-card" style="margin-top:1rem;">
-      <p style="font-size:0.85rem;"><strong>Tracking:</strong> -0.03em en headings. <strong>Line-height:</strong> 0.92 en headings, 1.6 en body. <strong>Letter-spacing:</strong> -0.02em en botones.</p>
-    </div>
-
-    <div class="type-sample">
-      <div class="sample" style="font-family:'Rethink Sans',sans-serif;font-weight:500;font-size:2rem;letter-spacing:-0.03em;color:var(--headline);">Rethink Sans Medium</div>
-      <div class="sample" style="font-family:'Rethink Sans',sans-serif;font-weight:300;font-size:1.1rem;color:var(--body);">Rethink Sans Light — El diseño es estratégico, no decorativo.</div>
-    </div>
-
-    <h4 style="margin-top:1.5rem;">Accent — Grand Hotel</h4>
-    <p>Usada exclusivamente para taglines, textos decorativos y la palabra "crew" cuando se quiere enfatizar. <strong>NUNCA</strong> en body text o UI funcional.</p>
-    <div style="font-family:'Grand Hotel',cursive;font-size:1.8rem;color:var(--terracota);margin:0.75rem 0;">visiones hechas realidad</div>
-
-    <h4 style="margin-top:1.5rem;">Mono — JetBrains Mono</h4>
-    <p>Usada para section labels (FAQ, Pricing), código, datos técnicos y texto monoespaciado.</p>
-    <div style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.15em;color:var(--terracota);">Section Label · 0.8rem · Uppercase · 0.15em</div>
-  </div>
-</div>
-
-<!-- ============================== PAGE 12: VISUAL ELEMENTS ============================== -->
-<div class="page">
-  <div class="shape-blob shape-1"></div>
-  <div class="shape-blob shape-2"></div>
-  <div class="page-content">
-    <span class="page-label">11 · Visual Elements</span>
-    <h2>The <span class="terracota">atmosphere</span></h2>
-
-    <h4>Brand Pattern — Organic Shapes</h4>
-    <p>TBC no tiene un patrón repetitivo tradicional. Nuestro "pattern" son <strong>formas orgánicas flotantes</strong> que crean atmósfera sin repetirse.</p>
-
-    <table>
-      <tr><th>Elemento</th><th>Especificación</th></tr>
-      <tr><td>Formas</td><td>Círculos y elipses con border-radius asimétrico (50% / 45%, 45% / 50%)</td></tr>
-      <tr><td>Blur</td><td>35px — 45px para crear halos de luz difusa</td></tr>
-      <tr><td>Opacidad</td><td>0.25 — 0.35</td></tr>
-      <tr><td>Animación</td><td>6 keyframes por ciclo · Looney Tunes-style (amplitud impredecible)</td></tr>
-      <tr><td>Colores</td><td>Gradientes lineales de terracota, verde, y sus variantes</td></tr>
-      <tr><td>Mobile</td><td>Todas las shapes se mantienen, solo se reducen de tamaño</td></tr>
-    </table>
-
-    <div class="glass-card" style="margin-top:1.5rem;">
-      <h4>Hamburger Menu Animation</h4>
-      <p>El círculo expansivo (<code class="mono" style="color:var(--terracota);">clip-path</code> animado) que parte desde el centro del botón y cubre toda la pantalla es nuestro pattern de transición más distintivo. Usa <code class="mono" style="color:var(--terracota);">getBoundingClientRect()</code> para calcular el origen exacto. Fondo con glassmorphism (<code class="mono" style="color:var(--terracota);">backdrop-filter: blur(24px)</code>).</p>
-    </div>
-
-    <h4 style="margin-top:1.5rem;">Icons</h4>
-    <p>TBC no usa un set de iconos fijo. Todos los iconos son <strong>SVG inline</strong> con stroke-width: 2.5px, color currentColor, esquinas redondeadas. Tamaño default: 24×24. <strong>Nunca:</strong> Font Awesome, Material Icons, o sets externos.</p>
-  </div>
-</div>
-
-<!-- ============================== PAGE 13: CORPORATE ASSETS ============================== -->
-<div class="page">
-  <div class="page-content">
-    <span class="page-label">12 · Corporate Assets</span>
-    <h2>The <span class="terracota">preloader</span></h2>
-
-    <div class="glass-card">
-      <h4>Preloader — El Cubo 3D (Diamante)</h4>
-      <p>El preloader es la pieza más distintiva de TBC. Un cubo 3D con un núcleo luminoso que late.</p>
-      <ul style="margin:0.75rem 0; padding-left:1.25rem; color:var(--body);">
-        <li>Cubo con 6 caras (front, back, right, left, top, bottom)</li>
-        <li>Cada cara tiene un gradiente sutil (terracota o verde)</li>
-        <li>Animación <code class="mono" style="color:var(--terracota);">cube3d</code> de 8s rotación continua en eje X/Y</li>
-        <li>Núcleo: punto blanco con box-shadow expansivo</li>
-        <li>Al cargar: pulso de "ready" que escala el núcleo 3x</li>
-        <li>Fondo oscuro con glass radial overlay</li>
-      </ul>
-      <p style="font-size:0.85rem; color:var(--body-dim);">Ver <strong>Preloader.astro</strong> para la implementación completa.</p>
-    </div>
-
-    <h4 style="margin-top:1.5rem;">Business Card (Digital)</h4>
-    <p>La tarjeta digital de TBC es el sitio web mismo. No hay tarjeta física separada.</p>
-    <table>
-      <tr><td><strong>WhatsApp</strong></td><td>+54 9 11 2406-3009</td></tr>
-      <tr><td><strong>Web</strong></td><td>thebrandcrew.lat</td></tr>
-      <tr><td><strong>Fundador</strong></td><td>Illya Grytsyk · illushkinn.github.io</td></tr>
-    </table>
-  </div>
-</div>
-
-<!-- ============================== PAGE 14: PHOTOGRAPHY ============================== -->
-<div class="page">
-  <div class="page-content">
-    <span class="page-label">13 · Photography</span>
-    <h2>Visual <span class="terracota">assets</span></h2>
-
-    <p>TBC no usa fotografía de stock. <strong>Nunca.</strong></p>
-
-    <table>
-      <tr><th>Archivo</th><th>Uso</th><th>Dimensiones</th></tr>
-      <tr><td><code>portada-whop-app.png</code></td><td>Imagen de portada oficial · OG images · Hero visual en presentaciones</td><td>1080 × 356</td></tr>
-      <tr><td><code>profile-11.png</code></td><td>Imagen de perfil oficial · Avatar · Redes sociales · Identificador del fundador</td><td>1024 × 1024</td></tr>
-      <tr><td><code>brand-guidelines-ref.jpg</code></td><td>Imagen de referencia estética para brand guidelines</td><td>1155 × 650</td></tr>
-    </table>
-
-    <div class="glass-card" style="margin-top:1.5rem;">
-      <h4>Photo Direction</h4>
-      <p style="font-size:0.9rem;">Oscuro con puntos de luz (chiaroscuro). Si se usan imágenes de producto: capturas reales, nítidas, sin filtros.</p>
-      <p style="font-size:0.9rem; color:var(--terracota);"><strong>NUNCA:</strong> fotos genéricas de banco de imágenes, ilustraciones clipart, o collages.</p>
-    </div>
-  </div>
-</div>
-
-<!-- ============================== PAGE 15: APPLICATIONS ============================== -->
-<div class="page">
-  <div class="shape-blob shape-3"></div>
-  <div class="page-content">
-    <span class="page-label">14 · Applications</span>
-    <h2>The brand in <span class="terracota">action</span></h2>
-
-    <p>Las aplicaciones de la identidad TBC se ven en cada punto de contacto digital:</p>
-
-    <table>
-      <tr><th style="width:25%">Touchpoint</th><th>Descripción</th></tr>
-      <tr><td><strong>Sitio Web</strong></td><td>Hero section con shapes animadas, glass cards, tipografía display. La aplicación principal de la marca.</td></tr>
-      <tr><td><strong>Preloader</strong></td><td>Cubo 3D giratorio con núcleo pulsante. Primera impresión de la marca.</td></tr>
-      <tr><td><strong>Menú Hamburguesa</strong></td><td>Expansión circular con glassmorphism. Links con stagger animation. Funciona en todos los tamaños de pantalla.</td></tr>
-      <tr><td><strong>Pricing Card</strong></td><td>Glass card con pricing, split payments, y CTA premium con glow.</td></tr>
-      <tr><td><strong>FAQ Accordion</strong></td><td>Glass card con acordeón. Chevron animado con bounce cúbico.</td></tr>
-      <tr><td><strong>Case Studies</strong></td><td>Carrusel horizontal con snap scroll. Glass cards con métricas y testimonios.</td></tr>
-    </table>
-  </div>
-</div>
-
-<!-- ============================== PAGE 16: BRAND SUMMARY ============================== -->
-<div class="page">
-  <div class="shape-blob shape-1"></div>
-  <div class="shape-blob shape-2"></div>
-  <div class="page-content">
-    <span class="page-label">15 · Summary</span>
-    <h2>The <span class="terracota">essence</span></h2>
-
-    <div class="glass-card">
-      <p>La identidad visual de TBC es un sistema vivo. No es un conjunto de reglas fijas — es una <strong>atmósfera</strong> que se adapta a cada contexto sin perder su esencia.</p>
-    </div>
-
-    <div class="values-grid">
-      <div class="value-card">
-        <div class="value-icon">🔮</div>
-        <h4>Claridad</h4>
-        <p>Nada es decorativo. Cada elemento tiene un por qué.</p>
-      </div>
-      <div class="value-card">
-        <div class="value-icon">✨</div>
-        <h4>Magia Sutil</h4>
-        <p>Formas orgánicas, luz difusa, animaciones impredecibles. La estética Kingdom Hearts sin ser literal.</p>
-      </div>
-      <div class="value-card">
-        <div class="value-icon">♿</div>
-        <h4>Accesibilidad</h4>
-        <p>Tipografía legible, contraste suficiente, jerarquía clara. No es opcional, es la base.</p>
-      </div>
-      <div class="value-card">
-        <div class="value-icon">🎯</div>
-        <h4>Estrategia</h4>
-        <p>Todo lo que hacemos está diseñado para ser mantenible y rentable en el tiempo.</p>
-      </div>
-    </div>
-
-    <div class="glass-card" style="margin-top:1.5rem; text-align:center;">
-      <p style="font-size:1.2rem; font-family:'Grand Hotel',cursive; color:var(--terracota);">"Hacemos real tu corazonada."</p>
-    </div>
-  </div>
-</div>
-
-<!-- ============================== PAGE 17: THANK YOU ============================== -->
-<div class="page" style="display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; min-height:70vh;">
-  <div class="shape-blob shape-1"></div>
-  <div class="shape-blob shape-2"></div>
-  <div class="shape-blob shape-3"></div>
-  <div class="page-content">
-    <div class="tag">Thank You</div>
-    <h2>Let's build <span class="terracota">something</span></h2>
-    <p style="font-size:1.1rem; max-width:500px; margin:1rem auto;">
-      The Brand Crew es más que una agencia. Es la materialización de una forma de ver el diseño: estratégico, mantenible, rentable, y hecho con alma.
+<!-- ============================== FOOTER ============================== -->
+<section style="text-align:center; margin-bottom:2rem;">
+  <div class="glass-card" style="max-width:450px; margin:0 auto;">
+    <p style="font-family:var(--font-display); font-weight:600; font-size:1.2rem; color:var(--headline);">The Brand Crew</p>
+    <p style="font-size:0.8rem; color:var(--body-dim);">Fundado por <strong style="color:var(--headline);">Illya Grytsyk</strong></p>
+    <p style="font-size:0.75rem; color:var(--body-dim); opacity:0.6; margin-top:0.5rem;">
+      Mar del Plata, Argentina · 2026<br>
+      WCAG · GovTech · AI · Diseño Inclusivo
     </p>
-    <div class="glass-card" style="max-width:400px; margin:1.5rem auto;">
-      <p style="font-family:'Grand Hotel',cursive; font-size:1.3rem; color:var(--terracota);">Creado por Illya Grytsyk</p>
-      <p style="font-size:0.85rem; color:var(--body-dim);">illushkinn.github.io</p>
-    </div>
-    <p class="mono" style="font-size:0.7rem; color:var(--body-dim); opacity:0.5;">The Brand Crew · Brand Guidelines · Julio 2026</p>
   </div>
+  <p class="oklch-note" style="text-align:center;">The Brand Crew — Brand Guidelines v1.0 · Julio 2026</p>
+</section>
+
 </div>
 
 </body>

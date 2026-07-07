@@ -25,55 +25,38 @@
   }
   
   /**
-   * Sets the clip-path circle origin to the hamburger button position
-   * Uses inline style to override CSS with precise pixel coordinates
-   */
-  function setClipOrigin() {
-    const rect = hamburgerBtn.getBoundingClientRect();
-    const cx = Math.round(rect.left + rect.width / 2);
-    const cy = Math.round(rect.top + rect.height / 2);
-    mobileMenu.style.clipPath = 'circle(150% at ' + cx + 'px ' + cy + 'px)';
-    mobileMenu.style.webkitClipPath = 'circle(150% at ' + cx + 'px ' + cy + 'px)';
-  }
-
-  /**
-   * Resets inline clip-path so CSS class takes over for closing animation
-   */
-  function resetClipOrigin() {
-    mobileMenu.style.clipPath = '';
-    mobileMenu.style.webkitClipPath = '';
-  }
-
-  /**
-   * Opens the mobile menu with animation
+   * Opens the mobile menu with clip-path circle animation
+   * Uses CSS custom properties for the circle origin so open/close animate smoothly
    */
   function openMenu() {
     state.menuOpen = true;
     setLinkDelays(true);
-    // Set clip origin BEFORE adding is-open so the circle starts from 0%
-    mobileMenu.style.clipPath = 'circle(0% at ' + (function() {
-      const rect = hamburgerBtn.getBoundingClientRect();
-      return Math.round(rect.left + rect.width / 2) + 'px ' + Math.round(rect.top + rect.height / 2) + 'px';
-    })() + ')';
-    mobileMenu.style.webkitClipPath = mobileMenu.style.clipPath;
-    // Use rAF to ensure the 0% circle renders before transitioning to 150%
-    requestAnimationFrame(function() {
-      mobileMenu.classList.add('is-open');
-      setClipOrigin();
-    });
+    
+    // Circle origin stays at CSS defaults (right top) — the hamburger is always
+    // at the top-right regardless of screen size. No pixel calculation needed,
+    // which avoids getBoundingClientRect() quirks on mobile browsers.
+    
     mobileMenu.removeAttribute('inert');
     hamburgerBtn.setAttribute('aria-expanded', 'true');
+    
+    // Force reflow so the browser sees circle(0%) before transitioning to 150%
+    void mobileMenu.offsetHeight;
+    
+    // Trigger the CSS transition to circle(150%)
+    mobileMenu.classList.add('is-open');
+    
     document.documentElement.style.overflow = 'clip';
     setTimeout(function() { mobileLinks[0]?.focus(); }, 200);
   }
   
   /**
-   * Closes the mobile menu with animation
+   * Closes the mobile menu — CSS handles reverse transition with same origin
    */
   function closeMenu() {
     state.menuOpen = false;
     setLinkDelays(false);
-    resetClipOrigin();
+    
+    // CSS handles the reverse transition — same origin via custom props
     mobileMenu.classList.remove('is-open');
     mobileMenu.setAttribute('inert', '');
     hamburgerBtn.setAttribute('aria-expanded', 'false');
