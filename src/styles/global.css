@@ -303,50 +303,28 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   transform: scale(0.96);
 }
 
-/* ===== CTA — GLOW PULSE ===== */
+/* ===== CTA — PREMIUM STATIC ===== */
 .btn-premium {
   background: oklch(0.58 0.18 32);
-  border: none;
+  border: 1px solid oklch(0.62 0.18 32 / 0.4);
   border-radius: 10px;
   color: var(--white);
   font-weight: 500;
   letter-spacing: 0.02em;
-  transition: box-shadow 0.3s ease;
-  box-shadow: 0 0 0 0 oklch(0.58 0.18 32 / 0.6);
-}
-.btn-premium::before {
-  display: none;
+  transition: box-shadow 0.25s ease, border-color 0.25s ease;
+  box-shadow: 0 2px 8px oklch(0 0 0 / 0.25);
 }
 .btn-premium:hover {
-  box-shadow: 0 0 15px 4px oklch(0.58 0.18 32 / 0.6);
-  animation: glowPulse 2s ease-in-out infinite;
+  box-shadow: 0 4px 16px oklch(0.58 0.18 32 / 0.35);
+  border-color: oklch(0.65 0.18 32 / 0.6);
 }
 .btn-premium:active {
   transform: scale(0.96);
-  animation: none;
-  box-shadow: 0 0 8px 2px oklch(0.58 0.18 32 / 0.4);
 }
 
-@keyframes glowPulse {
-  0%, 100% {
-    box-shadow: 0 0 0 0 oklch(0.58 0.18 32 / 0.5);
-  }
-  50% {
-    box-shadow: 0 0 15px 4px oklch(0.58 0.18 32 / 0.7);
-  }
-}
-
-/* ===== REDUCED MOTION — static glow only, no pulse ===== */
 @media (prefers-reduced-motion: reduce) {
-  .btn-premium {
-    transition: none;
-    animation: none;
-    box-shadow: 0 0 0 4px oklch(0.58 0.18 32 / 0.3);
-  }
-  .btn-premium:hover {
-    animation: none;
-    box-shadow: 0 0 0 4px oklch(0.58 0.18 32 / 0.3);
-  }
+  .btn-premium { transition: none; }
+  .btn-premium:hover { box-shadow: 0 4px 16px oklch(0.58 0.18 32 / 0.35); }
 }
 
 
