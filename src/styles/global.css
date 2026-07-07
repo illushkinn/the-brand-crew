@@ -42,7 +42,6 @@ body {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .resultados-grid { scroll-snap-type: none; }
-  .btn::before { transition: none; }
   .btn:active { transform: none; }
 }
 /* Disable smooth scroll on mobile for better performance */
@@ -553,7 +552,7 @@ a:focus-visible {
 
 /* Reduce sizes on mobile */
 @media (max-width: 768px) {
-  .hero-shapes { contain: none; overflow: visible; }
+  .hero-shapes { contain: none; overflow: hidden; }
   .hero-shape { filter: blur(4px); opacity: 0.55; }
   .hero-shape:nth-child(1) { width: 180px; height: 160px; top: -4%; right: -12%; }
   .hero-shape:nth-child(2) { width: 160px; height: 170px; bottom: 3%; left: -10%; }
@@ -1020,7 +1019,7 @@ body::before {
 
 /* Neurodivergent-friendly: reduce visual noise, clear hierarchy */
 @media (prefers-reduced-motion: reduce) {
-  .btn, .btn::before,
+  .btn,
   .glass-card, .resultado-card, .step, .hero-shape,
   .pricing-shape, .faq-shape, .cta-shape,
   .navbar, .mobile-menu, .mobile-menu a, .hamb-line,
@@ -1531,26 +1530,6 @@ body::before {
   color: var(--body-dim);
   opacity: 0.5;
 }
-.footer .footer-links {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: 0.5rem;
-  font-size: 0.75rem;
-}
-.footer .footer-link {
-  color: var(--body-dim);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-.footer .footer-link:hover {
-  color: var(--terracota);
-  text-decoration: underline;
-}
-.footer .footer-separator {
-  color: var(--body-dim);
-  opacity: 0.5;
-}
 .footer .footer-social {
   display: flex;
   align-items: center;
@@ -1687,9 +1666,6 @@ body::before {
     margin-left: 0;
     margin-top: 0;
     max-width: 95%;
-  }
-  .hero-actions {
-    margin-bottom: 1.5em;
   }
   .hero-meta {
     flex-direction: column;
@@ -2046,8 +2022,6 @@ body::before {
   .pricing-split-item { padding: 0.75rem; min-width: 0; }
   .btn { padding: 0.8rem 1.6rem; font-size: 1.1rem; }
   .btn-lg { padding: 0.9rem 1.8rem; font-size: 1.2rem; }
-  .hint-arrow { transform: scale(0.85); }
-  .hint-text { font-size: 1rem; }
 }
 .hero-problema-wrap {
   position: relative;
