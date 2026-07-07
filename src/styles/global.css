@@ -696,26 +696,26 @@ body::before {
     justify-content: center;
   }
   .hero-title {
-    font-size: clamp(2rem, 6vw, 2.5rem);
-    margin-bottom: 0.5rem;
+    font-size: clamp(2.4rem, 7vw, 2.8rem);
+    margin-bottom: 0.35rem;
   }
   .hero-sub {
-    font-size: clamp(0.95rem, 2.5vw, 1.2rem);
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
+    font-size: clamp(0.85rem, 2.8vw, 1.1rem);
+    margin-top: 0.35rem;
+    margin-bottom: 0.35rem;
   }
   .hero-meta {
-    font-size: 0.75rem;
-    gap: 0.25rem;
-    margin-bottom: 1rem;
+    font-size: 0.7rem;
+    gap: 0.15rem;
+    margin-bottom: 0.5rem;
   }
   .hero-actions {
-    gap: 0.5rem;
-    margin-bottom: 0.75rem;
+    gap: 0.4rem;
+    margin-bottom: 0.5rem;
   }
   .hero-actions .btn-lg {
-    padding: 0.65rem 1.2rem;
-    font-size: 0.95rem;
+    padding: 0.55rem 1rem;
+    font-size: 0.85rem;
   }
   .hero-b2b-tags {
     margin-top: 0.5rem;
@@ -1688,22 +1688,28 @@ body::before {
     font-family: 'Rethink Sans', sans-serif;
   }
   .hero-title {
-    font-size: clamp(3.2rem, 14vw, 8rem);
-    line-height: 1.05;
-    margin-bottom: 0.75rem;
-    word-spacing: -0.5px;
+    font-size: clamp(3.6rem, 16vw, 8rem);
+    line-height: 1.0;
+    margin-bottom: 0.5rem;
+    word-spacing: -1px;
+    letter-spacing: -0.03em;
   }
   .hero-sub {
-    font-size: clamp(1.2rem, 4.5vw, 2.2rem);
+    font-size: clamp(1rem, 3.8vw, 1.8rem);
     text-wrap: balance;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.75rem;
   }
   .hero-meta {
-    font-size: 1.1rem;
+    font-size: 0.85rem;
+    margin-bottom: 0.75rem;
+    gap: 0.15rem;
   }
   .hero-actions .btn-lg {
-    padding: 1.1rem 1.8rem;
-    font-size: 1.25rem;
+    padding: 0.85rem 1.6rem;
+    font-size: 1.05rem;
+  }
+  .hero-actions {
+    margin-bottom: 0.75rem;
   }
   .resultados-grid {
     display: flex;
