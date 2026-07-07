@@ -1735,7 +1735,8 @@ body::before {
     font-size: 1.05rem;
   }
   .hero-actions {
-    margin-bottom: 0.5rem;
+    margin-top: 0.75rem;
+    margin-bottom: 1rem;
   }
   .hero-b2b-tags {
     margin-top: 0.75rem;
