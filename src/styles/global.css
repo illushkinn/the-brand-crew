@@ -2344,11 +2344,6 @@ body.preloading {
     --oklch-bg-dark: oklch(0.10 0.008 280);
     --glass-bg: rgba(255,255,255,0.08);
   }
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
   .hero-shapes, .pricing-shapes, .faq-shapes, .cta-shapes {
     display: block;
     opacity: 0.12;
