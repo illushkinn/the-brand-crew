@@ -399,15 +399,15 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   transform-origin: center;
 }
 .hamburger.active span:nth-child(1),
-[aria-expanded="true"] .hamburger span:nth-child(1) {
+.hamburger[aria-expanded="true"] span:nth-child(1) {
   transform: translateY(9px) rotate(45deg);
 }
 .hamburger.active span:nth-child(2),
-[aria-expanded="true"] .hamburger span:nth-child(2) {
+.hamburger[aria-expanded="true"] span:nth-child(2) {
   opacity: 0;
 }
 .hamburger.active span:nth-child(3),
-[aria-expanded="true"] .hamburger span:nth-child(3) {
+.hamburger[aria-expanded="true"] span:nth-child(3) {
   transform: translateY(-9px) rotate(-45deg);
 }
 button:focus-visible,
