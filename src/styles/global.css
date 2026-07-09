@@ -1685,7 +1685,7 @@ body::before {
     font-family: 'Onest', sans-serif;
   }
   .hero-title {
-    font-size: clamp(4.5rem, 16vw, 7rem);
+    font-size: clamp(3.8rem, 14vw, 6rem);
     line-height: 1.0;
     margin-bottom: 0.35rem;
     word-spacing: -1px;
