@@ -5,47 +5,39 @@
   const scrollToTop = document.getElementById('scrollToTop');
   const navbar = document.querySelector('.navbar');
   var dismissLock = false;
+  var dismissTimer = null;
   
   // --- Scroll-to-top click ---
   if (scrollToTop) {
     scrollToTop.addEventListener('click', function() {
-      // Immediately hide, lock to prevent re-show during animation
       scrollToTop.classList.remove('is-visible');
       dismissLock = true;
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
   
-  // Release lock when smooth scroll lands at the top
+  // --- Release dismiss lock ---
   function releaseDismissLock() {
+    dismissTimer = null;
+    if (!dismissLock) return;
     var scrollY = window.scrollY || window.pageYOffset;
     if (scrollY <= 50) {
-      // Near top — safe to release
       dismissLock = false;
-      // Force re-check (button should stay hidden since we're at the top)
       handleScrollToTop();
-    } else {
-      // Still far from top — keep lock, check again later
-      setTimeout(releaseDismissLock, 300);
+    } else if (dismissLock) {
+      dismissTimer = setTimeout(releaseDismissLock, 300);
     }
   }
   
   // --- Scroll-to-top visibility via scroll position ---
   function handleScrollToTop() {
     if (!scrollToTop) return;
-    
     var scrollY = window.scrollY || window.pageYOffset;
     
-    // If we're near the top, always hide (overrides dismissLock for edge cases)
-    if (scrollY <= 50) {
-      scrollToTop.classList.remove('is-visible');
-      return;
-    }
+    if (dismissLock) return;
     
-    if (dismissLock) return; // Don't re-show during animation to top
-    
-    // Show when scrolled past 60% of viewport height
-    if (scrollY > window.innerHeight * 0.6) {
+    // Show only when scrolled past the hero (full viewport)
+    if (scrollY > window.innerHeight) {
       scrollToTop.classList.add('is-visible');
     } else {
       scrollToTop.classList.remove('is-visible');
@@ -73,12 +65,10 @@
     if (dismissLock) releaseDismissLock();
   });
   
-  // Fallback: also check on every scroll tick (handles browsers without scrollend support)
-  var ticking = false;
+  // Fallback for browsers without scrollend support
   window.addEventListener('scroll', function() {
-    if (dismissLock) {
-      // On mobile, smooth scroll might not fire scrollend. Check periodically.
-      releaseDismissLock();
+    if (dismissLock && !dismissTimer) {
+      dismissTimer = setTimeout(releaseDismissLock, 300);
     }
     if (!ticking) {
       window.requestAnimationFrame(function() {
@@ -89,5 +79,7 @@
     }
   });
   
+  // Tracking var for rAF
+  var ticking = false;
   handleScroll();
 })();
