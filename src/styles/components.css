@@ -822,19 +822,12 @@ body::before {
   }
 }
 .step-number {
-  flex-shrink: 0;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.06);
   color: var(--headline);
   font-family: var(--font-body);
-  font-weight: 600;
-  font-size: 1.35rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 0.25rem;
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 1;
+  margin-bottom: 0.35rem;
 }
 .step-content h3 {
   font-size: clamp(1.3rem, 3vw, 1.6rem);

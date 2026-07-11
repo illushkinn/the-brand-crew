@@ -467,12 +467,6 @@
   .glass-step {
     padding: var(--space-lg) var(--space-md);
   }
-  .step-number {
-    margin-bottom: 0.25rem;
-    width: 40px;
-    height: 40px;
-    font-size: 1.1rem;
-  }
   .step-content h3 {
     font-size: clamp(1.1rem, 2.5vw, 1.4rem);
   }
