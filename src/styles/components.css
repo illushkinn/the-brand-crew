@@ -395,6 +395,9 @@ body::before {
 .hero h1 {
   margin-bottom: var(--space-lg);
 }
+.hero-phrase {
+  display: inline;
+}
 .hero-sub {
   font-family: var(--font-body);
   font-size: clamp(1.3rem, 3.2vw, 2.2rem);
