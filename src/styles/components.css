@@ -625,21 +625,7 @@ body::before {
   display: block;
   margin-bottom: 0.15rem;
 }
-.progreso-tag {
-  font-style: normal;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-size: 0.7rem;
-  font-weight: 600;
-  display: inline-block;
-  padding: 0.15rem 0.5rem;
-  margin-top: 0.3rem;
-  color: var(--terracota);
-  border: 1px solid var(--terracota);
-  border-radius: 100px;
-  background: oklch(0.58 0.18 32 / 0.1);
-  line-height: 1;
-}
+
 .resultado-nombre {
   font-family: var(--font-display);
   font-size: 1.3rem;
@@ -648,19 +634,33 @@ body::before {
   line-height: 1.3;
 }
 .resultado-link {
-  display: inline-block;
-  margin-top: 0.2rem;
-  font-size: 0.85rem;
-  color: var(--body-dim);
-  transition: color 0.2s;
-}
-.resultado-links {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 0.25rem 0.75rem;
-  flex-wrap: wrap;
-  margin-top: 0.25rem;
+  gap: 0.4rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--terracota);
+  text-decoration: none;
+  transition: gap 0.2s ease;
+  margin-top: 0.5rem;
 }
+.resultado-link:hover {
+  gap: 0.6rem;
+}
+.resultado-link svg {
+  transition: transform 0.2s ease;
+}
+.resultado-link:hover svg {
+  transform: translateX(2px);
+}
+.resultado-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
 .resultado-historia {
   background: linear-gradient(135deg, oklch(0.58 0.18 32 / 0.06) 0%, oklch(0.58 0.18 32 / 0.04) 100%);
   margin-bottom: 1.25rem;
@@ -721,7 +721,6 @@ body::before {
   margin-bottom: 0;
 }
 .resultados .resultado-tag,
-.resultados .resultado-link,
 .resultados .resultado-historia p,
 .resultados .resultado-historia em,
 .resultados .resultado-metrica-valor,
