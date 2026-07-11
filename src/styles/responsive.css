@@ -1,0 +1,606 @@
+/* Disable smooth scroll on mobile for better performance */
+@media (max-width: 767.98px) {
+  html {
+    scroll-behavior: auto;
+    background:
+      radial-gradient(ellipse 80% 50% at 50% 40%, oklch(0.58 0.18 32 / 0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 90% 60% at 5% 10%, oklch(0.58 0.18 32 / 0.15) 0%, transparent 60%),
+      radial-gradient(ellipse 70% 80% at 90% 85%, oklch(0.82 0.2 125 / 0.10) 0%, transparent 50%),
+      oklch(0.10 0.008 280);
+  }
+  .hero-shape {
+    filter: blur(4px);
+    opacity: 0.55;
+  }
+  .pricing-shape, .faq-shape, .cta-shape {
+    opacity: 0.25;
+    filter: blur(20px);
+  }
+}
+
+/* Reduce sizes on mobile */
+@media (max-width: 768px) {
+  .hero-shapes { contain: none; overflow: hidden; }
+  .hero-shape { filter: blur(4px); opacity: 0.55; }
+  .hero-shape:nth-child(1) { width: 180px; height: 160px; top: -4%; right: -12%; }
+  .hero-shape:nth-child(2) { width: 160px; height: 170px; bottom: 3%; left: -10%; }
+  .hero-shape:nth-child(3) { width: 160px; height: 150px; top: 25%; left: 50%; margin-left: -80px; }
+  .hero-shape:nth-child(4) { width: 120px; height: 130px; top: 12%; right: 0%; }
+  .hero-shape:nth-child(5) { width: 130px; height: 120px; top: 55%; left: 2%; }
+}
+
+/* Desktop: push hero content to left 3/4 and center vertically with more space from navbar */
+@media (min-width: 769px) {
+  .hero {
+    align-items: flex-start;
+    padding-left: clamp(1.5rem, 6vw, 6rem);
+    padding-top: calc(5rem + 16px);
+  }
+  .hero-content {
+    margin-left: -2rem;
+    max-width: 75%;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .hero-sub {
+    font-size: clamp(1rem, 2.8vw, 1.4rem);
+  }
+  .faq {
+    justify-content: flex-start;
+    padding-top: 2.5rem;
+    padding-bottom: 4rem;
+  }
+  .faq .glass-card {
+    margin-top: 0.5rem;
+  }
+}
+
+/* iPhone SE and small devices optimization */
+@media (max-height: 700px) and (max-width: 400px) {
+  .hero {
+    padding: 2rem 1rem;
+    justify-content: center;
+  }
+  .hero-title {
+    font-size: clamp(2.4rem, 7vw, 2.8rem);
+    margin-bottom: 0.35rem;
+  }
+  .hero-sub {
+    font-size: clamp(0.85rem, 2.8vw, 1.1rem);
+    margin-top: 0.35rem;
+    margin-bottom: 0.35rem;
+  }
+  .hero-meta {
+    font-size: 0.7rem;
+    gap: 0.15rem;
+    margin-bottom: 0.5rem;
+  }
+  .hero-actions {
+    gap: 0.4rem;
+    margin-bottom: 0.5rem;
+  }
+  .hero-actions .btn-lg {
+    padding: 0.55rem 1rem;
+    font-size: 0.85rem;
+  }
+  .hero-b2b-tags {
+    margin-top: 0.5rem;
+  }
+  .tag-b2b {
+    font-size: 0.65rem;
+    padding: 0.25rem 0.65rem;
+  }
+}
+
+@media (min-width: 480px) {
+  .section {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+  .pricing-includes ul {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 768px) {
+  .faq-list {
+    max-width: none;
+    margin: 0.75rem 0 0;
+  }
+}
+
+@media (hover: hover) {
+  .faq-question:hover {
+    color: var(--terracota);
+  }
+}
+
+@media (max-width: 768px) {
+  .resultado-metricas {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.75rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--glass-border);
+  }
+  .resultado-metrica {
+    min-width: 80px;
+  }
+  .resultado-nombre {
+    font-size: 1.1rem;
+    text-wrap: wrap;
+  }
+  .resultado-tag, .resultado-historia p {
+    text-wrap: wrap;
+  }
+  .hero {
+    align-items: center;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .hero .hero-content {
+    padding-left: var(--space-md);
+    padding-right: var(--space-md);
+    margin-left: -1rem;
+    max-width: 100%;
+  }
+  .hero::before { display: none; }
+  .section {
+    padding-left: var(--space-lg);
+    padding-right: var(--space-lg);
+  }
+  .cta-final {
+    padding-left: var(--space-lg);
+    padding-right: var(--space-lg);
+  }
+  .pricing-card .pricing-includes ul {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .cta-dale {
+    font-size: 3.2rem;
+    font-weight: 700;
+  }
+  .cta-empecemos {
+    font-size: 3.2rem;
+    font-weight: 500;
+  }
+  .hero {
+    padding-top: 3.5rem;
+    padding-bottom: 3rem;
+    justify-content: center;
+  }
+  .hero-content {
+    margin-left: 0;
+    margin-top: 0;
+    max-width: 95%;
+  }
+  .hero-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+    margin-bottom: 0.75rem;
+  }
+  .hero-meta .price-group:first-child {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+  }
+  .tag-b2b {
+    padding-left: 0;
+    font-size: 1rem;
+    padding: 0.5rem 1.1rem;
+  }
+  .navbar-brand-text {
+    display: none;
+  }
+  .hero-title, .hero-sub {
+    font-family: 'Onest', sans-serif;
+  }
+  .hero-title {
+    font-size: clamp(3.8rem, 14vw, 6rem);
+    line-height: 1.0;
+    margin-bottom: 0.35rem;
+    word-spacing: -1px;
+    letter-spacing: -0.03em;
+  }
+  .hero-sub {
+    font-size: clamp(1.7rem, 6.5vw, 2.2rem);
+    text-wrap: balance;
+    margin-top: 0.75rem;
+    margin-bottom: 1rem;
+  }
+  .hero-meta {
+    font-size: 1.1rem;
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
+    gap: 0.2rem;
+  }
+  .hero-actions .btn-lg {
+    padding: 1.3rem 2.8rem;
+    font-size: 1.4rem;
+  }
+  .hero-actions {
+    margin-top: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+  .hero-b2b-tags {
+    margin-top: 1.5rem;
+  }
+  .resultados-grid {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.5rem;
+  }
+  .resultados-grid::-webkit-scrollbar { display: none; }
+  .resultados-grid .glass-card {
+    flex: 0 0 calc(85vw - 0.375rem);
+    scroll-snap-align: start;
+  }
+  .resultados-nav {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .section-title {
+    margin-bottom: 1rem;
+  }
+  .problema-grid {
+    margin-top: 1.25rem;
+    gap: var(--space-sm);
+  }
+  .problema-card h4 {
+    margin-bottom: 0.25rem;
+    font-size: clamp(1.1rem, 3.5vw, 1.4rem);
+    text-wrap: balance;
+  }
+  .problema-card p {
+    font-size: clamp(1rem, 3.5vw, 1.15rem);
+    line-height: 1.5;
+    text-wrap: balance;
+  }
+  .steps-container {
+    margin-top: 1.5rem;
+  }
+  .glass-step {
+    padding: var(--space-lg) var(--space-md);
+  }
+  .step-content h3 {
+    font-size: clamp(1.1rem, 4vw, 1.4rem);
+  }
+  .step-content p {
+    font-size: 0.85rem;
+  }
+  .pricing-card {
+    margin-top: 1.5rem;
+  }
+  .problema, .resultados, .como-funciona, .pricing, .faq {
+    min-height: auto;
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+  .hero {
+    padding: 2rem 1rem;
+  }
+  .cta-final {
+    min-height: auto;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+  .footer-card {
+    padding: 1.5rem;
+    gap: var(--space-md);
+    align-items: center;
+    text-align: center;
+  }
+  .footer .footer-brand {
+    font-size: 1rem;
+  }
+  .footer .footer-cuit {
+    font-size: 0.75rem;
+    opacity: 0.6;
+  }
+  .footer .footer-social {
+    justify-content: center;
+    gap: 0.35rem;
+  }
+  .cta-final {
+    justify-content: space-between;
+    padding: 2rem var(--space-lg);
+  }
+  .cta-final .cta-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .cta-final .footer {
+    width: 100%;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 500px) {
+  .hero {
+    height: auto;
+    min-height: calc(100lvh - 64px);
+    padding: 0.5rem clamp(1rem, 5vw, 2rem);
+    justify-content: center;
+  overflow: clip;
+  }
+  .hero-content {
+    max-width: 70%;
+  }
+  .hero-title {
+    font-size: clamp(1.6rem, 4vw, 2.5rem);
+    margin-bottom: 0.4rem;
+  }
+  .hero-sub {
+    font-size: clamp(0.75rem, 2vw, 1.1rem);
+    margin-bottom: 0.5rem;
+    margin-top: var(--space-sm);
+  }
+  .hero-meta {
+    font-size: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+  .hero-actions {
+    margin-bottom: 0.5em;
+  }
+  .hero-actions .btn-lg {
+    padding: 0.5rem 1.2rem;
+    font-size: 0.9rem;
+  }
+  .hero-shape {
+    opacity: 0.65;
+  }
+  .pricing-shape, .faq-shape, .cta-shape {
+    opacity: 0.5;
+  }
+  .hero-shapes, .pricing-shapes, .faq-shapes, .cta-shapes {
+    filter: blur(20px);
+  }
+  body::before {
+    opacity: 0.6;
+  }
+  .hero-b2b-tags {
+    margin-top: 0.25rem;
+  }
+  .tag-b2b {
+    font-size: 0.55rem;
+    padding: 0.15rem 0.35rem;
+  }
+}
+
+/* General landscape adjustments for mobile devices */
+@media (orientation: landscape) and (max-width: 767.98px) {
+  /* Sections: reduce min-height to prevent excessive scrolling */
+  .problema, .resultados, .como-funciona, .pricing, .faq {
+    min-height: auto;
+    padding: 1.5rem clamp(1rem, 4vw, 2rem);
+  }
+  
+  /* Mobile menu: adjust for shorter height */
+  .mobile-menu a {
+    font-size: 2rem;
+    padding: 0.2rem 0.8rem;
+  }
+  .mobile-menu {
+    gap: 0.25rem;
+  }
+  
+  /* Hero adjustments for general landscape */
+  .hero {
+    padding: 1rem clamp(1rem, 4vw, 2rem);
+  }
+  
+  /* Typography: optimize for landscape readability */
+  .hero-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    line-height: 1.1;
+  }
+  .hero-sub {
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    margin-top: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .hero-meta {
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+  }
+  
+  /* Section titles in landscape */
+  h2 {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+  }
+  h3 {
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+  }
+  
+  /* Reduce vertical spacing in sections */
+  .section {
+  padding: 3rem clamp(1.25rem, 5vw, 4rem);
+  }
+  .section-title {
+    margin-bottom: 1rem;
+  }
+  .section-sub {
+    font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Hero content spacing */
+  .hero-content {
+    max-width: 85%;
+  }
+  .hero-actions {
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+  .hero-actions .btn-lg {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+  
+  /* Steps container: horizontal layout works better in landscape */
+  .steps-container {
+    flex-direction: row;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+  .step {
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .glass-step {
+    padding: var(--space-lg) var(--space-md);
+  }
+  .step-number {
+    margin-bottom: 0.25rem;
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
+  }
+  .step-content h3 {
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  }
+  .step-content p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (min-width: 375px) and (max-width: 480px) {
+  .hero-b2b-tags {
+    flex-wrap: nowrap;
+    gap: 0.25rem;
+    justify-content: flex-start;
+  }
+  .tag-b2b {
+    font-size: 0.55rem;
+    padding: 0.2rem 0.4rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+}
+@media (max-width: 380px) and (max-height: 700px) {
+  h1 { font-size: clamp(2.2rem, 8vw, 2.8rem); }
+  h2 { font-size: clamp(1.6rem, 6vw, 2.2rem); }
+  .section {
+  padding: 2.5rem clamp(1.25rem, 5vw, 4rem); }
+  .section-label { font-size: 0.7rem; }
+  .hero {
+    padding: 1rem 0.75rem;
+    min-height: calc(100lvh - 64px - env(safe-area-inset-top, 0px));
+  }
+  .hero-content {
+    margin-top: 0;
+  }
+  .hero-title { font-size: clamp(2rem, 8vw, 2.8rem); }
+  .hero-sub { font-size: clamp(1rem, 4vw, 1.2rem); }
+  .hero-meta { font-size: 0.85rem; gap: 0.25rem; }
+  .glass-card { padding: 1.25rem; }
+  .faq .glass-card { padding: 1.25rem 1rem; }
+  .resultados-grid .glass-card { flex: 0 0 92vw; }
+  .step { gap: var(--space-sm); }
+  .step-content h3 { font-size: clamp(1.1rem, 5vw, 1.3rem); }
+  .step-content p { font-size: 0.9rem; }
+  .pricing-line { flex-wrap: wrap; gap: 0.25rem; }
+  .pricing-split { gap: 0.5rem; }
+  .pricing-split-item { padding: 0.75rem; min-width: 0; }
+  .btn { padding: 0.8rem 1.6rem; font-size: 1.1rem; }
+  .btn-lg { padding: 0.9rem 1.8rem; font-size: 1.2rem; }
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+  .hero h1 {
+    margin-bottom: calc(var(--space-md) * 0.5);
+  }
+  .hero-sub {
+    margin-top: var(--space-md);
+  }
+  .resultados-grid {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    gap: 0.75rem;
+  }
+  .resultados-grid::-webkit-scrollbar { display: none; }
+  .resultados-grid .glass-card {
+    flex: 0 0 calc(50% - 0.375rem);
+    scroll-snap-align: start;
+  }
+  .hero-actions .btn-lg {
+    padding: 0.75rem 1.8rem;
+    font-size: 1rem;
+  }
+
+
+  .problema-grid { grid-template-columns: 1fr 1fr; }
+  .problema-card.tall { grid-column: span 2; }
+  .steps-container {
+    flex-direction: row;
+    gap: 1rem;
+  }
+  .step {
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .glass-step {
+    height: 100%;
+  }
+  .footer {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+
+/* Tablet: more breathing room + larger text */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .section {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+  .hero-title {
+    font-size: clamp(3.5rem, 10vw, 7rem);
+  }
+  .section-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+  }
+  .hero {
+    padding-top: 7rem;
+    padding-bottom: 4rem;
+  }
+}
+@media (max-width: 767.98px) {
+  :root {
+    --oklch-bg-dark: oklch(0.10 0.008 280);
+    --glass-bg: rgba(255,255,255,0.08);
+  }
+  .hero-shapes, .pricing-shapes, .faq-shapes, .cta-shapes {
+    display: block;
+    opacity: 0.12;
+    filter: blur(30px);
+  }
+}
