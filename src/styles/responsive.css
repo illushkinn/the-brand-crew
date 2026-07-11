@@ -196,7 +196,7 @@
     font-family: 'Onest', sans-serif;
   }
   .hero-title {
-    font-size: clamp(2.2rem, 6.5vw, 5rem);
+    font-size: clamp(2.8rem, 8vw, 5rem);
     line-height: 1.0;
     margin-bottom: 0.35rem;
     word-spacing: -1px;
