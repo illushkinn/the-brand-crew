@@ -8,13 +8,15 @@ interface Props {
   description?: string;
   ogImage?: string;
   canonicalURL?: string;
+  noindex?: boolean;
 }
 
 const {
-  title = "Websites That Actually Work",
+  title = "Websites That Actually Work | The Brand Crew",
   description = "Websites that actually work. For businesses that mean business. Design + development + domain + hosting from $240.000 ARS.",
   ogImage = "https://thebrandcrew.lat/assets/og-image.png",
-  canonicalURL = "https://thebrandcrew.lat"
+  canonicalURL = "https://thebrandcrew.lat",
+  noindex = false
 } = Astro.props;
 
 const businessSchema = {
@@ -35,7 +37,10 @@ const businessSchema = {
     "contactType": "sales",
     "availableLanguage": ["English", "Spanish"]
   },
-  "sameAs": [],
+  "sameAs": [
+    "https://github.com/illushkinn",
+    "https://wa.me/5491124063009"
+  ],
   "foundingDate": "2026",
   "founder": {
     "@type": "Person",
@@ -64,11 +69,11 @@ const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "The Brand Crew",
-  "url": "https://www.thebrandcrew.lat",
+  "url": "https://thebrandcrew.lat",
   "description": "Websites that actually work. For businesses that mean business.",
   "potentialAction": {
     "@type": "SearchAction",
-    "target": "https://www.thebrandcrew.lat/?s={search_term_string}",
+    "target": "https://thebrandcrew.lat/?s={search_term_string}",
     "query-input": "required name=search_term_string"
   }
 };
@@ -112,7 +117,7 @@ const websiteSchema = {
   <meta property="og:type" content="website">
   <meta property="og:url" content={canonicalURL}>
   <meta property="og:site_name" content="The Brand Crew">
-  <meta property="og:title" content={`The Brand Crew — ${title}`}>
+  <meta property="og:title" content={title}>
   <meta property="og:description" content={description}>
   <meta property="og:image" content={ogImage}>
   <meta property="og:image:width" content="1200">
@@ -123,13 +128,13 @@ const websiteSchema = {
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content={canonicalURL}>
-  <meta name="twitter:title" content={`The Brand Crew — ${title}`}>
+  <meta name="twitter:title" content={title}>
   <meta name="twitter:description" content={description}>
   <meta name="twitter:image" content={ogImage}>
   <meta name="twitter:image:alt" content="The Brand Crew - Websites That Actually Work">
 
   <link rel="canonical" href={canonicalURL}>
-  <meta name="robots" content="index, follow">
+  <meta name="robots" content={noindex ? "noindex, follow" : "index, follow"}>
   
   <script is:inline type="application/ld+json" set:html={JSON.stringify(websiteSchema)}></script>
   <script is:inline type="application/ld+json" set:html={JSON.stringify(businessSchema)}></script>
@@ -142,8 +147,7 @@ const websiteSchema = {
   <!-- Google Fonts: non-blocking via media="print" + onload swap -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"></noscript>
-  <!-- Preload fallback font for immediate text rendering -->
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" fetchpriority="high">
+
   
   <!-- Vercel Speed Insights -->
   <script defer src="/_vercel/speed-insights/script.js"></script>

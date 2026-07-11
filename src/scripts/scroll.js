@@ -6,12 +6,16 @@
   const navbar = document.querySelector('.navbar');
   var dismissLock = false;
   var dismissTimer = null;
+  var mobileDismissed = false;
   
   // --- Scroll-to-top click ---
   if (scrollToTop) {
     scrollToTop.addEventListener('click', function() {
       scrollToTop.classList.remove('is-visible');
       dismissLock = true;
+      if (window.innerWidth <= 768) {
+        mobileDismissed = true;
+      }
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
@@ -32,6 +36,7 @@
   // --- Scroll-to-top visibility via scroll position ---
   function handleScrollToTop() {
     if (!scrollToTop) return;
+    if (mobileDismissed) return;
     var scrollY = window.scrollY || window.pageYOffset;
     
     if (dismissLock) return;
