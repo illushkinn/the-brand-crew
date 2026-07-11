@@ -43,9 +43,25 @@ body {
   html { scroll-behavior: auto; }
   .resultados-grid { scroll-snap-type: none; }
   .btn:active { transform: none; }
+  .btn-premium { transition: none; }
+  .btn-premium:hover { box-shadow: 0 4px 16px oklch(0.58 0.18 32 / 0.35); }
+  .hero::before { animation: none; }
+  .btn,
+  .glass-card, .resultado-card, .step, .hero-shape,
+  .pricing-shape, .faq-shape, .cta-shape,
+  .navbar, .mobile-menu, .mobile-menu a, .hamburger span,
+  .scroll-to-top, .faq-answer, .faq-question svg,
+  .cube-3d, .core-track, .cube-front, .cube-back, .cube-right,
+  .cube-left, .cube-top, .cube-bottom {
+    transition: none !important;
+    animation: none !important;
+  }
+  .hero-shape, .pricing-shape, .faq-shape, .cta-shape {
+    display: none;
+  }
 }
 /* Disable smooth scroll on mobile for better performance */
-@media (max-width: 767px) {
+@media (max-width: 767.98px) {
   html {
     scroll-behavior: auto;
     background:
@@ -337,10 +353,6 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   transform: scale(0.96);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .btn-premium { transition: none; }
-  .btn-premium:hover { box-shadow: 0 4px 16px oklch(0.58 0.18 32 / 0.35); }
-}
 
 
 /* ========================================
@@ -398,15 +410,12 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
   transition: transform 0.3s, opacity 0.3s;
   transform-origin: center;
 }
-.hamburger.active span:nth-child(1),
 .hamburger[aria-expanded="true"] span:nth-child(1) {
   transform: translateY(9px) rotate(45deg);
 }
-.hamburger.active span:nth-child(2),
 .hamburger[aria-expanded="true"] span:nth-child(2) {
   opacity: 0;
 }
-.hamburger.active span:nth-child(3),
 .hamburger[aria-expanded="true"] span:nth-child(3) {
   transform: translateY(-9px) rotate(-45deg);
 }
@@ -646,9 +655,6 @@ body::before {
   mask-image: radial-gradient(ellipse at 30% 20%, black 0%, transparent 70%);
   -webkit-mask-image: radial-gradient(ellipse at 30% 20%, black 0%, transparent 70%);
 }
-@media (prefers-reduced-motion: reduce) {
-  .hero::before { animation: none; }
-}
 .hero-content {
   position: relative;
   z-index: 1;
@@ -682,7 +688,7 @@ body::before {
     0 1px 3px oklch(0 0 0 / 0.2),
     0 4px 8px oklch(0 0 0 / 0.08);
 }
-@media (max-width: 767px) {
+@media (max-width: 767.98px) {
   .hero-sub {
     font-size: clamp(1rem, 2.8vw, 1.4rem);
   }
@@ -1012,22 +1018,6 @@ body::before {
   text-wrap: balance;
 }
 
-/* Neurodivergent-friendly: reduce visual noise, clear hierarchy */
-@media (prefers-reduced-motion: reduce) {
-  .btn,
-  .glass-card, .resultado-card, .step, .hero-shape,
-  .pricing-shape, .faq-shape, .cta-shape,
-  .navbar, .mobile-menu, .mobile-menu a, .hamburger span,
-  .scroll-to-top, .faq-answer, .faq-question svg,
-  .cube-3d, .core-track, .cube-front, .cube-back, .cube-right,
-  .cube-left, .cube-top, .cube-bottom {
-    transition: none !important;
-    animation: none !important;
-  }
-  .hero-shape, .pricing-shape, .faq-shape, .cta-shape {
-    display: none;
-  }
-}
 .resultado-metrica {
   flex: 1;
   min-width: 100px;
@@ -1643,7 +1633,7 @@ body::before {
     grid-template-columns: 1fr;
   }
 }
-@media (max-width: 767px) {
+@media (max-width: 767.98px) {
   .cta-dale {
     font-size: 3.2rem;
     font-weight: 700;
@@ -1879,7 +1869,7 @@ body::before {
 }
 
 /* General landscape adjustments for mobile devices */
-@media (orientation: landscape) and (max-width: 767px) {
+@media (orientation: landscape) and (max-width: 767.98px) {
   /* Sections: reduce min-height to prevent excessive scrolling */
   .problema, .resultados, .como-funciona, .pricing, .faq {
     min-height: auto;
@@ -1979,7 +1969,7 @@ body::before {
 
 @media (min-width: 375px) and (max-width: 480px) {
   .hero-b2b-tags {
-    flex-wrap: nowrap !important;
+    flex-wrap: nowrap;
     gap: 0.25rem;
     justify-content: flex-start;
   }
@@ -2339,7 +2329,7 @@ body.preloading {
     padding-bottom: 4rem;
   }
 }
-@media (max-width: 767px) {
+@media (max-width: 767.98px) {
   :root {
     --oklch-bg-dark: oklch(0.10 0.008 280);
     --glass-bg: rgba(255,255,255,0.08);
