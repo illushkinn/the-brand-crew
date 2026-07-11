@@ -10,8 +10,8 @@
   }
   .hero-shapes { contain: none; overflow: hidden; }
   .hero-shape {
-    filter: blur(8px);
-    opacity: 0.65;
+    filter: blur(14px);
+    opacity: 0.5;
   }
   .hero-shape:nth-child(1) { width: 155px; height: 140px; top: -3%; right: -10%; }
   .hero-shape:nth-child(2) { width: 140px; height: 150px; bottom: 5%; left: -8%; }

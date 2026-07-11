@@ -434,8 +434,7 @@ body::before {
   font-size: 2.2em;
 }
 .strike-price {
-  text-decoration: line-through;
-  opacity: 0.4;
+  opacity: 0.45;
   font-size: 0.8em;
   color: var(--body-dim);
   position: relative;
@@ -444,11 +443,13 @@ body::before {
 .strike-price::after {
   content: '';
   position: absolute;
-  inset: 0;
-  top: 50%;
-  height: 2px;
-  margin-top: -1px;
+  top: 50%; left: -8%;
+  width: 116%;
+  height: 3px;
+  margin-top: -1.5px;
   background: var(--terracota);
+  transform: rotate(-5deg);
+  border-radius: 2px;
   pointer-events: none;
 }
 .current-price {
