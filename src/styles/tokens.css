@@ -10,7 +10,6 @@
   --oklch-terracota-hover: oklch(0.5 0.16 32);
   --oklch-verde: oklch(0.82 0.2 125);
   --oklch-verde-hover: oklch(0.72 0.18 125);
-  --oklch-teal: oklch(0.52 0.14 190);
   --space-xs: 0.25rem;
   --space-sm: 0.5rem;
   --space-md: 1rem;
@@ -35,26 +34,10 @@
   --border: var(--oklch-border);
   --glass-bg: rgba(255,255,255,0.06);
   --glass-border: rgba(255,255,255,0.10);
-  --accent-glow: oklch(0.58 0.18 32 / 0.15);
   --font-display: 'Onest', sans-serif;
   --font-body: 'Onest', sans-serif;
-  --font-accent: 'Onest', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
   /* Color aliases (map to OKLCH primitives) */
   --color-verde: var(--verde);
   --glass-effect: blur(12px) saturate(120%);
-
-  /* ── Extended spacing (shared scale, new names) ── */
-  --space-3xs: 0.25rem;   /*  4px */
-  --space-2xs: 0.5rem;    /*  8px */
-
-  /* ── Shared transition tokens ── */
-  --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
-  --duration-fast: 150ms;
-  --duration-normal: 300ms;
-  --duration-slow: 400ms;
-
-  /* ── Shared layout ── */
-  --content-max: 1040px;
-  --content-narrow: 720px;
 }

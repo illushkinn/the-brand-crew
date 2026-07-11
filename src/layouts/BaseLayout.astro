@@ -1,5 +1,4 @@
 ---
-import Preloader from '../components/Preloader.astro';
 import Navbar from '../components/Navbar.astro';
 import MobileMenu from '../components/MobileMenu.astro';
 
@@ -13,7 +12,7 @@ interface Props {
 
 const {
   title = "Websites That Actually Work",
-  description = "Websites that actually work. For businesses that mean business. Design + development + domain + hosting from $240.000 ARS.",
+  description = "Websites that actually work. For businesses that mean business. Web design and development for businesses in Argentina. Design + development + domain + hosting from $240.000 ARS.",
   ogImage = "https://thebrandcrew.lat/assets/og-image.png",
   canonicalURL = "https://thebrandcrew.lat",
   noindex = false
@@ -63,6 +62,61 @@ const businessSchema = {
     }
   ],
   "knowsAbout": ["Web Design", "Web Development", "SEO", "E-commerce", "UI/UX Design"]
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What if I don't like it?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We work until you love it. Unlimited revisions until you're completely satisfied."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I update it later?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Basic changes we'll teach you how to do yourself. For bigger updates, we work together."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What do you need from me to start?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tell me about your business. If you have a logo, photos, or brand colors — even better. If not, we create them together from scratch."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does it take to build a website?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most projects are ready within one week. The timeline depends on complexity and how quickly we get the content from you."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you offer payment plans?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. You can pay in full or split into 2 payments — 50% at start and 50% at delivery. All prices are in Argentine pesos (ARS)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's included in the price?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Custom design, development, a .com domain for 2 years, fast hosting, SEO optimization, unlimited revisions, SSL certificate, and WhatsApp support."
+      }
+    }
+  ]
 };
 
 const websiteSchema = {
@@ -123,7 +177,7 @@ const websiteSchema = {
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="The Brand Crew - Websites That Actually Work">
-  <meta property="og:locale" content="en_US">
+  <meta property="og:locale" content="es_AR">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
@@ -138,6 +192,7 @@ const websiteSchema = {
   
   <script is:inline type="application/ld+json" set:html={JSON.stringify(websiteSchema)}></script>
   <script is:inline type="application/ld+json" set:html={JSON.stringify(businessSchema)}></script>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>
   
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -159,7 +214,6 @@ const websiteSchema = {
   </style>
 </head>
 <body>
-  <Preloader />
   <a href="#main-content" class="skip-link">Skip to main content</a>
   <Navbar />
   <MobileMenu />

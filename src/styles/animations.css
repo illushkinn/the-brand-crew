@@ -101,10 +101,6 @@
   75%  { transform: rotateX(-20deg) rotateY(270deg) translateY(-3px); }
   100% { transform: rotateX(-15deg) rotateY(360deg) translateY(0px);  }
 }
-@keyframes preloaderFill {
-  from { width: 0%; }
-  to { width: 100%; }
-}
 @supports (animation-timeline: view()) {
   .reveal {
     opacity: 0;
