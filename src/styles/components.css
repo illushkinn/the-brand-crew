@@ -398,9 +398,6 @@ body::before {
 .hero-phrase {
   display: inline;
 }
-.hero-title {
-  font-family: 'Playfair Display', Georgia, serif;
-}
 .hero-sub {
   font-family: var(--font-body);
   font-size: clamp(1.3rem, 3.2vw, 2.2rem);
