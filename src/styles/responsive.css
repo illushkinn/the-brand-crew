@@ -28,7 +28,7 @@
 @media (min-width: 769px) {
   .hero {
     align-items: flex-start;
-    padding-left: clamp(1rem, 2vw, 2rem);
+    padding-left: clamp(2rem, 4vw, 4rem);
     padding-top: calc(5rem + 16px);
   }
   .hero-content {
