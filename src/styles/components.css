@@ -591,6 +591,10 @@ body::before {
   height: 48px;
   flex-shrink: 0;
   border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 .resultado-avatar img {
   width: 100%;
