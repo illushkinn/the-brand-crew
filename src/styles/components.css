@@ -303,52 +303,52 @@
 }
 .hero-shape:nth-child(1) {
   /* Large — terracota, slow float */
-  width: 280px; height: 240px;
+  width: 320px; height: 280px;
   border-radius: 50% / 40%;
   background: linear-gradient(135deg, var(--terracota), #dd614c, var(--terracota));
   top: -8%; right: -5%;
   animation-delay: 0s;
-  animation-duration: 28s;
+  animation-duration: 40s;
 }
 .hero-shape:nth-child(2) {
   /* Medium — verde, pulse */
-  width: 200px; height: 220px;
+  width: 240px; height: 260px;
   border-radius: 40% / 50%;
   background: linear-gradient(225deg, oklch(0.82 0.2 125), #8cd44a, oklch(0.72 0.18 125));
   bottom: -6%; left: -5%;
   animation-delay: -7s;
   animation-name: heroPulse;
-  animation-duration: 20s;
+  animation-duration: 30s;
 }
 .hero-shape:nth-child(3) {
   /* Medium — teal, tilt */
-  width: 180px; height: 170px;
+  width: 220px; height: 200px;
   border-radius: 35% / 45%;
   background: linear-gradient(180deg, oklch(0.52 0.14 190), #3a9e9e, oklch(0.55 0.12 190 / 0.8));
   top: 30%; left: 55%;
   animation-delay: -14s;
   animation-name: heroTilt;
-  animation-duration: 22s;
+  animation-duration: 32s;
 }
 .hero-shape:nth-child(4) {
-  /* Small — terracota accent, diagonal */
-  width: 130px; height: 140px;
+  /* Small — violeta, diagonal */
+  width: 160px; height: 170px;
   border-radius: 50%;
-  background: linear-gradient(45deg, var(--terracota), #f0a088, #f5e6b8);
+  background: linear-gradient(45deg, oklch(0.6 0.18 290), oklch(0.5 0.15 300 / 0.8), oklch(0.65 0.16 280 / 0.6));
   bottom: 15%; right: 15%;
   animation-delay: -5s;
   animation-name: heroFloatDiag;
-  animation-duration: 18s;
+  animation-duration: 26s;
 }
 .hero-shape:nth-child(5) {
-  /* Small — verde accent, slow float */
-  width: 150px; height: 130px;
+  /* Small — ámbar, slow float */
+  width: 180px; height: 160px;
   border-radius: 50% / 40%;
-  background: linear-gradient(90deg, oklch(0.82 0.2 125), #a0e060, oklch(0.72 0.18 125 / 0.7));
+  background: linear-gradient(90deg, oklch(0.75 0.18 85), oklch(0.8 0.16 70 / 0.8), oklch(0.7 0.2 90 / 0.6));
   top: 55%; left: 10%;
   animation-delay: -3s;
   animation-name: heroFloatSlow;
-  animation-duration: 26s;
+  animation-duration: 36s;
 }
 
 /* ========================================
