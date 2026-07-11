@@ -28,12 +28,12 @@
 @media (min-width: 769px) {
   .hero {
     align-items: flex-start;
-    padding-left: clamp(1.5rem, 6vw, 6rem);
+    padding-left: clamp(1rem, 2vw, 2rem);
     padding-top: calc(5rem + 16px);
   }
   .hero-content {
-    margin-left: -2rem;
-    max-width: 75%;
+    margin-left: -0.5rem;
+    max-width: 85%;
   }
 }
 
