@@ -1129,8 +1129,8 @@ body::before {
   font-size: 0.9rem;
 }
 .footer .footer-brand {
-  font-family: var(--font-accent);
-  font-weight: 400;
+  font-family: var(--font-display);
+  font-weight: 500;
   font-size: 1.3rem;
   color: var(--headline);
 }
