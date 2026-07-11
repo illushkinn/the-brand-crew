@@ -592,3 +592,30 @@
     --glass-bg: rgba(255,255,255,0.08);
   }
 }
+
+/* Shorter viewports (14" laptops, ~1366x768): compact hero spacing */
+@media (max-height: 800px) {
+  .hero {
+    padding-top: calc(3rem + 16px);
+    padding-bottom: 1rem;
+  }
+  .hero h1 {
+    margin-bottom: 1rem;
+  }
+  .hero-sub {
+    margin-top: 0.5rem;
+    margin-bottom: 0.25rem;
+  }
+  .hero-meta {
+    margin-bottom: 1.5rem;
+  }
+  .hero-actions {
+    margin-bottom: 1.5rem;
+  }
+  .hero-actions .btn-lg {
+    padding: 0.8rem 2rem;
+  }
+  .hero-b2b-tags {
+    margin-top: 0.75rem;
+  }
+}
