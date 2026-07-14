@@ -59,7 +59,8 @@
   }
   .hero-title {
     font-size: clamp(2.4rem, 7vw, 2.8rem);
-    margin-bottom: 0.35rem;
+    line-height: 0.95;
+    margin-bottom: 0.25rem;
   }
   .hero-sub {
     font-size: clamp(0.85rem, 2.8vw, 1.1rem);
@@ -174,15 +175,16 @@
     max-width: 95%;
   }
   .hero-meta {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.35rem;
-    margin-bottom: 0.75rem;
+    flex-direction: row;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
   }
   .hero-meta .price-group:first-child {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 0.35rem;
   }
   .tag-b2b {
     padding-left: 0;
@@ -196,9 +198,9 @@
     font-family: 'Onest', sans-serif;
   }
   .hero-title {
-    font-size: clamp(2.4rem, 7vw, 3rem);
-    line-height: 1.05;
-    margin-bottom: 0.35rem;
+    font-size: clamp(2.6rem, 7.5vw, 3.2rem);
+    line-height: 0.95;
+    margin-bottom: 0.3rem;
     word-spacing: -1px;
     letter-spacing: -0.03em;
   }
@@ -225,8 +227,8 @@
     font-size: 1.4rem;
   }
   .hero-actions {
-    margin-top: 1.25rem;
-    margin-bottom: 1.5rem;
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
   }
   .hero-b2b-tags {
     margin-top: 1.5rem;
