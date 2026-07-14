@@ -165,7 +165,7 @@
     font-weight: 500;
   }
   .hero {
-    padding-top: 2rem;
+    padding-top: 1.5rem;
     padding-bottom: 3rem;
     justify-content: center;
   }
@@ -213,8 +213,8 @@
   .hero-sub {
     font-size: clamp(1.2rem, 4vw, 1.6rem);
     text-wrap: balance;
-    margin-top: 1rem;
-    margin-bottom: 1.25rem;
+    margin-top: 1.25rem;
+    margin-bottom: 1.5rem;
   }
   .hero-meta {
     font-size: 1.1rem;
@@ -231,7 +231,7 @@
     margin-bottom: 0.75rem;
   }
   .hero-b2b-tags {
-    margin-top: 1.5rem;
+    margin-top: 2rem;
   }
   .resultados-grid {
     display: flex;
