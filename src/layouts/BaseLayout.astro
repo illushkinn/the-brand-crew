@@ -2,6 +2,7 @@
 import Navbar from '../components/Navbar.astro';
 import MobileMenu from '../components/MobileMenu.astro';
 import { type Lang, localeMap, hreflangMap, dictionaries, defaultLang, getTranslation } from '../i18n/ui';
+import { WHATSAPP_NUMBER, DOMAIN } from '../lib/constants';
 
 interface Props {
   lang?: Lang;
@@ -13,14 +14,16 @@ interface Props {
 }
 
 const lang = Astro.props.lang ?? defaultLang;
+const siteURL = DOMAIN;
 
 const {
   title = getTranslation(lang, 'seo.title'),
   description = getTranslation(lang, 'seo.description'),
-  ogImage = "https://thebrandcrew.lat/assets/og-image.png",
-  canonicalURL = lang === 'en' ? "https://thebrandcrew.lat/en/" : "https://thebrandcrew.lat/",
+  ogImage = `${DOMAIN}/assets/og-image.png`,
   noindex = false
 } = Astro.props;
+
+const canonicalURL = Astro.props.canonicalURL || Astro.url;
 
 const seo = dictionaries[lang].seo;
 const pricing = dictionaries[lang].pricing;
@@ -30,7 +33,7 @@ const businessSchema = {
   "@type": "LocalBusiness",
   "name": "The Brand Crew",
   "description": seo.businessDescription,
-  "url": "https://thebrandcrew.lat",
+  "url": DOMAIN,
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Mar del Plata",
@@ -45,7 +48,7 @@ const businessSchema = {
   },
   "sameAs": [
     "https://github.com/illushkinn",
-    "https://wa.me/5491124063009"
+    `https://wa.me/${WHATSAPP_NUMBER}`
   ],
   "foundingDate": "2026",
   "founder": {
@@ -113,11 +116,11 @@ const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "The Brand Crew",
-  "url": "https://thebrandcrew.lat",
+  "url": DOMAIN,
   "description": seo.websiteDescription,
   "potentialAction": {
     "@type": "SearchAction",
-    "target": "https://thebrandcrew.lat/?s={search_term_string}",
+    "target": `${DOMAIN}/?s={search_term_string}`,
     "query-input": "required name=search_term_string"
   }
 };
@@ -172,7 +175,6 @@ const altLang: Lang = lang === 'es' ? 'en' : 'es';
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://wa.me">
   <link rel="preconnect" href="https://va.vercel-scripts.com">
   <!-- Google Fonts: non-blocking via media="print" + onload swap -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'">

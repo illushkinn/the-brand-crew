@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { dictionaries } from '../../i18n/ui';
+import { WHATSAPP_NUMBER, DOMAIN } from '../../lib/constants';
 
 const c = dictionaries.en.terms;
 ---
@@ -8,7 +9,7 @@ const c = dictionaries.en.terms;
 <BaseLayout
   title={`${c.title} | The Brand Crew`}
   description="Terms of Service for The Brand Crew web design and development services. Payment terms, project timelines, and client responsibilities."
-  canonicalURL="https://thebrandcrew.lat/en/terms"
+  canonicalURL={`${DOMAIN}/en/terms`}
   noindex={true}
   lang="en"
 >
@@ -67,7 +68,7 @@ const c = dictionaries.en.terms;
       <p style="margin-bottom: 0.5rem;">{c.p12}</p>
       <p style="margin-bottom: 0;">
         {c.email}: <a href="mailto:hello@thebrandcrew.lat" style="color: var(--terracota); text-decoration: underline;">hello@thebrandcrew.lat</a><br>
-        {c.whatsapp}: <a href="https://wa.me/5491124063009" style="color: var(--terracota); text-decoration: underline;">+54 9 11 2406-3009</a>
+        {c.whatsapp}: <a href={`https://wa.me/${WHATSAPP_NUMBER}`} style="color: var(--terracota); text-decoration: underline;">+54 9 11 2406-3009</a>
       </p>
     </div>
   </main>
