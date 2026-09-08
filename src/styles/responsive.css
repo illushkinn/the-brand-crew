@@ -35,8 +35,8 @@
     position: relative;
   }
   .hero-logo-ring {
-    width: clamp(340px, 35vw, 460px);
-    height: clamp(340px, 35vw, 460px);
+    width: clamp(320px, 33vw, 440px);
+    height: clamp(320px, 33vw, 440px);
   }
   .slogan-text {
     font-size: 18px;
