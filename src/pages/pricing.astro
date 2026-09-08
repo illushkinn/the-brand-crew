@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Pricing from '../components/Pricing.astro';
+import CTA from '../components/CTA.astro';
+import Footer from '../components/Footer.astro';
+import ScrollToTop from '../components/ScrollToTop.astro';
+
+const lang = 'es';
+---
+
+<BaseLayout lang={lang} title="Precios — The Brand Crew" description="Precios claros para diseño web y growth partner. Desde $300 USD. Monotributo y Factura A incluida." canonicalURL="https://thebrandcrew.lat/pricing">
+  <main id="main-content">
+    <Pricing lang={lang} />
+  </main>
+  <CTA lang={lang} />
+  <Footer lang={lang} />
+  <ScrollToTop lang={lang} />
+</BaseLayout>

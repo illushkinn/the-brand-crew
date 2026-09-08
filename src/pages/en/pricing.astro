@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Pricing from '../../components/Pricing.astro';
+import CTA from '../../components/CTA.astro';
+import Footer from '../../components/Footer.astro';
+import ScrollToTop from '../../components/ScrollToTop.astro';
+
+const lang = 'en';
+---
+
+<BaseLayout lang={lang} title="Pricing — The Brand Crew" description="Clear pricing for web design and growth partner. Starting at $300 USD. Invoice included." canonicalURL="https://thebrandcrew.lat/en/pricing">
+  <main id="main-content">
+    <Pricing lang={lang} />
+  </main>
+  <CTA lang={lang} />
+  <Footer lang={lang} />
+  <ScrollToTop lang={lang} />
+</BaseLayout>
