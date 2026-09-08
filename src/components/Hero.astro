@@ -9,8 +9,8 @@ const { lang = 'es' } = Astro.props;
 const t = useTranslations(lang);
 
 const slogan = lang === 'es'
-  ? '★ Disponibles para proyectos ★ Aceptando nuevos clientes ★'
-  : '★ Available for projects ★ Currently accepting new clients ★';
+  ? '* Disponibles para proyectos * Aceptando nuevos clientes'
+  : '* Available for projects * Currently accepting new clients';
 const sloganUpper = slogan.toUpperCase();
 const waLink = "https://wa.me/5491124063009?text=" + encodeURIComponent(
   lang === 'es'
