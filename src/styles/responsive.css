@@ -201,6 +201,9 @@
     width: 84px;
     height: 84px;
   }
+  .lang-switcher {
+    margin-right: 0.75rem;
+  }
   .hero-content {
     margin-left: 0;
     margin-top: 0;
