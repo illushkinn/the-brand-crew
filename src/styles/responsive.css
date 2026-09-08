@@ -247,8 +247,8 @@
     gap: 0.35rem;
   }
   .tag-b2b {
-    font-size: 1.15rem;
-    padding: 0.6rem 1.2rem;
+    font-size: 1.3rem;
+    padding: 0.65rem 1.3rem;
   }
   .hero-actions {
     margin-top: 2rem;
@@ -265,8 +265,8 @@
   }
   .hero-logo {
     margin-top: 0.25rem;
-    justify-content: flex-start;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
   }
   .hero-isotype {
     transform: none;
