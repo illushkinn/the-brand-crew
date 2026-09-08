@@ -1,19 +1,19 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import { dictionaries } from '../i18n/ui';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { dictionaries } from '../../i18n/ui';
 
-const c = dictionaries.es.privacy;
+const c = dictionaries.en.privacy;
 ---
 
 <BaseLayout
   title={`${c.title} | The Brand Crew`}
-  description="Cómo The Brand Crew recopila, usa y protege tus datos personales. Tu privacidad nos importa."
-  canonicalURL="https://thebrandcrew.lat/privacy"
+  description="How The Brand Crew collects, uses, and protects your personal data. Your privacy matters to us."
+  canonicalURL="https://thebrandcrew.lat/en/privacy"
   noindex={true}
-  lang="es"
+  lang="en"
 >
   <main id="main-content" style="padding: 4rem clamp(1.25rem, 5vw, 4rem); max-width: 900px; margin: 0 auto;">
-    <a href="/" style="display: inline-block; margin-bottom: 2rem; color: var(--terracota); text-decoration: none; transition: opacity 0.2s;">{c.backHome}</a>
+    <a href="/en/" style="display: inline-block; margin-bottom: 2rem; color: var(--terracota); text-decoration: none; transition: opacity 0.2s;">{c.backHome}</a>
 
     <h1 style="font-size: clamp(2rem, 5vw, 2.5rem); margin-bottom: 0.5rem;">{c.title}</h1>
     <p style="color: var(--body-dim); margin-bottom: 2rem; font-size: 0.9rem;">{c.updated}</p>
