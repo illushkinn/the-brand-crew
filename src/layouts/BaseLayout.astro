@@ -161,8 +161,8 @@ const altLang: Lang = lang === 'es' ? 'en' : 'es';
   <meta name="robots" content={noindex ? "noindex, follow" : "index, follow"}>
 
   <!-- Hreflang -->
-  <link rel="alternate" hreflang="es" href="https://thebrandcrew.lat/" />
-  <link rel="alternate" hreflang="en" href="https://thebrandcrew.lat/en/" />
+  <link rel="alternate" hreflang="es" href={canonicalURL.pathname.startsWith('/en/') ? canonicalURL.pathname.replace('/en/', '/') : canonicalURL.pathname} />
+  <link rel="alternate" hreflang="en" href={canonicalURL.pathname.startsWith('/en/') ? canonicalURL.pathname : '/en' + canonicalURL.pathname} />
   <link rel="alternate" hreflang={hreflangMap[lang]} href={canonicalURL} />
 
   <script is:inline type="application/ld+json" set:html={JSON.stringify(websiteSchema)}></script>

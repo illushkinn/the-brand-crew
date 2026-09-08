@@ -1,11 +1,12 @@
 ---
 // Founders.astro - Founding partners + strategic partners cards
 import type { Lang } from '../i18n/ui';
-import { useTranslations } from '../i18n/ui';
+import { useTranslations, dictionaries } from '../i18n/ui';
 
 interface Props { lang?: Lang }
 const { lang = 'es' } = Astro.props;
 const t = useTranslations(lang);
+const skills = dictionaries[lang].founders;
 ---
 
 <section class="section founders reveal" id="crew" aria-label="The crew">
@@ -22,10 +23,7 @@ const t = useTranslations(lang);
         <h3 class="founder-name">Illya Grytsyk</h3>
         <p class="founder-bio">{t('founders.illyaBio')}</p>
         <ul class="founder-skills">
-          <li>Frontend Architecture</li>
-          <li>Web Development</li>
-          <li>Growth</li>
-          <li>Estrategia</li>
+          {skills.illyaSkills.map((skill: string) => <li>{skill}</li>)}
         </ul>
       </div>
     </article>
@@ -37,10 +35,7 @@ const t = useTranslations(lang);
         <h3 class="founder-name">Carlos Segovia Gonzalez</h3>
         <p class="founder-bio">{t('founders.carlosBio')}</p>
         <ul class="founder-skills">
-          <li>Branding</li>
-          <li>Logos &amp; Naming</li>
-          <li>Diseño gráfico</li>
-          <li>Community Mgmt</li>
+          {skills.carlosSkills.map((skill: string) => <li>{skill}</li>)}
         </ul>
       </div>
     </article>
@@ -52,8 +47,7 @@ const t = useTranslations(lang);
         <h3 class="founder-name">Growth &amp; Sales</h3>
         <p class="founder-bio">{t('founders.closerBio')}</p>
         <ul class="founder-skills">
-          <li>Cierre de ventas</li>
-          <li>Estrategia comercial</li>
+          {skills.closerSkills.map((skill: string) => <li>{skill}</li>)}
         </ul>
       </div>
     </article>
@@ -67,10 +61,7 @@ const t = useTranslations(lang);
         <h3 class="founder-name">DevOps &amp; Backend</h3>
         <p class="founder-bio">{t('founders.devopsBio')}</p>
         <ul class="founder-skills">
-          <li>Backend</li>
-          <li>Bases de datos</li>
-          <li>Automatizaciones</li>
-          <li>DevOps</li>
+          {skills.devopsSkills.map((skill: string) => <li>{skill}</li>)}
         </ul>
       </div>
     </article>

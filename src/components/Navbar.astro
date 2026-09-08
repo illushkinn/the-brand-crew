@@ -28,14 +28,14 @@ const isHome = lang === 'es' ? '/' : '/en/';
     <div class="navbar-actions">
       <div class="lang-switcher" role="group" aria-label="Language">
         <a
-          href={lang === 'es' ? '/' : '/en/'}
+          href={lang === 'es' ? Astro.url.pathname : Astro.url.pathname.replace('/en', '') || '/'}
           class={`lang-btn ${lang === 'es' ? 'is-active' : ''}`}
           aria-label="Español"
           aria-current={lang === 'es' ? 'true' : undefined}
         >ES</a>
         <span class="lang-separator" aria-hidden="true">|</span>
         <a
-          href="/en/"
+          href={lang === 'en' ? Astro.url.pathname : '/en' + Astro.url.pathname}
           class={`lang-btn ${lang === 'en' ? 'is-active' : ''}`}
           aria-label="English"
           aria-current={lang === 'en' ? 'true' : undefined}
