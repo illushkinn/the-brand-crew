@@ -1,48 +1,209 @@
 ---
-// Hero section with animated background shapes
+// Hero.astro — 50/50 split: left = pitch, right = logo composition (rotating slogan ring + isotype) — ring ONLY desktop
+import Logo from './Logo.astro';
+import type { Lang } from '../i18n/ui';
+import { useTranslations } from '../i18n/ui';
+
+interface Props { lang?: Lang }
+const { lang = 'es' } = Astro.props;
+const t = useTranslations(lang);
+
+const slogan = lang === 'es'
+  ? 'Páginas web que garpan, para comercios que laburan'
+  : 'Websites that pay, for businesses that work';
+const sloganUpper = slogan.toUpperCase();
+const waLink = "https://wa.me/5491124063009?text=" + encodeURIComponent(
+  lang === 'es'
+    ? '¡Hola The Brand Crew! Vi tu sitio y me encantaría trabajar con ustedes.'
+    : "Hey The Brand Crew! I saw your site and I'd love to work with you."
+);
+const ctaLabel = t('hero.cta');
 ---
 
 <div class="hero-problema-wrap" id="home">
-  <div class="hero-shapes" aria-hidden="true">
-    <div class="hero-shape"></div>
-    <div class="hero-shape"></div>
-    <div class="hero-shape"></div>
-    <div class="hero-shape"></div>
-    <div class="hero-shape"></div>
-  </div>
-  
   <section class="hero reveal" id="inicio" aria-label="Hero">
-    <div class="hero-content">
-      <h1 class="hero-title">
-        <span class="hero-phrase">The Brand Crew:</span>
-          <span class="hero-phrase">Websites That</span>
-          <span class="hero-phrase text-terracota">Actually Work</span>
-      </h1>
-      <p class="hero-sub">
-        For businesses that <span class="text-white">mean business</span>
-      </p>
-      <p class="hero-meta">
-        <span class="price-group">
-          <span class="current-price">$240.000&nbsp;<small class="price-currency">ARS</small></span>
-          <span class="strike-price" aria-label="Original price">$400.000</span>
-        </span>
-        <span class="price-group">
-          <span>2 payments of <strong>$120.000</strong>&nbsp;<small class="price-currency">ARS</small></span>
-        </span>
-      </p>
-      <div class="hero-actions">
-        <a
-          href="https://wa.me/5491124063009?text=Hey%20Illya!%20I%20saw%20your%20site%20and%20I'd%20love%20to%20work%20together."
-          target="_blank"
-          rel="noopener"
-          class="btn btn-lg btn-premium"
-        >
-          Book a call
-        </a>
+    <div class="hero-split">
+      <div class="hero-content">
+        <h1 class="hero-title">
+          <span class="hero-phrase">The Brand Crew:</span>
+          <span class="hero-phrase">{t('hero.headline2')}</span>
+          <span class="hero-phrase text-terracota">{t('hero.headline3')}</span>
+        </h1>
+        <p class="hero-sub" set:html={t('hero.sub')}></p>
+        <p class="hero-meta">
+          <span class="price-group">
+            <span class="current-price">Desde&nbsp;$300&nbsp;<small class="price-currency">USD</small></span>
+          </span>
+          <span class="price-group">
+            <span>50% al empezar / 50% al entregar</span>
+          </span>
+        </p>
+        <div class="hero-actions">
+          <a
+            href={waLink}
+            target="_blank"
+            rel="noopener"
+            class="btn btn-lg btn-premium"
+          >
+            {ctaLabel}
+          </a>
+        </div>
+        <p class="hero-b2b-tags">
+          <span class="tag-b2b tag-outline">{t('hero.tag')}</span>
+        </p>
       </div>
-      <p class="hero-b2b-tags">
-        <span class="tag-b2b tag-outline">White-label partner</span>
-      </p>
+
+       <div class="hero-logo">
+         <div class="hero-logo-ring">
+           <svg class="slogan-ring" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg">
+             <defs>
+               <path id="slogan-circle" d="M160 160 m-118 0 a118 118 0 1 1 236 0 a118 118 0 1 1 -236 0" fill="none"/>
+             </defs>
+             <g class="slogan-rotator">
+               <text class="slogan-text">
+                 <textPath href="#slogan-circle" startOffset="0">{sloganUpper}</textPath>
+               </text>
+             </g>
+           </svg>
+           <div class="hero-isotype">
+             <Logo size={180} ariaLabel="The Brand Crew" />
+           </div>
+         </div>
+       </div>
     </div>
   </section>
 </div>
+
+<style>
+  /* ---------- 50/50 split ---------- */
+  .hero-split {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1200px;
+    gap: clamp(1.5rem, 4vw, 3rem);
+  }
+
+ /* Mobile: clean column, content pushed to the left */
+ .hero-split {
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+   text-align: left;
+ }
+ .hero-logo {
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+   justify-content: center;
+   gap: 1.25rem;
+   position: relative;
+   z-index: 1;
+   width: 100%;
+ }
+
+ /* ---------- Rotating slogan ring + isotype composition ---------- */
+ /* Mobile: ring hidden, isotype visible. Desktop: both visible, centered */
+ .hero-logo-ring {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   position: relative;
+ }
+ .hero-logo-ring .slogan-ring {
+   display: none;
+ }
+ .hero-isotype {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+ }
+
+  /* ---------- Wordmark ---------- */
+  .hero-wordmark {
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 3.5vw, 1.8rem);
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    line-height: 1.15;
+    color: var(--headline);
+    text-align: center;
+    margin: 0;
+  }
+
+  @keyframes slogan-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+   /* ---------- Desktop ≥900px: side-by-side + slogan ring ---------- */
+   @media (min-width: 900px) {
+     .hero-split {
+       display: grid;
+       grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+       align-items: center;
+       gap: clamp(2.5rem, 6vw, 5rem);
+     }
+     .hero-logo {
+       order: 0;
+       position: relative;
+     }
+      .hero-logo-ring {
+        width: clamp(340px, 35vw, 460px);
+        height: clamp(340px, 35vw, 460px);
+      }
+      .hero-logo-ring .slogan-ring {
+        display: block;
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+        position: absolute;
+        inset: 0;
+      }
+      .slogan-rotator {
+        transform-origin: 160px 160px;
+        animation: slogan-spin 40s linear infinite;
+        will-change: transform;
+      }
+      .slogan-text {
+        font-family: var(--font-mono);
+        font-size: 18px;
+        letter-spacing: 3px;
+        fill: var(--body-dim);
+        text-transform: uppercase;
+      }
+      .hero-isotype {
+        width: 65%;
+        height: 65%;
+        position: relative;
+        z-index: 2;
+      }
+    .hero-content {
+      text-align: left;
+      margin-left: 0;
+      margin-right: 0;
+      margin-top: 0;
+      max-width: none;
+    }
+    .hero-meta {
+      align-items: flex-start;
+    }
+    .hero-actions {
+      justify-content: flex-start;
+    }
+    .hero-b2b-tags {
+      justify-content: flex-start;
+    }
+  }
+
+   @keyframes slogan-spin {
+     from { transform: rotate(0deg); }
+     to { transform: rotate(360deg); }
+   }
+
+   @media (prefers-reduced-motion: reduce) {
+     .slogan-rotator {
+       animation: none;
+     }
+   }
+ </style>

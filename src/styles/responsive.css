@@ -1,4 +1,4 @@
-/* Mobile — consolidate breakpoints, make hero shapes visible */
+/* Mobile — consolidate breakpoints */
 @media (max-width: 768px) {
   html {
     scroll-behavior: auto;
@@ -8,32 +8,17 @@
       radial-gradient(ellipse 70% 80% at 90% 85%, oklch(0.82 0.2 125 / 0.10) 0%, transparent 50%),
       oklch(0.10 0.008 280);
   }
-  .hero-shapes { contain: none; overflow: hidden; }
-  .hero-shape {
-    filter: blur(14px);
-    opacity: 0.5;
-  }
-  .hero-shape:nth-child(1) { width: 155px; height: 140px; top: -3%; right: -10%; }
-  .hero-shape:nth-child(2) { width: 140px; height: 150px; bottom: 5%; left: -8%; }
-  .hero-shape:nth-child(3) { width: 130px; height: 120px; top: 30%; left: 40%; margin-left: -65px; }
-  .hero-shape:nth-child(4) { width: 110px; height: 115px; top: 5%; right: 5%; }
-  .hero-shape:nth-child(5) { width: 115px; height: 105px; top: 60%; left: 2%; }
-  .pricing-shape, .faq-shape, .cta-shape {
-    opacity: 0.25;
-    filter: blur(20px);
-  }
 }
 
-/* Desktop: push hero content to left 3/4 and center vertically with more space from navbar */
+/* Desktop: center hero content + isotype anchor */
 @media (min-width: 769px) {
   .hero {
-    align-items: flex-start;
-    padding-left: clamp(2rem, 4vw, 4rem);
+    align-items: center;
     padding-top: calc(3.5rem + 16px);
   }
   .hero-content {
-    margin-left: -0.5rem;
-    max-width: 85%;
+    margin-left: 0;
+    max-width: 860px;
   }
 }
 
@@ -94,9 +79,6 @@
     padding-top: 3rem;
     padding-bottom: 3rem;
   }
-  .pricing-includes ul {
-    grid-template-columns: 1fr 1fr;
-  }
 }
 
 @media (min-width: 768px) {
@@ -138,10 +120,10 @@
   .hero .hero-content {
     padding-left: var(--space-md);
     padding-right: var(--space-md);
-    margin-left: -1rem;
+    margin-left: auto;
+    margin-right: auto;
     max-width: 100%;
   }
-  .hero::before { display: none; }
   .section {
     padding-left: var(--space-lg);
     padding-right: var(--space-lg);
@@ -149,9 +131,6 @@
   .cta-final {
     padding-left: var(--space-lg);
     padding-right: var(--space-lg);
-  }
-  .pricing-card .pricing-includes ul {
-    grid-template-columns: 1fr;
   }
 }
 
@@ -165,37 +144,16 @@
     font-weight: 500;
   }
   .hero {
-    padding-top: 1.5rem;
-    padding-bottom: 3rem;
+    min-height: 100dvh;
+    min-height: 100svh;
+    padding: 2rem 1.25rem 3rem;
     justify-content: center;
+    align-items: flex-start;
   }
   .hero-content {
     margin-left: 0;
     margin-top: 0;
     max-width: 95%;
-  }
-  .hero-meta {
-    flex-direction: row;
-    align-items: baseline;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 0.5rem;
-  }
-  .hero-meta .price-group:first-child {
-    flex-direction: row;
-    align-items: baseline;
-    gap: 0.35rem;
-  }
-  .tag-b2b {
-    padding-left: 0;
-    font-size: 1rem;
-    padding: 0.5rem 1.1rem;
-  }
-  .navbar-brand-text {
-    display: none;
-  }
-  .hero-title, .hero-sub {
-    font-family: 'Onest', sans-serif;
   }
   .hero-title {
     font-size: clamp(2.6rem, 7.5vw, 3.2rem);
@@ -217,21 +175,42 @@
     margin-bottom: 1.5rem;
   }
   .hero-meta {
+    flex-direction: row;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
     font-size: 1.1rem;
-    margin-top: 1rem;
-    margin-bottom: 0.75rem;
-    gap: 0.2rem;
   }
-  .hero-actions .btn-lg {
-    padding: 1.3rem 2.8rem;
-    font-size: 1.4rem;
+  .hero-meta .price-group:first-child {
+    font-size: 2.2em;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 0.35rem;
+  }
+  .tag-b2b {
+    font-size: 1rem;
+    padding: 0.5rem 1.1rem;
   }
   .hero-actions {
     margin-top: 1rem;
     margin-bottom: 0.75rem;
   }
+  .hero-actions .btn-lg {
+    padding: 1.3rem 2.8rem;
+    font-size: 1.4rem;
+  }
   .hero-b2b-tags {
     margin-top: 2rem;
+  }
+  .hero-logo {
+    margin-top: 2rem;
+    justify-content: center;
+    align-items: center;
+  }
+  .hero-isotype {
+    transform: scale(1.3);
+    transform-origin: center;
   }
   .resultados-grid {
     display: flex;
@@ -270,20 +249,11 @@
     line-height: 1.5;
     text-wrap: balance;
   }
-  .steps-container {
+  .como-funciona-grid {
     margin-top: 1.5rem;
   }
-  .glass-step {
+  .como-funciona-card {
     padding: var(--space-lg) var(--space-md);
-  }
-  .step-content h3 {
-    font-size: clamp(1.1rem, 4vw, 1.4rem);
-  }
-  .step-content p {
-    font-size: 0.85rem;
-  }
-  .pricing-card {
-    margin-top: 1.5rem;
   }
   .problema, .resultados, .como-funciona, .pricing, .faq {
     min-height: auto;
@@ -294,7 +264,6 @@
     padding: 2rem 1rem;
   }
   .cta-final {
-    min-height: auto;
     padding-top: 3rem;
     padding-bottom: 3rem;
   }
@@ -310,10 +279,6 @@
   .footer .footer-cuit {
     font-size: 0.75rem;
     opacity: 0.6;
-  }
-  .footer .footer-social {
-    justify-content: center;
-    gap: 0.35rem;
   }
   .cta-final {
     justify-content: space-between;
@@ -362,18 +327,6 @@
   .hero-actions .btn-lg {
     padding: 0.5rem 1.2rem;
     font-size: 0.9rem;
-  }
-  .hero-shape {
-    opacity: 0.65;
-  }
-  .pricing-shape, .faq-shape, .cta-shape {
-    opacity: 0.5;
-  }
-  .hero-shapes, .pricing-shapes, .faq-shapes, .cta-shapes {
-    filter: blur(20px);
-  }
-  body::before {
-    opacity: 0.6;
   }
   .hero-b2b-tags {
     margin-top: 0.25rem;
@@ -454,26 +407,14 @@
     font-size: 1rem;
   }
   
-  /* Steps container: horizontal layout works better in landscape */
-  .steps-container {
-    flex-direction: row;
+  /* Como funciona grid: horizontal layout works better in landscape */
+  .como-funciona-grid {
+    grid-template-columns: repeat(3, 1fr);
     gap: 0.75rem;
     margin-top: 1.5rem;
   }
-  .step {
-    flex: 1;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  .glass-step {
+  .como-funciona-card {
     padding: var(--space-lg) var(--space-md);
-  }
-  .step-content h3 {
-    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-  }
-  .step-content p {
-    font-size: 0.9rem;
   }
 }
 
@@ -509,12 +450,6 @@
   .glass-card { padding: 1.25rem; }
   .faq .glass-card { padding: 1.25rem 1rem; }
   .resultados-grid .glass-card { flex: 0 0 92vw; }
-  .step { gap: var(--space-sm); }
-  .step-content h3 { font-size: clamp(1.1rem, 5vw, 1.3rem); }
-  .step-content p { font-size: 0.9rem; }
-  .pricing-line { flex-wrap: wrap; gap: 0.25rem; }
-  .pricing-split { gap: 0.5rem; }
-  .pricing-split-item { padding: 0.75rem; min-width: 0; }
   .btn { padding: 0.8rem 1.6rem; font-size: 1.1rem; }
   .btn-lg { padding: 0.9rem 1.8rem; font-size: 1.2rem; }
 }
@@ -552,23 +487,41 @@
 
   .problema-grid { grid-template-columns: 1fr 1fr; }
   .problema-card.tall { grid-column: span 2; }
-  .steps-container {
-    flex-direction: row;
-    gap: 1rem;
-  }
-  .step {
-    flex: 1;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  .glass-step {
-    height: 100%;
-  }
+  .como-funciona-grid { grid-template-columns: repeat(3, 1fr); }
   .footer {
     flex-direction: column;
     align-items: flex-start;
     text-align: left;
+  }
+}
+
+/* Pricing + Founders responsive columns */
+@media (min-width: 900px) {
+  .pricing-grid {
+    grid-template-columns: repeat(3, 1fr);
+    align-items: stretch;
+  }
+  /* Star card visually centered+lifted */
+  .pricing-card-v2.is-star {
+    transform: translateY(-0.75rem);
+  }
+  .pricing-grid.growth {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+  .founders-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 768px) and (max-width: 899px) {
+  .pricing-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .pricing-grid .pricing-card-v2.is-star {
+    grid-column: span 2;
+  }
+  .founders-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 

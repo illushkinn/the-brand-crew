@@ -1,21 +1,28 @@
 ---
 // Problema.astro — 3 levels of awareness (Eugene Schwartz)
+import type { Lang } from '../i18n/ui';
+import { useTranslations } from '../i18n/ui';
+
+interface Props { lang?: Lang }
+const { lang = 'es' } = Astro.props;
+const t = useTranslations(lang);
 ---
 
 <section class="section problema reveal" id="servicios" aria-label="The problem we solve">
-  <h2 class="section-title">A business not on the internet,<br><span class="text-terracota">doesn't exist</span>.</h2>
+  <span class="section-label mono text-terracota">{t('problema.kicker')}</span>
+  <h2 class="section-title">{t('problema.title1')}<br><span class="text-terracota">{t('problema.title2')}</span>.</h2>
   <div class="problema-grid">
     <div class="glass-card problema-card tall">
-      <h4>They can't find you</h4>
-      <p>Your customer searches. Your competitor shows up. <strong>You lost a sale you never knew existed.</strong></p>
+      <h4>{t('problema.card1Title')}</h4>
+      <p set:html={t('problema.card1Text')}></p>
     </div>
     <div class="glass-card problema-card">
-      <h4>They don't trust you</h4>
-      <p>You have 3 seconds. An outdated site screams <strong>"I don't care."</strong> That's your brand now.</p>
+      <h4>{t('problema.card2Title')}</h4>
+      <p set:html={t('problema.card2Text')}></p>
     </div>
     <div class="glass-card problema-card">
-      <h4>They don't buy</h4>
-      <p>Traffic without conversion is just a number. No CTA, no proof, no close. <strong>A brochure that collects dust.</strong></p>
+      <h4>{t('problema.card3Title')}</h4>
+      <p set:html={t('problema.card3Text')}></p>
     </div>
   </div>
 </section>

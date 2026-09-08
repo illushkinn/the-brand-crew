@@ -39,13 +39,35 @@ body {
   min-width: 0;
   touch-action: manipulation;
 }
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgba(74, 222, 128, 0.04) 0px,
+      rgba(74, 222, 128, 0.04) 1px,
+      transparent 1px,
+      transparent 120px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(74, 222, 128, 0.04) 0px,
+      rgba(74, 222, 128, 0.04) 1px,
+      transparent 1px,
+      transparent 120px
+    );
+}
 h1, h2, h3, h4 { text-wrap: balance; }
 p { text-wrap: pretty; }
 img, svg { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; -webkit-focus-ring-color: transparent; outline: none; }
 button { border: none; background: none; cursor: pointer; font: inherit; color: inherit; -webkit-tap-highlight-color: transparent; -webkit-focus-ring-color: transparent; outline: none; }
 ul { list-style: none; }
-.hamburger, .step-number, .resultados-arrow {
+.hamburger, .resultados-arrow {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -64,7 +86,8 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
 .mono { font-family: 'JetBrains Mono', monospace; }
 .text-terracota { color: var(--terracota); }
 .text-verde { color: var(--verde); }
-.text-white { color: var(--white); }
+/* Accent highlight inline spans (hero sub, section titles) */
+.text-accent { color: var(--terracota); }
 .text-italic { font-style: italic; }
 .section {
   padding: 4rem clamp(1.25rem, 5vw, 4rem);

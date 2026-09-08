@@ -1,34 +1,29 @@
 ---
 // ComoFunciona.astro - How it works section with 3 step cards
+import type { Lang } from '../i18n/ui';
+import { useTranslations } from '../i18n/ui';
+
+interface Props { lang?: Lang }
+const { lang = 'es' } = Astro.props;
+const t = useTranslations(lang);
 ---
 
 <section class="section como-funciona reveal" id="resultados" aria-label="How it works">
-  <h2 class="section-title">Three steps.<br><span class="text-verde">No fluff</span>.</h2>
-  <p class="section-sub">
-    Your site <strong>ready in one week</strong>.
-  </p>
-  <div class="steps-container">
-
-    <div class="step reveal glass-step">
-      <div class="step-number">1</div>
-      <div class="step-content">
-        <h3>Let's talk</h3>
-        <p>You reach out and tell us your idea.</p>
-      </div>
+  <span class="section-label mono text-verde">{t('comoFunciona.kicker')}</span>
+  <h2 class="section-title">{t('comoFunciona.title1')}<br><span class="text-verde">{t('comoFunciona.title2')}</span>.</h2>
+  <p class="section-sub" set:html={t('comoFunciona.sub')}></p>
+  <div class="como-funciona-grid">
+    <div class="glass-card como-funciona-card">
+      <h4>{t('comoFunciona.step1Title')}</h4>
+      <p>{t('comoFunciona.step1Text')}</p>
     </div>
-    <div class="step reveal glass-step">
-      <div class="step-number">2</div>
-      <div class="step-content">
-        <h3>Design</h3>
-        <p>Results in 48 hours. We tweak. No upfront.</p>
-      </div>
+    <div class="glass-card como-funciona-card">
+      <h4>{t('comoFunciona.step2Title')}</h4>
+      <p>{t('comoFunciona.step2Text')}</p>
     </div>
-    <div class="step reveal glass-step">
-      <div class="step-number">3</div>
-      <div class="step-content">
-        <h3>You're live</h3>
-        <p>Onboarding & free consulting.</p>
-      </div>
+    <div class="glass-card como-funciona-card">
+      <h4>{t('comoFunciona.step3Title')}</h4>
+      <p>{t('comoFunciona.step3Text')}</p>
     </div>
   </div>
 </section>

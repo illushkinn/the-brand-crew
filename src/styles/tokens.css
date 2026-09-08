@@ -1,6 +1,7 @@
 :root {
-  --oklch-bg-dark: oklch(0.06 0.006 280);
-  --oklch-bg-card: oklch(0.08 0.012 280);
+  /* DARK theme */
+  --oklch-bg-dark: oklch(0.08 0.010 280);
+  --oklch-bg-card: oklch(0.10 0.014 280);
   --oklch-bg-elevated: oklch(0.11 0.015 280);
   --oklch-headline: oklch(0.95 0.004 280);
   --oklch-body: oklch(0.8 0.008 280);

@@ -1,13 +1,46 @@
 ---
-// Navbar.astro - Main navigation bar with desktop links and mobile menu toggle
+// Navbar.astro - Main navigation bar with desktop links, logo, and language switcher
+import Logo from './Logo.astro';
+import type { Lang } from '../i18n/ui';
+import { useTranslations } from '../i18n/ui';
+
+interface Props { lang?: Lang }
+const { lang = 'es' } = Astro.props;
+const t = useTranslations(lang);
+
+const isHome = lang === 'es' ? '/' : '/en/';
 ---
 
 <header>
   <nav class="navbar" role="navigation" aria-label="Main navigation">
-    <a href="#" class="navbar-brand" aria-label="The Brand Crew — home">
-      <span class="navbar-brand-text">The Brand Crew</span>
+    <a href={isHome} class="navbar-brand" aria-label="The Brand Crew — home">
+      <Logo size={72} ariaLabel="The Brand Crew" />
     </a>
+    <div class="nav-links">
+      <a href="#inicio">{t('nav.home')}</a>
+      <a href="#servicios">{t('nav.services')}</a>
+      <a href="#resultados">{t('nav.howItWorks')}</a>
+      <a href="#casos">{t('nav.cases')}</a>
+      <a href="#precios">{t('nav.pricing')}</a>
+      <a href="#faq">{t('nav.faq')}</a>
+      <a href="#contacto">{t('nav.contact')}</a>
+    </div>
     <div class="navbar-actions">
+      <div class="lang-switcher" role="group" aria-label="Language">
+        <a
+          href={lang === 'es' ? '/' : '/en/'}
+          class={`lang-btn ${lang === 'es' ? 'is-active' : ''}`}
+          aria-label="Español"
+          aria-current={lang === 'es' ? 'true' : undefined}
+        >ES</a>
+        <span class="lang-separator" aria-hidden="true">|</span>
+        <a
+          href="/en/"
+          class={`lang-btn ${lang === 'en' ? 'is-active' : ''}`}
+          aria-label="English"
+          aria-current={lang === 'en' ? 'true' : undefined}
+        >EN</a>
+      </div>
       <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
         <span></span>
         <span></span>
