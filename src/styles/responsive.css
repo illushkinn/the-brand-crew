@@ -45,6 +45,8 @@
   .hero-isotype {
     width: 100%;
     height: 100%;
+    transform: scale(1.15);
+    transform-origin: center;
   }
   .hero-content {
     text-align: left;
