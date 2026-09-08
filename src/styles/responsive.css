@@ -211,7 +211,7 @@
     text-align: left;
   }
   .hero-title {
-    font-size: clamp(2.8rem, 9vw, 3.8rem);
+    font-size: clamp(3rem, 10vw, 4.2rem);
     line-height: 0.95;
     margin-bottom: 0.3rem;
     word-spacing: -1px;
@@ -219,6 +219,10 @@
   }
   .hero-phrase {
     display: block;
+  }
+  .hero-phrase:nth-child(1),
+  .hero-phrase:nth-child(2) {
+    display: inline;
   }
   .hero-sub {
     font-size: clamp(1.2rem, 4vw, 1.6rem);
