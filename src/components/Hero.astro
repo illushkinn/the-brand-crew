@@ -9,8 +9,8 @@ const { lang = 'es' } = Astro.props;
 const t = useTranslations(lang);
 
 const slogan = lang === 'es'
-  ? '· Disponibles para proyectos · Aceptando nuevos clientes ·'
-  : '· Available for projects · Currently accepting new clients ·';
+  ? '★ Disponibles para proyectos ★ Aceptando nuevos clientes ★'
+  : '★ Available for projects ★ Currently accepting new clients ★';
 const sloganUpper = slogan.toUpperCase();
 const waLink = "https://wa.me/5491124063009?text=" + encodeURIComponent(
   lang === 'es'
@@ -32,9 +32,6 @@ const ctaLabel = t('hero.cta');
         <p class="hero-meta">
           <span class="price-group">
             <span class="current-price">Desde&nbsp;$300&nbsp;<small class="price-currency">USD</small></span>
-          </span>
-          <span class="price-group">
-            <span>50% al empezar / 50% al entregar</span>
           </span>
         </p>
         <div class="hero-actions">
