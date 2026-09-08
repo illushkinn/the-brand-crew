@@ -39,7 +39,7 @@
 /* iPhone SE and small devices optimization */
 @media (max-height: 700px) and (max-width: 400px) {
   .hero {
-    padding: 3rem 1rem;
+    padding: 5rem 1rem;
     justify-content: center;
   }
   .hero-title {
@@ -146,7 +146,7 @@
   .hero {
     min-height: 100dvh;
     min-height: 100svh;
-    padding: 4rem 1.25rem 3rem;
+    padding: 8rem 1.25rem 3rem;
     justify-content: center;
     align-items: flex-start;
   }
