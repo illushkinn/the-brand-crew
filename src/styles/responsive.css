@@ -148,13 +148,13 @@
     min-height: 100svh;
     padding: 2rem 1.25rem 3rem;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
   }
   .hero-content {
     margin-left: 0;
     margin-top: 0;
     max-width: 100%;
-    text-align: center;
+    text-align: left;
   }
   .hero-title {
     font-size: clamp(2.6rem, 7.5vw, 3.2rem);
@@ -177,8 +177,8 @@
   }
   .hero-meta {
     flex-direction: row;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
+    justify-content: flex-start;
     flex-wrap: wrap;
     gap: 0.5rem;
     margin-bottom: 0.5rem;
@@ -197,7 +197,7 @@
   .hero-actions {
     margin-top: 1rem;
     margin-bottom: 0.75rem;
-    justify-content: center;
+    justify-content: flex-start;
   }
   .hero-actions .btn-lg {
     padding: 1.3rem 2.8rem;
@@ -205,15 +205,15 @@
   }
   .hero-b2b-tags {
     margin-top: 2rem;
-    justify-content: center;
+    justify-content: flex-start;
   }
   .hero-logo {
     margin-top: 1.5rem;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
   }
   .hero-isotype {
-    transform: scale(1.1);
+    transform: none;
     transform-origin: center;
   }
   .resultados-grid {

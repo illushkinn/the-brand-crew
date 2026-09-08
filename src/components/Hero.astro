@@ -84,24 +84,24 @@ const ctaLabel = t('hero.cta');
     gap: clamp(1.5rem, 4vw, 3rem);
   }
 
- /* Mobile: clean column, centered */
+ /* Mobile: clean column, left-aligned */
  .hero-split {
    display: flex;
    flex-direction: column;
-   align-items: center;
-   text-align: center;
+   align-items: flex-start;
+   text-align: left;
  }
  .hero-content {
-   text-align: center;
+   text-align: left;
  }
  .hero-meta {
-   align-items: center;
+   align-items: flex-start;
  }
  .hero-actions {
-   justify-content: center;
+   justify-content: flex-start;
  }
  .hero-b2b-tags {
-   justify-content: center;
+   justify-content: flex-start;
  }
  .hero-logo {
    display: flex;
@@ -124,7 +124,7 @@ const ctaLabel = t('hero.cta');
    position: relative;
    width: clamp(260px, 75vw, 320px);
    height: clamp(260px, 75vw, 320px);
-   margin: 0 auto;
+   margin: 0;
  }
  .hero-logo-ring .slogan-ring {
    display: block;
@@ -147,8 +147,8 @@ const ctaLabel = t('hero.cta');
    text-transform: uppercase;
  }
  .hero-isotype {
-   width: 55%;
-   height: 55%;
+   width: 75%;
+   height: 75%;
    display: flex;
    align-items: center;
    justify-content: center;
@@ -210,8 +210,8 @@ const ctaLabel = t('hero.cta');
         text-transform: uppercase;
       }
       .hero-isotype {
-        width: 65%;
-        height: 65%;
+        width: 80%;
+        height: 80%;
         position: relative;
         z-index: 2;
       }
@@ -231,11 +231,6 @@ const ctaLabel = t('hero.cta');
     .hero-b2b-tags {
       justify-content: flex-start;
     }
-  }
-
-   @keyframes slogan-spin {
-     from { transform: rotate(0deg); }
-     to { transform: rotate(360deg); }
    }
 
    @media (prefers-reduced-motion: reduce) {
