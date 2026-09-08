@@ -8,24 +8,28 @@ import Pricing from '../components/Pricing.astro';
 import FAQ from '../components/FAQ.astro';
 import Blog from '../components/Blog.astro';
 import About from '../components/About.astro';
+import Founders from '../components/Founders.astro';
 import CTA from '../components/CTA.astro';
 import Footer from '../components/Footer.astro';
 import ScrollToTop from '../components/ScrollToTop.astro';
+
+const lang = 'es';
 ---
 
-<BaseLayout>
+<BaseLayout lang={lang}>
   <main id="main-content">
-    <Hero />
-    <CaseStudies />
-    <Problema />
-    <ComoFunciona />
-    <Pricing />
-    <FAQ />
-    <Blog />
-    <About />
+    <Hero lang={lang} />
+    <CaseStudies lang={lang} />
+    <Problema lang={lang} />
+    <ComoFunciona lang={lang} />
+    <Pricing lang={lang} />
+    <FAQ lang={lang} />
+    <Blog lang={lang} />
+    <About lang={lang} />
+    <Founders lang={lang} />
   </main>
-  <CTA />
+  <CTA lang={lang} />
   <div id="lets-start-anchor" style="scroll-margin-top: 40vh;"></div>
-  <Footer />
-  <ScrollToTop />
+  <Footer lang={lang} />
+  <ScrollToTop lang={lang} />
 </BaseLayout>

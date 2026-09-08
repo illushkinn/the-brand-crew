@@ -8,6 +8,7 @@
   
   const hamburgerBtn = document.getElementById('hamburgerBtn');
   const mobileMenu = document.getElementById('mobileMenu');
+  const navbar = document.querySelector('.navbar');
   const mobileLinks = mobileMenu.querySelectorAll('.mobile-link');
   
   /**
@@ -44,6 +45,7 @@
     
     // Trigger the CSS transition to circle(150%)
     mobileMenu.classList.add('is-open');
+    navbar.classList.add('is-menu-open');
     
     document.documentElement.style.overflow = 'clip';
     setTimeout(function() { mobileLinks[0]?.focus(); }, 200);
@@ -58,6 +60,7 @@
     
     // CSS handles the reverse transition — same origin via custom props
     mobileMenu.classList.remove('is-open');
+    navbar.classList.remove('is-menu-open');
     mobileMenu.setAttribute('inert', '');
     hamburgerBtn.setAttribute('aria-expanded', 'false');
     document.documentElement.style.overflow = '';

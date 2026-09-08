@@ -1,8 +1,10 @@
 ---
 import Navbar from '../components/Navbar.astro';
 import MobileMenu from '../components/MobileMenu.astro';
+import { type Lang, localeMap, hreflangMap, dictionaries, defaultLang, getTranslation } from '../i18n/ui';
 
 interface Props {
+  lang?: Lang;
   title?: string;
   description?: string;
   ogImage?: string;
@@ -10,19 +12,24 @@ interface Props {
   noindex?: boolean;
 }
 
+const lang = Astro.props.lang ?? defaultLang;
+
 const {
-  title = "Websites That Actually Work",
-  description = "Websites that actually work. For businesses that mean business. Web design and development for businesses in Argentina. Design + development + domain + hosting from $240.000 ARS.",
+  title = getTranslation(lang, 'seo.title'),
+  description = getTranslation(lang, 'seo.description'),
   ogImage = "https://thebrandcrew.lat/assets/og-image.png",
-  canonicalURL = "https://thebrandcrew.lat",
+  canonicalURL = lang === 'en' ? "https://thebrandcrew.lat/en/" : "https://thebrandcrew.lat/",
   noindex = false
 } = Astro.props;
+
+const seo = dictionaries[lang].seo;
+const pricing = dictionaries[lang].pricing;
 
 const businessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "name": "The Brand Crew",
-  "description": "Websites that actually work for businesses that mean business. Web design and development for your own projects.",
+  "description": seo.businessDescription,
   "url": "https://thebrandcrew.lat",
   "address": {
     "@type": "PostalAddress",
@@ -48,17 +55,24 @@ const businessSchema = {
   "offers": [
     {
       "@type": "Offer",
-      "name": "Web Design & Development",
-      "description": "Professional website with domain, hosting, SEO, and responsive design",
-      "price": "240000.00",
-      "priceCurrency": "ARS"
+      "name": "Essential — Web Design",
+      "description": "Landing or single-page site, 5 sections, responsive, basic SEO",
+      "price": "300.00",
+      "priceCurrency": "USD"
     },
     {
       "@type": "Offer",
-      "name": "Domain & Hosting",
-      "description": ".com domain + fast hosting for 2 years",
-      "price": "20000.00",
-      "priceCurrency": "ARS"
+      "name": "Crew — Web Design",
+      "description": "Multi-section site that sells, copywriting, local SEO, 30-day support",
+      "price": "600.00",
+      "priceCurrency": "USD"
+    },
+    {
+      "@type": "Offer",
+      "name": "MVP / E-commerce",
+      "description": "Custom e-commerce or MVP, integrations, WhatsApp chatbot",
+      "price": "1000.00",
+      "priceCurrency": "USD"
     }
   ],
   "knowsAbout": ["Web Design", "Web Development", "SEO", "E-commerce", "UI/UX Design"]
@@ -70,50 +84,26 @@ const faqSchema = {
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "What if I don't like it?",
+      "name": getTranslation(lang, 'faq.q1'),
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "We work until you love it. Unlimited revisions until you're completely satisfied."
+        "text": getTranslation(lang, 'faq.a1')
       }
     },
     {
       "@type": "Question",
-      "name": "Can I update it later?",
+      "name": getTranslation(lang, 'faq.q2'),
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Basic changes we'll teach you how to do yourself. For bigger updates, we work together."
+        "text": getTranslation(lang, 'faq.a2')
       }
     },
     {
       "@type": "Question",
-      "name": "What do you need from me to start?",
+      "name": getTranslation(lang, 'faq.q3'),
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Tell me about your business. If you have a logo, photos, or brand colors — even better. If not, we create them together from scratch."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How long does it take to build a website?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Most projects are ready within one week. The timeline depends on complexity and how quickly we get the content from you."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do you offer payment plans?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. You can pay in full or split into 2 payments — 50% at start and 50% at delivery. All prices are in Argentine pesos (ARS)."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What's included in the price?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Custom design, development, a .com domain for 2 years, fast hosting, SEO optimization, unlimited revisions, SSL certificate, and WhatsApp support."
+        "text": getTranslation(lang, 'faq.a3')
       }
     }
   ]
@@ -124,17 +114,19 @@ const websiteSchema = {
   "@type": "WebSite",
   "name": "The Brand Crew",
   "url": "https://thebrandcrew.lat",
-  "description": "Websites that actually work. For businesses that mean business.",
+  "description": seo.websiteDescription,
   "potentialAction": {
     "@type": "SearchAction",
     "target": "https://thebrandcrew.lat/?s={search_term_string}",
     "query-input": "required name=search_term_string"
   }
 };
+
+const altLang: Lang = lang === 'es' ? 'en' : 'es';
 ---
 
 <!DOCTYPE html>
-<html lang="en" data-theme="terracotta">
+<html lang={localeMap[lang]} data-theme="terracotta">
 <head>
   <script is:inline>history.scrollRestoration='manual';</script>
   <meta charset="UTF-8">
@@ -149,29 +141,34 @@ const websiteSchema = {
   <meta property="og:type" content="website">
   <meta property="og:url" content={canonicalURL}>
   <meta property="og:site_name" content="The Brand Crew">
-  <meta property="og:title" content={title}>
-  <meta property="og:description" content={description}>
+  <meta property="og:title" content={seo.ogTitle}>
+  <meta property="og:description" content={seo.ogDescription}>
   <meta property="og:image" content={ogImage}>
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="The Brand Crew - Websites That Actually Work">
-  <meta property="og:locale" content="es_AR">
+  <meta property="og:image:alt" content={seo.ogImageAlt}>
+  <meta property="og:locale" content={lang === 'es' ? 'es_AR' : 'en_US'}>
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content={canonicalURL}>
-  <meta name="twitter:title" content={title}>
-  <meta name="twitter:description" content={description}>
+  <meta name="twitter:title" content={seo.ogTitle}>
+  <meta name="twitter:description" content={seo.ogDescription}>
   <meta name="twitter:image" content={ogImage}>
-  <meta name="twitter:image:alt" content="The Brand Crew - Websites That Actually Work">
+  <meta name="twitter:image:alt" content={seo.ogImageAlt}>
 
   <link rel="canonical" href={canonicalURL}>
   <meta name="robots" content={noindex ? "noindex, follow" : "index, follow"}>
-  
+
+  <!-- Hreflang -->
+  <link rel="alternate" hreflang="es" href="https://thebrandcrew.lat/" />
+  <link rel="alternate" hreflang="en" href="https://thebrandcrew.lat/en/" />
+  <link rel="alternate" hreflang={hreflangMap[lang]} href={canonicalURL} />
+
   <script is:inline type="application/ld+json" set:html={JSON.stringify(websiteSchema)}></script>
   <script is:inline type="application/ld+json" set:html={JSON.stringify(businessSchema)}></script>
   <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>
-  
+
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -181,20 +178,20 @@ const websiteSchema = {
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"></noscript>
 
-  
+
   <!-- Vercel Speed Insights -->
   <script defer src="/_vercel/speed-insights/script.js"></script>
   <!-- Vercel Analytics -->
   <script defer src="/_vercel/insights/script.js"></script>
-  
+
   <style is:global>
     @import '../styles/global.css';
   </style>
 </head>
 <body>
-  <a href="#main-content" class="skip-link">Skip to main content</a>
-  <Navbar />
-  <MobileMenu />
+  <a href="#main-content" class="skip-link">{lang === 'es' ? 'Ir al contenido' : 'Skip to main content'}</a>
+  <Navbar lang={lang} />
+  <MobileMenu lang={lang} />
   <slot />
   <script src="../scripts/navigation.js"></script>
   <script src="../scripts/carousel.js"></script>
