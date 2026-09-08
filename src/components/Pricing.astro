@@ -1,53 +1,127 @@
 ---
-// Pricing.astro - Pricing section with animated shapes and pricing card
+// Pricing.astro - Pricing section: Kit 1 (Web Design, 3 cards) + Kit 2 (Growth Partner, 2 cards)
+// Prices in USD, monotributo + Factura A as a feature.
+import type { Lang } from '../i18n/ui';
+import { useTranslations } from '../i18n/ui';
+
+interface Props { lang?: Lang }
+const { lang = 'es' } = Astro.props;
+const t = useTranslations(lang);
+
+const esencialFeatures = [1, 2, 3, 4, 5, 6, 7].map((i) => t(`pricing.esencialF${i}`));
+const crewFeatures = [1, 2, 3, 4, 5, 6, 7].map((i) => t(`pricing.crewF${i}`));
+const mvpFeatures = [1, 2, 3, 4, 5, 6].map((i) => t(`pricing.mvpF${i}`));
+const growthFeatures = [1, 2, 3, 4].map((i) => t(`pricing.growthF${i}`));
+const autoFeatures = [1, 2, 3, 4].map((i) => t(`pricing.autoF${i}`));
 ---
 
 <section class="section pricing reveal" id="precios" aria-label="Pricing">
-  <div class="pricing-shapes" aria-hidden="true">
-    <div class="pricing-shape"></div>
-    <div class="pricing-shape"></div>
-    <div class="pricing-shape"></div>
-  </div>
-  <span class="section-label mono text-terracota">Pricing</span>
-  <h2 class="section-title"><span class="text-verde">A steal</span>.</h2>
-  <div class="glass-card pricing-card">
-    <div class="pricing-line">
-      <span class="pricing-line-label">Design + Development<br><small>+ Domain (2 years)</small></span>
-      <span class="pricing-line-price">
-        <span class="strike-price pricing-strike">$400.000 ARS</span>
-        <span class="pricing-current">$240.000&nbsp;<small class="price-currency">ARS</small></span>
-      </span>
-    </div>
-    <div class="pricing-split">
-      <div class="pricing-split-item">
-        <div class="amount">
-          <span class="pricing-current">$120.000&nbsp;<small class="price-currency">ARS</small></span>
-        </div>
-        <div class="label">At start</div>
-      </div>
-      <div class="pricing-split-item">
-        <div class="amount">
-          <span class="pricing-current">$120.000&nbsp;<small class="price-currency">ARS</small></span>
-        </div>
-        <div class="label">At delivery</div>
-      </div>
-    </div>
+  <span class="section-label mono text-terracota">{t('pricing.kicker')}</span>
+  <h2 class="section-title">{t('pricing.title1')} <span class="text-verde">{t('pricing.title2')}</span>.</h2>
 
-    <div class="pricing-includes">
-      <h4>Includes</h4>
-      <ul>
-        <li>✓ Custom design</li>
-        <li>✓ .com domain</li>
-        <li>✓ Fast hosting</li>
-        <li>✓ SEO</li>
-        <li>✓ Multiple revision rounds</li>
-        <li>✓ 24/7 WhatsApp support</li>
-        <li>✓ Responsive on all devices</li>
-        <li>✓ SSL/HTTPS</li>
-      </ul>
-    </div>
-    <a href="https://wa.me/5491124063009?text=Hey%20Illya!%20I%20saw%20your%20site%20and%20I'd%20love%20to%20work%20together." target="_blank" rel="noopener" class="btn btn-lg btn-full-width btn-premium">
-      Let's go online
-    </a>
-  </div>
+  <!-- KIT 1 — Diseño web -->
+  <div class="pricing-kit">
+    <h3 class="pricing-kit-title mono">{t('pricing.kit1Title')}</h3>
+    <div class="pricing-grid">
+
+       <!-- Esencial -->
+       <article class="glass-card pricing-card-v2">
+         <h4 class="pricing-card-title">{t('pricing.esencialTitle')}</h4>
+        <p class="pricing-card-amount">${t('pricing.esencialPrice')} <small class="price-currency">USD</small></p>
+        <p class="pricing-card-sub">{t('pricing.esencialSub')}</p>
+        <p class="pricing-card-desc">{t('pricing.esencialDesc')}</p>
+        <ul class="pricing-card-features">
+          {
+            esencialFeatures.map((f) => (
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                {f}
+              </li>
+            ))
+          }
+         </ul>
+       </article>
+
+       <!-- Crew — STAR CARD -->
+       <article class="glass-card pricing-card-v2 is-star">
+         <h4 class="pricing-card-title">{t('pricing.crewTitle')}</h4>
+        <p class="pricing-card-amount">${t('pricing.crewPrice')} <small class="price-currency">USD</small></p>
+        <p class="pricing-card-sub">{t('pricing.crewSub')}</p>
+        <p class="pricing-card-desc">{t('pricing.crewDesc')}</p>
+        <ul class="pricing-card-features">
+          {
+            crewFeatures.map((f) => (
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                {f}
+              </li>
+            ))
+          }
+        </ul>
+      </article>
+
+       <!-- MVP / E-commerce -->
+       <article class="glass-card pricing-card-v2">
+         <h4 class="pricing-card-title">{t('pricing.mvpTitle')}</h4>
+        <p class="pricing-card-amount">${t('pricing.mvpPrice')} <small class="price-currency">USD</small></p>
+        <p class="pricing-card-sub">{t('pricing.mvpSub')}</p>
+        <p class="pricing-card-desc">{t('pricing.mvpDesc')}</p>
+        <ul class="pricing-card-features">
+          {
+            mvpFeatures.map((f) => (
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                {f}
+              </li>
+            ))
+          }
+         </ul>
+       </article>
+     </div>
+   </div>
+
+   <!-- KIT 2 — Growth Partner -->
+  <div class="pricing-kit">
+    <h3 class="pricing-kit-title mono">{t('pricing.kit2Title')}</h3>
+    <div class="pricing-grid growth">
+
+       <!-- Growth Mensual -->
+       <article class="glass-card pricing-card-v2">
+         <h4 class="pricing-card-title">{t('pricing.growthTitle')}</h4>
+        <p class="pricing-card-amount">${t('pricing.growthPriceRange')} <small class="price-currency">USD/mes</small></p>
+        <p class="pricing-card-sub">{t('pricing.growthSub')}</p>
+        <ul class="pricing-card-features">
+          {
+            growthFeatures.map((f) => (
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                {f}
+              </li>
+            ))
+          }
+         </ul>
+       </article>
+
+       <!-- Automatizaciones -->
+       <article class="glass-card pricing-card-v2">
+         <h4 class="pricing-card-title">{t('pricing.autoTitle')}</h4>
+        <p class="pricing-card-amount">${t('pricing.autoPrice')} <small class="price-currency">USD</small></p>
+        <p class="pricing-card-sub">{t('pricing.autoSub')}</p>
+        <ul class="pricing-card-features">
+          {
+            autoFeatures.map((f) => (
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                {f}
+              </li>
+            ))
+          }
+         </ul>
+       </article>
+     </div>
+   </div>
+
+   <p class="pricing-monotributo-note">
+    {t('pricing.monotributoNote')}
+  </p>
 </section>

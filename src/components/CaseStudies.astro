@@ -1,132 +1,167 @@
 ---
 // CaseStudies.astro - Case study carousel with navigation
+import type { Lang } from '../i18n/ui';
+import { useTranslations } from '../i18n/ui';
+
+interface Props { lang?: Lang }
+const { lang = 'es' } = Astro.props;
+const t = useTranslations(lang);
 ---
 
 <section class="section resultados reveal" id="casos" aria-label="Case Studies">
   <div class="section-heading-row">
-    <h2 class="section-title text-verde">Case Studies<span class="text-white">.</span></h2>
+    <span class="section-label mono text-terracota">{t('caseStudies.kicker')}</span>
+    <h2 class="section-title text-verde">{t('caseStudies.title1')} <span class="text-accent">{t('caseStudies.title2')}.</span></h2>
   </div>
   <div class="resultados-nav">
     <button class="resultados-arrow" id="resultadosPrev" aria-label="Previous case">‹</button>
     <button class="resultados-arrow" id="resultadosNext" aria-label="Next case">›</button>
   </div>
   <div class="resultados-grid">
-  
+
   <!-- Luisito -->
   <article class="glass-card resultado-card">
     <div class="resultado-header">
       <div class="resultado-avatar"><img src="/assets/logos/luisito.svg" alt="Luisito Playa Grande" class="invert-dark" width="48" height="48" loading="lazy"></div>
       <div class="resultado-info">
-        <span class="mono resultado-tag">Rotisería · Mar del Plata</span>
+        <span class="mono resultado-tag">{t('caseStudies.luisitoTag')}</span>
         <h3 class="resultado-nombre">Luisito Playa Grande</h3>
         <a href="https://luisito-playa-grande.vercel.app" class="resultado-link" target="_blank" rel="noopener" aria-label="View full case study: Luisito Playa Grande">
-          See case
+          {t('caseStudies.seeCase')}
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
       </div>
     </div>
     <div class="resultado-historia">
-      <p>"They say that all love — the real kind — starts with a full belly and a happy heart. With Luisito it was exactly that: we walked in as customers, stayed for the food, and left asking if they had a website. They didn't. So we built one: digital menu, online ordering, brand identity. All connected to WhatsApp."</p>
+      <p>{t('caseStudies.luisitoStory')}</p>
     </div>
     <div class="resultado-metricas">
       <div class="resultado-metrica">
-        <span class="resultado-metrica-valor">Digital Menu</span>
-        <span class="resultado-metrica-label">Online menu + orders</span>
+        <span class="resultado-metrica-valor">{t('caseStudies.luisitoMetric1Value')}</span>
+        <span class="resultado-metrica-label">{t('caseStudies.luisitoMetric1Label')}</span>
       </div>
       <div class="resultado-metrica">
-        <span class="resultado-metrica-valor">4.7 ★</span>
-        <span class="resultado-metrica-label">Google Reviews</span>
+        <span class="resultado-metrica-valor rating-value">{t('caseStudies.luisitoMetric2Value')}<svg class="rating-star" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
+        <span class="resultado-metrica-label">{t('caseStudies.luisitoMetric2Label')}</span>
       </div>
     </div>
   </article>
-  
+
   <!-- Apolonia -->
   <article class="glass-card resultado-card">
     <div class="resultado-header">
       <div class="resultado-avatar"><img src="/assets/logos/apolonia.svg" alt="Apolonia" width="48" height="48" loading="lazy"></div>
       <div class="resultado-info">
-        <span class="mono resultado-tag">Greengrocer · Mar del Plata</span>
+        <span class="mono resultado-tag">{t('caseStudies.apoloniaTag')}</span>
         <h3 class="resultado-nombre">Apolonia</h3>
         <a href="https://verduleria-apolonia-mar-del-plata.vercel.app" class="resultado-link" target="_blank" rel="noopener" aria-label="View full case study: Apolonia">
-          See case
+          {t('caseStudies.seeCase')}
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
       </div>
     </div>
     <div class="resultado-historia">
-      <p>"I went to buy firewood for the fireplace and met the owner of Apolonia, a seasonal greengrocer in Playa Grande. He wanted to let his customers know which fruits and veggies were at their best with a simple app designed for older folks."</p>
+      <p>{t('caseStudies.apoloniaStory')}</p>
     </div>
     <div class="resultado-metricas">
       <div class="resultado-metrica">
-        <span class="resultado-metrica-valor">Online Catalog</span>
-        <span class="resultado-metrica-label">Products + pricing</span>
+        <span class="resultado-metrica-valor">{t('caseStudies.apoloniaMetric1Value')}</span>
+        <span class="resultado-metrica-label">{t('caseStudies.apoloniaMetric1Label')}</span>
       </div>
       <div class="resultado-metrica">
-        <span class="resultado-metrica-valor">First Branding</span>
-        <span class="resultado-metrica-label">No templates</span>
+        <span class="resultado-metrica-valor">{t('caseStudies.apoloniaMetric2Value')}</span>
+        <span class="resultado-metrica-label">{t('caseStudies.apoloniaMetric2Label')}</span>
       </div>
     </div>
   </article>
-  
-  <!-- Hoco -->
-  <article class="glass-card resultado-card">
-    <div class="resultado-header">
-      <div class="resultado-avatar letter-avatar">H</div>
-      <div class="resultado-info">
-        <span class="mono resultado-tag">Wholesale · Mar del Plata</span>
-        <h3 class="resultado-nombre">Catálogo Hoco</h3>
-        <a href="https://hococatalog.vercel.app" class="resultado-link" target="_blank" rel="noopener" aria-label="View full case study: Catálogo Hoco">
-          See case
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
-      </div>
-    </div>
-    <div class="resultado-historia">
-      <p>"What used to be a PDF sent over WhatsApp is now a website that runs itself."</p>
-    </div>
-    <div class="resultado-metricas">
-      <div class="resultado-metrica">
-        <span class="resultado-metrica-valor">Online catalog</span>
-        <span class="resultado-metrica-label">Products + pricing</span>
-      </div>
-      <div class="resultado-metrica">
-        <span class="resultado-metrica-valor">Wholesale</span>
-        <span class="resultado-metrica-label">Phone accessories</span>
-      </div>
-      <div class="resultado-metrica">
-        <span class="resultado-metrica-valor">Shipping</span>
-        <span class="resultado-metrica-label">Nationwide</span>
-      </div>
-    </div>
-  </article>
-  
-  <!-- Pragma -->
+
+   <!-- Hoco -->
+   <article class="glass-card resultado-card">
+     <div class="resultado-header">
+       <div class="resultado-avatar letter-avatar">H</div>
+       <div class="resultado-info">
+         <span class="mono resultado-tag">{t('caseStudies.hocoTag')}</span>
+         <h3 class="resultado-nombre">Catálogo Hoco</h3>
+         <a href="https://hococatalog.vercel.app" class="resultado-link" target="_blank" rel="noopener" aria-label="View full case study: Catálogo Hoco">
+           {t('caseStudies.seeCase')}
+           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+         </a>
+       </div>
+     </div>
+     <div class="resultado-historia">
+       <p>{t('caseStudies.hocoStory')}</p>
+     </div>
+     <div class="resultado-metricas">
+       <div class="resultado-metrica">
+         <span class="resultado-metrica-valor">{t('caseStudies.hocoMetric1Value')}</span>
+         <span class="resultado-metrica-label">{t('caseStudies.hocoMetric1Label')}</span>
+       </div>
+       <div class="resultado-metrica">
+         <span class="resultado-metrica-valor">{t('caseStudies.hocoMetric2Value')}</span>
+         <span class="resultado-metrica-label">{t('caseStudies.hocoMetric2Label')}</span>
+       </div>
+       <div class="resultado-metrica">
+         <span class="resultado-metrica-valor">{t('caseStudies.hocoMetric3Value')}</span>
+         <span class="resultado-metrica-label">{t('caseStudies.hocoMetric3Label')}</span>
+       </div>
+     </div>
+   </article>
+
+   <!-- Escolta Miami -->
+   <article class="glass-card resultado-card">
+     <div class="resultado-header">
+       <div class="resultado-avatar dark-bg"><img src="/assets/logos/escolta-miami.png" alt="Escolta Miami" width="48" height="48" loading="lazy"></div>
+       <div class="resultado-info">
+         <span class="mono resultado-tag">{t('caseStudies.escoltaTag')}</span>
+         <h3 class="resultado-nombre">Escolta Miami</h3>
+         <a href="https://escoltamiami.com" class="resultado-link" target="_blank" rel="noopener" aria-label="View full case study: Escolta Miami">
+           {t('caseStudies.seeCase')}
+           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+         </a>
+       </div>
+     </div>
+     <div class="resultado-historia">
+       <p>{t('caseStudies.escoltaStory')}</p>
+     </div>
+     <div class="resultado-metricas">
+       <div class="resultado-metrica">
+         <span class="resultado-metrica-valor">{t('caseStudies.escoltaMetric1Value')}</span>
+         <span class="resultado-metrica-label">{t('caseStudies.escoltaMetric1Label')}</span>
+       </div>
+       <div class="resultado-metrica">
+         <span class="resultado-metrica-valor">{t('caseStudies.escoltaMetric2Value')}</span>
+         <span class="resultado-metrica-label">{t('caseStudies.escoltaMetric2Label')}</span>
+       </div>
+     </div>
+   </article>
+
+   <!-- Pragma -->
   <article class="glass-card resultado-card">
     <div class="resultado-header">
       <div class="resultado-avatar dark-bg"><img src="/assets/logos/pragma.png" alt="Pragma" width="48" height="48" loading="lazy"></div>
       <div class="resultado-info">
-        <span class="mono resultado-tag">MedTech · Latin America</span>
+        <span class="mono resultado-tag">{t('caseStudies.pragmaTag')}</span>
         <h3 class="resultado-nombre">Pragma</h3>
         <a href="https://pragma-gules.vercel.app" class="resultado-link" target="_blank" rel="noopener" aria-label="View full case study: Pragma">
-          See case
+          {t('caseStudies.seeCase')}
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
       </div>
     </div>
     <div class="resultado-historia">
-      <p>"On-premise clinical AI platform for healthcare centers. Evidence-based chatbot, image analysis, and WhatsApp appointment management. Team of 4: DevOps, design, n8n automations, and development."</p>
+      <p>{t('caseStudies.pragmaStory')}</p>
     </div>
     <div class="resultado-metricas">
       <div class="resultado-metrica">
-        <span class="resultado-metrica-valor">On-premise</span>
-        <span class="resultado-metrica-label">100% privacy</span>
+        <span class="resultado-metrica-valor">{t('caseStudies.pragmaMetric1Value')}</span>
+        <span class="resultado-metrica-label">{t('caseStudies.pragmaMetric1Label')}</span>
       </div>
       <div class="resultado-metrica">
-        <span class="resultado-metrica-valor">HIPAA/GDPR</span>
-        <span class="resultado-metrica-label">Compliant</span>
+        <span class="resultado-metrica-valor">{t('caseStudies.pragmaMetric2Value')}</span>
+        <span class="resultado-metrica-label">{t('caseStudies.pragmaMetric2Label')}</span>
       </div>
     </div>
   </article>
-  
+
   </div>
 </section>

@@ -1,13 +1,19 @@
 ---
 // About section - Company description
+import type { Lang } from '../i18n/ui';
+import { useTranslations } from '../i18n/ui';
+
+interface Props { lang?: Lang }
+const { lang = 'es' } = Astro.props;
+const t = useTranslations(lang);
 ---
 
 <section class="section about reveal" id="about" aria-label="About us">
-  <span class="section-label mono text-terracota">About</span>
-  <h2 class="section-title">We're <span class="text-terracota">The Brand Crew</span>.</h2>
+  <span class="section-label mono text-terracota">{t('about.kicker')}</span>
+  <h2 class="section-title">{t('about.title1')} <span class="text-terracota">{t('about.title2')}</span>.</h2>
   <div class="glass-card about-card">
     <p class="about-text">
-      We're a crew of professionals who build websites. Sites that convert, load fast, and look great on mobile. No crazy budgets. Clean design, clean code, and results you can measure.
+      {t('about.text')}
     </p>
   </div>
 </section>

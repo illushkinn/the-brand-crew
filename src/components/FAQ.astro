@@ -1,44 +1,45 @@
 ---
-// FAQ.astro - FAQ section with accordion and animated shapes
+// FAQ.astro - FAQ section with accordion
+import type { Lang } from '../i18n/ui';
+import { useTranslations } from '../i18n/ui';
+
+interface Props { lang?: Lang }
+const { lang = 'es' } = Astro.props;
+const t = useTranslations(lang);
 ---
 
-<section class="section faq reveal" id="faq" aria-label="The usual suspects">
-  <div class="faq-shapes" aria-hidden="true">
-    <div class="faq-shape"></div>
-    <div class="faq-shape"></div>
-    <div class="faq-shape"></div>
-  </div>
+<section class="section faq reveal" id="faq" aria-label="FAQ">
   <span class="section-label mono text-terracota">
-    FAQ
+    {t('faq.kicker')}
   </span>
-  <h2 class="section-title">The usual <span class="text-terracota">suspects</span></h2>
+  <h2 class="section-title">{t('faq.title1')} <span class="text-terracota">{t('faq.title2')}</span></h2>
   <div class="glass-card">
     <div class="faq-list">
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false">
-          What if I don't like it?
+          {t('faq.q1')}
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="faq-chevron"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div class="faq-answer">
-          <p>We work until you love it.</p>
+          <p>{t('faq.a1')}</p>
         </div>
       </div>
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false">
-          Can I update it later?
+          {t('faq.q2')}
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="faq-chevron"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div class="faq-answer">
-          <p>Yes. Basic changes we'll teach you. Big stuff, we talk.</p>
+          <p>{t('faq.a2')}</p>
         </div>
       </div>
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false">
-          What do you need from me to start?
+          {t('faq.q3')}
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="faq-chevron"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div class="faq-answer">
-          <p>Tell me about your business. Got a logo, photos, colors? Even better. If not, we create them together.</p>
+          <p>{t('faq.a3')}</p>
         </div>
       </div>
     </div>
