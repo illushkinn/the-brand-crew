@@ -62,7 +62,7 @@ export const dictionaries = {
       priceFrom: 'Desde',
       priceNote: '2 pagos de',
       cta: 'Hablemos',
-      tag: 'Partner white-label',
+      tag: 'Te acompañamos · Partner white-label',
       seoText: 'Diseño y desarrollo web para comercios en Argentina',
     },
     caseStudies: {
@@ -339,7 +339,7 @@ export const dictionaries = {
       priceFrom: 'From',
       priceNote: '2 payments of',
       cta: "Book a call",
-      tag: 'White-label partner',
+      tag: 'We partner with you · White-label partner',
       seoText: 'Web design and development for businesses in Argentina',
     },
     caseStudies: {
