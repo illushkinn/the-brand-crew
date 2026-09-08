@@ -39,9 +39,9 @@
     height: clamp(320px, 33vw, 440px);
   }
   .slogan-text {
-    font-size: 24px;
-    letter-spacing: 3.5px;
-    word-spacing: 16px;
+    font-size: 22px;
+    letter-spacing: 3px;
+    word-spacing: 14px;
   }
   .hero-isotype {
     width: 100%;
@@ -247,8 +247,8 @@
     gap: 0.35rem;
   }
   .tag-b2b {
-    font-size: 1rem;
-    padding: 0.5rem 1.1rem;
+    font-size: 1.15rem;
+    padding: 0.6rem 1.2rem;
   }
   .hero-actions {
     margin-top: 2rem;
@@ -256,17 +256,15 @@
     justify-content: flex-start;
   }
   .hero-actions .btn-lg {
-    width: 100%;
     padding: 1.1rem 2.5rem;
     font-size: 1.4rem;
-    text-align: center;
   }
   .hero-b2b-tags {
-    margin-top: 2rem;
+    margin-top: 0.75rem;
     justify-content: flex-start;
   }
   .hero-logo {
-    margin-top: 0.75rem;
+    margin-top: 0.25rem;
     justify-content: flex-start;
     align-items: flex-start;
   }
