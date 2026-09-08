@@ -238,7 +238,7 @@ export const dictionaries = {
     },
     cta: {
       title1: 'Arranquemos',
-      title2: 'juntos',
+      title2: '',
     },
     footer: {
       brand: 'The Brand Crew',
@@ -513,8 +513,8 @@ export const dictionaries = {
       devopsBio: 'Databases, backend, automations, DevOps.',
     },
     cta: {
-      title1: "Let's",
-      title2: 'get started',
+      title1: "Let's get started",
+      title2: '',
     },
     footer: {
       brand: 'The Brand Crew',

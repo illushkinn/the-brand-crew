@@ -1,14 +1,22 @@
 ---
-// CTA.astro - Final call-to-action with animated shapes
+// CTA.astro - Final call-to-action
+import type { Lang } from '../i18n/ui';
+import { useTranslations } from '../i18n/ui';
+
+interface Props { lang?: Lang }
+const { lang = 'es' } = Astro.props;
+const t = useTranslations(lang);
+
+const waLink = "https://wa.me/5491124063009?text=" + encodeURIComponent(
+  lang === 'es'
+    ? '¡Hola The Brand Crew! Vi tu sitio y me encantaría trabajar con ustedes.'
+    : "Hey The Brand Crew! I saw your site and I'd love to work with you."
+);
 ---
 
 <section class="cta-final reveal" id="contacto" aria-label="Contact">
-  <div class="cta-shapes" aria-hidden="true">
-    <div class="cta-shape"></div>
-    <div class="cta-shape"></div>
-    <div class="cta-shape"></div>
-  </div>
   <div class="cta-content">
-    <h2><span class="cta-dale">Let's</span> <span class="text-terracota cta-empecemos">get started</span>.</h2>
+    <h2><span class="cta-dale">{t('cta.title1')}</span>{t('cta.title2') && <span class="text-terracota cta-empecemos"> {t('cta.title2')}</span>}.</h2>
+    <a href={waLink} target="_blank" rel="noopener" class="btn btn-lg btn-premium cta-btn">{lang === 'es' ? 'Hablemos por WhatsApp' : 'Chat on WhatsApp'}</a>
   </div>
 </section>
