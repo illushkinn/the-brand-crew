@@ -44,11 +44,15 @@ export const dictionaries = {
   es: {
     nav: {
       home: 'Inicio',
+      services: 'Servicios',
+      howItWorks: 'Cómo funciona',
+      cases: 'Casos',
       caseStudies: 'Casos',
       pricing: 'Precios',
       faq: 'FAQ',
       about: 'Nosotros',
       start: 'Arrancamos',
+      contact: 'Contacto',
     },
     hero: {
       headline1: 'The Brand Crew:',
@@ -60,15 +64,6 @@ export const dictionaries = {
       cta: 'Hablemos',
       tag: 'Partner white-label',
       seoText: 'Diseño y desarrollo web para comercios en Argentina',
-    },
-    nav: {
-      home: 'Inicio',
-      services: 'Servicios',
-      howItWorks: 'Cómo funciona',
-      cases: 'Casos',
-      pricing: 'Precios',
-      faq: 'FAQ',
-      contact: 'Contacto',
     },
     caseStudies: {
       kicker: 'Casos',
@@ -326,11 +321,15 @@ export const dictionaries = {
   en: {
     nav: {
       home: 'Home',
+      services: 'Services',
+      howItWorks: 'How it works',
+      cases: 'Cases',
       caseStudies: 'Work',
       pricing: 'Pricing',
       faq: 'FAQ',
       about: 'About',
       start: "Let's start",
+      contact: 'Contact',
     },
     hero: {
       headline1: 'The Brand Crew:',
@@ -342,15 +341,6 @@ export const dictionaries = {
       cta: "Book a call",
       tag: 'White-label partner',
       seoText: 'Web design and development for businesses in Argentina',
-    },
-    nav: {
-      home: 'Home',
-      services: 'Services',
-      howItWorks: 'How it works',
-      cases: 'Cases',
-      pricing: 'Pricing',
-      faq: 'FAQ',
-      contact: 'Contact',
     },
     caseStudies: {
       kicker: 'Work',
