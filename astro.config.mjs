@@ -16,6 +16,9 @@ export default defineConfig({
       alias: {
         '/src': '/src'
       }
-    }
+    },
+    server: {
+      allowedHosts: true,
+    },
   },
 });
