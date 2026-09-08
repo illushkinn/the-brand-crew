@@ -48,15 +48,15 @@ body::before {
   background-image:
     repeating-linear-gradient(
       0deg,
-      rgba(74, 222, 128, 0.18) 0px,
-      rgba(74, 222, 128, 0.08) 2px,
+      rgba(74, 222, 128, 0.3) 0px,
+      rgba(74, 222, 128, 0.15) 2px,
       transparent 2px,
       transparent 120px
     ),
     repeating-linear-gradient(
       90deg,
-      rgba(74, 222, 128, 0.18) 0px,
-      rgba(74, 222, 128, 0.08) 2px,
+      rgba(74, 222, 128, 0.3) 0px,
+      rgba(74, 222, 128, 0.15) 2px,
       transparent 2px,
       transparent 120px
     ),
