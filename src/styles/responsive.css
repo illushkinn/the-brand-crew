@@ -39,9 +39,9 @@
     height: clamp(320px, 33vw, 440px);
   }
   .slogan-text {
-    font-size: 22px;
-    letter-spacing: 3px;
-    word-spacing: 14px;
+    font-size: 33px;
+    letter-spacing: 4px;
+    word-spacing: 18px;
   }
   .hero-isotype {
     width: 100%;
