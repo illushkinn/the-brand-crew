@@ -164,9 +164,18 @@ const altLang: Lang = lang === 'es' ? 'en' : 'es';
   <meta name="robots" content={noindex ? "noindex, follow" : "index, follow"}>
 
   <!-- Hreflang -->
-  <link rel="alternate" hreflang="es" href={canonicalURL.pathname.startsWith('/en/') ? canonicalURL.pathname.replace('/en/', '/') : canonicalURL.pathname} />
-  <link rel="alternate" hreflang="en" href={canonicalURL.pathname.startsWith('/en/') ? canonicalURL.pathname : '/en' + canonicalURL.pathname} />
-  <link rel="alternate" hreflang={hreflangMap[lang]} href={canonicalURL} />
+  {(() => {
+    const pathname = typeof canonicalURL === 'string' ? new URL(canonicalURL).pathname : canonicalURL.pathname || '/';
+    const esHref = pathname.startsWith('/en/') ? pathname.replace('/en/', '/') : pathname;
+    const enHref = pathname.startsWith('/en/') ? pathname : '/en' + pathname;
+    return (
+      <>
+        <link rel="alternate" hreflang="es" href={esHref} />
+        <link rel="alternate" hreflang="en" href={enHref} />
+        <link rel="alternate" hreflang={hreflangMap[lang]} href={canonicalURL} />
+      </>
+    );
+  })()}
 
   <script is:inline type="application/ld+json" set:html={JSON.stringify(websiteSchema)}></script>
   <script is:inline type="application/ld+json" set:html={JSON.stringify(businessSchema)}></script>
