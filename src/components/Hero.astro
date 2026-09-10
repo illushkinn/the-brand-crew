@@ -82,9 +82,12 @@ const ctaLabel = t('hero.cta');
 
     if (prefersReducedMotion) {
       allChars.forEach(c => c.style.opacity = '1');
-      // Still animate logo if reduced motion — just fade
       const logo = document.querySelector('.hero-logo');
-      if (logo) gsap.to(logo, { opacity: 1, duration: 0.3 });
+      if (logo) gsap.set(logo, { opacity: 1 });
+      ['.hero-title', '.hero-sub', '.hero-meta', '.hero-actions', '.hero-b2b-tags'].forEach(sel => {
+        const el = document.querySelector(sel);
+        if (el) gsap.set(el, { opacity: 1 });
+      });
       return;
     }
 
@@ -120,7 +123,7 @@ const ctaLabel = t('hero.cta');
       });
     });
 
-    // Logo landing animation — enters FIRST
+    // Hero content landing cascade
     const logo = document.querySelector('.hero-logo') as HTMLElement;
     if (logo) {
       gsap.set(logo, { opacity: 0, y: -60, scale: 0.92 });
@@ -133,6 +136,27 @@ const ctaLabel = t('hero.cta');
         delay: 0.1,
       });
     }
+
+    const contentElements = [
+      { sel: '.hero-title', y: 30, delay: 0.3 },
+      { sel: '.hero-sub', y: 20, delay: 0.5 },
+      { sel: '.hero-meta', y: 15, delay: 0.65 },
+      { sel: '.hero-actions', y: 10, delay: 0.8 },
+      { sel: '.hero-b2b-tags', y: 10, delay: 0.95 },
+    ];
+    contentElements.forEach(({ sel, y, delay }) => {
+      const el = document.querySelector(sel) as HTMLElement;
+      if (el) {
+        gsap.set(el, { opacity: 0, y });
+        gsap.to(el, {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          ease: 'power3.out',
+          delay,
+        });
+      }
+    });
 
     document.addEventListener('astro:before-swap', () => {
       tl.kill();
