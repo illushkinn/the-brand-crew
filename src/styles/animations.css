@@ -11,10 +11,6 @@
     transition: none !important;
     animation: none !important;
   }
-
-  .slogan-rotator {
-    animation: none !important;
-  }
 }
 @keyframes reveal-in {
   from {
