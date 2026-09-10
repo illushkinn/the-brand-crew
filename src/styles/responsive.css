@@ -182,9 +182,6 @@
     word-spacing: -1px;
     letter-spacing: -0.03em;
   }
-  .hero-phrase {
-    display: block;
-  }
   .hero-sub {
     font-size: clamp(1.3rem, 4vw, 2rem);
     text-wrap: balance;
