@@ -3,7 +3,7 @@
   .resultados-grid { scroll-snap-type: none; }
   .btn:active { transform: none; }
   .btn-premium { transition: none; }
-  .btn-premium:hover { box-shadow: 0 4px 16px oklch(0.58 0.18 32 / 0.35); }
+  .btn-premium:hover { background: oklch(0.82 0.2 125); }
   .btn,
   .glass-card, .resultado-card,
   .navbar, .mobile-menu, .mobile-menu a, .hamburger span,
