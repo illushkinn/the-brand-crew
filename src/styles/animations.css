@@ -4,6 +4,7 @@
   .btn:active { transform: none; }
   .btn-premium { transition: none; }
   .btn-premium:hover { border-color: oklch(0.62 0.18 32 / 0.6); }
+  .btn:hover { background: oklch(0.58 0.18 32 / 0.06); }
   .btn,
   .glass-card, .resultado-card,
   .navbar, .mobile-menu, .mobile-menu a, .hamburger span,

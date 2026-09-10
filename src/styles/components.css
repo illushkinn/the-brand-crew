@@ -66,7 +66,7 @@
   position: relative;
   overflow: hidden;
   z-index: 1;
-  transition: transform 0.15s ease, background 0.3s ease, box-shadow 0.3s ease;
+  transition: box-shadow 0.6s ease, border-color 0.6s ease, background 0.6s ease;
   background: transparent;
   color: var(--terracota);
 }
@@ -76,17 +76,19 @@
 }
 .btn-lg {
   font-size: clamp(1.15rem, 2.5vw, 1.4rem);
-  padding: 1.1rem 2.8rem;
 }
 .btn svg {
   width: 1.3em;
   height: 1.3em;
 }
 .btn:hover {
-  background: oklch(0.58 0.18 32 / 0.08);
+  background: oklch(0.58 0.18 32 / 0.06);
+  box-shadow:
+    inset 0 1px 0 oklch(0.58 0.18 32 / 0.1),
+    0 0 12px oklch(0.58 0.18 32 / 0.1);
 }
 .btn:active {
-  transform: scale(0.96);
+  background: oklch(0.58 0.18 32 / 0.1);
 }
 
 /* ===== CTA — PREMIUM STATIC ===== */
@@ -98,17 +100,22 @@
   font-weight: 500;
   letter-spacing: 0.02em;
   text-shadow: 0 1px 2px oklch(0 0 0 / 0.3);
-  transition: box-shadow 0.4s ease, border-color 0.4s ease;
-  box-shadow: 0 2px 8px oklch(0 0 0 / 0.15);
+  transition: box-shadow 0.6s ease, border-color 0.6s ease;
+  box-shadow:
+    0 2px 8px oklch(0 0 0 / 0.15),
+    0 1px 0 oklch(0.82 0.2 125 / 0.12) inset;
 }
 .btn-premium:hover {
   border-color: oklch(0.62 0.18 32 / 0.6);
   box-shadow:
-    0 0 0 1px oklch(0.82 0.2 125 / 0.08),
-    0 2px 12px oklch(0 0 0 / 0.12);
+    0 2px 12px oklch(0 0 0 / 0.1),
+    0 1px 0 oklch(0.82 0.2 125 / 0.2) inset,
+    0 0 0 1px oklch(0.82 0.2 125 / 0.06);
 }
 .btn-premium:active {
-  box-shadow: 0 1px 4px oklch(0 0 0 / 0.2);
+  box-shadow:
+    0 1px 4px oklch(0 0 0 / 0.2),
+    0 1px 0 oklch(0.82 0.2 125 / 0.08) inset;
 }
 
 
