@@ -62,7 +62,7 @@ export const dictionaries = {
       priceFrom: 'Desde',
       priceNote: '2 pagos de',
       cta: 'Hablemos',
-      tag: 'Te acompañamos · Partner white-label',
+      tag: 'Te acompañamos · Aliado white-label',
       seoText: 'Diseño y desarrollo web para comercios en Argentina',
     },
     caseStudies: {

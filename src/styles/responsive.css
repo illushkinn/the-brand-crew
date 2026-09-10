@@ -176,7 +176,7 @@
     text-align: left;
   }
   .hero-title {
-    font-size: clamp(4.5rem, 12vw, 7rem);
+    font-size: clamp(5.5rem, 15vw, 9rem);
     line-height: 1.15;
     margin-bottom: 0.8rem;
     word-spacing: -1px;
@@ -213,6 +213,7 @@
   .tag-b2b {
     font-size: clamp(0.85rem, 2.5vw, 1.3rem);
     padding: 0.6rem 1.2rem;
+    white-space: nowrap;
   }
   .hero-actions {
     margin-top: 2rem;
