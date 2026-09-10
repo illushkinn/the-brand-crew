@@ -59,44 +59,58 @@ const ctaLabel = t('hero.cta');
 
 <script>
   import { gsap } from 'gsap';
-  import { SplitText } from 'gsap/SplitText';
-
-  gsap.registerPlugin(SplitText);
 
   function initHeroAnimation() {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
     const phrases = document.querySelectorAll('.hero-phrase');
     if (!phrases.length) return;
 
-    const allSplits: InstanceType<typeof SplitText>[] = [];
-
-    phrases.forEach((phrase, i) => {
-      const split = new SplitText(phrase, { type: 'chars', charsClass: 'hero-char' });
-      allSplits.push(split);
-
-      if (prefersReducedMotion) return;
-
-      gsap.set(split.chars, {
-        opacity: 0,
-        y: 30,
-        rotationX: -60,
-        transformOrigin: 'center bottom',
-      });
-
-      gsap.to(split.chars, {
-        opacity: 1,
-        y: 0,
-        rotationX: 0,
-        duration: 0.7,
-        ease: 'power3.out',
-        stagger: 0.02,
-        delay: 0.4 + (i * 0.15),
+    // Collect all chars across all phrases
+    const allChars: HTMLElement[] = [];
+    phrases.forEach((phrase) => {
+      const text = phrase.textContent || '';
+      phrase.textContent = '';
+      text.split('').forEach((char) => {
+        const span = document.createElement('span');
+        span.className = 'hero-char';
+        span.textContent = char;
+        span.style.opacity = '0';
+        phrase.appendChild(span);
+        allChars.push(span);
       });
     });
 
+    if (prefersReducedMotion) {
+      allChars.forEach(c => c.style.opacity = '1');
+      return;
+    }
+
+    // Create cursor element
+    const cursor = document.createElement('span');
+    cursor.className = 'hero-cursor';
+    phrases[phrases.length - 1].appendChild(cursor);
+
+    // Typewriter: chars appear sequentially
+    const tl = gsap.timeline({ delay: 0.5 });
+
+    tl.to(allChars, {
+      opacity: 1,
+      duration: 0.05,
+      stagger: 0.06,
+      ease: 'none',
+      onComplete: () => {
+        // Fade out cursor after typing completes
+        gsap.to(cursor, {
+          opacity: 0,
+          duration: 0.4,
+          delay: 1.2,
+          ease: 'power2.inOut',
+        });
+      },
+    });
+
     document.addEventListener('astro:before-swap', () => {
-      allSplits.forEach(s => s.revert());
+      tl.kill();
     }, { once: true });
   }
 

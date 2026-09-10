@@ -337,6 +337,7 @@
 }
 .hero-char {
   display: inline-block;
+  white-space: pre;
   background: linear-gradient(
     90deg,
     oklch(0.98 0 0) 0%,
@@ -349,6 +350,19 @@
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+.hero-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 1em;
+  background: var(--verde);
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  animation: cursor-blink 0.8s step-end infinite;
+}
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 .hero-phrase {
   display: inline;
