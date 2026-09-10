@@ -185,7 +185,7 @@
     display: inline;
   }
   .hero-sub {
-    font-size: clamp(3rem, 10.5vw, 5.25rem);
+    font-size: clamp(2.5rem, 8.5vw, 4.5rem);
     text-wrap: balance;
     margin-top: 1.35rem;
     margin-bottom: 1.5rem;
