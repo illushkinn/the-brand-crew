@@ -95,7 +95,7 @@ const ctaLabel = t('hero.cta');
     allChars[0].parentNode?.insertBefore(cursor, allChars[0]);
 
     // Typewriter: move cursor + reveal char by char
-    const tl = gsap.timeline({ delay: 1.4 });
+    const tl = gsap.timeline({ delay: 0.8 });
 
     allChars.forEach((char, i) => {
       // Move cursor after this char
@@ -128,9 +128,9 @@ const ctaLabel = t('hero.cta');
         opacity: 1,
         y: 0,
         scale: 1,
-        duration: 1.0,
+        duration: 0.5,
         ease: 'back.out(1.4)',
-        delay: 0.2, // starts almost immediately
+        delay: 0.1,
       });
     }
 
