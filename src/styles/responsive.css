@@ -10,28 +10,30 @@
   }
 }
 
-/* Desktop ≥769px: center hero + logo anchor */
+/* Desktop: center hero content + isotype anchor */
 @media (min-width: 769px) {
   .hero {
     align-items: center;
     padding-top: calc(3.5rem + 16px);
   }
+  .hero-content {
+    margin-left: 0;
+    max-width: 860px;
+  }
 }
 
-/* Desktop ≥900px: Zig-zag editorial — Logo izq | Slogan + Copy der */
+/* Desktop ≥900px: side-by-side grid + ring larger */
 @media (min-width: 900px) {
   .hero-split {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
-    align-items: start;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
     gap: clamp(2.5rem, 6vw, 5rem);
   }
-
-  .hero-logo-col {
-    position: sticky;
-    top: calc(3.5rem + 16px);
+  .hero-logo {
+    order: 0;
+    position: relative;
   }
-
   .hero-logo-ring {
     width: clamp(200px, 24vw, 280px);
     height: clamp(200px, 24vw, 280px);
@@ -43,80 +45,35 @@
     transform: scale(1.15);
     transform-origin: center;
   }
-
-  .hero-copy-col {
-    padding-top: clamp(2rem, 4vw, 4rem);
-  }
-
-  .hero-slogan {
-    font-size: clamp(1.4rem, 2.5vw, 2rem);
-    margin-bottom: var(--space-2xl);
-    text-align: right;
-    /* Efecto "mirada": el slogan se alinea a la derecha, hacia el logo */
-  }
-
-  .hero-content-stack {
+  .hero-content {
     text-align: left;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    max-width: none;
   }
-
   .hero-meta {
     align-items: flex-start;
   }
-
   .hero-actions {
     justify-content: flex-start;
   }
-
   .hero-b2b-tags {
     justify-content: flex-start;
-  }
-}
-
-/* Tablet 769px-899px: Logo centrado arriba, copy abajo */
-@media (min-width: 769px) and (max-width: 899px) {
-  .hero-split {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--space-xl);
-    text-align: center;
-  }
-
-  .hero-logo-col {
-    order: 0;
-  }
-
-  .hero-copy-col {
-    order: 1;
-    max-width: 680px;
-  }
-
-  .hero-slogan {
-    text-align: center;
-    margin-bottom: var(--space-lg);
   }
 }
 
 @media (max-width: 767.98px) {
-  .hero-slogan {
-    font-size: clamp(1.1rem, 3.5vw, 1.5rem);
-    text-align: center;
-    margin-bottom: var(--space-lg);
+  .hero-sub {
+    font-size: clamp(1rem, 2.8vw, 1.4rem);
   }
-  .hero-title {
-    font-size: clamp(2.5rem, 8vw, 3.8rem);
-    line-height: 1.1;
+  .faq {
+    justify-content: flex-start;
+    padding-top: 2.5rem;
+    padding-bottom: 4rem;
   }
-  .hero-meta {
-    font-size: 0.85rem;
-    align-items: center;
-    text-align: center;
-  }
-  .hero-actions {
-    justify-content: center;
-  }
-  .hero-b2b-tags {
-    justify-content: center;
+  .faq .glass-card {
+    margin-top: 0.5rem;
   }
 }
 
@@ -478,7 +435,7 @@
   }
   .hero-sub {
     margin-top: var(--space-md);
-    margin-bottom: 3.5rem;
+    margin-bottom: var(--space-md);
   }
   .resultados-grid {
     display: flex;
@@ -577,7 +534,7 @@
   }
   .hero-sub {
     margin-top: 0.5rem;
-    margin-bottom: 2rem;
+    margin-bottom: 0.25rem;
   }
   .hero-meta {
     margin-bottom: 1.5rem;

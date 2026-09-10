@@ -1,5 +1,5 @@
 ---
-// Hero.astro — Editorial zig-zag: logo izquierda → slogan derecha (en su mirada) → copy columna
+// Hero.astro — 50/50 split: left = pitch, right = logo composition
 import Logo from './Logo.astro';
 import type { Lang } from '../i18n/ui';
 import { useTranslations } from '../i18n/ui';
@@ -20,87 +20,39 @@ const ctaLabel = t('hero.cta');
 <div class="hero-problema-wrap" id="home">
   <section class="hero reveal" id="inicio" aria-label="Hero">
     <div class="hero-split">
-      <!-- Columna izquierda: Logo -->
-      <div class="hero-logo-col">
-        <div class="hero-logo-ring">
-          <div class="hero-isotype">
-            <Logo size={280} ariaLabel="The Brand Crew" />
-          </div>
+      <div class="hero-content">
+        <h1 class="hero-title">
+          <span class="hero-phrase">{t('hero.headline2')}</span>
+          <span class="hero-phrase text-terracota">{t('hero.headline3')}</span>
+        </h1>
+        <p class="hero-sub" set:html={t('hero.sub')}></p>
+        <p class="hero-meta">
+          <span class="price-group">
+            <span class="current-price">Desde&nbsp;$300&nbsp;<small class="price-currency">USD</small></span>
+          </span>
+        </p>
+        <div class="hero-actions">
+          <a
+            href={waLink}
+            target="_blank"
+            rel="noopener"
+            class="btn btn-lg btn-premium"
+          >
+            {ctaLabel}
+          </a>
         </div>
+        <p class="hero-b2b-tags">
+          <span class="tag-b2b tag-outline">{t('hero.tag')}</span>
+        </p>
       </div>
 
-      <!-- Columna derecha: Slogan en la "mirada" del logo + Copy stack -->
-      <div class="hero-copy-col">
-        <p class="hero-slogan" set:html={t('hero.sub')}></p>
-
-        <div class="hero-content-stack">
-          <h1 class="hero-title">
-            <span class="hero-phrase">{t('hero.headline2')}</span>
-            <span class="hero-phrase text-terracota">{t('hero.headline3')}</span>
-          </h1>
-          <p class="hero-meta">
-            <span class="price-group">
-              <span class="current-price">Desde&nbsp;$300&nbsp;<small class="price-currency">USD</small></span>
-            </span>
-          </p>
-          <div class="hero-actions">
-            <a
-              href={waLink}
-              target="_blank"
-              rel="noopener"
-              class="btn btn-lg btn-premium"
-            >
-              {ctaLabel}
-            </a>
-          </div>
-          <p class="hero-b2b-tags">
-            <span class="tag-b2b tag-outline">{t('hero.tag')}</span>
-          </p>
-        </div>
-      </div>
+       <div class="hero-logo">
+         <div class="hero-logo-ring">
+           <div class="hero-isotype">
+             <Logo size={280} ariaLabel="The Brand Crew" />
+           </div>
+         </div>
+       </div>
     </div>
   </section>
 </div>
-
-<script>
-  // GSAP SplitText — Hero headline character stagger
-  import { gsap } from 'gsap';
-  import { SplitText } from 'gsap/SplitText';
-
-  gsap.registerPlugin(SplitText);
-
-  // Respeta prefers-reduced-motion
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  if (!prefersReducedMotion) {
-    const title = document.querySelector('.hero-title');
-    if (title) {
-      // Split into chars
-      const split = new SplitText(title, { type: 'chars,words', charsClass: 'hero-char' });
-
-      // Initial state
-      gsap.set(split.chars, {
-        opacity: 0,
-        y: 40,
-        rotationX: -90,
-        transformOrigin: 'center bottom',
-      });
-
-      // Stagger animation
-      gsap.to(split.chars, {
-        opacity: 1,
-        y: 0,
-        rotationX: 0,
-        duration: 0.8,
-        ease: 'power3.out',
-        stagger: 0.025,
-        delay: 0.3,
-      });
-
-      // Cleanup on page unload (SPA navigation)
-      document.addEventListener('astro:after-swap', () => {
-        split.revert();
-      }, { once: true });
-    }
-  }
-</script>
