@@ -171,7 +171,7 @@
     text-align: left;
   }
   .hero-title {
-    font-size: clamp(7.5rem, 30vw, 13.5rem);
+    font-size: clamp(11.25rem, 45vw, 20rem);
     line-height: 1.75;
     margin-bottom: 0.8rem;
     word-spacing: -1px;
@@ -185,7 +185,7 @@
     display: inline;
   }
   .hero-sub {
-    font-size: clamp(2.5rem, 8.5vw, 4.5rem);
+    font-size: clamp(1.25rem, 4.25vw, 2.25rem);
     text-wrap: balance;
     margin-top: 1.35rem;
     margin-bottom: 1.5rem;
