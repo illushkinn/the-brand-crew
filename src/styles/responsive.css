@@ -344,7 +344,7 @@
   
   /* Mobile menu: adjust for shorter height */
   .mobile-menu a {
-    font-size: 1rem;
+    font-size: 1.5rem;
     padding: 0.2rem 0.8rem;
   }
   .mobile-menu {
