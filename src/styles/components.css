@@ -345,16 +345,16 @@
   background: linear-gradient(
     90deg,
     oklch(0.98 0 0) 0%,
-    oklch(0.98 0 0) 35%,
-    oklch(0.82 0.2 125) 47.5%,
+    oklch(0.98 0 0) 40%,
+    oklch(0.82 0.2 125) 50%,
     oklch(0.98 0 0) 60%,
     oklch(0.98 0 0) 100%
   );
-  background-size: 350% 100%;
+  background-size: 400% 100%;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: diamond-shimmer 3.5s cubic-bezier(0.4, 0, 0.2, 1) 0.8s infinite;
+  animation: diamond-shimmer 4s linear 0.8s infinite;
   text-shadow: none;
 }
 .hero-phrase {
@@ -475,20 +475,9 @@
 
 
 @keyframes diamond-shimmer {
-  /* Movimiento lento con easing suave */
-  0% { background-position: 100% center; }
-  50% { background-position: 30% center; }
-  
-  /* Primer flash rápido */
-  70% { background-position: 10% center; }
-  75% { background-position: -5% center; }
-  
-  /* Pausa ligera */
-  80% { background-position: -8% center; }
-  
-  /* Segundo flash (más ligero) */
-  90% { background-position: -15% center; }
-  100% { background-position: -100% center; }
+  /* Sweep lento de derecha a izquierda */
+  0% { background-position: 120% center; }
+  100% { background-position: -120% center; }
 }
 @media (prefers-reduced-motion: reduce) {
   .hero h1 {
