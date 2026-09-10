@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PricingKit2 from '../../components/PricingKit2.astro';
+import CTA from '../../components/CTA.astro';
+import Footer from '../../components/Footer.astro';
+import ScrollToTop from '../../components/ScrollToTop.astro';
+import { DOMAIN } from '../../lib/constants';
+
+const lang = 'es';
+---
+
+<BaseLayout lang={lang} title="Growth Partner — The Brand Crew" description="Growth partner mensual: rediseño continuo, SEO local, community management y automatizaciones. Desde $150 USD/mes." canonicalURL={`${DOMAIN}/pricing/growth-partner`}>
+  <main id="main-content">
+    <section class="section pricing reveal" id="precios" aria-label="Growth Partner Pricing">
+      <span class="section-label mono text-terracota">Growth Partner</span>
+      <h2 class="section-title">Tu equipo de <span class="text-verde">crecimiento</span>.</h2>
+      <p class="pricing-growth-hero-sub">Retainer mensual para negocios que necesitan evolucionar continuamente. No es un sitio web y listo — es un partner que trabaja con vos cada mes.</p>
+
+      <PricingKit2 lang={lang} />
+
+      <div class="pricing-growth-cta">
+        <a href={lang === 'es' ? '/pricing' : '/en/pricing'} class="btn btn-outline">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+          Volver a Diseño Web
+        </a>
+      </div>
+
+      <p class="pricing-monotributo-note">
+        Somos monotributistas y facturamos en pesos al tipo de cambio. Precios mostrados en USD.
+      </p>
+    </section>
+  </main>
+  <CTA lang={lang} />
+  <Footer lang={lang} />
+  <ScrollToTop lang={lang} />
+</BaseLayout>

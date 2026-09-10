@@ -1,127 +1,32 @@
 ---
-// Pricing.astro - Pricing section: Kit 1 (Web Design, 3 cards) + Kit 2 (Growth Partner, 2 cards)
-// Prices in USD, monotributo + Factura A as a feature.
+// Pricing.astro - Pricing section: Kit 1 (Web Design) + link to Growth Partner
 import type { Lang } from '../i18n/ui';
 import { useTranslations } from '../i18n/ui';
+import PricingKit1 from './PricingKit1.astro';
 
 interface Props { lang?: Lang }
 const { lang = 'es' } = Astro.props;
 const t = useTranslations(lang);
 
-const esencialFeatures = [1, 2, 3, 4, 5, 6, 7].map((i) => t(`pricing.esencialF${i}`));
-const crewFeatures = [1, 2, 3, 4, 5, 6, 7].map((i) => t(`pricing.crewF${i}`));
-const mvpFeatures = [1, 2, 3, 4, 5, 6].map((i) => t(`pricing.mvpF${i}`));
-const growthFeatures = [1, 2, 3, 4].map((i) => t(`pricing.growthF${i}`));
-const autoFeatures = [1, 2, 3, 4].map((i) => t(`pricing.autoF${i}`));
+const growthLink = lang === 'es' ? '/pricing/growth-partner' : '/en/pricing/growth-partner';
 ---
 
 <section class="section pricing reveal" id="precios" aria-label="Pricing">
   <span class="section-label mono text-terracota">{t('pricing.kicker')}</span>
   <h2 class="section-title">{t('pricing.title1')} <span class="text-verde">{t('pricing.title2')}</span>.</h2>
 
-  <!-- KIT 1 — Diseño web -->
-  <div class="pricing-kit">
-    <h3 class="pricing-kit-title mono">{t('pricing.kit1Title')}</h3>
-    <div class="pricing-grid">
+  <PricingKit1 lang={lang} />
 
-       <!-- Esencial -->
-       <article class="glass-card pricing-card-v2">
-          <h3 class="pricing-card-title">{t('pricing.esencialTitle')}</h3>
-        <p class="pricing-card-amount">${t('pricing.esencialPrice')} <small class="price-currency">USD</small></p>
-        <p class="pricing-card-sub">{t('pricing.esencialSub')}</p>
-        <p class="pricing-card-desc">{t('pricing.esencialDesc')}</p>
-        <ul class="pricing-card-features">
-          {
-            esencialFeatures.map((f) => (
-              <li>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                {f}
-              </li>
-            ))
-          }
-         </ul>
-       </article>
+  <!-- Growth Partner CTA -->
+  <div class="pricing-growth-cta">
+    <p class="pricing-growth-cta-text">{t('pricing.growthCtaText')}</p>
+    <a href={growthLink} class="btn btn-outline">
+      {t('pricing.growthCtaLink')}
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+    </a>
+  </div>
 
-       <!-- Crew — STAR CARD -->
-       <article class="glass-card pricing-card-v2 is-star">
-          <h3 class="pricing-card-title">{t('pricing.crewTitle')}</h3>
-        <p class="pricing-card-amount">${t('pricing.crewPrice')} <small class="price-currency">USD</small></p>
-        <p class="pricing-card-sub">{t('pricing.crewSub')}</p>
-        <p class="pricing-card-desc">{t('pricing.crewDesc')}</p>
-        <ul class="pricing-card-features">
-          {
-            crewFeatures.map((f) => (
-              <li>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                {f}
-              </li>
-            ))
-          }
-        </ul>
-      </article>
-
-       <!-- MVP / E-commerce -->
-       <article class="glass-card pricing-card-v2">
-          <h3 class="pricing-card-title">{t('pricing.mvpTitle')}</h3>
-        <p class="pricing-card-amount">${t('pricing.mvpPrice')} <small class="price-currency">USD</small></p>
-        <p class="pricing-card-sub">{t('pricing.mvpSub')}</p>
-        <p class="pricing-card-desc">{t('pricing.mvpDesc')}</p>
-        <ul class="pricing-card-features">
-          {
-            mvpFeatures.map((f) => (
-              <li>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                {f}
-              </li>
-            ))
-          }
-         </ul>
-       </article>
-     </div>
-   </div>
-
-   <!-- KIT 2 — Growth Partner -->
-  <div class="pricing-kit">
-    <h3 class="pricing-kit-title mono">{t('pricing.kit2Title')}</h3>
-    <div class="pricing-grid growth">
-
-       <!-- Growth Mensual -->
-       <article class="glass-card pricing-card-v2">
-          <h3 class="pricing-card-title">{t('pricing.growthTitle')}</h3>
-        <p class="pricing-card-amount">${t('pricing.growthPriceRange')} <small class="price-currency">USD/mes</small></p>
-        <p class="pricing-card-sub">{t('pricing.growthSub')}</p>
-        <ul class="pricing-card-features">
-          {
-            growthFeatures.map((f) => (
-              <li>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                {f}
-              </li>
-            ))
-          }
-         </ul>
-       </article>
-
-       <!-- Automatizaciones -->
-       <article class="glass-card pricing-card-v2">
-          <h3 class="pricing-card-title">{t('pricing.autoTitle')}</h3>
-        <p class="pricing-card-amount">${t('pricing.autoPrice')} <small class="price-currency">USD</small></p>
-        <p class="pricing-card-sub">{t('pricing.autoSub')}</p>
-        <ul class="pricing-card-features">
-          {
-            autoFeatures.map((f) => (
-              <li>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                {f}
-              </li>
-            ))
-          }
-         </ul>
-       </article>
-     </div>
-   </div>
-
-   <p class="pricing-monotributo-note">
+  <p class="pricing-monotributo-note">
     {t('pricing.monotributoNote')}
   </p>
 </section>

@@ -192,6 +192,8 @@ export const dictionaries = {
       autoF3: 'Automatización de procesos',
       autoF4: 'Ideal para revender vía socios',
       cta: 'Hablemos de tu proyecto',
+      growthCtaText: '¿Buscás un partner de crecimiento continuo?',
+      growthCtaLink: 'Ver Growth Partner',
       monotributoNote: 'Somos monotributistas y facturamos en pesos al tipo de cambio. Precios mostrados en USD.',
     },
     faq: {
@@ -467,6 +469,8 @@ export const dictionaries = {
       autoF3: 'Process automation',
       autoF4: 'Ideal for reselling via partners',
       cta: "Let's talk about your project",
+      growthCtaText: 'Looking for a continuous growth partner?',
+      growthCtaLink: 'See Growth Partner',
       monotributoNote: 'We are monotributistas and invoice in pesos at the exchange rate. Prices shown in USD.',
     },
     faq: {

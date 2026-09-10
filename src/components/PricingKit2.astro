@@ -1,0 +1,52 @@
+---
+// PricingKit2.astro — Kit 2: Growth Partner (Growth Mensual, Automatizaciones)
+import type { Lang } from '../i18n/ui';
+import { useTranslations } from '../i18n/ui';
+
+interface Props { lang?: Lang }
+const { lang = 'es' } = Astro.props;
+const t = useTranslations(lang);
+
+const growthFeatures = [1, 2, 3, 4].map((i) => t(`pricing.growthF${i}`));
+const autoFeatures = [1, 2, 3, 4].map((i) => t(`pricing.autoF${i}`));
+---
+
+<div class="pricing-kit">
+  <h3 class="pricing-kit-title mono">{t('pricing.kit2Title')}</h3>
+  <div class="pricing-grid growth">
+
+     <!-- Growth Mensual -->
+     <article class="glass-card pricing-card-v2">
+       <h3 class="pricing-card-title">{t('pricing.growthTitle')}</h3>
+       <p class="pricing-card-amount">${t('pricing.growthPriceRange')} <small class="price-currency">USD/mes</small></p>
+       <p class="pricing-card-sub">{t('pricing.growthSub')}</p>
+       <ul class="pricing-card-features">
+         {
+           growthFeatures.map((f) => (
+             <li>
+               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+               {f}
+             </li>
+           ))
+         }
+       </ul>
+     </article>
+
+     <!-- Automatizaciones -->
+     <article class="glass-card pricing-card-v2">
+       <h3 class="pricing-card-title">{t('pricing.autoTitle')}</h3>
+       <p class="pricing-card-amount">${t('pricing.autoPrice')} <small class="price-currency">USD</small></p>
+       <p class="pricing-card-sub">{t('pricing.autoSub')}</p>
+       <ul class="pricing-card-features">
+         {
+           autoFeatures.map((f) => (
+             <li>
+               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+               {f}
+             </li>
+           ))
+         }
+       </ul>
+     </article>
+  </div>
+</div>

@@ -1,0 +1,73 @@
+---
+// PricingKit1.astro — Kit 1: Diseño web (Esencial, Crew, MVP)
+import type { Lang } from '../i18n/ui';
+import { useTranslations } from '../i18n/ui';
+
+interface Props { lang?: Lang }
+const { lang = 'es' } = Astro.props;
+const t = useTranslations(lang);
+
+const esencialFeatures = [1, 2, 3, 4, 5, 6, 7].map((i) => t(`pricing.esencialF${i}`));
+const crewFeatures = [1, 2, 3, 4, 5, 6, 7].map((i) => t(`pricing.crewF${i}`));
+const mvpFeatures = [1, 2, 3, 4, 5, 6].map((i) => t(`pricing.mvpF${i}`));
+---
+
+<div class="pricing-kit">
+  <h3 class="pricing-kit-title mono">{t('pricing.kit1Title')}</h3>
+  <div class="pricing-grid">
+
+     <!-- Esencial -->
+     <article class="glass-card pricing-card-v2">
+       <h3 class="pricing-card-title">{t('pricing.esencialTitle')}</h3>
+       <p class="pricing-card-amount">${t('pricing.esencialPrice')} <small class="price-currency">USD</small></p>
+       <p class="pricing-card-sub">{t('pricing.esencialSub')}</p>
+       <p class="pricing-card-desc">{t('pricing.esencialDesc')}</p>
+       <ul class="pricing-card-features">
+         {
+           esencialFeatures.map((f) => (
+             <li>
+               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+               {f}
+             </li>
+           ))
+         }
+       </ul>
+     </article>
+
+     <!-- Crew — STAR CARD -->
+     <article class="glass-card pricing-card-v2 is-star">
+       <h3 class="pricing-card-title">{t('pricing.crewTitle')}</h3>
+       <p class="pricing-card-amount">${t('pricing.crewPrice')} <small class="price-currency">USD</small></p>
+       <p class="pricing-card-sub">{t('pricing.crewSub')}</p>
+       <p class="pricing-card-desc">{t('pricing.crewDesc')}</p>
+       <ul class="pricing-card-features">
+         {
+           crewFeatures.map((f) => (
+             <li>
+               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+               {f}
+             </li>
+           ))
+         }
+       </ul>
+     </article>
+
+     <!-- MVP / E-commerce -->
+     <article class="glass-card pricing-card-v2">
+       <h3 class="pricing-card-title">{t('pricing.mvpTitle')}</h3>
+       <p class="pricing-card-amount">${t('pricing.mvpPrice')} <small class="price-currency">USD</small></p>
+       <p class="pricing-card-sub">{t('pricing.mvpSub')}</p>
+       <p class="pricing-card-desc">{t('pricing.mvpDesc')}</p>
+       <ul class="pricing-card-features">
+         {
+           mvpFeatures.map((f) => (
+             <li>
+               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+               {f}
+             </li>
+           ))
+         }
+       </ul>
+     </article>
+  </div>
+</div>
