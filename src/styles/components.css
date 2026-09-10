@@ -354,7 +354,7 @@
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: diamond-shimmer 3s ease-in-out 0.8s infinite;
+  animation: diamond-shimmer 3.5s cubic-bezier(0.4, 0, 0.2, 1) 0.8s infinite;
   text-shadow: none;
 }
 .hero-phrase {
@@ -365,7 +365,7 @@
   font-size: clamp(1.2rem, 2.5vw, 1.5rem);
   color: var(--headline);
   margin-top: var(--space-md);
-  margin-bottom: 3.5rem;
+  margin-bottom: 4rem;
   text-wrap: pretty;
 }
 .hero-meta {
@@ -475,9 +475,19 @@
 
 
 @keyframes diamond-shimmer {
+  /* Movimiento lento con easing suave */
   0% { background-position: 100% center; }
-  70% { background-position: 20% center; }
-  85% { background-position: -10% center; }
+  50% { background-position: 30% center; }
+  
+  /* Primer flash rápido */
+  70% { background-position: 10% center; }
+  75% { background-position: -5% center; }
+  
+  /* Pausa ligera */
+  80% { background-position: -8% center; }
+  
+  /* Segundo flash (más ligero) */
+  90% { background-position: -15% center; }
   100% { background-position: -100% center; }
 }
 @media (prefers-reduced-motion: reduce) {

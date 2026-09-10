@@ -549,3 +549,10 @@
     margin-top: 0.75rem;
   }
 }
+
+/* Small devices (iPhone SE, Galaxy S8, etc.) */
+@media (max-width: 380px) {
+  .hero-sub {
+    margin-bottom: 2.5rem;
+  }
+}
