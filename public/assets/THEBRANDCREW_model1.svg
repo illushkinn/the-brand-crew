@@ -8,11 +8,11 @@ viewBox="0 0 5660.02 5749.45"
  <defs>
   <style type="text/css">
    <![CDATA[
-    .str0 {stroke:black;stroke-width:135.74;stroke-miterlimit:22.9256}
+    .str0 {stroke:white;stroke-width:135.74;stroke-miterlimit:22.9256}
     .fil2 {fill:none}
     .fil0 {fill:url(#shimmer)}
-    .fil1 {fill:black}
-    .fil3 {fill:black;fill-rule:nonzero}
+    .fil1 {fill:white}
+    .fil3 {fill:white;fill-rule:nonzero}
    ]]>
   </style>
   <linearGradient id="shimmer" x1="0%" y1="0%" x2="100%" y2="0%" gradientUnits="userSpaceOnUse">

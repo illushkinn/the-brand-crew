@@ -519,7 +519,7 @@
   pointer-events: none;
 }
 .problema-card h4 {
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space-md);
   line-height: 1.35;
   text-wrap: pretty;
 }
@@ -528,6 +528,7 @@
   line-height: 1.6;
   font-size: 0.95rem;
   text-wrap: pretty;
+  margin-top: 0;
 }
 .resultados {
   padding-top: 4rem;
