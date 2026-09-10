@@ -336,7 +336,7 @@
   margin-right: auto;
   padding: 0;
 }
-.hero h1 {
+.hero-title {
   font-family: var(--font-heading);
   font-size: clamp(2.8rem, 8vw, 4.8rem);
   line-height: 1.15;
@@ -364,7 +364,7 @@
   font-size: clamp(1.2rem, 2.5vw, 1.5rem);
   color: var(--headline);
   margin-top: var(--space-md);
-  margin-bottom: var(--space-xl);
+  margin-bottom: 3.5rem;
   text-wrap: pretty;
 }
 .hero-meta {
