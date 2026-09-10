@@ -341,6 +341,7 @@
   font-size: clamp(2.8rem, 8vw, 4.8rem);
   line-height: 1.15;
   margin: 0 0 1rem;
+  will-change: background-position;
   background: linear-gradient(
     90deg,
     oklch(0.98 0 0) 0%,
@@ -353,7 +354,7 @@
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: shimmer 2.5s linear 0.8s infinite;
+  animation: diamond-shimmer 3s ease-in-out 0.8s infinite;
   text-shadow: none;
 }
 .hero-phrase {
@@ -473,8 +474,10 @@
 
 
 
-@keyframes shimmer {
+@keyframes diamond-shimmer {
   0% { background-position: 100% center; }
+  70% { background-position: 20% center; }
+  85% { background-position: -10% center; }
   100% { background-position: -100% center; }
 }
 @media (prefers-reduced-motion: reduce) {
