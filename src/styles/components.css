@@ -346,7 +346,6 @@
 }
 .hero-char {
   display: inline-block;
-  will-change: background-position;
   background: linear-gradient(
     90deg,
     oklch(0.98 0 0) 0%,
@@ -359,7 +358,6 @@
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: diamond-shimmer 4s linear 0.8s infinite;
 }
 .hero-phrase {
   display: inline;
