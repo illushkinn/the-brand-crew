@@ -17,13 +17,13 @@ const isHome = lang === 'es' ? '/' : '/en/';
       <Logo size={72} ariaLabel="The Brand Crew" />
     </a>
     <div class="nav-links">
-      <a href="#inicio">{t('nav.home')}</a>
-      <a href="#servicios">{t('nav.services')}</a>
-      <a href="#resultados">{t('nav.howItWorks')}</a>
-      <a href="#casos">{t('nav.cases')}</a>
-      <a href="#faq">{t('nav.faq')}</a>
+      <a href={`${isHome}#inicio`}>{t('nav.home')}</a>
+      <a href={`${isHome}#servicios`}>{t('nav.services')}</a>
+      <a href={`${isHome}#resultados`}>{t('nav.howItWorks')}</a>
+      <a href={`${isHome}#casos`}>{t('nav.cases')}</a>
+      <a href={`${isHome}#faq`}>{t('nav.faq')}</a>
       <a href={lang === 'es' ? '/pricing' : '/en/pricing'}>{t('nav.pricing')}</a>
-      <a href="#contacto">{t('nav.contact')}</a>
+      <a href={`${isHome}#contacto`}>{t('nav.contact')}</a>
     </div>
     <div class="navbar-actions">
       <div class="lang-switcher" role="group" aria-label="Language">
