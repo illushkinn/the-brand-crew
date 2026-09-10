@@ -57,8 +57,8 @@ export const dictionaries = {
     hero: {
       headline1: 'The Brand Crew:',
       headline2: 'Páginas web que',
-       headline3: 'garpan',
-      sub: 'Para comercios que <span class="text-accent">laburan</span>',
+       headline3: 'funcionan',
+      sub: 'Para comercios que <span class="text-accent">quieren crecer</span>',
       priceFrom: 'Desde',
       priceNote: '2 pagos de',
       cta: 'Hablemos',
@@ -313,12 +313,12 @@ export const dictionaries = {
     },
     seo: {
       title: 'The Brand Crew — Páginas web que venden',
-      description: 'Páginas web que venden, para comercios que laburan. Diseño y desarrollo web para comercios en Argentina. Diseño + desarrollo + dominio + hosting desde USD 300.',
+       description: 'Páginas web que funcionan, para comercios que quieren crecer. Diseño y desarrollo web para comercios en Argentina. Diseño + desarrollo + dominio + hosting desde USD 300.',
       ogTitle: 'The Brand Crew — Páginas web que venden',
-      ogDescription: 'Páginas web que venden, para comercios que laburan.',
+       ogDescription: 'Páginas web que funcionan, para comercios que quieren crecer.',
       ogImageAlt: 'The Brand Crew — Páginas web que venden',
-      websiteDescription: 'Páginas web que venden, para comercios que laburan.',
-      businessDescription: 'Páginas web que venden para comercios que laburan. Diseño y desarrollo web para tus propios proyectos.',
+       websiteDescription: 'Páginas web que funcionan, para comercios que quieren crecer.',
+       businessDescription: 'Páginas web que funcionan para comercios que quieren crecer. Diseño y desarrollo web para tus propios proyectos.',
     },
   },
 
