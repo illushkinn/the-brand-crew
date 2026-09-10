@@ -16,9 +16,4 @@ const isHome = lang === 'es' ? '/' : '/en/';
   <a href={lang === 'es' ? '/pricing' : '/en/pricing'} class="mobile-link">{t('nav.pricing')}</a>
   <a href={`${isHome}#about`} class="mobile-link">{t('nav.about')}</a>
   <a href={`${isHome}#contacto`} class="mobile-link">{t('nav.start')}</a>
-  <div class="mobile-lang-switcher" role="group" aria-label="Language">
-    <a href={lang === 'es' ? Astro.url.pathname : Astro.url.pathname.replace('/en', '') || '/'} class={`lang-btn ${lang === 'es' ? 'is-active' : ''}`} aria-label="Español">ES</a>
-    <span class="lang-separator" aria-hidden="true">|</span>
-    <a href={lang === 'en' ? Astro.url.pathname : '/en' + Astro.url.pathname} class={`lang-btn ${lang === 'en' ? 'is-active' : ''}`} aria-label="English">EN</a>
-  </div>
 </div>

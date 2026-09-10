@@ -197,11 +197,14 @@
   transform: translateY(-8px);
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
-.navbar.scrolled .navbar-brand,
-.navbar.is-menu-open .navbar-brand {
+.navbar.scrolled .navbar-brand {
   opacity: 1;
   pointer-events: auto;
   transform: translateY(0);
+}
+.navbar.is-menu-open .navbar-brand {
+  opacity: 0;
+  pointer-events: none;
 }
 .lang-switcher {
   display: inline-flex;
