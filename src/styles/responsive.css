@@ -52,6 +52,9 @@
     margin-top: 0;
     max-width: none;
   }
+  .hero-sub {
+    text-align: right;
+  }
   .hero-meta {
     align-items: flex-start;
   }

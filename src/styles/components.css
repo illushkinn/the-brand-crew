@@ -1277,4 +1277,18 @@
   justify-content: center;
 }
 
+/* ========================================
+   PROGRESSIVE ENHANCEMENT — corner-shape
+   ======================================== */
+@supports (corner-shape: squircle) {
+  .glass-card {
+    corner-shape: squircle;
+  }
+  .pricing-card-v2.is-star {
+    corner-shape: scoop;
+  }
+  .btn-premium {
+    corner-shape: squircle;
+  }
+}
 
