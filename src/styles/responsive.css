@@ -294,9 +294,7 @@
     align-items: center;
     text-align: center;
   }
-  .footer .footer-brand {
-    font-size: 1rem;
-  }
+
   .footer .footer-cuit {
     font-size: 0.75rem;
     opacity: 0.6;
