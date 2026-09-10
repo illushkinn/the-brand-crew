@@ -88,25 +88,33 @@ const ctaLabel = t('hero.cta');
     // Create cursor element
     const cursor = document.createElement('span');
     cursor.className = 'hero-cursor';
-    phrases[phrases.length - 1].appendChild(cursor);
+    // Insert cursor before the first char
+    allChars[0].parentNode?.insertBefore(cursor, allChars[0]);
 
-    // Typewriter: chars appear sequentially
+    // Typewriter: move cursor + reveal char by char
     const tl = gsap.timeline({ delay: 0.5 });
 
-    tl.to(allChars, {
-      opacity: 1,
-      duration: 0.05,
-      stagger: 0.06,
-      ease: 'none',
-      onComplete: () => {
-        // Fade out cursor after typing completes
-        gsap.to(cursor, {
-          opacity: 0,
-          duration: 0.4,
-          delay: 1.2,
-          ease: 'power2.inOut',
-        });
-      },
+    allChars.forEach((char, i) => {
+      // Move cursor after this char
+      tl.call(() => {
+        char.parentNode?.insertBefore(cursor, char.nextSibling);
+      });
+      // Reveal the char
+      tl.to(char, {
+        opacity: 1,
+        duration: 0.05,
+        ease: 'none',
+      }, `+=0.04`);
+    });
+
+    // Fade out cursor after typing completes
+    tl.call(() => {
+      gsap.to(cursor, {
+        opacity: 0,
+        duration: 0.4,
+        delay: 1.2,
+        ease: 'power2.inOut',
+      });
     });
 
     document.addEventListener('astro:before-swap', () => {
