@@ -9,10 +9,6 @@ interface Props { lang?: Lang }
 const { lang = 'es' } = Astro.props;
 const t = useTranslations(lang);
 
-const slogan = lang === 'es'
-  ? '* Disponibles para proyectos * Aceptando nuevos clientes'
-  : '* Available for projects * Currently accepting new clients';
-const sloganUpper = slogan.toUpperCase();
 const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=` + encodeURIComponent(
   lang === 'es'
     ? '¡Hola The Brand Crew! Vi tu sitio y me encantaría trabajar con ustedes.'
@@ -52,18 +48,8 @@ const ctaLabel = t('hero.cta');
 
        <div class="hero-logo">
          <div class="hero-logo-ring">
-           <svg class="slogan-ring" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg">
-             <defs>
-               <path id="slogan-circle" d="M160 160 m-135 0 a135 135 0 1 1 270 0 a135 135 0 1 1 -270 0" fill="none"/>
-             </defs>
-             <g class="slogan-rotator">
-               <text class="slogan-text">
-                 <textPath href="#slogan-circle" startOffset="0">{sloganUpper}</textPath>
-               </text>
-             </g>
-           </svg>
            <div class="hero-isotype">
-             <Logo size={180} ariaLabel="The Brand Crew" />
+             <Logo size={320} ariaLabel="The Brand Crew" />
            </div>
          </div>
        </div>
