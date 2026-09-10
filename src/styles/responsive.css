@@ -176,7 +176,7 @@
     text-align: left;
   }
   .hero-title {
-    font-size: clamp(5.5rem, 15vw, 9rem);
+    font-size: clamp(6.5rem, 18vw, 11rem);
     line-height: 1.15;
     margin-bottom: 0.8rem;
     word-spacing: -1px;
