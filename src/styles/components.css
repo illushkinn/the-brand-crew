@@ -98,15 +98,17 @@
   font-weight: 500;
   letter-spacing: 0.02em;
   text-shadow: 0 1px 2px oklch(0 0 0 / 0.3);
-  transition: box-shadow 0.4s ease, transform 0.4s ease;
+  transition: box-shadow 0.4s ease, border-color 0.4s ease;
   box-shadow: 0 2px 8px oklch(0 0 0 / 0.15);
 }
 .btn-premium:hover {
-  box-shadow: 0 6px 24px oklch(0 0 0 / 0.25);
-  transform: translateY(-1px);
+  border-color: oklch(0.62 0.18 32 / 0.6);
+  box-shadow:
+    0 0 0 1px oklch(0.82 0.2 125 / 0.08),
+    0 2px 12px oklch(0 0 0 / 0.12);
 }
 .btn-premium:active {
-  transform: translateY(0) scale(0.98);
+  box-shadow: 0 1px 4px oklch(0 0 0 / 0.2);
 }
 
 
