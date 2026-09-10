@@ -365,7 +365,7 @@
   font-size: clamp(1.2rem, 2.5vw, 1.5rem);
   color: var(--headline);
   margin-top: var(--space-md);
-  margin-bottom: 4rem;
+  margin-bottom: 5rem;
   text-wrap: pretty;
 }
 .hero-meta {
