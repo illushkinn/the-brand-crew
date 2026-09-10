@@ -9,9 +9,6 @@ export default defineConfig({
     inlineStylesheets: 'never',
   },
   vite: {
-    build: {
-      cssCodeSplit: false,
-    },
     resolve: {
       alias: {
         '/src': '/src'

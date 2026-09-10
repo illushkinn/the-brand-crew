@@ -5,11 +5,6 @@
 
 export type Lang = 'es' | 'en';
 
-export const languages: Record<Lang, string> = {
-  es: 'Español',
-  en: 'English',
-};
-
 export const defaultLang: Lang = 'es';
 
 /** Supported locale codes for HTML lang attribute */
@@ -23,22 +18,6 @@ export const hreflangMap: Record<Lang, string> = {
   es: 'es',
   en: 'en',
 };
-
-function get<T>(obj: Record<string, unknown>, path: string): T | undefined {
-  return path.split('.').reduce<unknown>((acc, key) => {
-    if (acc && typeof acc === 'object' && key in (acc as Record<string, unknown>)) {
-      return (acc as Record<string, unknown>)[key];
-    }
-    return undefined;
-  }, obj) as T | undefined;
-}
-
-/** Get a nested value from the dictionary by dot path */
-export function t(lang: Lang, key: string): string {
-  const dict = dictionaries[lang];
-  const val = get<string>(dict, key);
-  return val ?? key;
-}
 
 export const dictionaries = {
   es: {
@@ -615,13 +594,6 @@ export function getTranslation(lang: Lang, key: string): string {
     }
   }
   return String(value ?? key);
-}
-
-/** Derive lang from URL path */
-export function getLangFromUrl(url: URL): Lang {
-  const [, langSegment] = url.pathname.split('/').filter(Boolean);
-  if (langSegment === 'en') return 'en';
-  return defaultLang;
 }
 
 /** Returns a bound `t(key)` function for the given language */

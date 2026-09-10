@@ -337,7 +337,7 @@
   padding: 0;
 }
 .hero-title {
-  font-family: var(--font-heading);
+  font-family: var(--font-display);
   font-size: clamp(2.8rem, 8vw, 4.8rem);
   line-height: 1.15;
   margin: 0 0 1rem;
@@ -630,10 +630,6 @@
   background: var(--white);
   border: 1px solid var(--border);
   padding: 0.25rem;
-}
-.btn-full-width {
-  width: 100%;
-  justify-content: center;
 }
 .resultado-info {
   flex: 1;
@@ -935,28 +931,12 @@
   color: var(--body-dim);
   font-size: 0.9rem;
 }
-.footer .footer-brand {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: clamp(1.1rem, 2vw, 1.5rem);
-  color: var(--headline);
-  letter-spacing: -0.02em;
-}
-.footer .footer-brand span { color: var(--headline); }
 .footer .footer-cuit {
   font-family: var(--font-body);
   font-size: 0.8rem;
   color: var(--body-dim);
   opacity: 0.8;
   margin-top: 0.2rem;
-}
-.footer .footer-illya {
-  font-family: var(--font-body);
-  color: var(--terracota);
-  text-decoration: none;
-}
-.footer .footer-illya:hover {
-  text-decoration: underline;
 }
 .footer .footer-links {
   display: flex;
@@ -1266,43 +1246,6 @@
 .cta-btn {
   margin-top: 0.5rem;
 }
-.mobile-lang-switcher {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  margin-top: 1rem;
-  padding: 0.3rem 0.9rem;
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius-full);
-}
-.mobile-lang-switcher .lang-btn {
-  font-family: var(--font-mono);
-  font-size: 1rem;
-  letter-spacing: 0.08em;
-  color: var(--body-dim);
-  padding: 0.25rem 0.5rem;
-  border-radius: var(--radius-sm);
-  transition: color 0.2s, background 0.2s;
-}
-.mobile-lang-switcher .lang-btn:hover {
-  color: var(--verde);
-}
-.mobile-lang-switcher .lang-btn.is-active {
-  color: var(--verde);
-  background: oklch(0.82 0.2 125 / 0.12);
-}
-.mobile-lang-switcher .lang-separator {
-  color: var(--body-dim);
-  opacity: 0.4;
-  font-size: 1rem;
-}
-.footer-brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  justify-content: center;
-}
-
 /* ========================================
    PROGRESSIVE ENHANCEMENT — corner-shape
    ======================================== */

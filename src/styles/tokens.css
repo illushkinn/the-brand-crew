@@ -2,7 +2,6 @@
   /* DARK theme */
   --oklch-bg-dark: oklch(0.08 0.010 280);
   --oklch-bg-card: oklch(0.10 0.014 280);
-  --oklch-bg-elevated: oklch(0.11 0.015 280);
   --oklch-headline: oklch(0.95 0.004 280);
   --oklch-body: oklch(0.8 0.008 280);
   --oklch-body-dim: oklch(0.75 0.012 280);
@@ -10,7 +9,6 @@
   --oklch-terracota: oklch(0.58 0.18 32);
   --oklch-terracota-hover: oklch(0.5 0.16 32);
   --oklch-verde: oklch(0.82 0.2 125);
-  --oklch-verde-hover: oklch(0.72 0.18 125);
   --space-xs: 0.25rem;
   --space-sm: 0.5rem;
   --space-md: 1rem;
@@ -22,7 +20,6 @@
   --radius-full: 100px;
   --radius-round: 50%;
   --white: #fff;
-  --black: #121212;
   --bg: var(--oklch-bg-dark);
   --bg-card: var(--oklch-bg-card);
   --headline: var(--oklch-headline);
@@ -31,7 +28,6 @@
   --terracota: var(--oklch-terracota);
   --terracota-hover: var(--oklch-terracota-hover);
   --verde: var(--oklch-verde);
-  --bg-elevated: var(--oklch-bg-elevated);
   --border: var(--oklch-border);
   --glass-bg: rgba(255,255,255,0.06);
   --glass-border: rgba(255,255,255,0.10);

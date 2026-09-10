@@ -89,7 +89,6 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
 .text-verde { color: var(--verde); }
 /* Accent highlight inline spans (hero sub, section titles) */
 .text-accent { color: var(--terracota); }
-.text-italic { font-style: italic; }
 .section {
   padding: 4rem clamp(1.25rem, 5vw, 4rem);
   content-visibility: auto;
