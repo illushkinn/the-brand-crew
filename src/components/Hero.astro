@@ -82,6 +82,9 @@ const ctaLabel = t('hero.cta');
 
     if (prefersReducedMotion) {
       allChars.forEach(c => c.style.opacity = '1');
+      // Still animate logo if reduced motion — just fade
+      const logo = document.querySelector('.hero-logo');
+      if (logo) gsap.to(logo, { opacity: 1, duration: 0.3 });
       return;
     }
 
@@ -116,6 +119,20 @@ const ctaLabel = t('hero.cta');
         ease: 'power2.inOut',
       });
     });
+
+    // Logo landing animation — starts partway through typewriter
+    const logo = document.querySelector('.hero-logo') as HTMLElement;
+    if (logo) {
+      gsap.set(logo, { opacity: 0, y: -60, scale: 0.92 });
+      gsap.to(logo, {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 1.0,
+        ease: 'back.out(1.4)',
+        delay: 1.2, // starts while typewriter is still going
+      });
+    }
 
     document.addEventListener('astro:before-swap', () => {
       tl.kill();
