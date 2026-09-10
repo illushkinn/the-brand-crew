@@ -56,8 +56,8 @@ export const dictionaries = {
     },
     hero: {
       headline1: 'The Brand Crew:',
-      headline2: 'Páginas web que',
-       headline3: 'funcionan',
+      headline2: 'Páginas web',
+       headline3: 'que funcionan',
       sub: 'Para negocios que <span class="text-accent">crecen</span>',
       priceFrom: 'Desde',
       priceNote: '2 pagos de',
@@ -339,8 +339,8 @@ export const dictionaries = {
     },
     hero: {
       headline1: 'The Brand Crew:',
-      headline2: 'Websites that',
-       headline3: 'pay',
+      headline2: 'Web pages',
+       headline3: 'that work',
       sub: 'For businesses that <span class="text-accent">actually work</span>',
       priceFrom: 'From',
       priceNote: '2 payments of',
