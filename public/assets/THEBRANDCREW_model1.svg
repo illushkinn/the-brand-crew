@@ -10,20 +10,11 @@ viewBox="0 0 5660.02 5749.45"
    <![CDATA[
     .str0 {stroke:white;stroke-width:135.74;stroke-miterlimit:22.9256}
     .fil2 {fill:none}
-    .fil0 {fill:url(#shimmer)}
+    .fil0 {fill:white}
     .fil1 {fill:white}
     .fil3 {fill:white;fill-rule:nonzero}
    ]]>
   </style>
-  <linearGradient id="shimmer" x1="0%" y1="0%" x2="100%" y2="0%" gradientUnits="userSpaceOnUse">
-   <stop offset="0%" stop-color="#fafafa"/>
-   <stop offset="35%" stop-color="#fafafa"/>
-   <stop offset="47.5%" stop-color="#2d8a4e"/>
-   <stop offset="60%" stop-color="#fafafa"/>
-   <stop offset="100%" stop-color="#fafafa"/>
-   <animate attributeName="x1" from="-100%" to="100%" dur="2.5s" repeatCount="indefinite"/>
-   <animate attributeName="x2" from="0%" to="200%" dur="2.5s" repeatCount="indefinite"/>
-  </linearGradient>
  </defs>
  <g id="Capa_x0020_1">
   <metadata id="CorelCorpID_0Corel-Layer"/>
