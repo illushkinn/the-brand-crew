@@ -161,6 +161,11 @@
     width: 84px;
     height: 84px;
   }
+  .section-heading-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
   .lang-switcher {
     margin-right: 0.75rem;
   }
