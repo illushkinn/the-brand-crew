@@ -418,7 +418,7 @@
   flex-wrap: wrap;
 }
 .hero-meta .price-group:first-child {
-  font-size: 1.3em;
+  font-size: 1.4em;
 }
 .current-price {
   color: var(--verde);
