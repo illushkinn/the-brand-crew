@@ -95,7 +95,7 @@ const ctaLabel = t('hero.cta');
     allChars[0].parentNode?.insertBefore(cursor, allChars[0]);
 
     // Typewriter: move cursor + reveal char by char
-    const tl = gsap.timeline({ delay: 0.6 });
+    const tl = gsap.timeline({ delay: 1.4 });
 
     allChars.forEach((char, i) => {
       // Move cursor after this char
@@ -120,7 +120,7 @@ const ctaLabel = t('hero.cta');
       });
     });
 
-    // Logo landing animation — starts partway through typewriter
+    // Logo landing animation — enters FIRST
     const logo = document.querySelector('.hero-logo') as HTMLElement;
     if (logo) {
       gsap.set(logo, { opacity: 0, y: -60, scale: 0.92 });
@@ -130,7 +130,7 @@ const ctaLabel = t('hero.cta');
         scale: 1,
         duration: 1.0,
         ease: 'back.out(1.4)',
-        delay: 1.2, // starts while typewriter is still going
+        delay: 0.2, // starts almost immediately
       });
     }
 
