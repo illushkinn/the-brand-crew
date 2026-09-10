@@ -3,9 +3,9 @@
   html {
     scroll-behavior: auto;
     background:
-      radial-gradient(ellipse 80% 50% at 50% 40%, oklch(0.58 0.18 32 / 0.04) 0%, transparent 70%),
-      radial-gradient(ellipse 90% 60% at 5% 10%, oklch(0.58 0.18 32 / 0.08) 0%, transparent 60%),
-      radial-gradient(ellipse 70% 80% at 90% 85%, oklch(0.82 0.2 125 / 0.40) 0%, transparent 50%),
+      radial-gradient(ellipse 80% 50% at 50% 40%, oklch(0.58 0.18 32 / 0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 90% 60% at 5% 10%, oklch(0.58 0.18 32 / 0.15) 0%, transparent 60%),
+      radial-gradient(ellipse 70% 80% at 90% 85%, oklch(0.82 0.2 125 / 0.10) 0%, transparent 50%),
       oklch(0.10 0.008 280);
   }
 }
