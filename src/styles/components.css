@@ -185,7 +185,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
-  padding: 0.4rem;
+  padding: 0.6rem 0.75rem;
   color: var(--headline);
   font-family: var(--font-display);
   font-weight: 500;
