@@ -325,22 +325,44 @@
   transition: transform 0.1s ease, color 0.2s, opacity 0.2s;
 }
 /* ========================================
-   ORGANISMS — Hero content
+   ORGANISMS — Hero content (Editorial Zig-Zag)
    ======================================== */
-.hero-content {
-  position: relative;
-  z-index: 1;
-  max-width: 860px;
-  margin-top: 1rem;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0;
+.hero-split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+  align-items: start;
 }
+
+.hero-logo-col {
+  display: flex;
+  justify-content: center;
+}
+
+.hero-copy-col {
+  width: 100%;
+}
+
+.hero-slogan {
+  font-family: var(--font-body);
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  color: var(--headline);
+  font-weight: 400;
+  line-height: 1.4;
+  margin: 0 0 var(--space-xl);
+  text-wrap: pretty;
+  opacity: 0.9;
+}
+
+.hero-content-stack {
+  max-width: 680px;
+}
+
 .hero-title {
   font-family: var(--font-heading);
   font-size: clamp(2.8rem, 8vw, 4.8rem);
   line-height: 1.15;
-  margin: 0 0 1rem;
+  margin: 0 0 var(--space-lg);
   will-change: background-position;
   background: linear-gradient(
     90deg,
@@ -357,19 +379,13 @@
   animation: diamond-shimmer 4s linear 0.8s infinite;
   text-shadow: none;
 }
+
 .hero-phrase {
   display: inline;
 }
-.hero-sub {
-  font-family: var(--font-body);
-  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
-  color: var(--headline);
-  margin-top: var(--space-md);
-  margin-bottom: 4rem;
-  text-wrap: pretty;
-}
+
 .hero-meta {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: var(--body-dim);
   margin-bottom: var(--space-xl);
   display: flex;
@@ -385,19 +401,32 @@
   gap: 0.35rem;
   flex-wrap: wrap;
 }
+
 .hero-meta .price-group:first-child {
   font-size: 2.2em;
 }
+
 .current-price {
   color: var(--verde);
   font-weight: 600;
-  white-space: nowrap;
 }
+
 .price-currency {
-  font-size: 0.6em;
+  font-size: 0.55em;
   font-weight: 400;
-  vertical-align: baseline;
-  opacity: 0.75;
+  opacity: 0.7;
+}
+
+.hero-actions {
+  margin-bottom: var(--space-xl);
+}
+
+.hero-b2b-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  align-items: center;
+  margin-top: var(--space-md);
 }
 .hero-actions {
   display: flex;
