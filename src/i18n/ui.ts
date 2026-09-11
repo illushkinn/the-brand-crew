@@ -373,7 +373,7 @@ export const dictionaries = {
       step1Title: 'You tell us your idea',
       step1Text: "A short 15-minute call. You tell us about your business, your goals, and what your website needs to achieve. We tell you if it's doable and how.",
       step2Title: 'Design & build',
-      step2Text: 'In 48 hours we show you the website up and running. We adjust it until you love it. No upfront: you only pay when you see it.',
+      step2Text: 'In 48 hours we show you the v1 of your site up and running. We adjust it until you love it. No upfront: you only pay when you see it.',
       step3Title: "You're live",
       step3Text: 'Your site is live in one week. Includes onboarding so you can manage it yourself and consulting to keep bringing in clients.',
     },
