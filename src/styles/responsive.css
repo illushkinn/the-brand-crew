@@ -28,6 +28,7 @@
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     align-items: center;
+    align-self: flex-start;
     gap: clamp(2.5rem, 6vw, 5rem);
   }
   .hero-logo {
@@ -150,9 +151,15 @@
   .hero {
     min-height: 100dvh;
     min-height: 100svh;
-    padding: 5rem 1.25rem 3rem;
+    padding: 5rem 1rem 3rem;
     justify-content: center;
     align-items: flex-start;
+  }
+  /* Hero already carries its own 1rem side padding —
+     kill the 768px .hero-content padding to avoid double offset */
+  .hero .hero-content {
+    padding-left: 0;
+    padding-right: 0;
   }
   .navbar-brand {
     padding: 0.55rem;

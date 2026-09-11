@@ -7,7 +7,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 1.5rem clamp(1rem, 4vw, 3rem);
+  padding: 1.5rem clamp(1rem, 3vw, 2rem);
   position: relative;
   overflow: clip;
   box-sizing: border-box;
