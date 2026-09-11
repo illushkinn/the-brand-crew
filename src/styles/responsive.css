@@ -579,8 +579,6 @@
   /* CTA glass — transparent + green insets (light verde) */
   .btn-premium {
     --premium-bg: linear-gradient(135deg, oklch(0.55 0.19 135 / 0.10), oklch(0.55 0.19 135 / 0.03));
-    --bracket: oklch(0.55 0.19 135 / 0.65);
-    --bracket-glow: oklch(0.55 0.19 135 / 0.25);
     background: var(--premium-bg);
     border-color: oklch(0.55 0.19 135 / 0.3);
     box-shadow:
@@ -606,6 +604,11 @@
   .btn-premium:hover,
   .btn-premium:focus-visible {
     background: var(--premium-bg);
+    box-shadow:
+      0 2px 12px oklch(0 0 0 / 0.08),
+      0 1px 0 oklch(0.55 0.19 135 / 0.15) inset,
+      0 0 0 1px oklch(0.55 0.19 135 / 0.05),
+      0 16px 32px -16px oklch(0 0 0 / 0.3);
   }
   .skip-link:focus-visible {
     outline-color: rgba(20, 20, 40, 0.4);

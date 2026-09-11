@@ -94,8 +94,6 @@
 /* ===== CTA — PREMIUM GLASS (base = hover, no orange) ===== */
 .btn-premium {
   --premium-bg: linear-gradient(135deg, oklch(0.98 0 0 / 0.14), oklch(0.98 0 0 / 0.04));
-  --bracket: oklch(0.98 0 0 / 0.9);
-  --bracket-glow: oklch(0.98 0 0 / 0.35);
   background: var(--premium-bg);
   border: 1px solid oklch(0.62 0.18 32 / 0.6);
   border-radius: round(10px);
@@ -104,54 +102,26 @@
   letter-spacing: 0.02em;
   text-shadow: 0 1px 2px oklch(0 0 0 / 0.3);
   transition: none;
-  overflow: visible;
   box-shadow:
     0 2px 12px oklch(0 0 0 / 0.1),
     0 1px 0 oklch(0.82 0.2 125 / 0.2) inset,
     0 0 0 1px oklch(0.82 0.2 125 / 0.06);
 }
-/* Base = hover: neutraliza el .btn:hover genérico (terracota 6%) */
+/* Base = hover: neutraliza el .btn:hover genérico (terracota 6%).
+   Feedback: sombra difusa exterior, opaca y sutil — apenas perceptible. */
 .btn-premium:hover {
   background: var(--premium-bg);
   box-shadow:
     0 2px 12px oklch(0 0 0 / 0.1),
     0 1px 0 oklch(0.82 0.2 125 / 0.2) inset,
-    0 0 0 1px oklch(0.82 0.2 125 / 0.06);
+    0 0 0 1px oklch(0.82 0.2 125 / 0.06),
+    0 16px 32px -16px oklch(0 0 0 / 0.35);
 }
 .btn-premium:active {
   background: var(--premium-bg);
   box-shadow:
     0 1px 4px oklch(0 0 0 / 0.2),
     0 1px 0 oklch(0.82 0.2 125 / 0.08) inset;
-}
-/* Esquinas iluminadas — arco de luz que sigue la geometría del borde.
-   Ring de 1.5px generado por máscara (content-box XOR full), con
-   conic-gradients centrados en cada esquina: el pico de luz está en la
-   diagonal y decae simétrico hacia ambos lados del arco. Hereda
-   border-radius (round 10px) + corner-shape (squircle) del botón, así
-   el arco abraza la curva real de la esquina. */
-.btn-premium::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1.5px;
-  pointer-events: none;
-  z-index: 1;
-  background:
-    conic-gradient(from 180deg, transparent 0deg, var(--bracket) 20deg, var(--bracket) 70deg, transparent 90deg) top left     / 50% 50% no-repeat,
-    conic-gradient(from 270deg, transparent 0deg, var(--bracket) 20deg, var(--bracket) 70deg, transparent 90deg) top right    / 50% 50% no-repeat,
-    conic-gradient(from 0deg,   transparent 0deg, var(--bracket) 20deg, var(--bracket) 70deg, transparent 90deg) bottom right / 50% 50% no-repeat,
-    conic-gradient(from 90deg,  transparent 0deg, var(--bracket) 20deg, var(--bracket) 70deg, transparent 90deg) bottom left  / 50% 50% no-repeat;
-  mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  mask-composite: exclude;
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  filter: drop-shadow(0 0 3px var(--bracket-glow));
 }
 
 
@@ -177,9 +147,7 @@
   transition: background 0.3s ease, border-color 0.3s ease;
 }
 .navbar.scrolled {
-  background: oklch(0.12 0.06 125 / 0.72);
-  backdrop-filter: blur(16px) saturate(1.2);
-  -webkit-backdrop-filter: blur(16px) saturate(1.2);
+  background: var(--bg);
   border-bottom: 1px solid oklch(0.82 0.2 125 / 0.3);
 }
 /* Desktop nav links — hidden on mobile, visible ≥900px */
@@ -306,7 +274,7 @@
   position: fixed;
   inset: 0;
   z-index: 999;
-  background: rgba(8, 20, 14, 0.92);
+  background: var(--bg);
   backdrop-filter: blur(32px) saturate(140%);
   display: flex;
   flex-direction: column;
@@ -1045,14 +1013,14 @@
 /* Fallback para Brave y navegadores sin backdrop-filter */
 @supports not (backdrop-filter: blur(1px)) {
   .navbar {
-    background: rgba(8, 20, 14, 0.92);
+    background: var(--bg);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
   .mobile-menu {
-    background: rgba(8, 20, 14, 0.95);
+    background: var(--bg);
   }
   .glass-card {
-    background: rgba(8, 20, 14, 0.75);
+    background: var(--bg-card);
   }
 }
 .hero-problema-wrap {
