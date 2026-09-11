@@ -317,11 +317,14 @@
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   border-bottom: 1px solid rgba(255, 255, 255, 0.04);
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
-  transition: clip-path 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  /* Cierre (destino = base): más lento y prolijo, acompaña el stagger de los links */
+  transition: clip-path 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .mobile-menu.is-open {
   clip-path: circle(150% at var(--origin-x) var(--origin-y));
   pointer-events: all;
+  /* Apertura (destino = abierto): ágil */
+  transition: clip-path 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .mobile-menu a {
   font-family: var(--font-body);
@@ -353,6 +356,15 @@
 }
 /* Stagger — CSS-only. No inline transitionDelay (that caused flicker on
    rapid toggles: every open/close rewrote the delay for every link). */
+/* Cierre: los delays viven en el ESTADO destino (base). Al quitar is-open,
+   cada link se desvanece escalonado en el mismo orden que el círculo
+   shrink desde la esquina — fade-out prolijo en cascada. */
+.mobile-menu a:nth-child(1) { transition-delay: 0s; }
+.mobile-menu a:nth-child(2) { transition-delay: 0.05s; }
+.mobile-menu a:nth-child(3) { transition-delay: 0.10s; }
+.mobile-menu a:nth-child(4) { transition-delay: 0.15s; }
+.mobile-menu a:nth-child(5) { transition-delay: 0.20s; }
+.mobile-menu a:nth-child(6) { transition-delay: 0.25s; }
 .mobile-menu.is-open a:nth-child(1) { transition-delay: 0.04s; }
 .mobile-menu.is-open a:nth-child(2) { transition-delay: 0.08s; }
 .mobile-menu.is-open a:nth-child(3) { transition-delay: 0.12s; }

@@ -92,13 +92,13 @@
     link.addEventListener('click', function(e) {
       const href = this.getAttribute('href');
       closeMenu();
-      // Wait for menu close animation (400ms clip-path) before scrolling to target
+      // Wait for close animation (550ms clip-path + stagger) before scrolling to target
       // Prevents scroll landing incorrectly due to menu overlay still animating
       if (href && href.startsWith('#')) {
         e.preventDefault();
         setTimeout(function() {
           document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
-        }, 420);
+        }, 650);
       }
     });
     
