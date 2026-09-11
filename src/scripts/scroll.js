@@ -45,6 +45,17 @@
     onScroll();
   }
 
+  // Red de seguridad (mobile): si el smooth scroll pierde el frame final
+  // (toque que cancela el scroll, quirks de Chrome Android/iOS), el IO puede
+  // no emitir el callback y el botón queda "sticky" visible en el top.
+  // Cerca del tope, SIEMPRE se oculta — sin depender del IO.
+  function handleScrollHide() {
+    if ((window.scrollY || window.pageYOffset) < 100) {
+      setButtonVisible(false);
+    }
+  }
+  window.addEventListener('scroll', handleScrollHide, { passive: true });
+
   // Navbar en todos los casos
   window.addEventListener('scroll', handleNavbar, { passive: true });
   handleNavbar();
