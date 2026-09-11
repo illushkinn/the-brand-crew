@@ -22,7 +22,6 @@ export const hreflangMap: Record<Lang, string> = {
 export const dictionaries = {
   es: {
     nav: {
-      home: 'Inicio',
       services: 'Problema',
       howItWorks: 'Solución',
       cases: 'Casos',
@@ -298,7 +297,6 @@ export const dictionaries = {
 
   en: {
     nav: {
-      home: 'Home',
       services: 'Problem',
       howItWorks: 'Solution',
       cases: 'Cases',
