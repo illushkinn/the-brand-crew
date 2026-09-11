@@ -279,12 +279,15 @@
   }
   .problema-grid {
     margin-top: 1.25rem;
-    gap: var(--space-sm);
+    gap: 0.75rem;
   }
   .problema-card h3 {
-    font-size: clamp(1.45rem, 5.5vw, 1.75rem);
+    font-size: clamp(1.6rem, 7vw, 2rem);
     text-wrap: balance;
     margin-bottom: 0;
+  }
+  .problema-index {
+    font-size: 0.9rem;
   }
   .como-funciona-grid {
     margin-top: 1.5rem;

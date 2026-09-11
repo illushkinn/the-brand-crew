@@ -861,7 +861,7 @@
 .como-funciona-card {
   pointer-events: none;
 }
-.como-funciona-card h4 {
+.como-funciona-card h3 {   /* antes apuntaba a h4 — el HTML renderiza h3 */
   margin-bottom: var(--space-sm);
   line-height: 1.35;
   text-wrap: pretty;
