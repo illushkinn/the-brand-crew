@@ -8,44 +8,27 @@
   .btn,
   .glass-card, .resultado-card,
   .navbar, .mobile-menu, .mobile-menu a, .hamburger span,
-  .scroll-to-top, .faq-answer, .faq-question svg {
+  .scroll-to-top, .faq-answer, .faq-question svg,
+  .reveal, .reveal-stagger, .reveal-stagger .rv {
     transition: none !important;
     animation: none !important;
   }
 }
-@keyframes reveal-in {
-  from {
-    opacity: 0;
-    transform: translateY(32px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
-@supports (animation-timeline: view()) {
-  .reveal {
-    opacity: 0;
-    transform: translateY(32px);
-    transition: none !important;
-    animation: reveal-in linear;
-    animation-timeline: view();
-    animation-range: entry 0% entry 100%;
-  }
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-    transition: none !important;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .reveal {
-      animation: none !important;
-      opacity: 1;
-      transform: none;
-      transition: none !important;
-    }
-    .reveal.visible {
-      animation: none !important;
-    }
-  }
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-stagger .rv {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.6s cubic-bezier(0.2, 0, 0, 1), transform 0.6s cubic-bezier(0.2, 0, 0, 1);
+}
+.reveal-stagger.visible .rv {
+  opacity: 1;
+  transform: translateY(0);
 }

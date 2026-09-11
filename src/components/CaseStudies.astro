@@ -8,16 +8,16 @@ const { lang = 'es' } = Astro.props;
 const t = useTranslations(lang);
 ---
 
-<section class="section resultados reveal" id="casos" aria-label="Case Studies">
-  <div class="section-heading-row">
+<section class="section resultados reveal-stagger" id="casos" aria-label="Case Studies">
+  <div class="section-heading-row rv">
     <span class="section-label mono text-terracota">{t('caseStudies.kicker')}</span>
     <h2 class="section-title text-verde">{t('caseStudies.title1')} <span class="text-accent">{t('caseStudies.title2')}.</span></h2>
   </div>
-  <div class="resultados-nav">
+  <div class="resultados-nav rv">
     <button class="resultados-arrow" id="resultadosPrev" aria-label="Previous case">‹</button>
     <button class="resultados-arrow" id="resultadosNext" aria-label="Next case">›</button>
   </div>
-  <div class="resultados-grid">
+  <div class="resultados-grid rv">
 
   <!-- Luisito -->
   <article class="glass-card resultado-card">

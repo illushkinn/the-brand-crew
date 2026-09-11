@@ -8,11 +8,11 @@ const { lang = 'es' } = Astro.props;
 const t = useTranslations(lang);
 ---
 
-<section class="section como-funciona reveal" id="resultados" aria-label="How it works">
-  <span class="section-label mono text-verde">{t('comoFunciona.kicker')}</span>
-  <h2 class="section-title">{t('comoFunciona.title1')}<br><span class="text-verde">{t('comoFunciona.title2')}</span>.</h2>
-  <p class="section-sub" set:html={t('comoFunciona.sub')}></p>
-  <div class="como-funciona-grid">
+<section class="section como-funciona reveal-stagger" id="resultados" aria-label="How it works">
+  <span class="section-label mono text-verde rv">{t('comoFunciona.kicker')}</span>
+  <h2 class="section-title rv">{t('comoFunciona.title1')}<br><span class="text-verde">{t('comoFunciona.title2')}</span>.</h2>
+  <p class="section-sub rv" set:html={t('comoFunciona.sub')}></p>
+  <div class="como-funciona-grid rv">
     <div class="glass-card como-funciona-card">
       <h3>{t('comoFunciona.step1Title')}</h3>
       <p>{t('comoFunciona.step1Text')}</p>

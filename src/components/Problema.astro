@@ -8,10 +8,10 @@ const { lang = 'es' } = Astro.props;
 const t = useTranslations(lang);
 ---
 
-<section class="section problema reveal" id="servicios" aria-label="The problem we solve">
-  <span class="section-label mono text-terracota">{t('problema.kicker')}</span>
-  <h2 class="section-title">{t('problema.title1')}<br><span class="text-terracota">{t('problema.title2')}</span>.</h2>
-  <div class="problema-grid">
+<section class="section problema reveal-stagger" id="servicios" aria-label="The problem we solve">
+  <span class="section-label mono text-terracota rv">{t('problema.kicker')}</span>
+  <h2 class="section-title rv">{t('problema.title1')}<br><span class="text-terracota">{t('problema.title2')}</span>.</h2>
+  <div class="problema-grid rv">
     <div class="glass-card problema-card tall">
       <h3>{t('problema.card1Title')}</h3>
       <p set:html={t('problema.card1Text')}></p>
