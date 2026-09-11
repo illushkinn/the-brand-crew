@@ -10,39 +10,31 @@ Modern web design and development for businesses in Argentina.
 
 ## Tech Stack
 
-- **Framework:** Astro 5
+- **Framework:** Astro 5 (static, i18n ES/EN)
+- **Animations:** GSAP (hero typewriter + landing cascade)
 - **Styling:** Vanilla CSS — [Atomic Design](https://atomicdesign.bradfrost.com/) methodology
 - **Color:** OKLCH 3-Layer Design Tokens
-- **Testing:** Playwright
+- **Testing:** Playwright + Vitest
 - **Deploy:** Vercel (auto-deploy on `master` push)
 - **Analytics:** Vercel Analytics + Speed Insights
 
 ---
 
-## Atomic Design Architecture
+## Architecture
 
-The CSS follows Brad Frost's Atomic Design methodology, organized in 5 progressive layers:
+### Atomic Design CSS
 
-### 🧬 Atoms
-Base styles, CSS custom properties, reset, typography tokens, atomic classes (`.mono`, `.text-terracota`, `.section-label`)
+CSS organized in 5 progressive layers (Brad Frost methodology):
 
-### 🔬 Molecules
-Composite UI primitives: `.btn`, `.glass-card`, `.tag`, `.resultado-card`, `.pricing-card`, `.faq-item`, `.step`
+| Layer | Files | Contents |
+|-------|-------|----------|
+| Atoms | `tokens.css`, `base.css` | OKLCH primitives, semantic tokens, reset, typography |
+| Molecules | `components.css` | `.btn`, `.glass-card`, `.tag`, `.pricing-card`, `.faq-item` |
+| Organisms | `components.css` | `.navbar`, `.hero`, `.pricing`, `.mobile-menu` |
+| Templates | `responsive.css` | Breakpoints, grid, container constraints |
+| Pages | `responsive.css` | Instance-specific overrides |
 
-### 🧠 Organisms
-Complex sections built from molecules: `.navbar`, `.hero`, `.pricing`, `.faq`, `.cta`, `.footer`, `.mobile-menu`, `.preloader`
-
-### 📐 Templates
-Page-level layout: `.section` grid, container constraints
-
-### 📄 Pages
-`index.astro`, `privacy.astro`, `terms.astro` — instance-specific overrides only
-
----
-
-## Key Principles
-
-### CSS Architecture (3-Layer OKLCH)
+### 3-Layer OKLCH Tokens
 
 ```
 Layer 1: OKLCH primitives  →  --oklch-terracota: oklch(0.58 0.18 32)
@@ -50,19 +42,12 @@ Layer 2: Semantic tokens    →  --accent: var(--oklch-terracota)
 Layer 3: Components         →  --radius-lg: 16px; --space-lg: 2rem
 ```
 
-### Button Hierarchy
+### Key Principles
 
-| Type | Style | Use |
-|------|-------|-----|
-| Primary CTA | Filled background, high contrast, no border | Main action |
-| Secondary CTA | 2px outline, hover fill animation | Secondary action |
-| Border radius | `10px` — friendly and tactile | All buttons |
-
-### Mobile First
-- `touch-action: manipulation` on all interactive elements
-- `safe-area-inset-*` for notched devices
-- `100dvh` with `100vh` fallback
-- `(@media hover: hover)` for hover effects — prevents sticky hover on touch
+- **Mobile first** — `100dvh` with fallback, `safe-area-inset-*`, no sticky hover on touch (`@media (hover: hover)`)
+- **Performance** — CSS transitions for isolated states, GSAP only for coordinated sequences
+- **Accessibility** — `prefers-reduced-motion` support, focus-visible, aria labels, skip link
+- **Typography** — `clamp()` fluid type, `text-wrap: pretty`
 
 ---
 
@@ -78,7 +63,7 @@ pnpm preview    # preview production
 ### Testing
 
 ```fish
-pnpm test          # headless
+pnpm test          # headless (Playwright)
 pnpm test:headed   # with browser UI
 ```
 
@@ -88,37 +73,38 @@ pnpm test:headed   # with browser UI
 
 ```
 src/
-├── components/     # Astro components (organisms)
-│   ├── Hero.astro
-│   ├── Pricing.astro
-│   ├── FAQ.astro
-│   ├── CTA.astro
-│   ├── Footer.astro
-│   ├── Navbar.astro
-│   ├── MobileMenu.astro
-│   ├── Preloader.astro
-│   ├── About.astro
-│   ├── Problema.astro
-│   ├── ComoFunciona.astro
-│   ├── CaseStudies.astro
-│   ├── ScrollToTop.astro
-│   └── Blog.astro
+├── components/       # Astro components (organisms + molecules)
+│   ├── Hero.astro        # GSAP typewriter + landing cascade
+│   ├── Navbar.astro      # Desktop nav + lang switcher
+│   ├── MobileMenu.astro  # Hamburger menu (clip-path anim)
+│   ├── Pricing.astro     # Kit 1 pricing section
+│   ├── PricingKit1.astro # Web design cards
+│   ├── PricingKit2.astro # Growth partner cards
+│   ├── Logo.astro        # CorelDRAW SVG export
+│   └── ...               # FAQ, CTA, Footer, CaseStudies, etc.
 ├── layouts/
-│   └── BaseLayout.astro   # SEO, preloader, shared markup
+│   └── BaseLayout.astro  # SEO, OG tags, JSON-LD schema
 ├── pages/
-│   ├── index.astro        # Home page
-│   ├── privacy.astro      # Privacy policy
-│   └── terms.astro        # Terms of service
-├── scripts/         # Client-side JS
-│   ├── navigation.js      # Mobile menu
-│   ├── preloader.js        # Loading animation
-│   ├── scroll.js           # Scroll-to-top + navbar
-│   ├── faq.js              # FAQ accordion
-│   ├── reveal.js           # Scroll-triggered reveals
-│   └── carousel.js         # Case studies carousel
-└── styles/
-    └── global.css          # Atomic Design CSS
+│   ├── index.astro       # Home (ES)
+│   ├── pricing.astro     # Kit 1 (ES)
+│   ├── pricing/growth-partner.astro  # Kit 2 (ES)
+│   ├── privacy.astro / terms.astro / 404.astro
+│   └── en/               # Full English mirror
+├── i18n/
+│   └── ui.ts             # ES/EN dictionaries (243 keys each)
+├── lib/
+│   └── constants.ts      # DOMAIN, WHATSAPP_NUMBER
+├── scripts/              # Vanilla client-side JS
+└── styles/               # Atomic Design CSS (6 files)
 ```
+
+---
+
+## i18n
+
+- Home page + pricing in **ES** (`/`) and **EN** (`/en/`)
+- Language switcher in navbar (ES | EN)
+- Both dictionaries must stay in sync (243 leaf keys each)
 
 ---
 
@@ -146,9 +132,3 @@ Proprietary — © 2026 The Brand Crew. All rights reserved.
 - hello@thebrandcrew.lat
 - WhatsApp: +54 9 11 2406-3009
 - Dev: [Illya Grytsyk](https://illushkinn.github.io)
-
----
-
-## Documentation
-
-- `POST-MIGRATION-CHECKLIST.md` — Post-deployment guide
