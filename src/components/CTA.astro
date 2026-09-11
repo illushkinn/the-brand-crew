@@ -2,7 +2,7 @@
 // CTA.astro - Final call-to-action
 import type { Lang } from '../i18n/ui';
 import { useTranslations } from '../i18n/ui';
-import { WHATSAPP_NUMBER } from '../lib/constants';
+import { WHATSAPP_NUMBER, CALENDLY_URL } from '../lib/constants';
 
 interface Props { lang?: Lang }
 const { lang = 'es' } = Astro.props;
@@ -18,6 +18,39 @@ const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=` + encodeURIComponent(
 <section class="cta-final reveal" id="contacto" aria-label="Contact">
   <div class="cta-content">
     <h2><span class="cta-dale">{t('cta.title1')}</span>{t('cta.title2') && <span class="text-terracota cta-empecemos"> {t('cta.title2')}</span>}.</h2>
-    <a href={waLink} target="_blank" rel="noopener" class="btn btn-lg btn-premium cta-btn">{lang === 'es' ? 'Hablemos por WhatsApp' : 'Chat on WhatsApp'}</a>
+    <button type="button" class="btn btn-lg btn-premium cta-btn" data-calendly-url={CALENDLY_URL}>
+      {t('cta.schedule')}
+    </button>
+    <p class="cta-secondary">
+      {t('cta.preferWp')} <a href={waLink} target="_blank" rel="noopener">{t('cta.whatsappAlt')}</a>
+    </p>
   </div>
 </section>
+
+<script>
+  // Calendly popup trigger — event delegation (sobrevive view transitions).
+  // Guard: con View Transitions el document persiste, así que el listener
+  // solo se registra una vez por sesión.
+  if (!window.__calendlyBound) {
+    window.__calendlyBound = true;
+    document.addEventListener('click', function (e) {
+      const trigger = (e.target as HTMLElement).closest('[data-calendly-url]') as HTMLElement | null;
+      if (!trigger) return;
+      const url = trigger.dataset.calendlyUrl;
+      if (!url) return;
+      e.preventDefault();
+      if (window.Calendly) {
+        window.Calendly.initPopupWidget({ url });
+        return;
+      }
+      // Lazy-load el widget de Calendly la primera vez que se clickea
+      const s = document.createElement('script');
+      s.src = 'https://assets.calendly.com/assets/external/widget.js';
+      s.async = true;
+      s.onload = function () {
+        window.Calendly.initPopupWidget({ url });
+      };
+      document.body.appendChild(s);
+    });
+  }
+</script>
