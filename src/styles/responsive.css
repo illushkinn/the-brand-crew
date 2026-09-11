@@ -22,6 +22,15 @@
   }
 }
 
+/* Tablet gap (769-899.98): the 767.98 block ends at 768 and the
+   900px split starts later — keep the 12px side air consistent here too */
+@media (min-width: 769px) and (max-width: 899.98px) {
+  .hero {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+}
+
 /* Desktop ≥900px: side-by-side grid + ring larger */
 @media (min-width: 900px) {
   .hero-split {
@@ -29,6 +38,7 @@
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     align-items: center;
     align-self: flex-start;
+    margin-left: clamp(1.5rem, 4vw, 4rem);
     gap: clamp(2.5rem, 6vw, 5rem);
   }
   .hero-logo {
@@ -151,7 +161,7 @@
   .hero {
     min-height: 100dvh;
     min-height: 100svh;
-    padding: 5rem 1rem 3rem;
+    padding: 5rem 0.75rem 3rem;
     justify-content: center;
     align-items: flex-start;
   }
@@ -183,11 +193,15 @@
     text-align: left;
   }
   .hero-title {
-    font-size: clamp(2.8rem, 8vw, 4.2rem);
-    line-height: 1.15;
+    font-size: clamp(2.9rem, 21vw, 5.6rem);
+    line-height: 1.08;
     margin-bottom: 0.8rem;
     word-spacing: -1px;
     letter-spacing: -0.03em;
+  }
+  /* Let typewriter chars wrap on word boundaries instead of overflowing */
+  .hero-phrase {
+    white-space: normal;
   }
   .hero-sub {
     font-size: clamp(1.3rem, 4vw, 2rem);

@@ -363,7 +363,7 @@
   text-shadow: none;
 }
 .hero-char {
-  display: inline-block;
+  display: inline;
   white-space: pre;
   background: linear-gradient(
     90deg,
