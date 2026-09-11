@@ -10,33 +10,32 @@
   const mobileMenu = document.getElementById('mobileMenu');
   const navbar = document.querySelector('.navbar');
   const mobileLinks = mobileMenu.querySelectorAll('.mobile-link');
-  
+
   /**
-   * Sets staggered transition delays for mobile menu links
-   * @param {boolean} open - true when opening menu, false when closing
+   * Scroll lock on the NEXT frame, decoupled from the clip-path transition.
+   * Toggling overflow in the same frame as the animation caused repaint
+   * flicker on rapid open/close.
    */
-  function setLinkDelays(open) {
-    const len = mobileLinks.length;
-    mobileLinks.forEach(function(link, i) {
-      const delay = open
-        ? 0.04 + i * 0.04
-        : 0.04 + (len - 1 - i) * 0.04;
-      link.style.transitionDelay = delay + 's';
+  function lockScroll() {
+    requestAnimationFrame(function() {
+      document.documentElement.style.overflow = 'clip';
     });
   }
-  
+
+  function unlockScroll() {
+    requestAnimationFrame(function() {
+      document.documentElement.style.overflow = '';
+    });
+  }
+
   /**
    * Opens the mobile menu with clip-path circle animation
-   * Uses CSS custom properties for the circle origin so open/close animate smoothly
+   * Uses CSS custom properties for the circle origin so open/close animate smoothly.
+   * Link stagger is CSS-only (nth-child transition-delay) — no inline styles.
    */
   function openMenu() {
     state.menuOpen = true;
-    setLinkDelays(true);
-    
-    // Circle origin stays at CSS defaults (right top) — the hamburger is always
-    // at the top-right regardless of screen size. No pixel calculation needed,
-    // which avoids getBoundingClientRect() quirks on mobile browsers.
-    
+
     mobileMenu.removeAttribute('inert');
     hamburgerBtn.setAttribute('aria-expanded', 'true');
     
@@ -47,7 +46,7 @@
     mobileMenu.classList.add('is-open');
     navbar.classList.add('is-menu-open');
     
-    document.documentElement.style.overflow = 'clip';
+    lockScroll();
     setTimeout(function() { mobileLinks[0]?.focus(); }, 200);
   }
   
@@ -56,14 +55,12 @@
    */
   function closeMenu() {
     state.menuOpen = false;
-    setLinkDelays(false);
     
-    // CSS handles the reverse transition — same origin via custom props
     mobileMenu.classList.remove('is-open');
     navbar.classList.remove('is-menu-open');
     mobileMenu.setAttribute('inert', '');
     hamburgerBtn.setAttribute('aria-expanded', 'false');
-    document.documentElement.style.overflow = '';
+    unlockScroll();
     hamburgerBtn.focus();
   }
   

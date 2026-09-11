@@ -28,7 +28,7 @@ const ctaLabel = t('hero.cta');
         <p class="hero-sub" set:html={t('hero.sub')}></p>
         <p class="hero-meta">
           <span class="price-group">
-            <span class="current-price">Desde&nbsp;$300&nbsp;<small class="price-currency">USD</small></span>
+            <span class="current-price"><span class="price-from">{t('hero.priceFrom')}</span>&nbsp;$390&nbsp;<small class="price-currency">USD</small></span>
           </span>
         </p>
         <div class="hero-actions">
@@ -91,19 +91,34 @@ const ctaLabel = t('hero.cta');
       return;
     }
 
-    // Create cursor element
+    // Create cursor element — positioned out of flow (absolute), glued to the
+    // title so it NEVER affects the line boxes: no reflow when it crosses lines
     const cursor = document.createElement('span');
     cursor.className = 'hero-cursor';
-    // Insert cursor before the first char
-    allChars[0].parentNode?.insertBefore(cursor, allChars[0]);
+    const titleEl = document.querySelector('.hero-title');
+    titleEl?.appendChild(cursor);
 
-    // Typewriter: move cursor + reveal char by char
+    // Typewriter: measure the target char, glide the cursor (transform-only),
+    // then reveal the char. One rect read per char — not per frame.
     const tl = gsap.timeline({ delay: 0.8 });
 
+    let cursorX = 0;
+    let cursorY = 0;
+
     allChars.forEach((char, i) => {
-      // Move cursor after this char
       tl.call(() => {
-        char.parentNode?.insertBefore(cursor, char.nextSibling);
+        const titleRect = titleEl?.getBoundingClientRect();
+        const charRect = char.getBoundingClientRect();
+        if (!titleRect) return;
+        cursorX = charRect.left - titleRect.left + charRect.width;
+        cursorY = charRect.top - titleRect.top + (charRect.height - cursor.offsetHeight) / 2;
+      });
+      // Glide the cursor (compositor-only: transform + opacity, zero layout)
+      tl.to(cursor, {
+        x: cursorX,
+        y: cursorY,
+        duration: 0.06,
+        ease: 'power1.out',
       });
       // Reveal the char
       tl.to(char, {

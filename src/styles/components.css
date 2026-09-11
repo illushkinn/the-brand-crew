@@ -319,6 +319,15 @@
   opacity: 1;
   transform: translateY(0);
 }
+/* Stagger — CSS-only. No inline transitionDelay (that caused flicker on
+   rapid toggles: every open/close rewrote the delay for every link). */
+.mobile-menu.is-open a:nth-child(1) { transition-delay: 0.04s; }
+.mobile-menu.is-open a:nth-child(2) { transition-delay: 0.08s; }
+.mobile-menu.is-open a:nth-child(3) { transition-delay: 0.12s; }
+.mobile-menu.is-open a:nth-child(4) { transition-delay: 0.16s; }
+.mobile-menu.is-open a:nth-child(5) { transition-delay: 0.20s; }
+.mobile-menu.is-open a:nth-child(6) { transition-delay: 0.24s; }
+.mobile-menu.is-open a:nth-child(7) { transition-delay: 0.28s; }
 @media (hover: hover) {
   .mobile-menu a:hover {
     color: var(--verde);
@@ -356,6 +365,7 @@
   padding: 0;
 }
 .hero-title {
+  position: relative;
   font-family: var(--font-display);
   font-size: clamp(2.8rem, 8vw, 4.8rem);
   line-height: 1.15;
@@ -379,12 +389,16 @@
   -webkit-text-fill-color: transparent;
 }
 .hero-cursor {
-  display: inline-block;
+  position: absolute;
+  left: 0;
+  top: 0;
   width: 3px;
   height: 1em;
   background: var(--verde);
-  margin-left: 2px;
-  vertical-align: text-bottom;
+  border-radius: 2px;
+  transform: translateZ(0);
+  will-change: transform;
+  z-index: 2;
   animation: cursor-blink 0.8s step-end infinite;
 }
 @keyframes cursor-blink {
@@ -425,8 +439,12 @@
 }
 .current-price {
   color: var(--verde);
-  font-weight: 300;
+  font-weight: 600;
   white-space: nowrap;
+}
+/* Label stays light so the number carries all the weight */
+.price-from {
+  font-weight: 300;
 }
 .price-currency {
   font-size: 0.6em;

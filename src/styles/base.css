@@ -48,11 +48,13 @@ body {
   min-width: 0;
   touch-action: manipulation;
 }
-body::before {
-  content: '';
+/* Fixed decorative mesh layer — a real fixed element with a POSITIVE z-index.
+   (body::before with z-index:-1 scrolls with the page on some mobile engines:
+   any stacking context eats it. This layer never moves.) */
+.bg-grid {
   position: fixed;
   inset: 0;
-  z-index: -1;
+  z-index: 0;
   pointer-events: none;
   background-image:
     repeating-linear-gradient(
@@ -70,6 +72,11 @@ body::before {
       transparent 120px
     ),
     radial-gradient(ellipse 60% 50% at 50% 40%, rgba(74, 222, 128, 0.12) 0%, transparent 70%);
+}
+/* Content sits above the grid layer */
+.page-content {
+  position: relative;
+  z-index: 1;
 }
 h1, h2, h3, h4 { text-wrap: balance; }
 p { text-wrap: pretty; }

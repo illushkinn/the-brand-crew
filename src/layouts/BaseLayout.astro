@@ -58,7 +58,7 @@ const businessSchema = {
       "@type": "Offer",
       "name": "Essential — Web Design",
       "description": "Landing or single-page site, 5 sections, responsive, basic SEO",
-      "price": "300.00",
+      "price": "390.00",
       "priceCurrency": "USD"
     },
     {
@@ -199,10 +199,13 @@ const altLang: Lang = lang === 'es' ? 'en' : 'es';
   </style>
 </head>
 <body>
+  <div class="bg-grid" aria-hidden="true"></div>
   <a href="#main-content" class="skip-link">{lang === 'es' ? 'Ir al contenido' : 'Skip to main content'}</a>
   <Navbar lang={lang} />
   <MobileMenu lang={lang} />
-  <slot />
+  <main id="main-content" class="page-content">
+    <slot />
+  </main>
   <script src="../scripts/navigation.js"></script>
   <script src="../scripts/scroll.js"></script>
   <script src="../scripts/reveal.js"></script>
