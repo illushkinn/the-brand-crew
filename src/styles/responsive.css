@@ -603,18 +603,6 @@
     outline-color: rgba(20, 20, 40, 0.4);
   }
 
-  /* Typewriter: dark gradient on light bg */
-  .hero-char {
-    background: linear-gradient(
-      90deg,
-      oklch(0.2 0.02 285) 0%,
-      oklch(0.2 0.02 285) 40%,
-      oklch(0.55 0.19 135) 50%,
-      oklch(0.2 0.02 285) 60%,
-      oklch(0.2 0.02 285) 100%
-    );
-  }
-
   /* Client logos black-on-transparent: no invert on light */
   .resultado-avatar img.invert-dark {
     filter: none;

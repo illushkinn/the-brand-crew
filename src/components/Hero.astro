@@ -23,7 +23,7 @@ const ctaLabel = t('hero.cta');
       <div class="hero-content">
         <h1 class="hero-title">
           <span class="hero-phrase">{t('hero.headline2')}</span>
-          <span class="hero-phrase text-terracota">{t('hero.headline3')}</span>
+          <span class="hero-phrase">{t('hero.headline3')}</span>
         </h1>
         <p class="hero-sub" set:html={t('hero.sub')}></p>
         <p class="hero-meta">
@@ -62,26 +62,8 @@ const ctaLabel = t('hero.cta');
 
   function initHeroAnimation() {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const phrases = document.querySelectorAll('.hero-phrase');
-    if (!phrases.length) return;
-
-    // Collect all chars across all phrases
-    const allChars: HTMLElement[] = [];
-    phrases.forEach((phrase) => {
-      const text = phrase.textContent || '';
-      phrase.textContent = '';
-      text.split('').forEach((char) => {
-        const span = document.createElement('span');
-        span.className = 'hero-char';
-        span.textContent = char;
-        span.style.opacity = '0';
-        phrase.appendChild(span);
-        allChars.push(span);
-      });
-    });
 
     if (prefersReducedMotion) {
-      allChars.forEach(c => c.style.opacity = '1');
       const logo = document.querySelector('.hero-logo');
       if (logo) gsap.set(logo, { opacity: 1 });
       ['.hero-title', '.hero-sub', '.hero-meta', '.hero-actions', '.hero-b2b-tags'].forEach(sel => {
@@ -90,58 +72,6 @@ const ctaLabel = t('hero.cta');
       });
       return;
     }
-
-    // Create cursor element — positioned out of flow (absolute), glued to the
-    // title so it NEVER affects the line boxes: no reflow when it crosses lines
-    const cursor = document.createElement('span');
-    cursor.className = 'hero-cursor';
-    const titleEl = document.querySelector('.hero-title');
-    titleEl?.appendChild(cursor);
-
-    // Typewriter: measure the target char, glide the cursor (transform-only),
-    // then reveal the char. One rect read per char — not per frame.
-    const tl = gsap.timeline({ delay: 1.5 });
-
-    let cursorX = 0;
-    let cursorY = 0;
-
-    allChars.forEach((char) => {
-      tl.call(() => {
-        const titleRect = titleEl?.getBoundingClientRect();
-        const charRect = char.getBoundingClientRect();
-        if (!titleRect) return;
-        cursorX = charRect.left - titleRect.left + charRect.width;
-        cursorY = charRect.top - titleRect.top + (charRect.height - cursor.offsetHeight) / 2;
-      });
-      // Glide the cursor (compositor-only: transform + opacity, zero layout).
-      // Function-based values: GSAP evaluates them at PLAY time, not build time.
-      // Baking static numbers here freezes every glide to (0,0) — the bar never
-      // follows the typed chars.
-      tl.to(cursor, {
-        x: () => cursorX,
-        y: () => cursorY,
-        duration: 0.1,
-        ease: 'power2.out',
-      });
-      // Reveal the char
-      tl.to(char, {
-        opacity: 1,
-        duration: 0.1,
-        ease: 'power1.out',
-      }, `+=0.05`);
-    });
-
-    // Fade out cursor after typing completes — kill the blink animation FIRST,
-    // otherwise the infinite step-end keyframes override the GSAP opacity tween
-    tl.call(() => {
-      cursor.style.animation = 'none';
-      gsap.to(cursor, {
-        opacity: 0,
-        duration: 0.4,
-        delay: 1.2,
-        ease: 'power2.inOut',
-      });
-    });
 
     // Hero content landing cascade
     const logo = document.querySelector('.hero-logo') as HTMLElement;
@@ -177,10 +107,6 @@ const ctaLabel = t('hero.cta');
         });
       }
     });
-
-    document.addEventListener('astro:before-swap', () => {
-      tl.kill();
-    }, { once: true });
   }
 
   document.addEventListener('astro:page-load', initHeroAnimation);

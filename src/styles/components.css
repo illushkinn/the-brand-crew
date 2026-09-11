@@ -366,45 +366,6 @@
   margin: 0 0 1rem;
   text-shadow: none;
 }
-.hero-char {
-  display: inline;
-  white-space: pre;
-  background: linear-gradient(
-    90deg,
-    oklch(0.98 0 0) 0%,
-    oklch(0.98 0 0) 40%,
-    oklch(0.82 0.2 125) 50%,
-    oklch(0.98 0 0) 60%,
-    oklch(0.98 0 0) 100%
-  );
-  background-size: 400% 100%;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-/* Crecen: solid verde accent (overrides the white gradient) */
-.text-terracota .hero-char {
-  background: none;
-  -webkit-text-fill-color: var(--verde);
-  color: var(--verde);
-}
-.hero-cursor {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 3px;
-  height: 1em;
-  background: var(--verde);
-  border-radius: 2px;
-  transform: translateZ(0);
-  will-change: transform;
-  z-index: 2;
-  animation: cursor-blink 0.5s ease-in-out 3 forwards;
-}
-@keyframes cursor-blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
 .hero-phrase {
   display: block;
   white-space: nowrap;
@@ -529,19 +490,10 @@
           drop-shadow(0 2px 6px oklch(0 0 0 / 0.10));
 }
 
-
-
 @keyframes diamond-shimmer {
   /* Sweep lento de derecha a izquierda */
   0% { background-position: 120% center; }
   100% { background-position: -120% center; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .hero-char {
-    animation: none;
-    -webkit-text-fill-color: oklch(0.98 0 0);
-    background: none;
-  }
 }
 
 .problema {
