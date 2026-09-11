@@ -38,3 +38,20 @@
   --color-verde: var(--verde);
   --glass-effect: blur(12px) saturate(120%);
 }
+
+/* LIGHT theme — follows prefers-color-scheme (office hours / daylight) */
+@media (prefers-color-scheme: light) {
+  :root {
+    --oklch-bg-dark: oklch(0.985 0.003 285);
+    --oklch-bg-card: oklch(0.95 0.005 285);
+    --oklch-headline: oklch(0.2 0.02 285);
+    --oklch-body: oklch(0.42 0.02 285);
+    --oklch-body-dim: oklch(0.52 0.02 285);
+    --oklch-border: oklch(0.87 0.01 285);
+    --oklch-terracota-hover: oklch(0.45 0.16 32);
+    /* verde must darken for contrast on white — 0.82 is unreadable in light */
+    --oklch-verde: oklch(0.55 0.19 135);
+    --glass-bg: rgba(16, 16, 32, 0.045);
+    --glass-border: rgba(16, 16, 32, 0.09);
+  }
+}

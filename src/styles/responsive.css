@@ -547,3 +547,86 @@
     margin-bottom: 2.5rem;
   }
 }
+
+/* ========================================
+   LIGHT THEME — follows prefers-color-scheme
+   Last layer on purpose: must win the cascade
+   over animations.css (reduced-motion branch).
+   ======================================== */
+@media (prefers-color-scheme: light) {
+  /* Navbar: solid light surface once scrolled (blur stays) */
+  .navbar.scrolled {
+    background: rgba(255, 255, 255, 0.85);
+    border-bottom-color: oklch(0.55 0.19 135 / 0.25);
+  }
+
+  /* CTA negro SOLO en light — dark keeps terracota */
+  .btn-premium {
+    background: oklch(0.18 0.02 285);
+    border-color: oklch(0.28 0.02 285);
+    box-shadow: 0 8px 24px oklch(0.18 0.02 285 / 0.25);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+  .btn-premium:hover,
+  .btn-premium:focus-visible {
+    background: oklch(0.27 0.02 285);
+    border-color: oklch(0.35 0.02 285);
+  }
+
+  /* Hover/focus alphas readable on white */
+  .btn:hover,
+  .btn:focus-visible {
+    background: oklch(0.58 0.18 32 / 0.08);
+    box-shadow:
+      0 0 12px oklch(0.58 0.18 32 / 0.18),
+      0 0 0 1px oklch(0.58 0.18 32 / 0.4),
+      0 1px 0 oklch(0.55 0.19 135 / 0.15) inset;
+  }
+  .btn:focus-visible {
+    outline: 2px solid oklch(0.55 0.19 135 / 0.45);
+  }
+  .skip-link:focus-visible {
+    outline-color: rgba(20, 20, 40, 0.4);
+  }
+
+  /* Typewriter: dark gradient on light bg */
+  .hero-char {
+    background: linear-gradient(
+      90deg,
+      oklch(0.2 0.02 285) 0%,
+      oklch(0.2 0.02 285) 40%,
+      oklch(0.55 0.19 135) 50%,
+      oklch(0.2 0.02 285) 60%,
+      oklch(0.2 0.02 285) 100%
+    );
+  }
+
+  /* Client logos black-on-transparent: no invert on light */
+  .resultado-avatar img.invert-dark {
+    filter: none;
+  }
+
+  /* Founders: verde 0.82 is unreadable on white → medium green */
+  .founder-card {
+    --fa-strong: oklch(0.55 0.19 135 / 0.6);
+    --fa-soft: oklch(0.55 0.19 135 / 0.14);
+  }
+  .founder-skills li {
+    border-color: oklch(0.55 0.19 135 / 0.35);
+  }
+}
+
+/* Mobile override: the legacy 767.98px block forces dark tokens — undo in light */
+@media (max-width: 767.98px) and (prefers-color-scheme: light) {
+  :root {
+    --oklch-bg-dark: oklch(0.985 0.003 285);
+    --glass-bg: rgba(16, 16, 32, 0.045);
+  }
+  html {
+    background:
+      radial-gradient(ellipse 80% 50% at 50% 40%, oklch(0.58 0.18 32 / 0.05) 0%, transparent 70%),
+      radial-gradient(ellipse 90% 60% at 5% 10%, oklch(0.58 0.18 32 / 0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 70% 80% at 90% 85%, oklch(0.55 0.19 135 / 0.05) 0%, transparent 50%),
+      var(--bg);
+  }
+}

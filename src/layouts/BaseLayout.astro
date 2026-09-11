@@ -131,11 +131,12 @@ const altLang: Lang = lang === 'es' ? 'en' : 'es';
 <head>
   <meta charset="UTF-8">
   <script is:inline>history.scrollRestoration='manual';</script>
-  <meta name="color-scheme" content="dark only">
+  <meta name="color-scheme" content="light dark">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>{title}</title>
   <meta name="description" content={description}>
-  <meta name="theme-color" content="#c47a68">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f5f4f7">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#c47a68">
   <meta name="google-site-verification" content="k-kPS76zKdKwT-18dhJwvxuK56oZXsaMpiBEeOmjuQA" />
 
   <!-- Open Graph / Facebook -->
@@ -203,8 +204,6 @@ const altLang: Lang = lang === 'es' ? 'en' : 'es';
   <MobileMenu lang={lang} />
   <slot />
   <script src="../scripts/navigation.js"></script>
-  <script src="../scripts/carousel.js"></script>
-  <script src="../scripts/faq.js"></script>
   <script src="../scripts/scroll.js"></script>
   <script src="../scripts/reveal.js"></script>
 </body>
