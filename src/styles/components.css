@@ -1018,23 +1018,34 @@
 
 .scroll-to-top {
   position: fixed;
-  bottom: calc(2px + env(safe-area-inset-bottom, 0px));
+  bottom: calc(20px + env(safe-area-inset-bottom, 0px));
   right: calc(20px + env(safe-area-inset-right, 0px));
   z-index: 900;
-  width: 44px;
-  height: 44px;
-  background: transparent;
-  border: none;
-  color: var(--body-dim);
+  width: 46px;
+  height: 46px;
+  background: linear-gradient(135deg, oklch(0.98 0 0 / 0.14), oklch(0.98 0 0 / 0.04));
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+  border: 1px solid oklch(0.62 0.18 32 / 0.6);
+  border-radius: 50%;
+  color: var(--white);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.4s, transform 0.4s;
+  transition:
+    opacity 0.4s,
+    transform 0.4s,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
   pointer-events: none;
   -webkit-tap-highlight-color: transparent;
+  box-shadow:
+    0 2px 12px oklch(0 0 0 / 0.2),
+    0 1px 0 oklch(0.82 0.2 125 / 0.2) inset,
+    0 0 0 1px oklch(0.82 0.2 125 / 0.06);
 }
 .scroll-to-top.is-visible {
   opacity: 1;
@@ -1042,7 +1053,13 @@
   pointer-events: all;
 }
 .scroll-to-top:hover {
-  opacity: 0.8;
+  opacity: 1;
+  transform: translateY(-2px);
+  box-shadow:
+    0 2px 12px oklch(0 0 0 / 0.2),
+    0 1px 0 oklch(0.82 0.2 125 / 0.2) inset,
+    0 0 0 1px oklch(0.82 0.2 125 / 0.06),
+    0 12px 24px -12px oklch(0 0 0 / 0.4);
 }
 .scroll-to-top svg {
   width: 1.5rem;
@@ -1058,6 +1075,9 @@
   }
   .mobile-menu {
     background: var(--bg);
+  }
+  .scroll-to-top {
+    background: var(--bg-card);
   }
   .glass-card {
     background: var(--bg-card);
