@@ -6,7 +6,7 @@
       radial-gradient(ellipse 80% 50% at 50% 40%, oklch(0.58 0.18 32 / 0.08) 0%, transparent 70%),
       radial-gradient(ellipse 90% 60% at 5% 10%, oklch(0.58 0.18 32 / 0.15) 0%, transparent 60%),
       radial-gradient(ellipse 70% 80% at 90% 85%, oklch(0.82 0.2 125 / 0.10) 0%, transparent 50%),
-      oklch(0.10 0.008 280);
+      oklch(0.12 0.06 125);
   }
 }
 
@@ -578,7 +578,10 @@
 
   /* CTA glass — transparent + green insets (light verde) */
   .btn-premium {
-    background: transparent;
+    --premium-bg: linear-gradient(135deg, oklch(0.55 0.19 135 / 0.10), oklch(0.55 0.19 135 / 0.03));
+    --bracket: oklch(0.55 0.19 135 / 0.65);
+    --bracket-glow: oklch(0.55 0.19 135 / 0.25);
+    background: var(--premium-bg);
     border-color: oklch(0.55 0.19 135 / 0.3);
     box-shadow:
       0 2px 12px oklch(0 0 0 / 0.08),
@@ -598,6 +601,11 @@
   }
   .btn:focus-visible {
     outline: 2px solid oklch(0.55 0.19 135 / 0.45);
+  }
+  /* Premium: base = hover — neutraliza el bg genérico (viene después en cascada) */
+  .btn-premium:hover,
+  .btn-premium:focus-visible {
+    background: var(--premium-bg);
   }
   .skip-link:focus-visible {
     outline-color: rgba(20, 20, 40, 0.4);
@@ -621,7 +629,7 @@
 /* Mobile override: the legacy 767.98px block forces dark tokens — undo in light */
 @media (max-width: 767.98px) and (prefers-color-scheme: light) {
   :root {
-    --oklch-bg-dark: oklch(0.985 0.003 285);
+    --oklch-bg-dark: oklch(0.97 0.015 135);
     --glass-bg: rgba(16, 16, 32, 0.045);
   }
   html {

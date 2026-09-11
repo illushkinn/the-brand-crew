@@ -37,7 +37,7 @@ export const dictionaries = {
       headline1: 'The Brand Crew:',
       headline2: 'Páginas web',
        headline3: 'que funcionan',
-      sub: 'Para negocios que <span class="text-accent">crecen</span>',
+      sub: 'Para negocios que <span class="text-verde">crecen</span>',
       priceFrom: 'Desde',
       priceNote: '2 pagos de',
       cta: 'Hablemos',
@@ -209,6 +209,9 @@ export const dictionaries = {
     cta: {
       title1: 'Arranquemos',
       title2: '',
+      schedule: 'Agendar una llamada',
+      preferWp: '¿Preferís WhatsApp? Escribinos por',
+      whatsappAlt: 'WhatsApp',
     },
     footer: {
       brand: 'The Brand Crew',
@@ -310,7 +313,7 @@ export const dictionaries = {
       headline1: 'The Brand Crew:',
       headline2: 'Websites',
        headline3: 'that work',
-      sub: 'For businesses that <span class="text-accent">actually grow</span>',
+      sub: 'For businesses that <span class="text-verde">actually grow</span>',
       priceFrom: 'From',
       priceNote: '2 payments of',
       cta: "Book a call",
@@ -476,6 +479,9 @@ export const dictionaries = {
     cta: {
       title1: "Let's get started",
       title2: '',
+      schedule: 'Schedule a call',
+      preferWp: 'Prefer WhatsApp? Reach us on',
+      whatsappAlt: 'WhatsApp',
     },
     footer: {
       brand: 'The Brand Crew',

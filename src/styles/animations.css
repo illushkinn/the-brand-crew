@@ -3,7 +3,7 @@
   .resultados-grid { scroll-snap-type: none; }
   .btn:active { transform: none; }
   .btn-premium { transition: none; }
-  .btn-premium:hover { border-color: oklch(0.62 0.18 32 / 0.6); }
+  .btn-premium:hover { border-color: oklch(0.62 0.18 32 / 0.6); background: var(--premium-bg); }
   .btn:hover { background: oklch(0.58 0.18 32 / 0.06); }
   .btn,
   .glass-card, .resultado-card,

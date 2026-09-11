@@ -1,11 +1,11 @@
 :root {
-  /* DARK theme */
-  --oklch-bg-dark: oklch(0.08 0.010 280);
-  --oklch-bg-card: oklch(0.10 0.014 280);
+  /* DARK theme — verde oscuro */
+  --oklch-bg-dark: oklch(0.12 0.06 125);
+  --oklch-bg-card: oklch(0.16 0.07 125);
   --oklch-headline: oklch(0.95 0.004 280);
   --oklch-body: oklch(0.8 0.008 280);
   --oklch-body-dim: oklch(0.75 0.012 280);
-  --oklch-border: oklch(0.2 0.018 280);
+  --oklch-border: oklch(0.25 0.06 125);
   --oklch-terracota: oklch(0.58 0.18 32);
   --oklch-terracota-hover: oklch(0.5 0.16 32);
   --oklch-verde: oklch(0.82 0.2 125);
@@ -42,12 +42,12 @@
 /* LIGHT theme — follows prefers-color-scheme (office hours / daylight) */
 @media (prefers-color-scheme: light) {
   :root {
-    --oklch-bg-dark: oklch(0.985 0.003 285);
-    --oklch-bg-card: oklch(0.95 0.005 285);
+    --oklch-bg-dark: oklch(0.97 0.015 135);
+    --oklch-bg-card: oklch(0.94 0.02 135);
     --oklch-headline: oklch(0.2 0.02 285);
     --oklch-body: oklch(0.42 0.02 285);
     --oklch-body-dim: oklch(0.52 0.02 285);
-    --oklch-border: oklch(0.87 0.01 285);
+    --oklch-border: oklch(0.88 0.02 135);
     --oklch-terracota-hover: oklch(0.45 0.16 32);
     /* verde must darken for contrast on white — 0.82 is unreadable in light */
     --oklch-verde: oklch(0.55 0.19 135);
