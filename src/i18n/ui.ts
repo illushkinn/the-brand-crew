@@ -23,8 +23,8 @@ export const dictionaries = {
   es: {
     nav: {
       home: 'Inicio',
-      services: 'Servicios',
-      howItWorks: 'Cómo funciona',
+      services: 'Problema',
+      howItWorks: 'Solución',
       cases: 'Casos',
       caseStudies: 'Casos',
       pricing: 'Precios',
@@ -296,8 +296,8 @@ export const dictionaries = {
   en: {
     nav: {
       home: 'Home',
-      services: 'Services',
-      howItWorks: 'How it works',
+      services: 'Problem',
+      howItWorks: 'Solution',
       cases: 'Cases',
       caseStudies: 'Work',
       pricing: 'Pricing',

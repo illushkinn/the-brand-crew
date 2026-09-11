@@ -282,7 +282,7 @@
     gap: var(--space-sm);
   }
   .problema-card h3 {
-    font-size: clamp(1.25rem, 4.5vw, 1.5rem);
+    font-size: clamp(1.45rem, 5.5vw, 1.75rem);
     text-wrap: balance;
     margin-bottom: 0;
   }
@@ -607,6 +607,18 @@
 
   /* Typewriter: dark gradient on light bg */
   .hero-char {
+    background: linear-gradient(
+      90deg,
+      oklch(0.2 0.02 285) 0%,
+      oklch(0.2 0.02 285) 40%,
+      oklch(0.55 0.19 135) 50%,
+      oklch(0.2 0.02 285) 60%,
+      oklch(0.2 0.02 285) 100%
+    );
+  }
+
+  /* Price shares the accent paint with .hero-char in light mode too */
+  .current-price {
     background: linear-gradient(
       90deg,
       oklch(0.2 0.02 285) 0%,

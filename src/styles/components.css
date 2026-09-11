@@ -438,11 +438,23 @@
   font-size: 1.4em;
 }
 .current-price {
-  color: var(--verde);
-  font-weight: 600;
+  /* Shares the exact same paint as .hero-char ("crecen"): gradient clipped to
+     text. User asked price = same color as the accent word, without bold. */
+  background: linear-gradient(
+    90deg,
+    oklch(0.98 0 0) 0%,
+    oklch(0.98 0 0) 40%,
+    oklch(0.82 0.2 125) 50%,
+    oklch(0.98 0 0) 60%,
+    oklch(0.98 0 0) 100%
+  );
+  background-size: 400% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   white-space: nowrap;
 }
-/* Label stays light so the number carries all the weight */
+/* Label stays light (300) — the "Desde" text reads as a caption, not a price */
 .price-from {
   font-weight: 300;
 }
