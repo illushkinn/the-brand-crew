@@ -105,7 +105,7 @@ const ctaLabel = t('hero.cta');
     let cursorX = 0;
     let cursorY = 0;
 
-    allChars.forEach((char, i) => {
+    allChars.forEach((char) => {
       tl.call(() => {
         const titleRect = titleEl?.getBoundingClientRect();
         const charRect = char.getBoundingClientRect();
@@ -113,10 +113,13 @@ const ctaLabel = t('hero.cta');
         cursorX = charRect.left - titleRect.left + charRect.width;
         cursorY = charRect.top - titleRect.top + (charRect.height - cursor.offsetHeight) / 2;
       });
-      // Glide the cursor (compositor-only: transform + opacity, zero layout)
+      // Glide the cursor (compositor-only: transform + opacity, zero layout).
+      // Function-based values: GSAP evaluates them at PLAY time, not build time.
+      // Baking static numbers here freezes every glide to (0,0) — the bar never
+      // follows the typed chars.
       tl.to(cursor, {
-        x: cursorX,
-        y: cursorY,
+        x: () => cursorX,
+        y: () => cursorY,
         duration: 0.06,
         ease: 'power1.out',
       });
@@ -128,8 +131,10 @@ const ctaLabel = t('hero.cta');
       }, `+=0.06`);
     });
 
-    // Fade out cursor after typing completes
+    // Fade out cursor after typing completes — kill the blink animation FIRST,
+    // otherwise the infinite step-end keyframes override the GSAP opacity tween
     tl.call(() => {
+      cursor.style.animation = 'none';
       gsap.to(cursor, {
         opacity: 0,
         duration: 0.4,
