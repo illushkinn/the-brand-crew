@@ -92,11 +92,8 @@ export const dictionaries = {
         title1: 'Cada día perdés',
         title2: 'clientes que te buscaban',
         card1Title: 'Te googlean y no aparecés',
-        card1Text: 'Aparece tu competidor. <strong>Se lo compra a él. Ni enterado quedaste.</strong>',
         card2Title: 'Entraron y se fueron',
-        card2Text: 'Tuviste 3 segundos: cargó lento, se veía viejo, no entendían nada. <strong>Cerraron la pestaña y nunca más volvieron.</strong>',
         card3Title: 'Les gustó pero no compraron',
-        card3Text: 'Sin botón, sin prueba social, sin camino a la compra. <strong>Hermosa, pero no factura un peso.</strong>',
       },
     comoFunciona: {
       kicker: 'Cómo funciona',
@@ -364,11 +361,8 @@ export const dictionaries = {
         title1: 'Every day you\'re losing',
         title2: 'customers who were looking for you',
         card1Title: "They Google you and you're nowhere",
-        card1Text: 'Your competitor shows up. <strong>They buy from them. You never even knew.</strong>',
         card2Title: 'They visited and left',
-        card2Text: 'You had 3 seconds: slow load, outdated design, confusing layout. <strong>They closed the tab and never came back.</strong>',
         card3Title: 'They loved it but didn\'t buy',
-        card3Text: 'No CTA, no social proof, no path to purchase. <strong>Beautiful, but it doesn\'t make a single penny.</strong>',
       },
     comoFunciona: {
       kicker: 'How it works',

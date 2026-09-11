@@ -13,16 +13,16 @@ const t = useTranslations(lang);
   <h2 class="section-title rv">{t('problema.title1')}<br><span class="text-terracota">{t('problema.title2')}</span>.</h2>
   <div class="problema-grid rv">
     <div class="glass-card problema-card tall">
+      <span class="problema-index mono">01</span>
       <h3>{t('problema.card1Title')}</h3>
-      <p set:html={t('problema.card1Text')}></p>
     </div>
     <div class="glass-card problema-card">
+      <span class="problema-index mono">02</span>
       <h3>{t('problema.card2Title')}</h3>
-      <p set:html={t('problema.card2Text')}></p>
     </div>
     <div class="glass-card problema-card">
+      <span class="problema-index mono">03</span>
       <h3>{t('problema.card3Title')}</h3>
-      <p set:html={t('problema.card3Text')}></p>
     </div>
   </div>
 </section>

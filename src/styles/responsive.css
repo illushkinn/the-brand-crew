@@ -281,15 +281,10 @@
     margin-top: 1.25rem;
     gap: var(--space-sm);
   }
-  .problema-card h4 {
-    margin-bottom: 0.25rem;
-    font-size: clamp(1.1rem, 3.5vw, 1.4rem);
+  .problema-card h3 {
+    font-size: clamp(1.25rem, 4.5vw, 1.5rem);
     text-wrap: balance;
-  }
-  .problema-card p {
-    font-size: clamp(1rem, 3.5vw, 1.15rem);
-    line-height: 1.5;
-    text-wrap: balance;
+    margin-bottom: 0;
   }
   .como-funciona-grid {
     margin-top: 1.5rem;
