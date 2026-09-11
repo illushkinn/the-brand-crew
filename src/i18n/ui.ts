@@ -102,7 +102,7 @@ export const dictionaries = {
       step1Title: 'Nos contás tu idea',
       step1Text: 'Llamada corta de 15 minutos. Contanos tu negocio, tus objetivos y qué tiene que lograr tu web. Nosotros te decimos si se puede y cómo.',
       step2Title: 'Diseño y desarrollo',
-      step2Text: 'En 48 hs te mostramos la web ya andando. Ajustamos lo que quieras hasta que te encante. Sin adelanto: recién pagás cuando la ves.',
+      step2Text: 'En 48 hs te mostramos la v1 de web ya andando. Ajustamos lo que quieras hasta que te encante. Sin adelanto: recién pagás cuando la ves.',
       step3Title: 'Estás online',
       step3Text: 'En una semana tu web está en producción. Incluye onboarding para que la manejes y consultoría para que siga trayendo clientes.',
     },
