@@ -1,5 +1,5 @@
 ---
-// Founders.astro - Founding partners + strategic partners cards
+// Founders.astro - Founding partners cards
 import type { Lang } from '../i18n/ui';
 import { useTranslations, dictionaries } from '../i18n/ui';
 
@@ -9,12 +9,13 @@ const t = useTranslations(lang);
 const skills = dictionaries[lang].founders;
 ---
 
-<section class="section founders reveal" id="crew" aria-label="The crew">
-  <span class="section-label mono text-terracota">{t('founders.kicker')}</span>
-  <h2 class="section-title">{t('founders.title1')} <span class="text-accent">{t('founders.title2')}</span>.</h2>
+<section class="section founders reveal-stagger" id="crew" aria-label="The crew">
+  <span class="section-label mono text-terracota rv">{t('founders.kicker')}</span>
+  <h2 class="section-title rv">{t('founders.title1')} <span class="text-accent">{t('founders.title2')}</span>.</h2>
   <div class="founders-grid">
 
-    <article class="glass-card founder-card">
+    <article class="glass-card founder-card rv">
+      <span class="founder-index mono" aria-hidden="true">01</span>
       <div class="founder-avatar img-avatar">
         <img src="/assets/profile-illushkinn.png" alt="Illya Grytsyk" width="56" height="56" loading="lazy" />
       </div>
@@ -28,8 +29,11 @@ const skills = dictionaries[lang].founders;
       </div>
     </article>
 
-    <article class="glass-card founder-card">
-      <div class="founder-avatar letter-avatar">C</div>
+    <article class="glass-card founder-card accent-terracota rv">
+      <span class="founder-index mono" aria-hidden="true">02</span>
+      <div class="founder-avatar letter-avatar">
+        C
+      </div>
       <div class="founder-info">
         <span class="mono founder-role">{t('founders.carlosRole')}</span>
         <h3 class="founder-name">Carlos Segovia Gonzalez</h3>
@@ -40,30 +44,5 @@ const skills = dictionaries[lang].founders;
       </div>
     </article>
 
-    <article class="glass-card founder-card">
-      <div class="founder-avatar letter-avatar">+</div>
-      <div class="founder-info">
-        <span class="mono founder-role">{t('founders.closerRole')}</span>
-        <h3 class="founder-name">Growth &amp; Sales</h3>
-        <p class="founder-bio">{t('founders.closerBio')}</p>
-        <ul class="founder-skills">
-          {skills.closerSkills.map((skill: string) => <li>{skill}</li>)}
-        </ul>
-      </div>
-    </article>
-
-    <article class="glass-card founder-card">
-      <div class="founder-avatar letter-avatar">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
-      </div>
-      <div class="founder-info">
-        <span class="mono founder-role">{t('founders.devopsRole')}</span>
-        <h3 class="founder-name">DevOps &amp; Backend</h3>
-        <p class="founder-bio">{t('founders.devopsBio')}</p>
-        <ul class="founder-skills">
-          {skills.devopsSkills.map((skill: string) => <li>{skill}</li>)}
-        </ul>
-      </div>
-    </article>
   </div>
 </section>

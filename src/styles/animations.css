@@ -9,7 +9,8 @@
   .glass-card, .resultado-card,
   .navbar, .mobile-menu, .mobile-menu a, .hamburger span,
   .scroll-to-top, .faq-answer, .faq-question svg,
-  .reveal, .reveal-stagger, .reveal-stagger .rv {
+  .reveal, .reveal-stagger, .reveal-stagger .rv,
+  .founder-skills li {
     transition: none !important;
     animation: none !important;
   }
