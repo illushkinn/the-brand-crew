@@ -2,11 +2,11 @@
 @media (max-width: 768px) {
   html {
     scroll-behavior: auto;
-    background:
-      radial-gradient(ellipse 80% 50% at 50% 40%, oklch(0.58 0.18 32 / 0.08) 0%, transparent 70%),
-      radial-gradient(ellipse 90% 60% at 5% 10%, oklch(0.58 0.18 32 / 0.15) 0%, transparent 60%),
-      radial-gradient(ellipse 70% 80% at 90% 85%, oklch(0.82 0.2 125 / 0.10) 0%, transparent 50%),
-      oklch(0.12 0.06 125);
+    background: var(--bg);
+  }
+  /* No color glows on mobile — flat background everywhere */
+  .problema::before {
+    display: none;
   }
 }
 
@@ -523,12 +523,6 @@
     padding-bottom: 4rem;
   }
 }
-@media (max-width: 767.98px) {
-  :root {
-    --oklch-bg-dark: oklch(0.10 0.008 280);
-    --glass-bg: rgba(255,255,255,0.08);
-  }
-}
 
 /* Shorter viewports (14" laptops, ~1366x768): compact hero spacing */
 @media (max-height: 800px) {
@@ -579,6 +573,7 @@
   /* CTA glass — transparent + green insets (light verde) */
   .btn-premium {
     --premium-bg: linear-gradient(135deg, oklch(0.55 0.19 135 / 0.10), oklch(0.55 0.19 135 / 0.03));
+    --sweep: oklch(0.55 0.19 135 / 0.12);
     background: var(--premium-bg);
     border-color: oklch(0.55 0.19 135 / 0.3);
     box-shadow:
@@ -604,6 +599,7 @@
   .btn-premium:hover,
   .btn-premium:focus-visible {
     background: var(--premium-bg);
+    transform: translateY(-2px);
     box-shadow:
       0 2px 12px oklch(0 0 0 / 0.08),
       0 1px 0 oklch(0.55 0.19 135 / 0.15) inset,
@@ -626,21 +622,6 @@
   }
   .founder-skills li {
     border-color: oklch(0.55 0.19 135 / 0.35);
-  }
-}
-
-/* Mobile override: the legacy 767.98px block forces dark tokens — undo in light */
-@media (max-width: 767.98px) and (prefers-color-scheme: light) {
-  :root {
-    --oklch-bg-dark: oklch(0.97 0.015 135);
-    --glass-bg: rgba(16, 16, 32, 0.045);
-  }
-  html {
-    background:
-      radial-gradient(ellipse 80% 50% at 50% 40%, oklch(0.58 0.18 32 / 0.05) 0%, transparent 70%),
-      radial-gradient(ellipse 90% 60% at 5% 10%, oklch(0.58 0.18 32 / 0.08) 0%, transparent 60%),
-      radial-gradient(ellipse 70% 80% at 90% 85%, oklch(0.55 0.19 135 / 0.05) 0%, transparent 50%),
-      var(--bg);
   }
 }
 

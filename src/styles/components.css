@@ -91,9 +91,10 @@
   background: oklch(0.58 0.18 32 / 0.1);
 }
 
-/* ===== CTA — PREMIUM GLASS (base = hover, no orange) ===== */
+/* ===== CTA — PREMIUM GLASS (reacciona al hover con sweep + lift, push al click) ===== */
 .btn-premium {
   --premium-bg: linear-gradient(135deg, oklch(0.98 0 0 / 0.14), oklch(0.98 0 0 / 0.04));
+  --sweep: oklch(0.98 0 0 / 0.14);
   background: var(--premium-bg);
   border: 1px solid oklch(0.62 0.18 32 / 0.6);
   border-radius: round(10px);
@@ -101,27 +102,54 @@
   font-weight: 500;
   letter-spacing: 0.02em;
   text-shadow: 0 1px 2px oklch(0 0 0 / 0.3);
-  transition: none;
+  transition:
+    transform 0.25s cubic-bezier(0.2, 0, 0, 1),
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
   box-shadow:
     0 2px 12px oklch(0 0 0 / 0.1),
     0 1px 0 oklch(0.82 0.2 125 / 0.2) inset,
     0 0 0 1px oklch(0.82 0.2 125 / 0.06);
 }
-/* Base = hover: neutraliza el .btn:hover genérico (terracota 6%).
-   Feedback: sombra difusa exterior, opaca y sutil — apenas perceptible. */
+/* Barrido de luz (sweep) — una pasada al entrar, hereda el radius y el corner-shape */
+.btn-premium::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    transparent 15%,
+    var(--sweep) 35%,
+    var(--sweep) 45%,
+    transparent 65%
+  );
+  background-size: 250% 100%;
+  background-position: 130% 0;
+  transition: background-position 0.9s cubic-bezier(0.2, 0, 0, 1);
+}
 .btn-premium:hover {
   background: var(--premium-bg);
+  transform: translateY(-2px);
   box-shadow:
     0 2px 12px oklch(0 0 0 / 0.1),
     0 1px 0 oklch(0.82 0.2 125 / 0.2) inset,
     0 0 0 1px oklch(0.82 0.2 125 / 0.06),
-    0 16px 32px -16px oklch(0 0 0 / 0.35);
+    0 16px 32px -16px oklch(0 0 0 / 0.35),
+    0 0 24px oklch(0.82 0.2 125 / 0.12);
+}
+.btn-premium:hover::before {
+  background-position: -30% 0;
 }
 .btn-premium:active {
   background: var(--premium-bg);
+  transform: translateY(0) scale(0.97);
   box-shadow:
     0 1px 4px oklch(0 0 0 / 0.2),
     0 1px 0 oklch(0.82 0.2 125 / 0.08) inset;
+  transition-duration: 0.08s;
 }
 
 
