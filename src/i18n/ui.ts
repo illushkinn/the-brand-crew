@@ -114,8 +114,8 @@ export const dictionaries = {
       // Kit 1 — Diseño web
       kit1Title: 'Diseño web',
       esencialTitle: 'Esencial',
-      esencialPrice: '300',
-      esencialNote: 'pago único',
+      esencialPrice: '390',
+      
       esencialSub: 'Para los que necesitan presencia YA',
       esencialDesc: 'Landing o sitio de 1 página, 5 secciones, responsive, SEO básico.',
       esencialF1: 'Landing de 1 página',
@@ -126,9 +126,9 @@ export const dictionaries = {
       esencialF6: 'Factura A incluida',
       esencialF7: '50% al empezar · 50% al entregar',
       crewTitle: 'Crew',
-      crewBadge: 'Más elegido',
+      
       crewPrice: '600',
-      crewNote: 'pago único',
+      
       crewSub: 'Para los que quieren VENDER, no solo existir',
       crewDesc: 'Sitio multi-sección que vende, copywriting, SEO local, soporte 30 días.',
       crewF1: 'Sitio multi-sección',
@@ -140,7 +140,7 @@ export const dictionaries = {
       crewF7: '50% al empezar · 50% al entregar',
       mvpTitle: 'MVP / E-commerce',
       mvpPrice: '1000',
-      mvpNote: 'pago único',
+      
       mvpSub: 'Para los que tienen un producto y quieren lanzarlo',
       mvpDesc: 'E-commerce o MVP a medida, integraciones, chatbot WhatsApp.',
       mvpF1: 'E-commerce o MVP a medida',
@@ -153,7 +153,7 @@ export const dictionaries = {
       kit2Title: 'Growth Partner',
       growthTitle: 'Growth Mensual',
       growthPriceRange: '150–250',
-      growthNote: 'USD/mes',
+      
       growthSub: 'Rediseño + optimización de conversión continua',
       growthF1: 'Rediseño continuo',
       growthF2: 'SEO local + contenido',
@@ -161,7 +161,7 @@ export const dictionaries = {
       growthF4: 'Reporte mensual de métricas',
       autoTitle: 'Automatizaciones',
       autoPrice: '200',
-      autoNote: 'desde USD',
+      
       autoSub: 'Chatbot WhatsApp e integraciones',
       autoF1: 'Chatbot WhatsApp',
       autoF2: 'Integraciones a medida',
@@ -308,9 +308,9 @@ export const dictionaries = {
     },
     hero: {
       headline1: 'The Brand Crew:',
-      headline2: 'Web pages',
+      headline2: 'Websites',
        headline3: 'that work',
-      sub: 'For businesses that <span class="text-accent">actually work</span>',
+      sub: 'For businesses that <span class="text-accent">actually grow</span>',
       priceFrom: 'From',
       priceNote: '2 payments of',
       cta: "Book a call",
@@ -382,8 +382,8 @@ export const dictionaries = {
       title2: 'pricing',
       kit1Title: 'Web Design',
       esencialTitle: 'Essential',
-      esencialPrice: '300',
-      esencialNote: 'one-time',
+      esencialPrice: '390',
+      
       esencialSub: 'For those who need a presence NOW',
       esencialDesc: 'Landing or single-page site, 5 sections, responsive, basic SEO.',
       esencialF1: '1-page landing',
@@ -394,9 +394,9 @@ export const dictionaries = {
       esencialF6: 'Invoice included',
       esencialF7: '50% upfront · 50% at delivery',
       crewTitle: 'Crew',
-      crewBadge: 'Most popular',
+      
       crewPrice: '600',
-      crewNote: 'one-time',
+      
       crewSub: 'For those who want to SELL, not just exist',
       crewDesc: 'Multi-section site that sells, copywriting, local SEO, 30-day support.',
       crewF1: 'Multi-section site',
@@ -408,7 +408,7 @@ export const dictionaries = {
       crewF7: '50% upfront · 50% at delivery',
       mvpTitle: 'MVP / E-commerce',
       mvpPrice: '1000',
-      mvpNote: 'one-time',
+      
       mvpSub: 'For those who have a product and want to launch it',
       mvpDesc: 'Custom e-commerce or MVP, integrations, WhatsApp chatbot.',
       mvpF1: 'Custom e-commerce or MVP',
@@ -420,7 +420,7 @@ export const dictionaries = {
       kit2Title: 'Growth Partner',
       growthTitle: 'Monthly Growth',
       growthPriceRange: '150–250',
-      growthNote: 'USD/mo',
+      
       growthSub: 'Continuous redesign + conversion optimization',
       growthF1: 'Ongoing redesign',
       growthF2: 'Local SEO + content',
@@ -428,7 +428,7 @@ export const dictionaries = {
       growthF4: 'Monthly metrics report',
       autoTitle: 'Automations',
       autoPrice: '200',
-      autoNote: 'from USD',
+      
       autoSub: 'WhatsApp chatbot & integrations',
       autoF1: 'WhatsApp chatbot',
       autoF2: 'Custom integrations',
