@@ -91,22 +91,16 @@
   background: oklch(0.58 0.18 32 / 0.1);
 }
 
-/* ===== CTA — PREMIUM STATIC ===== */
+/* ===== CTA — PREMIUM GLASS (base = hover, no orange) ===== */
 .btn-premium {
-  background: oklch(0.58 0.18 32);
-  border: 1px solid oklch(0.62 0.18 32 / 0.4);
+  background: transparent;
+  border: 1px solid oklch(0.62 0.18 32 / 0.6);
   border-radius: round(10px);
   color: var(--white);
   font-weight: 500;
   letter-spacing: 0.02em;
   text-shadow: 0 1px 2px oklch(0 0 0 / 0.3);
-  transition: box-shadow 0.6s ease 0.3s, border-color 0.6s ease 0.3s;
-  box-shadow:
-    0 2px 8px oklch(0 0 0 / 0.15),
-    0 1px 0 oklch(0.82 0.2 125 / 0.12) inset;
-}
-.btn-premium:hover {
-  border-color: oklch(0.62 0.18 32 / 0.6);
+  transition: none;
   box-shadow:
     0 2px 12px oklch(0 0 0 / 0.1),
     0 1px 0 oklch(0.82 0.2 125 / 0.2) inset,
@@ -388,6 +382,12 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+/* Crecen: solid verde accent (overrides the white gradient) */
+.text-terracota .hero-char {
+  background: none;
+  -webkit-text-fill-color: var(--verde);
+  color: var(--verde);
+}
 .hero-cursor {
   position: absolute;
   left: 0;
@@ -399,7 +399,7 @@
   transform: translateZ(0);
   will-change: transform;
   z-index: 2;
-  animation: cursor-blink 0.8s step-end infinite;
+  animation: cursor-blink 0.5s ease-in-out 3 forwards;
 }
 @keyframes cursor-blink {
   0%, 100% { opacity: 1; }
@@ -438,20 +438,8 @@
   font-size: 1.4em;
 }
 .current-price {
-  /* Shares the exact same paint as .hero-char ("crecen"): gradient clipped to
-     text. User asked price = same color as the accent word, without bold. */
-  background: linear-gradient(
-    90deg,
-    oklch(0.98 0 0) 0%,
-    oklch(0.98 0 0) 40%,
-    oklch(0.82 0.2 125) 50%,
-    oklch(0.98 0 0) 60%,
-    oklch(0.98 0 0) 100%
-  );
-  background-size: 400% 100%;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--headline);
+  font-weight: 400;
   white-space: nowrap;
 }
 /* Label stays light (300) — the "Desde" text reads as a caption, not a price */

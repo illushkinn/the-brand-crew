@@ -96,7 +96,7 @@ export const dictionaries = {
         card3Title: 'Les gustó pero no compraron',
       },
     comoFunciona: {
-      kicker: 'Cómo funciona',
+      kicker: 'Solución',
       title1: 'Tres pasos.',
       title2: 'Sin vueltas',
       sub: 'Tu web <strong>lista en una semana</strong>.',
@@ -365,7 +365,7 @@ export const dictionaries = {
         card3Title: 'They loved it but didn\'t buy',
       },
     comoFunciona: {
-      kicker: 'How it works',
+      kicker: 'Solution',
       title1: 'Three steps.',
       title2: 'No fluff',
       sub: 'Your site <strong>ready in one week</strong>.',

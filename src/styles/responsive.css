@@ -576,17 +576,15 @@
     border-bottom-color: oklch(0.55 0.19 135 / 0.25);
   }
 
-  /* CTA negro SOLO en light — dark keeps terracota */
+  /* CTA glass — transparent + green insets (light verde) */
   .btn-premium {
-    background: oklch(0.18 0.02 285);
-    border-color: oklch(0.28 0.02 285);
-    box-shadow: 0 8px 24px oklch(0.18 0.02 285 / 0.25);
+    background: transparent;
+    border-color: oklch(0.55 0.19 135 / 0.3);
+    box-shadow:
+      0 2px 12px oklch(0 0 0 / 0.08),
+      0 1px 0 oklch(0.55 0.19 135 / 0.15) inset,
+      0 0 0 1px oklch(0.55 0.19 135 / 0.05);
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-  }
-  .btn-premium:hover,
-  .btn-premium:focus-visible {
-    background: oklch(0.27 0.02 285);
-    border-color: oklch(0.35 0.02 285);
   }
 
   /* Hover/focus alphas readable on white */
@@ -607,18 +605,6 @@
 
   /* Typewriter: dark gradient on light bg */
   .hero-char {
-    background: linear-gradient(
-      90deg,
-      oklch(0.2 0.02 285) 0%,
-      oklch(0.2 0.02 285) 40%,
-      oklch(0.55 0.19 135) 50%,
-      oklch(0.2 0.02 285) 60%,
-      oklch(0.2 0.02 285) 100%
-    );
-  }
-
-  /* Price shares the accent paint with .hero-char in light mode too */
-  .current-price {
     background: linear-gradient(
       90deg,
       oklch(0.2 0.02 285) 0%,
@@ -659,22 +645,10 @@
   }
 }
 
-/* Touch screens: there is no hover — the premium CTA keeps its hover look
-   ON at all times (same glass state you love on desktop, fixed in place). */
+/* Touch screens: frosted glass — backdrop-filter on the transparent base */
 @media (hover: none) and (pointer: coarse) {
-  /* Dark theme: keeps terracota body, adds glass insets + ring (hover state of comp:108) */
   .btn-premium {
-    border-color: oklch(0.62 0.18 32 / 0.6);
-    box-shadow:
-      0 2px 12px oklch(0 0 0 / 0.1),
-      0 1px 0 oklch(0.82 0.2 125 / 0.2) inset,
-      0 0 0 1px oklch(0.82 0.2 125 / 0.06);
-  }
-}
-@media (hover: none) and (pointer: coarse) and (prefers-color-scheme: light) {
-  /* Light theme: same lift as the light hover (negro → gris vidrioso) */
-  .btn-premium {
-    background: oklch(0.27 0.02 285);
-    border-color: oklch(0.35 0.02 285);
+    backdrop-filter: blur(16px) saturate(150%);
+    -webkit-backdrop-filter: blur(16px) saturate(150%);
   }
 }
