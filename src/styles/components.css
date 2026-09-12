@@ -480,7 +480,18 @@
   font-size: 1.15em;
 }
 .current-price {
-  color: #e5e4e2;
+  background: linear-gradient(
+    180deg,
+    #f0f0f0 0%,
+    #c8c8c8 35%,
+    #9a9a9a 50%,
+    #c8c8c8 65%,
+    #f0f0f0 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.3)) drop-shadow(0 -1px 0 rgba(255, 255, 255, 0.1));
   font-weight: 400;
   white-space: nowrap;
 }
