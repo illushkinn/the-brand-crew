@@ -527,13 +527,13 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  width: clamp(180px, 28vw, 260px);
-  height: clamp(180px, 28vw, 260px);
+  width: clamp(200px, 28vw, 280px);
+  height: clamp(200px, 28vw, 280px);
   margin: 0;
   overflow: visible;
   background: rgba(255, 255, 255, 0.96);
   border-radius: 50%;
-  padding: clamp(1.25rem, 3.5vw, 2rem);
+  padding: clamp(0.75rem, 2vw, 1.25rem);
   box-shadow: 0 18px 40px oklch(0 0 0 / 0.25),
               0 4px 12px oklch(0 0 0 / 0.12);
 }
