@@ -7,14 +7,20 @@
   const next = document.getElementById('resultadosNext');
   
   if (grid && prev && next) {
-    const scrollAmount = 300;
+    function getCardWidth() {
+      const card = grid.querySelector('.glass-card');
+      if (!card) return 300;
+      const style = getComputedStyle(grid);
+      const gap = parseFloat(style.gap) || 12;
+      return card.offsetWidth + gap;
+    }
     
     next.addEventListener('click', () => {
-      grid.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      grid.scrollBy({ left: getCardWidth(), behavior: 'smooth' });
     });
     
     prev.addEventListener('click', () => {
-      grid.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      grid.scrollBy({ left: -getCardWidth(), behavior: 'smooth' });
     });
   }
 })();

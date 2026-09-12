@@ -66,7 +66,7 @@ export const dictionaries = {
       hocoMetric3Label: 'A todo el país',
       // Pragma
       pragmaTag: 'MedTech · Latinoamérica',
-      pragmaStory: 'Startup de salud que necesitaba una plataforma clínica con IA on-premise, con estrictos requisitos de privacidad. Le construimos un chatbot basado en evidencia, análisis de imágenes y gestión de turnos por WhatsApp.',
+      pragmaStory: 'Proyecto side de los fundadores: exploramos cómo aplicar IA al sector salud. Prototipamos una plataforma clínica con chatbot basado en evidencia, análisis de imágenes y gestión de turnos por WhatsApp.',
       pragmaMetric1Value: 'On-premise',
       pragmaMetric1Label: '100% privacidad',
       pragmaMetric2Value: 'HIPAA/GDPR',
@@ -357,7 +357,7 @@ export const dictionaries = {
       hocoMetric3Value: 'Shipping',
       hocoMetric3Label: 'Nationwide',
       pragmaTag: 'MedTech · Latin America',
-      pragmaStory: 'Healthcare startup needing an on-premise clinical AI platform with strict privacy requirements. We built an evidence-based chatbot, image analysis, and WhatsApp appointment management.',
+      pragmaStory: 'Founders\' side project: exploring AI in healthcare. We prototyped a clinical platform with evidence-based chatbot, image analysis, and WhatsApp appointment management.',
       pragmaMetric1Value: 'On-premise',
       pragmaMetric1Label: '100% privacy',
       pragmaMetric2Value: 'HIPAA/GDPR',
