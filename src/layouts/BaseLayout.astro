@@ -1,6 +1,7 @@
 ---
 import Navbar from '../components/Navbar.astro';
 import MobileMenu from '../components/MobileMenu.astro';
+import CookieBanner from '../components/CookieBanner.astro';
 import { type Lang, localeMap, hreflangMap, dictionaries, defaultLang, getTranslation } from '../i18n/ui';
 import { WHATSAPP_NUMBER, DOMAIN } from '../lib/constants';
 
@@ -58,21 +59,21 @@ const businessSchema = {
       "@type": "Offer",
       "name": "Essential — Web Design",
       "description": "Landing or single-page site, 5 sections, responsive, basic SEO",
-      "price": "390.00",
+      "price": `${pricing.esencialPrice}.00`,
       "priceCurrency": "USD"
     },
     {
       "@type": "Offer",
       "name": "Crew — Web Design",
       "description": "Multi-section site that sells, copywriting, local SEO, 30-day support",
-      "price": "600.00",
+      "price": `${pricing.crewPrice}.00`,
       "priceCurrency": "USD"
     },
     {
       "@type": "Offer",
       "name": "MVP / E-commerce",
       "description": "Custom e-commerce or MVP, integrations, WhatsApp chatbot",
-      "price": "1000.00",
+      "price": `${pricing.mvpPrice}.00`,
       "priceCurrency": "USD"
     }
   ],
@@ -209,5 +210,6 @@ const altLang: Lang = lang === 'es' ? 'en' : 'es';
   <script src="../scripts/navigation.js"></script>
   <script src="../scripts/scroll.js"></script>
   <script src="../scripts/reveal.js"></script>
+  <CookieBanner lang={lang} />
 </body>
 </html>

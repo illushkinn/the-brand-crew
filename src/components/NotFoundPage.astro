@@ -1,0 +1,21 @@
+---
+// NotFoundPage.astro — 404 shell for both langs
+import type { Lang } from '../i18n/ui';
+import { dictionaries } from '../i18n/ui';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Footer from './Footer.astro';
+
+interface Props { lang?: Lang }
+const { lang = 'es' } = Astro.props;
+const nf = dictionaries[lang].notFound;
+const homeHref = lang === 'es' ? '/' : '/en/';
+---
+
+<BaseLayout title="404 — The Brand Crew" lang={lang}>
+  <div class="notfound-main">
+    <h1 class="notfound-code">404</h1>
+    <p class="notfound-message">{nf.message}</p>
+    <a href={homeHref} class="btn btn-lg btn-premium">{nf.backHome}</a>
+  </div>
+  <Footer lang={lang} />
+</BaseLayout>

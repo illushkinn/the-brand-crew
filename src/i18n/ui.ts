@@ -36,7 +36,7 @@ export const dictionaries = {
       headline1: 'The Brand Crew:',
       headline2: 'Páginas web',
        headline3: 'que funcionan',
-      sub: 'Para negocios que <span class="text-verde">crecen</span>',
+      sub: 'Para negocios que <span class="hero-em">crecen</span>.',
       priceFrom: 'Desde',
       priceNote: '2 pagos de',
       cta: 'Hablemos',
@@ -87,7 +87,7 @@ export const dictionaries = {
       escoltaMetric2Label: 'Estados Unidos',
     },
       problema: {
-        kicker: 'El problema',
+        kicker: 'El problema que encontramos',
         title1: 'Cada día perdés',
         title2: 'clientes que te buscaban',
         card1Title: 'Te googlean y no aparecés',
@@ -113,7 +113,7 @@ export const dictionaries = {
       // Kit 1 — Diseño web
       kit1Title: 'Diseño web',
       esencialTitle: 'Esencial',
-      esencialPrice: '390',
+      esencialPrice: '250',
       
       esencialSub: 'Para los que necesitan presencia YA',
       esencialDesc: 'Landing o sitio de 1 página, 5 secciones, responsive, SEO básico.',
@@ -139,6 +139,8 @@ export const dictionaries = {
       crewF7: '50% al empezar · 50% al entregar',
       mvpTitle: 'MVP / E-commerce',
       mvpPrice: '1000',
+      metaTitle: 'Precios — The Brand Crew',
+      metaDescription: 'Precios claros para diseño web y growth partner. Desde $250 USD.',
       
       mvpSub: 'Para los que tienen un producto y quieren lanzarlo',
       mvpDesc: 'E-commerce o MVP a medida, integraciones, chatbot WhatsApp.',
@@ -169,6 +171,22 @@ export const dictionaries = {
       cta: 'Hablemos de tu proyecto',
       growthCtaText: '¿Buscás un partner de crecimiento continuo?',
       growthCtaLink: 'Ver Growth Partner',
+    },
+    growthPartner: {
+      label: 'Growth Partner',
+      title: 'Tu equipo de <span class="text-verde">crecimiento</span>.',
+      sub: '<em>Retainer</em> mensual para negocios que necesitan evolucionar continuamente. No es un sitio web y listo — es un partner que trabaja con vos cada mes.',
+      backLink: 'Volver a Diseño Web',
+      description: 'Growth partner mensual: rediseño continuo, SEO local, community management y automatizaciones. Desde $150 USD/mes.',
+    },
+    notFound: {
+      message: 'Esta página no existe',
+      backHome: 'Volver al inicio',
+    },
+    cookieBanner: {
+      text: 'Usamos cookies para analizar el tráfico y mejorar tu experiencia. Más info en nuestra',
+      privacyLink: 'política de privacidad',
+      accept: 'Entendido',
     },
     faq: {
       kicker: 'FAQ',
@@ -223,6 +241,7 @@ export const dictionaries = {
     privacy: {
       backHome: 'Volver al inicio',
       title: 'Política de privacidad',
+      description: 'Cómo The Brand Crew recopila, usa y protege tus datos personales. Tu privacidad nos importa.',
       updated: 'Última actualización: 1 de julio de 2026',
       h2_1: '1. Información que recopilamos',
       p1: 'Recopilamos la información que nos proporcionás directamente cuando nos contactás a través de nuestro sitio web, incluyendo tu nombre, dirección de correo electrónico y cualquier otra información que elijas brindarnos.',
@@ -249,6 +268,7 @@ export const dictionaries = {
     terms: {
       backHome: 'Volver al inicio',
       title: 'Términos y condiciones',
+      description: 'Términos y Condiciones de los servicios de diseño y desarrollo web de The Brand Crew. Condiciones de pago, plazos de proyecto y responsabilidades del cliente.',
       updated: 'Última actualización: 1 de julio de 2026',
       h2_1: '1. Aceptación de los términos',
       p1: 'Al acceder y usar el sitio web y los servicios de The Brand Crew, aceptás y estás de acuerdo en estar sujeto a estos Términos y Condiciones.',
@@ -286,7 +306,7 @@ export const dictionaries = {
     },
     seo: {
       title: 'The Brand Crew · Páginas web que venden',
-       description: 'Páginas web que funcionan, para negocios que crecen. Diseño y desarrollo web para comercios en Argentina. Diseño + desarrollo + dominio + hosting desde USD 300.',
+       description: 'Páginas web que funcionan, para negocios que crecen. Diseño y desarrollo web para comercios en Argentina. Diseño + desarrollo + dominio + hosting desde USD 250.',
       ogTitle: 'The Brand Crew · Páginas web que venden',
        ogDescription: 'Páginas web que funcionan, para negocios que crecen.',
       ogImageAlt: 'The Brand Crew · Páginas web que venden',
@@ -311,7 +331,7 @@ export const dictionaries = {
       headline1: 'The Brand Crew:',
       headline2: 'Websites',
        headline3: 'that work',
-      sub: 'For businesses that <span class="text-verde">actually grow</span>',
+      sub: 'For businesses that <span class="hero-em">actually grow</span>.',
       priceFrom: 'From',
       priceNote: '2 payments of',
       cta: "Book a call",
@@ -358,7 +378,7 @@ export const dictionaries = {
       escoltaMetric2Label: 'United States',
     },
       problema: {
-        kicker: 'The problem',
+        kicker: 'The problem we found',
         title1: 'Every day you\'re losing',
         title2: 'customers who were looking for you',
         card1Title: "They Google you and you're nowhere",
@@ -383,7 +403,7 @@ export const dictionaries = {
       title2: 'pricing',
       kit1Title: 'Web Design',
       esencialTitle: 'Essential',
-      esencialPrice: '390',
+      esencialPrice: '250',
       
       esencialSub: 'For those who need a presence NOW',
       esencialDesc: 'Landing or single-page site, 5 sections, responsive, basic SEO.',
@@ -409,6 +429,8 @@ export const dictionaries = {
       crewF7: '50% upfront · 50% at delivery',
       mvpTitle: 'MVP / E-commerce',
       mvpPrice: '1000',
+      metaTitle: 'Pricing — The Brand Crew',
+      metaDescription: 'Clear pricing for web design and growth partner. Starting at $250 USD. Invoice included.',
       
       mvpSub: 'For those who have a product and want to launch it',
       mvpDesc: 'Custom e-commerce or MVP, integrations, WhatsApp chatbot.',
@@ -438,6 +460,22 @@ export const dictionaries = {
       cta: "Let's talk about your project",
       growthCtaText: 'Looking for a continuous growth partner?',
       growthCtaLink: 'See Growth Partner',
+    },
+    growthPartner: {
+      label: 'Growth Partner',
+      title: 'Your <span class="text-verde">growth</span> team.',
+      sub: 'Monthly <em>retainer</em> for businesses that need continuous evolution. Not a one-and-done website — a partner that works with you every month.',
+      backLink: 'Back to Web Design',
+      description: 'Monthly growth partner: ongoing redesign, local SEO, community management and automations. Starting at $150 USD/mo.',
+    },
+    notFound: {
+      message: "This page doesn't exist",
+      backHome: 'Go back home',
+    },
+    cookieBanner: {
+      text: 'We use cookies to analyze traffic and improve your experience. Read more in our',
+      privacyLink: 'Privacy Policy',
+      accept: 'Got it',
     },
     faq: {
       kicker: 'FAQ',
@@ -492,6 +530,7 @@ export const dictionaries = {
     privacy: {
       backHome: 'Back to home',
       title: 'Privacy Policy',
+      description: 'How The Brand Crew collects, uses, and protects your personal data. Your privacy matters to us.',
       updated: 'Last updated: July 1, 2026',
       h2_1: '1. Information We Collect',
       p1: 'We collect information you provide directly to us when you contact us through our website, including your name, email address, and any other information you choose to provide.',
@@ -518,6 +557,7 @@ export const dictionaries = {
     terms: {
       backHome: 'Back to home',
       title: 'Terms of Service',
+      description: 'Terms of Service for The Brand Crew web design and development services. Payment terms, project timelines, and client responsibilities.',
       updated: 'Last updated: July 1, 2026',
       h2_1: '1. Acceptance of Terms',
       p1: 'By accessing and using The Brand Crew website and services, you accept and agree to be bound by these Terms of Service.',
@@ -555,7 +595,7 @@ export const dictionaries = {
     },
     seo: {
       title: 'The Brand Crew · Websites That Sell',
-      description: 'Websites that sell, for businesses that work. Web design and development for businesses in Argentina. Design + development + domain + hosting from $300 USD.',
+      description: 'Websites that sell, for businesses that work. Web design and development for businesses in Argentina. Design + development + domain + hosting from $250 USD.',
       ogTitle: 'The Brand Crew · Websites That Sell',
       ogDescription: 'Websites that sell, for businesses that work.',
       ogImageAlt: 'The Brand Crew · Websites That Sell',

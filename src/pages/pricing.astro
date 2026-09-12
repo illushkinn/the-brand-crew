@@ -1,19 +1,6 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Pricing from '../components/Pricing.astro';
-import CTA from '../components/CTA.astro';
-import Footer from '../components/Footer.astro';
-import ScrollToTop from '../components/ScrollToTop.astro';
+import PricingPage from '../components/PricingPage.astro';
 import { DOMAIN } from '../lib/constants';
-
-const lang = 'es';
 ---
 
-<BaseLayout lang={lang} title="Precios — The Brand Crew" description="Precios claros para diseño web y growth partner. Desde $390 USD." canonicalURL={`${DOMAIN}/pricing`}>
-  <main id="main-content">
-    <Pricing lang={lang} />
-  </main>
-  <CTA lang={lang} />
-  <Footer lang={lang} />
-  <ScrollToTop lang={lang} />
-</BaseLayout>
+<PricingPage lang="es" canonicalURL={`${DOMAIN}/pricing`} />

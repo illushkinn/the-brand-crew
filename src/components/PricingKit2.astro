@@ -2,6 +2,7 @@
 // PricingKit2.astro — Kit 2: Growth Partner (Growth Mensual, Automatizaciones)
 import type { Lang } from '../i18n/ui';
 import { useTranslations } from '../i18n/ui';
+import Icon from './Icon.astro';
 
 interface Props { lang?: Lang }
 const { lang = 'es' } = Astro.props;
@@ -24,7 +25,7 @@ const autoFeatures = [1, 2, 3, 4].map((i) => t(`pricing.autoF${i}`));
          {
            growthFeatures.map((f) => (
              <li>
-               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+               <Icon name="check" size={16} strokeWidth={2.5} />
                {f}
              </li>
            ))
@@ -41,7 +42,7 @@ const autoFeatures = [1, 2, 3, 4].map((i) => t(`pricing.autoF${i}`));
          {
            autoFeatures.map((f) => (
              <li>
-               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+               <Icon name="check" size={16} strokeWidth={2.5} />
                {f}
              </li>
            ))

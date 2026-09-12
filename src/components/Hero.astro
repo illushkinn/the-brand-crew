@@ -3,17 +3,13 @@
 import Logo from './Logo.astro';
 import type { Lang } from '../i18n/ui';
 import { useTranslations } from '../i18n/ui';
-import { WHATSAPP_NUMBER } from '../lib/constants';
+import { getWhatsAppLink } from '../lib/whatsapp';
 
 interface Props { lang?: Lang }
 const { lang = 'es' } = Astro.props;
 const t = useTranslations(lang);
 
-const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=` + encodeURIComponent(
-  lang === 'es'
-    ? '¡Hola The Brand Crew! Vi tu sitio y me encantaría trabajar con ustedes.'
-    : "Hey The Brand Crew! I saw your site and I'd love to work with you."
-);
+const waLink = getWhatsAppLink(lang);
 const ctaLabel = t('hero.cta');
 ---
 
@@ -28,7 +24,7 @@ const ctaLabel = t('hero.cta');
         <p class="hero-sub" set:html={t('hero.sub')}></p>
         <p class="hero-meta">
           <span class="price-group">
-            <span class="current-price"><span class="price-from">{t('hero.priceFrom')}</span>&nbsp;$390&nbsp;<small class="price-currency">USD</small></span>
+            <span class="current-price"><span class="price-from">{t('hero.priceFrom')}</span>&nbsp;${t('pricing.esencialPrice')}&nbsp;<small class="price-currency">USD</small></span>
           </span>
         </p>
         <div class="hero-actions">

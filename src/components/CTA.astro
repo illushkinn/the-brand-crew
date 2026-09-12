@@ -2,17 +2,14 @@
 // CTA.astro - Final call-to-action
 import type { Lang } from '../i18n/ui';
 import { useTranslations } from '../i18n/ui';
-import { WHATSAPP_NUMBER, CALENDLY_URL } from '../lib/constants';
+import { CALENDLY_URL } from '../lib/constants';
+import { getWhatsAppLink } from '../lib/whatsapp';
 
 interface Props { lang?: Lang }
 const { lang = 'es' } = Astro.props;
 const t = useTranslations(lang);
 
-const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=` + encodeURIComponent(
-  lang === 'es'
-    ? '¡Hola The Brand Crew! Vi tu sitio y me encantaría trabajar con ustedes.'
-    : "Hey The Brand Crew! I saw your site and I'd love to work with you."
-);
+const waLink = getWhatsAppLink(lang);
 ---
 
 <section class="cta-final reveal" id="contacto" aria-label="Contact">

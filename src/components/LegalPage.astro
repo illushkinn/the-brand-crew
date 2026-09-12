@@ -1,0 +1,86 @@
+---
+// LegalPage.astro — presentational shell for privacy & terms (both langs)
+// Renders the dictionary content with one shared markup pattern, no inline styles.
+import type { Lang } from '../i18n/ui';
+import { dictionaries } from '../i18n/ui';
+import { WHATSAPP_NUMBER, DOMAIN } from '../lib/constants';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+interface Props {
+  kind: 'privacy' | 'terms';
+  lang: Lang;
+}
+const { kind, lang } = Astro.props;
+const c = dictionaries[lang][kind];
+const isES = lang === 'es';
+const canonical = `${DOMAIN}${isES ? '' : '/en'}/${kind}`;
+const backHref = isES ? '/' : '/en/';
+
+type Section = { h2: string; body?: string; list?: string[]; emailSuffix?: boolean; contact?: boolean };
+const sections: Section[] = kind === 'privacy'
+  ? [
+      { h2: c.h2_1, body: c.p1 },
+      { h2: c.h2_2, list: [c.li2_1, c.li2_2, c.li2_3] },
+      { h2: c.h2_3, body: c.p3 },
+      { h2: c.h2_4, body: c.p4 },
+      { h2: c.h2_5, body: c.p5 },
+      { h2: c.h2_6, body: c.p6, emailSuffix: true },
+      { h2: c.h2_7, body: c.p7 },
+      { h2: c.h2_8, body: c.p8, contact: true },
+    ]
+  : [
+      { h2: c.h2_1, body: c.p1 },
+      { h2: c.h2_2, body: c.p2 },
+      { h2: c.h2_3, list: [c.li3_1, c.li3_2, c.li3_3, c.li3_4] },
+      { h2: c.h2_4, body: c.p4 },
+      { h2: c.h2_5, body: c.p5 },
+      { h2: c.h2_6, body: c.p6 },
+      { h2: c.h2_7, list: [c.li7_1, c.li7_2, c.li7_3] },
+      { h2: c.h2_8, body: c.p8 },
+      { h2: c.h2_9, body: c.p9 },
+      { h2: c.h2_10, body: c.p10 },
+      { h2: c.h2_11, body: c.p11 },
+      { h2: c.h2_12, body: c.p12, contact: true },
+    ];
+---
+
+<BaseLayout
+  title={`${c.title} | The Brand Crew`}
+  description={c.description}
+  canonicalURL={canonical}
+  lang={lang}
+>
+  <div class="legal-main">
+    <a href={backHref} class="legal-back">{c.backHome}</a>
+
+    <h1 class="legal-title">{c.title}</h1>
+    <p class="legal-updated">{c.updated}</p>
+
+    <div class="glass-card legal-card">
+      {
+        sections.map((s) => (
+          <section class="legal-block">
+            <h2 class="legal-h2">{s.h2}</h2>
+            {s.body && (
+              <p class="legal-p">
+                {s.body}
+                {s.emailSuffix && <> <a href="mailto:hello@thebrandcrew.lat">hello@thebrandcrew.lat</a>.</>}
+              </p>
+            )}
+            {s.list && (
+              <ul class="legal-list">
+                {s.list.map((li) => <li>{li}</li>)}
+              </ul>
+            )}
+            {s.contact && (
+              <p class="legal-p legal-contact">
+                {c.email}: <a href="mailto:hello@thebrandcrew.lat">hello@thebrandcrew.lat</a><br />
+                {c.whatsapp}: <a href={`https://wa.me/${WHATSAPP_NUMBER}`}>+54 9 11 2406-3009</a>
+              </p>
+            )}
+          </section>
+        ))
+      }
+    </div>
+  </div>
+</BaseLayout>

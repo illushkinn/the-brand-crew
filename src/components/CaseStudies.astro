@@ -2,10 +2,65 @@
 // CaseStudies.astro - Case study carousel with navigation
 import type { Lang } from '../i18n/ui';
 import { useTranslations } from '../i18n/ui';
+import Icon from './Icon.astro';
 
 interface Props { lang?: Lang }
 const { lang = 'es' } = Astro.props;
 const t = useTranslations(lang);
+
+const cases = [
+  {
+    key: 'luisito',
+    name: 'Luisito Playa Grande',
+    url: 'https://luisito-playa-grande.vercel.app',
+    logo: { kind: 'img', src: '/assets/logos/luisito.svg', alt: 'Luisito Playa Grande', class: 'invert-dark' },
+    metrics: [
+      { value: t('caseStudies.luisitoMetric1Value'), label: t('caseStudies.luisitoMetric1Label') },
+      { value: t('caseStudies.luisitoMetric2Value'), label: t('caseStudies.luisitoMetric2Label'), rating: true },
+    ],
+  },
+  {
+    key: 'apolonia',
+    name: 'Apolonia',
+    url: 'https://verduleria-apolonia-mar-del-plata.vercel.app',
+    logo: { kind: 'img', src: '/assets/logos/apolonia.svg', alt: 'Apolonia' },
+    metrics: [
+      { value: t('caseStudies.apoloniaMetric1Value'), label: t('caseStudies.apoloniaMetric1Label') },
+      { value: t('caseStudies.apoloniaMetric2Value'), label: t('caseStudies.apoloniaMetric2Label') },
+    ],
+  },
+  {
+    key: 'hoco',
+    name: 'Catálogo Hoco',
+    url: 'https://hococatalog.vercel.app',
+    logo: { kind: 'letter', letter: 'H' },
+    metrics: [
+      { value: t('caseStudies.hocoMetric1Value'), label: t('caseStudies.hocoMetric1Label') },
+      { value: t('caseStudies.hocoMetric2Value'), label: t('caseStudies.hocoMetric2Label') },
+      { value: t('caseStudies.hocoMetric3Value'), label: t('caseStudies.hocoMetric3Label') },
+    ],
+  },
+  {
+    key: 'escolta',
+    name: 'Escolta Miami',
+    url: 'https://escoltamiami.com',
+    logo: { kind: 'img', src: '/assets/logos/escolta-miami.png', alt: 'Escolta Miami', class: 'dark-bg' },
+    metrics: [
+      { value: t('caseStudies.escoltaMetric1Value'), label: t('caseStudies.escoltaMetric1Label') },
+      { value: t('caseStudies.escoltaMetric2Value'), label: t('caseStudies.escoltaMetric2Label') },
+    ],
+  },
+  {
+    key: 'pragma',
+    name: 'Pragma',
+    url: 'https://pragma-gules.vercel.app',
+    logo: { kind: 'img', src: '/assets/logos/pragma.png', alt: 'Pragma', class: 'dark-bg' },
+    metrics: [
+      { value: t('caseStudies.pragmaMetric1Value'), label: t('caseStudies.pragmaMetric1Label') },
+      { value: t('caseStudies.pragmaMetric2Value'), label: t('caseStudies.pragmaMetric2Label') },
+    ],
+  },
+];
 ---
 
 <section class="section resultados reveal-stagger" id="casos" aria-label="Case Studies">
@@ -18,151 +73,53 @@ const t = useTranslations(lang);
     <button class="resultados-arrow" id="resultadosNext" aria-label="Next case">›</button>
   </div>
   <div class="resultados-grid rv">
-
-  <!-- Luisito -->
-  <article class="glass-card resultado-card">
-    <div class="resultado-header">
-      <div class="resultado-avatar"><img src="/assets/logos/luisito.svg" alt="Luisito Playa Grande" class="invert-dark" width="48" height="48"></div>
-      <div class="resultado-info">
-        <span class="mono resultado-tag">{t('caseStudies.luisitoTag')}</span>
-        <h3 class="resultado-nombre">Luisito Playa Grande</h3>
-        <a href="https://luisito-playa-grande.vercel.app" class="resultado-link" target="_blank" rel="noopener" aria-label={`${t('caseStudies.seeCase')}: Luisito Playa Grande`}>
-          {t('caseStudies.seeCase')}
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
-      </div>
-    </div>
-    <div class="resultado-historia">
-      <p>{t('caseStudies.luisitoStory')}</p>
-    </div>
-    <div class="resultado-metricas">
-      <div class="resultado-metrica">
-        <span class="resultado-metrica-valor">{t('caseStudies.luisitoMetric1Value')}</span>
-        <span class="resultado-metrica-label">{t('caseStudies.luisitoMetric1Label')}</span>
-      </div>
-      <div class="resultado-metrica">
-        <span class="resultado-metrica-valor rating-value">{t('caseStudies.luisitoMetric2Value')}<svg class="rating-star" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
-        <span class="resultado-metrica-label">{t('caseStudies.luisitoMetric2Label')}</span>
-      </div>
-    </div>
-  </article>
-
-  <!-- Apolonia -->
-  <article class="glass-card resultado-card">
-    <div class="resultado-header">
-      <div class="resultado-avatar"><img src="/assets/logos/apolonia.svg" alt="Apolonia" width="48" height="48"></div>
-      <div class="resultado-info">
-        <span class="mono resultado-tag">{t('caseStudies.apoloniaTag')}</span>
-        <h3 class="resultado-nombre">Apolonia</h3>
-        <a href="https://verduleria-apolonia-mar-del-plata.vercel.app" class="resultado-link" target="_blank" rel="noopener" aria-label={`${t('caseStudies.seeCase')}: Apolonia`}>
-          {t('caseStudies.seeCase')}
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
-      </div>
-    </div>
-    <div class="resultado-historia">
-      <p>{t('caseStudies.apoloniaStory')}</p>
-    </div>
-    <div class="resultado-metricas">
-      <div class="resultado-metrica">
-        <span class="resultado-metrica-valor">{t('caseStudies.apoloniaMetric1Value')}</span>
-        <span class="resultado-metrica-label">{t('caseStudies.apoloniaMetric1Label')}</span>
-      </div>
-      <div class="resultado-metrica">
-        <span class="resultado-metrica-valor">{t('caseStudies.apoloniaMetric2Value')}</span>
-        <span class="resultado-metrica-label">{t('caseStudies.apoloniaMetric2Label')}</span>
-      </div>
-    </div>
-  </article>
-
-   <!-- Hoco -->
-   <article class="glass-card resultado-card">
-     <div class="resultado-header">
-       <div class="resultado-avatar letter-avatar">H</div>
-       <div class="resultado-info">
-         <span class="mono resultado-tag">{t('caseStudies.hocoTag')}</span>
-         <h3 class="resultado-nombre">Catálogo Hoco</h3>
-          <a href="https://hococatalog.vercel.app" class="resultado-link" target="_blank" rel="noopener" aria-label={`${t('caseStudies.seeCase')}: Catálogo Hoco`}>
-            {t('caseStudies.seeCase')}
-           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-         </a>
-       </div>
-     </div>
-     <div class="resultado-historia">
-       <p>{t('caseStudies.hocoStory')}</p>
-     </div>
-     <div class="resultado-metricas">
-       <div class="resultado-metrica">
-         <span class="resultado-metrica-valor">{t('caseStudies.hocoMetric1Value')}</span>
-         <span class="resultado-metrica-label">{t('caseStudies.hocoMetric1Label')}</span>
-       </div>
-       <div class="resultado-metrica">
-         <span class="resultado-metrica-valor">{t('caseStudies.hocoMetric2Value')}</span>
-         <span class="resultado-metrica-label">{t('caseStudies.hocoMetric2Label')}</span>
-       </div>
-       <div class="resultado-metrica">
-         <span class="resultado-metrica-valor">{t('caseStudies.hocoMetric3Value')}</span>
-         <span class="resultado-metrica-label">{t('caseStudies.hocoMetric3Label')}</span>
-       </div>
-     </div>
-   </article>
-
-   <!-- Escolta Miami -->
-   <article class="glass-card resultado-card">
-     <div class="resultado-header">
-       <div class="resultado-avatar dark-bg"><img src="/assets/logos/escolta-miami.png" alt="Escolta Miami" width="48" height="48"></div>
-       <div class="resultado-info">
-         <span class="mono resultado-tag">{t('caseStudies.escoltaTag')}</span>
-         <h3 class="resultado-nombre">Escolta Miami</h3>
-          <a href="https://escoltamiami.com" class="resultado-link" target="_blank" rel="noopener" aria-label={`${t('caseStudies.seeCase')}: Escolta Miami`}>
-            {t('caseStudies.seeCase')}
-           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-         </a>
-       </div>
-     </div>
-     <div class="resultado-historia">
-       <p>{t('caseStudies.escoltaStory')}</p>
-     </div>
-     <div class="resultado-metricas">
-       <div class="resultado-metrica">
-         <span class="resultado-metrica-valor">{t('caseStudies.escoltaMetric1Value')}</span>
-         <span class="resultado-metrica-label">{t('caseStudies.escoltaMetric1Label')}</span>
-       </div>
-       <div class="resultado-metrica">
-         <span class="resultado-metrica-valor">{t('caseStudies.escoltaMetric2Value')}</span>
-         <span class="resultado-metrica-label">{t('caseStudies.escoltaMetric2Label')}</span>
-       </div>
-     </div>
-   </article>
-
-   <!-- Pragma -->
-  <article class="glass-card resultado-card">
-    <div class="resultado-header">
-      <div class="resultado-avatar dark-bg"><img src="/assets/logos/pragma.png" alt="Pragma" width="48" height="48"></div>
-      <div class="resultado-info">
-        <span class="mono resultado-tag">{t('caseStudies.pragmaTag')}</span>
-        <h3 class="resultado-nombre">Pragma</h3>
-        <a href="https://pragma-gules.vercel.app" class="resultado-link" target="_blank" rel="noopener" aria-label={`${t('caseStudies.seeCase')}: Pragma`}>
-          {t('caseStudies.seeCase')}
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
-      </div>
-    </div>
-    <div class="resultado-historia">
-      <p>{t('caseStudies.pragmaStory')}</p>
-    </div>
-    <div class="resultado-metricas">
-      <div class="resultado-metrica">
-        <span class="resultado-metrica-valor">{t('caseStudies.pragmaMetric1Value')}</span>
-        <span class="resultado-metrica-label">{t('caseStudies.pragmaMetric1Label')}</span>
-      </div>
-      <div class="resultado-metrica">
-        <span class="resultado-metrica-valor">{t('caseStudies.pragmaMetric2Value')}</span>
-        <span class="resultado-metrica-label">{t('caseStudies.pragmaMetric2Label')}</span>
-      </div>
-    </div>
-  </article>
-
+    {
+      cases.map((c) => {
+        const name = c.name;
+        const tag = t(`caseStudies.${c.key}Tag`);
+        const story = t(`caseStudies.${c.key}Story`);
+        const seeCase = t('caseStudies.seeCase');
+        return (
+          <article class="glass-card resultado-card">
+            <div class="resultado-header">
+              <div class={`resultado-avatar${c.logo.kind === 'letter' ? ' letter-avatar' : c.logo.class ? ` ${c.logo.class}` : ''}`}>
+                {c.logo.kind === 'letter' ? (
+                  <>{c.logo.letter}</>
+                ) : (
+                  <img src={c.logo.src} alt={c.logo.alt} class={c.logo.kind === 'img' && c.logo.class === 'invert-dark' ? 'invert-dark' : undefined} width="48" height="48" />
+                )}
+              </div>
+              <div class="resultado-info">
+                <span class="mono resultado-tag">{tag}</span>
+                <h3 class="resultado-nombre">{name}</h3>
+                <a href={c.url} class="resultado-link" target="_blank" rel="noopener" aria-label={`${seeCase}: ${name}`}>
+                  {seeCase}
+                  <Icon name="arrow-external" size={16} strokeWidth={2} />
+                </a>
+              </div>
+            </div>
+            <div class="resultado-historia">
+              <p>{story}</p>
+            </div>
+            <div class="resultado-metricas">
+              {
+                c.metrics.map((m) => (
+                  <div class="resultado-metrica">
+                    <span class={`resultado-metrica-valor${m.rating ? ' rating-value' : ''}`}>
+                      {m.value}
+                      {m.rating && (
+                        <svg class="rating-star" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                      )}
+                    </span>
+                    <span class="resultado-metrica-label">{m.label}</span>
+                  </div>
+                ))
+              }
+            </div>
+          </article>
+        );
+      })
+    }
   </div>
 </section>
 

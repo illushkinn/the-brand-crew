@@ -1,0 +1,32 @@
+---
+// CookieBanner.astro — lightweight cookie consent banner (no libraries)
+// Persists choice in localStorage; rendered on every page via BaseLayout.
+import type { Lang } from '../i18n/ui';
+import { useTranslations } from '../i18n/ui';
+
+interface Props { lang?: Lang }
+const { lang = 'es' } = Astro.props;
+const t = useTranslations(lang);
+const privacyHref = lang === 'es' ? '/privacy' : '/en/privacy';
+---
+
+<div class="cookie-banner" id="cookie-banner" role="region" aria-label="Cookies" aria-describedby="cookie-text">
+  <p class="cookie-banner-text" id="cookie-text">
+    {t('cookieBanner.text')} <a href={privacyHref}>{t('cookieBanner.privacyLink')}</a>.
+  </p>
+  <button class="btn btn-sm btn-premium" id="cookie-accept" type="button">{t('cookieBanner.accept')}</button>
+</div>
+
+<script>
+  const banner = document.getElementById('cookie-banner');
+  const acceptBtn = document.getElementById('cookie-accept');
+
+  if (banner && !localStorage.getItem('tbc-cookie-consent')) {
+    banner.classList.add('visible');
+  }
+
+  acceptBtn?.addEventListener('click', () => {
+    localStorage.setItem('tbc-cookie-consent', 'accepted');
+    banner.classList.remove('visible');
+  });
+</script>

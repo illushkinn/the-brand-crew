@@ -1,0 +1,41 @@
+---
+// GrowthPartnerPage.astro — presentational shell for /pricing/growth-partner (both langs)
+import type { Lang } from '../i18n/ui';
+import { dictionaries } from '../i18n/ui';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PricingKit2 from './PricingKit2.astro';
+import Icon from './Icon.astro';
+import CTA from './CTA.astro';
+import Footer from './Footer.astro';
+import ScrollToTop from './ScrollToTop.astro';
+
+interface Props {
+  lang?: Lang;
+  canonicalURL?: string;
+}
+const { lang = 'es', canonicalURL } = Astro.props;
+const gp = dictionaries[lang].growthPartner;
+const backHref = lang === 'es' ? '/pricing' : '/en/pricing';
+---
+
+<BaseLayout lang={lang} title="Growth Partner — The Brand Crew" description={gp.description} canonicalURL={canonicalURL}>
+  <div class="growth-page-content">
+    <section class="section pricing reveal" id="precios" aria-label="Growth Partner Pricing">
+      <span class="section-label mono text-terracota">{gp.label}</span>
+      <h2 class="section-title" set:html={gp.title}></h2>
+      <p class="pricing-growth-hero-sub" set:html={gp.sub}></p>
+
+      <PricingKit2 lang={lang} />
+
+      <div class="pricing-growth-cta">
+        <a href={backHref} class="btn btn-outline">
+          <Icon name="arrow-left" size={16} strokeWidth={2.5} />
+          {gp.backLink}
+        </a>
+      </div>
+    </section>
+  </div>
+  <CTA lang={lang} />
+  <Footer lang={lang} />
+  <ScrollToTop lang={lang} />
+</BaseLayout>

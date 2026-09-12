@@ -1,35 +1,5 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Hero from '../components/Hero.astro';
-import CaseStudies from '../components/CaseStudies.astro';
-import Problema from '../components/Problema.astro';
-import ComoFunciona from '../components/ComoFunciona.astro';
-import Pricing from '../components/Pricing.astro';
-import FAQ from '../components/FAQ.astro';
-import Blog from '../components/Blog.astro';
-import About from '../components/About.astro';
-import Founders from '../components/Founders.astro';
-import CTA from '../components/CTA.astro';
-import Footer from '../components/Footer.astro';
-import ScrollToTop from '../components/ScrollToTop.astro';
-
-const lang = 'es';
+import HomePage from '../components/HomePage.astro';
 ---
 
-<BaseLayout lang={lang}>
-  <main id="main-content">
-    <Hero lang={lang} />
-    <CaseStudies lang={lang} />
-    <Problema lang={lang} />
-    <ComoFunciona lang={lang} />
-    <Pricing lang={lang} />
-    <FAQ lang={lang} />
-    <Blog lang={lang} />
-    <About lang={lang} />
-    <Founders lang={lang} />
-  </main>
-  <CTA lang={lang} />
-  <div id="lets-start-anchor" style="scroll-margin-top: 40vh;"></div>
-  <Footer lang={lang} />
-  <ScrollToTop lang={lang} />
-</BaseLayout>
+<HomePage lang="es" />
