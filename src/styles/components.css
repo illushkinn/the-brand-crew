@@ -480,7 +480,7 @@
   font-size: 1.15em;
 }
 .current-price {
-  background: linear-gradient(135deg, #cf432c, #a7d91d, #ffffff, #000000);
+  background: linear-gradient(135deg, #cf432c, #ffffff, #000000);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
