@@ -2,19 +2,20 @@
    ORGANISMS — Hero, FAQ, Section Shapes
    ======================================== */
 .hero-splash {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--bg);
-  animation: splashSequence 2.2s cubic-bezier(0.4, 0, 0.2, 1) 0.2s forwards;
-  pointer-events: none;
+  display: none;
 }
-.hero-splash .hero-logo-ring {
-  width: clamp(180px, 25vw, 260px);
-  height: clamp(180px, 25vw, 260px);
+@media (max-width: 767px) {
+  .hero-splash {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg);
+    animation: splashSequence 2.2s cubic-bezier(0.4, 0, 0.2, 1) 0.2s forwards;
+    pointer-events: none;
+  }
 }
 
 @keyframes splashSequence {
@@ -511,8 +512,6 @@
 .hero-actions .btn-premium {
   padding: 0.9rem 1.25rem;
   font-size: clamp(1.2rem, 2.8vw, 1.5rem);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
 }
 .hero-b2b-tags {
   display: flex;

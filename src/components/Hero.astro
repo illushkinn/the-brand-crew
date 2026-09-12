@@ -17,7 +17,7 @@ const ctaLabel = t('hero.cta');
   <div class="hero-splash" aria-hidden="true">
     <div class="hero-logo-ring">
       <div class="hero-isotype">
-        <Logo size={160} ariaLabel="" />
+        <Logo size={280} ariaLabel="" />
       </div>
     </div>
   </div>
@@ -112,7 +112,7 @@ const ctaLabel = t('hero.cta');
       }
     };
 
-    setTimeout(runAnimation, 2400);
+    setTimeout(runAnimation, window.matchMedia('(max-width: 767px)').matches ? 2400 : 0);
   }
 
   document.addEventListener('astro:page-load', initHeroAnimation);
