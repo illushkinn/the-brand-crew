@@ -3,6 +3,7 @@
 import type { Lang } from '../i18n/ui';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from './Hero.astro';
+import Logo from './Logo.astro';
 import CaseStudies from './CaseStudies.astro';
 import Problema from './Problema.astro';
 import ComoFunciona from './ComoFunciona.astro';
@@ -25,6 +26,13 @@ const { lang = 'es', canonicalURL } = Astro.props;
 <BaseLayout lang={lang} canonicalURL={canonicalURL}>
   <div class="home-content">
     <Hero lang={lang} />
+    <section class="hero-showcase" aria-hidden="true">
+      <div class="hero-logo-ring">
+        <div class="hero-isotype">
+          <Logo size={280} ariaLabel="" />
+        </div>
+      </div>
+    </section>
     <CaseStudies lang={lang} />
     <Problema lang={lang} />
     <ComoFunciona lang={lang} />

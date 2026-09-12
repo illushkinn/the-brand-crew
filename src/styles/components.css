@@ -27,6 +27,22 @@
   padding-bottom: 5rem;
 }
 
+.hero-showcase {
+  display: none;
+}
+@media (max-width: 767px) {
+  .hero-showcase {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem 1rem 3rem;
+  }
+  .hero-showcase .hero-logo-ring {
+    width: clamp(200px, 60vw, 300px);
+    height: clamp(200px, 60vw, 300px);
+  }
+}
+
 @supports (backdrop-filter: blur()) {
   .glass-card {
     backdrop-filter: var(--glass-effect);
