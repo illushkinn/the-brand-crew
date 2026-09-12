@@ -14,6 +14,7 @@ const cases = [
     name: 'Luisito Playa Grande',
     url: 'https://luisito-playa-grande.vercel.app',
     logo: { kind: 'img', src: '/assets/logos/luisito.svg', alt: 'Luisito Playa Grande', class: 'invert-dark' },
+    screenshot: '/assets/Luisito.jpg',
     metrics: [
       { value: t('caseStudies.luisitoMetric1Value'), label: t('caseStudies.luisitoMetric1Label') },
       { value: t('caseStudies.luisitoMetric2Value'), label: t('caseStudies.luisitoMetric2Label'), rating: true },
@@ -24,6 +25,7 @@ const cases = [
     name: 'Catálogo Hoco',
     url: 'https://hococatalog.vercel.app',
     logo: { kind: 'letter', letter: 'H' },
+    screenshot: '/assets/Hoco.jpg',
     metrics: [
       { value: t('caseStudies.hocoMetric1Value'), label: t('caseStudies.hocoMetric1Label') },
       { value: t('caseStudies.hocoMetric2Value'), label: t('caseStudies.hocoMetric2Label') },
@@ -35,6 +37,7 @@ const cases = [
     name: 'Escolta Miami',
     url: 'https://escoltamiami.com',
     logo: { kind: 'img', src: '/assets/logos/escolta-miami.png', alt: 'Escolta Miami', class: 'dark-bg' },
+    screenshot: '/assets/Escolta.jpg',
     metrics: [
       { value: t('caseStudies.escoltaMetric1Value'), label: t('caseStudies.escoltaMetric1Label') },
       { value: t('caseStudies.escoltaMetric2Value'), label: t('caseStudies.escoltaMetric2Label') },
@@ -45,6 +48,7 @@ const cases = [
     name: 'Pragma',
     url: 'https://pragma-gules.vercel.app',
     logo: { kind: 'img', src: '/assets/logos/pragma.png', alt: 'Pragma', class: 'dark-bg' },
+    screenshot: null,
     metrics: [
       { value: t('caseStudies.pragmaMetric1Value'), label: t('caseStudies.pragmaMetric1Label') },
       { value: t('caseStudies.pragmaMetric2Value'), label: t('caseStudies.pragmaMetric2Label') },
@@ -91,6 +95,11 @@ const cases = [
             <div class="resultado-historia">
               <p>{story}</p>
             </div>
+            {c.screenshot && (
+              <div class="resultado-screenshot">
+                <img src={c.screenshot} alt={`Screenshot de ${name}`} loading="lazy" width="600" height="338" />
+              </div>
+            )}
             <div class="resultado-metricas">
               {
                 c.metrics.map((m) => (
