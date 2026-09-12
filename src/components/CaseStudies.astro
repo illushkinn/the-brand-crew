@@ -48,7 +48,7 @@ const cases = [
     name: 'Pragma',
     url: 'https://pragma-gules.vercel.app',
     logo: { kind: 'img', src: '/assets/logos/pragma.png', alt: 'Pragma', class: 'dark-bg' },
-    screenshot: null,
+    screenshot: '/assets/Pragma.jpg',
     metrics: [
       { value: t('caseStudies.pragmaMetric1Value'), label: t('caseStudies.pragmaMetric1Label') },
       { value: t('caseStudies.pragmaMetric2Value'), label: t('caseStudies.pragmaMetric2Label') },
@@ -62,63 +62,63 @@ const cases = [
     <span class="section-label mono text-terracota">{t('caseStudies.kicker')}</span>
     <h2 class="section-title text-verde">{t('caseStudies.title1')} <span class="text-accent">{t('caseStudies.title2')}.</span></h2>
   </div>
-  <div class="resultados-nav rv">
-    <button class="resultados-arrow" id="resultadosPrev" aria-label="Previous case">‹</button>
-    <button class="resultados-arrow" id="resultadosNext" aria-label="Next case">›</button>
-  </div>
-  <div class="resultados-grid rv">
-    {
-      cases.map((c) => {
-        const name = c.name;
-        const tag = t(`caseStudies.${c.key}Tag`);
-        const story = t(`caseStudies.${c.key}Story`);
-        const seeCase = t('caseStudies.seeCase');
-        return (
-          <article class="glass-card resultado-card">
-            <div class="resultado-header">
-              <div class={`resultado-avatar${c.logo.kind === 'letter' ? ' letter-avatar' : c.logo.class ? ` ${c.logo.class}` : ''}`}>
-                {c.logo.kind === 'letter' ? (
-                  <>{c.logo.letter}</>
-                ) : (
-                  <img src={c.logo.src} alt={c.logo.alt} class={c.logo.kind === 'img' && c.logo.class === 'invert-dark' ? 'invert-dark' : undefined} width="48" height="48" />
-                )}
+  <div class="resultados-carousel rv">
+    <button class="resultados-arrow resultados-arrow--prev" id="resultadosPrev" aria-label="Previous case">‹</button>
+    <div class="resultados-grid">
+      {
+        cases.map((c) => {
+          const name = c.name;
+          const tag = t(`caseStudies.${c.key}Tag`);
+          const story = t(`caseStudies.${c.key}Story`);
+          const seeCase = t('caseStudies.seeCase');
+          return (
+            <article class="glass-card resultado-card">
+              <div class="resultado-header">
+                <div class={`resultado-avatar${c.logo.kind === 'letter' ? ' letter-avatar' : c.logo.class ? ` ${c.logo.class}` : ''}`}>
+                  {c.logo.kind === 'letter' ? (
+                    <>{c.logo.letter}</>
+                  ) : (
+                    <img src={c.logo.src} alt={c.logo.alt} class={c.logo.kind === 'img' && c.logo.class === 'invert-dark' ? 'invert-dark' : undefined} width="48" height="48" />
+                  )}
+                </div>
+                <div class="resultado-info">
+                  <span class="mono resultado-tag">{tag}</span>
+                  <h3 class="resultado-nombre">{name}</h3>
+                  <a href={c.url} class="resultado-link" target="_blank" rel="noopener" aria-label={`${seeCase}: ${name}`}>
+                    {seeCase}
+                    <Icon name="arrow-external" size={16} strokeWidth={2} />
+                  </a>
+                </div>
               </div>
-              <div class="resultado-info">
-                <span class="mono resultado-tag">{tag}</span>
-                <h3 class="resultado-nombre">{name}</h3>
-                <a href={c.url} class="resultado-link" target="_blank" rel="noopener" aria-label={`${seeCase}: ${name}`}>
-                  {seeCase}
-                  <Icon name="arrow-external" size={16} strokeWidth={2} />
-                </a>
+              <div class="resultado-historia">
+                <p>{story}</p>
               </div>
-            </div>
-            <div class="resultado-historia">
-              <p>{story}</p>
-            </div>
-            {c.screenshot && (
-              <div class="resultado-screenshot">
-                <img src={c.screenshot} alt={`Screenshot de ${name}`} loading="lazy" width="600" height="338" />
+              {c.screenshot && (
+                <div class="resultado-screenshot">
+                  <img src={c.screenshot} alt={`Screenshot de ${name}`} loading="lazy" width="600" height="338" />
+                </div>
+              )}
+              <div class="resultado-metricas">
+                {
+                  c.metrics.map((m) => (
+                    <div class="resultado-metrica">
+                      <span class={`resultado-metrica-valor${m.rating ? ' rating-value' : ''}`}>
+                        {m.value}
+                        {m.rating && (
+                          <svg class="rating-star" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        )}
+                      </span>
+                      <span class="resultado-metrica-label">{m.label}</span>
+                    </div>
+                  ))
+                }
               </div>
-            )}
-            <div class="resultado-metricas">
-              {
-                c.metrics.map((m) => (
-                  <div class="resultado-metrica">
-                    <span class={`resultado-metrica-valor${m.rating ? ' rating-value' : ''}`}>
-                      {m.value}
-                      {m.rating && (
-                        <svg class="rating-star" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                      )}
-                    </span>
-                    <span class="resultado-metrica-label">{m.label}</span>
-                  </div>
-                ))
-              }
-            </div>
-          </article>
-        );
-      })
-    }
+            </article>
+          );
+        })
+      }
+    </div>
+    <button class="resultados-arrow resultados-arrow--next" id="resultadosNext" aria-label="Next case">›</button>
   </div>
 </section>
 
