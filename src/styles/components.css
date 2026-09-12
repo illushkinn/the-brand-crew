@@ -13,6 +13,9 @@
   box-sizing: border-box;
   z-index: 1;
   contain: layout style;
+  background: radial-gradient(ellipse at 50% 40%,
+    oklch(0.2 0.06 165) 0%,
+    transparent 60%);
 }
 .faq {
   position: relative;

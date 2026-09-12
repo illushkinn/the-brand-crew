@@ -69,26 +69,13 @@ const ctaLabel = t('hero.cta');
       return;
     }
 
-    // Hero content landing cascade
-    const logo = document.querySelector('.hero-logo') as HTMLElement;
-    if (logo) {
-      gsap.set(logo, { opacity: 0, y: -60, scale: 0.92 });
-      gsap.to(logo, {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        duration: 0.7,
-        ease: 'back.out(1.4)',
-        delay: 0.1,
-      });
-    }
-
+    // Hero content — text first, then logo
     const contentElements = [
-      { sel: '.hero-title', y: 30, delay: 0.3 },
-      { sel: '.hero-sub', y: 20, delay: 0.5 },
-      { sel: '.hero-meta', y: 15, delay: 0.65 },
-      { sel: '.hero-actions', y: 10, delay: 0.8 },
-      { sel: '.hero-b2b-tags', y: 10, delay: 0.95 },
+      { sel: '.hero-title', y: 30, delay: 0.2 },
+      { sel: '.hero-sub', y: 20, delay: 0.4 },
+      { sel: '.hero-meta', y: 15, delay: 0.55 },
+      { sel: '.hero-actions', y: 10, delay: 0.7 },
+      { sel: '.hero-b2b-tags', y: 10, delay: 0.85 },
     ];
     contentElements.forEach(({ sel, y, delay }) => {
       const el = document.querySelector(sel) as HTMLElement;
@@ -103,6 +90,19 @@ const ctaLabel = t('hero.cta');
         });
       }
     });
+
+    const logo = document.querySelector('.hero-logo') as HTMLElement;
+    if (logo) {
+      gsap.set(logo, { opacity: 0, y: -40, scale: 0.9 });
+      gsap.to(logo, {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.7,
+        ease: 'back.out(1.4)',
+        delay: 1.0,
+      });
+    }
   }
 
   document.addEventListener('astro:page-load', initHeroAnimation);
