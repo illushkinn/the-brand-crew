@@ -1,35 +1,6 @@
 /* ========================================
    ORGANISMS — Hero, FAQ, Section Shapes
    ======================================== */
-.hero-splash {
-  display: none;
-}
-@media (max-width: 767px) {
-  .hero-splash {
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #000;
-    animation: splashSequence 2.2s cubic-bezier(0.4, 0, 0.2, 1) 0.2s forwards;
-    pointer-events: none;
-  }
-}
-body.splash-active .navbar .hamburger,
-body.splash-active .navbar .lang-switcher {
-  opacity: 0;
-  pointer-events: none;
-}
-
-@keyframes splashSequence {
-  0%   { opacity: 0; transform: scale(0.85); }
-  25%  { opacity: 1; transform: scale(1); }
-  70%  { opacity: 1; transform: scale(1); }
-  100% { opacity: 0; transform: scale(1.08); pointer-events: none; }
-}
-
 .hero {
   min-height: 100dvh;
   display: flex;

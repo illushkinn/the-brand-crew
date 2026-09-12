@@ -23,7 +23,6 @@
     transition: none !important;
     animation: none !important;
   }
-  .hero-splash { display: none; }
 }
 .reveal {
   opacity: 0;
