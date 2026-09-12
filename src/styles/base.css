@@ -8,11 +8,14 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: calc(56px + 2rem + env(safe-area-inset-top, 0px));
   background: var(--bg);
-  overflow-x: hidden;
+  overflow-x: clip;
   overscroll-behavior: none;
   scrollbar-width: thin;
   scrollbar-gutter: stable;
   scrollbar-color: var(--terracota) var(--bg);
+}
+body {
+  overflow-x: clip;
 }
 
 @media (prefers-color-scheme: light) {

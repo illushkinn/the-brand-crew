@@ -36,6 +36,7 @@
     align-items: center;
     justify-content: center;
     padding: 2.5rem 1rem 3rem;
+    overflow: hidden;
   }
   .hero-showcase .hero-logo-ring {
     width: clamp(260px, 72vw, 360px);
@@ -482,16 +483,16 @@
 .current-price {
   background: linear-gradient(
     180deg,
-    #f0f0f0 0%,
-    #c8c8c8 35%,
-    #9a9a9a 50%,
-    #c8c8c8 65%,
-    #f0f0f0 100%
+    #fafafa 0%,
+    #e0e0e0 35%,
+    #b8b8b8 50%,
+    #e0e0e0 65%,
+    #fafafa 100%
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.3)) drop-shadow(0 -1px 0 rgba(255, 255, 255, 0.1));
+  filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.3)) drop-shadow(0 -1px 0 rgba(255, 255, 255, 0.15));
   font-weight: 400;
   white-space: nowrap;
 }
@@ -1007,7 +1008,6 @@
 }
 .cta-final h2 {
   margin-bottom: var(--space-md);
-  white-space: nowrap;
 }
 .cta-secondary {
   margin-top: 0.9rem;
