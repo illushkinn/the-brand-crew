@@ -241,6 +241,12 @@
   opacity: 0;
   pointer-events: none;
 }
+.navbar-brand .logo-isotype {
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.96);
+  filter: brightness(0);
+  padding: 0.3rem;
+}
 .lang-switcher {
   display: inline-flex;
   align-items: center;
