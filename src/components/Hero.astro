@@ -14,6 +14,13 @@ const ctaLabel = t('hero.cta');
 ---
 
 <div class="hero-problema-wrap" id="home">
+  <div class="hero-splash" aria-hidden="true">
+    <div class="hero-logo-ring">
+      <div class="hero-isotype">
+        <Logo size={160} ariaLabel="" />
+      </div>
+    </div>
+  </div>
   <section class="hero reveal" id="inicio" aria-label="Hero">
     <div class="hero-split">
       <div class="hero-content">
@@ -69,40 +76,43 @@ const ctaLabel = t('hero.cta');
       return;
     }
 
-    // Hero content — text first, then logo
-    const contentElements = [
-      { sel: '.hero-title', y: 30, delay: 0.2 },
-      { sel: '.hero-sub', y: 20, delay: 0.4 },
-      { sel: '.hero-meta', y: 15, delay: 0.55 },
-      { sel: '.hero-actions', y: 10, delay: 0.7 },
-      { sel: '.hero-b2b-tags', y: 10, delay: 0.85 },
-    ];
-    contentElements.forEach(({ sel, y, delay }) => {
-      const el = document.querySelector(sel) as HTMLElement;
-      if (el) {
-        gsap.set(el, { opacity: 0, y });
-        gsap.to(el, {
+    const runAnimation = () => {
+      const contentElements = [
+        { sel: '.hero-title', y: 30, delay: 0.2 },
+        { sel: '.hero-sub', y: 20, delay: 0.4 },
+        { sel: '.hero-meta', y: 15, delay: 0.55 },
+        { sel: '.hero-actions', y: 10, delay: 0.7 },
+        { sel: '.hero-b2b-tags', y: 10, delay: 0.85 },
+      ];
+      contentElements.forEach(({ sel, y, delay }) => {
+        const el = document.querySelector(sel) as HTMLElement;
+        if (el) {
+          gsap.set(el, { opacity: 0, y });
+          gsap.to(el, {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            ease: 'power3.out',
+            delay,
+          });
+        }
+      });
+
+      const logo = document.querySelector('.hero-logo') as HTMLElement;
+      if (logo) {
+        gsap.set(logo, { opacity: 0, y: -40, scale: 0.9 });
+        gsap.to(logo, {
           opacity: 1,
           y: 0,
-          duration: 0.6,
-          ease: 'power3.out',
-          delay,
+          scale: 1,
+          duration: 0.7,
+          ease: 'back.out(1.4)',
+          delay: 1.0,
         });
       }
-    });
+    };
 
-    const logo = document.querySelector('.hero-logo') as HTMLElement;
-    if (logo) {
-      gsap.set(logo, { opacity: 0, y: -40, scale: 0.9 });
-      gsap.to(logo, {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        duration: 0.7,
-        ease: 'back.out(1.4)',
-        delay: 1.0,
-      });
-    }
+    setTimeout(runAnimation, 2400);
   }
 
   document.addEventListener('astro:page-load', initHeroAnimation);
