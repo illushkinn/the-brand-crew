@@ -50,7 +50,7 @@ export const dictionaries = {
       seeCase: 'Ver caso',
       // Luisito
       luisitoTag: 'Rotisería · Mar del Plata',
-      luisitoStory: 'Pedidos por WhatsApp sin estructura — perdían clientes por demora y falta de menú online. Le armamos un menú digital con carrito de pedidos conectado a WhatsApp, identidad de marca y presencia online.',
+      luisitoStory: 'Pedidos por WhatsApp sin estructura, perdían clientes. Le armamos un menú digital con carrito conectado a WhatsApp.',
       luisitoMetric1Value: 'Menú digital',
       luisitoMetric1Label: 'Pedidos online',
       luisitoMetric2Value: '4.7',
@@ -343,7 +343,7 @@ export const dictionaries = {
       title2: 'build',
       seeCase: 'See case',
       luisitoTag: 'Restaurant · Mar del Plata',
-      luisitoStory: 'Orders via WhatsApp with no structure — losing customers to delays and no online menu. We built a digital menu with ordering connected to WhatsApp, brand identity, and online presence.',
+      luisitoStory: 'Orders via WhatsApp with no structure, losing customers. We built a digital menu with ordering connected to WhatsApp.',
       luisitoMetric1Value: 'Digital Menu',
       luisitoMetric1Label: 'Online orders',
       luisitoMetric2Value: '4.7',
