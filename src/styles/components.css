@@ -716,8 +716,8 @@
   filter: brightness(0) invert(1);
 }
 .resultado-avatar.letter-avatar {
-  background: var(--verde);
-  color: var(--white);
+  background: var(--white);
+  color: #000000;
   font-size: 1.8rem;
   font-family: var(--font-display);
   display: flex;
