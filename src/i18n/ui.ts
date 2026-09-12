@@ -209,7 +209,7 @@ export const dictionaries = {
       kicker: 'Nosotros',
       title1: 'Somos',
       title2: 'The Brand Crew',
-      text: 'Somos un crew de profesionales que arma webs. Sitios que convierten, cargan rápido y se ven genial en el celular. Sin presupuestos locos. Diseño limpio, código limpio y resultados que se miden.',
+      text: 'Somos dos amigos que arma webs. Sitios que convierten, cargan rápido y se ven genial en el celular. Sin presupuestos locos. Diseño limpio, código limpio y resultados que se miden.',
     },
     founders: {
       kicker: 'El crew',
@@ -498,7 +498,7 @@ export const dictionaries = {
       kicker: 'About',
       title1: "We're",
       title2: 'The Brand Crew',
-      text: "We're a crew of professionals who build websites. Sites that convert, load fast, and look great on mobile. No crazy budgets. Clean design, clean code, and results you can measure.",
+      text: "We're two friends who build websites. Sites that convert, load fast, and look great on mobile. No crazy budgets. Clean design, clean code, and results you can measure.",
     },
     founders: {
       kicker: 'The crew',
