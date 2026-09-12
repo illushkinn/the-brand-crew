@@ -480,7 +480,10 @@
   font-size: 1.15em;
 }
 .current-price {
-  color: var(--headline);
+  background: linear-gradient(135deg, #cf432c, #a7d91d, #ffffff, #000000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   font-weight: 400;
   white-space: nowrap;
 }
@@ -492,7 +495,7 @@
   font-size: 0.6em;
   font-weight: 400;
   vertical-align: baseline;
-  opacity: 0.75;
+  opacity: 1;
 }
 .hero-actions {
   display: flex;
