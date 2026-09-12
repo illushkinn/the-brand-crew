@@ -46,8 +46,8 @@
     position: relative;
   }
   .hero-logo-ring {
-    width: clamp(200px, 24vw, 280px);
-    height: clamp(200px, 24vw, 280px);
+    width: clamp(220px, 28vw, 320px);
+    height: clamp(220px, 28vw, 320px);
   }
 
   .hero-isotype {
@@ -219,7 +219,7 @@
     font-size: 1.1rem;
   }
   .hero-meta .price-group:first-child {
-    font-size: 1.4em;
+    font-size: 1.15em;
     flex-direction: row;
     align-items: baseline;
     gap: 0.35rem;

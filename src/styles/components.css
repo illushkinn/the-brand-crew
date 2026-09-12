@@ -450,7 +450,7 @@
   flex-wrap: wrap;
 }
 .hero-meta .price-group:first-child {
-  font-size: 1.4em;
+  font-size: 1.15em;
 }
 .current-price {
   color: var(--headline);
@@ -527,8 +527,8 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  width: clamp(200px, 28vw, 280px);
-  height: clamp(200px, 28vw, 280px);
+  width: clamp(220px, 32vw, 320px);
+  height: clamp(220px, 32vw, 320px);
   margin: 0;
   overflow: visible;
   background: rgba(255, 255, 255, 0.96);
@@ -1361,12 +1361,12 @@
   position: fixed;
   bottom: calc(16px + env(safe-area-inset-bottom));
   left: 16px;
-  max-width: 420px;
+  max-width: 360px;
   z-index: 100;
   display: flex;
   align-items: center;
-  gap: 1rem;
-  padding: 1rem 1.25rem;
+  gap: 0.75rem;
+  padding: 0.6rem 0.9rem;
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-lg);
@@ -1384,12 +1384,18 @@
 }
 .cookie-banner-text {
   margin: 0;
-  font-size: 0.85rem;
-  line-height: 1.5;
+  font-size: 0.78rem;
+  line-height: 1.45;
 }
 .cookie-banner-text a {
   color: var(--terracota);
   text-decoration: underline;
+}
+.btn-sm {
+  font-size: 0.8rem;
+  padding: 0.4rem 0.9rem;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 @media (prefers-reduced-motion: reduce) {
   .cookie-banner {
