@@ -926,6 +926,9 @@
   position: relative;
   overflow: hidden;
 }
+.growth-page-content .section {
+  padding-top: 7rem;
+}
 
 .faq-list {
   max-width: 720px;
