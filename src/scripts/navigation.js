@@ -43,9 +43,6 @@
     mobileMenu.removeAttribute('inert');
     hamburgerBtn.setAttribute('aria-expanded', 'true');
     
-    // Force reflow so the browser sees circle(0%) before transitioning to 150%
-    void mobileMenu.offsetHeight;
-    
     // Trigger the CSS transition to circle(150%)
     mobileMenu.classList.add('is-open');
     navbar.classList.add('is-menu-open');
