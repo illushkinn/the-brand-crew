@@ -38,8 +38,8 @@
     padding: 2.5rem 1rem 3rem;
   }
   .hero-showcase .hero-logo-ring {
-    width: clamp(200px, 60vw, 300px);
-    height: clamp(200px, 60vw, 300px);
+    width: clamp(240px, 68vw, 340px);
+    height: clamp(240px, 68vw, 340px);
   }
 }
 
