@@ -12,20 +12,24 @@
   const mobileLinks = mobileMenu.querySelectorAll('.mobile-link');
 
   /**
-   * Scroll lock on the NEXT frame, decoupled from the clip-path transition.
-   * Toggling overflow in the same frame as the animation caused repaint
-   * flicker on rapid open/close.
+   * Scroll lock via position:fixed — avoids overflow:clip reflow
+   * that caused repaint flicker with content-visibility:auto sections.
    */
+  let scrollY = 0;
   function lockScroll() {
-    requestAnimationFrame(function() {
-      document.documentElement.style.overflow = 'clip';
-    });
+    scrollY = window.scrollY;
+    document.body.style.position = 'fixed';
+    document.body.style.top = '-' + scrollY + 'px';
+    document.body.style.width = '100%';
+    document.body.classList.add('menu-open');
   }
 
   function unlockScroll() {
-    requestAnimationFrame(function() {
-      document.documentElement.style.overflow = '';
-    });
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.width = '';
+    document.body.classList.remove('menu-open');
+    window.scrollTo(0, scrollY);
   }
 
   /**
