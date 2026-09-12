@@ -12,10 +12,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--bg);
+    background: #000;
     animation: splashSequence 2.2s cubic-bezier(0.4, 0, 0.2, 1) 0.2s forwards;
     pointer-events: none;
   }
+}
+body.splash-active .navbar .hamburger,
+body.splash-active .navbar .lang-switcher {
+  opacity: 0;
+  pointer-events: none;
 }
 
 @keyframes splashSequence {

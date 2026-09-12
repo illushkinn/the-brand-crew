@@ -21,7 +21,7 @@ const ctaLabel = t('hero.cta');
       </div>
     </div>
   </div>
-  <section class="hero reveal" id="inicio" aria-label="Hero">
+  <section class="hero" id="inicio" aria-label="Hero">
     <div class="hero-split">
       <div class="hero-content">
         <h1 class="hero-title">
@@ -112,7 +112,12 @@ const ctaLabel = t('hero.cta');
       }
     };
 
-    setTimeout(runAnimation, window.matchMedia('(max-width: 767px)').matches ? 2400 : 0);
+    const isMobile = window.matchMedia('(max-width: 767px)').matches;
+    if (isMobile) {
+      document.body.classList.add('splash-active');
+      setTimeout(function() { document.body.classList.remove('splash-active'); }, 2400);
+    }
+    setTimeout(runAnimation, isMobile ? 2400 : 0);
   }
 
   document.addEventListener('astro:page-load', initHeroAnimation);
