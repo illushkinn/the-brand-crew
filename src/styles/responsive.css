@@ -249,10 +249,6 @@
     transform: none;
     transform-origin: center;
   }
-  .hero-logo-ring {
-    width: 200px;
-    height: 200px;
-  }
 
   .resultados-grid {
     display: flex;
