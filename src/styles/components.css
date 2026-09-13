@@ -39,8 +39,8 @@
     overflow: hidden;
   }
   .hero-showcase .hero-logo-ring {
-    width: clamp(260px, 72vw, 360px);
-    height: clamp(260px, 72vw, 360px);
+    width: clamp(280px, 78vw, 400px);
+    height: clamp(280px, 78vw, 400px);
   }
 }
 
