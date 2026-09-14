@@ -74,24 +74,24 @@ varying vec2 vUv;
 
 void main() {
   vec2 uv = vUv;
-  float t = uTime * 0.06;
+  float t = uTime * 0.04;
 
-  // Base noise — large organic shapes
-  float n1 = snoise(vec3(uv.x * 0.8, uv.y * 0.8, t));
-  // Detail noise — finer grain
-  float n2 = snoise(vec3(uv.x * 1.6, uv.y * 1.6, t * 1.3));
-  float noise = n1 * 0.7 + n2 * 0.3;
+  // Large smooth fog — very low frequency
+  float n1 = snoise(vec3(uv.x * 0.3, uv.y * 0.3, t));
+  // Subtle secondary layer — even larger
+  float n2 = snoise(vec3(uv.x * 0.15 + 3.0, uv.y * 0.15 + 3.0, t * 0.7));
+  float noise = n1 * 0.8 + n2 * 0.2;
 
-  // Green forest tones
+  // Very gentle mapping — minimal contrast
+  float fog = smoothstep(-0.6, 0.6, noise);
+
+  // Green forest tones — closer together for subtlety
   vec3 baseColor    = vec3(0.078, 0.114, 0.106);
-  vec3 highlight1   = vec3(0.122, 0.165, 0.141);
-  vec3 highlight2   = vec3(0.098, 0.133, 0.118);
+  vec3 highlight    = vec3(0.102, 0.141, 0.122);
 
-  float blend = smoothstep(-0.3, 0.3, noise);
-  vec3 color = mix(baseColor, highlight1, blend);
-  color = mix(color, highlight2, smoothstep(0.1, 0.5, noise) * 0.4);
+  vec3 color = mix(baseColor, highlight, fog * 0.5);
 
-  gl_FragColor = vec4(color, 0.4);
+  gl_FragColor = vec4(color, 0.25);
 }
 `;
 
