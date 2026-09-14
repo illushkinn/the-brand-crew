@@ -45,6 +45,10 @@
     order: 0;
     position: relative;
   }
+  .hero-logo-ring {
+    width: 280px;
+    height: 280px;
+  }
 
   .hero-isotype {
     width: 100%;
