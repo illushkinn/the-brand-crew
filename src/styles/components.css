@@ -1471,11 +1471,9 @@
   align-items: center;
   gap: 0.6rem;
   padding: 0.5rem 0.75rem;
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  box-shadow: 0 12px 40px rgb(0 0 0 / 0.25);
-  backdrop-filter: blur(12px);
   opacity: 0;
   transform: translateY(16px);
   pointer-events: none;
@@ -1494,6 +1492,19 @@
 .cookie-banner-text a {
   color: var(--terracota);
   text-decoration: underline;
+}
+.cookie-banner .btn-premium {
+  background: var(--terracota);
+  box-shadow: none;
+  text-shadow: none;
+}
+.cookie-banner .btn-premium::before {
+  background: none;
+}
+.cookie-banner .btn-premium:hover,
+.cookie-banner .btn-premium:active {
+  background: var(--terracota-hover);
+  box-shadow: none;
 }
 .btn-sm {
   font-size: 0.8rem;
