@@ -91,6 +91,15 @@
   outline: 2px solid rgba(255, 255, 255, 0.3);
   outline-offset: 2px;
 }
+.btn-outline {
+  background: transparent;
+  border: 1.5px solid var(--body-dim);
+  color: var(--body-dim);
+}
+.btn-outline:hover {
+  border-color: var(--terracota);
+  color: var(--terracota);
+}
 .btn-lg {
   font-size: clamp(1.15rem, 2.5vw, 1.4rem);
   padding: 1.1rem 2.4rem;
@@ -598,12 +607,6 @@
   filter: brightness(0);
 }
 
-@keyframes diamond-shimmer {
-  /* Sweep lento de derecha a izquierda */
-  0% { background-position: 120% center; }
-  100% { background-position: -120% center; }
-}
-
 .problema {
   position: relative;
   overflow: hidden;
@@ -860,51 +863,6 @@
   backdrop-filter: none;
   border-radius: 0;
   margin: 0;
-}
-.blog-construction {
-  text-align: center;
-  padding: 3rem 2rem;
-  overflow: visible;
-}
-.blog-construction .blog-icon {
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.blog-construction h3 {
-  font-family: var(--font-display);
-  font-size: 1.3rem;
-  margin-bottom: 0.75rem;
-  color: var(--headline);
-}
-.blog-construction p {
-  color: var(--body-dim);
-  font-size: 0.95rem;
-  max-width: 400px;
-  margin: 0 auto;
-  line-height: 1.6;
-}
-.about {
-  margin-top: 3rem;
-}
-.about-card {
-  padding: 2.5rem 2rem;
-}
-.about-text {
-  color: var(--headline);
-  font-size: clamp(1.15rem, 2.5vw, 1.5rem);
-  line-height: 1.4;
-  margin-bottom: 0.35rem;
-  max-width: 720px;
-  text-wrap: pretty;
-}
-.about-text:last-of-type {
-  margin-bottom: 0;
-}
-.about-text strong {
-  color: var(--terracota);
-  font-weight: 600;
 }
 .como-funciona-grid {
   display: grid;
@@ -1163,16 +1121,6 @@
 .hero-problema-wrap {
   position: relative;
 }
-.reveal {
-  opacity: 0;
-  transform: translateY(32px);
-  transition: opacity 0.9s cubic-bezier(0.2, 0, 0, 1),
-              transform 0.9s cubic-bezier(0.2, 0, 0, 1);
-}
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
 
 /* ========================================
    PRICING V2 — kits + cards
@@ -1186,13 +1134,6 @@
   letter-spacing: 0.15em;
   color: var(--terracota);
   margin-bottom: 1.25rem;
-}
-.pricing-subtitle {
-  font-size: 1.1rem;
-  color: var(--body-dim);
-  text-align: center;
-  margin-top: 0.5rem;
-  margin-bottom: 1.5rem;
 }
 .pricing-scarcity {
   display: flex;
@@ -1577,7 +1518,7 @@
 }
 .notfound-code {
   font-size: clamp(4rem, 15vw, 8rem);
-  font-family: var(--font-heading);
+  font-family: var(--font-display);
   line-height: 1;
   margin: 0;
 }

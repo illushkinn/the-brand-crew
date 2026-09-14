@@ -252,8 +252,8 @@
     display: none;
   }
   .hero-logo-ring {
-    width: 320px;
-    height: 320px;
+    width: 300px;
+    height: 300px;
   }
   .hero-isotype {
     transform: none;
@@ -318,10 +318,6 @@
   }
   .hero {
     padding: 2rem 1rem;
-  }
-  .cta-final {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
   }
   .footer-card {
     padding: 1rem 1.5rem 2rem;
