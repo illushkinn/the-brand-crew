@@ -622,7 +622,6 @@
   z-index: 0;
 }
 .problema .section-title {
-  margin-top: 2rem;
   margin-bottom: 1rem;
 }
 .problema-grid {
@@ -848,16 +847,7 @@
   color: var(--body-dim);
   margin-top: 0.15rem;
 }
-.resultados .section-title { margin-bottom: 2.5rem; }
-.section-heading-row {
-  display: flex;
-  align-items: baseline;
-  gap: 1rem;
-  margin-bottom: 2.5rem;
-}
-.section-heading-row .section-title {
-  margin-bottom: 0;
-}
+.resultados .section-title { margin-bottom: 1.5rem; }
 .resultados .resultado-tag,
 .resultados .resultado-historia p,
 .resultados .resultado-historia em,
