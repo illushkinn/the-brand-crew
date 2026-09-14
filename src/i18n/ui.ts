@@ -100,9 +100,9 @@ export const dictionaries = {
       step3Text: 'En una semana tu web está en producción. Incluye onboarding para que la manejes y consultoría para que siga trayendo clientes.',
     },
     pricing: {
-      kicker: 'Precios',
+      kicker: '',
       title1: 'Precios',
-      title2: 'claros',
+      title2: '',
       subtitle: 'Sin letra chica. Sin sorpresas. Elegí el pack que necesitás.',
       // Kit 1 — Diseño web
       kit1Title: 'Diseño web',
@@ -379,9 +379,9 @@ export const dictionaries = {
       step3Text: 'Your site is live in one week. Includes onboarding so you can manage it yourself and consulting to keep bringing in clients.',
     },
     pricing: {
-      kicker: 'Pricing',
-      title1: 'Clear',
-      title2: 'pricing',
+      kicker: '',
+      title1: 'Pricing',
+      title2: '',
       subtitle: 'No fine print. No surprises. Pick the plan that fits.',
       kit1Title: 'Web Design',
       esencialTitle: 'Launch',
