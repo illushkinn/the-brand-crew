@@ -275,7 +275,7 @@
 /* Logo progress ring — scroll indicator */
 .logo-progress-ring {
   position: absolute;
-  inset: -8px;
+  inset: -3px;
   pointer-events: none;
 }
 .logo-progress-ring svg {
@@ -1169,6 +1169,8 @@
 }
 .pricing-back-link {
   display: inline-block;
+  position: relative;
+  z-index: 2;
   font-size: 0.8rem;
   color: var(--body-dim);
   text-decoration: none;

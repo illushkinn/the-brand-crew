@@ -2,6 +2,7 @@
 // Pricing.astro - Pricing section: Kit 1 (Web Design) + link to Growth Partner
 import type { Lang } from '../i18n/ui';
 import { useTranslations } from '../i18n/ui';
+import { DOMAIN } from '../lib/constants';
 import PricingKit1 from './PricingKit1.astro';
 import Icon from './Icon.astro';
 
@@ -12,7 +13,7 @@ interface Props {
 const { lang = 'es', showBackLink = false } = Astro.props;
 const t = useTranslations(lang);
 
-const homeLink = lang === 'es' ? '/' : '/en/';
+const homeLink = lang === 'es' ? `${DOMAIN}/` : `${DOMAIN}/en/`;
 const growthLink = lang === 'es' ? '/pricing/growth-partner' : '/en/pricing/growth-partner';
 ---
 
