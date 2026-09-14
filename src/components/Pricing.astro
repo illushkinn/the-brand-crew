@@ -15,8 +15,21 @@ const growthLink = lang === 'es' ? '/pricing/growth-partner' : '/en/pricing/grow
 <section class="section pricing reveal-stagger" id="precios" aria-label="Pricing">
   <span class="section-label mono text-terracota rv">{t('pricing.kicker')}</span>
   <h2 class="section-title rv">{t('pricing.title1')} <span class="text-verde">{t('pricing.title2')}</span>.</h2>
+  <p class="pricing-subtitle rv">{t('pricing.subtitle')}</p>
+
+  <!-- Scarcity banner -->
+  <div class="pricing-scarcity rv">
+    <Icon name="clock" size={16} strokeWidth={2.5} />
+    <span>{t('pricing.scarcity')}</span>
+  </div>
 
   <div class="rv"><PricingKit1 lang={lang} /></div>
+
+  <!-- Social proof -->
+  <div class="pricing-social-proof rv">
+    <Icon name="check" size={16} strokeWidth={2.5} />
+    <span>{t('pricing.socialProof')}</span>
+  </div>
 
   <!-- Growth Partner CTA -->
   <div class="pricing-growth-cta rv">

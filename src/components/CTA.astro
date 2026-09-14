@@ -1,9 +1,10 @@
 ---
-// CTA.astro - Final call-to-action
+// CTA.astro - Final call-to-action with reciprocity hook
 import type { Lang } from '../i18n/ui';
 import { useTranslations } from '../i18n/ui';
 import { CALENDLY_URL } from '../lib/constants';
 import { getWhatsAppLink } from '../lib/whatsapp';
+import Icon from './Icon.astro';
 
 interface Props { lang?: Lang }
 const { lang = 'es' } = Astro.props;
@@ -14,6 +15,10 @@ const waLink = getWhatsAppLink(lang);
 
 <section class="cta-final reveal" id="contacto" aria-label="Contact">
   <div class="cta-content">
+    <div class="cta-reciprocity rv">
+      <Icon name="check" size={16} strokeWidth={2.5} />
+      <span>{lang === 'es' ? 'Consultoría gratuita de 15 min — sin compromiso' : 'Free 15-min consultation — no commitment'}</span>
+    </div>
     <h2><span class="cta-dale">{t('cta.title1')}</span>{t('cta.title2') && <span class="text-terracota cta-empecemos"> {t('cta.title2')}</span>}.</h2>
     <button type="button" class="btn btn-lg btn-premium cta-btn" data-calendly-url={CALENDLY_URL}>
       {t('cta.schedule')}

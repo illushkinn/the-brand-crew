@@ -1044,6 +1044,26 @@
 .cta-secondary a:hover {
   text-decoration-thickness: 2px;
 }
+.cta-reciprocity {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background: oklch(0.82 0.2 125 / 0.1);
+  border: 1px solid oklch(0.82 0.2 125 / 0.2);
+  border-radius: 100px;
+  margin: 0 auto 1.5rem;
+  max-width: fit-content;
+  font-size: 0.85rem;
+  color: var(--verde);
+  font-weight: 500;
+}
+.cta-reciprocity svg {
+  color: var(--verde);
+  width: 1rem;
+  height: 1rem;
+}
 .footer {
   border-top: none;
   content-visibility: auto;
@@ -1192,6 +1212,70 @@
   letter-spacing: 0.15em;
   color: var(--terracota);
   margin-bottom: 1.25rem;
+}
+.pricing-subtitle {
+  font-size: 1.1rem;
+  color: var(--body-dim);
+  text-align: center;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+.pricing-scarcity {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background: oklch(0.58 0.18 32 / 0.12);
+  border: 1px solid oklch(0.58 0.18 32 / 0.25);
+  border-radius: 100px;
+  margin: 0 auto 2rem;
+  max-width: fit-content;
+  font-size: 0.85rem;
+  color: var(--terracota);
+  font-weight: 500;
+}
+.pricing-scarcity svg {
+  color: var(--terracota);
+  width: 1rem;
+  height: 1rem;
+}
+.pricing-social-proof {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background: oklch(0.82 0.2 125 / 0.1);
+  border: 1px solid oklch(0.82 0.2 125 / 0.2);
+  border-radius: 100px;
+  margin: 1.5rem auto 0;
+  max-width: fit-content;
+  font-size: 0.85rem;
+  color: var(--verde);
+  font-weight: 500;
+}
+.pricing-social-proof svg {
+  color: var(--verde);
+  width: 1rem;
+  height: 1rem;
+}
+.pricing-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background: var(--terracota);
+  color: var(--white);
+  border-radius: 100px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+  width: fit-content;
+}
+.pricing-badge-premium {
+  background: oklch(0.2 0.05 165);
+  border: 1px solid oklch(0.58 0.18 32 / 0.35);
 }
 .pricing-grid {
   display: grid;

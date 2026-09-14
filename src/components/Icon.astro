@@ -2,7 +2,7 @@
 // Icon.astro — single source for inline SVG icons
 // Usage: <Icon name="check" size={16} strokeWidth={2.5} />
 interface Props {
-  name: 'check' | 'arrow-left' | 'arrow-right' | 'arrow-up' | 'arrow-external';
+  name: 'check' | 'arrow-left' | 'arrow-right' | 'arrow-up' | 'arrow-external' | 'clock';
   size?: number;
   strokeWidth?: number;
   class?: string;
@@ -16,6 +16,7 @@ const paths: Record<Props['name'], string> = {
   'arrow-right': '<path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>',
   'arrow-up': '<path d="M12 22V4"/><path d="m5 11 7-7 7 7"/>',
   'arrow-external': '<line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>',
+  'clock': '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>',
 };
 ---
 

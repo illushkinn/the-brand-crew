@@ -1,5 +1,5 @@
 ---
-// PricingKit1.astro — Kit 1: Diseño web (Esencial, Crew, MVP)
+// PricingKit1.astro — Kit 1: Diseño web (Arrancá, Crecé, Escalá)
 import type { Lang } from '../i18n/ui';
 import { useTranslations } from '../i18n/ui';
 import Icon from './Icon.astro';
@@ -10,14 +10,14 @@ const t = useTranslations(lang);
 
 const esencialFeatures = [1, 2, 3, 4, 5, 6, 7].map((i) => t(`pricing.esencialF${i}`));
 const crewFeatures = [1, 2, 3, 4, 5, 6, 7].map((i) => t(`pricing.crewF${i}`));
-const mvpFeatures = [1, 2, 3, 4, 5, 6].map((i) => t(`pricing.mvpF${i}`));
+const mvpFeatures = [1, 2, 3, 4, 5, 6, 7].map((i) => t(`pricing.mvpF${i}`));
 ---
 
 <div class="pricing-kit">
   <h3 class="pricing-kit-title mono">{t('pricing.kit1Title')}</h3>
   <div class="pricing-grid">
 
-     <!-- Esencial -->
+     <!-- Arrancá -->
      <article class="glass-card pricing-card-v2">
        <h3 class="pricing-card-title">{t('pricing.esencialTitle')}</h3>
        <p class="pricing-card-amount">${t('pricing.esencialPrice')} <small class="price-currency">USD</small></p>
@@ -35,8 +35,9 @@ const mvpFeatures = [1, 2, 3, 4, 5, 6].map((i) => t(`pricing.mvpF${i}`));
        </ul>
      </article>
 
-     <!-- Crew — STAR CARD -->
+     <!-- Crecé — STAR CARD -->
      <article class="glass-card pricing-card-v2 is-star">
+       <span class="pricing-badge">{t('pricing.crewBadge')}</span>
        <h3 class="pricing-card-title">{t('pricing.crewTitle')}</h3>
        <p class="pricing-card-amount">${t('pricing.crewPrice')} <small class="price-currency">USD</small></p>
        <p class="pricing-card-sub">{t('pricing.crewSub')}</p>
@@ -53,8 +54,9 @@ const mvpFeatures = [1, 2, 3, 4, 5, 6].map((i) => t(`pricing.mvpF${i}`));
        </ul>
      </article>
 
-     <!-- MVP / E-commerce -->
+     <!-- Escalá / E-commerce -->
      <article class="glass-card pricing-card-v2">
+       <span class="pricing-badge pricing-badge-premium">{t('pricing.mvpBadge')}</span>
        <h3 class="pricing-card-title">{t('pricing.mvpTitle')}</h3>
        <p class="pricing-card-amount">${t('pricing.mvpPrice')} <small class="price-currency">USD</small></p>
        <p class="pricing-card-sub">{t('pricing.mvpSub')}</p>
