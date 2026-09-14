@@ -264,7 +264,7 @@
   }
   .resultados-grid::-webkit-scrollbar { display: none; }
   .resultados-grid .glass-card {
-    flex: 0 0 calc(100vw - 4rem - 0.75rem);
+    flex: 0 0 calc(100vw - 2.5rem - 0.75rem);
     scroll-snap-align: start;
   }
   .resultado-screenshot img {
