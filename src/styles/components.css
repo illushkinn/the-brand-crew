@@ -1095,10 +1095,12 @@
   color: var(--body-dim);
   transition: color 0.2s, border-color 0.2s, background 0.2s;
 }
-.footer-social-link:hover {
-  color: var(--verde);
-  border-color: var(--verde);
-  background: oklch(0.82 0.2 125 / 0.1);
+@media (hover: hover) {
+  .footer-social-link:hover {
+    color: var(--verde);
+    border-color: var(--verde);
+    background: oklch(0.82 0.2 125 / 0.1);
+  }
 }
 
 .scroll-to-top {

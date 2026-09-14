@@ -40,7 +40,7 @@ export const dictionaries = {
       priceFrom: 'Desde',
       priceNote: '2 pagos de',
       cta: 'Contacto',
-      tag: 'Te acompañamos · Aliado white-label',
+      tag: 'Mar del Plata, Arg · Miami, EE.UU. · Aliado white-label',
       seoText: 'Diseño y desarrollo web para comercios en Argentina',
     },
     caseStudies: {
@@ -321,7 +321,7 @@ export const dictionaries = {
       priceFrom: 'From',
       priceNote: '2 payments of',
       cta: 'Contact',
-      tag: 'We partner with you · White-label partner',
+      tag: 'Mar del Plata, Arg · Miami, EE.UU. · White-label partner',
       seoText: 'Web design and development for businesses in Argentina',
     },
     caseStudies: {

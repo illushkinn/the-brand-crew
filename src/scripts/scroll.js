@@ -50,11 +50,20 @@
   // no emitir el callback y el botón queda "sticky" visible en el top.
   // Cerca del tope, SIEMPRE se oculta — sin depender del IO.
   function handleScrollHide() {
-    if ((window.scrollY || window.pageYOffset) < 100) {
+    if ((window.scrollY || window.pageYOffset) < 200) {
       setButtonVisible(false);
     }
   }
   window.addEventListener('scroll', handleScrollHide, { passive: true });
+
+  // scrollend fallback para browsers que lo soportan
+  if ('onscrollend' in window) {
+    window.addEventListener('scrollend', function() {
+      if ((window.scrollY || window.pageYOffset) < 200) {
+        setButtonVisible(false);
+      }
+    });
+  }
 
   // Navbar en todos los casos
   window.addEventListener('scroll', handleNavbar, { passive: true });

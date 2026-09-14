@@ -187,8 +187,8 @@
     padding: 0.55rem;
   }
   .navbar-brand .logo-isotype {
-    width: 84px;
-    height: 84px;
+    width: 72px;
+    height: 72px;
   }
   .section-heading-row {
     flex-direction: column;
@@ -239,7 +239,6 @@
   .tag-b2b {
     font-size: clamp(0.7rem, 2vw, 1rem);
     padding: 0.5rem 1rem;
-    white-space: nowrap;
   }
   .hero-actions {
     margin-top: 2rem;
