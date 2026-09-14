@@ -1135,6 +1135,17 @@
   color: var(--terracota);
   margin-bottom: 1.25rem;
 }
+.pricing-back-link {
+  display: inline-block;
+  font-size: 0.8rem;
+  color: var(--body-dim);
+  text-decoration: none;
+  margin-bottom: 1.5rem;
+  transition: color 0.2s ease;
+}
+.pricing-back-link:hover {
+  color: var(--verde);
+}
 .pricing-scarcity {
   display: flex;
   align-items: center;

@@ -103,6 +103,7 @@ export const dictionaries = {
       kicker: '',
       title1: 'Precios',
       title2: '',
+      backToHome: '← Volver al inicio',
       subtitle: 'Sin letra chica. Sin sorpresas. Elegí el pack que necesitás.',
       // Kit 1 — Diseño web
       kit1Title: 'Diseño web',
@@ -380,6 +381,7 @@ export const dictionaries = {
       kicker: '',
       title1: 'Pricing',
       title2: '',
+      backToHome: '← Back to home',
       subtitle: 'No fine print. No surprises. Pick the plan that fits.',
       kit1Title: 'Web Design',
       esencialTitle: 'Launch',
