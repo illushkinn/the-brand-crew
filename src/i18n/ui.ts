@@ -219,7 +219,7 @@ export const dictionaries = {
     footer: {
       brand: 'The Brand Crew',
       madeBy: 'Hecho por',
-      friends: 'amigos y',
+      friends: 'amigos, agents y café',
       privacy: 'Política de privacidad',
       terms: 'Términos y condiciones',
       backHome: 'Volver al inicio',
@@ -495,7 +495,7 @@ export const dictionaries = {
     footer: {
       brand: 'The Brand Crew',
       madeBy: 'Made by',
-      friends: 'friends and',
+      friends: 'friends, agents and coffee',
       privacy: 'Privacy Policy',
       terms: 'Terms of Service',
       backHome: 'Back to home',
