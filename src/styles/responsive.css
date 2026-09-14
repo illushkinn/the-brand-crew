@@ -280,22 +280,22 @@
   }
   .resultados-grid::-webkit-scrollbar { display: none; }
   .resultados-grid .glass-card {
-    flex: 0 0 calc(100vw - 1.5rem - 0.75rem);
+    flex: 0 0 calc(100vw - 1rem - 0.5rem);
     scroll-snap-align: start;
   }
   .resultado-screenshot img {
     max-height: 120px;
   }
   .resultados-carousel {
-    padding: 0 0.5rem;
+    padding: 0 0.25rem;
   }
   .resultados-arrow {
     width: 36px;
     height: 36px;
     font-size: 1rem;
   }
-  .resultados-arrow--prev { left: -4px; }
-  .resultados-arrow--next { right: -4px; }
+  .resultados-arrow--prev { left: -2px; }
+  .resultados-arrow--next { right: -2px; }
   .section-title {
     margin-bottom: 1rem;
   }
@@ -330,7 +330,7 @@
     padding-bottom: 3rem;
   }
   .footer-card {
-    padding: 1.5rem;
+    padding: 1rem 1.5rem 2rem;
     gap: var(--space-md);
     align-items: center;
     text-align: center;
