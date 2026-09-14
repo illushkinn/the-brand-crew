@@ -143,7 +143,7 @@ export const dictionaries = {
       mvpF7: 'Prioridad en entregas',
       metaTitle: 'Precios — The Brand Crew',
       metaDescription: 'Precios claros para diseño web y growth partner. Desde $295 USD. Factura A incluida.',
-      scarcity: 'Solo tomamos 2 proyectos Premium por mes',
+      scarcity: 'Solo tomamos 3 proyectos por mes',
       socialProof: '3 marcas arrancaron así este mes',
       // Kit 2 — Growth Partner
       kit2Title: 'Growth Partner',
@@ -420,7 +420,7 @@ export const dictionaries = {
       mvpF7: 'Priority delivery',
       metaTitle: 'Pricing — The Brand Crew',
       metaDescription: 'Clear pricing for web design and growth partner. Starting at $295 USD. Invoice included.',
-      scarcity: 'We only take 2 Premium projects per month',
+      scarcity: 'We only take 3 projects per month',
       socialProof: '3 brands launched with us this month',
       kit2Title: 'Growth Partner',
       growthTitle: 'Monthly Growth',

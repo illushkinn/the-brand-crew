@@ -606,8 +606,6 @@
   position: relative;
   overflow: hidden;
   padding-top: 0;
-  content-visibility: auto;
-  contain-intrinsic-size: 0 600px;
 }
 .problema::before {
   content: '';
@@ -653,8 +651,6 @@
 .resultados {
   padding-top: 4rem;
   padding-bottom: 2rem;
-  content-visibility: auto;
-  contain-intrinsic-size: 0 600px;
 }
 .resultados-carousel {
   position: relative;
@@ -868,16 +864,10 @@
   color: var(--white);
 }
 .como-funciona {
-  content-visibility: auto;
-  contain-intrinsic-size: 0 600px;
   background: transparent;
   backdrop-filter: none;
   border-radius: 0;
   margin: 0;
-}
-.blog {
-  content-visibility: auto;
-  contain-intrinsic-size: 0 400px;
 }
 .blog-construction {
   text-align: center;
@@ -947,8 +937,6 @@
 }
 
 .pricing {
-  content-visibility: auto;
-  contain-intrinsic-size: 0 600px;
   position: relative;
   overflow: hidden;
 }
@@ -1013,8 +1001,6 @@
   height: 100svh;
   height: 100dvh;
   display: flex;
-  content-visibility: auto;
-  contain-intrinsic-size: 0 600px;
   flex-direction: column;
   justify-content: flex-end;
   position: relative;
@@ -1045,7 +1031,7 @@
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: 2rem;
+  padding: 2.5rem;
   display: flex;
   flex-direction: column;
   gap: var(--space-lg);
@@ -1054,7 +1040,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-xs);
+  gap: var(--space-sm);
   position: relative;
 }
 .footer p {
@@ -1089,25 +1075,6 @@
   align-items: center;
   color: var(--body-dim);
   opacity: 0.5;
-}
-.footer-reciprocity {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.6rem 1rem;
-  background: oklch(0.82 0.2 125 / 0.1);
-  border: 1px solid oklch(0.82 0.2 125 / 0.2);
-  border-radius: 100px;
-  font-size: 0.8rem;
-  color: var(--verde);
-  font-weight: 500;
-  margin-bottom: 0.5rem;
-}
-.footer-reciprocity svg {
-  color: var(--verde);
-  width: 0.9rem;
-  height: 0.9rem;
 }
 .footer-social {
   display: flex;
@@ -1423,18 +1390,11 @@
   padding: 1.75rem;
   position: relative;
   border-color: var(--fa-soft);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  transition: border-color 0.3s ease;
 }
 .founder-card.accent-terracota {
   --fa-strong: oklch(0.62 0.18 32 / 0.55);
   --fa-soft: oklch(0.62 0.18 32 / 0.16);
-}
-@media (hover: hover) {
-  .founder-card:hover {
-    transform: translateY(-3px);
-    border-color: var(--fa-strong);
-    box-shadow: 0 14px 34px -14px oklch(0 0 0 / 0.55), 0 0 0 1px var(--fa-soft);
-  }
 }
 .founder-index {
   position: absolute;
@@ -1509,10 +1469,6 @@
   border-radius: var(--radius-full);
   padding: 0.2rem 0.7rem;
   transition: border-color 0.3s ease, color 0.3s ease;
-}
-.founder-card:hover .founder-skills li {
-  border-color: var(--fa-strong);
-  color: var(--headline);
 }
 
 /* ========================================
@@ -1648,19 +1604,5 @@
   .btn-premium::after {
     corner-shape: inherit;
   }
-}
-
-/* ========================================
-   MOBILE MENU — disable content-visibility when open
-   Prevents repaint flicker caused by backdrop-filter + content-visibility:auto
-   ======================================== */
-body.menu-open .problema,
-body.menu-open .resultados,
-body.menu-open .como-funciona,
-body.menu-open .pricing,
-body.menu-open .faq-list,
-body.menu-open .blog,
-body.menu-open .cta-final {
-  content-visibility: visible;
 }
 

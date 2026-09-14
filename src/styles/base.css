@@ -104,8 +104,6 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
 .text-accent { color: var(--terracota); }
 .section {
   padding: 4rem clamp(1.25rem, 5vw, 4rem);
-  content-visibility: auto;
-  contain-intrinsic-size: auto 600px;
 }
 .section-label {
   font-family: 'JetBrains Mono', monospace;
