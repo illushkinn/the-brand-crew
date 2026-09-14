@@ -17,17 +17,17 @@ const ctaLabel = t('hero.cta');
   <section class="hero" id="inicio" aria-label="Hero">
     <div class="hero-split">
       <div class="hero-content">
-        <h1 class="hero-title">
+        <h1 class="hero-title hero-anim" style="--hero-delay: 0.2s">
           <span class="hero-phrase">{t('hero.headline2')}</span>
           <span class="hero-phrase">{t('hero.headline3')}</span>
         </h1>
-        <p class="hero-sub" set:html={t('hero.sub')}></p>
-        <p class="hero-meta">
+        <p class="hero-sub hero-anim" style="--hero-delay: 0.4s" set:html={t('hero.sub')}></p>
+        <p class="hero-meta hero-anim" style="--hero-delay: 0.55s">
           <span class="price-group">
             <span class="current-price"><span class="price-from">{t('hero.priceFrom')}</span>&nbsp;${t('pricing.esencialPrice')}&nbsp;<small class="price-currency">USD</small></span>
           </span>
         </p>
-        <div class="hero-actions">
+        <div class="hero-actions hero-anim" style="--hero-delay: 0.7s">
           <a
             href={waLink}
             target="_blank"
@@ -37,12 +37,12 @@ const ctaLabel = t('hero.cta');
             {ctaLabel}
           </a>
         </div>
-        <p class="hero-b2b-tags">
+        <p class="hero-b2b-tags hero-anim" style="--hero-delay: 0.85s">
           <span class="tag-b2b tag-outline">{t('hero.tag')}</span>
         </p>
       </div>
 
-       <div class="hero-logo">
+       <div class="hero-logo hero-anim-logo" style="--hero-delay: 1.0s">
          <div class="hero-logo-ring">
            <div class="hero-isotype">
              <Logo size={280} ariaLabel="The Brand Crew" />
@@ -53,57 +53,36 @@ const ctaLabel = t('hero.cta');
   </section>
 </div>
 
-<script>
-  import { gsap } from 'gsap';
-
-  function initHeroAnimation() {
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    if (prefersReducedMotion) {
-      const logo = document.querySelector('.hero-logo');
-      if (logo) gsap.set(logo, { opacity: 1 });
-      ['.hero-title', '.hero-sub', '.hero-meta', '.hero-actions', '.hero-b2b-tags'].forEach(sel => {
-        const el = document.querySelector(sel);
-        if (el) gsap.set(el, { opacity: 1 });
-      });
-      return;
-    }
-
-    const contentElements = [
-      { sel: '.hero-title', y: 30, delay: 0.2 },
-      { sel: '.hero-sub', y: 20, delay: 0.4 },
-      { sel: '.hero-meta', y: 15, delay: 0.55 },
-      { sel: '.hero-actions', y: 10, delay: 0.7 },
-      { sel: '.hero-b2b-tags', y: 10, delay: 0.85 },
-    ];
-    contentElements.forEach(({ sel, y, delay }) => {
-      const el = document.querySelector(sel) as HTMLElement;
-      if (el) {
-        gsap.set(el, { opacity: 0, y });
-        gsap.to(el, {
-          opacity: 1,
-          y: 0,
-          duration: 0.6,
-          ease: 'power3.out',
-          delay,
-        });
-      }
-    });
-
-    const logo = document.querySelector('.hero-logo') as HTMLElement;
-    if (logo) {
-      gsap.set(logo, { opacity: 0, y: -40, scale: 0.9 });
-      gsap.to(logo, {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        duration: 0.7,
-        ease: 'back.out(1.4)',
-        delay: 1.0,
-      });
+<style>
+  .hero-anim {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: hero-fade-up 0.6s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+    animation-delay: var(--hero-delay, 0s);
+  }
+  .hero-anim-logo {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.92);
+    animation: hero-logo-in 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    animation-delay: var(--hero-delay, 1s);
+  }
+  @keyframes hero-fade-up {
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
-
-  document.addEventListener('astro:page-load', initHeroAnimation);
-  initHeroAnimation();
-</script>
+  @keyframes hero-logo-in {
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-anim, .hero-anim-logo {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>

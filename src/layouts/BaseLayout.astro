@@ -200,7 +200,6 @@ const altLang: Lang = lang === 'es' ? 'en' : 'es';
   </style>
 </head>
 <body>
-  <canvas id="bg-canvas" aria-hidden="true"></canvas>
   <a href="#main-content" class="skip-link">{lang === 'es' ? 'Ir al contenido' : 'Skip to main content'}</a>
   <Navbar lang={lang} />
   <MobileMenu lang={lang} />
@@ -210,7 +209,6 @@ const altLang: Lang = lang === 'es' ? 'en' : 'es';
   <script src="../scripts/navigation.js"></script>
   <script src="../scripts/scroll.js"></script>
   <script src="../scripts/reveal.js"></script>
-  <script type="module" src="/scripts/bg-shader.js"></script>
   <CookieBanner lang={lang} />
 </body>
 </html>
