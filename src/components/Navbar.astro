@@ -14,6 +14,12 @@ const isHome = lang === 'es' ? '/' : '/en/';
 <header>
   <nav class="navbar" role="navigation" aria-label="Main navigation">
     <a href={isHome} class="navbar-brand" aria-label="The Brand Crew — home">
+      <span class="logo-progress-ring" aria-hidden="true">
+        <svg viewBox="0 0 80 80">
+          <circle class="ring-bg" cx="40" cy="40" r="38" />
+          <circle class="ring-fill" cx="40" cy="40" r="38" />
+        </svg>
+      </span>
       <Logo size={72} ariaLabel="The Brand Crew" />
     </a>
     <div class="nav-links">

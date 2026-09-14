@@ -1,10 +1,21 @@
-// scroll.js - Navbar background and scroll-to-top visibility
+// scroll.js - Navbar background, scroll-to-top visibility, logo progress ring
 (function() {
   'use strict';
 
   const scrollToTop = document.getElementById('scrollToTop');
   const navbar = document.querySelector('.navbar');
   const hero = document.getElementById('inicio');
+  const ringFill = document.querySelector('.ring-fill');
+  const CIRCUMFERENCE = 238.76; // 2 * π * 38
+
+  // --- Logo progress ring ---
+  function updateRing() {
+    if (!ringFill) return;
+    var scrollTop = window.scrollY || window.pageYOffset;
+    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    var progress = docHeight > 0 ? Math.min(scrollTop / docHeight, 1) : 0;
+    ringFill.style.strokeDashoffset = CIRCUMFERENCE * (1 - progress);
+  }
 
   // --- Navbar background threshold (siempre por scroll) ---
   function handleNavbar() {
@@ -67,5 +78,7 @@
 
   // Navbar en todos los casos
   window.addEventListener('scroll', handleNavbar, { passive: true });
+  window.addEventListener('scroll', updateRing, { passive: true });
   handleNavbar();
+  updateRing();
 })();
