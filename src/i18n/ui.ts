@@ -206,7 +206,7 @@ export const dictionaries = {
       illyaBio: 'Desarrollo web, growth, estrategia.',
       illyaSkills: ['Frontend', 'UI/UX', 'Estrategia'],
       carlosRole: 'Co-fundador & Diseñador',
-      carlosBio: 'Branding, logos, naming, brandbook, diseño gráfico, community management y contenido para Instagram.',
+      carlosBio: 'Diseño gráfico, community management y contenido para Instagram.',
       carlosSkills: ['Branding', 'Diseño gráfico', 'Community Management'],
     },
     cta: {
@@ -482,7 +482,7 @@ export const dictionaries = {
       illyaBio: 'Web development, growth, strategy.',
       illyaSkills: ['Frontend', 'UI/UX', 'Strategy'],
       carlosRole: 'Co-founder & Designer',
-      carlosBio: 'Branding, logos, naming, brandbook, graphic design, community management & Instagram content.',
+      carlosBio: 'Graphic design, community management & Instagram content.',
       carlosSkills: ['Branding', 'Graphic Design', 'Community Management'],
     },
     cta: {
