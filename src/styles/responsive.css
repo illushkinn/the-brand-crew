@@ -280,20 +280,22 @@
   }
   .resultados-grid::-webkit-scrollbar { display: none; }
   .resultados-grid .glass-card {
-    flex: 0 0 calc(100vw - 2.5rem - 0.75rem);
+    flex: 0 0 calc(100vw - 1.5rem - 0.75rem);
     scroll-snap-align: start;
   }
   .resultado-screenshot img {
-    max-height: 140px;
+    max-height: 120px;
   }
   .resultados-carousel {
-    padding: 0 2rem;
+    padding: 0 0.5rem;
   }
   .resultados-arrow {
     width: 36px;
     height: 36px;
     font-size: 1rem;
   }
+  .resultados-arrow--prev { left: -4px; }
+  .resultados-arrow--next { right: -4px; }
   .section-title {
     margin-bottom: 1rem;
   }
