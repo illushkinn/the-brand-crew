@@ -192,7 +192,7 @@
 }
 .navbar.scrolled {
   background: var(--bg);
-  border-bottom: 1px solid oklch(0.82 0.2 125 / 0.3);
+  border-bottom: 1px solid oklch(1 0 0 / 0.15);
 }
 /* Desktop nav links — hidden on mobile, visible ≥900px */
 .nav-links {
@@ -257,7 +257,7 @@
 .navbar-brand .logo-wrap {
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.96);
-  padding: 0.2rem;
+  padding: 0.1rem;
   display: inline-flex;
 }
 .navbar-brand .logo-isotype {

@@ -257,8 +257,8 @@
     display: none;
   }
   .hero-logo-ring {
-    width: 280px;
-    height: 280px;
+    width: 320px;
+    height: 320px;
   }
   .hero-isotype {
     transform: none;
@@ -342,9 +342,9 @@
   .cta-final {
     justify-content: flex-end;
     padding: 0 var(--space-lg);
-    padding-top: 10vh;
-    padding-bottom: calc(2.5rem + env(safe-area-inset-bottom, 0px));
-    min-height: 70vh;
+    padding-top: 4vh;
+    padding-bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px));
+    min-height: 50vh;
   }
   .cta-final .cta-content {
     flex: 1;
