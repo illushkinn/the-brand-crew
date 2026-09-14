@@ -5,15 +5,18 @@ import { useTranslations } from '../i18n/ui';
 import PricingKit1 from './PricingKit1.astro';
 import Icon from './Icon.astro';
 
-interface Props { lang?: Lang }
-const { lang = 'es' } = Astro.props;
+interface Props {
+  lang?: Lang;
+  showBackLink?: boolean;
+}
+const { lang = 'es', showBackLink = false } = Astro.props;
 const t = useTranslations(lang);
 
 const growthLink = lang === 'es' ? '/pricing/growth-partner' : '/en/pricing/growth-partner';
 ---
 
 <section class="section pricing reveal-stagger" id="precios" aria-label="Pricing">
-  <a href="/" class="pricing-back-link rv">{t('pricing.backToHome')}</a>
+  {showBackLink && <a href="/" class="pricing-back-link rv">{t('pricing.backToHome')}</a>}
   <h2 class="section-title rv">{t('pricing.title1')}.</h2>
 
   <!-- Scarcity banner -->

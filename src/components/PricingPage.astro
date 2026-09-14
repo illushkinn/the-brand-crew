@@ -18,7 +18,7 @@ const p = dictionaries[lang].pricing;
 
 <BaseLayout lang={lang} title={p.metaTitle} description={p.metaDescription} canonicalURL={canonicalURL}>
   <div class="pricing-page-content">
-    <Pricing lang={lang} />
+    <Pricing lang={lang} showBackLink={true} />
   </div>
   <CTA lang={lang} />
   <Footer lang={lang} />
