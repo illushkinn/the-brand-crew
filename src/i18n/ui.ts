@@ -131,7 +131,6 @@ export const dictionaries = {
       crewF7: 'Hosting incluido 1° año',
       mvpTitle: 'Escalá',
       mvpPrice: '1.295',
-      mvpBadge: 'Premium',
       mvpSub: 'Ecosistema completo, sin límites.',
       mvpDesc: 'E-commerce con template premium, integraciones, chatbot WhatsApp. Para marcas que buscan una solución 360° lista para escalar.',
       mvpF1: 'E-commerce con template premium',
@@ -207,7 +206,7 @@ export const dictionaries = {
       illyaSkills: ['Frontend', 'UI/UX', 'Estrategia'],
       carlosRole: 'Co-fundador & Diseñador',
       carlosBio: 'Branding, logos, naming, brandbook, diseño gráfico, community management y contenido para Instagram.',
-      carlosSkills: ['Branding', 'Logos', 'Naming', 'Diseño gráfico', 'Community Management'],
+      carlosSkills: ['Branding', 'Diseño gráfico', 'Community Management'],
     },
     cta: {
       title1: 'Arranquemos',
@@ -408,7 +407,6 @@ export const dictionaries = {
       crewF7: '1st year hosting included',
       mvpTitle: 'Scale',
       mvpPrice: '1,295',
-      mvpBadge: 'Premium',
       mvpSub: 'Complete ecosystem, no limits.',
       mvpDesc: 'E-commerce with premium template, integrations, WhatsApp chatbot. For brands looking for a 360° solution ready to scale.',
       mvpF1: 'E-commerce with premium template',
@@ -483,7 +481,7 @@ export const dictionaries = {
       illyaSkills: ['Frontend', 'UI/UX', 'Strategy'],
       carlosRole: 'Co-founder & Designer',
       carlosBio: 'Branding, logos, naming, brandbook, graphic design, community management & Instagram content.',
-      carlosSkills: ['Branding', 'Logos', 'Naming', 'Graphic Design', 'Community Management'],
+      carlosSkills: ['Branding', 'Graphic Design', 'Community Management'],
     },
     cta: {
       title1: "Let's get started",

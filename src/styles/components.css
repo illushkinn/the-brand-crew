@@ -1345,6 +1345,7 @@
   height: 56px;
   flex-shrink: 0;
   border-radius: var(--radius-md);
+  corner-shape: squircle;
   background: var(--terracota);
   color: var(--white);
   font-family: var(--font-display);
@@ -1354,7 +1355,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  box-shadow: 0 0 0 2px var(--fa-strong), 0 4px 16px -4px var(--fa-strong);
+  border: 2px solid var(--fa-strong);
 }
 .founder-avatar.img-avatar {
   background: transparent;
@@ -1365,6 +1366,7 @@
   height: 100%;
   object-fit: cover;
   border-radius: var(--radius-md);
+  corner-shape: squircle;
 }
 .founder-info {
   flex: 1;
