@@ -45,31 +45,6 @@ body {
   min-width: 0;
   touch-action: manipulation;
 }
-/* Fixed decorative mesh layer — a real fixed element with a POSITIVE z-index.
-   (body::before with z-index:-1 scrolls with the page on some mobile engines:
-   any stacking context eats it. This layer never moves.) */
-.bg-grid {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  filter: blur(0.5px);
-  background-image:
-    repeating-linear-gradient(
-      0deg,
-      rgba(255, 255, 255, 0.12) 0px,
-      rgba(255, 255, 255, 0.12) 1px,
-      transparent 1px,
-      transparent 120px
-    ),
-    repeating-linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.12) 0px,
-      rgba(255, 255, 255, 0.12) 1px,
-      transparent 1px,
-      transparent 120px
-    );
-}
 /* Content sits above the grid layer */
 .page-content {
   position: relative;
