@@ -184,11 +184,11 @@
     padding-right: 0;
   }
   .navbar-brand {
-    padding: 0.55rem;
+    padding: 0.8rem 0.55rem;
   }
   .navbar-brand .logo-isotype {
-    width: 72px;
-    height: 72px;
+    width: 68px;
+    height: 68px;
   }
   .lang-switcher {
     margin-right: 0.75rem;

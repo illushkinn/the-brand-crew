@@ -12,11 +12,12 @@ interface Props {
 const { lang = 'es', showBackLink = false } = Astro.props;
 const t = useTranslations(lang);
 
+const homeLink = lang === 'es' ? '/' : '/en/';
 const growthLink = lang === 'es' ? '/pricing/growth-partner' : '/en/pricing/growth-partner';
 ---
 
 <section class="section pricing reveal-stagger" id="precios" aria-label="Pricing">
-  {showBackLink && <a href="/" class="pricing-back-link rv">{t('pricing.backToHome')}</a>}
+  {showBackLink && <a href={homeLink} class="pricing-back-link">{t('pricing.backToHome')}</a>}
   <h2 class="section-title rv">{t('pricing.title1')}.</h2>
 
   <!-- Scarcity banner -->
