@@ -6,11 +6,13 @@ import { useTranslations, dictionaries } from '../i18n/ui';
 interface Props { lang?: Lang }
 const { lang = 'es' } = Astro.props;
 const t = useTranslations(lang);
-const skills = dictionaries[lang].founders;
+const skills = dictionaries[lang].team;
 ---
 
-<section class="section founders reveal-stagger" id="crew" aria-label="The crew">
-  <h2 class="section-title rv">{t('founders.title1')} <span class="text-accent">{t('founders.title2')}</span>.</h2>
+<section class="section founders reveal-stagger" id="crew" aria-label="Team">
+  <span class="section-label mono text-terracota rv">{t('team.kicker')}</span>
+  <h2 class="section-title rv">{t('team.title1')} <span class="text-accent">{t('team.title2')}</span>.</h2>
+  <p class="founders-text rv">{t('team.text')}</p>
   <div class="founders-grid">
 
     <article class="glass-card founder-card rv">
@@ -19,9 +21,9 @@ const skills = dictionaries[lang].founders;
         <img src="/assets/profile-11.png" alt="Illya Grytsyk" width="56" height="56" loading="lazy" />
       </div>
       <div class="founder-info">
-        <span class="mono founder-role">{t('founders.illyaRole')}</span>
+        <span class="mono founder-role">{t('team.illyaRole')}</span>
         <h3 class="founder-name">Illya Grytsyk</h3>
-        <p class="founder-bio">{t('founders.illyaBio')}</p>
+        <p class="founder-bio">{t('team.illyaBio')}</p>
         <ul class="founder-skills">
           {skills.illyaSkills.map((skill: string) => <li>{skill}</li>)}
         </ul>
@@ -34,9 +36,9 @@ const skills = dictionaries[lang].founders;
         C
       </div>
       <div class="founder-info">
-        <span class="mono founder-role">{t('founders.carlosRole')}</span>
+        <span class="mono founder-role">{t('team.carlosRole')}</span>
         <h3 class="founder-name">Carlos Segovia Gonzalez</h3>
-        <p class="founder-bio">{t('founders.carlosBio')}</p>
+        <p class="founder-bio">{t('team.carlosBio')}</p>
         <ul class="founder-skills">
           {skills.carlosSkills.map((skill: string) => <li>{skill}</li>)}
         </ul>
