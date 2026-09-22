@@ -1502,8 +1502,9 @@
 @media (max-width: 768px) {
   .cookie-banner {
     left: 12px;
-    right: 12px;
-    max-width: none;
+    right: auto;
+    max-width: calc(100vw - 24px);
+    width: fit-content;
     flex-direction: column;
     align-items: flex-start;
     text-align: left;
