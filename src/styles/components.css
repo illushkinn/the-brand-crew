@@ -1440,8 +1440,21 @@
   margin-bottom: 0.5rem;
 }
 /* ========================================
-   COOKIE BANNER
+   COOKIE BANNER + OVERLAY
    ======================================== */
+.cookie-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  background: rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+.cookie-overlay.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
 .cookie-banner {
   position: fixed;
   bottom: calc(10px + env(safe-area-inset-bottom));
@@ -1452,9 +1465,11 @@
   align-items: center;
   gap: 0.6rem;
   padding: 0.5rem 0.75rem;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
   border-radius: var(--radius-lg);
+  backdrop-filter: blur(12px) saturate(120%);
+  -webkit-backdrop-filter: blur(12px) saturate(120%);
   opacity: 0;
   transform: translateY(16px);
   pointer-events: none;
@@ -1495,6 +1510,7 @@
   min-width: fit-content;
 }
 @media (prefers-reduced-motion: reduce) {
+  .cookie-overlay,
   .cookie-banner {
     transition: none;
     transform: none;
