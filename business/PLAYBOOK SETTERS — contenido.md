@@ -48,7 +48,7 @@ El 80% de los negocios pequeños tiene:
 
 ---
 
-## SLIDE 5: Los 3 Kits — Arrancá ($295 USD)
+## SLIDE 5: Los 3 Kits — Arrancá ($300 USD)
 
 **Ideal para:** negocios que recién arrancan online
 
@@ -66,7 +66,7 @@ El 80% de los negocios pequeños tiene:
 
 ---
 
-## SLIDE 6: Los 3 Kits — Crecé ($695 USD)
+## SLIDE 6: Los 3 Kits — Crecé ($700 USD)
 
 **Ideal para:** negocios existentes que quieren verse profesionales
 
@@ -86,7 +86,7 @@ El 80% de los negocios pequeños tiene:
 
 ---
 
-## SLIDE 7: Los 3 Kits — Escalá ($1.295 USD)
+## SLIDE 7: Los 3 Kits — Escalá ($1.500 USD)
 
 **Ideal para:** marcas que quieren vender online en serio
 
@@ -126,7 +126,7 @@ El 80% de los negocios pequeños tiene:
 | Contenido | Pack inicial (1-30-90 días) | Nuevo cada mes |
 | Soporte | 30 días | Continuo |
 | Rediseño | No | Sí, mensual |
-| Precio | $295-$1.295 | A partir de $300/mes |
+| Precio | $300-$1.500 | A partir de $250/mes |
 
 **Regla:** El kit es el punto de partida. Growth es para quien quiere seguir creciendo.
 

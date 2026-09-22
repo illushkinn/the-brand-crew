@@ -8,14 +8,14 @@
 
 ## Estructura propuesta
 
-### Tier 1 — Kits ($295 / $695 / $1.295)
+### Tier 1 — Kits ($300 / $700 / $1.500)
 **Comisión:** 10% del valor del ticket cerrado
 
 | Kit | Precio | Comisión del setter |
 |-----|--------|---------------------|
-| Arrancá | $295 USD | $29.50 USD |
-| Crecé | $695 USD | $69.50 USD |
-| Escalá | $1.295 USD | $129.50 USD |
+| Arrancá | $300 USD | $30 USD |
+| Crecé | $700 USD | $70 USD |
+| Escalá | $1.500 USD | $150 USD |
 
 **Razonamiento:** Kits son el entry point. El setter cierra rápido, el margen de TBC es alto en estos tiers (el deliverable está estandarizado). 10% es generoso pero justificable porque el LTV potencial ( upgrade a Growth Partner) es alto.
 
@@ -35,7 +35,7 @@
 
 | Retainer mensual | Comisión del setter (1er mes) |
 |------------------|-------------------------------|
-| $300/mes | $30 |
+| $250/mes | $25 |
 | $500/mes | $50 |
 | $1.000/mes | $100 |
 
