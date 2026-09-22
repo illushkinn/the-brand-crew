@@ -22,7 +22,6 @@ export const hreflangMap: Record<Lang, string> = {
 export const dictionaries = {
   es: {
     nav: {
-      services: 'Problema',
       howItWorks: 'Solución',
       cases: 'Casos',
       caseStudies: 'Casos',
@@ -79,14 +78,6 @@ export const dictionaries = {
       escoltaMetric2Value: 'Miami, FL',
       escoltaMetric2Label: 'Estados Unidos',
     },
-      problema: {
-        kicker: 'El problema que encontramos',
-        title1: 'Cada día perdés',
-        title2: 'clientes que te buscaban',
-        card1Title: 'Te googlean y no aparecés',
-        card2Title: 'Entraron y se fueron',
-        card3Title: 'Les gustó pero no compraron',
-      },
     comoFunciona: {
       kicker: 'Solución',
       title1: 'Tres pasos.',
@@ -303,7 +294,6 @@ export const dictionaries = {
 
   en: {
     nav: {
-      services: 'Problem',
       howItWorks: 'Solution',
       cases: 'Cases',
       caseStudies: 'Work',
@@ -357,14 +347,6 @@ export const dictionaries = {
       escoltaMetric2Value: 'Miami, FL',
       escoltaMetric2Label: 'United States',
     },
-      problema: {
-        kicker: 'The problem we found',
-        title1: 'Every day you\'re losing',
-        title2: 'customers who were looking for you',
-        card1Title: "They Google you and you're nowhere",
-        card2Title: 'They visited and left',
-        card3Title: 'They loved it but didn\'t buy',
-      },
     comoFunciona: {
       kicker: 'Solution',
       title1: 'Three steps.',
