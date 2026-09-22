@@ -169,8 +169,8 @@ export const dictionaries = {
       backHome: 'Volver al inicio',
     },
     cookieBanner: {
-      text: 'Usamos cookies para analizar el tráfico y mejorar tu experiencia. Más info en nuestra',
-      privacyLink: 'política de privacidad',
+      text: 'Cookies para mejorar tu experiencia.',
+      privacyLink: 'Política de privacidad',
       accept: 'Entendido',
     },
     faq: {
@@ -435,7 +435,7 @@ export const dictionaries = {
       backHome: 'Go back home',
     },
     cookieBanner: {
-      text: 'We use cookies to analyze traffic and improve your experience. Read more in our',
+      text: 'Cookies for a better experience.',
       privacyLink: 'Privacy Policy',
       accept: 'Got it',
     },

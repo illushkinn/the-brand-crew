@@ -10,6 +10,7 @@ const t = useTranslations(lang);
 const privacyHref = lang === 'es' ? '/privacy' : '/en/privacy';
 ---
 
+<div class="cookie-overlay" id="cookie-overlay" aria-hidden="true"></div>
 <div class="cookie-banner" id="cookie-banner" role="region" aria-label="Cookies" aria-describedby="cookie-text">
   <p class="cookie-banner-text" id="cookie-text">
     {t('cookieBanner.text')} <a href={privacyHref}>{t('cookieBanner.privacyLink')}</a>.
@@ -19,14 +20,17 @@ const privacyHref = lang === 'es' ? '/privacy' : '/en/privacy';
 
 <script>
   const banner = document.getElementById('cookie-banner');
+  const overlay = document.getElementById('cookie-overlay');
   const acceptBtn = document.getElementById('cookie-accept');
 
-  if (banner && !localStorage.getItem('tbc-cookie-consent')) {
+  if (banner && overlay && !localStorage.getItem('tbc-cookie-consent')) {
     banner.classList.add('visible');
+    overlay.classList.add('visible');
   }
 
   acceptBtn?.addEventListener('click', () => {
     localStorage.setItem('tbc-cookie-consent', 'accepted');
     banner.classList.remove('visible');
+    overlay.classList.remove('visible');
   });
 </script>
