@@ -1484,10 +1484,24 @@
   margin: 0;
   font-size: 0.78rem;
   line-height: 1.45;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
 }
 .cookie-banner-text a {
   color: var(--terracota);
   text-decoration: underline;
+}
+.cookie-privacy-link {
+  font-size: 0.65rem;
+  color: var(--body-dim);
+  text-decoration: none;
+  opacity: 0.7;
+  transition: color 0.2s, opacity 0.2s;
+}
+.cookie-privacy-link:hover {
+  color: var(--terracota);
+  opacity: 1;
 }
 .cookie-banner .btn-premium {
   background: var(--terracota);
