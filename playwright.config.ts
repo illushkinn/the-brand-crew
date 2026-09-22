@@ -15,9 +15,9 @@ export default defineConfig({
     screenshot: 'only-on-failure',
   },
   webServer: {
-    command: 'npx serve . -p 8080 --no-clipboard',
+    command: 'pnpm dev --port 8080',
     url: 'http://localhost:8080',
     reuseExistingServer: !process.env.CI,
-    timeout: 10000,
+    timeout: 30000,
   },
 });

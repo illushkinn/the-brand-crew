@@ -275,7 +275,7 @@
 /* Logo progress ring — scroll indicator */
 .logo-progress-ring {
   position: absolute;
-  inset: -3px;
+  inset: -2px;
   pointer-events: none;
 }
 .logo-progress-ring svg {
@@ -925,6 +925,9 @@
 .growth-page-content .section {
   padding-top: 7rem;
 }
+.pricing-page-content .section {
+  padding-top: 7.25rem;
+}
 
 .faq-list {
   max-width: 720px;
@@ -1220,17 +1223,44 @@
   width: 1rem;
   height: 1rem;
 }
+.pricing-fullservice {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-full);
+  margin: 0 auto 1.5rem;
+  max-width: 44rem;
+  font-size: 0.9rem;
+  color: var(--headline);
+  text-align: center;
+}
+.pricing-fullservice svg {
+  color: var(--terracota);
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}
 .pricing-badge {
-  display: inline-block;
-  padding: 0.25rem 0.75rem;
-  background: var(--terracota);
-  color: var(--white);
-  border-radius: 100px;
-  font-size: 0.75rem;
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.55rem;
+  background: oklch(0.2 0.05 165 / 0.72);
+  color: var(--terracota);
+  border: 1px solid oklch(0.58 0.18 32 / 0.45);
+  border-radius: 999px;
+  font-size: 0.65rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 0.5rem;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  white-space: nowrap;
   width: fit-content;
 }
 .pricing-badge-premium {
