@@ -1465,7 +1465,7 @@
   align-items: center;
   gap: 0.6rem;
   padding: 0.5rem 0.75rem;
-  background: var(--glass-bg);
+  background: rgba(255, 255, 255, 0.10);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-lg);
   backdrop-filter: blur(12px) saturate(120%);
