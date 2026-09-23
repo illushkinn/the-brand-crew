@@ -30,7 +30,7 @@
 
 **Razonamiento:** High-ticket = ciclo de venta largo, más involved. La comisión es menor en % pero mayor en $. El setter no entrega el proyecto — solo abre la puerta. El valor está en el relationship, no en el follow-through.
 
-### Tier 3 — Retainer / Growth Partner
+### Tier 3 — Retainer / Growth Partner ($250 / $500 / $1.000)
 **Comisión:** 10% del primer mes del retainer
 
 | Retainer mensual | Comisión del setter (1er mes) |
@@ -40,6 +40,12 @@
 | $1.000/mes | $100 |
 
 **Razonamiento:** El primer mes es el que necesita "sell". Después el relationship lo mantiene TBC. 10% del primer mes premia el cierre sin crear dependencia de por vida.
+
+**Market context (Argentina 2026):**
+- Mantenimiento web puro: $150-250 USD/mes (agencia)
+- Redes/community management: $300-700 USD/mes
+- Agencia integral: $800-5.000 USD/mes
+- **TBC Growth Partner ($250):** arriba del commodity (mantenimiento solo), abajo de agencias de redes. Encaja con cliente que ya invirtió $300-1.500 en la web y quiere que siga funcionando + contenido + soporte.
 
 ### [DECISIÓN] — Base fija mensual
 **Opción A (recomendada):** Sin base fija. 100% commission-only.

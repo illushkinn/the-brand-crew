@@ -13,7 +13,7 @@
 | **Edad** | 28-40 años |
 | **Ubicación** | Buenos Aires (Palermo, Puerto Madero), Córdoba, Rosario. También founders remotos en LatAm |
 | **Empresa** | Startup con 3-30 empleados, facturando $500K-$5M USD anuales o con funding reciente |
-| **Presupuesto** | $295-$5,000 para proyecto puntual; $500-$2,000/mes para retainer de Growth Partner |
+| **Presupuesto** | $300-$5,000 para proyecto puntual; $250-$2,000/mes para retainer de Growth Partner |
 | **Dolor principal** | "Necesito que nuestra web y branding se vean tan serios como nuestro producto, pero no tengo $50K para una agencia grande" |
 
 ### Persona Secundaria: "El Head de Marketing/ Growth"
