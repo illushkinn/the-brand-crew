@@ -140,7 +140,7 @@ export const dictionaries = {
       // Kit 2 — Growth Partner
       kit2Title: 'Growth Partner',
       growthTitle: 'Growth Mensual',
-      growthPriceRange: '150–250',
+      growthPriceRange: '250–500',
       growthSub: 'Rediseño + más conversiones, mes a mes',
       growthF1: 'Rediseño continuo',
       growthF2: 'Más visibilidad + contenido',
@@ -162,7 +162,7 @@ export const dictionaries = {
       title: 'Tu equipo de <span class="text-verde">crecimiento</span>.',
       sub: 'Acompañamiento mes a mes para negocios que necesitan evolucionar todo el tiempo. No es una web y listo — es un partner que trabaja con vos cada mes.',
       backLink: 'Volver a Diseño Web',
-      description: 'Growth partner mensual: rediseño continuo, más visibilidad, contenido para redes y automatizaciones. Desde $150 USD/mes.',
+      description: 'Growth partner mensual: rediseño continuo, más visibilidad, contenido para redes y automatizaciones. Desde $250 USD/mes.',
     },
     notFound: {
       message: 'Esta página no existe',
@@ -406,7 +406,7 @@ export const dictionaries = {
       socialProof: '3 brands launched with us this month',
       kit2Title: 'Growth Partner',
       growthTitle: 'Monthly Growth',
-      growthPriceRange: '150–250',
+      growthPriceRange: '250–500',
       growthSub: 'Ongoing redesign + more conversions, month over month',
       growthF1: 'Ongoing redesign',
       growthF2: 'More visibility + content',
@@ -428,7 +428,7 @@ export const dictionaries = {
       title: 'Your <span class="text-verde">growth</span> team.',
       sub: 'Month-by-month support for businesses that need to keep evolving. It\'s not a one-and-done website — it\'s a partner that works with you every month.',
       backLink: 'Back to Web Design',
-      description: 'Monthly growth partner: ongoing redesign, more visibility, social content and automations. Starting at $150 USD/mo.',
+      description: 'Monthly growth partner: ongoing redesign, more visibility, social content and automations. Starting at $250 USD/mo.',
     },
     notFound: {
       message: "This page doesn't exist",
