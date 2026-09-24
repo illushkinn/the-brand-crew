@@ -1129,26 +1129,6 @@
   width: 1rem;
   height: 1rem;
 }
-.pricing-social-proof {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.25rem;
-  background: oklch(0.82 0.2 125 / 0.1);
-  border: 1px solid oklch(0.82 0.2 125 / 0.2);
-  border-radius: 100px;
-  margin: 1.5rem auto 0;
-  max-width: fit-content;
-  font-size: 0.85rem;
-  color: var(--verde);
-  font-weight: 500;
-}
-.pricing-social-proof svg {
-  color: var(--verde);
-  width: 1rem;
-  height: 1rem;
-}
 .pricing-fullservice {
   display: flex;
   align-items: center;
