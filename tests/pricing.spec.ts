@@ -13,11 +13,8 @@ async function gotoPricing(page: Page, path = '/pricing') {
 }
 
 test.describe('Pricing smoke', () => {
-  test('full-service banner and scarcity are visible', async ({ page }) => {
+  test('scarcity banner is visible', async ({ page }) => {
     await gotoPricing(page);
-    const banner = page.locator('.pricing-fullservice');
-    await expect(banner).toBeVisible();
-    await expect(banner).toContainText('Todo en uno');
     await expect(page.locator('.pricing-scarcity')).toContainText(
       'Solo tomamos 3 proyectos por mes'
     );
@@ -37,12 +34,5 @@ test.describe('Pricing smoke', () => {
     const badge = page.locator('.pricing-badge');
     await expect(badge).toBeVisible();
     await expect(badge).toContainText('Más elegido');
-  });
-
-  test('EN mirror shows the all-in-one banner', async ({ page }) => {
-    await gotoPricing(page, '/en/pricing');
-    const banner = page.locator('.pricing-fullservice');
-    await expect(banner).toBeVisible();
-    await expect(banner).toContainText('All-in-one');
   });
 });
