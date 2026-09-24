@@ -67,7 +67,6 @@ const cases = [
         cases.map((c) => {
           const name = c.name;
           const tag = t(`caseStudies.${c.key}Tag`);
-          const story = t(`caseStudies.${c.key}Story`);
           const seeCase = t('caseStudies.seeCase');
           return (
             <article class="glass-card resultado-card">
@@ -87,9 +86,6 @@ const cases = [
                     <Icon name="arrow-external" size={16} strokeWidth={2} />
                   </a>
                 </div>
-              </div>
-              <div class="resultado-historia">
-                <p>{story}</p>
               </div>
               {c.screenshot && (
                 <div class="resultado-screenshot">
