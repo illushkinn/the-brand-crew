@@ -131,7 +131,6 @@ export const dictionaries = {
       metaDescription: 'Precios claros: web, marca, contenido y growth. Desde $300 USD. Factura A incluida.',
       scarcity: 'Solo tomamos 3 proyectos por mes (para hacerlos bien).',
       fullServiceBanner: 'Todo en uno: web, marca, contenido y growth. Un dev senior y un diseñador trabajando juntos para vos.',
-      socialProof: '3 marcas arrancaron así este mes',
       // Kit 2 — Growth Partner
       kit2Title: 'Growth Partner',
       growthTitle: 'Growth Mensual',
@@ -390,7 +389,6 @@ export const dictionaries = {
       metaDescription: 'Clear pricing: web, brand, content and growth. From $300 USD. Invoice included.',
       scarcity: 'We only take 3 projects a month (so we nail them).',
       fullServiceBanner: 'All-in-one: web, brand, content and growth. A senior dev and a designer working together for you.',
-      socialProof: '3 brands launched with us this month',
       kit2Title: 'Growth Partner',
       growthTitle: 'Monthly Growth',
       growthPriceRange: '250–500',
