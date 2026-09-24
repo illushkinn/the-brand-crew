@@ -30,7 +30,7 @@ test.describe('Mobile Orientation Handling', () => {
     const heroTitle = page.locator('.hero-title');
     await expect(heroTitle).toBeVisible();
     
-    const heroCTA = page.locator('.hero .btn-empecemos').first();
+    const heroCTA = page.locator('.hero .btn-premium').first();
     await expect(heroCTA).toBeVisible();
   });
 
@@ -39,7 +39,7 @@ test.describe('Mobile Orientation Handling', () => {
     await page.setViewportSize({ width: 667, height: 375 });
     await page.waitForTimeout(100);
     
-    const hamburger = page.locator('.hamburger-btn');
+    const hamburger = page.locator('#hamburgerBtn');
     const mobileMenu = page.locator('#mobileMenu');
 
     // Open menu

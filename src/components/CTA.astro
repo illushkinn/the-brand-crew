@@ -45,7 +45,7 @@ const waLink = getWhatsAppLink(lang);
       s.src = 'https://assets.calendly.com/assets/external/widget.js';
       s.async = true;
       s.onload = function () {
-        window.Calendly.initPopupWidget({ url });
+        window.Calendly?.initPopupWidget({ url });
       };
       document.body.appendChild(s);
     });

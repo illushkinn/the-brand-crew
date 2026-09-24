@@ -64,7 +64,7 @@ test.describe('Accessibility', () => {
   });
 
   test('navbar has correct ARIA attributes', async ({ page }) => {
-    const hamburger = page.locator('.hamburger-btn');
+    const hamburger = page.locator('#hamburgerBtn');
     await expect(hamburger).toHaveAttribute('aria-label');
     await expect(hamburger).toHaveAttribute('aria-expanded');
     await expect(hamburger).toHaveAttribute('aria-controls', 'mobileMenu');
@@ -73,23 +73,24 @@ test.describe('Accessibility', () => {
   test('mobile menu links close menu on click', async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 812 });
     await page.waitForTimeout(100);
-    const hamburger = page.locator('.hamburger-btn');
+    const hamburger = page.locator('#hamburgerBtn');
     const mobileMenu = page.locator('#mobileMenu');
 
     // Open menu
     await hamburger.click({ force: true });
     await expect(mobileMenu).toHaveClass(/is-open/);
+    // Wait for clip-path open animation so links are hit-testable
+    await page.waitForTimeout(700);
 
     // Click first link in mobile menu
     const firstLink = mobileMenu.locator('a').first();
-    const href = await firstLink.getAttribute('href');
     await firstLink.click({ force: true });
 
-    // Menu should close and scroll to section
+    // Menu should close
     await expect(mobileMenu).not.toHaveClass(/is-open/);
   });
 
-  test('focus-visible is visible on all interactive elements', async ({ page, browserName }) => {
+  test('focus-visible is visible on all interactive elements', async ({ page }) => {
     // Get all interactive elements
     const interactives = await page.evaluate(() => {
       const selectors = 'a, button, [tabindex]:not([tabindex="-1"])';
@@ -101,7 +102,7 @@ test.describe('Accessibility', () => {
         .map(el => ({
           tag: el.tagName.toLowerCase(),
           text: el.textContent?.trim().slice(0, 40) || el.getAttribute('aria-label') || '',
-          visible: el.offsetParent !== null
+          visible: (el as HTMLElement).offsetParent !== null
         }));
     });
 
@@ -162,7 +163,7 @@ test.describe('Accessibility', () => {
   test('aria-expanded toggles correctly on hamburger menu', async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 812 });
     await page.waitForTimeout(100);
-    const hamburger = page.locator('.hamburger-btn');
+    const hamburger = page.locator('#hamburgerBtn');
 
     // Initially collapsed
     await expect(hamburger).toHaveAttribute('aria-expanded', 'false');

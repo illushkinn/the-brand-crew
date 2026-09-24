@@ -9,9 +9,9 @@ const { lang = 'es' } = Astro.props;
 const t = useTranslations(lang);
 
 const socialLinks = [
-  { name: 'Instagram', url: 'https://www.instagram.com/the.brand.crew/', icon: 'instagram' },
-  { name: 'Facebook', url: 'https://www.facebook.com/profile.php?id=61594039034101', icon: 'facebook' },
-  { name: 'X', url: 'https://x.com/thebrandcrew_', icon: 'x' },
+  { name: 'Instagram', url: 'https://www.instagram.com/the.brand.crew/', icon: 'instagram' as const },
+  { name: 'Facebook', url: 'https://www.facebook.com/profile.php?id=61594039034101', icon: 'facebook' as const },
+  { name: 'X', url: 'https://x.com/thebrandcrew_', icon: 'x' as const },
 ];
 ---
 

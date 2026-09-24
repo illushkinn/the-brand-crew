@@ -11,7 +11,7 @@ interface Props {
   lang: Lang;
 }
 const { kind, lang } = Astro.props;
-const c = dictionaries[lang][kind];
+const dict = dictionaries[lang];
 const isES = lang === 'es';
 const canonical = `${DOMAIN}${isES ? '' : '/en'}/${kind}`;
 const backHref = isES ? '/' : '/en/';
@@ -19,29 +19,31 @@ const backHref = isES ? '/' : '/en/';
 type Section = { h2: string; body?: string; list?: string[]; emailSuffix?: boolean; contact?: boolean };
 const sections: Section[] = kind === 'privacy'
   ? [
-      { h2: c.h2_1, body: c.p1 },
-      { h2: c.h2_2, list: [c.li2_1, c.li2_2, c.li2_3] },
-      { h2: c.h2_3, body: c.p3 },
-      { h2: c.h2_4, body: c.p4 },
-      { h2: c.h2_5, body: c.p5 },
-      { h2: c.h2_6, body: c.p6, emailSuffix: true },
-      { h2: c.h2_7, body: c.p7 },
-      { h2: c.h2_8, body: c.p8, contact: true },
+      { h2: dict.privacy.h2_1, body: dict.privacy.p1 },
+      { h2: dict.privacy.h2_2, list: [dict.privacy.li2_1, dict.privacy.li2_2, dict.privacy.li2_3] },
+      { h2: dict.privacy.h2_3, body: dict.privacy.p3 },
+      { h2: dict.privacy.h2_4, body: dict.privacy.p4 },
+      { h2: dict.privacy.h2_5, body: dict.privacy.p5 },
+      { h2: dict.privacy.h2_6, body: dict.privacy.p6, emailSuffix: true },
+      { h2: dict.privacy.h2_7, body: dict.privacy.p7 },
+      { h2: dict.privacy.h2_8, body: dict.privacy.p8, contact: true },
     ]
   : [
-      { h2: c.h2_1, body: c.p1 },
-      { h2: c.h2_2, body: c.p2 },
-      { h2: c.h2_3, list: [c.li3_1, c.li3_2, c.li3_3, c.li3_4] },
-      { h2: c.h2_4, body: c.p4 },
-      { h2: c.h2_5, body: c.p5 },
-      { h2: c.h2_6, body: c.p6 },
-      { h2: c.h2_7, list: [c.li7_1, c.li7_2, c.li7_3] },
-      { h2: c.h2_8, body: c.p8 },
-      { h2: c.h2_9, body: c.p9 },
-      { h2: c.h2_10, body: c.p10 },
-      { h2: c.h2_11, body: c.p11 },
-      { h2: c.h2_12, body: c.p12, contact: true },
+      { h2: dict.terms.h2_1, body: dict.terms.p1 },
+      { h2: dict.terms.h2_2, body: dict.terms.p2 },
+      { h2: dict.terms.h2_3, list: [dict.terms.li3_1, dict.terms.li3_2, dict.terms.li3_3, dict.terms.li3_4] },
+      { h2: dict.terms.h2_4, body: dict.terms.p4 },
+      { h2: dict.terms.h2_5, body: dict.terms.p5 },
+      { h2: dict.terms.h2_6, body: dict.terms.p6 },
+      { h2: dict.terms.h2_7, list: [dict.terms.li7_1, dict.terms.li7_2, dict.terms.li7_3] },
+      { h2: dict.terms.h2_8, body: dict.terms.p8 },
+      { h2: dict.terms.h2_9, body: dict.terms.p9 },
+      { h2: dict.terms.h2_10, body: dict.terms.p10 },
+      { h2: dict.terms.h2_11, body: dict.terms.p11 },
+      { h2: dict.terms.h2_12, body: dict.terms.p12, contact: true },
     ];
+
+const c = kind === 'privacy' ? dict.privacy : dict.terms;
 ---
 
 <BaseLayout

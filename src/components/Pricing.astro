@@ -9,9 +9,11 @@ import Icon from './Icon.astro';
 interface Props {
   lang?: Lang;
   showBackLink?: boolean;
+  heading?: 'h1' | 'h2';
 }
-const { lang = 'es', showBackLink = false } = Astro.props;
+const { lang = 'es', showBackLink = false, heading = 'h2' } = Astro.props;
 const t = useTranslations(lang);
+const titleHeading = heading;
 
 const homeLink = lang === 'es' ? `${DOMAIN}/` : `${DOMAIN}/en/`;
 const growthLink = lang === 'es' ? '/pricing/growth-partner' : '/en/pricing/growth-partner';
@@ -19,7 +21,11 @@ const growthLink = lang === 'es' ? '/pricing/growth-partner' : '/en/pricing/grow
 
 <section class="section pricing reveal-stagger" id="precios" aria-label="Pricing">
   {showBackLink && <a href={homeLink} class="pricing-back-link">{t('pricing.backToHome')}</a>}
-  <h2 class="section-title rv">{t('pricing.title1')}.</h2>
+  {titleHeading === 'h1' ? (
+    <h1 class="section-title rv">{t('pricing.title1')}.</h1>
+  ) : (
+    <h2 class="section-title rv">{t('pricing.title1')}.</h2>
+  )}
 
   <!-- Scarcity banner -->
   <div class="pricing-scarcity rv">
@@ -29,7 +35,7 @@ const growthLink = lang === 'es' ? '/pricing/growth-partner' : '/en/pricing/grow
 
   <div class="pricing-fullservice rv"><Icon name="check" size={16} strokeWidth={2.5} /><span>{t('pricing.fullServiceBanner')}</span></div>
 
-  <div class="rv"><PricingKit1 lang={lang} /></div>
+  <div class="rv"><PricingKit1 lang={lang} titleHeading={titleHeading === 'h1' ? 'h2' : 'h3'} /></div>
 
   <!-- Social proof -->
   <div class="pricing-social-proof rv">

@@ -30,6 +30,7 @@ const pricing = dictionaries[lang].pricing;
 const businessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
+  "@id": `${DOMAIN}/#business`,
   "name": "The Brand Crew",
   "description": seo.businessDescription,
   "url": DOMAIN,
@@ -114,6 +115,7 @@ const faqSchema = {
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
+  "@id": `${DOMAIN}/#website`,
   "name": "The Brand Crew",
   "url": DOMAIN,
   "description": seo.websiteDescription,
@@ -123,8 +125,6 @@ const websiteSchema = {
     "query-input": "required name=search_term_string"
   }
 };
-
-const altLang: Lang = lang === 'es' ? 'en' : 'es';
 ---
 
 <!DOCTYPE html>

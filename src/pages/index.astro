@@ -1,5 +1,6 @@
 ---
 import HomePage from '../components/HomePage.astro';
+import { DOMAIN } from '../lib/constants';
 ---
 
-<HomePage lang="es" />
+<HomePage lang="es" canonicalURL={`${DOMAIN}/`} />

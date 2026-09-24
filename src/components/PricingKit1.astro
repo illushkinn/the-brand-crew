@@ -4,8 +4,11 @@ import type { Lang } from '../i18n/ui';
 import { useTranslations } from '../i18n/ui';
 import Icon from './Icon.astro';
 
-interface Props { lang?: Lang }
-const { lang = 'es' } = Astro.props;
+interface Props {
+  lang?: Lang;
+  titleHeading?: 'h2' | 'h3';
+}
+const { lang = 'es', titleHeading = 'h3' } = Astro.props;
 const t = useTranslations(lang);
 
 const esencialFeatures = [1, 2, 3, 4, 5, 6, 7].map((i) => t(`pricing.esencialF${i}`));
@@ -14,7 +17,11 @@ const mvpFeatures = [1, 2, 3, 4, 5, 6, 7].map((i) => t(`pricing.mvpF${i}`));
 ---
 
 <div class="pricing-kit">
-  <h3 class="pricing-kit-title mono">{t('pricing.kit1Title')}</h3>
+  {titleHeading === 'h2' ? (
+    <h2 class="pricing-kit-title mono">{t('pricing.kit1Title')}</h2>
+  ) : (
+    <h3 class="pricing-kit-title mono">{t('pricing.kit1Title')}</h3>
+  )}
   <div class="pricing-grid">
 
      <!-- Arrancá -->

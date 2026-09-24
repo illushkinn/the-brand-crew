@@ -21,7 +21,7 @@ test.describe('Navigation', () => {
   test('mobile menu toggles on hamburger click', async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 812 });
     await page.waitForTimeout(100);
-    const hamburger = page.locator('.hamburger-btn');
+    const hamburger = page.locator('#hamburgerBtn');
     const mobileMenu = page.locator('#mobileMenu');
 
     await expect(mobileMenu).not.toHaveClass(/is-open/);
@@ -32,13 +32,13 @@ test.describe('Navigation', () => {
   });
 
   test('nav links have correct hrefs', async ({ page }) => {
-    const links = page.locator('#navLinks a');
+    const links = page.locator('.nav-links a');
     const hrefs = await links.evaluateAll((els) =>
       els.map((el) => el.getAttribute('href'))
     );
-    expect(hrefs).toContain('#casos');
-    expect(hrefs).toContain('#precios');
-    expect(hrefs).toContain('#faq');
-    expect(hrefs).toContain('#contacto');
+    expect(hrefs).toContain('/#casos');
+    expect(hrefs).toContain('/pricing');
+    expect(hrefs).toContain('/#faq');
+    expect(hrefs).toContain('/#contacto');
   });
 });
