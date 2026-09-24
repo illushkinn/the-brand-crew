@@ -147,7 +147,7 @@ export const dictionaries = {
       autoF3: 'Automatización de procesos',
       autoF4: 'Ideal para revender vía socios',
       cta: 'Hablemos de tu proyecto',
-      growthCtaLink: 'Ver Growth Partner',
+      growthCtaLink: 'Ver Growth Partner kit',
     },
     growthPartner: {
       label: 'Growth Partner',
@@ -402,7 +402,7 @@ export const dictionaries = {
       autoF3: 'Process automation',
       autoF4: 'Ideal for reselling via partners',
       cta: "Let's talk about your project",
-      growthCtaLink: 'See Growth Partner',
+      growthCtaLink: 'See Growth Partner kit',
     },
     growthPartner: {
       label: 'Growth Partner',
