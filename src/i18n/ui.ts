@@ -32,12 +32,10 @@ export const dictionaries = {
       contact: 'Contacto',
     },
     hero: {
-      headline1: 'The Brand Crew:',
       headline2: 'Growth partner',
       headline3: 'que funciona',
-      sub: 'Creamos, lanzamos y hacemos crecer lo que tu negocio necesita para vender online.',
+      sub: 'Para negocios que <span class="hero-em">crecen</span>.',
       priceFrom: 'Desde',
-      priceNote: '2 pagos de',
       cta: 'Contacto',
       tag: 'Web · Marca · Contenido · Growth',
       seoText: 'Growth partner para negocios en Argentina'
@@ -47,6 +45,8 @@ export const dictionaries = {
       title1: 'Lo que',
       title2: 'hacemos',
       seeCase: 'Ver caso',
+      previousCase: 'Caso anterior',
+      nextCase: 'Caso siguiente',
       // Luisito
       luisitoTag: 'Rotisería · Mar del Plata',
       luisitoStory: 'Pedidos por WhatsApp sin estructura, perdían clientes. Le armamos un menú digital con carrito conectado a WhatsApp.',
@@ -95,11 +95,10 @@ export const dictionaries = {
       title1: 'Precios',
       title2: '',
       backToHome: '← Volver al inicio',
-      subtitle: 'Sin letra chica. Sin sorpresas. Elegí el pack que necesitás.',
       // Kit 1 — Diseño web
       kit1Title: 'Web + Marca + Contenido',
       esencialTitle: 'Arrancá',
-      esencialPrice: '295',
+      esencialPrice: '300',
       esencialSub: 'Tu negocio necesita existir. Hoy.',
       esencialDesc: 'Tu primera web hecha a mano por un dev senior, con logo, paleta de marca y contenido para arrancar a vender. 5 secciones que guían a la venta, perfecta en cualquier pantalla y aparecés en Google. Ideal si estás dando tus primeros pasos online.',
       esencialF1: 'Landing a medida de 1 página',
@@ -110,7 +109,7 @@ export const dictionaries = {
       esencialF6: 'Entrega en 5–7 días',
       esencialF7: 'Hosting 1° año + Factura A',
       crewTitle: 'Crecé',
-      crewPrice: '695',
+      crewPrice: '700',
       crewBadge: 'Más elegido',
       crewSub: 'El punto justo entre precio y resultados.',
       crewDesc: 'Una web completa que trabaja por vos: textos que venden, identidad de marca sólida y un pack de contenido orgánico para tus primeros 30 días. Lista en ~2 semanas. Para negocios que ya existen y quieren verse profesionales y vender más.',
@@ -191,7 +190,6 @@ export const dictionaries = {
       a6: 'Contanos de tu negocio. ¿Tenés logo, fotos, colores? Perfecto. Si no, los creamos juntos. Lo más importante es que nos cuentes qué vendés y a quién se lo vendés.',
     },
     team: {
-      kicker: 'Equipo',
       title1: 'Nuestro',
       title2: 'equipo',
       illyaRole: 'Founder & Developer',
@@ -209,10 +207,8 @@ export const dictionaries = {
       whatsappAlt: 'WhatsApp',
     },
     footer: {
-      brand: 'The Brand Crew',
       privacy: 'Política de privacidad',
       terms: 'Términos y condiciones',
-      backHome: 'Volver al inicio',
     },
     privacy: {
       backHome: 'Volver al inicio',
@@ -303,12 +299,10 @@ export const dictionaries = {
       contact: 'Contact',
     },
     hero: {
-      headline1: 'The Brand Crew:',
       headline2: 'Growth partner',
       headline3: 'that works',
-      sub: 'We build, launch and grow what your business needs to sell online.',
+      sub: 'For businesses that <span class="hero-em">grow</span>.',
       priceFrom: 'From',
-      priceNote: '2 payments of',
       cta: 'Contact',
       tag: 'Web · Brand · Content · Growth',
       seoText: 'Growth partner for businesses in Argentina'
@@ -318,6 +312,8 @@ export const dictionaries = {
       title1: 'What we',
       title2: 'build',
       seeCase: 'See case',
+      previousCase: 'Previous case',
+      nextCase: 'Next case',
       luisitoTag: 'Restaurant · Mar del Plata',
       luisitoStory: 'Orders via WhatsApp with no structure, losing customers. We built a digital menu with ordering connected to WhatsApp.',
       luisitoMetric1Value: 'Digital Menu',
@@ -363,7 +359,6 @@ export const dictionaries = {
       title1: 'Pricing',
       title2: '',
       backToHome: '← Back to home',
-      subtitle: 'No fine print. No surprises. Pick the plan that fits.',
       kit1Title: 'Web + Brand + Content',
       esencialTitle: 'Launch',
       esencialPrice: '300',
@@ -389,7 +384,7 @@ export const dictionaries = {
       crewF6: '30 days of support',
       crewF7: '1st-year hosting + Invoice A',
       mvpTitle: 'Scale',
-      mvpPrice: '1,295',
+      mvpPrice: '1,500',
       mvpSub: 'Complete ecosystem, no limits.',
       mvpDesc: 'Your custom online store, ready to sell 24/7: frictionless payments, automatic WhatsApp sales and the whole ecosystem connected. Premium branding and 90 days of content included. For brands ready to scale for real.',
       mvpF1: 'Custom online store (not a template)',
@@ -457,7 +452,6 @@ export const dictionaries = {
       a6: 'Tell us about your business. Got a logo, photos, colors? Perfect. If not, we\'ll create them together. The most important thing is that you tell us what you sell and who you sell it to.',
     },
     team: {
-      kicker: 'Team',
       title1: 'Our',
       title2: 'team',
       illyaRole: 'Founder & Developer',
@@ -475,10 +469,8 @@ export const dictionaries = {
       whatsappAlt: 'WhatsApp',
     },
     footer: {
-      brand: 'The Brand Crew',
       privacy: 'Privacy Policy',
       terms: 'Terms of Service',
-      backHome: 'Back to home',
     },
     privacy: {
       backHome: 'Back to home',

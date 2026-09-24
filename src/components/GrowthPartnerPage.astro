@@ -21,10 +21,10 @@ const backHref = lang === 'es' ? '/pricing' : '/en/pricing';
   <div class="growth-page-content">
     <section class="section pricing reveal" id="precios" aria-label="Growth Partner Pricing">
       <span class="section-label mono text-terracota">{gp.label}</span>
-      <h2 class="section-title" set:html={gp.title}></h2>
+      <h1 class="section-title" set:html={gp.title}></h1>
       <p class="pricing-growth-hero-sub" set:html={gp.sub}></p>
 
-      <PricingKit2 lang={lang} />
+      <PricingKit2 lang={lang} titleHeading="h2" />
 
       <div class="pricing-growth-cta">
         <a href={backHref} class="btn btn-outline">

@@ -18,7 +18,7 @@ const cases = [
     metrics: [
       { value: t('caseStudies.luisitoMetric1Value'), label: t('caseStudies.luisitoMetric1Label') },
       { value: t('caseStudies.luisitoMetric2Value'), label: t('caseStudies.luisitoMetric2Label'), rating: true },
-    ],
+    ] as { value: string; label: string; rating?: boolean }[],
   },
   {
     key: 'hoco',
@@ -30,7 +30,7 @@ const cases = [
       { value: t('caseStudies.hocoMetric1Value'), label: t('caseStudies.hocoMetric1Label') },
       { value: t('caseStudies.hocoMetric2Value'), label: t('caseStudies.hocoMetric2Label') },
       { value: t('caseStudies.hocoMetric3Value'), label: t('caseStudies.hocoMetric3Label') },
-    ],
+    ] as { value: string; label: string; rating?: boolean }[],
   },
   {
     key: 'escolta',
@@ -41,7 +41,7 @@ const cases = [
     metrics: [
       { value: t('caseStudies.escoltaMetric1Value'), label: t('caseStudies.escoltaMetric1Label') },
       { value: t('caseStudies.escoltaMetric2Value'), label: t('caseStudies.escoltaMetric2Label') },
-    ],
+    ] as { value: string; label: string; rating?: boolean }[],
   },
   {
     key: 'pragma',
@@ -52,7 +52,7 @@ const cases = [
     metrics: [
       { value: t('caseStudies.pragmaMetric1Value'), label: t('caseStudies.pragmaMetric1Label') },
       { value: t('caseStudies.pragmaMetric2Value'), label: t('caseStudies.pragmaMetric2Label') },
-    ],
+    ] as { value: string; label: string; rating?: boolean }[],
   },
 ];
 ---
@@ -61,7 +61,7 @@ const cases = [
   <span class="section-label mono text-terracota">{t('caseStudies.kicker')}</span>
   <h2 class="section-title text-verde">{t('caseStudies.title1')} <span class="text-accent">{t('caseStudies.title2')}.</span></h2>
   <div class="resultados-carousel rv">
-    <button class="resultados-arrow resultados-arrow--prev" id="resultadosPrev" aria-label="Previous case">‹</button>
+    <button class="resultados-arrow resultados-arrow--prev" id="resultadosPrev" aria-label={`${t('caseStudies.previousCase')} ‹`}>‹</button>
     <div class="resultados-grid">
       {
         cases.map((c) => {
@@ -116,7 +116,7 @@ const cases = [
         })
       }
     </div>
-    <button class="resultados-arrow resultados-arrow--next" id="resultadosNext" aria-label="Next case">›</button>
+    <button class="resultados-arrow resultados-arrow--next" id="resultadosNext" aria-label={`${t('caseStudies.nextCase')} ›`}>›</button>
   </div>
 </section>
 

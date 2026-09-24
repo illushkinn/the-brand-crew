@@ -4,8 +4,11 @@ import type { Lang } from '../i18n/ui';
 import { useTranslations } from '../i18n/ui';
 import Icon from './Icon.astro';
 
-interface Props { lang?: Lang }
-const { lang = 'es' } = Astro.props;
+interface Props {
+  lang?: Lang;
+  titleHeading?: 'h2' | 'h3';
+}
+const { lang = 'es', titleHeading = 'h3' } = Astro.props;
 const t = useTranslations(lang);
 
 const growthFeatures = [1, 2, 3, 4].map((i) => t(`pricing.growthF${i}`));
@@ -13,7 +16,11 @@ const autoFeatures = [1, 2, 3, 4].map((i) => t(`pricing.autoF${i}`));
 ---
 
 <div class="pricing-kit">
-  <h3 class="pricing-kit-title mono">{t('pricing.kit2Title')}</h3>
+  {titleHeading === 'h2' ? (
+    <h2 class="pricing-kit-title mono">{t('pricing.kit2Title')}</h2>
+  ) : (
+    <h3 class="pricing-kit-title mono">{t('pricing.kit2Title')}</h3>
+  )}
   <div class="pricing-grid growth">
 
      <!-- Growth Mensual -->

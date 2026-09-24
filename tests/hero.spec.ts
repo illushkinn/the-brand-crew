@@ -14,7 +14,7 @@ test.describe('Hero Section', () => {
   });
 
   test('has correct title', async ({ page }) => {
-    await expect(page.locator('h1')).toContainText('actually work');
+    await expect(page.locator('h1.hero-title')).toContainText('Growth partner');
   });
 
   test('has subtitle', async ({ page }) => {
@@ -22,14 +22,14 @@ test.describe('Hero Section', () => {
   });
 
   test('hero CTA button has correct text', async ({ page }) => {
-    const cta = page.locator('.btn-empecemos').first();
-    await expect(cta).toHaveText(/Let's go online/i);
+    const cta = page.locator('.hero-actions .btn-premium').first();
+    await expect(cta).toBeVisible();
+    await expect(cta).toHaveText(/Contacto/i);
   });
 
-  test('pricing shows current and strike prices', async ({ page }) => {
-    const strike = page.locator('.strike-price').first();
-    await expect(strike).toBeVisible();
+  test('pricing shows current price', async ({ page }) => {
     const current = page.locator('.current-price').first();
-    await expect(current).toContainText(/140.000/);
+    await expect(current).toBeVisible();
+    await expect(current).toContainText(/300/);
   });
 });

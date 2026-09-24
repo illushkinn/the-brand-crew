@@ -31,7 +31,7 @@ const privacyHref = lang === 'es' ? '/privacy' : '/en/privacy';
 
   acceptBtn?.addEventListener('click', () => {
     localStorage.setItem('tbc-cookie-consent', 'accepted');
-    banner.classList.remove('visible');
-    overlay.classList.remove('visible');
+    banner?.classList.remove('visible');
+    overlay?.classList.remove('visible');
   });
 </script>
