@@ -33,13 +33,10 @@ const growthLink = lang === 'es' ? '/pricing/growth-partner' : '/en/pricing/grow
     <span>{t('pricing.scarcity')}</span>
   </div>
 
-  <div class="pricing-fullservice rv"><Icon name="check" size={16} strokeWidth={2.5} /><span>{t('pricing.fullServiceBanner')}</span></div>
-
   <div class="rv"><PricingKit1 lang={lang} titleHeading={titleHeading === 'h1' ? 'h2' : 'h3'} /></div>
 
   <!-- Growth Partner CTA -->
   <div class="pricing-growth-cta rv">
-    <p class="pricing-growth-cta-text">{t('pricing.growthCtaText')}</p>
     <a href={growthLink} class="btn btn-outline">
       {t('pricing.growthCtaLink')}
       <Icon name="arrow-right" size={16} strokeWidth={2.5} />

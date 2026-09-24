@@ -130,7 +130,6 @@ export const dictionaries = {
       metaTitle: 'Precios — The Brand Crew',
       metaDescription: 'Precios claros: web, marca, contenido y growth. Desde $300 USD. Factura A incluida.',
       scarcity: 'Solo tomamos 3 proyectos por mes (para hacerlos bien).',
-      fullServiceBanner: 'Todo en uno: web, marca, contenido y growth. Un dev senior y un diseñador trabajando juntos para vos.',
       // Kit 2 — Growth Partner
       kit2Title: 'Growth Partner',
       growthTitle: 'Growth Mensual',
@@ -148,7 +147,6 @@ export const dictionaries = {
       autoF3: 'Automatización de procesos',
       autoF4: 'Ideal para revender vía socios',
       cta: 'Hablemos de tu proyecto',
-      growthCtaText: 'Tu kit incluye el pack inicial. ¿Querés contenido y mejoras todos los meses? Eso es Growth Partner.',
       growthCtaLink: 'Ver Growth Partner',
     },
     growthPartner: {
@@ -388,7 +386,6 @@ export const dictionaries = {
       metaTitle: 'Pricing — The Brand Crew',
       metaDescription: 'Clear pricing: web, brand, content and growth. From $300 USD. Invoice included.',
       scarcity: 'We only take 3 projects a month (so we nail them).',
-      fullServiceBanner: 'All-in-one: web, brand, content and growth. A senior dev and a designer working together for you.',
       kit2Title: 'Growth Partner',
       growthTitle: 'Monthly Growth',
       growthPriceRange: '250–500',
@@ -405,7 +402,6 @@ export const dictionaries = {
       autoF3: 'Process automation',
       autoF4: 'Ideal for reselling via partners',
       cta: "Let's talk about your project",
-      growthCtaText: "Your kit includes the starter pack. Want content and improvements every month? That's Growth Partner.",
       growthCtaLink: 'See Growth Partner',
     },
     growthPartner: {
