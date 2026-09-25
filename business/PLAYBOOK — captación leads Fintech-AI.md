@@ -1,3 +1,5 @@
+> OBSOLETO: reemplazado por PLAYBOOK — TBC v1.md (unificado). Se conserva solo como histórico.
+
 # PLAYBOOK — Captación de Leads: Fintech & AI Startups
 ## The Brand Crew (TBC) | Argentina/LatAm
 
