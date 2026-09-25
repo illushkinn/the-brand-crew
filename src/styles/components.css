@@ -39,23 +39,12 @@
   }
 }
 
-@supports (backdrop-filter: blur()) {
-  .glass-card {
-    backdrop-filter: var(--glass-effect);
-    background: rgba(10, 10, 15, 0.45);
-    border: 1px solid oklch(0.58 0.18 32 / 0.35);
-  }
-  .como-funciona {
-    backdrop-filter: none;
-    background: transparent;
-  }
-}
 /* ========================================
    MOLECULES — Glass Card, Buttons
    ======================================== */
 .glass-card {
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: 2rem;
   position: relative;
@@ -95,10 +84,15 @@
   background: transparent;
   border: 1.5px solid var(--body-dim);
   color: var(--body-dim);
+  transition: transform 0.25s cubic-bezier(0.2, 0, 0, 1), border-color 0.3s, color 0.3s;
 }
 .btn-outline:hover {
   border-color: var(--terracota);
   color: var(--terracota);
+  transform: translateY(1px);
+}
+.btn-outline:active {
+  transform: translateY(2px);
 }
 .btn-lg {
   font-size: clamp(1.15rem, 2.5vw, 1.4rem);
@@ -159,21 +153,23 @@
 }
 .btn-premium:hover {
   background: var(--premium-bg);
+  /* Premium flattening effect: reduce shadow to align with viewport (Google Drive style) */
   box-shadow:
-    0 2px 12px oklch(0 0 0 / 0.1),
-    0 1px 0 oklch(0.82 0.2 125 / 0.2) inset,
-    0 0 0 1px oklch(0.82 0.2 125 / 0.06),
-    0 16px 32px -16px oklch(0 0 0 / 0.35),
-    0 0 24px oklch(0.82 0.2 125 / 0.12);
+    0 1px 4px oklch(0 0 0 / 0.06),
+    0 1px 0 oklch(0.82 0.2 125 / 0.15) inset,
+    0 0 0 1px oklch(0.82 0.2 125 / 0.04);
+  transform: translateY(1px);
 }
 .btn-premium:hover::before {
   background-position: -30% 0;
 }
 .btn-premium:active {
   background: var(--premium-bg);
+  /* Active: fully flattened to viewport */
   box-shadow:
-    0 1px 4px oklch(0 0 0 / 0.2),
+    0 0 2px oklch(0 0 0 / 0.15),
     0 1px 0 oklch(0.82 0.2 125 / 0.08) inset;
+  transform: translateY(2px);
   transition-duration: 0.08s;
 }
 
@@ -200,7 +196,9 @@
   transition: background 0.3s ease, border-color 0.3s ease;
 }
 .navbar.scrolled {
-  background: var(--bg);
+  background: oklch(0.1 0.02 280 / 0.75);
+  backdrop-filter: blur(12px) saturate(120%);
+  -webkit-backdrop-filter: blur(12px) saturate(120%);
   border-bottom: 1px solid oklch(1 0 0 / 0.15);
 }
 /* Desktop nav links — hidden on mobile, visible ≥900px */
@@ -239,6 +237,7 @@
 }
 
 .navbar-brand {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
@@ -300,9 +299,6 @@
   stroke-dashoffset: 238.76;
   stroke-linecap: round;
   transition: stroke-dashoffset 0.15s ease-out;
-}
-.navbar-brand {
-  position: relative;
 }
 .lang-switcher {
   display: inline-flex;
@@ -908,8 +904,6 @@
   text-align: center;
   padding: 0 clamp(1.25rem, 5vw, 4rem);
   padding-bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
-  height: 100vh; 
-  height: 100svh;
   height: 100dvh;
   display: flex;
   flex-direction: column;
@@ -1073,9 +1067,6 @@
     background: var(--bg);
   }
   .scroll-to-top {
-    background: var(--bg-card);
-  }
-  .glass-card {
     background: var(--bg-card);
   }
 }

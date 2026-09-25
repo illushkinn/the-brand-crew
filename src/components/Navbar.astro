@@ -3,12 +3,13 @@
 import Logo from './Logo.astro';
 import type { Lang } from '../i18n/ui';
 import { useTranslations } from '../i18n/ui';
+import { getHomeLink, getPricingLink } from '../lib/routing';
 
 interface Props { lang?: Lang }
 const { lang = 'es' } = Astro.props;
 const t = useTranslations(lang);
 
-const isHome = lang === 'es' ? '/' : '/en/';
+const isHome = getHomeLink(lang);
 ---
 
 <header>
@@ -27,7 +28,7 @@ const isHome = lang === 'es' ? '/' : '/en/';
       <a href={`${isHome}#resultados`}>{t('nav.howItWorks')}</a>
       <a href={`${isHome}#casos`}>{t('nav.cases')}</a>
       <a href={`${isHome}#faq`}>{t('nav.faq')}</a>
-      <a href={lang === 'es' ? '/pricing' : '/en/pricing'}>{t('nav.pricing')}</a>
+      <a href={getPricingLink(lang)}>{t('nav.pricing')}</a>
       <a href={`${isHome}#contacto`}>{t('nav.contact')}</a>
     </div>
     <div class="navbar-actions">

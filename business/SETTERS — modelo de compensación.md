@@ -8,14 +8,14 @@
 
 ## Estructura propuesta
 
-### Tier 1 — Kits ($300 / $700 / $1.500)
+### Tier 1 — Kits ($1.200 / $2.800 / $4.500)
 **Comisión:** 10% del valor del ticket cerrado
 
 | Kit | Precio | Comisión del setter |
 |-----|--------|---------------------|
-| Arrancá | $300 USD | $30 USD |
-| Crecé | $700 USD | $70 USD |
-| Escalá | $1.500 USD | $150 USD |
+| Arrancá | $1.200 USD | $120 USD |
+| Crecé | $2.800 USD | $280 USD |
+| Escalá | $4.500 USD | $450 USD |
 
 **Razonamiento:** Kits son el entry point. El setter cierra rápido, el margen de TBC es alto en estos tiers (el deliverable está estandarizado). 10% es generoso pero justificable porque el LTV potencial ( upgrade a Growth Partner) es alto.
 
@@ -30,14 +30,16 @@
 
 **Razonamiento:** High-ticket = ciclo de venta largo, más involved. La comisión es menor en % pero mayor en $. El setter no entrega el proyecto — solo abre la puerta. El valor está en el relationship, no en el follow-through.
 
-### Tier 3 — Retainer / Growth Partner ($250 / $500 / $1.000)
+### Tier 3 — Retainer / Growth Partner ($750 / $1.500 / $2.500)
 **Comisión:** 10% del primer mes del retainer
 
 | Retainer mensual | Comisión del setter (1er mes) |
 |------------------|-------------------------------|
-| $250/mes | $25 |
-| $500/mes | $50 |
-| $1.000/mes | $100 |
+| $750/mes | $75 |
+| $1.500/mes | $150 |
+| $2.500/mes | $250 |
+
+**Banda nueva:** el Growth Partner arranca en **$750/mes** y llega hasta **$2.500/mes**; los tres valores de la tabla son los puntos de referencia internos para calcular la comisión (10% del primer mes).
 
 **Razonamiento:** El primer mes es el que necesita "sell". Después el relationship lo mantiene TBC. 10% del primer mes premia el cierre sin crear dependencia de por vida.
 
@@ -45,7 +47,7 @@
 - Mantenimiento web puro: $150-250 USD/mes (agencia)
 - Redes/community management: $300-700 USD/mes
 - Agencia integral: $800-5.000 USD/mes
-- **TBC Growth Partner ($250):** arriba del commodity (mantenimiento solo), abajo de agencias de redes. Encaja con cliente que ya invirtió $300-1.500 en la web y quiere que siga funcionando + contenido + soporte.
+- **TBC Growth Partner ($750):** arriba del commodity (mantenimiento solo), abajo de agencias de redes. Encaja con cliente que ya invirtió $1.200-4.500 en la web y quiere que siga funcionando + contenido + soporte.
 
 ### [DECISIÓN] — Base fija mensual
 **Opción A (recomendada):** Sin base fija. 100% commission-only.
@@ -85,7 +87,7 @@ Cada setter recibe un **Gamma.app deck branded** como manual de ventas. El playb
 1. **Quiénes somos** — slides 1-3 (problema → solución → propuesta de valor)
 2. **Los 3 kits** — slides 4-8 (copy del proposal: features por tier, pricing, CTA)
 3. **Casos de éxito** — slides 9-11 (testimonios, métricas, before/after)
-4. **Proceso de venta** — slides 12-14 (cómo presentar, objeciones comunes,何时 enviar al closer)
+4. **Proceso de venta** — slides 12-14 (cómo presentar, objeciones comunes, cuándo enviar al closer)
 5. **Scripts de outreach** — slides 15-17 (DM, email, WhatsApp templates)
 6. **FAQ del setter** — slides 18-20 (preguntas frecuentes del prospecto)
 
@@ -116,7 +118,7 @@ Setter contacta → Prospecto interesa → Setter agenda call con TBC
 
 **Timing:** Comisión se paga dentro de 48h hábiles de confirmar pago del cliente.
 
-**Tracking:** Cada oportunidad se registra en el CRM (engram) con:
+**Tracking:** Cada oportunidad se registra en el CRM (Notion) con:
 - Nombre del prospecto
 - Setter que lo trajo
 - Fecha de primer contacto

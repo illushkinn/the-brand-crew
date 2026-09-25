@@ -1,3 +1,5 @@
+> OBSOLETO: reemplazado por PLAYBOOK — TBC v1.md (unificado). Se conserva solo como histórico.
+
 # TBC — PLAYBOOK DE SETTERS
 ## Guía de Ventas para el Equipo de Captación
 
