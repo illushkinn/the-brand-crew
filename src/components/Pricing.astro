@@ -5,6 +5,7 @@ import { useTranslations } from '../i18n/ui';
 import { DOMAIN } from '../lib/constants';
 import PricingKit1 from './PricingKit1.astro';
 import Icon from './Icon.astro';
+import { getHomeLink, getGrowthPartnerLink } from '../lib/routing';
 
 interface Props {
   lang?: Lang;
@@ -15,8 +16,8 @@ const { lang = 'es', showBackLink = false, heading = 'h2' } = Astro.props;
 const t = useTranslations(lang);
 const titleHeading = heading;
 
-const homeLink = lang === 'es' ? `${DOMAIN}/` : `${DOMAIN}/en/`;
-const growthLink = lang === 'es' ? '/pricing/growth-partner' : '/en/pricing/growth-partner';
+const homeLink = `${DOMAIN}${getHomeLink(lang)}`;
+const growthLink = getGrowthPartnerLink(lang);
 ---
 
 <section class="section pricing reveal-stagger" id="precios" aria-label="Pricing">
