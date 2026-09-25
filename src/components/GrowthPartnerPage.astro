@@ -17,7 +17,7 @@ const gp = dictionaries[lang].growthPartner;
 const backHref = lang === 'es' ? '/pricing' : '/en/pricing';
 ---
 
-<BaseLayout lang={lang} title="Growth Partner — The Brand Crew" description={gp.description} canonicalURL={canonicalURL}>
+<BaseLayout lang={lang} description={gp.description} canonicalURL={canonicalURL}>
   <div class="growth-page-content">
     <section class="section pricing reveal" id="precios" aria-label="Growth Partner Pricing">
       <span class="section-label mono text-terracota">{gp.label}</span>
