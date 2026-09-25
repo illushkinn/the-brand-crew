@@ -8,7 +8,7 @@
 }
 
 /* Desktop: center hero content + isotype anchor */
-@media (min-width: 769px) {
+@media (min-width: 768px) {
   .hero {
     align-items: center;
     padding-top: calc(3.5rem + 16px);
@@ -19,9 +19,9 @@
   }
 }
 
-/* Tablet gap (769-899.98): the 767.98 block ends at 768 and the
+/* Tablet gap (768-899.98): the 767.98 block ends at 768 and the
    900px split starts later — keep the 12px side air consistent here too */
-@media (min-width: 769px) and (max-width: 899.98px) {
+@media (min-width: 768px) and (max-width: 899.98px) {
   .hero {
     padding-left: 0.75rem;
     padding-right: 0.75rem;
