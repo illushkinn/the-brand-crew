@@ -30,6 +30,6 @@ test.describe('Hero Section', () => {
   test('pricing shows current price', async ({ page }) => {
     const current = page.locator('.current-price').first();
     await expect(current).toBeVisible();
-    await expect(current).toContainText(/300/);
+    await expect(current).toContainText(/1[.,]200/);
   });
 });

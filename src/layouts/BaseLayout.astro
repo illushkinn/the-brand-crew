@@ -27,6 +27,8 @@ const canonicalURL = Astro.props.canonicalURL || Astro.url;
 const seo = dictionaries[lang].seo;
 const pricing = dictionaries[lang].pricing;
 
+const jsonLdPrice = (value: string): string => `${value.replace(/[.,]/g, '')}.00`;
+
 const businessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
@@ -60,21 +62,21 @@ const businessSchema = {
       "@type": "Offer",
       "name": "Essential — Online Launch",
       "description": "Custom 1-page landing + logo & brand palette + launch content pack. Built by a senior dev and a graphic designer.",
-      "price": `${pricing.esencialPrice}.00`,
+      "price": jsonLdPrice(pricing.esencialPrice),
       "priceCurrency": "USD"
     },
     {
       "@type": "Offer",
       "name": "Crew — Growth Partner",
       "description": "Custom multi-section website + full brand identity + 30-day organic content pack, sales copy and local SEO.",
-      "price": `${pricing.crewPrice}.00`,
+      "price": jsonLdPrice(pricing.crewPrice),
       "priceCurrency": "USD"
     },
     {
       "@type": "Offer",
       "name": "MVP / E-commerce",
       "description": "Custom e-commerce + premium branding + 90 days of content, WhatsApp automation and frictionless card payments.",
-      "price": `${pricing.mvpPrice}.00`,
+      "price": jsonLdPrice(pricing.mvpPrice),
       "priceCurrency": "USD"
     }
   ],
