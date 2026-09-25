@@ -2,6 +2,7 @@
 // Founders.astro - Founding partners cards
 import type { Lang } from '../i18n/ui';
 import { useTranslations, dictionaries } from '../i18n/ui';
+import { teamMembers } from '../lib/team';
 
 interface Props { lang?: Lang }
 const { lang = 'es' } = Astro.props;
@@ -12,36 +13,21 @@ const skills = dictionaries[lang].team;
 <section class="section founders reveal-stagger" id="crew" aria-label="Team">
   <h2 class="section-title rv">{t('team.title1')} <span class="text-accent">{t('team.title2')}</span>.</h2>
   <div class="founders-grid">
-
-    <article class="glass-card founder-card rv">
-      <span class="founder-index mono" aria-hidden="true">01</span>
-      <div class="founder-avatar img-avatar">
-        <img src="/assets/profile-11.webp" alt="Illya Grytsyk" width="56" height="56" loading="lazy" />
-      </div>
-      <div class="founder-info">
-        <span class="mono founder-role">{t('team.illyaRole')}</span>
-        <h3 class="founder-name">Illya Grytsyk</h3>
-        <p class="founder-bio">{t('team.illyaBio')}</p>
-        <ul class="founder-skills">
-          {skills.illyaSkills.map((skill: string) => <li>{skill}</li>)}
-        </ul>
-      </div>
-    </article>
-
-    <article class="glass-card founder-card rv">
-      <span class="founder-index mono" aria-hidden="true">02</span>
-      <div class="founder-avatar img-avatar">
-        <img src="/assets/profile-12.webp" alt="Carlos Segovia Gonzalez" width="56" height="56" loading="lazy" />
-      </div>
-      <div class="founder-info">
-        <span class="mono founder-role">{t('team.carlosRole')}</span>
-        <h3 class="founder-name">Carlos Segovia Gonzalez</h3>
-        <p class="founder-bio">{t('team.carlosBio')}</p>
-        <ul class="founder-skills">
-          {skills.carlosSkills.map((skill: string) => <li>{skill}</li>)}
-        </ul>
-      </div>
-    </article>
-
+    {teamMembers.map((member) => (
+      <article class="glass-card founder-card rv">
+        <span class="founder-index mono" aria-hidden="true">{member.index}</span>
+        <div class="founder-avatar img-avatar">
+          <img src={member.photo} alt={member.name} width="56" height="56" loading="lazy" />
+        </div>
+        <div class="founder-info">
+          <span class="mono founder-role">{t(`${member.i18nKeyPrefix}Role` as any)}</span>
+          <h3 class="founder-name">{member.name}</h3>
+          <p class="founder-bio">{t(`${member.i18nKeyPrefix}Bio` as any)}</p>
+          <ul class="founder-skills">
+            {skills[`${member.id}Skills` as keyof typeof skills].map((skill: string) => <li>{skill}</li>)}
+          </ul>
+        </div>
+      </article>
+    ))}
   </div>
 </section>
