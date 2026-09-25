@@ -26,4 +26,15 @@
   document.querySelectorAll('.reveal, .reveal-stagger').forEach(function(el) {
     observer.observe(el);
   });
+
+  /**
+   * Cleanup function to prevent memory leaks
+   * Disconnects the IntersectionObserver
+   */
+  function cleanup() {
+    observer.disconnect();
+  }
+
+  // Listen for Astro page transitions to cleanup before swap
+  document.addEventListener('astro:before-swap', cleanup);
 })();

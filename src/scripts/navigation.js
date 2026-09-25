@@ -76,21 +76,29 @@
     }
   }
   
-  // Close menu on viewport resize above mobile breakpoint
-  // Prevents overflow:hidden getting stuck when resizing from mobile to desktop
-  const mq = window.matchMedia('(min-width: 768px)');
-  mq.addEventListener('change', function(e) {
+  // Store media query change handler for cleanup
+  const handleMediaQueryChange = function(e) {
     if (e.matches && state.menuOpen) {
       closeMenu();
     }
-  });
-  
+  };
+
+  // Close menu on viewport resize above mobile breakpoint
+  // Prevents overflow:hidden getting stuck when resizing from mobile to desktop
+  const mq = window.matchMedia('(min-width: 768px)');
+  mq.addEventListener('change', handleMediaQueryChange);
+
   // Hamburger button click handler
   hamburgerBtn.addEventListener('click', toggleMenu);
-  
+
+  // Store link handlers for cleanup
+  const linkClickHandlers = new WeakMap();
+  const linkTouchStartHandlers = new WeakMap();
+  const linkTouchEndHandlers = new WeakMap();
+
   // Close menu when clicking a link — wait for close animation before scrolling
   mobileLinks.forEach(function(link) {
-    link.addEventListener('click', function(e) {
+    const clickHandler = function(e) {
       const href = this.getAttribute('href');
       closeMenu();
       // Wait for close animation (550ms clip-path + stagger) before scrolling to target
@@ -101,30 +109,77 @@
           document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
         }, 650);
       }
-    });
-    
-    // Add visual feedback for touch events
-    link.addEventListener('touchstart', function() {
+    };
+
+    const touchStartHandler = function() {
       this.classList.add('is-tapping');
-    });
-    
-    link.addEventListener('touchend', function() {
+    };
+
+    const touchEndHandler = function() {
       this.classList.remove('is-tapping');
-    });
+    };
+
+    link.addEventListener('click', clickHandler);
+    link.addEventListener('touchstart', touchStartHandler);
+    link.addEventListener('touchend', touchEndHandler);
+
+    // Store handlers for cleanup
+    linkClickHandlers.set(link, clickHandler);
+    linkTouchStartHandlers.set(link, touchStartHandler);
+    linkTouchEndHandlers.set(link, touchEndHandler);
   });
-  
-  // Close menu on Escape key
-  document.addEventListener('keydown', function(e) {
+
+  // Close menu on Escape key - store reference for cleanup
+  const handleEscapeKey = function(e) {
     if (e.key === 'Escape' && state.menuOpen) {
       closeMenu();
       e.preventDefault();
     }
-  });
+  };
+  document.addEventListener('keydown', handleEscapeKey);
   
   // Close menu when clicking overlay (outside menu content)
-  mobileMenu.addEventListener('click', function(e) {
+  const handleOverlayClick = function(e) {
     if (e.target === mobileMenu) {
       closeMenu();
     }
-  });
+  };
+  mobileMenu.addEventListener('click', handleOverlayClick);
+
+  /**
+   * Cleanup function to prevent memory leaks
+   * Removes all event listeners added by this script
+   */
+  function cleanup() {
+    // Remove hamburger button listener
+    hamburgerBtn.removeEventListener('click', toggleMenu);
+
+    // Remove media query listener
+    mq.removeEventListener('change', handleMediaQueryChange);
+
+    // Remove all mobile link listeners
+    mobileLinks.forEach(function(link) {
+      const clickHandler = linkClickHandlers.get(link);
+      const touchStartHandler = linkTouchStartHandlers.get(link);
+      const touchEndHandler = linkTouchEndHandlers.get(link);
+
+      if (clickHandler) link.removeEventListener('click', clickHandler);
+      if (touchStartHandler) link.removeEventListener('touchstart', touchStartHandler);
+      if (touchEndHandler) link.removeEventListener('touchend', touchEndHandler);
+    });
+
+    // Remove document-level listeners
+    document.removeEventListener('keydown', handleEscapeKey);
+
+    // Remove overlay click listener
+    mobileMenu.removeEventListener('click', handleOverlayClick);
+
+    // If menu is open, unlock scroll before cleanup
+    if (state.menuOpen) {
+      unlockScroll();
+    }
+  }
+
+  // Listen for Astro page transitions to cleanup before swap
+  document.addEventListener('astro:before-swap', cleanup);
 })();

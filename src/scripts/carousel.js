@@ -14,26 +14,11 @@
       const gap = parseFloat(style.gap) || 12;
       return card.offsetWidth + gap;
     }
-    
+
     function getMaxScroll() {
       return grid.scrollWidth - grid.clientWidth;
     }
-    
-    next.addEventListener('click', () => {
-      const maxScroll = getMaxScroll();
-      const currentScroll = grid.scrollLeft;
-      const step = getCardWidth();
-      if (currentScroll + step >= maxScroll - 10) {
-        grid.scrollTo({ left: maxScroll, behavior: 'smooth' });
-      } else {
-        grid.scrollBy({ left: step, behavior: 'smooth' });
-      }
-    });
-    
-    prev.addEventListener('click', () => {
-      grid.scrollBy({ left: -getCardWidth(), behavior: 'smooth' });
-    });
-    
+
     function updateArrows() {
       const maxScroll = getMaxScroll();
       const atStart = grid.scrollLeft <= 10;
@@ -43,8 +28,38 @@
       next.style.opacity = atEnd ? '0.3' : '1';
       next.style.pointerEvents = atEnd ? 'none' : 'auto';
     }
-    
+
+    const handleNextClick = function() {
+      const maxScroll = getMaxScroll();
+      const currentScroll = grid.scrollLeft;
+      const step = getCardWidth();
+      if (currentScroll + step >= maxScroll - 10) {
+        grid.scrollTo({ left: maxScroll, behavior: 'smooth' });
+      } else {
+        grid.scrollBy({ left: step, behavior: 'smooth' });
+      }
+    };
+
+    const handlePrevClick = function() {
+      grid.scrollBy({ left: -getCardWidth(), behavior: 'smooth' });
+    };
+
+    next.addEventListener('click', handleNextClick);
+    prev.addEventListener('click', handlePrevClick);
     grid.addEventListener('scroll', updateArrows, { passive: true });
     updateArrows();
+
+    /**
+     * Cleanup function to prevent memory leaks
+     * Removes all event listeners
+     */
+    function cleanup() {
+      next.removeEventListener('click', handleNextClick);
+      prev.removeEventListener('click', handlePrevClick);
+      grid.removeEventListener('scroll', updateArrows);
+    }
+
+    // Listen for Astro page transitions to cleanup before swap
+    document.addEventListener('astro:before-swap', cleanup);
   }
 })();
