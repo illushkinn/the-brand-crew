@@ -239,6 +239,7 @@
 }
 
 .navbar-brand {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
@@ -300,9 +301,6 @@
   stroke-dashoffset: 238.76;
   stroke-linecap: round;
   transition: stroke-dashoffset 0.15s ease-out;
-}
-.navbar-brand {
-  position: relative;
 }
 .lang-switcher {
   display: inline-flex;
@@ -908,8 +906,6 @@
   text-align: center;
   padding: 0 clamp(1.25rem, 5vw, 4rem);
   padding-bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
-  height: 100vh; 
-  height: 100svh;
   height: 100dvh;
   display: flex;
   flex-direction: column;
