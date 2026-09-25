@@ -16,7 +16,7 @@ const { lang = 'es', canonicalURL } = Astro.props;
 const p = dictionaries[lang].pricing;
 ---
 
-<BaseLayout lang={lang} title={p.metaTitle} description={p.metaDescription} canonicalURL={canonicalURL}>
+<BaseLayout lang={lang} description={p.metaDescription} canonicalURL={canonicalURL}>
   <div class="pricing-page-content">
     <Pricing lang={lang} showBackLink={true} heading="h1" />
   </div>

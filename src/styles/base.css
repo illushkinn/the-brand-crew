@@ -25,13 +25,13 @@ body::before {
   pointer-events: none;
   background-image:
     repeating-linear-gradient(0deg,
-      rgba(255, 255, 255, 0.04) 0px,
-      rgba(255, 255, 255, 0.04) 1px,
+      rgba(255, 255, 255, 0.07) 0px,
+      rgba(255, 255, 255, 0.07) 1px,
       transparent 1px,
       transparent 80px),
     repeating-linear-gradient(90deg,
-      rgba(255, 255, 255, 0.04) 0px,
-      rgba(255, 255, 255, 0.04) 1px,
+      rgba(255, 255, 255, 0.07) 0px,
+      rgba(255, 255, 255, 0.07) 1px,
       transparent 1px,
       transparent 80px);
   mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 0%, transparent 100%);
@@ -45,13 +45,13 @@ body::before {
   body::before {
     background-image:
       repeating-linear-gradient(0deg,
-        rgba(0, 0, 0, 0.04) 0px,
-        rgba(0, 0, 0, 0.04) 1px,
+        rgba(0, 0, 0, 0.07) 0px,
+        rgba(0, 0, 0, 0.07) 1px,
         transparent 1px,
         transparent 80px),
       repeating-linear-gradient(90deg,
-        rgba(0, 0, 0, 0.04) 0px,
-        rgba(0, 0, 0, 0.04) 1px,
+        rgba(0, 0, 0, 0.07) 0px,
+        rgba(0, 0, 0, 0.07) 1px,
         transparent 1px,
         transparent 80px);
   }
@@ -86,8 +86,8 @@ body {
 h1, h2, h3, h4 { text-wrap: balance; }
 p { text-wrap: pretty; }
 img, svg { display: block; max-width: 100%; }
-a { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; -webkit-focus-ring-color: transparent; outline: none; }
-button { border: none; background: none; cursor: pointer; font: inherit; color: inherit; -webkit-tap-highlight-color: transparent; -webkit-focus-ring-color: transparent; outline: none; }
+a { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
+button { border: none; background: none; cursor: pointer; font: inherit; color: inherit; -webkit-tap-highlight-color: transparent; }
 ul { list-style: none; }
 .hamburger, .resultados-arrow {
   display: flex;
@@ -139,10 +139,6 @@ button:focus-visible,
 a:focus-visible {
   outline: 2px solid rgba(255, 255, 255, 0.3);
   outline-offset: 2px;
-}
-.hamburger:focus-visible,
-.navbar-brand:focus-visible {
-  outline: none;
 }
 ::selection {
   background: var(--terracota);

@@ -8,7 +8,7 @@
 }
 
 /* Desktop: center hero content + isotype anchor */
-@media (min-width: 769px) {
+@media (min-width: 768px) {
   .hero {
     align-items: center;
     padding-top: calc(3.5rem + 16px);
@@ -19,9 +19,9 @@
   }
 }
 
-/* Tablet gap (769-899.98): the 767.98 block ends at 768 and the
+/* Tablet gap (768-899.98): the 767.98 block ends at 768 and the
    900px split starts later — keep the 12px side air consistent here too */
-@media (min-width: 769px) and (max-width: 899.98px) {
+@media (min-width: 768px) and (max-width: 899.98px) {
   .hero {
     padding-left: 0.75rem;
     padding-right: 0.75rem;
@@ -557,9 +557,11 @@
    over animations.css (reduced-motion branch).
    ======================================== */
 @media (prefers-color-scheme: light) {
-  /* Navbar: solid light surface once scrolled (blur stays) */
+  /* Navbar: transparent light surface with blur */
   .navbar.scrolled {
-    background: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.70);
+    backdrop-filter: blur(12px) saturate(120%);
+    -webkit-backdrop-filter: blur(12px) saturate(120%);
     border-bottom-color: oklch(0.55 0.19 135 / 0.25);
   }
 
