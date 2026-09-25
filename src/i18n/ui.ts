@@ -205,6 +205,9 @@ export const dictionaries = {
       privacy: 'Política de privacidad',
       terms: 'Términos y condiciones',
     },
+    scrollToTop: {
+      label: 'Volver arriba',
+    },
     privacy: {
       backHome: 'Volver al inicio',
       title: 'Política de privacidad',
@@ -461,6 +464,9 @@ export const dictionaries = {
     footer: {
       privacy: 'Privacy Policy',
       terms: 'Terms of Service',
+    },
+    scrollToTop: {
+      label: 'Back to top',
     },
     privacy: {
       backHome: 'Back to home',
