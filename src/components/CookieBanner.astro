@@ -3,11 +3,12 @@
 // Persists choice in localStorage; rendered on every page via BaseLayout.
 import type { Lang } from '../i18n/ui';
 import { useTranslations } from '../i18n/ui';
+import { getPrivacyLink } from '../lib/routing';
 
 interface Props { lang?: Lang }
 const { lang = 'es' } = Astro.props;
 const t = useTranslations(lang);
-const privacyHref = lang === 'es' ? '/privacy' : '/en/privacy';
+const privacyHref = getPrivacyLink(lang);
 ---
 
 <div class="cookie-overlay" id="cookie-overlay" aria-hidden="true"></div>
