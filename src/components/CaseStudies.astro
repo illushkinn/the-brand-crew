@@ -2,59 +2,13 @@
 // CaseStudies.astro - Case study carousel with navigation
 import type { Lang } from '../i18n/ui';
 import { useTranslations } from '../i18n/ui';
+import { getCaseStudies } from '../lib/casestudies';
 import Icon from './Icon.astro';
 
 interface Props { lang?: Lang }
 const { lang = 'es' } = Astro.props;
 const t = useTranslations(lang);
-
-const cases = [
-  {
-    key: 'luisito',
-    name: 'Luisito Playa Grande',
-    url: 'https://luisito-playa-grande.vercel.app',
-    logo: { kind: 'img', src: '/assets/logos/luisito.svg', alt: 'Luisito Playa Grande', class: 'invert-dark' },
-    screenshot: '/assets/Luisito.jpg',
-    metrics: [
-      { value: t('caseStudies.luisitoMetric1Value'), label: t('caseStudies.luisitoMetric1Label') },
-      { value: t('caseStudies.luisitoMetric2Value'), label: t('caseStudies.luisitoMetric2Label'), rating: true },
-    ] as { value: string; label: string; rating?: boolean }[],
-  },
-  {
-    key: 'hoco',
-    name: 'Catálogo Hoco',
-    url: 'https://hococatalog.vercel.app',
-    logo: { kind: 'letter', letter: 'H' },
-    screenshot: '/assets/Hoco.jpg',
-    metrics: [
-      { value: t('caseStudies.hocoMetric1Value'), label: t('caseStudies.hocoMetric1Label') },
-      { value: t('caseStudies.hocoMetric2Value'), label: t('caseStudies.hocoMetric2Label') },
-      { value: t('caseStudies.hocoMetric3Value'), label: t('caseStudies.hocoMetric3Label') },
-    ] as { value: string; label: string; rating?: boolean }[],
-  },
-  {
-    key: 'escolta',
-    name: 'Escolta Miami',
-    url: 'https://escoltamiami.com',
-    logo: { kind: 'img', src: '/assets/logos/escolta-miami.png', alt: 'Escolta Miami', class: 'dark-bg' },
-    screenshot: '/assets/Escolta.jpg',
-    metrics: [
-      { value: t('caseStudies.escoltaMetric1Value'), label: t('caseStudies.escoltaMetric1Label') },
-      { value: t('caseStudies.escoltaMetric2Value'), label: t('caseStudies.escoltaMetric2Label') },
-    ] as { value: string; label: string; rating?: boolean }[],
-  },
-  {
-    key: 'pragma',
-    name: 'Pragma',
-    url: 'https://pragma-gules.vercel.app',
-    logo: { kind: 'img', src: '/assets/logos/pragma.webp', alt: 'Pragma', class: 'dark-bg' },
-    screenshot: '/assets/Pragma.jpg',
-    metrics: [
-      { value: t('caseStudies.pragmaMetric1Value'), label: t('caseStudies.pragmaMetric1Label') },
-      { value: t('caseStudies.pragmaMetric2Value'), label: t('caseStudies.pragmaMetric2Label') },
-    ] as { value: string; label: string; rating?: boolean }[],
-  },
-];
+const cases = getCaseStudies(lang);
 ---
 
 <section class="section resultados reveal-stagger" id="casos" aria-label="Case Studies">
