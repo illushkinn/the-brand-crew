@@ -26,7 +26,7 @@ const autoFeatures = [1, 2, 3, 4].map((i) => t(`pricing.autoF${i}`));
      <!-- Growth Mensual -->
      <article class="glass-card pricing-card-v2">
        <h3 class="pricing-card-title">{t('pricing.growthTitle')}</h3>
-       <p class="pricing-card-amount">${t('pricing.growthPriceRange')} <small class="price-currency">USD/mes</small></p>
+       <p class="pricing-card-amount">{t('pricing.growthPriceFrom')} ${t('pricing.growthPriceMin')} <small class="price-currency">USD/mes</small></p>
        <p class="pricing-card-sub">{t('pricing.growthSub')}</p>
        <ul class="pricing-card-features">
          {
