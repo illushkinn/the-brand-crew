@@ -9,6 +9,12 @@ test.describe('Scroll to Top', () => {
         pw.classList.add('is-dismissed');
         pw.style.display = 'none';
       }
+      // Dismiss cookie banner
+      const cookieBanner = document.getElementById('cookie-banner');
+      const cookieOverlay = document.getElementById('cookie-overlay');
+      if (cookieBanner) cookieBanner.classList.remove('visible');
+      if (cookieOverlay) cookieOverlay.classList.remove('visible');
+      localStorage.setItem('tbc-cookie-consent', 'accepted');
     });
   });
 

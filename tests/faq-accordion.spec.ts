@@ -3,13 +3,19 @@ import { test, expect } from '@playwright/test';
 test.describe('FAQ Accordion', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/');
-    // Dismiss preloader
+    // Dismiss preloader and cookie banner
     await page.evaluate(() => {
       const pw = document.getElementById('preloader-wrapper');
       if (pw && !pw.classList.contains('is-dismissed')) {
         pw.classList.add('is-dismissed');
         pw.style.display = 'none';
       }
+      // Dismiss cookie banner
+      const cookieBanner = document.getElementById('cookie-banner');
+      const cookieOverlay = document.getElementById('cookie-overlay');
+      if (cookieBanner) cookieBanner.classList.remove('visible');
+      if (cookieOverlay) cookieOverlay.classList.remove('visible');
+      localStorage.setItem('tbc-cookie-consent', 'accepted');
     });
     // Scroll to FAQ section
     await page.locator('#faq').scrollIntoViewIfNeeded();
