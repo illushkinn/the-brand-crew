@@ -24,11 +24,13 @@
   }
 
   // --- Scroll-to-top click ---
+  const handleScrollToTopClick = function() {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: prefersReduced ? 'auto' : 'smooth' });
+  };
+
   if (scrollToTop) {
-    scrollToTop.addEventListener('click', function() {
-      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      window.scrollTo({ top: 0, behavior: prefersReduced ? 'auto' : 'smooth' });
-    });
+    scrollToTop.addEventListener('click', handleScrollToTopClick);
   }
 
   // --- Scroll-to-top visibility ---
@@ -40,8 +42,11 @@
     if (scrollToTop) scrollToTop.classList.toggle('is-visible', visible);
   }
 
+  let io = null;
+  let onScrollFallback = null;
+
   if ('IntersectionObserver' in window && hero) {
-    const io = new IntersectionObserver(function(entries) {
+    io = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
         setButtonVisible(!entry.isIntersecting);
       });
@@ -49,11 +54,11 @@
     io.observe(hero);
   } else {
     // Fallback: sin IntersectionObserver o sin hero → scroll position
-    function onScroll() {
+    onScrollFallback = function() {
       setButtonVisible((window.scrollY || window.pageYOffset) > window.innerHeight);
-    }
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
+    };
+    window.addEventListener('scroll', onScrollFallback, { passive: true });
+    onScrollFallback();
   }
 
   // Red de seguridad (mobile): si el smooth scroll pierde el frame final
@@ -68,12 +73,14 @@
   window.addEventListener('scroll', handleScrollHide, { passive: true });
 
   // scrollend fallback para browsers que lo soportan
+  const handleScrollEnd = function() {
+    if ((window.scrollY || window.pageYOffset) < 200) {
+      setButtonVisible(false);
+    }
+  };
+
   if ('onscrollend' in window) {
-    window.addEventListener('scrollend', function() {
-      if ((window.scrollY || window.pageYOffset) < 200) {
-        setButtonVisible(false);
-      }
-    });
+    window.addEventListener('scrollend', handleScrollEnd);
   }
 
   // Navbar en todos los casos
@@ -81,4 +88,38 @@
   window.addEventListener('scroll', updateRing, { passive: true });
   handleNavbar();
   updateRing();
+
+  /**
+   * Cleanup function to prevent memory leaks
+   * Removes all event listeners and disconnects observers
+   */
+  function cleanup() {
+    // Remove scroll-to-top click listener
+    if (scrollToTop) {
+      scrollToTop.removeEventListener('click', handleScrollToTopClick);
+    }
+
+    // Disconnect IntersectionObserver
+    if (io) {
+      io.disconnect();
+    }
+
+    // Remove fallback scroll listener if it was used
+    if (onScrollFallback) {
+      window.removeEventListener('scroll', onScrollFallback);
+    }
+
+    // Remove all scroll listeners
+    window.removeEventListener('scroll', handleScrollHide);
+    window.removeEventListener('scroll', handleNavbar);
+    window.removeEventListener('scroll', updateRing);
+
+    // Remove scrollend listener if it was added
+    if ('onscrollend' in window) {
+      window.removeEventListener('scrollend', handleScrollEnd);
+    }
+  }
+
+  // Listen for Astro page transitions to cleanup before swap
+  document.addEventListener('astro:before-swap', cleanup);
 })();
