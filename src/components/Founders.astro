@@ -24,7 +24,7 @@ const skills = dictionaries[lang].team;
           <h3 class="founder-name">{member.name}</h3>
           <p class="founder-bio">{t(`${member.i18nKeyPrefix}Bio` as any)}</p>
           <ul class="founder-skills">
-            {skills[`${member.id}Skills` as keyof typeof skills].map((skill: string) => <li>{skill}</li>)}
+            {skills[`${member.id}Skills`].map((skill: string) => <li>{skill}</li>)}
           </ul>
         </div>
       </article>

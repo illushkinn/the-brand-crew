@@ -3,8 +3,10 @@
  * Centralized data structure for founding partners
  */
 
+export type TeamMemberId = 'illya' | 'carlos';
+
 export interface TeamMember {
-  id: string;
+  id: TeamMemberId;
   name: string;
   photo: string;
   index: string;

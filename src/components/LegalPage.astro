@@ -14,7 +14,7 @@ const { kind, lang } = Astro.props;
 const dict = dictionaries[lang];
 const isES = lang === 'es';
 const canonical = `${DOMAIN}${isES ? '' : '/en'}/${kind}`;
-const backHref = isES ? '/' : '/en/';
+const backHref = isES ? '/' : '/en';
 
 type Section = { h2: string; body?: string; list?: string[]; emailSuffix?: boolean; contact?: boolean };
 const sections: Section[] = kind === 'privacy'

@@ -168,8 +168,9 @@ const websiteSchema = {
   <!-- Hreflang -->
   {(() => {
     const pathname = typeof canonicalURL === 'string' ? new URL(canonicalURL).pathname : canonicalURL.pathname || '/';
-    const esHref = pathname.startsWith('/en/') ? pathname.replace('/en/', '/') : pathname;
-    const enHref = pathname.startsWith('/en/') ? pathname : '/en' + pathname;
+    const basePath = pathname.replace(/^\/en\/?/, '') || '/';
+    const esHref = basePath;
+    const enHref = basePath === '/' ? '/en' : `/en${basePath}`;
     return (
       <>
         <link rel="alternate" hreflang="es" href={esHref} />

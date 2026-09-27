@@ -9,7 +9,7 @@ export type Lang = 'es' | 'en';
  * Get the home page link for the given language
  */
 export function getHomeLink(lang: Lang): string {
-  return lang === 'es' ? '/' : '/en/';
+  return lang === 'es' ? '/' : '/en';
 }
 
 /**
@@ -46,5 +46,7 @@ export function getTermsLink(lang: Lang): string {
  * @param pathname - The current pathname from Astro.url.pathname
  */
 export function getLangSwitchLink(currentLang: Lang, pathname: string): string {
-  return currentLang === 'en' ? pathname : '/en' + pathname;
+  if (currentLang === 'en') return pathname;
+  if (pathname === '/' || pathname === '') return '/en';
+  return '/en' + pathname;
 }
