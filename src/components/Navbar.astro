@@ -10,6 +10,9 @@ const { lang = 'es' } = Astro.props;
 const t = useTranslations(lang);
 
 const isHome = getHomeLink(lang);
+const basePath = Astro.url.pathname.replace(/^\/en\/?/, '') || '/';
+const esHref = basePath;
+const enHref = basePath === '/' ? '/en' : `/en${basePath}`;
 ---
 
 <header>
@@ -34,14 +37,14 @@ const isHome = getHomeLink(lang);
     <div class="navbar-actions">
       <div class="lang-switcher" role="group" aria-label="Language">
         <a
-          href={lang === 'es' ? Astro.url.pathname : Astro.url.pathname.replace('/en', '') || '/'}
+          href={esHref}
           class={`lang-btn ${lang === 'es' ? 'is-active' : ''}`}
           aria-label="Español"
           aria-current={lang === 'es' ? 'true' : undefined}
         >ES</a>
         <span class="lang-separator" aria-hidden="true">|</span>
         <a
-          href={lang === 'en' ? Astro.url.pathname : '/en' + Astro.url.pathname}
+          href={enHref}
           class={`lang-btn ${lang === 'en' ? 'is-active' : ''}`}
           aria-label="English"
           aria-current={lang === 'en' ? 'true' : undefined}

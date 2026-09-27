@@ -8,7 +8,7 @@ import Footer from './Footer.astro';
 interface Props { lang?: Lang }
 const { lang = 'es' } = Astro.props;
 const nf = dictionaries[lang].notFound;
-const homeHref = lang === 'es' ? '/' : '/en/';
+const homeHref = lang === 'es' ? '/' : '/en';
 ---
 
 <BaseLayout title="404 — The Brand Crew" lang={lang}>

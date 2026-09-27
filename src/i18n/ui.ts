@@ -127,8 +127,8 @@ export const dictionaries = {
       mvpF5: 'Soporte 30 días',
       mvpF6: 'Prioridad total en entregas',
       mvpF7: 'Hosting 1° año + Factura A',
-      metaTitle: 'Precios — The Brand Crew',
-      metaDescription: 'Precios claros: web, marca, contenido y growth. Desde $1.200 USD. Factura A incluida.',
+      metaTitle: 'The Brand Crew · Precios de web, marca y contenido',
+      metaDescription: 'Precios claros de The Brand Crew: web, marca, contenido y growth desde USD 1.200. Plan mensual desde USD 750. Factura A y primer año de hosting incluidos.',
       scarcity: 'Solo tomamos 3 proyectos por mes (para hacerlos bien).',
       // Kit 2 — Growth Partner
       kit2Title: 'Growth Partner',
@@ -211,7 +211,7 @@ export const dictionaries = {
     privacy: {
       backHome: 'Volver al inicio',
       title: 'Política de privacidad',
-      description: 'Cómo The Brand Crew recopila, usa y protege tus datos personales. Tu privacidad nos importa.',
+      description: 'Política de privacidad de The Brand Crew: cómo recopilamos, usamos y protegemos tus datos personales, qué cookies usamos y cómo ejercer tus derechos.',
       updated: 'Última actualización: 1 de julio de 2026',
       h2_1: '1. Información que recopilamos',
       p1: 'Recopilamos la información que nos proporcionás directamente cuando nos contactás a través de nuestro sitio web, incluyendo tu nombre, dirección de correo electrónico y cualquier otra información que elijas brindarnos.',
@@ -238,7 +238,7 @@ export const dictionaries = {
     terms: {
       backHome: 'Volver al inicio',
       title: 'Términos y condiciones',
-      description: 'Términos y Condiciones de los servicios de diseño web, marca y marketing digital de The Brand Crew. Condiciones de pago, plazos de proyecto y responsabilidades del cliente.',
+      description: 'Términos y Condiciones de The Brand Crew: servicios de diseño web, marca y marketing digital. Condiciones de pago, plazos de proyecto y responsabilidades.',
       updated: 'Última actualización: 1 de julio de 2026',
       h2_1: '1. Aceptación de los términos',
       p1: 'Al acceder y usar el sitio web y los servicios de The Brand Crew, aceptás y estás de acuerdo en estar sujeto a estos Términos y Condiciones.',
@@ -276,7 +276,7 @@ export const dictionaries = {
     },
     seo: {
       title: 'The Brand Crew · Growth partner para tu negocio',
-      description: 'Growth partner para negocios en Argentina. Web, marca, contenido y automatizaciones desde USD 1.200. Sin sorpresas.',
+      description: 'Growth partner para negocios en Argentina: diseño web, marca, contenido y automatizaciones desde USD 1.200. Presupuesto claro, sin sorpresas.',
       ogTitle: 'The Brand Crew · Growth partner que funciona',
       ogDescription: 'Growth partner para negocios en Argentina.',
       ogImageAlt: 'The Brand Crew · Growth partner',
@@ -388,8 +388,8 @@ export const dictionaries = {
       mvpF5: '30 days of support',
       mvpF6: 'Top priority delivery',
       mvpF7: '1st-year hosting + Invoice A',
-      metaTitle: 'Pricing — The Brand Crew',
-      metaDescription: 'Clear pricing: web, brand, content and growth. From $1,200 USD. Invoice included.',
+      metaTitle: 'The Brand Crew · Pricing for web, brand and content',
+      metaDescription: 'Clear pricing from The Brand Crew: web, brand, content and growth from $1,200 USD. Monthly plans from $750 USD. Invoice and first-year hosting included.',
       scarcity: 'We only take 3 projects a month (so we nail them).',
       kit2Title: 'Growth Partner',
       growthTitle: 'Monthly Growth',
@@ -416,7 +416,7 @@ export const dictionaries = {
       title: 'Your <span class="text-verde">growth partner</span>.',
       sub: 'Month-by-month support for businesses that need to keep evolving. It\'s not a one-and-done website — it\'s a partner that works with you every month.',
       backLink: 'Back to home',
-      description: 'Monthly growth partner: ongoing redesign, more visibility, social content and automations. Starting at $750 USD/mo.',
+      description: 'Monthly growth partner: ongoing redesign, more visibility, social content and automations for your business. Starting at $750 USD/mo.',
     },
     notFound: {
       message: "This page doesn't exist",
@@ -471,7 +471,7 @@ export const dictionaries = {
     privacy: {
       backHome: 'Back to home',
       title: 'Privacy Policy',
-      description: 'How The Brand Crew collects, uses, and protects your personal data. Your privacy matters to us.',
+      description: 'The Brand Crew privacy policy: how we collect, use and protect your personal data, which cookies we use and how to exercise your rights.',
       updated: 'Last updated: July 1, 2026',
       h2_1: '1. Information We Collect',
       p1: 'We collect information you provide directly to us when you contact us through our website, including your name, email address, and any other information you choose to provide.',
@@ -536,7 +536,7 @@ export const dictionaries = {
     },
     seo: {
       title: 'The Brand Crew · Your growth partner',
-      description: 'Growth partner for businesses in Argentina. Web, brand, content and automations from $1,200 USD. No surprises.',
+      description: 'Growth partner for businesses in Argentina: web design, brand identity, content and automations from $1,200 USD. Clear quote, no surprises.',
       ogTitle: 'The Brand Crew · Growth partner that works',
       ogDescription: 'Growth partner for businesses in Argentina.',
       ogImageAlt: 'The Brand Crew · Growth partner',

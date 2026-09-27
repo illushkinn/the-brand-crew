@@ -29,7 +29,7 @@ export interface CaseStudyMetric {
 export interface CaseStudy {
   key: string;
   name: string;
-  url: string;
+  url?: string;
   logo: CaseStudyLogo;
   screenshot?: string;
   metrics: CaseStudyMetric[];
@@ -47,7 +47,6 @@ export function getCaseStudies(lang: Lang): CaseStudy[] {
     {
       key: 'luisito',
       name: 'Luisito Playa Grande',
-      url: 'https://luisito-playa-grande.vercel.app',
       logo: { kind: 'img', src: '/assets/logos/luisito.svg', alt: 'Luisito Playa Grande', class: 'invert-dark' },
       screenshot: '/assets/Luisito.jpg',
       metrics: [
