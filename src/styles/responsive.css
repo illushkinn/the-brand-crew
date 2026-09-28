@@ -578,27 +578,30 @@
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
   }
 
-  /* Hover/focus alphas readable on white */
-  .btn:hover,
-  .btn:focus-visible {
-    background: oklch(0.58 0.18 32 / 0.08);
+  /* Hover/focus — flat press with light-mode alphas */
+  .btn:hover {
+    background: oklch(0.58 0.18 32 / 0.06);
     box-shadow:
-      0 0 12px oklch(0.58 0.18 32 / 0.18),
-      0 0 0 1px oklch(0.58 0.18 32 / 0.4),
-      0 1px 0 oklch(0.55 0.19 135 / 0.15) inset;
+      0 1px 3px oklch(0 0 0 / 0.08),
+      0 0 0 1px oklch(0.58 0.18 32 / 0.12);
+    transform: translateY(1px);
   }
   .btn:focus-visible {
+    background: oklch(0.58 0.18 32 / 0.06);
+    box-shadow:
+      0 1px 3px oklch(0 0 0 / 0.08),
+      0 0 0 1px oklch(0.58 0.18 32 / 0.12);
     outline: 2px solid oklch(0.55 0.19 135 / 0.45);
   }
-  /* Premium: base = hover — neutraliza el bg genérico (viene después en cascada) */
+  /* Premium: flat press for light mode */
   .btn-premium:hover,
   .btn-premium:focus-visible {
     background: var(--premium-bg);
     box-shadow:
-      0 2px 12px oklch(0 0 0 / 0.08),
+      0 1px 3px oklch(0 0 0 / 0.06),
       0 1px 0 oklch(0.55 0.19 135 / 0.15) inset,
-      0 0 0 1px oklch(0.55 0.19 135 / 0.05),
-      0 16px 32px -16px oklch(0 0 0 / 0.3);
+      0 0 0 1px oklch(0.55 0.19 135 / 0.05);
+    transform: translateY(1px);
   }
   .skip-link:focus-visible {
     outline-color: rgba(20, 20, 40, 0.4);
@@ -636,13 +639,8 @@
   }
 }
 
-/* Touch screens: frosted glass — backdrop-filter on the transparent base */
+/* Touch screens: no glassmorphism on btn-premium (CTA) */
 @media (hover: none) and (pointer: coarse) {
-  .btn-premium {
-    backdrop-filter: blur(16px) saturate(150%);
-    -webkit-backdrop-filter: blur(16px) saturate(150%);
-  }
-
   .cookie-banner .btn-premium {
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
