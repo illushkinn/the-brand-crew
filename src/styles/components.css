@@ -72,9 +72,19 @@
   position: relative;
   overflow: hidden;
   z-index: 1;
-  transition: box-shadow 0.6s ease 0.3s, border-color 0.6s ease 0.3s, background 0.6s ease 0.3s;
+  transition:
+    transform 0.25s cubic-bezier(0.2, 0, 0, 1),
+    box-shadow 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease;
   background: transparent;
   color: var(--terracota);
+  /* Default: subtle elevation */
+  box-shadow:
+    0 2px 8px oklch(0 0 0 / 0.08),
+    0 1px 0 oklch(0.58 0.18 32 / 0.1) inset,
+    0 0 0 1px oklch(0.58 0.18 32 / 0.08);
+  transform: translateY(0);
 }
 .btn:focus-visible {
   outline: 2px solid rgba(255, 255, 255, 0.3);
@@ -102,20 +112,27 @@
   width: 1.3em;
   height: 1.3em;
 }
+/* Hover: flatten press — reduces shadow and moves down */
 .btn:hover {
+  background: oklch(0.58 0.18 32 / 0.04);
+  box-shadow:
+    0 1px 3px oklch(0 0 0 / 0.05),
+    0 0 0 1px oklch(0.58 0.18 32 / 0.08);
+  transform: translateY(1px);
+}
+/* Active: fully flat against viewport */
+.btn:active {
   background: oklch(0.58 0.18 32 / 0.06);
   box-shadow:
-    inset 0 1px 0 oklch(0.58 0.18 32 / 0.1),
-    0 0 12px oklch(0.58 0.18 32 / 0.1);
-}
-.btn:active {
-  background: oklch(0.58 0.18 32 / 0.1);
+    0 0 2px oklch(0 0 0 / 0.04),
+    0 1px 0 oklch(0.58 0.18 32 / 0.06) inset;
+  transform: translateY(2px);
+  transition-duration: 0.08s;
 }
 
-/* ===== CTA — PREMIUM GLASS (reacciona al hover con sweep + lift, push al click) ===== */
+/* ===== CTA — PREMIUM FLAT PRESS ===== */
 .btn-premium {
   --premium-bg: linear-gradient(135deg, oklch(0.98 0 0 / 0.14), oklch(0.98 0 0 / 0.04));
-  --sweep: oklch(0.98 0 0 / 0.14);
   background: var(--premium-bg);
   border: 1px solid oklch(0.62 0.18 32 / 0.6);
   border-radius: round(10px);
@@ -125,49 +142,30 @@
   text-shadow: 0 1px 2px oklch(0 0 0 / 0.3);
   transition:
     transform 0.25s cubic-bezier(0.2, 0, 0, 1),
-    box-shadow 0.3s ease,
-    border-color 0.3s ease;
+    box-shadow 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease;
+  /* Default: subtle elevation */
   box-shadow:
-    0 2px 12px oklch(0 0 0 / 0.1),
+    0 2px 8px oklch(0 0 0 / 0.1),
     0 1px 0 oklch(0.82 0.2 125 / 0.2) inset,
     0 0 0 1px oklch(0.82 0.2 125 / 0.06);
+  transform: translateY(0);
 }
-/* Barrido de luz (sweep) — una pasada al entrar, hereda el radius y el corner-shape */
-.btn-premium::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  z-index: 0;
-  pointer-events: none;
-  background: linear-gradient(
-    115deg,
-    transparent 15%,
-    var(--sweep) 35%,
-    var(--sweep) 45%,
-    transparent 65%
-  );
-  background-size: 250% 100%;
-  background-position: 130% 0;
-  transition: background-position 0.9s cubic-bezier(0.2, 0, 0, 1);
-}
+/* Hover: flatten press — reduces shadow and moves down */
 .btn-premium:hover {
   background: var(--premium-bg);
-  /* Premium flattening effect: reduce shadow to align with viewport (Google Drive style) */
   box-shadow:
-    0 1px 4px oklch(0 0 0 / 0.06),
+    0 1px 3px oklch(0 0 0 / 0.06),
     0 1px 0 oklch(0.82 0.2 125 / 0.15) inset,
     0 0 0 1px oklch(0.82 0.2 125 / 0.04);
   transform: translateY(1px);
 }
-.btn-premium:hover::before {
-  background-position: -30% 0;
-}
+/* Active: fully flat against viewport */
 .btn-premium:active {
   background: var(--premium-bg);
-  /* Active: fully flattened to viewport */
   box-shadow:
-    0 0 2px oklch(0 0 0 / 0.15),
+    0 0 2px oklch(0 0 0 / 0.04),
     0 1px 0 oklch(0.82 0.2 125 / 0.08) inset;
   transform: translateY(2px);
   transition-duration: 0.08s;
