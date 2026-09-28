@@ -3,10 +3,8 @@
 import type { Lang } from '../i18n/ui';
 import { dictionaries } from '../i18n/ui';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Icon from './Icon.astro';
+import PlanCards from './PlanCards.astro';
 import Footer from './Footer.astro';
-import { getWhatsAppLink } from '../lib/whatsapp';
-import { getGrowthPartnerLink } from '../lib/routing';
 
 interface Props {
   lang?: Lang;
@@ -14,7 +12,6 @@ interface Props {
 }
 const { lang = 'es', canonicalURL } = Astro.props;
 const s = dictionaries[lang].socios;
-const STAR_INDEX = 1;
 ---
 
 <BaseLayout lang={lang} description={s.description} canonicalURL={canonicalURL} noindex={true}>
@@ -25,66 +22,11 @@ const STAR_INDEX = 1;
         <h1 class="section-title socios-title" set:html={s.title}></h1>
       </header>
 
-      <div class="socios-grid">
-        {
-          s.plans.map((plan, i) => {
-            const message = s.ctaMessage.replace('{plan}', plan.name);
-            return (
-              <article class:list={['socios-card', { 'is-star': i === STAR_INDEX }]}>
-                <div class="socios-card-top">
-                  <h2 class="socios-name mono">{plan.name}</h2>
-                  {i === STAR_INDEX && <span class="socios-badge mono">{s.badge}</span>}
-                </div>
-                <p class="socios-price">
-                  <span class="socios-currency">$</span>
-                  {plan.price}
-                  <span class="socios-usd">USD</span>
-                </p>
-                <p class="socios-tagline">{plan.tagline}</p>
-                <ul class="socios-features">
-                  {plan.features.map((f) => <li>{f}</li>)}
-                </ul>
-                <a
-                  href={getWhatsAppLink(lang, message)}
-                  class="socios-cta"
-                  data-wa-message={message}
-                  target="_blank"
-                  rel="noopener"
-                >
-                  {s.cta}
-                  <Icon name="arrow-right" size={16} strokeWidth={2.5} />
-                </a>
-              </article>
-            );
-          })
-        }
-      </div>
-
-      <p class="socios-footnote">{s.footnote}</p>
-
-      <p class="socios-growth">
-        {s.growthText}
-        <a href={getGrowthPartnerLink(lang)}>{s.growthLink} →</a>
-      </p>
+      <PlanCards lang={lang} showBadge={true} badge={s.badge} titleHeading="h2" />
     </section>
   </div>
   <Footer lang={lang} />
 </BaseLayout>
-
-<script is:inline define:vars={{ refLabel: s.refLabel }}>
-  // Cada setter comparte /socios?ref=<nombre>: se agrega al mensaje de WhatsApp para atribuir el lead.
-  (() => {
-    const ref = new URLSearchParams(location.search).get('ref');
-    if (!ref) return;
-    const clean = ref.replace(/[^\p{L}\p{N} _.-]/gu, '').slice(0, 40);
-    if (!clean) return;
-    document.querySelectorAll('a[data-wa-message]').forEach((a) => {
-      const url = new URL(a.href);
-      url.searchParams.set('text', `${a.dataset.waMessage} (${refLabel}: ${clean})`);
-      a.href = url.toString();
-    });
-  })();
-</script>
 
 <style>
   .socios-page-content .section {
@@ -96,206 +38,5 @@ const STAR_INDEX = 1;
   }
   .socios-title {
     margin-top: 0.75rem;
-  }
-
-  .socios-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1.25rem;
-    align-items: stretch;
-  }
-
-  .socios-card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    padding: 2.25rem 2rem 2rem;
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    transition: border-color 0.3s, transform 0.3s cubic-bezier(0.2, 0, 0, 1);
-  }
-  .socios-card:hover {
-    border-color: var(--glass-border);
-    transform: translateY(-2px);
-  }
-  .socios-card.is-star {
-    border-color: oklch(0.58 0.18 32 / 0.55);
-    box-shadow: 0 8px 40px oklch(0.58 0.18 32 / 0.14);
-  }
-  .socios-card.is-star::before {
-    content: '';
-    position: absolute;
-    top: -1px;
-    left: 2rem;
-    right: 2rem;
-    height: 2px;
-    background: var(--terracota);
-    border-radius: 2px;
-  }
-
-  .socios-card-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.75rem;
-    min-height: 1.5rem;
-  }
-  .socios-name {
-    font-size: 0.8rem;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--body-dim);
-    margin: 0;
-  }
-  .socios-badge {
-    font-size: 0.65rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--terracota);
-    padding: 0.25rem 0.6rem;
-    border: 1px solid oklch(0.58 0.18 32 / 0.45);
-    border-radius: var(--radius-full);
-    white-space: nowrap;
-  }
-
-  .socios-price {
-    display: flex;
-    align-items: flex-start;
-    margin: 1.75rem 0 0.75rem;
-    font-family: var(--font-display);
-    font-size: clamp(2.75rem, 4.5vw, 3.5rem);
-    font-weight: 700;
-    letter-spacing: -0.04em;
-    line-height: 1;
-    font-variant-numeric: tabular-nums;
-    color: var(--headline);
-  }
-  .is-star .socios-price {
-    color: var(--verde);
-  }
-  .socios-currency {
-    font-size: 0.5em;
-    font-weight: 500;
-    margin: 0.2em 0.08em 0 0;
-    opacity: 0.7;
-  }
-  .socios-usd {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    margin: 0.5em 0 0 0.5rem;
-    color: var(--body-dim);
-  }
-
-  .socios-tagline {
-    font-size: 1.05rem;
-    font-weight: 500;
-    color: var(--headline);
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .socios-features {
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-    margin: 1.5rem 0 2rem;
-    padding: 0;
-    list-style: none;
-  }
-  .socios-features li {
-    position: relative;
-    padding-left: 1.1rem;
-    font-size: 0.95rem;
-    line-height: 1.4;
-    color: var(--body);
-  }
-  .socios-features li::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0.55em;
-    width: 5px;
-    height: 5px;
-    border-radius: var(--radius-round);
-    background: var(--verde);
-  }
-
-  .socios-cta {
-    margin-top: auto;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    padding: 0.85rem 1.25rem;
-    border: 1px solid var(--glass-border);
-    border-radius: 10px;
-    font-weight: 500;
-    color: var(--headline);
-    text-decoration: none;
-    transition: border-color 0.3s, background 0.3s, color 0.3s;
-  }
-  .socios-cta:hover {
-    border-color: var(--terracota);
-    color: var(--terracota);
-  }
-  .is-star .socios-cta {
-    background: var(--terracota);
-    border-color: var(--terracota);
-    color: var(--white);
-  }
-  .is-star .socios-cta:hover {
-    background: var(--terracota-hover);
-    border-color: var(--terracota-hover);
-    color: var(--white);
-  }
-  .socios-cta:focus-visible {
-    outline: 2px solid var(--verde);
-    outline-offset: 2px;
-  }
-
-  .socios-footnote {
-    margin-top: 2rem;
-    text-align: center;
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    letter-spacing: 0.06em;
-    color: var(--body-dim);
-  }
-  .socios-growth {
-    margin-top: 0.75rem;
-    text-align: center;
-    font-size: 0.9rem;
-    color: var(--body-dim);
-  }
-  .socios-growth a {
-    color: var(--headline);
-    text-decoration: underline;
-    text-underline-offset: 3px;
-    text-decoration-color: var(--border);
-  }
-  .socios-growth a:hover {
-    color: var(--verde);
-  }
-
-  @media (max-width: 900px) {
-    .socios-grid {
-      grid-template-columns: 1fr;
-      max-width: 440px;
-      margin: 0 auto;
-    }
-    .socios-card.is-star {
-      order: -1;
-    }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .socios-card,
-    .socios-card:hover {
-      transition: none;
-      transform: none;
-    }
   }
 </style>
