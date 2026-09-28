@@ -1,11 +1,10 @@
 ---
-// Pricing.astro - Pricing section: Kit 1 (Web Design) + link to Growth Partner
+// Pricing.astro - Pricing section: plan cards (web + marca + contenido) + link to Growth Partner
 import type { Lang } from '../i18n/ui';
 import { useTranslations } from '../i18n/ui';
 import { DOMAIN } from '../lib/constants';
-import PricingKit1 from './PricingKit1.astro';
-import Icon from './Icon.astro';
-import { getHomeLink, getGrowthPartnerLink } from '../lib/routing';
+import PlanCards from './PlanCards.astro';
+import { getHomeLink } from '../lib/routing';
 
 interface Props {
   lang?: Lang;
@@ -17,7 +16,6 @@ const t = useTranslations(lang);
 const titleHeading = heading;
 
 const homeLink = `${DOMAIN}${getHomeLink(lang)}`;
-const growthLink = getGrowthPartnerLink(lang);
 ---
 
 <section class="section pricing reveal-stagger" id="precios" aria-label="Pricing">
@@ -28,19 +26,8 @@ const growthLink = getGrowthPartnerLink(lang);
     <h2 class="section-title rv">{t('pricing.title1')}.</h2>
   )}
 
-  <!-- Scarcity banner -->
-  <div class="pricing-scarcity rv">
-    <Icon name="clock" size={16} strokeWidth={2.5} />
-    <span>{t('pricing.scarcity')}</span>
-  </div>
-
-  <div class="rv"><PricingKit1 lang={lang} titleHeading={titleHeading === 'h1' ? 'h2' : 'h3'} /></div>
-
-  <!-- Growth Partner CTA -->
-  <div class="pricing-growth-cta rv">
-    <a href={growthLink} class="btn btn-outline">
-      {t('pricing.growthCtaLink')}
-      <Icon name="arrow-right" size={16} strokeWidth={2.5} />
-    </a>
+  <div class="rv pricing-kit">
+    <p class="pricing-kit-title mono">{t('pricing.kit1Title')}</p>
+    <PlanCards lang={lang} titleHeading={titleHeading === 'h1' ? 'h2' : 'h3'} />
   </div>
 </section>
