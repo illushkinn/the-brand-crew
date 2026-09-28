@@ -1,0 +1,391 @@
+---
+// Guía de precios — cluster "cuánto cuesta una página web en Argentina"
+// URL evergreen (sin año); el año vive en <title> y <H1>.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { DOMAIN } from '../../lib/constants';
+
+const canonicalURL = `${DOMAIN}/guias/cuanto-cuesta-una-pagina-web-en-argentina`;
+const title = '¿Cuánto cuesta una página web en Argentina? (2026) — The Brand Crew';
+const description =
+  'Cuánto cuesta una página web en Argentina en 2026: rangos en USD de plantilla, freelancer, agencia y retainer. Qué incluye cada tramo y errores al cotizar.';
+
+const rangos = [
+  {
+    rango: 'Plantilla / DIY',
+    precio: 'USD 100 – 500',
+    esperas:
+      'Constructor visual con tema comprado. Vos armás todo: textos, fotos, enlaces y SEO. Sirve para probar una idea, no para competir en Google.',
+  },
+  {
+    rango: 'Freelancer',
+    precio: 'USD 500 – 1.500',
+    esperas:
+      'Una sola persona hace diseño, desarrollo y contenido. La variación es enorme según experiencia: hay trabajo sólido y hay plantillas disfrazadas de "a medida".',
+  },
+  {
+    rango: 'Agencia',
+    precio: 'USD 1.200 – 4.500',
+    esperas:
+      'Equipo (dev + diseño + contenido) con proceso, fechas y soporte. Nuestros tres packs publicados viven acá: Arrancá, Crecé y Escalá.',
+    link: { href: '/pricing', text: 'Ver los tres packs con precio' },
+  },
+  {
+    rango: 'Retainer mensual',
+    precio: 'desde USD 750 / mes',
+    esperas:
+      'La web no se termina el día del launch: se itera. Rediseño continuo, contenido y reporte de métricas mes a mes.',
+    link: { href: '/pricing/growth-partner', text: 'Ver Growth Partner' },
+  },
+];
+
+const incluye = [
+  {
+    titulo: 'Plantilla / DIY (USD 100 – 500)',
+    texto:
+      'Te queda el archivo y nada más. Sin copy, sin SEO técnico, sin garantía de que el tema se vea bien en un celular chico. El soporte sos vos, y el tiempo que le dediques es el costo real.',
+  },
+  {
+    titulo: 'Freelancer (USD 500 – 1.500)',
+    texto:
+      'Depende de una persona: si es buena, buen trabajo; si algún día no está, no hay red. Antes de firmar preguntá tres cosas por escrito: quién escribe los textos, si entra SEO técnico, y qué pasa cuando algo se rompe a los tres meses.',
+  },
+  {
+    titulo: 'Agencia (USD 1.200 – 4.500)',
+    texto:
+      'Proceso, equipo y entrega. En este tramo ya deberías tener diseño a medida, textos escritos para tu cliente, SEO técnico base (titles, meta, sitemap, velocidad), sitio responsive, hosting del primer año y soporte post-entrega. Nuestros tres packs —Arrancá USD 1.200, Crecé USD 2.800 y Escalá USD 4.500— están pensados para que veas qué cambia de un tramo al otro.',
+  },
+  {
+    titulo: 'Retainer (desde USD 750 / mes)',
+    texto:
+      'No comprás una web, comprás continuidad: alguien que mire las métricas, actualice, publique y proponga cambios todos los meses. Es lo contrario de entregar la web y desaparecer.',
+  },
+];
+
+const errores = [
+  {
+    titulo: 'Elegir solo por precio',
+    texto:
+      'El presupuesto más barato casi siempre es una plantilla con tu logo encima. Se ve bien el día uno y a los seis meses no rankea, no convierte y no se puede editar sin pelearse con nadie. Compará alcances, no números.',
+  },
+  {
+    titulo: 'Cotizar sin contenidos',
+    texto:
+      'Si no tenés textos, fotos ni productos cargados, la fecha se corre y el presupuesto también. Definí quién produce el contenido ANTES de firmar: lo que falta se paga después con tiempo y con plata.',
+  },
+  {
+    titulo: 'No reclamar la propiedad del dominio',
+    texto:
+      'Si el dominio está a nombre del proveedor, estás alquilando tu propia marca. Exigí tres cosas: dominio y hosting a tu nombre, acceso total al CMS o al código, y el repositorio en tu cuenta.',
+  },
+  {
+    titulo: 'Confundir precio de entrega con costo total',
+    texto:
+      'Dominio, hosting, correos, copias de seguridad, actualizaciones y arreglos siguen después del launch. Presupuestalos desde el día uno: es mejor saberlo antes que descubrirlo cuando vence la renovación.',
+  },
+];
+
+const faqs = [
+  {
+    q: '¿Cuánto cuesta una página web en Argentina en 2026?',
+    a: 'Depende del tramo: una plantilla que armás vos, entre USD 100 y 500; un freelancer, entre USD 500 y 1.500; una agencia, entre USD 1.200 y 4.500 según alcance. Publicamos nuestros tres precios sin pedirte el mail: Arrancá USD 1.200, Crecé USD 2.800 y Escalá USD 4.500 en la página de precios.',
+  },
+  {
+    q: '¿Por qué la diferencia entre un freelancer y una agencia es tan grande?',
+    a: 'No es el logo, es la redundancia. En una agencia hay más de una persona revisando: si el dev se enferma hay otro, si el copy no cierra hay una ronda de revisión, y el proceso (briefing, v1, ajustes, QA, entrega) está definido en lugar de inventarse en cada proyecto. Con un freelancer todo depende de una persona y de su agenda.',
+  },
+  {
+    q: '¿El precio incluye textos, fotos y SEO?',
+    a: 'Nosotros sí: los tres packs incluyen textos escritos para tu cliente, optimización SEO base (titles, meta description, sitemap y velocidad) y contenido de lanzamiento. En cualquier otro presupuesto preguntalo por escrito: es lo primero que se recorta cuando el número es bajo.',
+  },
+  {
+    q: '¿Cuánto cuesta mantener la web después de lanzarla?',
+    a: 'Dominio y hosting son un costo recurrente, y encima está el tiempo de actualizaciones, copias de seguridad y arreglos. No es plata que se evite: es plata que se va igual, estés o no pendiente. Si no querés manejarlo vos, un retainer de acompañamiento arranca en USD 750 por mes.',
+  },
+  {
+    q: '¿Cómo se paga y cuánto tarda?',
+    a: 'Nuestro proceso es 50% al arrancar y 50% al entregar, con Factura A y el primer año de hosting incluido. En plazos: una landing simple se entrega en 5 a 7 días y una web completa en unas 2 semanas. Una tienda online lleva más, porque hay catálogo, cobros y automatizaciones que probar.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: f.a,
+    },
+  })),
+};
+---
+
+<BaseLayout
+  lang="es"
+  title={title}
+  description={description}
+  canonicalURL={canonicalURL}
+>
+  <script
+    is:inline
+    type="application/ld+json"
+    set:html={JSON.stringify(faqSchema)}
+  ></script>
+
+  <div class="legal-main">
+    <a href="/" class="legal-back">← Volver al inicio</a>
+
+    <span class="section-label mono">Guía · Precios 2026</span>
+    <h1 class="legal-title">¿Cuánto cuesta una página web en Argentina? (2026)</h1>
+
+    <div class="glass-card legal-card">
+      <section class="legal-block">
+        <h2 class="legal-h2">El precio depende de cuatro cosas</h2>
+        <p class="legal-p">
+          La respuesta corta: entre USD 100 y USD 4.500. La respuesta honesta:
+          ese rango tan amplio no existe porque unos cobren "de más" y otros
+          "de menos", sino porque no estás comprando lo mismo. Antes de mirar un
+          número, mirá estas cuatro variables:
+        </p>
+        <ul class="guia-list">
+          <li>
+            <strong>Alcance.</strong> Una landing de cinco secciones no es lo
+            mismo que una tienda con 200 productos. Cada pantalla extra es
+            diseño, copy y desarrollo.
+          </li>
+          <li>
+            <strong>Contenido.</strong> ¿Escribís vos o hay que producir textos,
+            fotos y piezas? El contenido es trabajo real, y cuando falta se cae
+            la fecha de entrega.
+          </li>
+          <li>
+            <strong>Integraciones.</strong> Pasarelas de pago, CRM, WhatsApp
+            automático, reservas, analytics. Cada conexión suma horas de
+            configuración y de pruebas.
+          </li>
+          <li>
+            <strong>Mantenimiento.</strong> Dominio, hosting, actualizaciones y
+            copias de seguridad. La web no termina el día del launch: empieza
+            ahí.
+          </li>
+        </ul>
+      </section>
+
+      <section class="legal-block">
+        <h2 class="legal-h2">Rangos de precio en USD</h2>
+        <p class="legal-p">
+          Los cuatro tramos que vas a encontrar al pedir presupuesto en
+          Argentina, con lo que podés esperar por tu dinero en cada uno. Los
+          valores de las filas "Agencia" y "Retainer" son los que nosotros
+          publicamos: nada de rangos inventados.
+        </p>
+        <div class="tabla-wrap">
+          <table class="precio-tabla">
+            <thead>
+              <tr>
+                <th scope="col">Tramo</th>
+                <th scope="col">Precio típico</th>
+                <th scope="col">Qué esperás</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                rangos.map((r) => (
+                  <tr>
+                    <td data-label="Tramo">{r.rango}</td>
+                    <td data-label="Precio">{r.precio}</td>
+                    <td data-label="Qué esperás">
+                      {r.esperas}{' '}
+                      {r.link && <a href={r.link.href}>{r.link.text} →</a>}
+                    </td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="legal-block">
+        <h2 class="legal-h2">Qué incluye cada rango</h2>
+        <p class="legal-p">
+          La pregunta no es cuánto pagás, es qué te queda después. Esto es lo
+          que debería venir incluido en cada tramo:
+        </p>
+        <ul class="guia-list">
+          {
+            incluye.map((i) => (
+              <li>
+                <strong>{i.titulo}.</strong> {i.texto}
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+
+      <section class="legal-block">
+        <h2 class="legal-h2">Errores al cotizar</h2>
+        <p class="legal-p">
+          Son los cuatro que más plata y más tiempo cuestan. Los vemos una y
+          otra vez cuando nos llega alguien que arrancó con otro proveedor:
+        </p>
+        <ul class="guia-list is-ordered">
+          {
+            errores.map((e) => (
+              <li>
+                <strong>{e.titulo}.</strong> {e.texto}
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+
+      <section class="legal-block" id="faq-precios">
+        <h2 class="legal-h2">Preguntas frecuentes</h2>
+        <div class="glass-card guia-faq">
+          <div class="faq-list">
+            {
+              faqs.map((f) => (
+                <div class="faq-item">
+                  <button
+                    class="faq-question"
+                    type="button"
+                    aria-expanded="false"
+                  >
+                    {f.q}
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                      class="faq-chevron"
+                    >
+                      <polyline points="6 9 12 15 18 9" />
+                    </svg>
+                  </button>
+                  <div class="faq-answer">
+                    <p>{f.a}</p>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <p class="guia-cta">
+      Si ya sabés qué necesitás, no hace falta adivinar el número: los tres
+      packs están publicados con precio y sin formularios.
+      <a href="/pricing" class="btn btn-outline">Ver precios reales</a>
+    </p>
+  </div>
+
+  <script src="../../scripts/faq.js"></script>
+</BaseLayout>
+
+<style>
+  .guia-list {
+    list-style: disc;
+    margin: 0.5rem 0 1.5rem 1.4rem;
+  }
+  .guia-list.is-ordered {
+    list-style: decimal;
+  }
+  .guia-list li {
+    margin-bottom: 0.8rem;
+    line-height: 1.65;
+    color: var(--body-dim);
+    padding-left: 0.25rem;
+  }
+  .guia-list li:last-child {
+    margin-bottom: 0;
+  }
+  .guia-list strong {
+    color: var(--headline);
+    font-weight: 600;
+  }
+
+  .tabla-wrap {
+    overflow-x: auto;
+    margin-top: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+  }
+  .precio-tabla {
+    width: 100%;
+    min-width: 540px;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+  }
+  .precio-tabla th {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--terracota);
+    text-align: left;
+    padding: 0.6rem 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .precio-tabla td {
+    padding: 0.9rem 0.75rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--body-dim);
+    line-height: 1.55;
+    vertical-align: top;
+  }
+  .precio-tabla tbody tr:last-child td {
+    border-bottom: none;
+  }
+  .precio-tabla td:first-child {
+    color: var(--headline);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .precio-tabla td:nth-child(2) {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--headline);
+    white-space: nowrap;
+    font-size: 0.9rem;
+  }
+  .precio-tabla a {
+    color: var(--terracota);
+    text-decoration: underline;
+    white-space: nowrap;
+  }
+
+  .guia-faq {
+    padding: 1.5rem 1.75rem;
+  }
+  .guia-faq .faq-list {
+    max-width: none;
+    margin-top: 0;
+  }
+
+  .guia-cta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    color: var(--body-dim);
+    line-height: 1.6;
+  }
+  .guia-cta .btn {
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 640px) {
+    .guia-cta {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>
