@@ -1120,29 +1120,6 @@
   width: 1rem;
   height: 1rem;
 }
-.pricing-badge {
-  position: absolute;
-  right: 1rem;
-  bottom: 1rem;
-  display: inline-flex;
-  align-items: center;
-  padding: 0.2rem 0.55rem;
-  background: oklch(0.2 0.05 165 / 0.72);
-  color: var(--terracota);
-  border: 1px solid oklch(0.58 0.18 32 / 0.45);
-  border-radius: 999px;
-  font-size: 0.65rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  line-height: 1.2;
-  white-space: nowrap;
-  width: fit-content;
-}
-.pricing-badge-premium {
-  background: oklch(0.2 0.05 165);
-  border: 1px solid oklch(0.58 0.18 32 / 0.35);
-}
 .pricing-grid {
   display: grid;
   grid-template-columns: 1fr;

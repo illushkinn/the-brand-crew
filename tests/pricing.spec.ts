@@ -28,11 +28,4 @@ test.describe('Pricing smoke', () => {
       await expect(card.locator('.pricing-card-features li')).toHaveCount(7);
     }
   });
-
-  test('star card shows the "Más elegido" badge', async ({ page }) => {
-    await gotoPricing(page);
-    const badge = page.locator('.pricing-badge');
-    await expect(badge).toBeVisible();
-    await expect(badge).toContainText('Más elegido');
-  });
 });
