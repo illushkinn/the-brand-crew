@@ -36,6 +36,12 @@ const growthLink = getGrowthPartnerLink(lang);
 
   <div class="rv"><PricingKit1 lang={lang} titleHeading={titleHeading === 'h1' ? 'h2' : 'h3'} /></div>
 
+  {lang === 'es' && (
+    <p class="pricing-note rv">
+      ¿Antes de pedir presupuesto? Leé <a href="/guias/cuanto-cuesta-una-pagina-web-en-argentina">cuánto cuesta realmente una página web en Argentina</a> — rangos de referencia, qué incluye cada tramo y los errores que más plata cuestan al cotizar.
+    </p>
+  )}
+
   <!-- Growth Partner CTA -->
   <div class="pricing-growth-cta rv">
     <a href={growthLink} class="btn btn-outline">
@@ -44,3 +50,23 @@ const growthLink = getGrowthPartnerLink(lang);
     </a>
   </div>
 </section>
+
+<style>
+  .pricing-note {
+    max-width: 620px;
+    margin: 2rem auto 0;
+    text-align: center;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--body-dim);
+  }
+  .pricing-note a {
+    color: var(--terracota);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s ease;
+  }
+  .pricing-note a:hover {
+    color: var(--terracota-hover);
+  }
+</style>
