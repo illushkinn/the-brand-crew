@@ -34,7 +34,12 @@ const businessSchema = {
   "@type": "LocalBusiness",
   "@id": `${DOMAIN}/#business`,
   "name": "The Brand Crew",
+  "alternateName": "The Brand Crew Agencia Creativa Argentina",
   "description": seo.businessDescription,
+  "areaServed": {
+    "@type": "Country",
+    "name": "Argentina"
+  },
   "url": DOMAIN,
   "address": {
     "@type": "PostalAddress",
@@ -188,9 +193,11 @@ const websiteSchema = {
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://va.vercel-scripts.com">
-  <!-- Google Fonts: non-blocking via media="print" + onload swap -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"></noscript>
+  <!-- Preload critical font (Onest 500 — most used weight) -->
+  <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/onest/v7/gNMdW3p6SJbwyGj2rBZyeOrTjOPh.woff2" crossorigin>
+  <!-- Google Fonts: non-blocking via media="print" + onload swap, removed unused weight 800 -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"></noscript>
 
 
   <!-- Vercel Speed Insights -->
