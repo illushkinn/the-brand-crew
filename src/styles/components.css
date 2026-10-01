@@ -357,7 +357,7 @@
   position: fixed;
   inset: 0;
   z-index: 999;
-  background: var(--bg);
+  background: var(--charcoal);  /* Negro editorial para contraste con texto blanco */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1077,7 +1077,7 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
   .mobile-menu {
-    background: var(--bg);
+    background: var(--charcoal);
   }
   .scroll-to-top {
     background: var(--bg-card);
