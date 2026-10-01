@@ -535,19 +535,28 @@
 .hero-actions .btn-premium {
   padding: 0.9rem 1.25rem;
   font-size: clamp(1.2rem, 2.8vw, 1.5rem);
-  color: var(--charcoal);  /* Texto negro para hero CTA */
+  color: var(--charcoal);  /* Texto negro */
   font-weight: 400;  /* Fuente más delgada (era 500) */
-  /* Eliminar efecto glassmórfico completamente */
+  /* Fondo blanco */
+  background: var(--white) !important;
+  /* Borde degradado: Verde → Terracota → Blanco */
+  border: 3px solid transparent;
+  border-image: linear-gradient(135deg, var(--verde) 0%, var(--terracota) 50%, rgba(255, 255, 255, 0.8) 100%);
+  border-image-slice: 1;
+  /* Eliminar sombras */
   box-shadow: none !important;
   backdrop-filter: none;
 }
 .hero-actions .btn-premium:hover {
   color: var(--charcoal);  /* Mantener texto negro en hover */
+  /* Fondo con ligero tinte verde en hover */
+  background: oklch(0.98 0.02 135) !important;
   /* Hard drop shadow solamente, sin inset */
   box-shadow: 5px 5px 0 0 var(--terracota) !important;
 }
 .hero-actions .btn-premium:active {
   color: var(--charcoal);  /* Mantener texto negro en active */
+  background: var(--white) !important;
   box-shadow: none !important;
 }
 .hero-b2b-tags {
@@ -1315,20 +1324,27 @@
 .cta-btn {
   margin-top: 1rem;
   margin-bottom: 0.5rem;
-  color: var(--charcoal);  /* Texto negro para CTA footer */
-  /* Fondo crimson sólido, sin transparencia */
-  background: var(--crimson) !important;
-  /* Eliminar efecto glassmórfico completamente */
+  color: var(--charcoal);  /* Texto negro */
+  /* Fondo blanco */
+  background: var(--white) !important;
+  /* Borde degradado: Verde → Terracota → Blanco */
+  border: 3px solid transparent;
+  border-image: linear-gradient(135deg, var(--verde) 0%, var(--terracota) 50%, rgba(255, 255, 255, 0.8) 100%);
+  border-image-slice: 1;
+  /* Eliminar sombras */
   box-shadow: none !important;
   backdrop-filter: none;
 }
 .cta-btn:hover {
   color: var(--charcoal);  /* Mantener texto negro en hover */
+  /* Fondo con ligero tinte verde en hover */
+  background: oklch(0.98 0.02 135) !important;
   /* Hard drop shadow solamente, sin inset */
   box-shadow: 5px 5px 0 0 var(--terracota) !important;
 }
 .cta-btn:active {
   color: var(--charcoal);  /* Mantener texto negro en active */
+  background: var(--white) !important;
   box-shadow: none !important;
 }
 /* ========================================
@@ -1573,10 +1589,11 @@
   opacity: 0.85;  /* Slight transparency for elegance */
 }
 
-/* Hide default cursor on desktop when custom cursor is active */
+/* Keep default cursor visible alongside custom cursor ball */
 @media (pointer: fine) {
+  /* Do NOT hide default cursor - let both coexist */
   body {
-    cursor: none;
+    cursor: auto;
   }
 
   /* Keep default cursor for text selection and inputs */
@@ -1586,7 +1603,7 @@
     cursor: text;
   }
 
-  /* Keep pointer for clickable elements (fallback if JS fails) */
+  /* Keep pointer for clickable elements */
   a,
   button,
   .btn,
