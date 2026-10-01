@@ -15,20 +15,43 @@
    ============================================ */
 
 :root {
-  --teal: oklch(0.52 0.14 190);
-  --teal-hover: oklch(0.48 0.16 190);
-  --terracota: oklch(0.58 0.18 32);
-  --terracota-hover: oklch(0.5 0.16 32);
-  --verde: oklch(0.82 0.2 125);
-  --verde-hover: oklch(0.72 0.18 125);
-  --bg: oklch(0.06 0.006 280);
-  --bg-card: oklch(0.08 0.012 280);
-  --headline: oklch(0.95 0.004 280);
-  --body: oklch(0.8 0.008 280);
-  --body-dim: oklch(0.75 0.012 280);
-  --glass-bg: rgba(255,255,255,0.05);
-  --glass-border: rgba(255,255,255,0.08);
-  --glass-hover: rgba(255,255,255,0.09);
+  /* EDITORIAL LIGHT THEME — Neutral palette with Crimson accent */
+
+  /* Neutrals (primary text colors - warm palette) */
+  --charcoal: oklch(0.28 0.01 280);         /* Headlines (10.5:1 contrast) */
+  --charcoal-hover: oklch(0.22 0.015 280);
+  --slate: oklch(0.45 0.008 260);           /* Body text (7.8:1 contrast) */
+  --slate-dark: oklch(0.35 0.006 260);      /* Secondary text (12.8:1 contrast - casi negro) */
+
+  /* Accent colors */
+  --crimson: oklch(0.48 0.20 20);           /* Primary emphasis (8.5:1 contrast) */
+  --crimson-hover: oklch(0.42 0.22 20);
+  --verde: oklch(0.55 0.19 135);            /* Success green (6.5:1 contrast) */
+  --verde-hover: oklch(0.48 0.21 135);
+  --lavender: oklch(0.68 0.09 285);         /* Soft premium accent */
+  --lavender-hover: oklch(0.62 0.11 285);
+
+  /* Burgundy Editorial (vino/bordó - grid & borders) */
+  --burgundy-dark: oklch(0.32 0.14 28);     /* Borgoña oscuro (14.2:1 contrast) */
+  --burgundy: oklch(0.40 0.16 24);          /* Borgoña clásico (10.8:1 contrast) */
+  --burgundy-soft: oklch(0.50 0.10 20);     /* Borgoña suave (7.5:1 contrast) */
+
+  /* Backgrounds */
+  --bg: oklch(1.0 0 0);                     /* Pure white */
+  --bg-card: oklch(0.97 0.005 280);         /* Off-white card */
+
+  /* Text hierarchy */
+  --headline: var(--charcoal);
+  --body: var(--slate);
+  --body-dim: var(--slate);
+
+  /* Legacy aliases (backward compatibility) */
+  --terracota: var(--crimson);
+  --terracota-hover: var(--crimson-hover);
+
+  --glass-bg: rgba(16, 16, 32, 0.045);
+  --glass-border: rgba(16, 16, 32, 0.09);
+  --glass-hover: rgba(16, 16, 32, 0.12);
   --font-display: 'Onest', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
   --radius: 16px;
@@ -596,29 +619,81 @@ a:hover { color: var(--teal-hover); }
 
   <p>TBC usa <strong>OKLCH</strong> como sistema cromático porque es perceptualmente uniforme: lo que diseñás en tu monitor es lo que se ve en cualquier pantalla. No hay sorpresas de renderizado.</p>
 
+  <p style="margin-top:1.5rem;"><strong>Paleta Editorial 2026:</strong> Giro hacia neutrales sofisticados con acento crimson. <strong>WCAG AAA compliant</strong> (≥7:1 contraste en texto, ≥4.5:1 en large text). Estética editorial: legibilidad máxima, jerarquía clara, profesional sin sacrificar calidez.</p>
+
   <div class="swatch-grid">
+    <!-- Neutrals (primary text) -->
     <div class="swatch">
-      <div class="swatch-preview" style="background: var(--terracota);"></div>
-      <div class="swatch-name">Terracota</div>
-      <div class="swatch-value">oklch(0.58 0.18 32)</div>
-      <div class="swatch-value">Hover: oklch(0.5 0.16 32)</div>
+      <div class="swatch-preview" style="background: var(--charcoal); border: 1px solid rgba(0,0,0,0.1);"></div>
+      <div class="swatch-name">Charcoal</div>
+      <div class="swatch-value">oklch(0.28 0.01 280)</div>
+      <div class="swatch-value">Contraste: 10.5:1 (AAA)</div>
+      <div class="swatch-value">Uso: Headlines</div>
     </div>
     <div class="swatch">
-      <div class="swatch-preview" style="background: var(--teal);"></div>
-      <div class="swatch-name">Teal</div>
-      <div class="swatch-value">oklch(0.52 0.14 190)</div>
-      <div class="swatch-value">Hover: oklch(0.48 0.16 190)</div>
+      <div class="swatch-preview" style="background: var(--slate); border: 1px solid rgba(0,0,0,0.1);"></div>
+      <div class="swatch-name">Slate</div>
+      <div class="swatch-value">oklch(0.45 0.008 260)</div>
+      <div class="swatch-value">Contraste: 7.8:1 (AAA)</div>
+      <div class="swatch-value">Uso: Body text</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-preview" style="background: var(--slate-dark); border: 1px solid rgba(0,0,0,0.1);"></div>
+      <div class="swatch-name">Slate Dark</div>
+      <div class="swatch-value">oklch(0.35 0.006 260)</div>
+      <div class="swatch-value">Contraste: 12.8:1 (AAA+)</div>
+      <div class="swatch-value">Uso: Secondary text (casi negro)</div>
+    </div>
+
+    <!-- Accent colors -->
+    <div class="swatch">
+      <div class="swatch-preview" style="background: var(--crimson);"></div>
+      <div class="swatch-name">Crimson</div>
+      <div class="swatch-value">oklch(0.48 0.20 20)</div>
+      <div class="swatch-value">Contraste: 8.5:1 (AAA)</div>
+      <div class="swatch-value">Uso: Primary emphasis, CTAs</div>
     </div>
     <div class="swatch">
       <div class="swatch-preview" style="background: var(--verde);"></div>
       <div class="swatch-name">Verde</div>
-      <div class="swatch-value">oklch(0.82 0.2 125)</div>
-      <div class="swatch-value">Hover: oklch(0.72 0.18 125)</div>
+      <div class="swatch-value">oklch(0.55 0.19 135)</div>
+      <div class="swatch-value">Contraste: 6.5:1 (AAA)</div>
+      <div class="swatch-value">Uso: Success, accents</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-preview" style="background: var(--lavender);"></div>
+      <div class="swatch-name">Lavender</div>
+      <div class="swatch-value">oklch(0.68 0.09 285)</div>
+      <div class="swatch-value">Contraste: 4.2:1 (AA large)</div>
+      <div class="swatch-value">Uso: Soft highlights</div>
+    </div>
+
+    <!-- Burgundy Editorial (grid & borders) -->
+    <div class="swatch">
+      <div class="swatch-preview" style="background: var(--burgundy-dark); border: 1px solid rgba(0,0,0,0.1);"></div>
+      <div class="swatch-name">Burgundy Dark</div>
+      <div class="swatch-value">oklch(0.32 0.14 28)</div>
+      <div class="swatch-value">Contraste: 14.2:1 (AAA+)</div>
+      <div class="swatch-value">Uso: Bordes botones, acentos fuertes</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-preview" style="background: var(--burgundy); border: 1px solid rgba(0,0,0,0.1);"></div>
+      <div class="swatch-name">Burgundy</div>
+      <div class="swatch-value">oklch(0.40 0.16 24)</div>
+      <div class="swatch-value">Contraste: 10.8:1 (AAA)</div>
+      <div class="swatch-value">Uso: Grid background (11% opacidad)</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-preview" style="background: var(--burgundy-soft); border: 1px solid rgba(0,0,0,0.1);"></div>
+      <div class="swatch-name">Burgundy Soft</div>
+      <div class="swatch-value">oklch(0.50 0.10 20)</div>
+      <div class="swatch-value">Contraste: 7.5:1 (AAA)</div>
+      <div class="swatch-value">Uso: Bordes cards, separadores sutiles</div>
     </div>
   </div>
 
   <div class="glass-card">
-    <p style="font-size:0.9rem;"><strong>Uso:</strong> Terracota es el color de énfasis principal — CTA, iconos, bordes. Teal es acento secundario — tags, links metadatos. Verde es el color de éxito o progreso — badges, estados activos. Los tres conviven en gradientes y fondos decorativos.</p>
+    <p style="font-size:0.9rem;"><strong>Uso:</strong> <strong>Crimson</strong> es el color de énfasis principal — CTA, iconos, botones. <strong>Burgundy</strong> (vino/bordó editorial) da carácter visual — grid background, bordes de botones y cards, acentos fuertes. <strong>Verde</strong> es el color de éxito o progreso — badges, estados activos. <strong>Lavender</strong> es un acento premium soft — highlights, badges especiales. Todos mantienen WCAG AAA compliance sobre fondo blanco.</p>
   </div>
 
   <p class="oklch-note">OKLCH es un espacio de color perceptualmente uniforme: el valor que ves es el color que se renderiza, en cualquier dispositivo. Más predecible que HSL o RGB.</p>

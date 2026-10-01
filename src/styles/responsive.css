@@ -552,11 +552,10 @@
 }
 
 /* ========================================
-   LIGHT THEME — follows prefers-color-scheme
+   LIGHT THEME STYLES (default - dark mode removed)
    Last layer on purpose: must win the cascade
    over animations.css (reduced-motion branch).
    ======================================== */
-@media (prefers-color-scheme: light) {
   /* Navbar: transparent light surface with blur */
   .navbar.scrolled {
     background: rgba(255, 255, 255, 0.70);
@@ -630,13 +629,12 @@
       0 1px 0 oklch(0.55 0.19 135 / 0.15) inset,
       0 0 0 1px oklch(0.55 0.19 135 / 0.05);
   }
-  .scroll-to-top:hover {
-    box-shadow:
-      0 2px 12px oklch(0 0 0 / 0.08),
-      0 1px 0 oklch(0.55 0.19 135 / 0.15) inset,
-      0 0 0 1px oklch(0.55 0.19 135 / 0.05),
-      0 12px 24px -12px oklch(0 0 0 / 0.25);
-  }
+.scroll-to-top:hover {
+  box-shadow:
+    0 2px 12px oklch(0 0 0 / 0.08),
+    0 1px 0 oklch(0.55 0.19 135 / 0.15) inset,
+    0 0 0 1px oklch(0.55 0.19 135 / 0.05),
+    0 12px 24px -12px oklch(0 0 0 / 0.25);
 }
 
 /* Touch screens: no glassmorphism on btn-premium (CTA) */

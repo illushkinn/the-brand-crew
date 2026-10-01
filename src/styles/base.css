@@ -25,37 +25,20 @@ body::before {
   pointer-events: none;
   background-image:
     repeating-linear-gradient(0deg,
-      rgba(255, 255, 255, 0.07) 0px,
-      rgba(255, 255, 255, 0.07) 1px,
+      oklch(0.40 0.16 24 / 0.11) 0px,
+      oklch(0.40 0.16 24 / 0.11) 1px,
       transparent 1px,
       transparent 80px),
     repeating-linear-gradient(90deg,
-      rgba(255, 255, 255, 0.07) 0px,
-      rgba(255, 255, 255, 0.07) 1px,
+      oklch(0.40 0.16 24 / 0.11) 0px,
+      oklch(0.40 0.16 24 / 0.11) 1px,
       transparent 1px,
       transparent 80px);
   mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 0%, transparent 100%);
   -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 0%, transparent 100%);
 }
 
-@media (prefers-color-scheme: light) {
-  html {
-    background: var(--bg);
-  }
-  body::before {
-    background-image:
-      repeating-linear-gradient(0deg,
-        rgba(0, 0, 0, 0.07) 0px,
-        rgba(0, 0, 0, 0.07) 1px,
-        transparent 1px,
-        transparent 80px),
-      repeating-linear-gradient(90deg,
-        rgba(0, 0, 0, 0.07) 0px,
-        rgba(0, 0, 0, 0.07) 1px,
-        transparent 1px,
-        transparent 80px);
-  }
-}
+/* Dark mode grid pattern removed - light theme only */
 html::-webkit-scrollbar {
   width: 8px;
 }
@@ -63,16 +46,17 @@ html::-webkit-scrollbar-track {
   background: var(--bg);
 }
 html::-webkit-scrollbar-thumb {
-  background: var(--terracota);
+  background: var(--crimson);
   border-radius: 4px;
 }
 html::-webkit-scrollbar-thumb:hover {
-  background: var(--terracota-hover);
+  background: var(--crimson-hover);
 }
 body {
   font-family: var(--font-body);
   background: transparent;
-  font-weight: 300;
+  font-weight: 400;  /* Increased from 300 for WCAG AAA compliance */
+  font-size: clamp(1rem, 1.5vw, 1.125rem);  /* Editorial: 16-18px base (was default 16px) */
   position: relative;
   width: 100%;
   min-width: 0;
@@ -101,10 +85,11 @@ h1, h2, h3, h4 {
   letter-spacing: -0.03em;
   color: var(--headline);
 }
-h1 { font-size: clamp(2.5rem, 6vw, 4rem); }
-h2 { font-size: clamp(2rem, 5vw, 3.5rem); }
-h3 { font-size: clamp(1.5rem, 3.5vw, 2.5rem); }
-h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
+/* Editorial: Increased font sizes for better hierarchy */
+h1 { font-size: clamp(2.8rem, 7vw, 5rem); }  /* Was: 2.5rem, 6vw, 4rem */
+h2 { font-size: clamp(2.2rem, 6vw, 4rem); }  /* Was: 2rem, 5vw, 3.5rem */
+h3 { font-size: clamp(1.6rem, 4vw, 2.8rem); }  /* Was: 1.5rem, 3.5vw, 2.5rem */
+h4 { font-size: clamp(1.5rem, 3.5vw, 2.2rem); font-weight: 400; }  /* Was: 1.4rem, 3vw, 2rem */
 .mono { font-family: 'JetBrains Mono', monospace; }
 .text-terracota { color: var(--terracota); }
 .text-verde { color: var(--verde); }
@@ -131,8 +116,8 @@ h4 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; }
 .section-sub {
   font-size: clamp(1rem, 2vw, 1.2rem);
   color: var(--body-dim);
-  line-height: 1.6;
-  max-width: 680px;
+  line-height: 1.7;  /* Editorial: increased from 1.6 */
+  max-width: 900px;  /* Editorial: increased from 680px for better readability */
   margin-bottom: 2rem;
 }
 button:focus-visible,
