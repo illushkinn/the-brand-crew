@@ -13,9 +13,7 @@
   box-sizing: border-box;
   z-index: 1;
   contain: layout style;
-  background: radial-gradient(ellipse at 50% 40%,
-    oklch(0.2 0.06 165) 0%,
-    transparent 60%);
+  background: transparent;
 }
 .faq {
   position: relative;
@@ -44,7 +42,7 @@
    ======================================== */
 .glass-card {
   background: var(--bg-card);
-  border: 1px solid var(--border);
+  border: 1px solid oklch(0.50 0.10 20 / 0.18);  /* Burgundy-soft sutil */
   border-radius: var(--radius-lg);
   padding: 2rem;
   position: relative;
@@ -130,44 +128,41 @@
   transition-duration: 0.08s;
 }
 
-/* ===== CTA — PREMIUM FLAT PRESS ===== */
+/* ===== CTA — 3D PIXELADO (Editorial: Crimson bg + hard drop shadow terracota) ===== */
 .btn-premium {
-  --premium-bg: linear-gradient(135deg, oklch(0.98 0 0 / 0.14), oklch(0.98 0 0 / 0.04));
-  background: var(--premium-bg);
-  border: 1px solid oklch(0.62 0.18 32 / 0.6);
+  background: var(--crimson);  /* Crimson sólido */
+  border: 1px solid var(--terracota);
   border-radius: round(10px);
   color: var(--white);
   font-weight: 500;
   letter-spacing: 0.02em;
-  text-shadow: 0 1px 2px oklch(0 0 0 / 0.3);
+  text-shadow: none;
   transition:
     transform 0.25s cubic-bezier(0.2, 0, 0, 1),
     box-shadow 0.25s ease,
     background 0.25s ease,
-    border-color 0.25s ease;
-  /* Default: subtle elevation */
-  box-shadow:
-    0 2px 8px oklch(0 0 0 / 0.1),
-    0 1px 0 oklch(0.82 0.2 125 / 0.2) inset,
-    0 0 0 1px oklch(0.82 0.2 125 / 0.06);
+    scale 0.25s cubic-bezier(0.2, 0, 0, 1);
+  /* Sin sombra en estado base */
+  box-shadow: none;
   transform: translateY(0);
+  scale: 1;
 }
-/* Hover: flatten press — reduces shadow and moves down */
+
+/* Hover: levanta con hard drop shadow terracota */
 .btn-premium:hover {
-  background: var(--premium-bg);
-  box-shadow:
-    0 1px 3px oklch(0 0 0 / 0.06),
-    0 1px 0 oklch(0.82 0.2 125 / 0.15) inset,
-    0 0 0 1px oklch(0.82 0.2 125 / 0.04);
-  transform: translateY(1px);
+  background: var(--crimson);  /* Mantiene crimson */
+  transform: translateY(-3px);  /* Levanta hacia arriba */
+  scale: 1;
+  /* Hard drop shadow: sin blur, desplazada abajo-derecha */
+  box-shadow: 5px 5px 0 0 var(--terracota);
 }
-/* Active: fully flat against viewport */
+
+/* Active: squash effect sin sombras */
 .btn-premium:active {
-  background: var(--premium-bg);
-  box-shadow:
-    0 0 2px oklch(0 0 0 / 0.04),
-    0 1px 0 oklch(0.82 0.2 125 / 0.08) inset;
-  transform: translateY(2px);
+  background: var(--crimson-hover);  /* Más oscuro en click */
+  transform: translateY(0);  /* Vuelve a posición original */
+  scale: 0.98;  /* Compresión (squash) */
+  box-shadow: none;  /* Sin sombra */
   transition-duration: 0.08s;
 }
 
@@ -221,7 +216,7 @@
     white-space: nowrap;
   }
   .nav-links a:hover {
-    color: var(--verde);
+    color: var(--crimson);  /* Terracota/Crimson coherente con CTAs */
   }
   .hamburger {
     display: none;
@@ -475,10 +470,8 @@
   font-size: clamp(2.8rem, 8vw, 4.8rem);
   line-height: 1.15;
   margin: 0 0 1rem;
-  text-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.05),
-    0 2px 4px rgba(0, 0, 0, 0.4),
-    0 4px 8px rgba(0, 0, 0, 0.2);
+  color: var(--charcoal);  /* Editorial: texto negro */
+  text-shadow: none;  /* Sin sombras para fondo blanco */
 }
 .hero-phrase {
   display: block;
@@ -486,7 +479,7 @@
 }
 .hero-sub {
   font-family: var(--font-body);
-  font-size: clamp(1.4rem, 3vw, 1.8rem);
+  font-size: clamp(1.5rem, 3.2vw, 1.95rem);  /* Editorial: increased from 1.4rem-1.8rem */
   color: var(--headline);
   margin-top: var(--space-md);
   margin-bottom: 5rem;
@@ -517,19 +510,9 @@
   font-size: 1.15em;
 }
 .current-price {
-  background: linear-gradient(
-    180deg,
-    #fafafa 0%,
-    #e0e0e0 35%,
-    #b8b8b8 50%,
-    #e0e0e0 65%,
-    #fafafa 100%
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.3)) drop-shadow(0 -1px 0 rgba(255, 255, 255, 0.15));
-  font-weight: 400;
+  /* Editorial: Negro (Charcoal) sobre blanco (10.5:1 WCAG AAA) */
+  color: var(--charcoal);  /* oklch(0.28 0.01 280) - negro editorial */
+  font-weight: 500;  /* Más peso para énfasis en precio */
   white-space: nowrap;
 }
 /* Label stays light (300) — the "Desde" text reads as a caption, not a price */
@@ -552,6 +535,20 @@
 .hero-actions .btn-premium {
   padding: 0.9rem 1.25rem;
   font-size: clamp(1.2rem, 2.8vw, 1.5rem);
+  color: var(--charcoal);  /* Texto negro para hero CTA */
+  font-weight: 400;  /* Fuente más delgada (era 500) */
+  /* Eliminar efecto glassmórfico completamente */
+  box-shadow: none !important;
+  backdrop-filter: none;
+}
+.hero-actions .btn-premium:hover {
+  color: var(--charcoal);  /* Mantener texto negro en hover */
+  /* Hard drop shadow solamente, sin inset */
+  box-shadow: 5px 5px 0 0 var(--terracota) !important;
+}
+.hero-actions .btn-premium:active {
+  color: var(--charcoal);  /* Mantener texto negro en active */
+  box-shadow: none !important;
 }
 .hero-b2b-tags {
   display: flex;
@@ -566,13 +563,13 @@
   letter-spacing: 0.1em;
   padding: 0.3rem 0.75rem;
   border-radius: var(--radius-full);
-  border: 1px solid var(--color-verde);
-  color: var(--color-verde);
+  border: 1px solid var(--crimson);
+  color: var(--crimson);
   background: transparent;
 }
 .tag-b2b.tag-outline {
   border-color: transparent;
-  color: var(--white);
+  color: var(--charcoal);  /* Editorial: negro sobre blanco */
   background: transparent;
 }
 
@@ -728,7 +725,7 @@
 
 .resultado-nombre {
   font-family: var(--font-display);
-  font-size: 1.3rem;
+  font-size: 1.45rem;  /* Editorial: increased from 1.3rem */
   font-weight: 400;
   margin: 0 0 0.6rem 0;
   line-height: 1.3;
@@ -808,7 +805,7 @@
 .resultados .resultado-tag,
 .resultados .resultado-metrica-valor,
 .resultados .resultado-metrica-label {
-  color: var(--white);
+  color: var(--charcoal);  /* Editorial: texto negro */
 }
 .como-funciona {
   background: transparent;
@@ -833,7 +830,7 @@
 }
 .como-funciona-card p {
   color: var(--body-dim);
-  line-height: 1.6;
+  line-height: 1.7;  /* Editorial: increased from 1.6 */
   font-size: 0.95rem;
   text-wrap: pretty;
 }
@@ -866,7 +863,7 @@
   gap: var(--space-md);
   padding: 0.875rem 0;
   text-align: left;
-  font-size: 1.1rem;
+  font-size: 1.2rem;  /* Editorial: increased from 1.1rem */
   font-weight: 600;
   color: var(--headline);
   position: relative;
@@ -997,10 +994,22 @@
   transition: color 0.2s, border-color 0.2s, background 0.2s;
 }
 @media (hover: hover) {
-  .footer-social-link:hover {
-    color: var(--verde);
-    border-color: var(--verde);
-    background: oklch(0.82 0.2 125 / 0.1);
+  /* Instagram - rosa */
+  .footer-social-link[data-social="instagram"]:hover {
+    color: oklch(0.60 0.20 10);       /* Instagram pink #E4405F */
+    border-color: oklch(0.60 0.20 10);
+  }
+
+  /* Facebook - azul */
+  .footer-social-link[data-social="facebook"]:hover {
+    color: oklch(0.58 0.22 260);      /* Facebook blue #1877F2 */
+    border-color: oklch(0.58 0.22 260);
+  }
+
+  /* X - negro */
+  .footer-social-link[data-social="x"]:hover {
+    color: oklch(0.20 0 0);           /* X black #000000 */
+    border-color: oklch(0.20 0 0);
   }
 }
 
@@ -1011,12 +1020,10 @@
   z-index: 900;
   width: 46px;
   height: 46px;
-  background: linear-gradient(135deg, oklch(0.98 0 0 / 0.14), oklch(0.98 0 0 / 0.04));
-  backdrop-filter: blur(12px) saturate(140%);
-  -webkit-backdrop-filter: blur(12px) saturate(140%);
-  border: 1px solid oklch(0.62 0.18 32 / 0.6);
+  background: var(--crimson);  /* Editorial: Crimson sólido */
+  border: 2px solid var(--burgundy-dark);  /* Burgundy oscuro */
   border-radius: 50%;
-  color: var(--white);
+  color: var(--charcoal);  /* Editorial: texto negro sobre Crimson */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1027,13 +1034,12 @@
     opacity 0.4s,
     transform 0.4s,
     box-shadow 0.3s ease,
-    border-color 0.3s ease;
+    background 0.3s ease;
   pointer-events: none;
   -webkit-tap-highlight-color: transparent;
   box-shadow:
-    0 2px 12px oklch(0 0 0 / 0.2),
-    0 1px 0 oklch(0.82 0.2 125 / 0.2) inset,
-    0 0 0 1px oklch(0.82 0.2 125 / 0.06);
+    0 2px 12px oklch(0 0 0 / 0.15),
+    0 1px 0 oklch(1 0 0 / 0.1) inset;
 }
 .scroll-to-top.is-visible {
   opacity: 1;
@@ -1115,7 +1121,7 @@
 }
 .pricing-card-title {
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-size: 1.65rem;  /* Editorial: increased from 1.5rem */
   font-weight: 600;
   color: var(--headline);
   margin: 0.1rem 0 0.2rem;
@@ -1276,7 +1282,7 @@
 }
 .founder-name {
   font-family: var(--font-display);
-  font-size: 1.25rem;
+  font-size: 1.4rem;  /* Editorial: increased from 1.25rem */
   font-weight: 500;
   color: var(--headline);
   margin-bottom: 0.4rem;
@@ -1296,8 +1302,8 @@
   font-family: var(--font-mono);
   font-size: 0.68rem;
   letter-spacing: 0.04em;
-  color: var(--verde);
-  border: 1px solid oklch(0.82 0.2 125 / 0.35);
+  color: var(--crimson);
+  border: 1px solid oklch(0.48 0.20 20 / 0.35);
   border-radius: var(--radius-full);
   padding: 0.2rem 0.7rem;
   transition: border-color 0.3s ease, color 0.3s ease;
@@ -1309,6 +1315,21 @@
 .cta-btn {
   margin-top: 1rem;
   margin-bottom: 0.5rem;
+  color: var(--charcoal);  /* Texto negro para CTA footer */
+  /* Fondo crimson sólido, sin transparencia */
+  background: var(--crimson) !important;
+  /* Eliminar efecto glassmórfico completamente */
+  box-shadow: none !important;
+  backdrop-filter: none;
+}
+.cta-btn:hover {
+  color: var(--charcoal);  /* Mantener texto negro en hover */
+  /* Hard drop shadow solamente, sin inset */
+  box-shadow: 5px 5px 0 0 var(--terracota) !important;
+}
+.cta-btn:active {
+  color: var(--charcoal);  /* Mantener texto negro en active */
+  box-shadow: none !important;
 }
 /* ========================================
    COOKIE BANNER + OVERLAY
@@ -1378,8 +1399,9 @@
   margin-left: auto;
   border-radius: 0;
   background: var(--terracota);
-  border: 1px solid oklch(0.62 0.18 32 / 0.6);
-  text-shadow: 0 1px 2px oklch(0 0 0 / 0.3);
+  border: 1px solid var(--terracota);
+  color: var(--white);
+  text-shadow: none;
   box-shadow: 0 2px 8px oklch(0 0 0 / 0.2);
 }
 .cookie-banner .btn-premium::before {
@@ -1388,6 +1410,8 @@
 .cookie-banner .btn-premium:hover,
 .cookie-banner .btn-premium:active {
   background: var(--terracota-hover);
+  border-color: var(--terracota-hover);
+  color: var(--white);
   box-shadow: none;
 }
 .btn-sm {
@@ -1419,12 +1443,11 @@
     margin-left: auto;
   }
 }
-@media (prefers-color-scheme: light) {
-  .cookie-banner {
-    background: rgba(255, 255, 255, 0.92);
-    border-color: var(--border);
-    box-shadow: 0 4px 24px oklch(0 0 0 / 0.12);
-  }
+/* Light theme cookie banner (default - no dark mode) */
+.cookie-banner {
+  background: rgba(255, 255, 255, 0.92);
+  border-color: var(--border);
+  box-shadow: 0 4px 24px oklch(0 0 0 / 0.12);
 }
 
 /* ========================================

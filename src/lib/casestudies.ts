@@ -47,6 +47,7 @@ export function getCaseStudies(lang: Lang): CaseStudy[] {
     {
       key: 'luisito',
       name: 'Luisito Playa Grande',
+      url: 'https://luisitoplayagrande.com',
       logo: { kind: 'img', src: '/assets/logos/luisito.svg', alt: 'Luisito Playa Grande', class: 'invert-dark' },
       screenshot: '/assets/Luisito.jpg',
       metrics: [
@@ -57,6 +58,7 @@ export function getCaseStudies(lang: Lang): CaseStudy[] {
     {
       key: 'hoco',
       name: 'Catálogo Hoco',
+      url: 'https://hococatalog.vercel.app',
       logo: { kind: 'letter', letter: 'H' },
       screenshot: '/assets/Hoco.jpg',
       metrics: [
@@ -79,6 +81,7 @@ export function getCaseStudies(lang: Lang): CaseStudy[] {
     {
       key: 'pragma',
       name: 'Pragma',
+      url: 'https://pragma.com.ar',
       logo: { kind: 'img', src: '/assets/logos/pragma.webp', alt: 'Pragma', class: 'dark-bg' },
       screenshot: '/assets/Pragma.jpg',
       metrics: [
