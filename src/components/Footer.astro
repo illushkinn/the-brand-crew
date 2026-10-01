@@ -21,7 +21,7 @@ const socialLinks = [
     <div class="footer-card-content">
       <div class="footer-social">
         {socialLinks.map((link) => (
-          <a href={link.url} target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label={link.name}>
+          <a href={link.url} data-social={link.icon} target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label={link.name}>
             <Icon name={link.icon} size={18} strokeWidth={2} />
           </a>
         ))}

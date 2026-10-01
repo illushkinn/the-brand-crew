@@ -12,6 +12,7 @@ import Founders from './Founders.astro';
 import CTA from './CTA.astro';
 import Footer from './Footer.astro';
 import ScrollToTop from './ScrollToTop.astro';
+import WhatsAppFloating from './WhatsAppFloating.astro';
 
 interface Props {
   lang?: Lang;
@@ -40,4 +41,5 @@ const { lang = 'es', canonicalURL } = Astro.props;
   <div id="lets-start-anchor" style="scroll-margin-top: 40vh;"></div>
   <Footer lang={lang} />
   <ScrollToTop lang={lang} />
+  <WhatsAppFloating lang={lang} />
 </BaseLayout>
