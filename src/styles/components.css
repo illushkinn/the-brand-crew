@@ -1518,3 +1518,86 @@
     corner-shape: inherit;
   }
 }
+
+/* ========================================
+   CUSTOM CURSOR — Ball Pointer
+   ======================================== */
+.custom-cursor {
+  /* Position: absolute to entire viewport, moved via JS transform */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  pointer-events: none;
+
+  /* Size: default state */
+  width: 24px;
+  height: 24px;
+
+  /* Center the cursor on mouse position */
+  transform: translate(0, 0);
+  margin-left: -12px;  /* Half of width */
+  margin-top: -12px;   /* Half of height */
+
+  /* Visual: solid ball */
+  background: var(--body-dim);  /* Default: body dim color */
+  border-radius: 50%;
+
+  /* Smooth transitions for size and color changes */
+  transition:
+    width 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+    height 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+    margin 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+    background 0.25s ease,
+    opacity 0.2s ease;
+
+  /* Initial opacity */
+  opacity: 1;
+
+  /* Performance optimizations */
+  will-change: transform;
+  contain: layout style paint;
+
+  /* Mix blend mode for visual interest */
+  mix-blend-mode: difference;
+}
+
+/* Hover state: grow + change color */
+.custom-cursor.is-hovering {
+  width: 48px;
+  height: 48px;
+  margin-left: -24px;  /* Half of new width */
+  margin-top: -24px;   /* Half of new height */
+  background: var(--crimson);  /* Brand crimson color */
+  mix-blend-mode: normal;  /* Remove blend mode for solid color */
+  opacity: 0.85;  /* Slight transparency for elegance */
+}
+
+/* Hide default cursor on desktop when custom cursor is active */
+@media (pointer: fine) {
+  body {
+    cursor: none;
+  }
+
+  /* Keep default cursor for text selection and inputs */
+  input,
+  textarea,
+  select {
+    cursor: text;
+  }
+
+  /* Keep pointer for clickable elements (fallback if JS fails) */
+  a,
+  button,
+  .btn,
+  [role="button"] {
+    cursor: pointer;
+  }
+}
+
+/* Do NOT show custom cursor on touch devices */
+@media (pointer: coarse) {
+  .custom-cursor {
+    display: none;
+  }
+}
