@@ -114,7 +114,7 @@ export const dictionaries = {
       planGrowthText: '¿Buscás acompañamiento mensual?',
       planGrowthLink: 'Growth Partner desde $750/mes',
       // Kit 2 — Growth Partner
-      kit2Title: 'Growth Partner',
+      kit2Title: 'Growth Partner<br>',
       growthTitle: 'Growth Mensual',
       growthPriceRange: '750–2.500',
       growthPriceFrom: 'Desde',
@@ -362,7 +362,7 @@ export const dictionaries = {
       planFootnote: '1st-year hosting + invoice included · Only 3 projects per month',
       planGrowthText: 'Looking for monthly support?',
       planGrowthLink: 'Growth Partner from $750/mo',
-      kit2Title: 'Growth Partner',
+      kit2Title: 'Growth Partner<br>',
       growthTitle: 'Monthly Growth',
       growthPriceRange: '750–2,500',
       growthPriceFrom: 'From',

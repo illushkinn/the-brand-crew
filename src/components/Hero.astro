@@ -18,8 +18,9 @@ const ctaLabel = t('hero.cta');
     <div class="hero-split">
       <div class="hero-content">
         <h1 class="hero-title hero-anim" style="--hero-delay: 0.2s">
-          <span class="hero-phrase">{t('hero.headline2')}</span>
-          <span class="hero-phrase">{t('hero.headline3')}</span>
+          <span class="hero-phrase">
+            <span class="nowrap">{t('hero.headline2')}</span><br>{t('hero.headline3')}
+          </span>
         </h1>
         <p class="hero-sub hero-anim" style="--hero-delay: 0.4s" set:html={t('hero.sub')}></p>
         <p class="hero-meta hero-anim" style="--hero-delay: 0.55s">
