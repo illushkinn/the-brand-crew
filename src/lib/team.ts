@@ -17,14 +17,14 @@ export const teamMembers: TeamMember[] = [
   {
     id: 'illya',
     name: 'Illya Grytsyk',
-    photo: '/assets/profile-11.webp',
+    photo: '/assets/profile-illya.webp',
     index: '01',
     i18nKeyPrefix: 'team.illya',
   },
   {
     id: 'carlos',
     name: 'Carlos Segovia Gonzalez',
-    photo: '/assets/profile-12.webp',
+    photo: '/assets/profile-carlos.webp',
     index: '02',
     i18nKeyPrefix: 'team.carlos',
   },

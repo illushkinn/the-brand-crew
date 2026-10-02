@@ -25,17 +25,19 @@ body::before {
   pointer-events: none;
   background-image:
     repeating-linear-gradient(0deg,
-      oklch(0.40 0.16 24 / 0.11) 0px,
-      oklch(0.40 0.16 24 / 0.11) 1px,
+      rgba(0, 0, 0, 0.06) 0px,
+      rgba(0, 0, 0, 0.06) 1px,
       transparent 1px,
-      transparent 80px),
+      transparent 60px
+    ),
     repeating-linear-gradient(90deg,
-      oklch(0.40 0.16 24 / 0.11) 0px,
-      oklch(0.40 0.16 24 / 0.11) 1px,
+      rgba(0, 0, 0, 0.06) 0px,
+      rgba(0, 0, 0, 0.06) 1px,
       transparent 1px,
-      transparent 80px);
-  mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 0%, transparent 100%);
-  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 0%, transparent 100%);
+      transparent 60px
+    );
+  mask-image: radial-gradient(ellipse 85% 90% at 50% 50%, black 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 85% 90% at 50% 50%, black 40%, transparent 100%);
 }
 
 /* Dark mode grid pattern removed - light theme only */
@@ -54,7 +56,8 @@ html::-webkit-scrollbar-thumb:hover {
 }
 body {
   font-family: var(--font-body);
-  background: transparent;
+  background: var(--bg);
+  color: var(--body);
   font-weight: 400;  /* Increased from 300 for WCAG AAA compliance */
   font-size: clamp(1rem, 1.5vw, 1.125rem);  /* Editorial: 16-18px base (was default 16px) */
   position: relative;

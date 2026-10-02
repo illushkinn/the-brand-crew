@@ -132,7 +132,7 @@
 .btn-premium {
   background: var(--crimson);  /* Crimson sólido */
   border: 1px solid var(--terracota);
-  border-radius: round(10px);
+  border-radius: 0;
   color: var(--white);
   font-weight: 500;
   letter-spacing: 0.02em;
@@ -357,7 +357,7 @@
   position: fixed;
   inset: 0;
   z-index: 999;
-  background: var(--charcoal);  /* Negro editorial para contraste con texto blanco */
+  background: var(--white);  /* Fondo blanco para contraste con texto negro */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -369,9 +369,9 @@
   pointer-events: none;
   will-change: clip-path;
   contain: layout style paint;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-  box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
   transition: clip-path 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .mobile-menu.is-open {
@@ -384,7 +384,7 @@
   font-family: var(--font-body);
   font-weight: 500;
   font-size: 1.8rem;
-  color: var(--white);
+  color: var(--charcoal);
   padding: 0.3rem 1rem;
   opacity: 0;
   transform: translateY(20px);
@@ -438,7 +438,7 @@
   }
 }
 .mobile-menu a:focus-visible {
-  color: var(--white);
+  color: var(--verde);
   outline: none;
 }
 .mobile-menu a:active {
@@ -475,7 +475,7 @@
 }
 .hero-phrase {
   display: block;
-  white-space: nowrap;
+  white-space: pre-line;  /* Respeta <br> pero permite wrap de palabras largas */
 }
 .hero-sub {
   font-family: var(--font-body);
@@ -487,7 +487,9 @@
 }
 .hero-em {
   font-style: italic;
-  color: var(--headline);
+}
+.nowrap {
+  white-space: nowrap;
 }
 .hero-meta {
   font-size: 0.9rem;
@@ -918,19 +920,6 @@
 .cta-final h2 {
   margin-bottom: var(--space-md);
 }
-.cta-secondary {
-  margin-top: 0.9rem;
-  font-size: 0.9rem;
-  color: var(--body-dim);
-}
-.cta-secondary a {
-  color: var(--verde);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-.cta-secondary a:hover {
-  text-decoration-thickness: 2px;
-}
 .footer {
   border-top: none;
   content-visibility: auto;
@@ -1077,7 +1066,7 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
   .mobile-menu {
-    background: var(--charcoal);
+    background: var(--white);
   }
   .scroll-to-top {
     background: var(--bg-card);
@@ -1578,16 +1567,20 @@
   mix-blend-mode: difference;
 }
 
-/* Hover state: grow + change color */
+/* Hover state: DISABLED per user request (2026-10-02)
+   User wants cursor to remain constant (no size/color change on hover)
+*/
+/*
 .custom-cursor.is-hovering {
   width: 48px;
   height: 48px;
-  margin-left: -24px;  /* Half of new width */
-  margin-top: -24px;   /* Half of new height */
-  background: var(--crimson);  /* Brand crimson color */
-  mix-blend-mode: normal;  /* Remove blend mode for solid color */
-  opacity: 0.85;  /* Slight transparency for elegance */
+  margin-left: -24px;
+  margin-top: -24px;
+  background: var(--crimson);
+  mix-blend-mode: normal;
+  opacity: 0.85;
 }
+*/
 
 /* Keep default cursor visible alongside custom cursor ball */
 @media (pointer: fine) {
@@ -1617,4 +1610,16 @@
   .custom-cursor {
     display: none;
   }
+}
+
+/* ========================================
+   PERFORMANCE — content-visibility
+   Lazy rendering for sections below fold
+   ======================================== */
+.section:not(:first-of-type) {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 400px;
+}
+.hero {
+  content-visibility: visible;
 }

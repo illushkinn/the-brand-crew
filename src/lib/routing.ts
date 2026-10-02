@@ -39,14 +39,3 @@ export function getPrivacyLink(lang: Lang): string {
 export function getTermsLink(lang: Lang): string {
   return lang === 'es' ? '/terms' : '/en/terms';
 }
-
-/**
- * Generate the language switcher link based on current language and pathname
- * @param currentLang - The current language
- * @param pathname - The current pathname from Astro.url.pathname
- */
-export function getLangSwitchLink(currentLang: Lang, pathname: string): string {
-  if (currentLang === 'en') return pathname;
-  if (pathname === '/' || pathname === '') return '/en';
-  return '/en' + pathname;
-}

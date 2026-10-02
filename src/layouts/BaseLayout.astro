@@ -195,9 +195,11 @@ const websiteSchema = {
   <link rel="preconnect" href="https://va.vercel-scripts.com">
   <!-- Preload critical font (Onest 500 — most used weight) -->
   <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/onest/v7/gNMdW3p6SJbwyGj2rBZyeOrTjOPh.woff2" crossorigin>
-  <!-- Google Fonts: non-blocking via media="print" + onload swap, removed unused weight 800 -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"></noscript>
+  <!-- Preload hero logo SVG -->
+  <link rel="preload" as="image" href="/assets/THEBRANDCREW_model1_dark.svg">
+  <!-- Google Fonts: non-blocking via media="print" + onload swap, only used weights 400, 500, 700 -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap"></noscript>
 
 
   <!-- Vercel Speed Insights -->
@@ -219,7 +221,15 @@ const websiteSchema = {
   <script src="../scripts/navigation.js"></script>
   <script src="../scripts/scroll.js"></script>
   <script src="../scripts/reveal.js"></script>
-  <script src="../scripts/cursor.js"></script>
+  <!-- Lazy-load cursor.js: solo en desktop (pointer: fine) -->
+  <script is:inline>
+    if (window.matchMedia('(pointer: fine)').matches) {
+      const s = document.createElement('script');
+      s.src = '/scripts/cursor.js';
+      s.defer = true;
+      document.body.appendChild(s);
+    }
+  </script>
   <CookieBanner lang={lang} />
 </body>
 </html>
