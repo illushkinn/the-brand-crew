@@ -1,7 +1,7 @@
 :root {
   /* EDITORIAL LIGHT theme — white background with neutral palette */
   --oklch-bg-light: oklch(1.0 0 0);  /* Pure white */
-  --oklch-bg-card: oklch(0.97 0.005 280);  /* Off-white card */
+  --oklch-bg-card: oklch(0.91 0.01 280);  /* Darker gray card */
 
   /* Editorial neutrals (warm-inspired palette) */
   --oklch-charcoal: oklch(0.28 0.01 280);  /* Editorial black (10.5:1 contrast) */

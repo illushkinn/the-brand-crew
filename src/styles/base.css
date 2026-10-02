@@ -21,23 +21,37 @@ body::before {
   content: '';
   position: fixed;
   inset: 0;
-  z-index: -1;
+  z-index: 1;
   pointer-events: none;
-  background-image:
+  background:
     repeating-linear-gradient(0deg,
-      rgba(0, 0, 0, 0.06) 0px,
-      rgba(0, 0, 0, 0.06) 1px,
+      rgba(0, 0, 0, 0.3) 0px,
+      rgba(0, 0, 0, 0.3) 1px,
       transparent 1px,
-      transparent 60px
+      transparent 100px
     ),
     repeating-linear-gradient(90deg,
-      rgba(0, 0, 0, 0.06) 0px,
-      rgba(0, 0, 0, 0.06) 1px,
+      rgba(0, 0, 0, 0.3) 0px,
+      rgba(0, 0, 0, 0.3) 1px,
       transparent 1px,
-      transparent 60px
+      transparent 100px
     );
-  mask-image: radial-gradient(ellipse 85% 90% at 50% 50%, black 40%, transparent 100%);
-  -webkit-mask-image: radial-gradient(ellipse 85% 90% at 50% 50%, black 40%, transparent 100%);
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 70% 75% at 50% 50%,
+    transparent 0%,
+    transparent 30%,
+    rgba(255, 255, 255, 0.5) 55%,
+    rgba(255, 255, 255, 0.85) 75%,
+    white 100%
+  );
 }
 
 /* Dark mode grid pattern removed - light theme only */
@@ -68,7 +82,7 @@ body {
 /* Content sits above the grid layer */
 .page-content {
   position: relative;
-  z-index: 1;
+  z-index: 10;
 }
 h1, h2, h3, h4 { text-wrap: balance; }
 p { text-wrap: pretty; }
