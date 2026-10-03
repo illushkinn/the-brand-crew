@@ -1,0 +1,9 @@
+---
+// /en/servicios/diseño-web — service landing (cluster "web design argentina")
+import ServicioPage from '../../../components/ServicioPage.astro';
+import { DOMAIN } from '../../../lib/constants';
+
+const canonicalURL = `${DOMAIN}/en/servicios/diseño-web`;
+---
+
+<ServicioPage service="web" lang="en" canonicalURL={canonicalURL} />

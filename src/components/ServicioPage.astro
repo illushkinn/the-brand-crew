@@ -1,0 +1,318 @@
+---
+// ServicioPage.astro — shared shell for /servicios/* service landings (both langs)
+// Shell follows PricingPage (CTA + Footer + ScrollToTop + WhatsAppFloating), not LegalPage.
+import type { Lang } from '../i18n/ui';
+import { dictionaries } from '../i18n/ui';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTA from './CTA.astro';
+import Footer from './Footer.astro';
+import ScrollToTop from './ScrollToTop.astro';
+import WhatsAppFloating from './WhatsAppFloating.astro';
+import { getWhatsAppLink } from '../lib/whatsapp';
+import { getHomeLink, getPricingLink, getGrowthPartnerLink } from '../lib/routing';
+
+interface Props {
+  service?: 'web';
+  lang?: Lang;
+  canonicalURL?: string;
+}
+const { service = 'web', lang = 'es', canonicalURL } = Astro.props;
+const s = dictionaries[lang].servicios[service];
+const p = dictionaries[lang].pricing;
+
+const homeLink = getHomeLink(lang);
+const pricingLink = getPricingLink(lang);
+const growthLink = getGrowthPartnerLink(lang);
+const waLink = getWhatsAppLink(lang, s.ctaMessage);
+
+// Pack names & prices come from the pricing dict — single source of truth.
+const packs: ReadonlyArray<{ name: string; price: string; desc: string }> = [
+  { name: p.esencialTitle, price: p.esencialPrice, desc: s.pack1Desc },
+  { name: p.crewTitle, price: p.crewPrice, desc: s.pack2Desc },
+  { name: p.mvpTitle, price: p.mvpPrice, desc: s.pack3Desc },
+];
+const fits: readonly string[] = s.fits;
+const steps: ReadonlyArray<{ title: string; text: string }> = s.steps;
+const faqs: ReadonlyArray<{ q: string; a: string }> = s.faqs;
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: f.a,
+    },
+  })),
+};
+---
+
+<BaseLayout
+  lang={lang}
+  title={s.title}
+  description={s.description}
+  canonicalURL={canonicalURL}
+>
+  <script
+    is:inline
+    type="application/ld+json"
+    set:html={JSON.stringify(faqSchema)}
+  ></script>
+
+  <div class="legal-main servicio-main">
+    <a href={homeLink} class="legal-back">{s.backHome}</a>
+
+    <span class="section-label mono">{s.kicker}</span>
+    <h1 class="legal-title">{s.h1}</h1>
+    <p class="servicio-sub">{s.sub}</p>
+
+    <div class="glass-card legal-card">
+      <section class="legal-block">
+        <h2 class="legal-h2">{s.introH2}</h2>
+        <p class="legal-p">{s.intro}</p>
+        <h3 class="servicio-h3">{s.fitsH2}</h3>
+        <ul class="servicio-list">
+          {fits.map((f) => <li>{f}</li>)}
+        </ul>
+      </section>
+
+      <section class="legal-block" id="precios">
+        <h2 class="legal-h2">{s.priceH2}</h2>
+        <p class="legal-p">{s.priceIntro}</p>
+        <div class="tabla-wrap">
+          <table class="precio-tabla">
+            <thead>
+              <tr>
+                <th scope="col">{s.colPack}</th>
+                <th scope="col">{s.colPrice}</th>
+                <th scope="col">{s.colWhat}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                packs.map((pack) => (
+                  <tr>
+                    <td data-label={s.colPack}>{pack.name}</td>
+                    <td data-label={s.colPrice}>USD {pack.price}</td>
+                    <td data-label={s.colWhat}>
+                      {pack.desc}{' '}
+                      <a href={pricingLink}>{s.packLink} →</a>
+                    </td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
+        <p class="legal-p servicio-note">
+          {s.priceNote} <a href={growthLink}>{s.growthLink}</a>
+        </p>
+      </section>
+
+      <section class="legal-block">
+        <h2 class="legal-h2">{s.processH2}</h2>
+        <p class="legal-p">{s.processIntro}</p>
+        <ol class="servicio-steps">
+          {
+            steps.map((step) => (
+              <li>
+                <strong>{step.title}.</strong> {step.text}
+              </li>
+            ))
+          }
+        </ol>
+      </section>
+
+      <section class="legal-block" id="faq">
+        <h2 class="legal-h2">{s.faqH2}</h2>
+        <div class="faq-list servicio-faq">
+          {
+            faqs.map((f) => (
+              <div class="faq-item">
+                <button
+                  class="faq-question"
+                  type="button"
+                  aria-expanded="false"
+                >
+                  {f.q}
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    class="faq-chevron"
+                  >
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                </button>
+                <div class="faq-answer">
+                  <p>{f.a}</p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+        <p class="legal-p servicio-guide">
+          {s.guidePrefix} <a href={s.guideHref}>{s.guideLabel}</a>.
+        </p>
+      </section>
+    </div>
+
+    <div class="servicio-cta">
+      <a href={waLink} class="btn btn-premium" target="_blank" rel="noopener">
+        {s.ctaLabel}
+      </a>
+      <span class="servicio-foot mono">{s.footNote}</span>
+    </div>
+  </div>
+
+  <CTA lang={lang} />
+  <Footer lang={lang} />
+  <ScrollToTop lang={lang} />
+  <WhatsAppFloating lang={lang} />
+
+  <script src="../scripts/faq.js"></script>
+</BaseLayout>
+
+<style>
+  .servicio-main {
+    padding-top: 6.5rem;
+  }
+  .servicio-sub {
+    color: var(--body-dim);
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    line-height: 1.65;
+    margin: 0 0 2rem;
+  }
+  .servicio-h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--headline);
+    margin: 1.75rem 0 0.75rem;
+  }
+  .servicio-list {
+    list-style: disc;
+    margin: 0.5rem 0 0 1.4rem;
+  }
+  .servicio-list li {
+    margin-bottom: 0.7rem;
+    line-height: 1.65;
+    color: var(--body-dim);
+  }
+  .servicio-list li:last-child {
+    margin-bottom: 0;
+  }
+
+  .tabla-wrap {
+    overflow-x: auto;
+    margin-top: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+  }
+  .precio-tabla {
+    width: 100%;
+    min-width: 540px;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+  }
+  .precio-tabla th {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--terracota);
+    text-align: left;
+    padding: 0.6rem 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .precio-tabla td {
+    padding: 0.9rem 0.75rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--body-dim);
+    line-height: 1.55;
+    vertical-align: top;
+  }
+  .precio-tabla tbody tr:last-child td {
+    border-bottom: none;
+  }
+  .precio-tabla td:first-child {
+    color: var(--headline);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .precio-tabla td:nth-child(2) {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--headline);
+    white-space: nowrap;
+    font-size: 0.9rem;
+  }
+  .legal-card .precio-tabla a {
+    color: var(--terracota);
+    text-decoration: underline;
+    white-space: nowrap;
+  }
+
+  .servicio-note {
+    margin-top: 1.25rem;
+    color: var(--body-dim);
+    font-size: 0.95rem;
+  }
+
+  .servicio-steps {
+    list-style: decimal;
+    margin: 0.5rem 0 0 1.4rem;
+  }
+  .servicio-steps li {
+    margin-bottom: 0.85rem;
+    line-height: 1.65;
+    color: var(--body-dim);
+    padding-left: 0.25rem;
+  }
+  .servicio-steps li:last-child {
+    margin-bottom: 0;
+  }
+  .servicio-steps strong {
+    color: var(--headline);
+    font-weight: 600;
+  }
+
+  .servicio-faq {
+    max-width: none;
+    margin-top: 0;
+  }
+
+  .servicio-guide {
+    margin-top: 1.5rem;
+    color: var(--body-dim);
+    font-size: 0.95rem;
+  }
+
+  .servicio-cta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  .servicio-foot {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--body-dim);
+  }
+
+  @media (max-width: 640px) {
+    .servicio-cta {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>
