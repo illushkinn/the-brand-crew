@@ -3,15 +3,12 @@
 // SOURCE: public/assets/THEBRANDCREW_model1.svg (CorelDRAW export)
 interface Props {
   size?: number;
-  className?: string;
-  showWordmark?: boolean;
   ariaLabel?: string;
-  text?: string;
 }
-const { size = 40, className = '', showWordmark = false, ariaLabel = 'The Brand Crew', text = '' } = Astro.props;
+const { size = 40, ariaLabel = 'The Brand Crew' } = Astro.props;
 ---
 
-<span class={`logo-wrap ${showWordmark ? 'with-wordmark' : ''} ${className}`}>
+<span class="logo-wrap">
   <img
     src="/assets/THEBRANDCREW_model1_dark.svg"
     alt={ariaLabel}
@@ -20,7 +17,6 @@ const { size = 40, className = '', showWordmark = false, ariaLabel = 'The Brand 
     class="logo-isotype"
     loading="eager"
   />
-  {showWordmark && <span class="logo-wordmark">{text || 'The Brand Crew'}</span>}
 </span>
 
 <style>
@@ -32,19 +28,5 @@ const { size = 40, className = '', showWordmark = false, ariaLabel = 'The Brand 
   .logo-isotype {
     display: block;
     flex-shrink: 0;
-  }
-
-  .logo-wordmark {
-    font-family: var(--font-display);
-    font-weight: 500;
-    font-size: 1.15rem;
-    letter-spacing: -0.02em;
-    color: var(--headline);
-    white-space: nowrap;
-  }
-  @media (max-width: 767.98px) {
-    .logo-wordmark {
-      display: none;
-    }
   }
 </style>

@@ -24,11 +24,9 @@ export const dictionaries = {
     nav: {
       howItWorks: 'Solución',
       cases: 'Casos',
-      caseStudies: 'Casos',
       pricing: 'Precios',
       faq: 'FAQ',
       about: 'Nosotros',
-      start: 'Arrancamos',
       contact: 'Contacto',
     },
     hero: {
@@ -36,8 +34,7 @@ export const dictionaries = {
       headline3: 'que funciona',
       sub: 'Para negocios que <span class="hero-em">crecen</span>.',
       cta: 'Contacto',
-      tag: 'Web · Marca · Contenido · Growth',
-      seoText: 'Growth partner para negocios en Argentina'
+      tag: 'Web · Marca · Contenido · Growth'
     },
     caseStudies: {
       kicker: 'Casos',
@@ -129,7 +126,6 @@ export const dictionaries = {
       autoF2: 'Conexiones a medida',
       autoF3: 'Automatización de procesos',
       autoF4: 'Ideal para revender vía socios',
-      cta: 'Hablemos de tu proyecto',
     },
     growthPartner: {
       label: 'Growth Partner',
@@ -326,11 +322,9 @@ export const dictionaries = {
     nav: {
       howItWorks: 'Solution',
       cases: 'Cases',
-      caseStudies: 'Work',
       pricing: 'Pricing',
       faq: 'FAQ',
       about: 'About',
-      start: "Let's start",
       contact: 'Contact',
     },
     hero: {
@@ -338,8 +332,7 @@ export const dictionaries = {
       headline3: 'that works',
       sub: 'For businesses that <span class="hero-em">grow</span>.',
       cta: 'Contact',
-      tag: 'Web · Brand · Content · Growth',
-      seoText: 'Growth partner for businesses in Argentina'
+      tag: 'Web · Brand · Content · Growth'
     },
     caseStudies: {
       kicker: 'Work',
@@ -426,7 +419,6 @@ export const dictionaries = {
       autoF2: 'Custom connections',
       autoF3: 'Process automation',
       autoF4: 'Ideal for reselling via partners',
-      cta: "Let's talk about your project",
     },
     growthPartner: {
       label: 'Growth Partner',
