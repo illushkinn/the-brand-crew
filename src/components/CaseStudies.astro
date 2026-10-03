@@ -29,7 +29,7 @@ const cases = getCaseStudies(lang);
                   {c.logo.kind === 'letter' ? (
                     <>{c.logo.letter}</>
                   ) : (
-                    <img src={c.logo.src} alt={c.logo.alt} class={c.logo.kind === 'img' && c.logo.class === 'invert-dark' ? 'invert-dark' : undefined} width="48" height="48" />
+                    <img src={c.logo.src} alt={c.logo.alt} class={c.logo.kind === 'img' && c.logo.class === 'invert-dark' ? 'invert-dark' : undefined} width="48" height="48" loading="lazy" decoding="async" />
                   )}
                 </div>
                 <div class="resultado-info">
