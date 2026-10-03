@@ -76,3 +76,76 @@
 }
 
 /* Light mode only - dark mode removed */
+
+/* ========================================
+   DARK MODE — automatic via prefers-color-scheme.
+   No toggle, no localStorage, no JS. The light :root
+   above stays byte-identical; everything below is an
+   addition. Semantic aliases (--bg, --headline, --body…)
+   point at the oklch-* sources, so overriding the sources
+   here flips the whole system.
+   ======================================== */
+:root {
+  /* Text that always sits on a #fff plate (hero/CTA buttons) */
+  --text-on-white: oklch(0.28 0.01 280);
+
+  /* Overlay surfaces + editorial textures (light values) */
+  --banner-bg: rgba(255, 255, 255, 0.92);
+  --card-border: oklch(0.5 0.1 20 / 0.18);
+  --nav-scrolled-bg: rgba(255, 255, 255, 0.7);
+  --nav-scrolled-border: oklch(0.55 0.19 135 / 0.25);
+  --grid-line: rgba(0, 0, 0, 0.3);
+  --vignette-mid: rgba(255, 255, 255, 0.5);
+  --vignette-strong: rgba(255, 255, 255, 0.85);
+  --vignette-edge: #fff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+
+    /* Surfaces — editorial ink, not generic black */
+    --oklch-bg-light: oklch(0.17 0.012 280);  /* #0e0f15 */
+    --oklch-bg-card: oklch(0.235 0.015 280);  /* #1d1d25 elevated */
+
+    /* Neutrals — same hue family (280/260), lightness inverted */
+    --oklch-charcoal: oklch(0.955 0.008 280);       /* #eff0f6 — 16.8:1 on bg */
+    --oklch-charcoal-hover: oklch(0.87 0.012 280);
+    --oklch-slate: oklch(0.8 0.012 260);            /* #b9bec6 — 10.3:1 on bg */
+    --oklch-slate-dark: oklch(0.7 0.012 260);       /* #9a9fa6 — 7.2:1 on bg */
+    --oklch-headline: oklch(0.955 0.008 280);
+    --oklch-body: oklch(0.8 0.012 260);
+    --oklch-body-dim: oklch(0.7 0.012 260);
+    --oklch-border: oklch(0.35 0.018 280);          /* quiet, still visible */
+
+    /* Accents lightened for dark bg — text ≥4.5:1 on bg AND card */
+    --oklch-crimson: oklch(0.64 0.17 20);           /* #e05860 — 5.2:1 on bg */
+    --oklch-crimson-hover: oklch(0.42 0.22 20);     /* PINNED: white-text surface (CTA :active) */
+    --oklch-burgundy-dark: oklch(0.55 0.13 28);
+    --oklch-burgundy: oklch(0.63 0.14 24);
+    --oklch-burgundy-soft: oklch(0.72 0.1 20);
+    --oklch-verde: oklch(0.74 0.16 135);            /* #7dc052 — 8.7:1 on bg */
+    --oklch-lavender: oklch(0.82 0.075 285);
+    --oklch-lavender-hover: oklch(0.87 0.055 285);
+
+    /* Brand SURFACES stay at the light crimson: every white-on-brand
+       plate (skip-link, ::selection, founder avatar, cookie CTA,
+       plan CTA) keeps its 7:1 light-mode contrast untouched */
+    --terracota: oklch(0.48 0.2 20);
+    --terracota-hover: oklch(0.42 0.22 20);
+
+    /* Glass — invert the tint so elevation reads on dark */
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.14);
+
+    /* Overlay surfaces + textures */
+    --banner-bg: color-mix(in srgb, var(--bg) 92%, transparent);
+    --card-border: oklch(0.72 0.1 20 / 0.45);
+    --nav-scrolled-bg: oklch(0.13 0.012 280 / 0.72);
+    --nav-scrolled-border: oklch(0.74 0.16 135 / 0.35);
+    --grid-line: rgba(255, 255, 255, 0.055);
+    --vignette-mid: color-mix(in srgb, var(--bg) 50%, transparent);
+    --vignette-strong: color-mix(in srgb, var(--bg) 85%, transparent);
+    --vignette-edge: var(--bg);
+  }
+}
