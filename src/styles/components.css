@@ -42,7 +42,7 @@
    ======================================== */
 .glass-card {
   background: var(--bg-card);
-  border: 1px solid oklch(0.50 0.10 20 / 0.18);  /* Burgundy-soft sutil */
+  border: 1px solid var(--card-border);  /* Burgundy-soft sutil */
   border-radius: var(--radius-lg);
   padding: 2rem;
   position: relative;
@@ -65,7 +65,7 @@
   letter-spacing: -0.02em;
   padding: 0.9rem 2rem;
   border-radius: 10px;
-  border: 2.5px solid var(--terracota);
+  border: 2.5px solid var(--crimson);
   cursor: pointer;
   position: relative;
   overflow: hidden;
@@ -76,7 +76,7 @@
     background 0.25s ease,
     border-color 0.25s ease;
   background: transparent;
-  color: var(--terracota);
+  color: var(--crimson);
   /* Default: subtle elevation */
   box-shadow:
     0 2px 8px oklch(0 0 0 / 0.08),
@@ -95,8 +95,8 @@
   transition: transform 0.25s cubic-bezier(0.2, 0, 0, 1), border-color 0.3s, color 0.3s;
 }
 .btn-outline:hover {
-  border-color: var(--terracota);
-  color: var(--terracota);
+  border-color: var(--crimson);
+  color: var(--crimson);
   transform: translateY(1px);
 }
 .btn-outline:active {
@@ -131,7 +131,7 @@
 /* ===== CTA — 3D PIXELADO (Editorial: Crimson bg + hard drop shadow terracota) ===== */
 .btn-premium {
   background: var(--crimson);  /* Crimson sólido */
-  border: 1px solid var(--terracota);
+  border: 1px solid var(--crimson);
   border-radius: 0;
   color: var(--white);
   font-weight: 500;
@@ -357,7 +357,7 @@
   position: fixed;
   inset: 0;
   z-index: 999;
-  background: var(--white);  /* Fondo blanco para contraste con texto negro */
+  background: var(--bg);  /* Fondo de página (blanco en light, tinta en dark) */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -491,36 +491,6 @@
 .nowrap {
   white-space: nowrap;
 }
-.hero-meta {
-  font-size: 0.9rem;
-  color: var(--body-dim);
-  margin-bottom: var(--space-xl);
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.35rem;
-  text-wrap: pretty;
-}
-
-.hero-meta .price-group {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  flex-wrap: wrap;
-}
-.hero-meta .price-group:first-child {
-  font-size: 1.15em;
-}
-.current-price {
-  /* Editorial: Negro (Charcoal) sobre blanco (10.5:1 WCAG AAA) */
-  color: var(--charcoal);  /* oklch(0.28 0.01 280) - negro editorial */
-  font-weight: 500;  /* Más peso para énfasis en precio */
-  white-space: nowrap;
-}
-/* Label stays light (300) — the "Desde" text reads as a caption, not a price */
-.price-from {
-  font-weight: 300;
-}
 .price-currency {
   font-size: 0.6em;
   font-weight: 400;
@@ -537,7 +507,7 @@
 .hero-actions .btn-premium {
   padding: 0.9rem 1.25rem;
   font-size: clamp(1.2rem, 2.8vw, 1.5rem);
-  color: var(--charcoal);  /* Texto negro */
+  color: var(--text-on-white);  /* Texto negro sobre la placa blanca */
   font-weight: 400;  /* Fuente más delgada (era 500) */
   /* Fondo blanco */
   background: var(--white) !important;
@@ -550,14 +520,14 @@
   backdrop-filter: none;
 }
 .hero-actions .btn-premium:hover {
-  color: var(--charcoal);  /* Mantener texto negro en hover */
+  color: var(--text-on-white);  /* Mantener texto negro en hover */
   /* Fondo con ligero tinte verde en hover */
   background: oklch(0.98 0.02 135) !important;
   /* Hard drop shadow solamente, sin inset */
   box-shadow: 5px 5px 0 0 var(--terracota) !important;
 }
 .hero-actions .btn-premium:active {
-  color: var(--charcoal);  /* Mantener texto negro en active */
+  color: var(--text-on-white);  /* Mantener texto negro en active */
   background: var(--white) !important;
   box-shadow: none !important;
 }
@@ -729,7 +699,7 @@
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--terracota);
+  color: var(--crimson);
   display: block;
   margin-bottom: 0.15rem;
 }
@@ -748,7 +718,7 @@
   font-family: var(--font-body);
   font-size: 0.85rem;
   font-weight: 500;
-  color: var(--terracota);
+  color: var(--crimson);
   text-decoration: none;
   transition: gap 0.2s ease;
   margin-top: 0.5rem;
@@ -803,7 +773,7 @@
   gap: 0.35rem;
 }
 .rating-value .rating-star {
-  color: var(--terracota);
+  color: var(--crimson);
   flex-shrink: 0;
 }
 .resultado-metrica-label {
@@ -886,7 +856,7 @@
   height: 1.5rem;
   transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   flex-shrink: 0;
-  color: var(--terracota);
+  color: var(--crimson);
   stroke-width: 2.5px;
 }
 .faq-question[aria-expanded="true"] .faq-chevron {
@@ -965,7 +935,7 @@
   transition: color 0.2s;
 }
 .footer .footer-link:hover {
-  color: var(--terracota);
+  color: var(--crimson);
   text-decoration: underline;
 }
 .footer .footer-separator {
@@ -1066,7 +1036,7 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
   .mobile-menu {
-    background: var(--white);
+    background: var(--bg);
   }
   .scroll-to-top {
     background: var(--bg-card);
@@ -1086,7 +1056,7 @@
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: var(--terracota);
+  color: var(--crimson);
   margin-bottom: 1.25rem;
 }
 .pricing-back-link {
@@ -1313,7 +1283,7 @@
 .cta-btn {
   margin-top: 1rem;
   margin-bottom: 0.5rem;
-  color: var(--charcoal);  /* Texto negro */
+  color: var(--text-on-white);  /* Texto negro sobre la placa blanca */
   /* Fondo blanco */
   background: var(--white) !important;
   /* Borde degradado: Verde → Terracota → Blanco */
@@ -1325,14 +1295,14 @@
   backdrop-filter: none;
 }
 .cta-btn:hover {
-  color: var(--charcoal);  /* Mantener texto negro en hover */
+  color: var(--text-on-white);  /* Mantener texto negro en hover */
   /* Fondo con ligero tinte verde en hover */
   background: oklch(0.98 0.02 135) !important;
   /* Hard drop shadow solamente, sin inset */
   box-shadow: 5px 5px 0 0 var(--terracota) !important;
 }
 .cta-btn:active {
-  color: var(--charcoal);  /* Mantener texto negro en active */
+  color: var(--text-on-white);  /* Mantener texto negro en active */
   background: var(--white) !important;
   box-shadow: none !important;
 }
@@ -1398,7 +1368,7 @@
   transition: color 0.2s;
 }
 .cookie-privacy-link:hover {
-  color: var(--terracota);
+  color: var(--crimson);
 }
 .cookie-banner .btn-premium {
   margin-left: auto;
@@ -1448,9 +1418,9 @@
     margin-left: auto;
   }
 }
-/* Light theme cookie banner (default - no dark mode) */
+/* Cookie banner — surface follows the color scheme (--banner-bg) */
 .cookie-banner {
-  background: rgba(255, 255, 255, 0.92);
+  background: var(--banner-bg);
   border-color: var(--border);
   box-shadow: 0 4px 24px oklch(0 0 0 / 0.12);
 }
@@ -1466,7 +1436,7 @@
 .legal-back {
   display: inline-block;
   margin-bottom: 2rem;
-  color: var(--terracota);
+  color: var(--crimson);
   text-decoration: none;
   transition: opacity 0.2s;
 }
@@ -1480,7 +1450,7 @@
 .legal-p:last-child { margin-bottom: 0; }
 .legal-contact { margin-bottom: 0; }
 .legal-list { margin-left: 1.5rem; margin-bottom: 1.5rem; margin-top: 0.5rem; }
-.legal-card a { color: var(--terracota); text-decoration: underline; }
+.legal-card a { color: var(--crimson); text-decoration: underline; }
 
 /* ========================================
    404 NOT FOUND
@@ -1622,4 +1592,28 @@
 }
 .hero {
   content-visibility: visible;
+}
+
+/* ========================================
+   DARK MODE — literals that can't follow a token
+   ======================================== */
+@media (prefers-color-scheme: dark) {
+  /* The isotype ships as a pure-black SVG — flip it to white on dark ink */
+  .hero-isotype .logo-isotype {
+    filter: brightness(0) invert(1);
+  }
+
+  /* Overlay needs more dimming over a dark page */
+  .cookie-overlay {
+    background: oklch(0 0 0 / 0.6);
+  }
+  .cookie-banner {
+    box-shadow: 0 4px 24px oklch(0 0 0 / 0.55);
+  }
+
+  /* X/T hover is brand black in light — invisible on dark, so go light */
+  .footer-social-link[data-social="x"]:hover {
+    color: oklch(0.88 0 0);
+    border-color: oklch(0.88 0 0);
+  }
 }

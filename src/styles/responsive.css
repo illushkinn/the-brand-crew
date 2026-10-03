@@ -56,9 +56,6 @@
     margin-top: 0;
     max-width: none;
   }
-  .hero-meta {
-    align-items: flex-start;
-  }
   .hero-actions {
     justify-content: flex-start;
   }
@@ -98,7 +95,7 @@
 
 @media (hover: hover) {
   .faq-question:hover {
-    color: var(--terracota);
+    color: var(--crimson);
   }
 }
 
@@ -204,21 +201,6 @@
     text-wrap: balance;
     margin-top: 1rem;
     margin-bottom: 2rem;
-  }
-  .hero-meta {
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 0.5rem;
-    font-size: 1.1rem;
-  }
-  .hero-meta .price-group:first-child {
-    font-size: 1.15em;
-    flex-direction: row;
-    align-items: baseline;
-    gap: 0.35rem;
   }
   .tag-b2b {
     font-size: clamp(0.7rem, 2vw, 1rem);
@@ -375,11 +357,7 @@
     margin-top: 0.5rem;
     margin-bottom: 3rem;
   }
-  .hero-meta {
-    font-size: 0.85rem;
-    margin-bottom: 1rem;
-  }
-  
+
   /* Section titles in landscape */
   h2 {
     font-size: clamp(1.75rem, 4vw, 2.5rem);
@@ -530,9 +508,6 @@
     margin-top: 0.5rem;
     margin-bottom: 2rem;
   }
-  .hero-meta {
-    margin-bottom: 1.5rem;
-  }
   .hero-actions {
     margin-bottom: 1.5rem;
   }
@@ -552,16 +527,18 @@
 }
 
 /* ========================================
-   LIGHT THEME STYLES (default - dark mode removed)
+   LIGHT THEME STYLES (default)
    Last layer on purpose: must win the cascade
    over animations.css (reduced-motion branch).
+   The DARK THEME layer sits at the end of this file
+   and wins over this one when dark is preferred.
    ======================================== */
   /* Navbar: transparent light surface with blur */
   .navbar.scrolled {
-    background: rgba(255, 255, 255, 0.70);
+    background: var(--nav-scrolled-bg);
     backdrop-filter: blur(12px) saturate(120%);
     -webkit-backdrop-filter: blur(12px) saturate(120%);
-    border-bottom-color: oklch(0.55 0.19 135 / 0.25);
+    border-bottom-color: var(--nav-scrolled-border);
   }
 
   /* CTA glass — transparent + green insets (light verde) */
@@ -642,5 +619,52 @@
   .cookie-banner .btn-premium {
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
+  }
+}
+
+/* ========================================
+   DARK THEME LAYER
+   Deliberately last: must win over the
+   light-theme block above.
+   ======================================== */
+@media (prefers-color-scheme: dark) {
+  /* CTA glass: green insets need more presence on a dark page */
+  .btn-premium {
+    border-color: oklch(0.74 0.16 135 / 0.45);
+    text-shadow: none;
+  }
+
+  /* Buttons: light tints instead of terracotta tints
+     (:not keeps .btn-premium on its own glass recipe) */
+  .btn:not(.btn-premium):hover,
+  .btn:not(.btn-premium):focus-visible {
+    background: oklch(0.95 0.01 280 / 0.07);
+    box-shadow:
+      0 1px 3px oklch(0 0 0 / 0.45),
+      0 0 0 1px oklch(0.74 0.16 135 / 0.35);
+  }
+  .btn:focus-visible {
+    outline-color: oklch(0.74 0.16 135 / 0.95);
+  }
+  .skip-link:focus-visible {
+    outline-color: rgba(255, 255, 255, 0.6);
+  }
+
+  /* Client logos are black artwork — invert them back on dark */
+  .resultado-avatar img.invert-dark {
+    filter: brightness(0) invert(1);
+  }
+
+  /* Founders: accent text must clear 4.5:1 on the dark card */
+  .founder-card {
+    --fa-strong: oklch(0.74 0.16 135);
+    --fa-soft: oklch(0.74 0.16 135 / 0.3);
+  }
+  .founder-card.accent-terracota {
+    --fa-strong: oklch(0.64 0.17 20);
+    --fa-soft: oklch(0.64 0.17 20 / 0.35);
+  }
+  .founder-skills li {
+    border-color: oklch(0.74 0.16 135 / 0.5);
   }
 }

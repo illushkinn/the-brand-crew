@@ -12,7 +12,7 @@ html {
   overscroll-behavior: none;
   scrollbar-width: thin;
   scrollbar-gutter: stable;
-  scrollbar-color: var(--terracota) var(--bg);
+  scrollbar-color: var(--crimson) var(--bg);
 }
 body {
   overflow-x: clip;
@@ -25,14 +25,14 @@ body::before {
   pointer-events: none;
   background:
     repeating-linear-gradient(0deg,
-      rgba(0, 0, 0, 0.3) 0px,
-      rgba(0, 0, 0, 0.3) 1px,
+      var(--grid-line) 0px,
+      var(--grid-line) 1px,
       transparent 1px,
       transparent 100px
     ),
     repeating-linear-gradient(90deg,
-      rgba(0, 0, 0, 0.3) 0px,
-      rgba(0, 0, 0, 0.3) 1px,
+      var(--grid-line) 0px,
+      var(--grid-line) 1px,
       transparent 1px,
       transparent 100px
     );
@@ -48,13 +48,13 @@ body::after {
     ellipse 70% 75% at 50% 50%,
     transparent 0%,
     transparent 30%,
-    rgba(255, 255, 255, 0.5) 55%,
-    rgba(255, 255, 255, 0.85) 75%,
-    white 100%
+    var(--vignette-mid) 55%,
+    var(--vignette-strong) 75%,
+    var(--vignette-edge) 100%
   );
 }
 
-/* Dark mode grid pattern removed - light theme only */
+/* Grid texture is token-driven: black lines on light, white lines on dark */
 html::-webkit-scrollbar {
   width: 8px;
 }
@@ -108,10 +108,10 @@ h2 { font-size: clamp(2.2rem, 6vw, 4rem); }  /* Was: 2rem, 5vw, 3.5rem */
 h3 { font-size: clamp(1.6rem, 4vw, 2.8rem); }  /* Was: 1.5rem, 3.5vw, 2.5rem */
 h4 { font-size: clamp(1.5rem, 3.5vw, 2.2rem); font-weight: 400; }  /* Was: 1.4rem, 3vw, 2rem */
 .mono { font-family: 'JetBrains Mono', monospace; }
-.text-terracota { color: var(--terracota); }
+.text-terracota { color: var(--crimson); }
 .text-verde { color: var(--verde); }
 /* Accent highlight inline spans (hero sub, section titles) */
-.text-accent { color: var(--terracota); }
+.text-accent { color: var(--crimson); }
 .section {
   padding: 4rem clamp(1.25rem, 5vw, 4rem);
 }
@@ -120,7 +120,7 @@ h4 { font-size: clamp(1.5rem, 3.5vw, 2.2rem); font-weight: 400; }  /* Was: 1.4re
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: var(--terracota);
+  color: var(--crimson);
   margin-bottom: 1rem;
   display: block;
 }
