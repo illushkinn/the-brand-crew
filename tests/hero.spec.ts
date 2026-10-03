@@ -27,9 +27,7 @@ test.describe('Hero Section', () => {
     await expect(cta).toHaveText(/Contacto/i);
   });
 
-  test('pricing shows current price', async ({ page }) => {
-    const current = page.locator('.current-price').first();
-    await expect(current).toBeVisible();
-    await expect(current).toContainText(/1[.,]200/);
+  test('hero has no price', async ({ page }) => {
+    await expect(page.locator('.hero .current-price')).toHaveCount(0);
   });
 });
