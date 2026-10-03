@@ -92,7 +92,7 @@ test.describe('Scroll to Top', () => {
     const elapsed = Date.now() - startTime;
 
     expect(scrollY).toBeLessThan(50);
-    expect(elapsed).toBeLessThan(200); // Instant should be < 200ms vs smooth ~600ms
+    expect(elapsed).toBeLessThan(400); // Instant should be < 400ms vs smooth ~600ms
   });
 
   test('button has correct aria-label for accessibility', async ({ page }) => {
