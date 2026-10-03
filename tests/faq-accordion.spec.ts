@@ -76,7 +76,7 @@ test.describe('FAQ Accordion', () => {
 
   test('chevron rotates when item opens', async ({ page }) => {
     const firstQuestion = page.locator('.faq-question').first();
-    const chevron = firstQuestion.locator('.faq-icon');
+    const chevron = firstQuestion.locator('.faq-chevron');
 
     // Get initial transform
     const initialTransform = await chevron.evaluate(el => window.getComputedStyle(el).transform);
