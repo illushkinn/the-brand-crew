@@ -143,7 +143,7 @@ const websiteSchema = {
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>{title}</title>
   <meta name="description" content={description}>
-  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f5f4f7">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0e0f15">
   <meta name="google-site-verification" content="k-kPS76zKdKwT-18dhJwvxuK56oZXsaMpiBEeOmjuQA" />
 
@@ -190,16 +190,12 @@ const websiteSchema = {
   <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>
 
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://va.vercel-scripts.com">
-  <!-- Preload critical font (Onest 500 — most used weight) -->
-  <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/onest/v7/gNMdW3p6SJbwyGj2rBZyeOrTjOPh.woff2" crossorigin>
+  <!-- Preload critical font: Onest latin is a single variable file covering BOTH
+       body (font-weight: 400) and headings (font-weight: 500) — see src/styles/fonts.css -->
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/onest-latin.woff2" crossorigin>
   <!-- Preload hero logo SVG -->
   <link rel="preload" as="image" href="/assets/THEBRANDCREW_model1_dark.svg">
-  <!-- Google Fonts: non-blocking via media="print" + onload swap, only used weights 400, 500, 700 -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap"></noscript>
 
 
   <!-- Vercel Speed Insights -->
