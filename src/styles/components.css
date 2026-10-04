@@ -502,6 +502,10 @@
   gap: var(--space-md);
   flex-wrap: wrap;
   align-items: center;
+  /* Hero gap compensation: stands in for the removed hero-meta <p>
+     (content 32.6px + restored sibling margin; must equal the target
+     gap because adjacent sibling margins collapse → max(), not sum) */
+  margin-top: 64.6px;
   margin-bottom: 2.5rem;
 }
 .hero-actions .btn-premium {

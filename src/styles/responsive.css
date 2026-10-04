@@ -207,7 +207,7 @@
     padding: 0.5rem 1rem;
   }
   .hero-actions {
-    margin-top: 2rem;
+    margin-top: calc(2rem + 64.6px);
     margin-bottom: 1.5rem;
     justify-content: flex-start;
   }
@@ -523,6 +523,11 @@
 @media (max-width: 380px) {
   .hero-sub {
     margin-bottom: 2.5rem;
+  }
+  /* sub gap is 2.5rem here, so compensation must be rebased on 2.5rem
+     or the collapsed gap falls 8px short of the pre-removal state */
+  .hero-actions {
+    margin-top: calc(2.5rem + 64.6px);
   }
 }
 
