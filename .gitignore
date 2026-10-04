@@ -8,7 +8,7 @@ assets/ilustraciones/
 *.sketch
 *.studio
 *.zip
-:Zone.Identifier
+*:Zone.Identifier
 
 # Test artifacts
 playwright-report/
