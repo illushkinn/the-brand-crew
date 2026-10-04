@@ -26,3 +26,6 @@ dist/
 OPTIMIZATION-SUMMARY.md
 PRELOADER-OPTIMIZATION.md
 AUDIT-REPORT.md
+
+# Sensitive business docs — never in repo
+business/
