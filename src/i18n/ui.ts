@@ -43,6 +43,7 @@ export const dictionaries = {
       seeCase: 'Ver caso',
       previousCase: 'Caso anterior',
       nextCase: 'Caso siguiente',
+      inProduction: 'En producción',
       // Luisito
       luisitoTag: 'Rotisería · Mar del Plata',
       luisitoMetric1Value: 'Menú digital',
@@ -335,6 +336,7 @@ export const dictionaries = {
       seeCase: 'See case',
       previousCase: 'Previous case',
       nextCase: 'Next case',
+      inProduction: 'In production',
       luisitoTag: 'Restaurant · Mar del Plata',
       luisitoMetric1Value: 'Digital Menu',
       luisitoMetric1Label: 'Online orders',
