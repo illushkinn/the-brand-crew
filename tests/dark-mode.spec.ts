@@ -137,4 +137,56 @@ test.describe('Dark mode (prefers-color-scheme)', () => {
 
     expect(failures, `JS theming found:\n${failures.join('\n')}`).toEqual([]);
   });
+
+  test('dark: navbar logo is white', async ({ page }) => {
+    await page.emulateMedia({ colorScheme: 'dark' });
+    await page.goto('/');
+
+    const filter = await page
+      .locator('.navbar-brand .logo-isotype')
+      .first()
+      .evaluate((el) => getComputedStyle(el).filter);
+    expect(filter).toContain('invert(1)');
+  });
+
+  test('dark: navbar logo plate removed', async ({ page }) => {
+    await page.emulateMedia({ colorScheme: 'dark' });
+    await page.goto('/');
+
+    const bg = await page
+      .locator('.navbar-brand .logo-wrap')
+      .first()
+      .evaluate((el) => getComputedStyle(el).backgroundColor);
+    expect(bg).toBe('rgba(0, 0, 0, 0)');
+  });
+
+  test('dark: CTA section button black on white', async ({ page }) => {
+    await page.emulateMedia({ colorScheme: 'dark' });
+    await page.goto('/#contacto');
+    await page.locator('.cta-btn').first().waitFor();
+
+    const color = await channels(page, '.cta-btn', 'color');
+    expect(
+      allAtMost(color, 60),
+      `.cta-btn text should be dark, got ${color.value} -> rgb(${color.r},${color.g},${color.b})`
+    ).toBe(true);
+
+    const bg = await channels(page, '.cta-btn', 'background-color');
+    expect(
+      allAtLeast(bg, 250),
+      `.cta-btn plate should be white, got ${bg.value} -> rgb(${bg.r},${bg.g},${bg.b})`
+    ).toBe(true);
+  });
+
+  test('light: navbar logo NOT inverted', async ({ page }) => {
+    await page.emulateMedia({ colorScheme: 'light' });
+    await page.goto('/');
+
+    const filter = await page
+      .locator('.navbar-brand .logo-isotype')
+      .first()
+      .evaluate((el) => getComputedStyle(el).filter);
+    expect(filter).not.toContain('invert(1)');
+    expect(filter).toBe('brightness(0)');
+  });
 });

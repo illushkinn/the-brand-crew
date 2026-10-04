@@ -1599,8 +1599,15 @@
    ======================================== */
 @media (prefers-color-scheme: dark) {
   /* The isotype ships as a pure-black SVG — flip it to white on dark ink */
-  .hero-isotype .logo-isotype {
+  .hero-isotype .logo-isotype,
+  .navbar-brand .logo-isotype,
+  .logo-wrap .logo-isotype {
     filter: brightness(0) invert(1);
+  }
+
+  /* White plate would hide the now-white navbar logo */
+  .navbar-brand .logo-wrap {
+    background: transparent;
   }
 
   /* Overlay needs more dimming over a dark page */
