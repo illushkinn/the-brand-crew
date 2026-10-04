@@ -27,11 +27,11 @@ const enHref = basePath === '/' ? '/en' : `/en${basePath}`;
       <Logo size={60} ariaLabel="The Brand Crew" />
     </a>
     <div class="nav-links">
-      <a href={`${isHome}#crew`}>{t('nav.about')}</a>
       <a href={`${isHome}#resultados`}>{t('nav.howItWorks')}</a>
       <a href={`${isHome}#casos`}>{t('nav.cases')}</a>
       <a href={`${isHome}#faq`}>{t('nav.faq')}</a>
       <a href={getPricingLink(lang)}>{t('nav.pricing')}</a>
+      <a href={`${isHome}#crew`}>{t('nav.about')}</a>
     </div>
     <div class="navbar-actions">
       <div class="lang-switcher" role="group" aria-label="Language">
