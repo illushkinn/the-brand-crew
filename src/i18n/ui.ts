@@ -63,12 +63,6 @@ export const dictionaries = {
       pragmaMetric1Label: '100% privacidad',
       pragmaMetric2Value: 'HIPAA/GDPR',
        pragmaMetric2Label: 'Cumplimiento',
-      // Escolta Miami
-      escoltaTag: 'Seguridad Privada · Miami',
-      escoltaMetric1Value: '15+',
-      escoltaMetric1Label: 'Años de experiencia',
-      escoltaMetric2Value: 'Miami, FL',
-      escoltaMetric2Label: 'Estados Unidos',
     },
     comoFunciona: {
       kicker: 'Cómo trabajamos',
@@ -358,12 +352,6 @@ export const dictionaries = {
       pragmaMetric1Label: '100% privacy',
       pragmaMetric2Value: 'HIPAA/GDPR',
        pragmaMetric2Label: 'Compliant',
-      // Escolta Miami
-      escoltaTag: 'Private Security · Miami',
-      escoltaMetric1Value: '15+',
-      escoltaMetric1Label: 'Years of experience',
-      escoltaMetric2Value: 'Miami, FL',
-      escoltaMetric2Label: 'United States',
     },
     comoFunciona: {
       kicker: 'How we work',

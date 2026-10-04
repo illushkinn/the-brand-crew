@@ -68,17 +68,6 @@ export function getCaseStudies(lang: Lang): CaseStudy[] {
       ],
     },
     {
-      key: 'escolta',
-      name: 'Escolta Miami',
-      url: 'https://escoltamiami.com',
-      logo: { kind: 'img', src: '/assets/logos/escolta-miami.png', alt: 'Escolta Miami', class: 'dark-bg' },
-      screenshot: '/assets/Escolta.jpg',
-      metrics: [
-        { value: t('caseStudies.escoltaMetric1Value'), label: t('caseStudies.escoltaMetric1Label') },
-        { value: t('caseStudies.escoltaMetric2Value'), label: t('caseStudies.escoltaMetric2Label') },
-      ],
-    },
-    {
       key: 'pragma',
       name: 'Pragma',
       url: 'https://pragma.com.ar',
