@@ -519,9 +519,9 @@
   font-weight: 400;  /* Fuente más delgada (era 500) */
   /* Fondo blanco */
   background: var(--white) !important;
-  /* Borde degradado: Verde → Terracota → Blanco */
+  /* Borde degradado: Vino → Vino suave (bordo/piel — solo familia roja) */
   border: 3px solid transparent;
-  border-image: linear-gradient(135deg, var(--verde) 0%, var(--terracota) 50%, rgba(255, 255, 255, 0.8) 100%);
+  border-image: linear-gradient(135deg, var(--vino) 0%, var(--vino-soft) 100%);
   border-image-slice: 1;
   /* Eliminar sombras */
   box-shadow: none !important;
@@ -529,8 +529,8 @@
 }
 .hero-actions .btn-premium:hover {
   color: var(--text-on-white);  /* Mantener texto negro en hover */
-  /* Fondo con ligero tinte verde en hover */
-  background: oklch(0.98 0.02 135) !important;
+  /* Fondo con tinte vino en hover (urgencia, nunca verde) */
+  background: var(--vino-tint) !important;
   /* Hard drop shadow solamente, sin inset */
   box-shadow: 5px 5px 0 0 var(--terracota) !important;
 }
@@ -1307,9 +1307,9 @@
   color: var(--text-on-white);  /* Texto negro sobre la placa blanca */
   /* Fondo blanco */
   background: var(--white) !important;
-  /* Borde degradado: Verde → Terracota → Blanco */
+  /* Borde degradado: Vino → Vino suave (bordo/piel — solo familia roja) */
   border: 3px solid transparent;
-  border-image: linear-gradient(135deg, var(--verde) 0%, var(--terracota) 50%, rgba(255, 255, 255, 0.8) 100%);
+  border-image: linear-gradient(135deg, var(--vino) 0%, var(--vino-soft) 100%);
   border-image-slice: 1;
   /* Eliminar sombras */
   box-shadow: none !important;
@@ -1317,8 +1317,8 @@
 }
 .cta-btn:hover {
   color: var(--text-on-white);  /* Mantener texto negro en hover */
-  /* Fondo con ligero tinte verde en hover */
-  background: oklch(0.98 0.02 135) !important;
+  /* Fondo con tinte vino en hover (urgencia, nunca verde) */
+  background: var(--vino-tint) !important;
   /* Hard drop shadow solamente, sin inset */
   box-shadow: 5px 5px 0 0 var(--terracota) !important;
 }
