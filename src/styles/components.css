@@ -525,7 +525,7 @@
   background: var(--white) !important;
   /* Borde degradado: Vino → Vino suave (bordo/piel — solo familia roja) */
   border: 3px solid transparent;
-  border-image: linear-gradient(135deg, var(--vino) 0%, var(--vino-soft) 100%);
+  border-image: linear-gradient(135deg, var(--vino) 0%, var(--vino-soft) 70%, var(--white) 100%);
   border-image-slice: 1;
   /* Eliminar sombras */
   box-shadow: none !important;
@@ -534,6 +534,7 @@
 @media (hover: hover) and (pointer: fine) {
 .hero-actions .btn-premium:hover {
   color: var(--text-on-white);  /* Mantener texto negro en hover */
+  border-image: linear-gradient(135deg, var(--vino) 0%, var(--vino-soft) 100%);
   /* Fondo con tinte vino en hover (urgencia, nunca verde) */
   background: var(--vino-tint) !important;
   /* Hard drop shadow solamente, sin inset */
@@ -542,6 +543,7 @@
 }
 .hero-actions .btn-premium:active {
   color: var(--text-on-white);  /* Mantener texto negro en active */
+  border-image: linear-gradient(135deg, var(--vino) 0%, var(--vino-soft) 100%);
   background: var(--vino-tint) !important;
   box-shadow: none !important;
   transform: translateY(1px) scale(0.985);
@@ -1319,7 +1321,7 @@
   background: var(--white) !important;
   /* Borde degradado: Vino → Vino suave (bordo/piel — solo familia roja) */
   border: 3px solid transparent;
-  border-image: linear-gradient(135deg, var(--vino) 0%, var(--vino-soft) 100%);
+  border-image: linear-gradient(135deg, var(--vino) 0%, var(--vino-soft) 70%, var(--white) 100%);
   border-image-slice: 1;
   /* Eliminar sombras */
   box-shadow: none !important;
@@ -1328,6 +1330,7 @@
 @media (hover: hover) and (pointer: fine) {
 .cta-btn:hover {
   color: var(--text-on-white);  /* Mantener texto negro en hover */
+  border-image: linear-gradient(135deg, var(--vino) 0%, var(--vino-soft) 100%);
   /* Fondo con tinte vino en hover (urgencia, nunca verde) */
   background: var(--vino-tint) !important;
   /* Hard drop shadow solamente, sin inset */
@@ -1336,6 +1339,7 @@
 }
 .cta-btn:active {
   color: var(--text-on-white);  /* Mantener texto negro en active */
+  border-image: linear-gradient(135deg, var(--vino) 0%, var(--vino-soft) 100%);
   background: var(--vino-tint) !important;
   box-shadow: none !important;
   transform: translateY(1px) scale(0.985);
