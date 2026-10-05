@@ -170,17 +170,21 @@ const websiteSchema = {
   <link rel="canonical" href={canonicalURL}>
   <meta name="robots" content={noindex ? "noindex, follow" : "index, follow"}>
 
-  <!-- Hreflang -->
+  <!-- Hreflang — URLs absolutas, self-ref única por idioma, x-default al
+       ES (default). Solo emite el twin EN si esa página existe (las guías
+       /guias no tienen versión /en — emitirla generaba un alternate 404). -->
   {(() => {
     const pathname = typeof canonicalURL === 'string' ? new URL(canonicalURL).pathname : canonicalURL.pathname || '/';
-    const basePath = pathname.replace(/^\/en\/?/, '') || '/';
-    const esHref = basePath;
-    const enHref = basePath === '/' ? '/en' : `/en${basePath}`;
+    const stripped = pathname.replace(/^\/en\/?/, '');
+    const basePath = stripped.startsWith('/') ? stripped : `/${stripped}`;
+    const esHref = basePath === '/' ? `${DOMAIN}/` : `${DOMAIN}${basePath}`;
+    const enHref = basePath === '/' ? `${DOMAIN}/en` : `${DOMAIN}/en${basePath}`;
+    const hasENTwin = !basePath.startsWith('/guias');
     return (
       <>
-        <link rel="alternate" hreflang="es" href={esHref} />
-        <link rel="alternate" hreflang="en" href={enHref} />
-        <link rel="alternate" hreflang={hreflangMap[lang]} href={canonicalURL} />
+        <link rel="alternate" hreflang={hreflangMap[defaultLang]} href={esHref} />
+        {hasENTwin && <link rel="alternate" hreflang={hreflangMap['en']} href={enHref} />}
+        <link rel="alternate" hreflang="x-default" href={esHref} />
       </>
     );
   })()}
