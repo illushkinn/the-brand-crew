@@ -267,7 +267,11 @@
 /* Logo progress ring — scroll indicator */
 .logo-progress-ring {
   position: absolute;
-  inset: -2px;
+  top: 50%;
+  left: 50%;
+  width: 74px;
+  height: 74px;
+  transform: translate(-50%, -50%);
   pointer-events: none;
 }
 .logo-progress-ring svg {
@@ -1335,21 +1339,8 @@
   box-shadow: none !important;
 }
 /* ========================================
-   COOKIE BANNER + OVERLAY
+   COOKIE BANNER
    ======================================== */
-.cookie-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 99;
-  background: rgba(0, 0, 0, 0.35);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.35s ease;
-}
-.cookie-overlay.visible {
-  opacity: 1;
-  pointer-events: auto;
-}
 .cookie-banner {
   position: fixed;
   bottom: calc(10px + env(safe-area-inset-bottom));
@@ -1424,7 +1415,6 @@
   min-width: fit-content;
 }
 @media (prefers-reduced-motion: reduce) {
-  .cookie-overlay,
   .cookie-banner {
     transition: none;
     transform: none;
@@ -1638,10 +1628,6 @@
     background: transparent;
   }
 
-  /* Overlay needs more dimming over a dark page */
-  .cookie-overlay {
-    background: oklch(0 0 0 / 0.6);
-  }
   .cookie-banner {
     box-shadow: 0 4px 24px oklch(0 0 0 / 0.55);
   }
