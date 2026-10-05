@@ -124,6 +124,11 @@ h4 { font-size: clamp(1.5rem, 3.5vw, 2.2rem); font-weight: 400; }  /* Was: 1.4re
   margin-bottom: 1rem;
   display: block;
 }
+/* FAQ: todo el texto en negro editorial (light) / blanco (dark) via token */
+.faq .section-label,
+.faq .text-terracota {
+  color: var(--headline);
+}
 .faq .section-label {
   padding-top: 0;
 }
