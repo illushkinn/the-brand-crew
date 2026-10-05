@@ -531,8 +531,13 @@
   box-shadow: none !important;
   backdrop-filter: none;
 }
+/* Contrato de hover/active compartido — hero + CTA final: un solo bloque
+   (DRY) para que ambos CTAs no puedan divergir. El scope .cta-final
+   (0,3,1) le gana al flat-press genérico de responsive.css:575 (0,2,1)
+   por especificidad, no por orden de import. */
 @media (hover: hover) and (pointer: fine) {
-.hero-actions .btn-premium:hover {
+.hero-actions .btn-premium:hover,
+.cta-final .cta-btn:hover {
   color: var(--text-on-white);  /* Mantener texto negro en hover */
   border-image: var(--stroke-vino-full);
   /* Fondo con tinte vino en hover (urgencia, nunca verde) */
@@ -541,7 +546,8 @@
   box-shadow: 5px 5px 0 0 var(--terracota) !important;
 }
 }
-.hero-actions .btn-premium:active {
+.hero-actions .btn-premium:active,
+.cta-final .cta-btn:active {
   color: var(--text-on-white);  /* Mantener texto negro en active */
   border-image: var(--stroke-vino-full);
   background: var(--vino-tint) !important;
@@ -1326,24 +1332,6 @@
   /* Eliminar sombras */
   box-shadow: none !important;
   backdrop-filter: none;
-}
-@media (hover: hover) and (pointer: fine) {
-.cta-btn:hover {
-  color: var(--text-on-white);  /* Mantener texto negro en hover */
-  border-image: var(--stroke-vino-full);
-  /* Fondo con tinte vino en hover (urgencia, nunca verde) */
-  background: var(--vino-tint) !important;
-  /* Hard drop shadow solamente, sin inset */
-  box-shadow: 5px 5px 0 0 var(--terracota) !important;
-}
-}
-.cta-btn:active {
-  color: var(--text-on-white);  /* Mantener texto negro en active */
-  border-image: var(--stroke-vino-full);
-  background: var(--vino-tint) !important;
-  box-shadow: none !important;
-  transform: translateY(1px) scale(0.985);
-  scale: 1;
 }
 /* ========================================
    COOKIE BANNER
