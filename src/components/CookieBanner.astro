@@ -1,5 +1,7 @@
 ---
 // CookieBanner.astro — lightweight cookie consent banner (no libraries)
+// Non-modal notice: never blocks the page (a full-screen scrim trapped the
+// scroll-to-top / WhatsApp buttons below .page-content's stacking context).
 // Persists choice in localStorage; rendered on every page via BaseLayout.
 import type { Lang } from '../i18n/ui';
 import { useTranslations } from '../i18n/ui';
@@ -11,7 +13,6 @@ const t = useTranslations(lang);
 const privacyHref = getPrivacyLink(lang);
 ---
 
-<div class="cookie-overlay" id="cookie-overlay" aria-hidden="true"></div>
 <div class="cookie-banner" id="cookie-banner" role="region" aria-label="Cookies" aria-describedby="cookie-text">
   <p class="cookie-banner-text" id="cookie-text">
     <span>{t('cookieBanner.text')}</span>
@@ -21,18 +22,38 @@ const privacyHref = getPrivacyLink(lang);
 </div>
 
 <script>
+  const CONSENT_KEY = 'tbc-cookie-consent';
   const banner = document.getElementById('cookie-banner');
-  const overlay = document.getElementById('cookie-overlay');
   const acceptBtn = document.getElementById('cookie-accept');
 
-  if (banner && overlay && !localStorage.getItem('tbc-cookie-consent')) {
+  // Brave Shields (cookies blocked / strict fingerprinting) makes localStorage
+  // ACCESS throw SecurityError. Guard it: fall back to an in-memory flag so
+  // the banner still renders and "Accept" still works for the session.
+  let memoryConsent: string | null = null;
+
+  function readConsent(): string | null {
+    try {
+      return localStorage.getItem(CONSENT_KEY) ?? memoryConsent;
+    } catch {
+      return memoryConsent;
+    }
+  }
+
+  function writeConsent(value: string): void {
+    memoryConsent = value;
+    try {
+      localStorage.setItem(CONSENT_KEY, value);
+    } catch {
+      // Storage blocked — consent lives only for this session.
+    }
+  }
+
+  if (banner && !readConsent()) {
     banner.classList.add('visible');
-    overlay.classList.add('visible');
   }
 
   acceptBtn?.addEventListener('click', () => {
-    localStorage.setItem('tbc-cookie-consent', 'accepted');
+    writeConsent('accepted');
     banner?.classList.remove('visible');
-    overlay?.classList.remove('visible');
   });
 </script>
