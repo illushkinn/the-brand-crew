@@ -70,6 +70,14 @@
   --vino-soft: var(--oklch-vino-soft);
   --vino-tint: var(--oklch-vino-tint);
 
+  /* Derived stroke gradients — single source for the CTA border-image
+     (hero .btn-premium + nav .cta-btn). rest = reposo, esquina inferior
+     disuelta; full = hover/active, anillo completo. Las vars se resuelven
+     en uso → el override dark de --vino aplica solo. --white nunca se
+     redefine en dark (#fff en ambos modos). */
+  --stroke-vino-rest: linear-gradient(135deg, var(--vino) 0%, var(--vino-soft) 70%, var(--white) 100%);
+  --stroke-vino-full: linear-gradient(135deg, var(--vino) 0%, var(--vino-soft) 100%);
+
   /* Legacy color mapping (for backward compatibility) */
   --terracota: var(--oklch-crimson);  /* Map to crimson */
   --terracota-hover: var(--oklch-crimson-hover);
