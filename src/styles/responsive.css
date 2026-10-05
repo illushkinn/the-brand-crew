@@ -554,12 +554,14 @@
   }
 
   /* Hover/focus — flat press with light-mode alphas */
+  @media (hover: hover) and (pointer: fine) {
   .btn:hover {
     background: oklch(0.58 0.18 32 / 0.06);
     box-shadow:
       0 1px 3px oklch(0 0 0 / 0.08),
       0 0 0 1px oklch(0.58 0.18 32 / 0.12);
     transform: translateY(1px);
+  }
   }
   .btn:focus-visible {
     background: oklch(0.58 0.18 32 / 0.06);
@@ -569,7 +571,16 @@
     outline: 2px solid oklch(0.48 0.2 20);
   }
   /* Premium: flat press for light mode — neutral shadows, no green insets */
-  .btn-premium:hover,
+  @media (hover: hover) and (pointer: fine) {
+  .btn-premium:hover {
+    background: var(--premium-bg);
+    box-shadow:
+      0 1px 3px oklch(0 0 0 / 0.06),
+      0 1px 0 oklch(0 0 0 / 0.06) inset,
+      0 0 0 1px oklch(0 0 0 / 0.05);
+    transform: translateY(1px);
+  }
+  }
   .btn-premium:focus-visible {
     background: var(--premium-bg);
     box-shadow:
@@ -636,7 +647,14 @@
 
   /* Buttons: light tints instead of terracotta tints
      (:not keeps .btn-premium on its own glass recipe) */
-  .btn:not(.btn-premium):hover,
+  @media (hover: hover) and (pointer: fine) {
+  .btn:not(.btn-premium):hover {
+    background: oklch(0.95 0.01 280 / 0.07);
+    box-shadow:
+      0 1px 3px oklch(0 0 0 / 0.45),
+      0 0 0 1px oklch(0.74 0.16 135 / 0.35);
+  }
+  }
   .btn:not(.btn-premium):focus-visible {
     background: oklch(0.95 0.01 280 / 0.07);
     box-shadow:
