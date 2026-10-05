@@ -127,11 +127,13 @@ export const dictionaries = {
       sub: 'Acompañamiento mes a mes para negocios que necesitan evolucionar todo el tiempo. No es una web y listo — es un partner que trabaja con vos cada mes.',
       backLink: 'Volver al inicio',
       description: 'Growth partner mensual: rediseño continuo, más visibilidad, contenido para redes y automatizaciones. Desde $750 USD/mes.',
+      metaTitle: 'The Brand Crew · Growth Partner mensual desde USD 750',
     },
     socios: {
       label: 'Kit socios',
       title: 'Tres planes. <span class="text-verde">Un precio claro.</span>',
       description: 'Planes de The Brand Crew para socios estratégicos: web, marca y contenido desde USD 1.500.',
+      metaTitle: 'The Brand Crew · Kit de socios estratégicos',
       badge: 'Más elegido',
     },
     notFound: {
@@ -412,11 +414,13 @@ export const dictionaries = {
       sub: 'Month-by-month support for businesses that need to keep evolving. It\'s not a one-and-done website — it\'s a partner that works with you every month.',
       backLink: 'Back to home',
       description: 'Monthly growth partner: ongoing redesign, more visibility, social content and automations for your business. Starting at $750 USD/mo.',
+      metaTitle: 'The Brand Crew · Growth Partner from $750 USD/mo',
     },
     socios: {
       label: 'Partner kit',
       title: 'Three plans. <span class="text-verde">One clear price.</span>',
       description: 'The Brand Crew plans for strategic partners: website, brand and content from $1,500 USD.',
+      metaTitle: 'The Brand Crew · Strategic partner kit',
       badge: 'Most chosen',
     },
     notFound: {

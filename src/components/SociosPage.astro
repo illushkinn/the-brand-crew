@@ -14,7 +14,7 @@ const { lang = 'es', canonicalURL } = Astro.props;
 const s = dictionaries[lang].socios;
 ---
 
-<BaseLayout lang={lang} description={s.description} canonicalURL={canonicalURL} noindex={true}>
+<BaseLayout lang={lang} title={s.metaTitle} description={s.description} canonicalURL={canonicalURL} noindex={true}>
   <div class="socios-page-content">
     <section class="section socios" aria-label={s.label}>
       <header class="socios-head">
