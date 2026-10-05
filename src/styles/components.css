@@ -546,6 +546,8 @@
   flex-wrap: wrap;
 }
 .tag-b2b {
+  position: relative;
+  z-index: 2;
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.7rem;
   text-transform: uppercase;
@@ -559,7 +561,7 @@
 .tag-b2b.tag-outline {
   border-color: transparent;
   color: var(--charcoal);  /* Editorial: negro sobre blanco */
-  background: transparent;
+  background: var(--bg);
 }
 
 /* ========================================

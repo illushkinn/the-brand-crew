@@ -216,7 +216,7 @@
     font-size: 1.4rem;
   }
   .hero-b2b-tags {
-    margin-top: 0.75rem;
+    margin-top: 0.35rem;
     justify-content: flex-start;
   }
   .hero-logo {
@@ -511,7 +511,7 @@
     padding: 0.8rem 2rem;
   }
   .hero-b2b-tags {
-    margin-top: 0.75rem;
+    margin-top: 0.35rem;
   }
 }
 
@@ -566,7 +566,7 @@
     box-shadow:
       0 1px 3px oklch(0 0 0 / 0.08),
       0 0 0 1px oklch(0.58 0.18 32 / 0.12);
-    outline: 2px solid oklch(0.55 0.19 135 / 0.45);
+    outline: 2px solid oklch(0.48 0.2 20);
   }
   /* Premium: flat press for light mode — neutral shadows, no green insets */
   .btn-premium:hover,
@@ -644,7 +644,7 @@
       0 0 0 1px oklch(0.74 0.16 135 / 0.35);
   }
   .btn:focus-visible {
-    outline-color: oklch(0.74 0.16 135 / 0.95);
+    outline-color: oklch(0.64 0.17 20);
   }
   .skip-link:focus-visible {
     outline-color: rgba(255, 255, 255, 0.6);
