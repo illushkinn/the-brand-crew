@@ -71,7 +71,6 @@ test.describe('Carousel Navigation', () => {
   });
 
   test('next arrow disabled at end', async ({ page }) => {
-    const grid = page.locator('.resultados-grid');
     const nextArrow = page.locator('#resultadosNext');
 
     // Click next multiple times to reach end

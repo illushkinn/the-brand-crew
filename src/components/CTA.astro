@@ -3,13 +3,10 @@
 import type { Lang } from '../i18n/ui';
 import { useTranslations } from '../i18n/ui';
 import { CALENDLY_URL } from '../lib/constants';
-import { getWhatsAppLink } from '../lib/whatsapp';
 
 interface Props { lang?: Lang }
 const { lang = 'es' } = Astro.props;
 const t = useTranslations(lang);
-
-const waLink = getWhatsAppLink(lang);
 ---
 
 <section class="cta-final reveal" id="contacto" aria-label="Contact">

@@ -947,13 +947,6 @@
   color: var(--body-dim);
   font-size: 0.9rem;
 }
-.footer .footer-cuit {
-  font-family: var(--font-body);
-  font-size: 0.8rem;
-  color: var(--body-dim);
-  opacity: 0.8;
-  margin-top: 0.2rem;
-}
 .footer .footer-links {
   display: flex;
   align-items: center;
@@ -1227,10 +1220,6 @@
   position: relative;
   border-color: var(--fa-soft);
   transition: border-color 0.3s ease;
-}
-.founder-card.accent-terracota {
-  --fa-strong: oklch(0.62 0.18 32 / 0.55);
-  --fa-soft: oklch(0.62 0.18 32 / 0.16);
 }
 .founder-index {
   position: absolute;

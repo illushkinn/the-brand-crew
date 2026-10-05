@@ -27,7 +27,6 @@ export const dictionaries = {
       pricing: 'Precios',
       faq: 'FAQ',
       about: 'Nosotros',
-      contact: 'Contacto',
     },
     hero: {
       headline2: 'Growth partner',
@@ -175,8 +174,6 @@ export const dictionaries = {
       title1: 'Arranquemos',
       title2: '',
       schedule: 'Agendar una llamada',
-      preferWp: '¿Preferís WhatsApp? Escribinos por',
-      whatsappAlt: 'WhatsApp',
     },
     footer: {
       privacy: 'Política de privacidad',
@@ -320,7 +317,6 @@ export const dictionaries = {
       pricing: 'Pricing',
       faq: 'FAQ',
       about: 'About',
-      contact: 'Contact',
     },
     hero: {
       headline2: 'Growth partner',
@@ -463,8 +459,6 @@ export const dictionaries = {
       title1: "Let's get started",
       title2: '',
       schedule: 'Schedule a call',
-      preferWp: 'Prefer WhatsApp? Reach us on',
-      whatsappAlt: 'WhatsApp',
     },
     footer: {
       privacy: 'Privacy Policy',
