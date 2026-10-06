@@ -3,11 +3,16 @@
 // URL evergreen (sin año); el año vive en <title> y <H1>.
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { DOMAIN } from '../../lib/constants';
+import { getTranslation } from '../../i18n/ui';
 
 const canonicalURL = `${DOMAIN}/guias/cuanto-cuesta-una-pagina-web-en-argentina`;
 const title = '¿Cuánto cuesta una página web en Argentina? (2026) — The Brand Crew';
 const description =
   'Cuánto cuesta una página web en Argentina en 2026: rangos en USD de plantilla, freelancer, agencia y retainer. Qué incluye cada tramo y errores al cotizar.';
+const breadcrumb = [
+  { name: getTranslation('es', 'seo.title'), url: '/' },
+  { name: title, url: canonicalURL.replace(DOMAIN, '') },
+];
 
 const rangos = [
   {
@@ -126,6 +131,7 @@ const faqSchema = {
   title={title}
   description={description}
   canonicalURL={canonicalURL}
+  breadcrumb={breadcrumb}
 >
   <script
     is:inline

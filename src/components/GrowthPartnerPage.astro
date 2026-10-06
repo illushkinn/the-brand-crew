@@ -16,9 +16,14 @@ interface Props {
 const { lang = 'es', canonicalURL } = Astro.props;
 const gp = dictionaries[lang].growthPartner;
 const backHref = lang === 'es' ? '/pricing' : '/en/pricing';
+const breadcrumb = [
+  { name: dictionaries[lang].seo.title, url: '/' },
+  { name: dictionaries[lang].pricing.metaTitle, url: '/pricing' },
+  { name: gp.metaTitle, url: '/pricing/growth-partner' },
+];
 ---
 
-<BaseLayout lang={lang} title={gp.metaTitle} description={gp.description} canonicalURL={canonicalURL}>
+<BaseLayout lang={lang} title={gp.metaTitle} description={gp.description} canonicalURL={canonicalURL} breadcrumb={breadcrumb}>
   <div class="growth-page-content">
     <section class="section pricing reveal" id="precios" aria-label="Growth Partner Pricing">
       <span class="section-label mono text-terracota">{gp.label}</span>

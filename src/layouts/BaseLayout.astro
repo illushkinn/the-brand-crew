@@ -12,6 +12,7 @@ interface Props {
   ogImage?: string;
   canonicalURL?: string;
   noindex?: boolean;
+  breadcrumb?: Array<{ name: string; url: string }>;
 }
 
 const lang = Astro.props.lang ?? defaultLang;
@@ -19,7 +20,8 @@ const {
   title = getTranslation(lang, 'seo.title'),
   description = getTranslation(lang, 'seo.description'),
   ogImage = `${DOMAIN}/assets/THEBRANDCREW_model2.webp`,
-  noindex = false
+  noindex = false,
+  breadcrumb
 } = Astro.props;
 
 const canonicalURL = Astro.props.canonicalURL || Astro.url;
@@ -115,6 +117,14 @@ const faqSchema = {
         "@type": "Answer",
         "text": getTranslation(lang, 'faq.a3')
       }
+    },
+    {
+      "@type": "Question",
+      "name": getTranslation(lang, 'faq.q4'),
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": getTranslation(lang, 'faq.a4')
+      }
     }
   ]
 };
@@ -125,13 +135,31 @@ const websiteSchema = {
   "@id": `${DOMAIN}/#website`,
   "name": "The Brand Crew",
   "url": DOMAIN,
-  "description": seo.websiteDescription,
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": `${DOMAIN}/?s={search_term_string}`,
-    "query-input": "required name=search_term_string"
-  }
+  "description": seo.websiteDescription
 };
+
+const breadcrumbUrl = (path: string): string => {
+  const normalized = path.startsWith('/') ? path : `/${path}`;
+  const basePath = normalized.replace(/^\/en(?=\/|$)/, '') || '/';
+  if (basePath === '/') {
+    return lang === 'en' ? `${DOMAIN}/en` : `${DOMAIN}/`;
+  }
+  return lang === 'en' ? `${DOMAIN}/en${basePath}` : `${DOMAIN}${basePath}`;
+};
+
+const breadcrumbSchema =
+  breadcrumb && breadcrumb.length > 0
+    ? {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: breadcrumb.map((item, index) => ({
+          "@type": "ListItem",
+          "position": index + 1,
+          "name": item.name,
+          "item": breadcrumbUrl(item.url)
+        }))
+      }
+    : undefined;
 ---
 
 <!DOCTYPE html>
@@ -192,6 +220,9 @@ const websiteSchema = {
   <script is:inline type="application/ld+json" set:html={JSON.stringify(websiteSchema)}></script>
   <script is:inline type="application/ld+json" set:html={JSON.stringify(businessSchema)}></script>
   <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>
+  {breadcrumbSchema && (
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)}></script>
+  )}
 
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="preconnect" href="https://va.vercel-scripts.com">

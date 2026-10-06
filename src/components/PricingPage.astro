@@ -15,9 +15,13 @@ interface Props {
 }
 const { lang = 'es', canonicalURL } = Astro.props;
 const p = dictionaries[lang].pricing;
+const breadcrumb = [
+  { name: dictionaries[lang].seo.title, url: '/' },
+  { name: p.metaTitle, url: '/pricing' },
+];
 ---
 
-<BaseLayout lang={lang} title={p.metaTitle} description={p.metaDescription} canonicalURL={canonicalURL}>
+<BaseLayout lang={lang} title={p.metaTitle} description={p.metaDescription} canonicalURL={canonicalURL} breadcrumb={breadcrumb}>
   <div class="pricing-page-content">
     <Pricing lang={lang} showBackLink={true} heading="h1" />
   </div>

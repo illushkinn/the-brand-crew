@@ -11,7 +11,7 @@ const nf = dictionaries[lang].notFound;
 const homeHref = lang === 'es' ? '/' : '/en';
 ---
 
-<BaseLayout title="404 — The Brand Crew" lang={lang}>
+<BaseLayout title="404 — The Brand Crew" lang={lang} noindex={true}>
   <div class="notfound-main">
     <h1 class="notfound-code">404</h1>
     <p class="notfound-message">{nf.message}</p>

@@ -10,6 +10,7 @@ import ScrollToTop from './ScrollToTop.astro';
 import WhatsAppFloating from './WhatsAppFloating.astro';
 import { getWhatsAppLink } from '../lib/whatsapp';
 import { getHomeLink, getPricingLink, getGrowthPartnerLink } from '../lib/routing';
+import { DOMAIN } from '../lib/constants';
 
 interface Props {
   service?: 'web';
@@ -24,6 +25,11 @@ const homeLink = getHomeLink(lang);
 const pricingLink = getPricingLink(lang);
 const growthLink = getGrowthPartnerLink(lang);
 const waLink = getWhatsAppLink(lang, s.ctaMessage);
+const servicePath = canonicalURL ? canonicalURL.replace(DOMAIN, '') : '/servicios/diseño-web';
+const breadcrumb = [
+  { name: dictionaries[lang].seo.title, url: '/' },
+  { name: s.title, url: servicePath },
+];
 
 // Pack names & prices come from the pricing dict — single source of truth.
 const packs: ReadonlyArray<{ name: string; price: string; desc: string }> = [
@@ -54,6 +60,7 @@ const faqSchema = {
   title={s.title}
   description={s.description}
   canonicalURL={canonicalURL}
+  breadcrumb={breadcrumb}
 >
   <script
     is:inline
