@@ -10,8 +10,6 @@ const { lang = 'es' } = Astro.props;
 const t = useTranslations(lang);
 const cases = getCaseStudies(lang);
 
-/** Cases whose site is live → show the "En producción" badge */
-const IN_PRODUCTION_KEYS = new Set(['luisito', 'pragma']);
 ---
 
 <section class="section resultados reveal-stagger" id="casos" aria-label="Case Studies">
@@ -25,7 +23,6 @@ const IN_PRODUCTION_KEYS = new Set(['luisito', 'pragma']);
           const name = c.name;
           const tag = t(`caseStudies.${c.key}Tag`);
           const seeCase = t('caseStudies.seeCase');
-          const inProduction = IN_PRODUCTION_KEYS.has(c.key);
           return (
             <article class="glass-card resultado-card">
               <div class="resultado-header">
@@ -39,9 +36,6 @@ const IN_PRODUCTION_KEYS = new Set(['luisito', 'pragma']);
                 <div class="resultado-info">
                   <span class="mono resultado-tag">
                     {tag}
-                    {inProduction && (
-                      <span class="resultado-badge">{t('caseStudies.inProduction')}</span>
-                    )}
                   </span>
                   <h3 class="resultado-nombre">{name}</h3>
                   {c.url ? (

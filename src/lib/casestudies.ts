@@ -47,12 +47,10 @@ export function getCaseStudies(lang: Lang): CaseStudy[] {
     {
       key: 'luisito',
       name: 'Luisito Playa Grande',
-      url: 'https://luisitoplayagrande.com',
       logo: { kind: 'img', src: '/assets/logos/luisito.svg', alt: 'Luisito Playa Grande', class: 'invert-dark' },
       screenshot: '/assets/Luisito.jpg',
       metrics: [
         { value: t('caseStudies.luisitoMetric1Value'), label: t('caseStudies.luisitoMetric1Label') },
-        { value: t('caseStudies.luisitoMetric2Value'), label: t('caseStudies.luisitoMetric2Label'), rating: true },
       ],
     },
     {

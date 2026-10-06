@@ -729,30 +729,6 @@
   display: block;
   margin-bottom: 0.15rem;
 }
-/* Status pill (inProduction) — carries its own TEXT label, never color-only. */
-.resultado-badge {
-  display: inline-flex;
-  align-items: center;
-  vertical-align: middle;
-  margin-left: 0.5rem;
-  padding: 0.15rem 0.55rem;
-  font-size: 0.65rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  white-space: nowrap;
-  border-radius: var(--radius-full);
-  /* light: oklch(0.45 0.16 135) = 5.35:1 on --bg-card oklch(0.91 0.01 280) */
-  color: oklch(0.45 0.16 135);
-  border: 1px solid oklch(0.45 0.16 135 / 0.55);
-}
-@media (prefers-color-scheme: dark) {
-  /* dark: --verde oklch(0.74 0.16 135) = 7.61:1 on --bg-card oklch(0.235 0.015 280) */
-  .resultado-badge {
-    color: var(--verde);
-    border-color: oklch(0.74 0.16 135 / 0.6);
-  }
-}
 
 .resultado-nombre {
   font-family: var(--font-display);
