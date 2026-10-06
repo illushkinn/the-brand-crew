@@ -539,7 +539,7 @@
 .hero-actions .btn-premium:hover,
 .cta-final .cta-btn:hover {
   color: var(--text-on-white);  /* Mantener texto negro en hover */
-  border-image: var(--stroke-vino-full);
+  border-image-source: var(--stroke-vino-full);
   /* Fondo con tinte vino en hover (urgencia, nunca verde) */
   background: var(--vino-tint) !important;
   /* Hard drop shadow solamente, sin inset */
@@ -549,7 +549,7 @@
 .hero-actions .btn-premium:active,
 .cta-final .cta-btn:active {
   color: var(--text-on-white);  /* Mantener texto negro en active */
-  border-image: var(--stroke-vino-full);
+  border-image-source: var(--stroke-vino-full);
   background: var(--vino-tint) !important;
   box-shadow: none !important;
   transform: translateY(1px) scale(0.985);
