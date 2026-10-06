@@ -55,7 +55,7 @@ export function getCaseStudies(lang: Lang): CaseStudy[] {
     },
     {
       key: 'hoco',
-      name: 'Catálogo Hoco',
+      name: 'Hoco - Accesorios Premium',
       url: 'https://hococatalog.vercel.app',
       logo: { kind: 'letter', letter: 'H' },
       screenshot: '/assets/Hoco.jpg',

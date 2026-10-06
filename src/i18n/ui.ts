@@ -47,7 +47,7 @@ export const dictionaries = {
       luisitoMetric1Value: 'Menú digital',
       luisitoMetric1Label: 'Pedidos online',
       // Hoco
-      hocoTag: 'Mayorista · Mar del Plata',
+      hocoTag: 'Mayorista · Buenos Aires',
       hocoMetric1Value: 'Catálogo online',
       hocoMetric1Label: 'Productos + precios',
       hocoMetric2Value: 'Mayorista',
@@ -334,7 +334,7 @@ export const dictionaries = {
       luisitoTag: 'Restaurant · Mar del Plata',
       luisitoMetric1Value: 'Digital Menu',
       luisitoMetric1Label: 'Online orders',
-      hocoTag: 'Wholesale · Mar del Plata',
+      hocoTag: 'Wholesale · Buenos Aires',
       hocoMetric1Value: 'Online catalog',
       hocoMetric1Label: 'Products + pricing',
       hocoMetric2Value: 'Wholesale',
