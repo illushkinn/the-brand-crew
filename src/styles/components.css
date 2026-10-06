@@ -1575,10 +1575,6 @@
    PERFORMANCE — content-visibility
    Lazy rendering for sections below fold
    ======================================== */
-.section:not(:first-of-type) {
-  content-visibility: auto;
-  contain-intrinsic-size: auto 400px;
-}
 .hero {
   content-visibility: visible;
 }
