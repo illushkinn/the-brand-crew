@@ -1330,12 +1330,15 @@
   opacity: 0;
   transform: translateY(16px);
   pointer-events: none;
-  transition: opacity 0.35s ease, transform 0.35s ease;
+  visibility: hidden;
+  transition: opacity 0.35s ease, transform 0.35s ease, visibility 0s 0.35s;
 }
 .cookie-banner.visible {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
+  visibility: visible;
+  transition: opacity 0.35s ease, transform 0.35s ease, visibility 0s 0s;
 }
 .cookie-banner-text {
   margin: 0;
@@ -1386,7 +1389,8 @@
   min-width: fit-content;
 }
 @media (prefers-reduced-motion: reduce) {
-  .cookie-banner {
+  .cookie-banner,
+  .cookie-banner.visible {
     transition: none;
     transform: none;
   }
@@ -1410,8 +1414,13 @@
 /* Cookie banner — surface follows the color scheme (--banner-bg) */
 .cookie-banner {
   background: var(--banner-bg);
-  border-color: var(--border);
+  border-color: var(--banner-border);
   box-shadow: 0 4px 24px oklch(0 0 0 / 0.12);
+}
+.cookie-banner a:focus-visible,
+.cookie-banner button:focus-visible {
+  outline: 2px solid var(--body);
+  outline-offset: 2px;
 }
 
 /* ========================================

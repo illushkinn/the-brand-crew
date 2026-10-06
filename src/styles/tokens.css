@@ -111,6 +111,7 @@
 
   /* Overlay surfaces + editorial textures (light values) */
   --banner-bg: rgba(255, 255, 255, 0.92);
+  --banner-border: oklch(0.64 0.02 165);
   --card-border: oklch(0.5 0.1 20 / 0.18);
   --nav-scrolled-bg: rgba(255, 255, 255, 0.7);
   --nav-scrolled-border: oklch(0.55 0.19 135 / 0.25);
@@ -169,6 +170,7 @@
 
     /* Overlay surfaces + textures */
     --banner-bg: color-mix(in srgb, var(--bg) 92%, transparent);
+    --banner-border: oklch(0.55 0.018 280);
     --card-border: oklch(0.72 0.1 20 / 0.45);
     --nav-scrolled-bg: oklch(0.13 0.012 280 / 0.72);
     --nav-scrolled-border: oklch(0.74 0.16 135 / 0.35);
