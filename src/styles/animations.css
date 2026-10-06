@@ -32,6 +32,9 @@
   opacity: 1;
   transform: translateY(0);
 }
+#faq.reveal {
+  transform: none;
+}
 .reveal-stagger .rv {
   opacity: 0;
   transform: translateY(28px);
