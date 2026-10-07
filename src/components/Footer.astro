@@ -3,7 +3,7 @@
 import type { Lang } from '../i18n/ui';
 import { useTranslations } from '../i18n/ui';
 import Icon from './Icon.astro';
-import { getPrivacyLink, getTermsLink } from '../lib/routing';
+import { getPrivacyLink, getTermsLink, getWebDesignLink, getPricingLink, PRICE_GUIDE_PATH } from '../lib/routing';
 
 interface Props { lang?: Lang }
 const { lang = 'es' } = Astro.props;
@@ -26,6 +26,17 @@ const socialLinks = [
           </a>
         ))}
       </div>
+      <nav class="footer-links footer-links-seo" aria-label={lang === 'es' ? 'Servicios y guías' : 'Services'}>
+        <a href={getWebDesignLink(lang)} class="footer-link">{t('footer.services')}</a>
+        <span class="footer-separator" aria-hidden="true"><svg width="4" height="4" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3.5"/></svg></span>
+        <a href={getPricingLink(lang)} class="footer-link">{t('footer.pricing')}</a>
+        {lang === 'es' && (
+          <>
+            <span class="footer-separator" aria-hidden="true"><svg width="4" height="4" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3.5"/></svg></span>
+            <a href={PRICE_GUIDE_PATH} class="footer-link">{t('footer.guide')}</a>
+          </>
+        )}
+      </nav>
       <div class="footer-links">
         <a href={getPrivacyLink(lang)} class="footer-link">{t('footer.privacy')}</a>
         <span class="footer-separator" aria-hidden="true"><svg width="4" height="4" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3.5"/></svg></span>

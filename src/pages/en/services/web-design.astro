@@ -1,0 +1,10 @@
+---
+// /en/services/web-design — service landing (cluster "web design argentina")
+// Old URL /en/servicios/diseño-web redirects 301 via vercel.json.
+import ServicioPage from '../../../components/ServicioPage.astro';
+import { DOMAIN } from '../../../lib/constants';
+
+const canonicalURL = `${DOMAIN}/en/services/web-design`;
+---
+
+<ServicioPage service="web" lang="en" canonicalURL={canonicalURL} />

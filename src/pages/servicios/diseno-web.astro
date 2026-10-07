@@ -1,0 +1,10 @@
+---
+// /servicios/diseno-web — landing de servicio (cluster "diseño web mar del plata / argentina")
+// Slug ASCII (sin ñ): la URL vieja /servicios/diseño-web redirige 301 desde vercel.json.
+import ServicioPage from '../../components/ServicioPage.astro';
+import { DOMAIN } from '../../lib/constants';
+
+const canonicalURL = `${DOMAIN}/servicios/diseno-web`;
+---
+
+<ServicioPage service="web" lang="es" canonicalURL={canonicalURL} />

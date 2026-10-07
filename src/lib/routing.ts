@@ -39,3 +39,21 @@ export function getPrivacyLink(lang: Lang): string {
 export function getTermsLink(lang: Lang): string {
   return lang === 'es' ? '/terms' : '/en/terms';
 }
+
+/**
+ * Get the web design service page link for the given language
+ */
+export function getWebDesignLink(lang: Lang): string {
+  return lang === 'es' ? '/servicios/diseno-web' : '/en/services/web-design';
+}
+
+/** Spanish-only price guide (no English twin yet) */
+export const PRICE_GUIDE_PATH = '/guias/cuanto-cuesta-una-pagina-web-en-argentina';
+
+/**
+ * Pages whose ES and EN paths differ. Used for hreflang alternates.
+ * Key = ES path, value = EN path.
+ */
+export const translatedPaths: Record<string, string> = {
+  '/servicios/diseno-web': '/en/services/web-design',
+};

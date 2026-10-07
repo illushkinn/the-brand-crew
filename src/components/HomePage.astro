@@ -21,7 +21,7 @@ interface Props {
 const { lang = 'es', canonicalURL } = Astro.props;
 ---
 
-<BaseLayout lang={lang} canonicalURL={canonicalURL}>
+<BaseLayout lang={lang} canonicalURL={canonicalURL} homeFaq={true}>
   <div>
     <Hero lang={lang} />
     <section class="hero-showcase" aria-hidden="true">
