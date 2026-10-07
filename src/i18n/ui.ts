@@ -33,7 +33,7 @@ export const dictionaries = {
       headline3: 'que funciona',
       sub: 'Para negocios que <span class="hero-em">crecen</span>.',
       cta: 'Contacto',
-      tag: 'Web · Marca · Contenido · Growth'
+      tag: 'Diseño web · Marca · Mar del Plata'
     },
     caseStudies: {
       kicker: 'Casos',
@@ -91,7 +91,7 @@ export const dictionaries = {
       mvpPrice: '4.500',
       mvpTagline: 'Vendé en piloto automático.',
       mvpFeatures: ['Tienda que vende sola', 'Marca premium + 90 días de contenido', 'Cobros y WhatsApp automáticos', 'Soporte prioritario total'],
-      metaTitle: 'The Brand Crew · Precios de web, marca y contenido',
+      metaTitle: 'Precios de diseño web, marca y contenido | The Brand Crew',
       metaDescription: 'Precios claros de The Brand Crew: web, marca, contenido y growth desde USD 1.500. Plan mensual desde USD 750. Factura A y primer año de hosting incluidos.',
       planCta: 'Elegir plan',
       planCtaMessage: '¡Hola The Brand Crew! Me interesa el plan {plan}.',
@@ -173,6 +173,9 @@ export const dictionaries = {
     footer: {
       privacy: 'Política de privacidad',
       terms: 'Términos y condiciones',
+      services: 'Diseño web',
+      pricing: 'Precios',
+      guide: 'Cuánto cuesta una web',
     },
     scrollToTop: {
       label: 'Volver arriba',
@@ -244,10 +247,10 @@ export const dictionaries = {
       whatsapp: 'WhatsApp',
     },
     seo: {
-      title: 'The Brand Crew · Agencia creativa argentina',
-      description: 'Agencia creativa argentina: diseño web, marca, contenido y automatizaciones desde USD 1.500. Presupuesto claro, sin sorpresas.',
-      ogTitle: 'The Brand Crew · Agencia creativa argentina',
-      ogDescription: 'Agencia creativa argentina: diseño web, marca, contenido y automatizaciones para que tu negocio venda online desde USD 1.500. Presupuesto claro, sin sorpresas.',
+      title: 'Diseño web y branding en Mar del Plata | The Brand Crew',
+      description: 'Agencia de diseño web, branding y automatizaciones en Mar del Plata para negocios de toda Argentina. Precios publicados desde USD 1.500 y web online en una semana.',
+      ogTitle: 'Diseño web y branding en Mar del Plata | The Brand Crew',
+      ogDescription: 'Agencia creativa en Mar del Plata: diseño web, marca, contenido y automatizaciones para que tu negocio venda online. Precios publicados desde USD 1.500.',
       ogImageAlt: 'The Brand Crew · Agencia creativa argentina',
       websiteDescription: 'The Brand Crew, agencia creativa argentina: diseño web, marca, contenido y automatizaciones para negocios que quieren crecer online.',
       businessDescription: 'Agencia creativa argentina: The Brand Crew crea webs, marcas, contenido y automatizaciones para negocios que quieren crecer online.',
@@ -318,7 +321,7 @@ export const dictionaries = {
       headline3: 'that works',
       sub: 'For businesses that <span class="hero-em">grow</span>.',
       cta: 'Contact',
-      tag: 'Web · Brand · Content · Growth'
+      tag: 'Web design · Brand · Content · Argentina'
     },
     caseStudies: {
       kicker: 'Work',
@@ -372,7 +375,7 @@ export const dictionaries = {
       mvpPrice: '4,500',
       mvpTagline: 'Sell on autopilot.',
       mvpFeatures: ['A store that sells without you', 'A premium brand + 90 days of content', 'Automated payments + WhatsApp', 'Priority support, always'],
-      metaTitle: 'The Brand Crew · Pricing for web, brand and content',
+      metaTitle: 'Web design, branding & content pricing | The Brand Crew',
       metaDescription: 'Clear pricing from The Brand Crew: web, brand, content and growth from $1,500 USD. Monthly plans from $750 USD. Invoice and first-year hosting included.',
       planCta: 'Choose plan',
       planCtaMessage: "Hey The Brand Crew! I'm interested in the {plan} plan.",
@@ -453,6 +456,9 @@ export const dictionaries = {
     footer: {
       privacy: 'Privacy Policy',
       terms: 'Terms of Service',
+      services: 'Web design',
+      pricing: 'Pricing',
+      guide: '',
     },
     scrollToTop: {
       label: 'Back to top',
@@ -524,9 +530,9 @@ export const dictionaries = {
       whatsapp: 'WhatsApp',
     },
     seo: {
-      title: 'The Brand Crew · Creative agency in Argentina',
-      description: 'Creative agency in Argentina: web design, brand identity, content and automations from $1,500 USD. Clear quote, no surprises.',
-      ogTitle: 'The Brand Crew · Creative agency in Argentina',
+      title: 'Web design & branding agency in Argentina | The Brand Crew',
+      description: 'Web design, branding and automation agency based in Mar del Plata, Argentina, working with clients in LATAM and the US. Published prices from $1,500 USD.',
+      ogTitle: 'Web design & branding agency in Argentina | The Brand Crew',
       ogDescription: 'Creative agency in Argentina: web design, brand identity, content and automations for your business. Clear quote, no surprises.',
       ogImageAlt: 'The Brand Crew · Creative agency in Argentina',
       websiteDescription: 'The Brand Crew, creative agency in Argentina: web design, brand identity, content and automations for businesses that want to grow online.',

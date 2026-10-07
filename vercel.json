@@ -1,6 +1,28 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/servicios/diseño-web",
+      "destination": "/servicios/diseno-web",
+      "permanent": true
+    },
+    {
+      "source": "/servicios/dise%C3%B1o-web",
+      "destination": "/servicios/diseno-web",
+      "permanent": true
+    },
+    {
+      "source": "/en/servicios/diseño-web",
+      "destination": "/en/services/web-design",
+      "permanent": true
+    },
+    {
+      "source": "/en/servicios/dise%C3%B1o-web",
+      "destination": "/en/services/web-design",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/assets/(.*)",

@@ -944,6 +944,8 @@
 .footer .footer-links {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 0.5rem;
   margin-top: 0.5rem;
   font-size: 0.75rem;

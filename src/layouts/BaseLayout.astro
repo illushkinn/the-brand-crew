@@ -4,6 +4,7 @@ import MobileMenu from '../components/MobileMenu.astro';
 import CookieBanner from '../components/CookieBanner.astro';
 import { type Lang, localeMap, hreflangMap, dictionaries, defaultLang, getTranslation } from '../i18n/ui';
 import { WHATSAPP_NUMBER, DOMAIN } from '../lib/constants';
+import { translatedPaths, PRICE_GUIDE_PATH } from '../lib/routing';
 
 interface Props {
   lang?: Lang;
@@ -13,6 +14,10 @@ interface Props {
   canonicalURL?: string;
   noindex?: boolean;
   breadcrumb?: Array<{ name: string; url: string }>;
+  /** Explicit hreflang alternates (absolute or root-relative). Omit a lang if the page has no twin. */
+  alternates?: Partial<Record<Lang, string>>;
+  /** Emit the home FAQPage schema (only where those questions are visible). */
+  homeFaq?: boolean;
 }
 
 const lang = Astro.props.lang ?? defaultLang;
@@ -21,10 +26,31 @@ const {
   description = getTranslation(lang, 'seo.description'),
   ogImage = `${DOMAIN}/assets/THEBRANDCREW_model2.webp`,
   noindex = false,
-  breadcrumb
+  breadcrumb,
+  homeFaq = false,
 } = Astro.props;
 
-const canonicalURL = Astro.props.canonicalURL || Astro.url;
+const canonicalURL = String(Astro.props.canonicalURL || new URL(Astro.url.pathname, DOMAIN));
+
+// Open Graph: page-specific title/description; the home falls back to the curated OG copy.
+const isDefaultTitle = !Astro.props.title;
+const ogTitle = isDefaultTitle ? dictionaries[lang].seo.ogTitle : title;
+const ogDescription = isDefaultTitle ? dictionaries[lang].seo.ogDescription : description;
+
+// Hreflang: absolute URLs, only for pages that really exist in each language.
+// translatedPaths maps ES paths whose EN twin has a different slug (e.g. /servicios/diseno-web).
+const abs = (path: string) => (path.startsWith('http') ? path : path === '/' ? `${DOMAIN}/` : `${DOMAIN}${path}`);
+const computeAlternates = (): Partial<Record<Lang, string>> => {
+  if (Astro.props.alternates) return Astro.props.alternates;
+  const pathname = new URL(canonicalURL).pathname.replace(/\/$/, '') || '/';
+  const esPath = /^\/en(\/|$)/.test(pathname)
+    ? (Object.entries(translatedPaths).find(([, en]) => en === pathname)?.[0] ?? (pathname.replace(/^\/en/, '') || '/'))
+    : pathname;
+  if (esPath === PRICE_GUIDE_PATH || esPath.startsWith('/guias')) return { es: esPath }; // ES-only content
+  const enPath = translatedPaths[esPath] ?? (esPath === '/' ? '/en' : `/en${esPath}`);
+  return { es: esPath, en: enPath };
+};
+const alternates = noindex ? {} : computeAlternates();
 
 const seo = dictionaries[lang].seo;
 const pricing = dictionaries[lang].pricing;
@@ -38,10 +64,10 @@ const businessSchema = {
   "name": "The Brand Crew",
   "alternateName": "The Brand Crew Agencia Creativa Argentina",
   "description": seo.businessDescription,
-  "areaServed": {
-    "@type": "Country",
-    "name": "Argentina"
-  },
+  "areaServed": [
+    { "@type": "City", "name": "Mar del Plata" },
+    { "@type": "Country", "name": "Argentina" }
+  ],
   "url": DOMAIN,
   "address": {
     "@type": "PostalAddress",
@@ -51,13 +77,19 @@ const businessSchema = {
   },
   "contactPoint": {
     "@type": "ContactPoint",
-    "telephone": "+54-9-11-2406-3009",
+    "telephone": `+${WHATSAPP_NUMBER}`,
     "contactType": "sales",
     "availableLanguage": ["English", "Spanish"]
   },
+  "telephone": `+${WHATSAPP_NUMBER}`,
+  "image": `${DOMAIN}/assets/THEBRANDCREW_model2.webp`,
+  "logo": `${DOMAIN}/favicon.svg`,
+  "priceRange": "USD 1500 - 4500",
   "sameAs": [
-    "https://github.com/illushkinn",
-    `https://wa.me/${WHATSAPP_NUMBER}`
+    "https://www.instagram.com/the.brand.crew/",
+    "https://www.facebook.com/profile.php?id=61594039034101",
+    "https://x.com/thebrandcrew_",
+    "https://github.com/illushkinn"
   ],
   "foundingDate": "2026",
   "founder": {
@@ -135,7 +167,9 @@ const websiteSchema = {
   "@id": `${DOMAIN}/#website`,
   "name": "The Brand Crew",
   "url": DOMAIN,
-  "description": seo.websiteDescription
+  "description": seo.websiteDescription,
+  "inLanguage": localeMap[lang],
+  "publisher": { "@id": `${DOMAIN}/#business` }
 };
 
 const breadcrumbUrl = (path: string): string => {
@@ -179,8 +213,8 @@ const breadcrumbSchema =
   <meta property="og:type" content="website">
   <meta property="og:url" content={canonicalURL}>
   <meta property="og:site_name" content="The Brand Crew">
-  <meta property="og:title" content={seo.ogTitle}>
-  <meta property="og:description" content={seo.ogDescription}>
+  <meta property="og:title" content={ogTitle}>
+  <meta property="og:description" content={ogDescription}>
   <meta property="og:image" content={ogImage}>
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -190,8 +224,8 @@ const breadcrumbSchema =
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content={canonicalURL}>
-  <meta name="twitter:title" content={seo.ogTitle}>
-  <meta name="twitter:description" content={seo.ogDescription}>
+  <meta name="twitter:title" content={ogTitle}>
+  <meta name="twitter:description" content={ogDescription}>
   <meta name="twitter:image" content={ogImage}>
   <meta name="twitter:image:alt" content={seo.ogImageAlt}>
 
@@ -201,25 +235,13 @@ const breadcrumbSchema =
   <!-- Hreflang — URLs absolutas, self-ref única por idioma, x-default al
        ES (default). Solo emite el twin EN si esa página existe (las guías
        /guias no tienen versión /en — emitirla generaba un alternate 404). -->
-  {(() => {
-    const pathname = typeof canonicalURL === 'string' ? new URL(canonicalURL).pathname : canonicalURL.pathname || '/';
-    const stripped = pathname.replace(/^\/en\/?/, '');
-    const basePath = stripped.startsWith('/') ? stripped : `/${stripped}`;
-    const esHref = basePath === '/' ? `${DOMAIN}/` : `${DOMAIN}${basePath}`;
-    const enHref = basePath === '/' ? `${DOMAIN}/en` : `${DOMAIN}/en${basePath}`;
-    const hasENTwin = !basePath.startsWith('/guias');
-    return (
-      <>
-        <link rel="alternate" hreflang={hreflangMap[defaultLang]} href={esHref} />
-        {hasENTwin && <link rel="alternate" hreflang={hreflangMap['en']} href={enHref} />}
-        <link rel="alternate" hreflang="x-default" href={esHref} />
-      </>
-    );
-  })()}
+  {alternates.es && <link rel="alternate" hreflang={hreflangMap[defaultLang]} href={abs(alternates.es)} />}
+  {alternates.en && <link rel="alternate" hreflang={hreflangMap['en']} href={abs(alternates.en)} />}
+  {alternates.es && <link rel="alternate" hreflang="x-default" href={abs(alternates.es)} />}
 
   <script is:inline type="application/ld+json" set:html={JSON.stringify(websiteSchema)}></script>
   <script is:inline type="application/ld+json" set:html={JSON.stringify(businessSchema)}></script>
-  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>
+  {homeFaq && <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>}
   {breadcrumbSchema && (
     <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)}></script>
   )}
