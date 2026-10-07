@@ -51,7 +51,7 @@
         },
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://thebrandcrew.lat; connect-src 'self' https://va.vercel-scripts.com https://wa.me; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self' https://wa.me"
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com https://assets.calendly.com; style-src 'self' 'unsafe-inline' https://assets.calendly.com; font-src 'self'; img-src 'self' data: https://thebrandcrew.lat https://assets.calendly.com; connect-src 'self' https://va.vercel-scripts.com https://wa.me https://calendly.com; frame-src https://calendly.com; object-src 'none'; base-uri 'self'; form-action 'self' https://wa.me"
         },
         {
           "key": "Strict-Transport-Security",
