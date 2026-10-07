@@ -12,9 +12,9 @@ const t = useTranslations(lang);
 <section class="cta-final reveal" id="contacto" aria-label="Contact">
   <div class="cta-content">
     <h2><span class="cta-dale">{t('cta.title1')}</span>{t('cta.title2') && <span class="text-terracota cta-empecemos"> {t('cta.title2')}</span>}.</h2>
-    <button type="button" class="btn btn-lg btn-premium cta-btn" data-calendly-url={CALENDLY_URL}>
+    <a href={CALENDLY_URL} target="_blank" rel="noopener" class="btn btn-lg btn-premium cta-btn" data-calendly-url={CALENDLY_URL}>
       {t('cta.schedule')}
-    </button>
+    </a>
   </div>
 </section>
 
@@ -29,18 +29,32 @@ const t = useTranslations(lang);
       if (!trigger) return;
       const url = trigger.dataset.calendlyUrl;
       if (!url) return;
+      // Ctrl/Cmd-click o botón del medio: dejar que el link abra en pestaña nueva.
+      const me = e as MouseEvent;
+      if (me.metaKey || me.ctrlKey || me.shiftKey || me.button === 1) return;
       e.preventDefault();
+      const fallback = () => window.open(url, '_blank', 'noopener');
       if (window.Calendly) {
         window.Calendly.initPopupWidget({ url });
         return;
       }
-      // Lazy-load el widget de Calendly la primera vez que se clickea
+      // Lazy-load del widget (CSS + JS) la primera vez que se clickea.
+      // Si el script no carga (bloqueador, red), abre Calendly en pestaña nueva.
+      if (!document.querySelector('link[data-calendly-css]')) {
+        const css = document.createElement('link');
+        css.rel = 'stylesheet';
+        css.href = 'https://assets.calendly.com/assets/external/widget.css';
+        css.dataset.calendlyCss = '';
+        document.head.appendChild(css);
+      }
       const s = document.createElement('script');
       s.src = 'https://assets.calendly.com/assets/external/widget.js';
       s.async = true;
       s.onload = function () {
-        window.Calendly?.initPopupWidget({ url });
+        if (window.Calendly) window.Calendly.initPopupWidget({ url });
+        else fallback();
       };
+      s.onerror = fallback;
       document.body.appendChild(s);
     });
   }
