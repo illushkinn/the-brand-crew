@@ -576,8 +576,8 @@
 }
 .tag-b2b.tag-outline {
   border-color: transparent;
-  color: var(--charcoal);  /* Editorial: negro sobre blanco */
-  background: var(--bg);
+  color: var(--charcoal);
+  background: transparent;  /* deja ver el grid del hero */
 }
 
 /* ========================================

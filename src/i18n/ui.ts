@@ -33,7 +33,7 @@ export const dictionaries = {
       headline3: 'que funciona',
       sub: 'Para negocios que <span class="hero-em">crecen</span>.',
       cta: 'Contacto',
-      tag: 'Diseño web · Marca · Mar del Plata'
+      tag: 'Diseño web · Marca · Contenido'
     },
     caseStudies: {
       kicker: 'Casos',
