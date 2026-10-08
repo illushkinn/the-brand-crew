@@ -17,14 +17,16 @@ html {
 body {
   overflow-x: clip;
 }
+/* Grid anclado al documento (no al viewport): se desplaza junto con las
+   secciones al scrollear, así las líneas no "patinan" sobre el contenido. */
 body::before {
   content: '';
-  position: fixed;
+  position: absolute;
   inset: 0;
   z-index: 1;
   pointer-events: none;
   background:
-    repeating-linear-gradient(0deg,
+    repeating-linear-gradient(180deg,  /* desde arriba: misma cuadrícula en todas las páginas */
       var(--grid-line) 0px,
       var(--grid-line) 1px,
       transparent 1px,
@@ -38,10 +40,16 @@ body::before {
     );
 }
 
+/* Viñeta fija al viewport. 100lvh: no cambia de tamaño (ni "salta")
+   cuando la barra del navegador móvil aparece o se esconde. */
 body::after {
   content: '';
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  height: 100lvh;
   z-index: 2;
   pointer-events: none;
   background: radial-gradient(
@@ -74,7 +82,8 @@ body {
   color: var(--body);
   font-weight: 400;  /* Increased from 300 for WCAG AAA compliance */
   font-size: clamp(1rem, 1.5vw, 1.125rem);  /* Editorial: 16-18px base (was default 16px) */
-  position: relative;
+  position: relative;  /* contiene el grid (body::before, absolute) */
+  min-height: 100vh;   /* páginas cortas: el grid igual cubre la pantalla */
   width: 100%;
   min-width: 0;
   touch-action: manipulation;
