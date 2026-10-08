@@ -120,8 +120,8 @@
     };
 
     link.addEventListener('click', clickHandler);
-    link.addEventListener('touchstart', touchStartHandler);
-    link.addEventListener('touchend', touchEndHandler);
+    link.addEventListener('touchstart', touchStartHandler, { passive: true });
+    link.addEventListener('touchend', touchEndHandler, { passive: true });
 
     // Store handlers for cleanup
     linkClickHandlers.set(link, clickHandler);

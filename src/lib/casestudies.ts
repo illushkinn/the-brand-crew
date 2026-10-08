@@ -48,7 +48,7 @@ export function getCaseStudies(lang: Lang): CaseStudy[] {
       key: 'luisito',
       name: 'Luisito Playa Grande',
       logo: { kind: 'img', src: '/assets/logos/luisito.svg', alt: 'Luisito Playa Grande', class: 'invert-dark' },
-      screenshot: '/assets/Luisito.jpg',
+      screenshot: '/assets/Luisito.webp',
       metrics: [
         { value: t('caseStudies.luisitoMetric1Value'), label: t('caseStudies.luisitoMetric1Label') },
       ],
@@ -58,7 +58,7 @@ export function getCaseStudies(lang: Lang): CaseStudy[] {
       name: 'Hoco - Accesorios Premium',
       url: 'https://hococatalog.vercel.app',
       logo: { kind: 'letter', letter: 'H' },
-      screenshot: '/assets/Hoco.jpg',
+      screenshot: '/assets/Hoco.webp',
       metrics: [
         { value: t('caseStudies.hocoMetric1Value'), label: t('caseStudies.hocoMetric1Label') },
         { value: t('caseStudies.hocoMetric2Value'), label: t('caseStudies.hocoMetric2Label') },
@@ -70,7 +70,7 @@ export function getCaseStudies(lang: Lang): CaseStudy[] {
       name: 'Pragma',
       url: 'https://pragma.com.ar',
       logo: { kind: 'img', src: '/assets/logos/pragma.webp', alt: 'Pragma', class: 'dark-bg' },
-      screenshot: '/assets/Pragma.jpg',
+      screenshot: '/assets/Pragma.webp',
       metrics: [
         { value: t('caseStudies.pragmaMetric1Value'), label: t('caseStudies.pragmaMetric1Label') },
         { value: t('caseStudies.pragmaMetric2Value'), label: t('caseStudies.pragmaMetric2Label') },

@@ -38,14 +38,14 @@ const enHref = basePath === '/' ? '/en' : `/en${basePath}`;
         <a
           href={esHref}
           class={`lang-btn ${lang === 'es' ? 'is-active' : ''}`}
-          aria-label="Español"
+          aria-label="ES, Español"
           aria-current={lang === 'es' ? 'true' : undefined}
         >ES</a>
         <span class="lang-separator" aria-hidden="true">|</span>
         <a
           href={enHref}
           class={`lang-btn ${lang === 'en' ? 'is-active' : ''}`}
-          aria-label="English"
+          aria-label="EN, English"
           aria-current={lang === 'en' ? 'true' : undefined}
         >EN</a>
       </div>

@@ -52,7 +52,16 @@ const cases = getCaseStudies(lang);
               </div>
               {c.screenshot && (
                 <div class="resultado-screenshot">
-                  <img src={c.screenshot} alt={`Screenshot de ${name}`} loading="lazy" width="600" height="338" />
+                  <img
+                    src={c.screenshot}
+                    srcset={`${c.screenshot.replace(/\.webp$/, '-400.webp')} 400w, ${c.screenshot} 600w`}
+                    sizes="(max-width: 640px) 90vw, 340px"
+                    alt={`Screenshot de ${name}`}
+                    loading="lazy"
+                    decoding="async"
+                    width="600"
+                    height="280"
+                  />
                 </div>
               )}
               <div class="resultado-metricas">
