@@ -4,7 +4,7 @@ import MobileMenu from '../components/MobileMenu.astro';
 import CookieBanner from '../components/CookieBanner.astro';
 import { type Lang, localeMap, hreflangMap, dictionaries, defaultLang, getTranslation } from '../i18n/ui';
 import { WHATSAPP_NUMBER, DOMAIN } from '../lib/constants';
-import { translatedPaths, PRICE_GUIDE_PATH } from '../lib/routing';
+import { translatedPaths, ES_ONLY_PATHS } from '../lib/routing';
 
 interface Props {
   lang?: Lang;
@@ -46,7 +46,7 @@ const computeAlternates = (): Partial<Record<Lang, string>> => {
   const esPath = /^\/en(\/|$)/.test(pathname)
     ? (Object.entries(translatedPaths).find(([, en]) => en === pathname)?.[0] ?? (pathname.replace(/^\/en/, '') || '/'))
     : pathname;
-  if (esPath === PRICE_GUIDE_PATH || esPath.startsWith('/guias')) return { es: esPath }; // ES-only content
+  if (ES_ONLY_PATHS.includes(esPath) || esPath.startsWith('/guias')) return { es: esPath }; // ES-only content
   const enPath = translatedPaths[esPath] ?? (esPath === '/' ? '/en' : `/en${esPath}`);
   return { es: esPath, en: enPath };
 };
@@ -89,6 +89,7 @@ const businessSchema = {
     "https://www.instagram.com/the.brand.crew/",
     "https://www.facebook.com/profile.php?id=61594039034101",
     "https://x.com/thebrandcrew_",
+    "https://substack.com/@thebrandcrew",
     "https://github.com/illushkinn"
   ],
   "foundingDate": "2026",

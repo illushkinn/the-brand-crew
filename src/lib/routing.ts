@@ -50,6 +50,12 @@ export function getWebDesignLink(lang: Lang): string {
 /** Spanish-only price guide (no English twin yet) */
 export const PRICE_GUIDE_PATH = '/guias/cuanto-cuesta-una-pagina-web-en-argentina';
 
+/** Spanish-only local landing (SEO "diseño web mar del plata") */
+export const LOCAL_LANDING_PATH = '/diseno-web-mar-del-plata';
+
+/** Pages with no English twin: hreflang only emits ES + x-default. */
+export const ES_ONLY_PATHS: readonly string[] = [PRICE_GUIDE_PATH, LOCAL_LANDING_PATH];
+
 /**
  * Pages whose ES and EN paths differ. Used for hreflang alternates.
  * Key = ES path, value = EN path.

@@ -1,0 +1,100 @@
+---
+// /diseno-web-mar-del-plata — landing local (cluster "diseño web mar del plata").
+// Solo ES: no tiene twin en inglés (ver ES_ONLY_PATHS en lib/routing.ts).
+// Copy propio — no duplicar el de /servicios/diseno-web (contenido duplicado).
+import ServicioPage, { type ServiceContent } from '../components/ServicioPage.astro';
+import CaseStudies from '../components/CaseStudies.astro';
+import { DOMAIN } from '../lib/constants';
+import { LOCAL_LANDING_PATH } from '../lib/routing';
+import { dictionaries } from '../i18n/ui';
+
+const canonicalURL = `${DOMAIN}${LOCAL_LANDING_PATH}`;
+const base = dictionaries.es.servicios.web;
+const p = dictionaries.es.pricing;
+
+const content: ServiceContent = {
+  kicker: 'Mar del Plata · Diseño web',
+  title: 'Diseño web en Mar del Plata | Agencia local — The Brand Crew',
+  description:
+    'Diseño web en Mar del Plata para gastronomía, comercios y turismo. Equipo local, reunión en persona y tu web online en una semana. Desde USD 1.500.',
+  h1: 'Diseño web en Mar del Plata',
+  sub: 'Somos un equipo de Mar del Plata. Nos juntamos en persona o por videollamada y en una semana tu negocio tiene web propia.',
+  backHome: base.backHome,
+  introH2: 'Una agencia de acá, para negocios de acá',
+  intro:
+    'Hacemos webs a medida para negocios marplatenses que quieren dejar de depender solo de Instagram y WhatsApp: rápidas, con tus precios, tu ubicación y tus horarios, y pensadas para que te encuentren en Google cuando alguien busca lo que vendés en la ciudad.',
+  fitsH2: 'Rubros con los que trabajamos',
+  fits: [
+    'Gastronomía: rotiserías, bares y restaurantes con menú digital y pedidos por WhatsApp.',
+    'Comercios y mayoristas: catálogo con precios actualizados y consultas directas.',
+    'Turismo y alquileres temporarios: información clara para el que llega en temporada.',
+    'Estética, salud y servicios profesionales: turnos, servicios y ubicación en un solo lugar.',
+  ],
+  extraLists: [
+    {
+      h3: 'Por qué una agencia local',
+      items: [
+        'Reunión cara a cara: nos juntamos en tu local o en un café, sin tickets ni intermediarios.',
+        'Conocemos la ciudad: la temporada de verano, el turista que busca desde el celular y el vecino que compra todo el año.',
+        'Búsquedas "cerca de mí": dejamos tu web lista para Google y te guiamos con tu perfil de Google Business.',
+        'Mismo precio publicado que en el resto del país, en dólares y con Factura A.',
+      ],
+    },
+  ],
+  priceH2: 'Cuánto cuesta una web en Mar del Plata',
+  priceIntro:
+    'Los mismos tres packs que publicamos para todo el país. Precio en dólares con Factura A y el primer año de hosting incluido. 50% al arrancar, 50% al entregar.',
+  colPack: base.colPack,
+  colPrice: base.colPrice,
+  colWhat: base.colWhat,
+  pack1Desc: 'Landing de una página para arrancar la temporada con una oferta clara.',
+  pack2Desc: 'Web completa con marca, textos y 30 días de contenido para redes.',
+  pack3Desc: 'Tienda online o menú con pedidos, cobros y WhatsApp automático.',
+  packLink: base.packLink,
+  priceNote: base.priceNote,
+  growthLink: base.growthLink,
+  processH2: 'Cómo arrancamos',
+  processIntro: 'Tres pasos, sin vueltas:',
+  steps: [
+    { title: 'Charla de 15 minutos', text: 'En persona, por videollamada o por WhatsApp. Nos contás qué vendés y te decimos si se puede y cuánto sale.' },
+    { title: 'Primera versión en 48 horas', text: 'Ves tu web andando y la ajustamos juntos antes de publicarla.' },
+    { title: 'Online en una semana', text: 'Publicamos, te dejamos los accesos y te mostramos cómo editarla.' },
+  ],
+  faqH2: 'Preguntas frecuentes',
+  faqs: [
+    { q: '¿Se pueden reunir en persona?', a: 'Sí. Estamos en Mar del Plata: podemos juntarnos en tu local o en un café. Si te queda más cómodo, lo hacemos por videollamada.' },
+    { q: '¿Cuánto cuesta una página web en Mar del Plata?', a: `Tres packs con precio publicado: ${p.esencialTitle} USD ${p.esencialPrice} (landing), ${p.crewTitle} USD ${p.crewPrice} (web completa) y ${p.mvpTitle} USD ${p.mvpPrice} (tienda online). 50% al arrancar y 50% al entregar, con Factura A.` },
+    { q: '¿Me ayudan a aparecer en Google Maps?', a: 'Dejamos la web preparada para búsquedas locales (datos de tu negocio, ubicación y SEO técnico) y te guiamos para configurar tu perfil de Google Business, que es lo que te hace aparecer en el mapa.' },
+    { q: '¿Llegan a tiempo para la temporada?', a: 'Una landing sale en 5 a 7 días y una web completa en una o dos semanas. Si la querés lista para el verano, conviene arrancar en octubre o noviembre.' },
+    { q: '¿Trabajan solo con negocios de Mar del Plata?', a: 'No, trabajamos con clientes de toda Argentina y Latinoamérica. Si estás en Mar del Plata, tenés la ventaja de poder vernos en persona.' },
+  ],
+  ctaLabel: 'Escribinos por WhatsApp',
+  ctaMessage: '¡Hola The Brand Crew! Tengo un negocio en Mar del Plata y quiero consultar por una web.',
+  guidePrefix: 'Si estás comparando presupuestos, leé la guía:',
+  guideLabel: base.guideLabel,
+  guideHref: base.guideHref,
+  footNote: 'Equipo en Mar del Plata · Hosting del 1° año y Factura A incluidos',
+};
+
+// Service with a local areaServed, linked to the LocalBusiness defined in BaseLayout.
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Diseño web en Mar del Plata',
+  serviceType: 'Diseño web',
+  url: canonicalURL,
+  description: content.description,
+  provider: { '@id': `${DOMAIN}/#business` },
+  areaServed: { '@type': 'City', name: 'Mar del Plata' },
+  offers: {
+    '@type': 'AggregateOffer',
+    priceCurrency: 'USD',
+    lowPrice: p.esencialPrice.replace(/[.,]/g, ''),
+    highPrice: p.mvpPrice.replace(/[.,]/g, ''),
+  },
+};
+---
+
+<ServicioPage lang="es" canonicalURL={canonicalURL} content={content} extraSchema={[serviceSchema]}>
+  <CaseStudies slot="showcase" lang="es" />
+</ServicioPage>

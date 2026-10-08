@@ -12,13 +12,34 @@ import { getWhatsAppLink } from '../lib/whatsapp';
 import { getHomeLink, getPricingLink, getGrowthPartnerLink } from '../lib/routing';
 import { DOMAIN } from '../lib/constants';
 
+// Shape of a service landing's copy. The dictionary entries satisfy it;
+// pages with their own copy (e.g. the Mar del Plata landing) pass `content`.
+export interface ServiceContent {
+  kicker: string; title: string; description: string; h1: string; sub: string; backHome: string;
+  introH2: string; intro: string; fitsH2: string; fits: readonly string[];
+  /** Optional extra list blocks rendered after "fits" (e.g. "por qué una agencia local"). */
+  extraLists?: ReadonlyArray<{ h3: string; items: readonly string[] }>;
+  priceH2: string; priceIntro: string; colPack: string; colPrice: string; colWhat: string;
+  pack1Desc: string; pack2Desc: string; pack3Desc: string; packLink: string;
+  priceNote: string; growthLink: string;
+  processH2: string; processIntro: string; steps: ReadonlyArray<{ title: string; text: string }>;
+  faqH2: string; faqs: ReadonlyArray<{ q: string; a: string }>;
+  ctaLabel: string; ctaMessage: string;
+  guidePrefix: string; guideLabel: string; guideHref: string; footNote: string;
+}
+
 interface Props {
   service?: 'web';
   lang?: Lang;
   canonicalURL?: string;
+  /** Own copy instead of dictionaries[lang].servicios[service]. */
+  content?: ServiceContent;
+  /** Extra JSON-LD blocks (e.g. a Service with a local areaServed). */
+  extraSchema?: object[];
 }
-const { service = 'web', lang = 'es', canonicalURL } = Astro.props;
-const s = dictionaries[lang].servicios[service];
+const { service = 'web', lang = 'es', canonicalURL, content, extraSchema = [] } = Astro.props;
+const s: ServiceContent = content ?? dictionaries[lang].servicios[service];
+const hasShowcase = Astro.slots.has('showcase');
 const p = dictionaries[lang].pricing;
 
 const homeLink = getHomeLink(lang);
@@ -67,6 +88,9 @@ const faqSchema = {
     type="application/ld+json"
     set:html={JSON.stringify(faqSchema)}
   ></script>
+  {extraSchema.map((schema) => (
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+  ))}
 
   <div class="legal-main servicio-main">
     <a href={homeLink} class="legal-back">{s.backHome}</a>
@@ -83,6 +107,14 @@ const faqSchema = {
         <ul class="servicio-list">
           {fits.map((f) => <li>{f}</li>)}
         </ul>
+        {s.extraLists?.map((list) => (
+          <>
+            <h3 class="servicio-h3">{list.h3}</h3>
+            <ul class="servicio-list">
+              {list.items.map((item) => <li>{item}</li>)}
+            </ul>
+          </>
+        ))}
       </section>
 
       <section class="legal-block" id="precios">
@@ -179,6 +211,8 @@ const faqSchema = {
       <span class="servicio-foot mono">{s.footNote}</span>
     </div>
   </div>
+
+  {hasShowcase && <slot name="showcase" />}
 
   <CTA lang={lang} />
   <Footer lang={lang} />

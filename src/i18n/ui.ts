@@ -176,6 +176,7 @@ export const dictionaries = {
       services: 'Diseño web',
       pricing: 'Precios',
       guide: 'Cuánto cuesta una web',
+      local: 'Diseño web en Mar del Plata',
     },
     scrollToTop: {
       label: 'Volver arriba',
@@ -459,6 +460,7 @@ export const dictionaries = {
       services: 'Web design',
       pricing: 'Pricing',
       guide: '',
+      local: '',
     },
     scrollToTop: {
       label: 'Back to top',

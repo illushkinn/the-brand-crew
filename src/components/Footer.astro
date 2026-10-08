@@ -3,7 +3,7 @@
 import type { Lang } from '../i18n/ui';
 import { useTranslations } from '../i18n/ui';
 import Icon from './Icon.astro';
-import { getPrivacyLink, getTermsLink, getWebDesignLink, getPricingLink, PRICE_GUIDE_PATH } from '../lib/routing';
+import { getPrivacyLink, getTermsLink, getWebDesignLink, getPricingLink, PRICE_GUIDE_PATH, LOCAL_LANDING_PATH } from '../lib/routing';
 
 interface Props { lang?: Lang }
 const { lang = 'es' } = Astro.props;
@@ -13,6 +13,7 @@ const socialLinks = [
   { name: 'Instagram', url: 'https://www.instagram.com/the.brand.crew/', icon: 'instagram' as const },
   { name: 'Facebook', url: 'https://www.facebook.com/profile.php?id=61594039034101', icon: 'facebook' as const },
   { name: 'X', url: 'https://x.com/thebrandcrew_', icon: 'x' as const },
+  { name: 'Substack', url: 'https://substack.com/@thebrandcrew', icon: 'substack' as const },
 ];
 ---
 
@@ -34,6 +35,8 @@ const socialLinks = [
           <>
             <span class="footer-separator" aria-hidden="true"><svg width="4" height="4" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3.5"/></svg></span>
             <a href={PRICE_GUIDE_PATH} class="footer-link">{t('footer.guide')}</a>
+            <span class="footer-separator" aria-hidden="true"><svg width="4" height="4" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3.5"/></svg></span>
+            <a href={LOCAL_LANDING_PATH} class="footer-link">{t('footer.local')}</a>
           </>
         )}
       </nav>
