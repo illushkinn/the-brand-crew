@@ -71,19 +71,29 @@ test.describe('Carousel Navigation', () => {
   });
 
   test('next arrow disabled at end', async ({ page }) => {
+    const grid = page.locator('.resultados-grid');
     const nextArrow = page.locator('#resultadosNext');
 
-    // Click next multiple times to reach end
+    // Click next until the carousel reaches the end. The arrow disables itself
+    // (pointer-events: none) once there, so it can't be clicked a fixed number
+    // of times: with two cards per view on desktop, one click is enough.
     for (let i = 0; i < 5; i++) {
+      const pe = await nextArrow.evaluate(el => window.getComputedStyle(el).pointerEvents);
+      if (pe === 'none') break;
       await nextArrow.click();
       await page.waitForTimeout(400);
     }
 
-    // At end, next arrow should be disabled
-    const opacity = await nextArrow.evaluate(el => window.getComputedStyle(el).opacity);
-    const pointerEvents = await nextArrow.evaluate(el => window.getComputedStyle(el).pointerEvents);
+    // The grid should be scrolled to its end (smooth scroll may still be settling)
+    await expect
+      .poll(() => grid.evaluate(el => el.scrollWidth - el.clientWidth - el.scrollLeft))
+      .toBeLessThanOrEqual(10);
 
-    expect(parseFloat(opacity)).toBeLessThan(0.5);
+    // At end, next arrow should be disabled (opacity animates over 0.2s)
+    await expect
+      .poll(() => nextArrow.evaluate(el => parseFloat(window.getComputedStyle(el).opacity)))
+      .toBeLessThan(0.5);
+    const pointerEvents = await nextArrow.evaluate(el => window.getComputedStyle(el).pointerEvents);
     expect(pointerEvents).toBe('none');
   });
 
@@ -92,18 +102,22 @@ test.describe('Carousel Navigation', () => {
     const prevArrow = page.locator('#resultadosPrev');
     const nextArrow = page.locator('#resultadosNext');
 
-    // Manually scroll the grid
-    await grid.evaluate(el => {
-      el.scrollLeft = el.scrollWidth / 2;
-    });
-    await page.waitForTimeout(200);
+    const opacity = (el: Element) => parseFloat(window.getComputedStyle(el).opacity);
+    const scrollGridTo = (pos: 'end' | 'start') =>
+      grid.evaluate((el, p) => {
+        el.scrollTo({ left: p === 'end' ? el.scrollWidth - el.clientWidth : 0, behavior: 'instant' });
+      }, pos);
 
-    // Both arrows should be enabled (not at edges)
-    const prevOpacity = await prevArrow.evaluate(el => window.getComputedStyle(el).opacity);
-    const nextOpacity = await nextArrow.evaluate(el => window.getComputedStyle(el).opacity);
+    // Scroll snapping only rests on card edges, and with few cards those are
+    // the carousel's ends, so check both ends rather than a midpoint.
+    // Opacity animates over 0.2s, hence the polling.
+    await scrollGridTo('end');
+    await expect.poll(() => prevArrow.evaluate(opacity)).toBeGreaterThanOrEqual(0.9);
+    await expect.poll(() => nextArrow.evaluate(opacity)).toBeLessThan(0.5);
 
-    expect(parseFloat(prevOpacity)).toBeGreaterThanOrEqual(0.9);
-    expect(parseFloat(nextOpacity)).toBeGreaterThanOrEqual(0.9);
+    await scrollGridTo('start');
+    await expect.poll(() => prevArrow.evaluate(opacity)).toBeLessThan(0.5);
+    await expect.poll(() => nextArrow.evaluate(opacity)).toBeGreaterThanOrEqual(0.9);
   });
 
   test('carousel uses smooth scroll behavior', async ({ page }) => {
@@ -118,9 +132,11 @@ test.describe('Carousel Navigation', () => {
     const grid = page.locator('.resultados-grid');
     const prevArrow = page.locator('#resultadosPrev');
 
-    // Try clicking prev when already at start
+    // Try clicking prev when already at start. The arrow has pointer-events: none
+    // there, so a real mouse click never reaches it; dispatch the click directly
+    // (as keyboard activation would) to exercise the handler at the boundary.
     const initialScroll = await grid.evaluate(el => el.scrollLeft);
-    await prevArrow.click();
+    await prevArrow.dispatchEvent('click');
     await page.waitForTimeout(400);
 
     const newScroll = await grid.evaluate(el => el.scrollLeft);
