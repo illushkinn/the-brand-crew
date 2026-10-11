@@ -103,19 +103,20 @@ const plans = [
     border-color: var(--glass-border);
     transform: translateY(-2px);
   }
+  /* Plan recomendado: se distingue por color, no por altura */
   .plan-card.is-star {
-    border-color: oklch(0.58 0.18 32 / 0.55);
-    box-shadow: 0 8px 40px oklch(0.58 0.18 32 / 0.14);
+    border-color: var(--terracota);
+    background: color-mix(in oklch, var(--bg-card), var(--terracota) 4%);
+    /* inset = anillo de 2px sin mover el contenido respecto de las otras tarjetas */
+    box-shadow:
+      inset 0 0 0 1px var(--terracota),
+      0 12px 40px -12px oklch(0.48 0.2 20 / 0.35);
   }
-  .plan-card.is-star::before {
-    content: '';
-    position: absolute;
-    top: -1px;
-    left: 2rem;
-    right: 2rem;
-    height: 2px;
-    background: var(--terracota);
-    border-radius: 2px;
+  .plan-card.is-star:hover {
+    border-color: var(--terracota);
+  }
+  .is-star .plan-tagline {
+    border-bottom-color: oklch(0.48 0.2 20 / 0.3);
   }
 
   .plan-card-top {
@@ -137,10 +138,10 @@ const plans = [
     font-size: 0.65rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--terracota);
-    padding: 0.25rem 0.6rem;
-    border: 1px solid oklch(0.58 0.18 32 / 0.45);
-    border-radius: var(--radius-full);
+    color: var(--white);
+    background: var(--terracota);
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
     white-space: nowrap;
   }
 
@@ -221,15 +222,28 @@ const plans = [
     font-weight: 500;
     color: var(--white);
     text-decoration: none;
-    transition: border-color 0.3s, background 0.3s, color 0.3s;
+    transition: border-color 0.3s, background 0.3s, color 0.3s, transform 0.15s;
   }
   .plan-cta:hover {
     background: var(--terracota-hover);
     border-color: var(--terracota-hover);
     color: var(--white);
   }
+  .plan-cta:active {
+    transform: translateY(1px);
+  }
+  /* Planes no destacados: CTA de contorno, el relleno queda para el recomendado */
+  .plan-card:not(.is-star) .plan-cta {
+    background: transparent;
+    color: var(--crimson);
+  }
+  .plan-card:not(.is-star) .plan-cta:hover {
+    background: var(--terracota);
+    border-color: var(--terracota);
+    color: var(--white);
+  }
   .plan-cta:focus-visible {
-    outline: 2px solid var(--verde);
+    outline: 2px solid var(--crimson);
     outline-offset: 2px;
   }
 

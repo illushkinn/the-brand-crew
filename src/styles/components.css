@@ -85,7 +85,7 @@
   transform: translateY(0);
 }
 .btn:focus-visible {
-  outline: 2px solid rgba(255, 255, 255, 0.3);
+  outline: 2px solid var(--crimson);
   outline-offset: 2px;
 }
 .btn-outline {
@@ -180,7 +180,7 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1000;
+  z-index: var(--z-nav);
   padding: 0.85rem clamp(1.25rem, 5vw, 4rem);
   padding-top: calc(0.85rem + env(safe-area-inset-top, 0px));
   min-height: 56px;
@@ -292,7 +292,7 @@
   r: 38;
 }
 .logo-progress-ring .ring-bg {
-  stroke: oklch(0.82 0.2 125 / 0.15);
+  stroke: oklch(0.48 0.2 20 / 0.15);
 }
 .logo-progress-ring .ring-fill {
   stroke: var(--verde);
@@ -325,9 +325,9 @@
   color: var(--verde);
 }
 .lang-btn.is-active {
-  /* Verde un paso más oscuro: 4.27:1 -> AA sobre el fondo tintado */
-  color: oklch(0.48 0.17 135);
-  background: oklch(0.82 0.2 125 / 0.12);
+  /* Bordó un paso más oscuro: AA sobre el fondo tintado */
+  color: oklch(0.42 0.2 20);
+  background: oklch(0.48 0.2 20 / 0.12);
 }
 @media (prefers-color-scheme: dark) {
   .lang-btn.is-active { color: var(--verde); }
@@ -368,7 +368,7 @@
 .mobile-menu {
   position: fixed;
   inset: 0;
-  z-index: 999;
+  z-index: var(--z-menu);
   background: var(--bg);  /* Fondo de página (blanco en light, tinta en dark) */
   display: flex;
   flex-direction: column;
@@ -410,7 +410,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: oklch(0.82 0.2 125 / 0.08);
+  background: oklch(0.48 0.2 20 / 0.08);
   transform: translateX(-101%);
   will-change: transform;
   transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -443,7 +443,7 @@
 @media (hover: hover) {
   .mobile-menu a:hover {
     color: var(--verde);
-    text-shadow: 0 0 20px oklch(0.82 0.2 125 / 0.3);
+    text-shadow: 0 0 20px oklch(0.48 0.2 20 / 0.3);
   }
   .mobile-menu a:hover::before {
     transform: translateX(0);
@@ -451,7 +451,8 @@
 }
 .mobile-menu a:focus-visible {
   color: var(--verde);
-  outline: none;
+  outline: 2px solid var(--crimson);
+  outline-offset: -2px;
 }
 .mobile-menu a:active {
   transform: scale(0.92);
@@ -668,7 +669,7 @@
   width: 44px; height: 44px;
   border-radius: var(--radius-round);
   background: var(--verde);
-  color: #000;
+  color: var(--white);
   cursor: pointer;
   border: none;
   font-size: 1.2rem;
@@ -1016,7 +1017,7 @@
   position: fixed;
   bottom: calc(20px + env(safe-area-inset-bottom, 0px));
   right: calc(20px + env(safe-area-inset-right, 0px));
-  z-index: 900;
+  z-index: var(--z-floating);
   width: 46px;
   height: 46px;
   background: var(--crimson);  /* Editorial: Crimson sólido */
@@ -1050,8 +1051,8 @@
   transform: translateY(-2px);
   box-shadow:
     0 2px 12px oklch(0 0 0 / 0.2),
-    0 1px 0 oklch(0.82 0.2 125 / 0.2) inset,
-    0 0 0 1px oklch(0.82 0.2 125 / 0.06),
+    0 1px 0 oklch(0.48 0.2 20 / 0.2) inset,
+    0 0 0 1px oklch(0.48 0.2 20 / 0.06),
     0 12px 24px -12px oklch(0 0 0 / 0.4);
 }
 .scroll-to-top svg {
@@ -1217,8 +1218,8 @@
   gap: 1rem;
 }
 .founder-card {
-  --fa-strong: oklch(0.82 0.2 125 / 0.5);
-  --fa-soft: oklch(0.82 0.2 125 / 0.14);
+  --fa-strong: oklch(0.48 0.2 20 / 0.5);
+  --fa-soft: oklch(0.48 0.2 20 / 0.14);
   display: flex;
   gap: 1.25rem;
   align-items: flex-start;
@@ -1329,7 +1330,7 @@
   bottom: calc(10px + env(safe-area-inset-bottom));
   left: 16px;
   max-width: 320px;
-  z-index: 100;
+  z-index: var(--z-banner);
   display: flex;
   align-items: center;
   gap: 0.6rem;
@@ -1512,7 +1513,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 9999;
+  z-index: var(--z-cursor);
   pointer-events: none;
 
   /* Size: default state */
