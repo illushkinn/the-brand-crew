@@ -264,6 +264,12 @@ const breadcrumbSchema =
   <style is:global>
     @import '../styles/global.css';
   </style>
+  <!-- Sin JS no hay IntersectionObserver: mostrar las secciones animadas igual -->
+  <noscript>
+    <style>
+      .reveal, .reveal-stagger .rv { opacity: 1 !important; transform: none !important; }
+    </style>
+  </noscript>
 </head>
 <body>
   <a href="#main-content" class="skip-link">{lang === 'es' ? 'Ir al contenido' : 'Skip to main content'}</a>

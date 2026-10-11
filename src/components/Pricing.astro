@@ -28,7 +28,7 @@ const homeLink = `${DOMAIN}${getHomeLink(lang)}`;
 
   <div class="rv pricing-kit">
     <p class="pricing-kit-title mono">{t('pricing.kit1Title')}</p>
-    <PlanCards lang={lang} titleHeading={titleHeading === 'h1' ? 'h2' : 'h3'} />
+    <PlanCards lang={lang} showBadge={true} badge={t('socios.badge')} titleHeading={titleHeading === 'h1' ? 'h2' : 'h3'} />
   </div>
 
   {lang === 'es' && (
