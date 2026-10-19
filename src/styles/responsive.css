@@ -245,7 +245,9 @@
   }
   .resultados-grid::-webkit-scrollbar { display: none; }
   .resultados-grid .glass-card {
-    flex: 0 0 calc(100vw - 1rem - 0.5rem);
+    /* One card per view: size to the grid itself, not the viewport, so the
+       section and carousel padding can't push the card's edge out of view */
+    flex: 0 0 100%;
     scroll-snap-align: start;
   }
   .resultado-screenshot img {

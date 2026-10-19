@@ -161,4 +161,17 @@ test.describe('Carousel Navigation', () => {
       await expect(card.locator('.resultado-link')).toBeVisible();
     }
   });
+
+  test('cards fit inside the carousel on mobile', async ({ page }) => {
+    await page.setViewportSize({ width: 375, height: 800 });
+    const grid = page.locator('.resultados-grid');
+
+    // Each card should be no wider than the visible carousel area,
+    // otherwise its right edge (and content) is cut off
+    const { gridWidth, cardWidths } = await grid.evaluate(el => ({
+      gridWidth: el.clientWidth,
+      cardWidths: [...el.querySelectorAll('.resultado-card')].map(c => c.getBoundingClientRect().width),
+    }));
+    for (const w of cardWidths) expect(w).toBeLessThanOrEqual(gridWidth + 1);
+  });
 });
