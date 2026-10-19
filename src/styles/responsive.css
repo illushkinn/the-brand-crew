@@ -598,29 +598,29 @@
     filter: none;
   }
 
-  /* Founders: verde 0.82 is unreadable on white → medium green */
+  /* Founders: acento bordó sobre blanco */
   .founder-card {
-    --fa-strong: oklch(0.55 0.19 135 / 0.6);
-    --fa-soft: oklch(0.55 0.19 135 / 0.14);
+    --fa-strong: oklch(0.48 0.2 20 / 0.6);
+    --fa-soft: oklch(0.48 0.2 20 / 0.14);
   }
   .founder-skills li {
-    border-color: oklch(0.55 0.19 135 / 0.35);
+    border-color: oklch(0.48 0.2 20 / 0.35);
   }
 
-  /* Scroll-to-top: mismo glass verde del CTA light */
+  /* Scroll-to-top: glass con tinte bordó */
   .scroll-to-top {
-    background: linear-gradient(135deg, oklch(0.55 0.19 135 / 0.10), oklch(0.55 0.19 135 / 0.03));
-    border-color: oklch(0.55 0.19 135 / 0.3);
+    background: linear-gradient(135deg, oklch(0.48 0.2 20 / 0.10), oklch(0.48 0.2 20 / 0.03));
+    border-color: oklch(0.48 0.2 20 / 0.3);
     box-shadow:
       0 2px 12px oklch(0 0 0 / 0.08),
-      0 1px 0 oklch(0.55 0.19 135 / 0.15) inset,
-      0 0 0 1px oklch(0.55 0.19 135 / 0.05);
+      0 1px 0 oklch(0.48 0.2 20 / 0.15) inset,
+      0 0 0 1px oklch(0.48 0.2 20 / 0.05);
   }
 .scroll-to-top:hover {
   box-shadow:
     0 2px 12px oklch(0 0 0 / 0.08),
-    0 1px 0 oklch(0.55 0.19 135 / 0.15) inset,
-    0 0 0 1px oklch(0.55 0.19 135 / 0.05),
+    0 1px 0 oklch(0.48 0.2 20 / 0.15) inset,
+    0 0 0 1px oklch(0.48 0.2 20 / 0.05),
     0 12px 24px -12px oklch(0 0 0 / 0.25);
 }
 
@@ -652,14 +652,14 @@
     background: oklch(0.95 0.01 280 / 0.07);
     box-shadow:
       0 1px 3px oklch(0 0 0 / 0.45),
-      0 0 0 1px oklch(0.74 0.16 135 / 0.35);
+      0 0 0 1px oklch(0.64 0.17 20 / 0.35);
   }
   }
   .btn:not(.btn-premium):focus-visible {
     background: oklch(0.95 0.01 280 / 0.07);
     box-shadow:
       0 1px 3px oklch(0 0 0 / 0.45),
-      0 0 0 1px oklch(0.74 0.16 135 / 0.35);
+      0 0 0 1px oklch(0.64 0.17 20 / 0.35);
   }
   .btn:focus-visible {
     outline-color: oklch(0.64 0.17 20);
@@ -675,10 +675,10 @@
 
   /* Founders: accent text must clear 4.5:1 on the dark card */
   .founder-card {
-    --fa-strong: oklch(0.74 0.16 135);
-    --fa-soft: oklch(0.74 0.16 135 / 0.3);
+    --fa-strong: oklch(0.64 0.17 20);
+    --fa-soft: oklch(0.64 0.17 20 / 0.3);
   }
   .founder-skills li {
-    border-color: oklch(0.74 0.16 135 / 0.5);
+    border-color: oklch(0.64 0.17 20 / 0.5);
   }
 }

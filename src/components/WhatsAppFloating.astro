@@ -27,7 +27,7 @@ const label = lang === 'es' ? 'Contactar por WhatsApp' : 'Contact via WhatsApp';
     position: fixed;
     bottom: calc(80px + env(safe-area-inset-bottom, 0px)); /* Arriba del scroll-to-top */
     right: calc(20px + env(safe-area-inset-right, 0px));
-    z-index: 900;
+    z-index: var(--z-floating);
     width: 56px;
     height: 56px;
     background: #25D366; /* WhatsApp green */

@@ -84,6 +84,7 @@ body {
   font-size: clamp(1rem, 1.5vw, 1.125rem);  /* Editorial: 16-18px base (was default 16px) */
   position: relative;  /* contiene el grid (body::before, absolute) */
   min-height: 100vh;   /* páginas cortas: el grid igual cubre la pantalla */
+  min-height: 100dvh;  /* sin saltos cuando aparece/oculta la barra móvil */
   width: 100%;
   min-width: 0;
   touch-action: manipulation;
@@ -148,12 +149,13 @@ h4 { font-size: clamp(1.5rem, 3.5vw, 2.2rem); font-weight: 400; }  /* Was: 1.4re
   font-size: clamp(1rem, 2vw, 1.2rem);
   color: var(--body-dim);
   line-height: 1.7;  /* Editorial: increased from 1.6 */
-  max-width: 900px;  /* Editorial: increased from 680px for better readability */
+  max-width: 65ch;  /* ~65 caracteres por línea: lectura cómoda */
   margin-bottom: 2rem;
 }
 button:focus-visible,
 a:focus-visible {
-  outline: 2px solid rgba(255, 255, 255, 0.3);
+  /* --crimson: 8.5:1 sobre blanco, 5.2:1 sobre el fondo oscuro */
+  outline: 2px solid var(--crimson);
   outline-offset: 2px;
 }
 ::selection {
@@ -172,7 +174,7 @@ a:focus-visible {
   font-size: 0.875rem;
   font-weight: 600;
   border-radius: 0 0 var(--radius-sm) var(--radius-sm);
-  z-index: 10000;
+  z-index: var(--z-skip);
   text-decoration: none;
   transition: top 0.25s ease;
 }
