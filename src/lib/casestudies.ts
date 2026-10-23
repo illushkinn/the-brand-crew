@@ -54,6 +54,16 @@ export function getCaseStudies(lang: Lang): CaseStudy[] {
       ],
     },
     {
+      key: 'apolonia',
+      name: 'Apolonia',
+      url: 'https://verduleria-apolonia-mar-del-plata.vercel.app',
+      logo: { kind: 'img', src: '/assets/logos/apolonia.svg', alt: 'Apolonia' },
+      metrics: [
+        { value: t('caseStudies.apoloniaMetric1Value'), label: t('caseStudies.apoloniaMetric1Label') },
+        { value: t('caseStudies.apoloniaMetric2Value'), label: t('caseStudies.apoloniaMetric2Label') },
+      ],
+    },
+    {
       key: 'hoco',
       name: 'Hoco - Accesorios Premium',
       url: 'https://hococatalog.vercel.app',
