@@ -58,6 +58,7 @@ export function getCaseStudies(lang: Lang): CaseStudy[] {
       name: 'Apolonia',
       url: 'https://verduleria-apolonia-mar-del-plata.vercel.app',
       logo: { kind: 'img', src: '/assets/logos/apolonia.svg', alt: 'Apolonia' },
+      screenshot: '/assets/Apolonia.webp',
       metrics: [
         { value: t('caseStudies.apoloniaMetric1Value'), label: t('caseStudies.apoloniaMetric1Label') },
         { value: t('caseStudies.apoloniaMetric2Value'), label: t('caseStudies.apoloniaMetric2Label') },
