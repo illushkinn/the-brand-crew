@@ -150,16 +150,26 @@ test.describe('Carousel Navigation', () => {
     const cards = page.locator('.resultado-card');
     const count = await cards.count();
 
-    // Should have at least 3 cards (Luisito, Hoco, Pragma)
-    expect(count).toBeGreaterThanOrEqual(3);
+    // Should have at least 4 cards (Luisito, Apolonia, Hoco, Pragma)
+    expect(count).toBeGreaterThanOrEqual(4);
 
     // Each card should have required elements
     for (let i = 0; i < count; i++) {
       const card = cards.nth(i);
       await expect(card.locator('.resultado-avatar')).toBeVisible();
       await expect(card.locator('.resultado-nombre')).toBeVisible();
-      await expect(card.locator('.resultado-link')).toBeVisible();
     }
+  });
+
+  test('card without a URL shows no "see case" CTA', async ({ page }) => {
+    // Luisito has no public URL — the old placeholder span looked clickable
+    // but went nowhere, so it must not render at all.
+    const luisito = page.locator('.resultado-card', { hasText: 'Luisito Playa Grande' });
+    await expect(luisito.locator('.resultado-link')).toHaveCount(0);
+
+    // Cards that DO have a URL keep their link
+    const linked = page.locator('.resultado-card').filter({ has: page.locator('a.resultado-link') });
+    expect(await linked.count()).toBeGreaterThanOrEqual(3);
   });
 
   test('cards fit inside the carousel on mobile', async ({ page }) => {
