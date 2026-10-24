@@ -1,4 +1,5 @@
 :root {
+  color-scheme: only light;  /* Opción A: tema claro fijo de marca — la preferencia del sistema NO lo cambia */
   /* EDITORIAL LIGHT theme — white background with neutral palette */
   --oklch-bg-light: oklch(1.0 0 0);  /* Pure white */
   --oklch-bg-card: oklch(0.91 0.01 280);  /* Darker gray card */
@@ -104,15 +105,14 @@
   --glass-effect: blur(12px) saturate(120%);
 }
 
-/* Light mode only - dark mode removed */
-
 /* ========================================
-   DARK MODE — automatic via prefers-color-scheme.
-   No toggle, no localStorage, no JS. The light :root
-   above stays byte-identical; everything below is an
-   addition. Semantic aliases (--bg, --headline, --body…)
-   point at the oklch-* sources, so overriding the sources
-   here flips the whole system.
+   DARK MODE — paleta DORMIDA (Opción B: toggle manual, futuro).
+   NO se activa por preferencia del sistema: el sitio es tema claro
+   fijo por decisión de marca (Opción A). Se activa SOLO con
+   [data-theme="dark"] en <html>. El :root claro de arriba queda
+   intacto; todo lo de abajo son overrides de la misma familia de
+   tokens (--bg, --headline, --body… apuntan a los oklch-* fuentes).
+   Contrastes auditados se conservan tal cual.
    ======================================== */
 :root {
   /* Text that always sits on a #fff plate (hero/CTA buttons) */
@@ -130,8 +130,7 @@
   --vignette-edge: #fff;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
+:root[data-theme="dark"] {
     color-scheme: dark;
 
     /* Surfaces — editorial ink, not generic black */
@@ -187,5 +186,4 @@
     --vignette-mid: color-mix(in srgb, var(--bg) 50%, transparent);
     --vignette-strong: color-mix(in srgb, var(--bg) 85%, transparent);
     --vignette-edge: var(--bg);
-  }
 }

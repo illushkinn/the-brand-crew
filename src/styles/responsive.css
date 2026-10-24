@@ -635,52 +635,51 @@
 }
 
 /* ========================================
-   DARK THEME LAYER
+   DARK THEME LAYER (dormant, Opción B)
+   Activates only with [data-theme="dark"], never by system preference.
    Deliberately last: must win over the
    light-theme block above.
    ======================================== */
-@media (prefers-color-scheme: dark) {
+:root[data-theme="dark"] .btn-premium {
   /* CTA ring on dark: --vino is lifted but capped so it keeps ≥3:1
      against both the dark section and the white button plate */
-  .btn-premium {
-    border-color: var(--vino);
-    text-shadow: none;
-  }
+  border-color: var(--vino);
+  text-shadow: none;
+}
 
-  /* Buttons: light tints instead of terracotta tints
-     (:not keeps .btn-premium on its own glass recipe) */
-  @media (hover: hover) and (pointer: fine) {
-  .btn:not(.btn-premium):hover {
-    background: oklch(0.95 0.01 280 / 0.07);
-    box-shadow:
-      0 1px 3px oklch(0 0 0 / 0.45),
-      0 0 0 1px oklch(0.64 0.17 20 / 0.35);
-  }
-  }
-  .btn:not(.btn-premium):focus-visible {
-    background: oklch(0.95 0.01 280 / 0.07);
-    box-shadow:
-      0 1px 3px oklch(0 0 0 / 0.45),
-      0 0 0 1px oklch(0.64 0.17 20 / 0.35);
-  }
-  .btn:focus-visible {
-    outline-color: oklch(0.64 0.17 20);
-  }
-  .skip-link:focus-visible {
-    outline-color: rgba(255, 255, 255, 0.6);
-  }
+/* Buttons: light tints instead of terracotta tints
+   (:not keeps .btn-premium on its own glass recipe) */
+@media (hover: hover) and (pointer: fine) {
+:root[data-theme="dark"] .btn:not(.btn-premium):hover {
+  background: oklch(0.95 0.01 280 / 0.07);
+  box-shadow:
+    0 1px 3px oklch(0 0 0 / 0.45),
+    0 0 0 1px oklch(0.64 0.17 20 / 0.35);
+}
+}
+:root[data-theme="dark"] .btn:not(.btn-premium):focus-visible {
+  background: oklch(0.95 0.01 280 / 0.07);
+  box-shadow:
+    0 1px 3px oklch(0 0 0 / 0.45),
+    0 0 0 1px oklch(0.64 0.17 20 / 0.35);
+}
+:root[data-theme="dark"] .btn:focus-visible {
+  outline-color: oklch(0.64 0.17 20);
+}
+:root[data-theme="dark"] .skip-link:focus-visible {
+  outline-color: rgba(255, 255, 255, 0.6);
+}
 
-  /* Client logos are black artwork — invert them back on dark */
-  .resultado-avatar img.invert-dark {
-    filter: brightness(0) invert(1);
-  }
+/* Client logos are black artwork — invert them back on dark */
+:root[data-theme="dark"] .resultado-avatar img.invert-dark {
+  filter: brightness(0) invert(1);
+}
 
-  /* Founders: accent text must clear 4.5:1 on the dark card */
-  .founder-card {
-    --fa-strong: oklch(0.64 0.17 20);
-    --fa-soft: oklch(0.64 0.17 20 / 0.3);
-  }
-  .founder-skills li {
-    border-color: oklch(0.64 0.17 20 / 0.5);
-  }
+/* Founders: accent text must clear 4.5:1 on the dark card */
+:root[data-theme="dark"] .founder-card {
+  --fa-strong: oklch(0.64 0.17 20);
+  --fa-soft: oklch(0.64 0.17 20 / 0.3);
+}
+:root[data-theme="dark"] .founder-skills li {
+  border-color: oklch(0.64 0.17 20 / 0.5);
 }

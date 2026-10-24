@@ -329,9 +329,7 @@
   color: oklch(0.42 0.2 20);
   background: oklch(0.48 0.2 20 / 0.12);
 }
-@media (prefers-color-scheme: dark) {
-  .lang-btn.is-active { color: var(--verde); }
-}
+:root[data-theme="dark"] .lang-btn.is-active { color: var(--verde); }
 .lang-separator {
   color: var(--body-dim);
   opacity: 0.4;
@@ -1602,28 +1600,27 @@
 }
 
 /* ========================================
-   DARK MODE — literals that can't follow a token
+   DARK MODE (dormant, Opción B) — literals that can't follow a token.
+   Activates only with [data-theme="dark"], never by system preference.
    ======================================== */
-@media (prefers-color-scheme: dark) {
+:root[data-theme="dark"] .hero-isotype .logo-isotype,
+:root[data-theme="dark"] .navbar-brand .logo-isotype,
+:root[data-theme="dark"] .logo-wrap .logo-isotype {
   /* The isotype ships as a pure-black SVG — flip it to white on dark ink */
-  .hero-isotype .logo-isotype,
-  .navbar-brand .logo-isotype,
-  .logo-wrap .logo-isotype {
-    filter: brightness(0) invert(1);
-  }
+  filter: brightness(0) invert(1);
+}
 
+:root[data-theme="dark"] .navbar-brand .logo-wrap {
   /* White plate would hide the now-white navbar logo */
-  .navbar-brand .logo-wrap {
-    background: transparent;
-  }
+  background: transparent;
+}
 
-  .cookie-banner {
-    box-shadow: 0 4px 24px oklch(0 0 0 / 0.55);
-  }
+:root[data-theme="dark"] .cookie-banner {
+  box-shadow: 0 4px 24px oklch(0 0 0 / 0.55);
+}
 
+:root[data-theme="dark"] .footer-social-link[data-social="x"]:hover {
   /* X/T hover is brand black in light — invisible on dark, so go light */
-  .footer-social-link[data-social="x"]:hover {
-    color: oklch(0.88 0 0);
-    border-color: oklch(0.88 0 0);
-  }
+  color: oklch(0.88 0 0);
+  border-color: oklch(0.88 0 0);
 }
