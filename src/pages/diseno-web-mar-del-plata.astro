@@ -1,6 +1,6 @@
 ---
 // /diseno-web-mar-del-plata — landing local, corta (cluster "diseño web mar del plata").
-// Solo ES (ver ES_ONLY_PATHS en lib/routing.ts). Estructura: hero → casos → precios → 3 FAQ → CTA.
+// Solo ES (ver ES_ONLY_PATHS en lib/routing.ts). Estructura: hero → casos → precios → CTA.
 // Copy propio y breve: no repetir lo que ya dicen la home ni /servicios/diseno-web.
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CaseStudies from '../components/CaseStudies.astro';
@@ -24,12 +24,6 @@ const packs = [
   { name: p.esencialTitle, price: p.esencialPrice, desc: 'Landing de una página' },
   { name: p.crewTitle, price: p.crewPrice, desc: 'Web completa + marca' },
   { name: p.mvpTitle, price: p.mvpPrice, desc: 'Tienda online o pedidos' },
-];
-
-const faqs = [
-  { q: '¿Nos podemos ver en persona?', a: 'Sí, estamos en Mar del Plata. Nos juntamos en tu local, en un café o por videollamada.' },
-  { q: '¿Voy a aparecer en Google Maps?', a: 'Te dejamos la web lista para búsquedas locales y te ayudamos a armar tu perfil de Google Business, que es lo que te muestra en el mapa.' },
-  { q: '¿Llego para la temporada?', a: 'Sí, si arrancás en noviembre. Una landing sale en una semana; una web completa, en dos.' },
 ];
 
 const waLink = getWhatsAppLink('es', '¡Hola The Brand Crew! Tengo un negocio en Mar del Plata y quiero una web.');
@@ -56,11 +50,6 @@ const schemas = [
       lowPrice: p.esencialPrice.replace(/[.,]/g, ''),
       highPrice: p.mvpPrice.replace(/[.,]/g, ''),
     },
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
   },
 ];
 ---
@@ -94,27 +83,10 @@ const schemas = [
     <a href={pricingLink} class="mdp-more">Ver qué incluye cada pack →</a>
   </section>
 
-  <section class="legal-main mdp-block" aria-labelledby="mdp-faq">
-    <h2 id="mdp-faq" class="legal-h2">Preguntas</h2>
-    <div class="faq-list mdp-faq">
-      {faqs.map((f) => (
-        <div class="faq-item">
-          <button class="faq-question" type="button" aria-expanded="false">
-            {f.q}
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="faq-chevron"><polyline points="6 9 12 15 18 9" /></svg>
-          </button>
-          <div class="faq-answer"><p>{f.a}</p></div>
-        </div>
-      ))}
-    </div>
-  </section>
-
   <CTA lang="es" />
   <Footer lang="es" />
   <ScrollToTop lang="es" />
   <WhatsAppFloating lang="es" />
-
-  <script src="../scripts/faq.js"></script>
 </BaseLayout>
 
 <style>
@@ -168,10 +140,6 @@ const schemas = [
     margin-top: 1rem;
     color: var(--crimson);
     text-decoration: underline;
-  }
-  .mdp-faq {
-    max-width: none;
-    margin-top: 0;
   }
   /* El CTA final ocupa 100dvh en la home; en esta página corta, solo lo necesario. */
   :global(.cta-final) {
