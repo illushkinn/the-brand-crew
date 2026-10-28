@@ -89,41 +89,6 @@ const errores = [
   },
 ];
 
-const faqs = [
-  {
-    q: '¿Cuánto cuesta una página web en Argentina en 2026?',
-    a: 'Depende del tramo: una plantilla que armás vos, entre USD 100 y 500; un freelancer, entre USD 500 y 1.500; una agencia, entre USD 1.200 y 4.500 según alcance. Publicamos nuestros tres precios sin pedirte el mail: Arrancá USD 1.500, Crecé USD 2.900 y Escalá USD 4.500 en la página de precios.',
-  },
-  {
-    q: '¿Por qué la diferencia entre un freelancer y una agencia es tan grande?',
-    a: 'No es el logo, es la redundancia. En una agencia hay más de una persona revisando: si el dev se enferma hay otro, si el copy no cierra hay una ronda de revisión, y el proceso (briefing, v1, ajustes, QA, entrega) está definido en lugar de inventarse en cada proyecto. Con un freelancer todo depende de una persona y de su agenda.',
-  },
-  {
-    q: '¿El precio incluye textos, fotos y SEO?',
-    a: 'Nosotros sí: los tres packs incluyen textos escritos para tu cliente, optimización SEO base (titles, meta description, sitemap y velocidad) y contenido de lanzamiento. En cualquier otro presupuesto preguntalo por escrito: es lo primero que se recorta cuando el número es bajo.',
-  },
-  {
-    q: '¿Cuánto cuesta mantener la web después de lanzarla?',
-    a: 'Dominio y hosting son un costo recurrente, y encima está el tiempo de actualizaciones, copias de seguridad y arreglos. No es plata que se evite: es plata que se va igual, estés o no pendiente. Si no querés manejarlo vos, un retainer de acompañamiento arranca en USD 750 por mes.',
-  },
-  {
-    q: '¿Cómo se paga y cuánto tarda?',
-    a: 'Nuestro proceso es 50% al arrancar y 50% al entregar, con Factura A y el primer año de hosting incluido. En plazos: una landing simple se entrega en 5 a 7 días y una web completa en unas 2 semanas. Una tienda online lleva más, porque hay catálogo, cobros y automatizaciones que probar.',
-  },
-];
-
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: faqs.map((f) => ({
-    '@type': 'Question',
-    name: f.q,
-    acceptedAnswer: {
-      '@type': 'Answer',
-      text: f.a,
-    },
-  })),
-};
 ---
 
 <BaseLayout
@@ -133,12 +98,6 @@ const faqSchema = {
   canonicalURL={canonicalURL}
   breadcrumb={breadcrumb}
 >
-  <script
-    is:inline
-    type="application/ld+json"
-    set:html={JSON.stringify(faqSchema)}
-  ></script>
-
   <div class="legal-main">
     <a href="/" class="legal-back">← Volver al inicio</a>
 
@@ -247,48 +206,10 @@ const faqSchema = {
         </ul>
       </section>
 
-      <section class="legal-block" id="faq-precios">
-        <h2 class="legal-h2">Preguntas frecuentes</h2>
-        <div class="glass-card guia-faq">
-          <div class="faq-list">
-            {
-              faqs.map((f) => (
-                <div class="faq-item">
-                  <button
-                    class="faq-question"
-                    type="button"
-                    aria-expanded="false"
-                  >
-                    {f.q}
-                    <svg
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      aria-hidden="true"
-                      class="faq-chevron"
-                    >
-                      <polyline points="6 9 12 15 18 9" />
-                    </svg>
-                  </button>
-                  <div class="faq-answer">
-                    <p>{f.a}</p>
-                  </div>
-                </div>
-              ))
-            }
-          </div>
-        </div>
-      </section>
     </div>
 
   </div>
 
-  <script src="../../scripts/faq.js"></script>
 </BaseLayout>
 
 <style>
@@ -362,11 +283,4 @@ const faqSchema = {
     white-space: nowrap;
   }
 
-  .guia-faq {
-    padding: 1.5rem 1.75rem;
-  }
-  .guia-faq .faq-list {
-    max-width: none;
-    margin-top: 0;
-  }
 </style>
