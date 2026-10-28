@@ -1438,7 +1438,11 @@
    LEGAL PAGES (privacy / terms)
    ======================================== */
 .legal-main {
-  padding: 4rem clamp(1.25rem, 5vw, 4rem);
+  /* 9rem de padding-top: despeja la navbar fija (~119px medidos). Con 4rem,
+     el primer elemento (ej. el link "← Volver al inicio") quedaba DETRÁS de la
+     navbar transparente: visible pero no clickeable. El .mdp-block scoped de
+     la página de Mar del Plata restaura su propio padding compacto. */
+  padding: 9rem clamp(1.25rem, 5vw, 4rem) 4rem;
   max-width: 900px;
   margin: 0 auto;
 }
