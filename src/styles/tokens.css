@@ -122,7 +122,9 @@
   --card-border: oklch(0.5 0.1 20 / 0.18);
   --nav-scrolled-bg: rgba(255, 255, 255, 0.7);
   --nav-scrolled-border: oklch(0.48 0.2 20 / 0.2);
-  --grid-line: rgba(0, 0, 0, 0.3);
+  /* Grid teñido vino (Variante A 'Vino editorial'): una sola familia de
+     acento — el token --verde ya apunta a bordó en este codebase. */
+  --grid-line: oklch(0.58 0.18 32 / 0.13);
   --vignette-mid: rgba(255, 255, 255, 0.5);
   --vignette-strong: rgba(255, 255, 255, 0.85);
   --vignette-edge: #fff;
