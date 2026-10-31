@@ -186,7 +186,9 @@
     text-align: left;
   }
   .hero-title {
-    font-size: clamp(2.9rem, 13.5vw, 3.5rem);
+    /* 11vw (no 13.5): 'Páginas web que' con .nowrap debe entrar en el viewport.
+       A 13.5vw/min 2.9rem el span medía ~377px y rompía el marco en 375px. */
+    font-size: clamp(2.3rem, 11vw, 3.5rem);
     line-height: 1.08;
     margin-bottom: 0.8rem;
     word-spacing: -1px;
