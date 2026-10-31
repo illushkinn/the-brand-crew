@@ -47,6 +47,9 @@ export function getCaseStudies(lang: Lang): CaseStudy[] {
     {
       key: 'luisito',
       name: 'Luisito Playa Grande',
+      // El dominio propio (luisitoplayagrande.com) está caído (NXDOMAIN);
+      // el sitio vive en el deployment de Vercel.
+      url: 'https://luisito-playa-grande.vercel.app',
       logo: { kind: 'img', src: '/assets/logos/luisito.svg', alt: 'Luisito Playa Grande', class: 'invert-dark' },
       screenshot: '/assets/Luisito.webp',
       metrics: [

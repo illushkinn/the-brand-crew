@@ -161,15 +161,17 @@ test.describe('Carousel Navigation', () => {
     }
   });
 
-  test('card without a URL shows no "see case" CTA', async ({ page }) => {
-    // Luisito has no public URL — the old placeholder span looked clickable
-    // but went nowhere, so it must not render at all.
+  test('luisito card links to its live URL', async ({ page }) => {
+    // Luisito recovered its URL (vercel.app — the custom domain
+    // luisitoplayagrande.com is dead: NXDOMAIN). Every card now has a
+    // public URL, so every card renders a real link CTA — no placeholders.
     const luisito = page.locator('.resultado-card', { hasText: 'Luisito Playa Grande' });
-    await expect(luisito.locator('.resultado-link')).toHaveCount(0);
+    const link = luisito.locator('a.resultado-link');
+    await expect(link).toHaveCount(1);
+    await expect(link).toHaveAttribute('href', 'https://luisito-playa-grande.vercel.app');
 
-    // Cards that DO have a URL keep their link
     const linked = page.locator('.resultado-card').filter({ has: page.locator('a.resultado-link') });
-    expect(await linked.count()).toBeGreaterThanOrEqual(3);
+    expect(await linked.count()).toBe(4);
   });
 
   test('cards fit inside the carousel on mobile', async ({ page }) => {
