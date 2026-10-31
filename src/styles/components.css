@@ -134,7 +134,7 @@
 .btn-premium {
   background: var(--crimson);  /* Crimson sólido */
   border: 1px solid var(--crimson);
-  border-radius: 0;
+  border-radius: 12px;  /* ligera redondez (era garpan: 10px) */
   color: var(--white);
   font-weight: 500;
   letter-spacing: 0.02em;
@@ -524,12 +524,15 @@
   font-size: clamp(1.2rem, 2.8vw, 1.5rem);
   color: var(--text-on-white);  /* Texto negro sobre la placa blanca */
   font-weight: 400;  /* Fuente más delgada (era 500) */
-  /* Fondo blanco */
-  background: var(--white) !important;
-  /* Borde degradado: Vino → Vino suave (bordo/piel — solo familia roja) */
+  /* Borde degradado redondeado (doble background): la plate blanca en
+     padding-box + el gradiente vino pintando el borde en border-box.
+     Técnica necesaria porque border-image NO respeta border-radius. */
   border: 3px solid transparent;
-  border-image: var(--stroke-vino-rest);
-  border-image-slice: 1;
+  border-radius: 12px;  /* ligera redondez (era garpan: 10px) */
+  background:
+    linear-gradient(var(--white), var(--white)) padding-box,
+    var(--stroke-vino-rest) border-box,
+    var(--white);
   /* Eliminar sombras */
   box-shadow: none !important;
   backdrop-filter: none;
@@ -542,13 +545,11 @@
 .hero-actions .btn-premium:hover,
 .cta-final .cta-btn:hover {
   color: var(--text-on-white);  /* Mantener texto negro en hover */
-  border-image-source: var(--stroke-vino-full);
-  /* Fondo con tinte vino en hover (urgencia, nunca verde) */
-  /* Tinte vino OPACO (8% vino sobre blanco, pre-mezclado con color-mix):
-     nunca hay alpha en el background, así la transición del hover/active
-     no deja ver el fondo a través del botón. El estado final es idéntico
-     al tinte translúcido anterior. */
-  background: color-mix(in srgb, var(--vino) 8%, var(--white)) !important;
+  /* Tinte vino OPACO (8% sobre blanco, pre-mezclado) en la plate + anillo
+     vino completo en el borde (doble background, sin border-image). */
+  background:
+    color-mix(in srgb, var(--vino) 8%, var(--white)) padding-box,
+    var(--stroke-vino-full) border-box !important;
   /* Hard drop shadow solamente, sin inset */
   box-shadow: 5px 5px 0 0 var(--terracota) !important;
 }
@@ -556,8 +557,9 @@
 .hero-actions .btn-premium:active,
 .cta-final .cta-btn:active {
   color: var(--text-on-white);  /* Mantener texto negro en active */
-  border-image-source: var(--stroke-vino-full);
-  background: color-mix(in srgb, var(--vino) 8%, var(--white)) !important;
+  background:
+    color-mix(in srgb, var(--vino) 8%, var(--white)) padding-box,
+    var(--stroke-vino-full) border-box !important;
   box-shadow: none !important;
   transform: translateY(1px) scale(0.985);
   scale: 1;
@@ -1314,12 +1316,15 @@
   margin-top: 1rem;
   margin-bottom: 0.5rem;
   color: var(--text-on-white);  /* Texto negro sobre la placa blanca */
-  /* Fondo blanco */
-  background: var(--white) !important;
-  /* Borde degradado: Vino → Vino suave (bordo/piel — solo familia roja) */
+  /* Borde degradado redondeado — misma técnica de doble background
+     que el CTA del hero (border-image no respeta border-radius). */
   border: 3px solid transparent;
-  border-image: var(--stroke-vino-rest);
-  border-image-slice: 1;
+  border-radius: 12px;  /* ligera redondez (era garpan: 10px) */
+  background:
+    linear-gradient(var(--white), var(--white)) padding-box,
+    var(--stroke-vino-rest) border-box,
+    var(--white) !important;
+  border-color: transparent !important;  /* el borde transparente deja ver el gradiente border-box */
   /* Eliminar sombras */
   box-shadow: none !important;
   backdrop-filter: none;
@@ -1380,7 +1385,7 @@
 }
 .cookie-banner .btn-premium {
   margin-left: auto;
-  border-radius: 0;
+  border-radius: 12px;
   background: var(--terracota);
   border: 1px solid var(--terracota);
   color: var(--white);
