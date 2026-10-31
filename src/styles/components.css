@@ -544,7 +544,11 @@
   color: var(--text-on-white);  /* Mantener texto negro en hover */
   border-image-source: var(--stroke-vino-full);
   /* Fondo con tinte vino en hover (urgencia, nunca verde) */
-  background: var(--vino-tint) !important;
+  /* Tinte vino OPACO (8% vino sobre blanco, pre-mezclado con color-mix):
+     nunca hay alpha en el background, así la transición del hover/active
+     no deja ver el fondo a través del botón. El estado final es idéntico
+     al tinte translúcido anterior. */
+  background: color-mix(in srgb, var(--vino) 8%, var(--white)) !important;
   /* Hard drop shadow solamente, sin inset */
   box-shadow: 5px 5px 0 0 var(--terracota) !important;
 }
@@ -553,7 +557,7 @@
 .cta-final .cta-btn:active {
   color: var(--text-on-white);  /* Mantener texto negro en active */
   border-image-source: var(--stroke-vino-full);
-  background: var(--vino-tint) !important;
+  background: color-mix(in srgb, var(--vino) 8%, var(--white)) !important;
   box-shadow: none !important;
   transform: translateY(1px) scale(0.985);
   scale: 1;

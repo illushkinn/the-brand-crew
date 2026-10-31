@@ -30,7 +30,6 @@
      escasez, solo 3 proyectos por mes. */
   --oklch-vino: oklch(0.36 0.14 25);
   --oklch-vino-soft: oklch(0.46 0.15 24);
-  --oklch-vino-tint: oklch(0.36 0.14 25 / 0.08);
 
   /* Acento único: el antiguo verde ahora apunta al bordó (mismo valor que
      --oklch-crimson). Se conserva el nombre para no tocar cada uso. */
@@ -78,7 +77,6 @@
   /* Vino aliases — CTA conversion stroke (urgencia + boutique) */
   --vino: var(--oklch-vino);
   --vino-soft: var(--oklch-vino-soft);
-  --vino-tint: var(--oklch-vino-tint);
 
   /* Derived stroke gradients — single source for the CTA border-image
      (hero .btn-premium + nav .cta-btn). rest = reposo, esquina inferior
