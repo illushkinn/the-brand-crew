@@ -78,15 +78,15 @@ html::-webkit-scrollbar-thumb:hover {
 }
 body {
   font-family: var(--font-body);
-  /* Fondo 'Vino editorial' (vuelta parcial a lo de antes, protagonista vino):
-     wash vino 2x arriba-izquierda + wash suave abajo-derecha sobre el --bg.
+  /* Fondo oscuro de la era garpan: wash vino arriba-izquierda + wash LIMA
+     abajo-derecha (el "verde amarillo de antes") sobre el --bg casi negro.
      Estático a propósito — sin animación. var(--bg) como última capa =
-     background-color opaco (los tests de tema siguen viendo body claro).
-     Grid también teñido vino vía --grid-line. Contrastes: headline charcoal
-     ~9.2:1 AAA sobre el wash máximo. */
+     background-color opaco (los tests de tema leen el body oscuro).
+     El lima vive SOLO en el decorado (este wash + el grid vía --grid-line);
+     los acentos de UI siguen siendo vino/crimson. */
   background:
-    radial-gradient(ellipse 90% 60% at 5% 10%, oklch(0.58 0.18 32 / 0.20) 0%, transparent 60%),
-    radial-gradient(ellipse 70% 80% at 95% 92%, oklch(0.58 0.18 32 / 0.10) 0%, transparent 55%),
+    radial-gradient(ellipse 90% 60% at 5% 10%, oklch(0.58 0.18 32 / 0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 80% at 90% 85%, oklch(0.82 0.2 125 / 0.07) 0%, transparent 50%),
     var(--bg);
   color: var(--body);
   font-weight: 400;  /* Increased from 300 for WCAG AAA compliance */

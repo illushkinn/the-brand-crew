@@ -40,60 +40,55 @@ const allAtMost = (c: { r: number; g: number; b: number }, n: number) =>
 const allAtLeast = (c: { r: number; g: number; b: number }, n: number) =>
   c.r >= n && c.g >= n && c.b >= n;
 
-// Opción A (brand decision): the site is locked to LIGHT. System dark
-// preference must never change it (Chrome auto-dark, force-dark, Dark Reader).
-// The audited dark palette ships DORMANT: it activates only via a manual
-// [data-theme="dark"] attribute on <html> (groundwork for Option B).
-const setDark = (page: Page) =>
-  page.evaluate(() => document.documentElement.setAttribute('data-theme', 'dark'));
-
-test.describe('Theme lock (Opción A: light fijo de marca)', () => {
-  test('light mode is default', async ({ page }) => {
-    await page.emulateMedia({ colorScheme: 'light' });
-    await page.goto('/');
-
-    const bodyBg = await channels(page, 'body', 'background-color');
-    expect(
-      allAtLeast(bodyBg, 230),
-      `body background should be light, got ${bodyBg.value} -> rgb(${bodyBg.r},${bodyBg.g},${bodyBg.b})`
-    ).toBe(true);
-
-    const h1 = await channels(page, 'h1.hero-title', 'color');
-    expect(
-      allAtMost(h1, 80),
-      `h1.hero-title should be dark, got ${h1.value} -> rgb(${h1.r},${h1.g},${h1.b})`
-    ).toBe(true);
-  });
-
-  test('system dark preference does NOT change the site', async ({ page }) => {
+// Brand decision (era garpan revert): the site is locked to DARK.
+// System light preference must never change it (Chrome force-light, etc.).
+test.describe('Theme lock (dark fijo de marca — era garpan)', () => {
+  test('dark mode is default', async ({ page }) => {
     await page.emulateMedia({ colorScheme: 'dark' });
     await page.goto('/');
 
     const bodyBg = await channels(page, 'body', 'background-color');
     expect(
-      allAtLeast(bodyBg, 230),
-      `body background must stay LIGHT on dark system pref, got ${bodyBg.value} -> rgb(${bodyBg.r},${bodyBg.g},${bodyBg.b})`
+      allAtMost(bodyBg, 40),
+      `body background should be dark, got ${bodyBg.value} -> rgb(${bodyBg.r},${bodyBg.g},${bodyBg.b})`
     ).toBe(true);
 
     const h1 = await channels(page, 'h1.hero-title', 'color');
     expect(
-      allAtMost(h1, 80),
-      `h1.hero-title must stay dark, got ${h1.value} -> rgb(${h1.r},${h1.g},${h1.b})`
+      allAtLeast(h1, 200),
+      `h1.hero-title should be light, got ${h1.value} -> rgb(${h1.r},${h1.g},${h1.b})`
+    ).toBe(true);
+  });
+
+  test('system light preference does NOT change the site', async ({ page }) => {
+    await page.emulateMedia({ colorScheme: 'light' });
+    await page.goto('/');
+
+    const bodyBg = await channels(page, 'body', 'background-color');
+    expect(
+      allAtMost(bodyBg, 40),
+      `body background must stay DARK on light system pref, got ${bodyBg.value} -> rgb(${bodyBg.r},${bodyBg.g},${bodyBg.b})`
+    ).toBe(true);
+
+    const h1 = await channels(page, 'h1.hero-title', 'color');
+    expect(
+      allAtLeast(h1, 200),
+      `h1.hero-title must stay light, got ${h1.value} -> rgb(${h1.r},${h1.g},${h1.b})`
     ).toBe(true);
 
     const sub = await channels(page, 'p.hero-sub', 'color');
     expect(
-      allAtMost(sub, 80),
-      `p.hero-sub must stay dark, got ${sub.value} -> rgb(${sub.r},${sub.g},${sub.b})`
+      allAtLeast(sub, 180),
+      `p.hero-sub must stay light, got ${sub.value} -> rgb(${sub.r},${sub.g},${sub.b})`
     ).toBe(true);
   });
 
-  test('head meta locks the theme to light', async ({ page }) => {
+  test('head meta locks the theme to dark', async ({ page }) => {
     await page.goto('/');
 
-    await expect(page.locator('meta[name="color-scheme"]')).toHaveAttribute('content', 'only light');
+    await expect(page.locator('meta[name="color-scheme"]')).toHaveAttribute('content', 'only dark');
     await expect(page.locator('meta[name="darkreader-lock"]')).toHaveCount(1);
-    await expect(page.locator('meta[name="theme-color"]')).toHaveAttribute('content', '#ffffff');
+    await expect(page.locator('meta[name="theme-color"]')).toHaveAttribute('content', '#010203');
     await expect(page.locator('meta[name="theme-color"][media]')).toHaveCount(0);
   });
 
@@ -110,8 +105,8 @@ test.describe('Theme lock (Opción A: light fijo de marca)', () => {
   });
 
   test('no JS theme mechanism exists', async () => {
-    // localStorage/theme-toggle stay forbidden. `data-theme` lives ONLY in
-    // CSS selectors (the dormant Option B palette) — flag any JS usage of it.
+    // localStorage/theme-toggle stay forbidden. `data-theme` is gone entirely
+    // (the site is dark by base tokens) — flag any JS usage of it.
     const failures: string[] = [];
 
     const themeLocalStorage =
@@ -120,7 +115,7 @@ test.describe('Theme lock (Opción A: light fijo de marca)', () => {
     const jsDataTheme = /dataset\s*\.\s*theme|setAttribute\s*\(\s*['"`]data-theme/;
 
     for (const file of walk(SRC)) {
-      if (file.endsWith('.css')) continue; // CSS selectors are the intended home
+      if (file.endsWith('.css')) continue;
       const lines = readFileSync(file, 'utf8').split('\n');
       lines.forEach((line, i) => {
         if (themeLocalStorage.test(line) || themeToggle.test(line) || jsDataTheme.test(line)) {
@@ -133,33 +128,9 @@ test.describe('Theme lock (Opción A: light fijo de marca)', () => {
   });
 });
 
-test.describe('Dormant dark palette (Option B readiness)', () => {
-  test('tokens flip with [data-theme="dark"]', async ({ page }) => {
+test.describe('Dark base surfaces (era garpan)', () => {
+  test('hero isotype is white', async ({ page }) => {
     await page.goto('/');
-    await setDark(page);
-
-    const bodyBg = await channels(page, 'body', 'background-color');
-    expect(
-      allAtMost(bodyBg, 40),
-      `body background should be dark, got ${bodyBg.value} -> rgb(${bodyBg.r},${bodyBg.g},${bodyBg.b})`
-    ).toBe(true);
-
-    const h1 = await channels(page, 'h1.hero-title', 'color');
-    expect(
-      allAtLeast(h1, 200),
-      `h1.hero-title should be light, got ${h1.value} -> rgb(${h1.r},${h1.g},${h1.b})`
-    ).toBe(true);
-
-    const sub = await channels(page, 'p.hero-sub', 'color');
-    expect(
-      allAtLeast(sub, 200),
-      `p.hero-sub should be light, got ${sub.value} -> rgb(${sub.r},${sub.g},${sub.b})`
-    ).toBe(true);
-  });
-
-  test('hero isotype turns white', async ({ page }) => {
-    await page.goto('/');
-    await setDark(page);
 
     const filter = await page
       .locator('.hero-isotype .logo-isotype')
@@ -170,7 +141,6 @@ test.describe('Dormant dark palette (Option B readiness)', () => {
 
   test('navbar logo is white', async ({ page }) => {
     await page.goto('/');
-    await setDark(page);
 
     const filter = await page
       .locator('.navbar-brand .logo-isotype')
@@ -181,7 +151,6 @@ test.describe('Dormant dark palette (Option B readiness)', () => {
 
   test('navbar logo plate removed', async ({ page }) => {
     await page.goto('/');
-    await setDark(page);
 
     const bg = await page
       .locator('.navbar-brand .logo-wrap')
@@ -192,7 +161,6 @@ test.describe('Dormant dark palette (Option B readiness)', () => {
 
   test('CTA keeps black text on white plate', async ({ page }) => {
     await page.goto('/');
-    await setDark(page);
 
     const color = await channels(page, '.hero-actions .btn-premium', 'color');
     expect(
@@ -210,7 +178,6 @@ test.describe('Dormant dark palette (Option B readiness)', () => {
   test('CTA section button black on white', async ({ page }) => {
     await page.goto('/#contacto');
     await page.locator('.cta-btn').first().waitFor();
-    await setDark(page);
 
     const color = await channels(page, '.cta-btn', 'color');
     expect(
@@ -223,17 +190,5 @@ test.describe('Dormant dark palette (Option B readiness)', () => {
       allAtLeast(bg, 250),
       `.cta-btn plate should be white, got ${bg.value} -> rgb(${bg.r},${bg.g},${bg.b})`
     ).toBe(true);
-  });
-
-  test('light: navbar logo NOT inverted', async ({ page }) => {
-    await page.emulateMedia({ colorScheme: 'light' });
-    await page.goto('/');
-
-    const filter = await page
-      .locator('.navbar-brand .logo-isotype')
-      .first()
-      .evaluate((el) => getComputedStyle(el).filter);
-    expect(filter).not.toContain('invert(1)');
-    expect(filter).toBe('brightness(0)');
   });
 });

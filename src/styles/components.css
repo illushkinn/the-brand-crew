@@ -1608,26 +1608,26 @@
 }
 
 /* ========================================
-   DARK MODE (dormant, Opción B) — literals that can't follow a token.
-   Activates only with [data-theme="dark"], never by system preference.
+   DARK MODE (base, era garpan) — literals that can't follow a token.
+   El sitio ES dark fijo; estas reglas aplican siempre.
    ======================================== */
-:root[data-theme="dark"] .hero-isotype .logo-isotype,
-:root[data-theme="dark"] .navbar-brand .logo-isotype,
-:root[data-theme="dark"] .logo-wrap .logo-isotype {
+:root .hero-isotype .logo-isotype,
+:root .navbar-brand .logo-isotype,
+:root .logo-wrap .logo-isotype {
   /* The isotype ships as a pure-black SVG — flip it to white on dark ink */
   filter: brightness(0) invert(1);
 }
 
-:root[data-theme="dark"] .navbar-brand .logo-wrap {
+:root .navbar-brand .logo-wrap {
   /* White plate would hide the now-white navbar logo */
   background: transparent;
 }
 
-:root[data-theme="dark"] .cookie-banner {
+:root .cookie-banner {
   box-shadow: 0 4px 24px oklch(0 0 0 / 0.55);
 }
 
-:root[data-theme="dark"] .footer-social-link[data-social="x"]:hover {
+:root .footer-social-link[data-social="x"]:hover {
   /* X/T hover is brand black in light — invisible on dark, so go light */
   color: oklch(0.88 0 0);
   border-color: oklch(0.88 0 0);

@@ -1,41 +1,48 @@
 :root {
-  color-scheme: only light;  /* Opción A: tema claro fijo de marca — la preferencia del sistema NO lo cambia */
-  /* EDITORIAL LIGHT theme — white background with neutral palette */
-  --oklch-bg-light: oklch(1.0 0 0);  /* Pure white */
-  --oklch-bg-card: oklch(0.91 0.01 280);  /* Darker gray card */
+  color-scheme: only dark;  /* Tema oscuro fijo de marca (era garpan) — la preferencia del sistema NO lo cambia */
+  /* DARK GARPan theme — revert al tema oscuro de la era garpan.
+     Los NOMBRES de token se conservan del tema claro editorial
+     (menor diff en todo el codebase); los VALORES son los de la era:
+     bg casi negro + textos claros. Los acentos vino/crimson se
+     "levantan" (más claros) para mantener contraste sobre negro —
+     valores medidos heredados de la paleta dark auditada. */
+  --oklch-bg-light: oklch(0.08 0.010 280);  /* nombre histórico — valor: casi negro de la era garpan */
+  --oklch-bg-card: oklch(0.10 0.014 280);   /* card apenas elevada */
 
-  /* Editorial neutrals (warm-inspired palette) */
-  --oklch-charcoal: oklch(0.28 0.01 280);  /* Editorial black (10.5:1 contrast) */
-  --oklch-charcoal-hover: oklch(0.22 0.015 280);
-  --oklch-slate: oklch(0.45 0.008 280);    /* Gray medium (7.8:1 contrast) */
-  --oklch-slate-dark: oklch(0.35 0.006 280); /* Gray dark (12.8:1 contrast - for secondary text) */
+  /* Neutrals (misma familia 280, luminancia invertida vs la era clara) */
+  --oklch-charcoal: oklch(0.955 0.008 280);  /* texto principal claro (~16.8:1 on bg) */
+  --oklch-charcoal-hover: oklch(0.87 0.012 280);
+  --oklch-slate: oklch(0.8 0.012 280);       /* body text (~10.3:1) */
+  --oklch-slate-dark: oklch(0.7 0.012 280);  /* secundario (~7.2:1) */
 
-  /* Text colors mapped to neutrals */
-  --oklch-headline: oklch(0.28 0.01 280);   /* Charcoal for headings */
-  --oklch-body: oklch(0.45 0.008 280);      /* Slate for body */
-  --oklch-body-dim: oklch(0.35 0.006 280);  /* Slate-dark for secondary (12.8:1 contrast - casi negro) */
-  --oklch-border: oklch(0.88 0.01 280);
+  /* Text colors */
+  --oklch-headline: oklch(0.955 0.004 280);  /* casi blanco */
+  --oklch-body: oklch(0.8 0.008 280);
+  --oklch-body-dim: oklch(0.75 0.012 280);
+  --oklch-border: oklch(0.2 0.018 280);      /* quieto, visible sobre negro */
 
-  /* Crimson accent (primary emphasis - replaces Terracota) */
-  --oklch-crimson: oklch(0.48 0.20 20);     /* Bordo editorial (8.5:1 contrast) */
-  --oklch-crimson-hover: oklch(0.42 0.22 20);
+  /* Crimson accent — lifted para dark bg (5.2:1) */
+  --oklch-crimson: oklch(0.64 0.17 20);
+  --oklch-crimson-hover: oklch(0.42 0.22 20);  /* PINNED: white-text surface (CTA :active) */
 
-  /* Burgundy Editorial (vino/bordó accents - grid & borders) */
-  --oklch-burgundy-dark: oklch(0.32 0.14 28);   /* Borgoña oscuro (14.2:1) */
-  --oklch-burgundy: oklch(0.40 0.16 24);        /* Borgoña clásico (10.8:1) */
-  --oklch-burgundy-soft: oklch(0.50 0.10 20);   /* Borgoña suave (7.5:1) */
+  /* Burgundy Editorial — lifted para dark */
+  --oklch-burgundy-dark: oklch(0.55 0.13 28);
+  --oklch-burgundy: oklch(0.63 0.14 24);
+  --oklch-burgundy-soft: oklch(0.72 0.1 20);
 
-  /* Vino / bordo leather — purpose: CTA conversion STROKE only
-     (hero + #contacto). Marca urgencia + servicio boutique:
-     escasez, solo 3 proyectos por mes. */
-  --oklch-vino: oklch(0.36 0.14 25);
-  --oklch-vino-soft: oklch(0.46 0.15 24);
+  /* Vino / bordo leather — CTA conversion STROKE, lifted para que el
+     anillo limpie 3:1 contra el negro Y contra la plate blanca.
+     Medido: vino 4.78:1 plate / 4.02:1 bg; vino-soft 3.30:1 plate. */
+  --oklch-vino: oklch(0.57 0.14 24);
+  --oklch-vino-soft: oklch(0.66 0.13 24);
 
-  /* Acento único: el antiguo verde ahora apunta al bordó (mismo valor que
-     --oklch-crimson). Se conserva el nombre para no tocar cada uso. */
-  --oklch-verde: oklch(0.48 0.20 20);
-  --oklch-lavender: oklch(0.68 0.09 285);   /* Soft premium accent */
-  --oklch-lavender-hover: oklch(0.62 0.11 285);
+  /* Acento único de UI: el antiguo verde sigue apuntando a vino/crimson
+     (ahora a su variante dark). El LIMA de la era garpan vive SOLO en el
+     decorado (grid + wash del fondo, en base.css) — no compite con el
+     vino de conversión. */
+  --oklch-verde: oklch(0.64 0.17 20);
+  --oklch-lavender: oklch(0.82 0.075 285);   /* Soft premium accent */
+  --oklch-lavender-hover: oklch(0.87 0.055 285);
   --space-sm: 0.5rem;
   --space-md: 1rem;
   --space-lg: 1.5rem;
@@ -53,7 +60,7 @@
   --z-nav: 1000;
   --z-cursor: 1100;
   --z-skip: 1200;     /* skip-link siempre arriba */
-  --white: #fff;
+  --white: #fff;      /* NUNCA se redefine: las plates (CTA, hero) siguen blancas en dark */
   --bg: var(--oklch-bg-light);
   --bg-card: var(--oklch-bg-card);
   --headline: var(--oklch-headline);
@@ -78,22 +85,21 @@
   --vino: var(--oklch-vino);
   --vino-soft: var(--oklch-vino-soft);
 
-  /* Derived stroke gradients — single source for the CTA border-image
+  /* Derived stroke gradients — single source for the CTA border
      (hero .btn-premium + nav .cta-btn). rest = reposo, esquina inferior
-     disuelta; full = hover/active, anillo completo. Las vars se resuelven
-     en uso → el override dark de --vino aplica solo. --white nunca se
-     redefine en dark (#fff en ambos modos). */
+     disuelta; full = hover/active, anillo completo. --white nunca se
+     redefine → las plates blancas conservan su contraste. */
   --stroke-vino-rest: linear-gradient(135deg, var(--vino) 0%, var(--vino-soft) 70%, var(--white) 100%);
   --stroke-vino-full: linear-gradient(135deg, var(--vino) 0%, var(--vino-soft) 100%);
 
   /* Legacy color mapping (for backward compatibility) */
-  --terracota: var(--oklch-crimson);  /* Map to crimson */
-  --terracota-hover: var(--oklch-crimson-hover);
+  --terracota: oklch(0.48 0.2 20);  /* brand SURFACE claro fijo: white-on-brand plates (skip-link, ::selection, cookie CTA) conservan 7:1 */
+  --terracota-hover: oklch(0.42 0.22 20);
   --verde: var(--oklch-verde);
   --lavender: var(--oklch-lavender);
   --lavender-hover: var(--oklch-lavender-hover);
-  --glass-bg: rgba(16, 16, 32, 0.045);
-  --glass-border: rgba(16, 16, 32, 0.09);
+  --glass-bg: rgba(255, 255, 255, 0.06);   /* era garpan: vidrio blanco sobre negro */
+  --glass-border: rgba(255, 255, 255, 0.10);
   --font-display: 'Onest', sans-serif;
   --font-body: 'Onest', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
@@ -101,89 +107,20 @@
   --color-verde: var(--verde);
   --color-lavender: var(--lavender);
   --glass-effect: blur(12px) saturate(120%);
-}
 
-/* ========================================
-   DARK MODE — paleta DORMIDA (Opción B: toggle manual, futuro).
-   NO se activa por preferencia del sistema: el sitio es tema claro
-   fijo por decisión de marca (Opción A). Se activa SOLO con
-   [data-theme="dark"] en <html>. El :root claro de arriba queda
-   intacto; todo lo de abajo son overrides de la misma familia de
-   tokens (--bg, --headline, --body… apuntan a los oklch-* fuentes).
-   Contrastes auditados se conservan tal cual.
-   ======================================== */
-:root {
   /* Text that always sits on a #fff plate (hero/CTA buttons) */
   --text-on-white: oklch(0.28 0.01 280);
 
-  /* Overlay surfaces + editorial textures (light values) */
-  --banner-bg: rgba(255, 255, 255, 0.92);
-  --banner-border: oklch(0.64 0.015 280);
-  --card-border: oklch(0.5 0.1 20 / 0.18);
-  --nav-scrolled-bg: rgba(255, 255, 255, 0.7);
-  --nav-scrolled-border: oklch(0.48 0.2 20 / 0.2);
-  /* Grid teñido vino (Variante A 'Vino editorial'): una sola familia de
-     acento — el token --verde ya apunta a bordó en este codebase. */
-  --grid-line: oklch(0.58 0.18 32 / 0.13);
-  --vignette-mid: rgba(255, 255, 255, 0.5);
-  --vignette-strong: rgba(255, 255, 255, 0.85);
-  --vignette-edge: #fff;
-}
-
-:root[data-theme="dark"] {
-    color-scheme: dark;
-
-    /* Surfaces — editorial ink, not generic black */
-    --oklch-bg-light: oklch(0.17 0.012 280);  /* #0e0f15 */
-    --oklch-bg-card: oklch(0.235 0.015 280);  /* #1d1d25 elevated */
-
-    /* Neutrals — same hue family (280/260), lightness inverted */
-    --oklch-charcoal: oklch(0.955 0.008 280);       /* #eff0f6 — 16.8:1 on bg */
-    --oklch-charcoal-hover: oklch(0.87 0.012 280);
-    --oklch-slate: oklch(0.8 0.012 280);            /* #b9bec6 — 10.3:1 on bg */
-    --oklch-slate-dark: oklch(0.7 0.012 280);       /* #9a9fa6 — 7.2:1 on bg */
-    --oklch-headline: oklch(0.955 0.008 280);
-    --oklch-body: oklch(0.8 0.012 280);
-    --oklch-body-dim: oklch(0.7 0.012 280);
-    --oklch-border: oklch(0.35 0.018 280);          /* quiet, still visible */
-
-    /* Accents lightened for dark bg — text ≥4.5:1 on bg AND card */
-    --oklch-crimson: oklch(0.64 0.17 20);           /* #e05860 — 5.2:1 on bg */
-    --oklch-crimson-hover: oklch(0.42 0.22 20);     /* PINNED: white-text surface (CTA :active) */
-    --oklch-burgundy-dark: oklch(0.55 0.13 28);
-    --oklch-burgundy: oklch(0.63 0.14 24);
-    --oklch-burgundy-soft: oklch(0.72 0.1 20);
-
-    /* Vino stroke — lifted for the dark section, but CAPPED so the ring
-       still clears 3:1 against BOTH neighbours: the dark page (4.0:1 min)
-       and the white button plate (--white is never overridden → #fff).
-       Measured: vino 4.78:1 plate / 4.02:1 bg; vino-soft 3.30:1 plate /
-       5.83:1 bg. L adjusted only (C/H kept) to pass WCAG 1.4.11. */
-    --oklch-vino: oklch(0.57 0.14 24);
-    --oklch-vino-soft: oklch(0.66 0.13 24);
-    --oklch-vino-tint: oklch(0.57 0.14 24 / 0.1);
-    --oklch-verde: oklch(0.64 0.17 20);             /* = crimson dark, 5.2:1 on bg */
-    --oklch-lavender: oklch(0.82 0.075 285);
-    --oklch-lavender-hover: oklch(0.87 0.055 285);
-
-    /* Brand SURFACES stay at the light crimson: every white-on-brand
-       plate (skip-link, ::selection, founder avatar, cookie CTA,
-       plan CTA) keeps its 7:1 light-mode contrast untouched */
-    --terracota: oklch(0.48 0.2 20);
-    --terracota-hover: oklch(0.42 0.22 20);
-
-    /* Glass — invert the tint so elevation reads on dark */
-    --glass-bg: rgba(255, 255, 255, 0.05);
-    --glass-border: rgba(255, 255, 255, 0.14);
-
-    /* Overlay surfaces + textures */
-    --banner-bg: color-mix(in srgb, var(--bg) 92%, transparent);
-    --banner-border: oklch(0.55 0.018 280);
-    --card-border: oklch(0.72 0.1 20 / 0.45);
-    --nav-scrolled-bg: oklch(0.13 0.012 280 / 0.72);
-    --nav-scrolled-border: oklch(0.64 0.17 20 / 0.35);
-    --grid-line: rgba(255, 255, 255, 0.055);
-    --vignette-mid: color-mix(in srgb, var(--bg) 50%, transparent);
-    --vignette-strong: color-mix(in srgb, var(--bg) 85%, transparent);
-    --vignette-edge: var(--bg);
+  /* Overlay surfaces + editorial textures (dark values) */
+  --banner-bg: color-mix(in srgb, var(--bg) 92%, transparent);
+  --banner-border: oklch(0.55 0.018 280);
+  --card-border: oklch(0.72 0.1 20 / 0.45);
+  --nav-scrolled-bg: oklch(0.13 0.012 280 / 0.72);
+  --nav-scrolled-border: oklch(0.64 0.17 20 / 0.35);
+  /* Grid LIMA de la era garpan — el "verde amarillo de antes". Color
+     directo (no vía --verde, que sigue apuntando a vino para UI). */
+  --grid-line: rgba(74, 222, 128, 0.07);
+  --vignette-mid: color-mix(in srgb, var(--bg) 50%, transparent);
+  --vignette-strong: color-mix(in srgb, var(--bg) 85%, transparent);
+  --vignette-edge: var(--bg);
 }
