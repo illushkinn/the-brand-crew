@@ -29,9 +29,9 @@ export const dictionaries = {
       about: 'Nosotros',
     },
     hero: {
-      headline2: 'Growth partner',
-      headline3: 'que funciona',
-      sub: 'Para negocios que <span class="hero-em">crecen</span>.',
+      headline2: 'Páginas web que',
+      headline3: 'garpan',
+      sub: 'Para negocios que <span class="hero-em">laburan</span>.',
       cta: 'Contacto',
       tag: 'Diseño web · Marca · Contenido'
     },
@@ -316,9 +316,9 @@ export const dictionaries = {
       about: 'About',
     },
     hero: {
-      headline2: 'Growth partner',
-      headline3: 'that works',
-      sub: 'For businesses that <span class="hero-em">grow</span>.',
+      headline2: 'Websites that',
+      headline3: 'pay',
+      sub: 'For businesses that <span class="hero-em">actually work</span>.',
       cta: 'Contact',
       tag: 'Web design · Brand · Content · Argentina'
     },

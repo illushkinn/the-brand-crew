@@ -14,7 +14,9 @@ test.describe('Hero Section', () => {
   });
 
   test('has correct title', async ({ page }) => {
-    await expect(page.locator('h1.hero-title')).toContainText('Growth partner');
+    // 'garpan' y 'laburan' vuelven como copy del hero (pedido explícito).
+    await expect(page.locator('h1.hero-title')).toContainText('Páginas web que');
+    await expect(page.locator('h1.hero-title')).toContainText('garpan');
   });
 
   test('has subtitle', async ({ page }) => {
