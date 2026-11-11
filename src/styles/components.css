@@ -599,6 +599,19 @@
   color: var(--charcoal);
   background: transparent;  /* deja ver el grid del hero */
 }
+.hero-risk {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--body-dim);
+  max-width: 34ch;
+  text-wrap: pretty;
+}
+.hero-risk::before {
+  content: '✓ ';
+  color: var(--verde);
+  font-weight: 600;
+}
 
 /* ========================================
    HERO — Ring + Isotype (global, not scoped)
