@@ -33,7 +33,7 @@ export const dictionaries = {
       headline3: 'garpan',
       sub: 'Para negocios que <span class="hero-em">laburan</span>.',
       cta: 'Contacto',
-      tag: 'Diseño web · Marca · Contenido'
+      tag: 'Diseño web · Identidad · Pauta'
     },
     caseStudies: {
       kicker: 'Casos',
@@ -326,7 +326,7 @@ export const dictionaries = {
       headline3: 'pay',
       sub: 'For businesses that <span class="hero-em">actually work</span>.',
       cta: 'Contact',
-      tag: 'Web design · Brand · Content · Argentina'
+      tag: 'Web design · Identity · Paid media · Argentina'
     },
     caseStudies: {
       kicker: 'Work',
