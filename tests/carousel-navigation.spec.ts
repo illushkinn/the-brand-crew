@@ -150,7 +150,6 @@ test.describe('Carousel Navigation', () => {
     const cards = page.locator('.resultado-card');
     const count = await cards.count();
 
-<<<<<<< HEAD
     // Should have at least 4 cards (Luisito, Apolonia, Hoco, Pragma, Escolta)
     expect(count).toBeGreaterThanOrEqual(4);
 
@@ -172,7 +171,7 @@ test.describe('Carousel Navigation', () => {
     await expect(link).toHaveAttribute('href', 'https://luisito-playa-grande.vercel.app');
 
     const linked = page.locator('.resultado-card').filter({ has: page.locator('a.resultado-link') });
-    expect(await linked.count()).toBe(4);
+    expect(await linked.count()).toBe(5);
   });
 
   test('cards fit inside the carousel on mobile', async ({ page }) => {
