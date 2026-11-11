@@ -93,7 +93,7 @@ test.describe('Theme lock (Opción A: light fijo de marca)', () => {
 
     await expect(page.locator('meta[name="color-scheme"]')).toHaveAttribute('content', 'only light');
     await expect(page.locator('meta[name="darkreader-lock"]')).toHaveCount(1);
-    await expect(page.locator('meta[name="theme-color"]')).toHaveAttribute('content', '#ffffff');
+    await expect(page.locator('meta[name="theme-color"]')).toHaveAttribute('content', '#eff5f5');
     await expect(page.locator('meta[name="theme-color"][media]')).toHaveCount(0);
   });
 
