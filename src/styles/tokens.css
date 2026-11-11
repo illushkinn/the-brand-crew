@@ -1,39 +1,44 @@
 :root {
   color-scheme: only light;  /* Opción A: tema claro fijo de marca — la preferencia del sistema NO lo cambia */
-  /* EDITORIAL LIGHT theme — white background with neutral palette */
-  --oklch-bg-light: oklch(1.0 0 0);  /* Pure white */
-  --oklch-bg-card: oklch(0.91 0.01 280);  /* Darker gray card */
+  /* MAR DEL PLATA theme — paleta marina AB: el mar frío de Playa Grande
+     (perla, tinta abisal, verde abisal) + el atardecer (coral). */
+  --oklch-bg-light: oklch(0.965 0.006 210);  /* gris perla #eff5f5 — 'mar de la plata', no blanco puro */
+  --oklch-bg-card: oklch(0.94 0.008 210);   /* perla más profunda para cards */
 
-  /* Editorial neutrals (warm-inspired palette) */
-  --oklch-charcoal: oklch(0.28 0.01 280);  /* Editorial black (10.5:1 contrast) */
-  --oklch-charcoal-hover: oklch(0.22 0.015 280);
-  --oklch-slate: oklch(0.45 0.008 280);    /* Gray medium (7.8:1 contrast) */
-  --oklch-slate-dark: oklch(0.35 0.006 280); /* Gray dark (12.8:1 contrast - for secondary text) */
+  /* Neutrales marinos (frío, azul-verde) */
+  --oklch-charcoal: oklch(0.22 0.02 240);  /* tinta abisal (15.7:1 sobre perla) */
+  --oklch-charcoal-hover: oklch(0.16 0.025 240);
+  --oklch-slate: oklch(0.43 0.02 235);    /* body (7.3:1 sobre perla) */
+  --oklch-slate-dark: oklch(0.33 0.022 240); /* secundario (11:1) */
 
   /* Text colors mapped to neutrals */
-  --oklch-headline: oklch(0.28 0.01 280);   /* Charcoal for headings */
-  --oklch-body: oklch(0.45 0.008 280);      /* Slate for body */
-  --oklch-body-dim: oklch(0.35 0.006 280);  /* Slate-dark for secondary (12.8:1 contrast - casi negro) */
-  --oklch-border: oklch(0.88 0.01 280);
+  --oklch-headline: oklch(0.22 0.02 240);   /* tinta abisal para headings */
+  --oklch-body: oklch(0.43 0.02 235);      /* slate marino para body */
+  --oklch-body-dim: oklch(0.33 0.022 240);  /* secundario (11:1) */
+  --oklch-border: oklch(0.87 0.02 205);
 
-  /* Crimson accent (primary emphasis - replaces Terracota) */
-  --oklch-crimson: oklch(0.48 0.20 20);     /* Bordo editorial (8.5:1 contrast) */
-  --oklch-crimson-hover: oklch(0.42 0.22 20);
+  /* Verde abisal (estructura — ocupa el slot del antiguo crimson):
+     el mar frío de MDP. Bordes, links, iconos, montos. */
+  --oklch-crimson: oklch(0.42 0.08 200);    /* #005a5e (8:1 sobre espuma) */
+  --oklch-crimson-hover: oklch(0.36 0.075 200); /* #00484d */
 
-  /* Burgundy Editorial (vino/bordó accents - grid & borders) */
-  --oklch-burgundy-dark: oklch(0.32 0.14 28);   /* Borgoña oscuro (14.2:1) */
-  --oklch-burgundy: oklch(0.40 0.16 24);        /* Borgoña clásico (10.8:1) */
-  --oklch-burgundy-soft: oklch(0.50 0.10 20);   /* Borgoña suave (7.5:1) */
+  /* Familia abisal para gradientes y bordes (ex-burgundy) */
+  --oklch-burgundy-dark: oklch(0.34 0.07 200);   /* abisal profundo */
+  --oklch-burgundy: oklch(0.42 0.08 200);        /* abisal */
+  --oklch-burgundy-soft: oklch(0.55 0.06 195);   /* abisal suave */
 
-  /* Vino / bordo leather — purpose: CTA conversion STROKE only
-     (hero + #contacto). Marca urgencia + servicio boutique:
-     escasez, solo 3 proyectos por mes. */
-  --oklch-vino: oklch(0.36 0.14 25);
-  --oklch-vino-soft: oklch(0.46 0.15 24);
+  /* Stroke mar (ex-vino) — purpose: CTA conversion STROKE only
+     (hero + #contacto). Gradiente abisal→espuma: profundidad. */
+  --oklch-vino: oklch(0.42 0.08 200);
+  --oklch-vino-soft: oklch(0.55 0.06 195);
 
-  /* Acento único: el antiguo verde ahora apunta al bordó (mismo valor que
+  /* Espuma: plates de CTA y superficies claras. rgb(251,254,254) —
+     calibrada para superar el contrato ≥250 del theme-lock test. */
+  --oklch-espuma: oklch(0.995 0.004 200);
+
+  /* Acento: el verde vuelve a ser verde real (abisal, mismo valor que
      --oklch-crimson). Se conserva el nombre para no tocar cada uso. */
-  --oklch-verde: oklch(0.48 0.20 20);
+  --oklch-verde: oklch(0.42 0.08 200);
   --oklch-lavender: oklch(0.68 0.09 285);   /* Soft premium accent */
   --oklch-lavender-hover: oklch(0.62 0.11 285);
   --space-sm: 0.5rem;
@@ -59,6 +64,7 @@
   --z-cursor: 1100;
   --z-skip: 1200;     /* skip-link siempre arriba */
   --white: #fff;
+  --espuma: var(--oklch-espuma);  /* plates de CTA (espuma marina) */
   --bg: var(--oklch-bg-light);
   --bg-card: var(--oklch-bg-card);
   --headline: var(--oklch-headline);
@@ -86,19 +92,22 @@
   /* Derived stroke gradients — single source for the CTA border-image
      (hero .btn-premium + nav .cta-btn). rest = reposo, esquina inferior
      disuelta; full = hover/active, anillo completo. Las vars se resuelven
-     en uso → el override dark de --vino aplica solo. --white nunca se
-     redefine en dark (#fff en ambos modos). */
-  --stroke-vino-rest: linear-gradient(135deg, var(--vino) 0%, var(--vino-soft) 70%, var(--white) 100%);
+     en uso → el override dark de --vino aplica solo. Los strokes se
+     disuelven hacia --espuma (no #fff) para cerrar con la plate. */
+  --stroke-vino-rest: linear-gradient(135deg, var(--vino) 0%, var(--vino-soft) 70%, var(--espuma) 100%);
   --stroke-vino-full: linear-gradient(135deg, var(--vino) 0%, var(--vino-soft) 100%);
 
-  /* Legacy color mapping (for backward compatibility) */
-  --terracota: var(--oklch-crimson);  /* Map to crimson */
-  --terracota-hover: var(--oklch-crimson-hover);
+  /* Coral profundo (atardecer): superficies sólidas con texto blanco
+     (::selection, skip-link, cookie CTA, plan destacado) y hard shadows.
+     7.2:1 con blanco. Ya no es alias de --oklch-crimson: en el sistema
+     marino la estructura (abisal) y el calor (coral) son familias distintas. */
+  --terracota: oklch(0.48 0.18 28);
+  --terracota-hover: oklch(0.42 0.19 28);
   --verde: var(--oklch-verde);
   --lavender: var(--oklch-lavender);
   --lavender-hover: var(--oklch-lavender-hover);
-  --glass-bg: rgba(16, 16, 32, 0.045);
-  --glass-border: rgba(16, 16, 32, 0.09);
+  --glass-bg: rgba(238, 246, 248, 0.55);
+  --glass-border: rgba(30, 90, 105, 0.14);
   --font-display: 'Onest', sans-serif;
   --font-body: 'Onest', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
@@ -118,21 +127,20 @@
    Contrastes auditados se conservan tal cual.
    ======================================== */
 :root {
-  /* Text that always sits on a #fff plate (hero/CTA buttons) */
-  --text-on-white: oklch(0.28 0.01 280);
+  /* Text that always sits on an espuma plate (hero/CTA buttons) */
+  --text-on-white: oklch(0.22 0.02 240);  /* tinta abisal (15:1 sobre espuma) */
 
   /* Overlay surfaces + editorial textures (light values) */
-  --banner-bg: rgba(255, 255, 255, 0.92);
-  --banner-border: oklch(0.64 0.015 280);
-  --card-border: oklch(0.5 0.1 20 / 0.18);
-  --nav-scrolled-bg: rgba(255, 255, 255, 0.7);
-  --nav-scrolled-border: oklch(0.48 0.2 20 / 0.2);
-  /* Grid teñido vino (Variante A 'Vino editorial'): una sola familia de
-     acento — el token --verde ya apunta a bordó en este codebase. */
-  --grid-line: oklch(0.58 0.18 32 / 0.13);
-  --vignette-mid: rgba(255, 255, 255, 0.5);
-  --vignette-strong: rgba(255, 255, 255, 0.85);
-  --vignette-edge: #fff;
+  --banner-bg: rgba(251, 254, 254, 0.92);  /* espuma translúcida */
+  --banner-border: oklch(0.80 0.03 205);
+  --card-border: oklch(0.42 0.08 200 / 0.28);  /* abisal: borde perla-verde */
+  --nav-scrolled-bg: rgba(244, 249, 250, 0.82);
+  --nav-scrolled-border: oklch(0.42 0.08 200 / 0.22);
+  /* Batimetría teñida abisal — las curvas náuticas del body::before. */
+  --grid-line: oklch(0.42 0.08 200 / 0.08);
+  --vignette-mid: rgba(239, 245, 245, 0.5);   /* funde a perla en los bordes */
+  --vignette-strong: rgba(239, 245, 245, 0.85);
+  --vignette-edge: #eff5f5;
 }
 
 :root[data-theme="dark"] {
