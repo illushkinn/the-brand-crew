@@ -949,6 +949,12 @@
 .cta-final h2 {
   margin-bottom: var(--space-md);
 }
+.cta-risk {
+  margin-top: var(--space-sm);
+  font-size: 0.95rem;
+  color: var(--body-dim);
+  text-wrap: pretty;
+}
 .footer {
   border-top: none;
   content-visibility: auto;

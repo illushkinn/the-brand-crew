@@ -112,6 +112,8 @@ export const dictionaries = {
       planFootnote: 'Hosting 1° año + Factura A incluidos · Solo 3 proyectos por mes',
       planGrowthText: '¿Buscás acompañamiento mensual?',
       planGrowthLink: 'Growth Partner desde $750/mes',
+      discoveryTitle: 'Que te encuentren cuando te buscan',
+      discoveryText: 'Tu web optimizada para aparecer en Google y para que ChatGPT te recomiende cuando alguien pregunta por lo que vendés.',
       // Kit 2 — Growth Partner
       kit2Title: 'Growth Partner<br>',
       growthTitle: 'Growth Mensual',
@@ -182,6 +184,7 @@ export const dictionaries = {
       title1: 'Arranquemos',
       title2: '',
       schedule: 'Agendar una llamada',
+      risk: 'No dejes plata en la mesa. Tus clientes ya te están buscando.',
     },
     footer: {
       privacy: 'Política de privacidad',
@@ -401,6 +404,8 @@ export const dictionaries = {
       planFootnote: '1st-year hosting + invoice included · Only 3 projects per month',
       planGrowthText: 'Looking for monthly support?',
       planGrowthLink: 'Growth Partner from $750/mo',
+      discoveryTitle: 'Be found when they search for you',
+      discoveryText: 'Your site built to show up in Google and to get recommended on ChatGPT when someone asks for what you sell.',
       kit2Title: 'Growth Partner<br>',
       growthTitle: 'Monthly Growth',
       growthPriceRange: '750–2,500',
@@ -470,6 +475,7 @@ export const dictionaries = {
       title1: "Let's get started",
       title2: '',
       schedule: 'Schedule a call',
+      risk: "Don't leave money on the table. Your clients are already searching for you.",
     },
     footer: {
       privacy: 'Privacy Policy',
