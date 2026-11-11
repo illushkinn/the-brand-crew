@@ -6,7 +6,7 @@
   .btn-premium { transition: none; }
   .btn-premium:hover,
   .btn-premium:active {
-    border-color: oklch(0.62 0.18 32 / 0.6);
+    border-color: oklch(0.42 0.08 200 / 0.6);
     background: var(--premium-bg);
     transform: none;
   }

@@ -41,15 +41,26 @@
    MOLECULES — Glass Card, Buttons
    ======================================== */
 .glass-card {
-  background: var(--bg-card);
-  border: 1px solid var(--card-border);  /* Burgundy-soft sutil */
+  background: var(--glass-bg);
+  border: 1px solid var(--card-border);
+  /* Doble horizonte: corte mar-cielo. Línea superior gruesa abisal,
+     resto hairline perla-verde. Hover: la marea "sube" (border-top-color
+     transition al bloque compartido de abajo). */
+  border-top: 2px solid color-mix(in srgb, var(--vino) 35%, transparent);
   border-radius: var(--radius-lg);
   padding: 2rem;
   position: relative;
   z-index: 1;
   isolation: isolate;
   overflow: hidden;
-  transition: border-color 0.3s, transform 0.3s;
+  transition: border-color 0.3s, border-top-color 0.3s, transform 0.3s;
+}
+/* Marea: el horizonte se intensifica al pasar el mouse. Sutil — sin
+   transform ni sombra; solo la línea de mar sube de intensidad. */
+@media (hover: hover) and (pointer: fine) {
+.glass-card:hover {
+  border-top-color: color-mix(in srgb, var(--vino) 85%, transparent);
+}
 }
 .faq .glass-card {
   padding: 2.5rem;
@@ -80,8 +91,8 @@
   /* Default: subtle elevation */
   box-shadow:
     0 2px 8px oklch(0 0 0 / 0.08),
-    0 1px 0 oklch(0.58 0.18 32 / 0.1) inset,
-    0 0 0 1px oklch(0.58 0.18 32 / 0.08);
+    0 1px 0 oklch(0.42 0.08 200 / 0.1) inset,
+    0 0 0 1px oklch(0.42 0.08 200 / 0.08);
   transform: translateY(0);
 }
 .btn:focus-visible {
@@ -113,26 +124,26 @@
 /* Hover: flatten press — reduces shadow and moves down */
 @media (hover: hover) and (pointer: fine) {
 .btn:hover {
-  background: oklch(0.58 0.18 32 / 0.04);
+  background: oklch(0.42 0.08 200 / 0.04);
   box-shadow:
     0 1px 3px oklch(0 0 0 / 0.05),
-    0 0 0 1px oklch(0.58 0.18 32 / 0.08);
+    0 0 0 1px oklch(0.42 0.08 200 / 0.08);
   transform: translateY(1px);
 }
 }
 /* Active: fully flat against viewport */
 .btn:active {
-  background: oklch(0.58 0.18 32 / 0.06);
+  background: oklch(0.42 0.08 200 / 0.06);
   box-shadow:
     0 0 2px oklch(0 0 0 / 0.04),
-    0 1px 0 oklch(0.58 0.18 32 / 0.06) inset;
+    0 1px 0 oklch(0.42 0.08 200 / 0.06) inset;
   transform: translateY(2px);
   transition-duration: 0.08s;
 }
 
-/* ===== CTA — 3D PIXELADO (Editorial: Crimson bg + hard drop shadow terracota) ===== */
+/* ===== CTA — 3D PIXELADO (Mar: abisal sólido + hard drop shadow coral) ===== */
 .btn-premium {
-  background: var(--crimson);  /* Crimson sólido */
+  background: var(--crimson);  /* Verde abisal sólido */
   border: 1px solid var(--crimson);
   border-radius: 12px;  /* ligera redondez (era garpan: 10px) */
   color: var(--white);
@@ -153,7 +164,7 @@
 /* Hover: levanta con hard drop shadow terracota */
 @media (hover: hover) and (pointer: fine) {
 .btn-premium:hover {
-  background: var(--crimson);  /* Mantiene crimson */
+  background: var(--crimson);  /* Mantiene abisal */
   transform: translateY(-3px);  /* Levanta hacia arriba */
   scale: 1;
   /* Hard drop shadow: sin blur, desplazada abajo-derecha */
@@ -292,7 +303,7 @@
   r: 38;
 }
 .logo-progress-ring .ring-bg {
-  stroke: oklch(0.48 0.2 20 / 0.15);
+  stroke: oklch(0.42 0.08 200 / 0.15);
 }
 .logo-progress-ring .ring-fill {
   stroke: var(--verde);
@@ -325,9 +336,9 @@
   color: var(--verde);
 }
 .lang-btn.is-active {
-  /* Bordó un paso más oscuro: AA sobre el fondo tintado */
-  color: oklch(0.42 0.2 20);
-  background: oklch(0.48 0.2 20 / 0.12);
+  /* Abisal un paso más oscuro: AA sobre el fondo tintado */
+  color: oklch(0.36 0.075 200);
+  background: oklch(0.42 0.08 200 / 0.12);
 }
 :root[data-theme="dark"] .lang-btn.is-active { color: var(--verde); }
 .lang-separator {
@@ -408,7 +419,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: oklch(0.48 0.2 20 / 0.08);
+  background: oklch(0.42 0.08 200 / 0.08);
   transform: translateX(-101%);
   will-change: transform;
   transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -441,7 +452,7 @@
 @media (hover: hover) {
   .mobile-menu a:hover {
     color: var(--verde);
-    text-shadow: 0 0 20px oklch(0.48 0.2 20 / 0.3);
+    text-shadow: 0 0 20px oklch(0.42 0.08 200 / 0.3);
   }
   .mobile-menu a:hover::before {
     transform: translateX(0);
@@ -522,17 +533,17 @@
 .hero-actions .btn-premium {
   padding: 0.9rem 1.25rem;
   font-size: clamp(1.2rem, 2.8vw, 1.5rem);
-  color: var(--text-on-white);  /* Texto negro sobre la placa blanca */
+  color: var(--text-on-white);  /* Texto tinta sobre la placa espuma */
   font-weight: 400;  /* Fuente más delgada (era 500) */
-  /* Borde degradado redondeado (doble background): la plate blanca en
-     padding-box + el gradiente vino pintando el borde en border-box.
+  /* Borde degradado redondeado (doble background): la plate espuma en
+     padding-box + el gradiente mar pintando el borde en border-box.
      Técnica necesaria porque border-image NO respeta border-radius. */
   border: 3px solid transparent;
   border-radius: 12px;  /* ligera redondez (era garpan: 10px) */
   background:
-    linear-gradient(var(--white), var(--white)) padding-box,
+    linear-gradient(var(--espuma), var(--espuma)) padding-box,
     var(--stroke-vino-rest) border-box,
-    var(--white);
+    var(--espuma);
   /* Eliminar sombras */
   box-shadow: none !important;
   backdrop-filter: none;
@@ -544,21 +555,21 @@
 @media (hover: hover) and (pointer: fine) {
 .hero-actions .btn-premium:hover,
 .cta-final .cta-btn:hover {
-  color: var(--text-on-white);  /* Mantener texto negro en hover */
-  /* Tinte vino OPACO (8% sobre blanco, pre-mezclado) en la plate + anillo
-     vino completo en el borde (doble background, sin border-image). */
+  color: var(--text-on-white);  /* Mantener texto tinta en hover */
+  /* Tinte abisal OPACO (8% sobre espuma, pre-mezclado) en la plate +
+     anillo mar completo en el borde (doble background, sin border-image). */
   background:
-    color-mix(in srgb, var(--vino) 8%, var(--white)) padding-box,
+    color-mix(in srgb, var(--vino) 8%, var(--espuma)) padding-box,
     var(--stroke-vino-full) border-box !important;
-  /* Hard drop shadow solamente, sin inset */
+  /* Hard drop shadow coral (atardecer), sin inset */
   box-shadow: 5px 5px 0 0 var(--terracota) !important;
 }
 }
 .hero-actions .btn-premium:active,
 .cta-final .cta-btn:active {
-  color: var(--text-on-white);  /* Mantener texto negro en active */
+  color: var(--text-on-white);  /* Mantener texto tinta en active */
   background:
-    color-mix(in srgb, var(--vino) 8%, var(--white)) padding-box,
+    color-mix(in srgb, var(--vino) 8%, var(--espuma)) padding-box,
     var(--stroke-vino-full) border-box !important;
   box-shadow: none !important;
   transform: translateY(1px) scale(0.985);
@@ -1055,8 +1066,8 @@
   transform: translateY(-2px);
   box-shadow:
     0 2px 12px oklch(0 0 0 / 0.2),
-    0 1px 0 oklch(0.48 0.2 20 / 0.2) inset,
-    0 0 0 1px oklch(0.48 0.2 20 / 0.06),
+    0 1px 0 oklch(0.42 0.08 200 / 0.2) inset,
+    0 0 0 1px oklch(0.42 0.08 200 / 0.06),
     0 12px 24px -12px oklch(0 0 0 / 0.4);
 }
 .scroll-to-top svg {
@@ -1176,20 +1187,20 @@
 .pricing-card-v2 .btn {
   margin-top: auto;
 }
- /* Star card — Crew */
+ /* Star card — Crew (horizonte abisal reforzado) */
 .pricing-card-v2.is-star {
-  border-color: oklch(0.58 0.18 32 / 0.55);
+  border-color: oklch(0.42 0.08 200 / 0.55);
   box-shadow:
-    0 0 0 1px oklch(0.58 0.18 32 / 0.35),
-    0 8px 32px oklch(0.58 0.18 32 / 0.18);
+    0 0 0 1px oklch(0.42 0.08 200 / 0.35),
+    0 8px 32px oklch(0.42 0.08 200 / 0.18);
   background: var(--glass-bg);
 }
 .pricing-card-v2.is-star::after {
   content: '';
   position: absolute;
-  top: -1px; left: 0; right: 0;
+  top: 0; left: 0; right: 0;
   height: 2px;
-  background: oklch(0.58 0.18 32);
+  background: oklch(0.42 0.08 200);
 }
 .pricing-growth-cta {
   display: flex;
@@ -1222,8 +1233,8 @@
   gap: 1rem;
 }
 .founder-card {
-  --fa-strong: oklch(0.48 0.2 20 / 0.5);
-  --fa-soft: oklch(0.48 0.2 20 / 0.14);
+  --fa-strong: oklch(0.42 0.08 200 / 0.5);
+  --fa-soft: oklch(0.42 0.08 200 / 0.14);
   display: flex;
   gap: 1.25rem;
   align-items: flex-start;
@@ -1303,7 +1314,7 @@
   font-size: 0.68rem;
   letter-spacing: 0.04em;
   color: var(--crimson);
-  border: 1px solid oklch(0.48 0.20 20 / 0.35);
+  border: 1px solid oklch(0.42 0.08 200 / 0.35);
   border-radius: var(--radius-full);
   padding: 0.2rem 0.7rem;
   transition: border-color 0.3s ease, color 0.3s ease;
@@ -1315,15 +1326,15 @@
 .cta-btn {
   margin-top: 1rem;
   margin-bottom: 0.5rem;
-  color: var(--text-on-white);  /* Texto negro sobre la placa blanca */
+  color: var(--text-on-white);  /* Texto tinta sobre la placa espuma */
   /* Borde degradado redondeado — misma técnica de doble background
      que el CTA del hero (border-image no respeta border-radius). */
   border: 3px solid transparent;
   border-radius: 12px;  /* ligera redondez (era garpan: 10px) */
   background:
-    linear-gradient(var(--white), var(--white)) padding-box,
+    linear-gradient(var(--espuma), var(--espuma)) padding-box,
     var(--stroke-vino-rest) border-box,
-    var(--white) !important;
+    var(--espuma) !important;
   border-color: transparent !important;  /* el borde transparente deja ver el gradiente border-box */
   /* Eliminar sombras */
   box-shadow: none !important;

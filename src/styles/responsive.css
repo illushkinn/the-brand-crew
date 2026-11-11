@@ -560,19 +560,19 @@
   /* Hover/focus — flat press with light-mode alphas */
   @media (hover: hover) and (pointer: fine) {
   .btn:hover {
-    background: oklch(0.58 0.18 32 / 0.06);
+    background: oklch(0.42 0.08 200 / 0.06);
     box-shadow:
       0 1px 3px oklch(0 0 0 / 0.08),
-      0 0 0 1px oklch(0.58 0.18 32 / 0.12);
+      0 0 0 1px oklch(0.42 0.08 200 / 0.12);
     transform: translateY(1px);
   }
   }
   .btn:focus-visible {
-    background: oklch(0.58 0.18 32 / 0.06);
+    background: oklch(0.42 0.08 200 / 0.06);
     box-shadow:
       0 1px 3px oklch(0 0 0 / 0.08),
-      0 0 0 1px oklch(0.58 0.18 32 / 0.12);
-    outline: 2px solid oklch(0.48 0.2 20);
+      0 0 0 1px oklch(0.42 0.08 200 / 0.12);
+    outline: 2px solid oklch(0.42 0.08 200);
   }
   /* Premium: flat press for light mode — neutral shadows, no green insets */
   @media (hover: hover) and (pointer: fine) {
@@ -604,27 +604,27 @@
 
   /* Founders: acento bordó sobre blanco */
   .founder-card {
-    --fa-strong: oklch(0.48 0.2 20 / 0.6);
-    --fa-soft: oklch(0.48 0.2 20 / 0.14);
+    --fa-strong: oklch(0.42 0.08 200 / 0.6);
+    --fa-soft: oklch(0.42 0.08 200 / 0.14);
   }
   .founder-skills li {
-    border-color: oklch(0.48 0.2 20 / 0.35);
+    border-color: oklch(0.42 0.08 200 / 0.35);
   }
 
   /* Scroll-to-top: glass con tinte bordó */
   .scroll-to-top {
-    background: linear-gradient(135deg, oklch(0.48 0.2 20 / 0.10), oklch(0.48 0.2 20 / 0.03));
-    border-color: oklch(0.48 0.2 20 / 0.3);
+    background: linear-gradient(135deg, oklch(0.42 0.08 200 / 0.10), oklch(0.42 0.08 200 / 0.03));
+    border-color: oklch(0.42 0.08 200 / 0.3);
     box-shadow:
       0 2px 12px oklch(0 0 0 / 0.08),
-      0 1px 0 oklch(0.48 0.2 20 / 0.15) inset,
-      0 0 0 1px oklch(0.48 0.2 20 / 0.05);
+      0 1px 0 oklch(0.42 0.08 200 / 0.15) inset,
+      0 0 0 1px oklch(0.42 0.08 200 / 0.05);
   }
 .scroll-to-top:hover {
   box-shadow:
     0 2px 12px oklch(0 0 0 / 0.08),
-    0 1px 0 oklch(0.48 0.2 20 / 0.15) inset,
-    0 0 0 1px oklch(0.48 0.2 20 / 0.05),
+    0 1px 0 oklch(0.42 0.08 200 / 0.15) inset,
+    0 0 0 1px oklch(0.42 0.08 200 / 0.05),
     0 12px 24px -12px oklch(0 0 0 / 0.25);
 }
 
