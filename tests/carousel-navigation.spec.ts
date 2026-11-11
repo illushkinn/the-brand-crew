@@ -150,7 +150,8 @@ test.describe('Carousel Navigation', () => {
     const cards = page.locator('.resultado-card');
     const count = await cards.count();
 
-    // Should have at least 4 cards (Luisito, Apolonia, Hoco, Pragma)
+<<<<<<< HEAD
+    // Should have at least 4 cards (Luisito, Apolonia, Hoco, Pragma, Escolta)
     expect(count).toBeGreaterThanOrEqual(4);
 
     // Each card should have required elements
