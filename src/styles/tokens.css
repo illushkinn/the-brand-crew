@@ -136,7 +136,7 @@
   --card-border: oklch(0.42 0.08 200 / 0.28);  /* abisal: borde perla-verde */
   --nav-scrolled-bg: rgba(244, 249, 250, 0.82);
   --nav-scrolled-border: oklch(0.42 0.08 200 / 0.22);
-  /* Batimetría teñida abisal — las curvas náuticas del body::before. */
+  /* Grid teñido abisal — la carta náutica del body::before. */
   --grid-line: oklch(0.42 0.08 200 / 0.08);
   --vignette-mid: rgba(239, 245, 245, 0.5);   /* funde a perla en los bordes */
   --vignette-strong: rgba(239, 245, 245, 0.85);

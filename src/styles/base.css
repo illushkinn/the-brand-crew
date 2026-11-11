@@ -17,13 +17,9 @@ html {
 body {
   overflow-x: clip;
 }
-/* Batimetría: líneas de nivel del fondo marino (carta náutica), ancladas
-   al documento (se desplazan al scrollear, como el grid que reemplazan).
-   Dos cuencas: una arriba-izquierda (el mar) y otra abajo-derecha (la
-   costa al atardecer). Los anillos crecen hacia afuera siguiendo la
-   geometría elíptica y cubren todo el documento; el espaciado distinto
-   (85px vs 65px) evita el patrón de interferencia. La viñeta (body::after)
-   funde los bordes hacia el perla. */
+/* Grid de carta náutica: dos lineales ortogonales ancladas al documento
+   (se desplazan al scrollear). 100px de paso, 1px de línea. La viñeta
+   (body::after) funde los bordes hacia el perla. */
 body::before {
   content: '';
   position: absolute;
@@ -31,15 +27,17 @@ body::before {
   z-index: 1;
   pointer-events: none;
   background:
-    repeating-radial-gradient(ellipse 1200px 800px at 20% -10%,
+    repeating-linear-gradient(180deg,
       var(--grid-line) 0px,
-      transparent 1.5px,
-      transparent 85px
+      var(--grid-line) 1px,
+      transparent 1px,
+      transparent 100px
     ),
-    repeating-radial-gradient(ellipse 900px 700px at 90% 110%,
+    repeating-linear-gradient(90deg,
       var(--grid-line) 0px,
-      transparent 1.5px,
-      transparent 65px
+      var(--grid-line) 1px,
+      transparent 1px,
+      transparent 100px
     );
 }
 
@@ -65,7 +63,7 @@ body::after {
   );
 }
 
-/* Batimetría token-driven: abisal en claro, espuma tenue en dark */
+/* Grid token-driven (--grid-line): abisal en claro, espuma tenue en dark */
 html::-webkit-scrollbar {
   width: 8px;
 }
