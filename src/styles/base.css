@@ -17,8 +17,13 @@ html {
 body {
   overflow-x: clip;
 }
-/* Grid anclado al documento (no al viewport): se desplaza junto con las
-   secciones al scrollear, así las líneas no "patinan" sobre el contenido. */
+/* Batimetría: líneas de nivel del fondo marino (carta náutica), ancladas
+   al documento (se desplazan al scrollear, como el grid que reemplazan).
+   Dos cuencas: una arriba-izquierda (el mar) y otra abajo-derecha (la
+   costa al atardecer). Los anillos crecen hacia afuera siguiendo la
+   geometría elíptica y cubren todo el documento; el espaciado distinto
+   (85px vs 65px) evita el patrón de interferencia. La viñeta (body::after)
+   funde los bordes hacia el perla. */
 body::before {
   content: '';
   position: absolute;
@@ -26,17 +31,15 @@ body::before {
   z-index: 1;
   pointer-events: none;
   background:
-    repeating-linear-gradient(180deg,  /* desde arriba: misma cuadrícula en todas las páginas */
+    repeating-radial-gradient(ellipse 1200px 800px at 20% -10%,
       var(--grid-line) 0px,
-      var(--grid-line) 1px,
-      transparent 1px,
-      transparent 100px
+      transparent 1.5px,
+      transparent 85px
     ),
-    repeating-linear-gradient(90deg,
+    repeating-radial-gradient(ellipse 900px 700px at 90% 110%,
       var(--grid-line) 0px,
-      var(--grid-line) 1px,
-      transparent 1px,
-      transparent 100px
+      transparent 1.5px,
+      transparent 65px
     );
 }
 
@@ -62,7 +65,7 @@ body::after {
   );
 }
 
-/* Grid texture is token-driven: black lines on light, white lines on dark */
+/* Batimetría token-driven: abisal en claro, espuma tenue en dark */
 html::-webkit-scrollbar {
   width: 8px;
 }
@@ -78,15 +81,15 @@ html::-webkit-scrollbar-thumb:hover {
 }
 body {
   font-family: var(--font-body);
-  /* Fondo 'Vino editorial' (vuelta parcial a lo de antes, protagonista vino):
-     wash vino 2x arriba-izquierda + wash suave abajo-derecha sobre el --bg.
-     Estático a propósito — sin animación. var(--bg) como última capa =
-     background-color opaco (los tests de tema siguen viendo body claro).
-     Grid también teñido vino vía --grid-line. Contrastes: headline charcoal
-     ~9.2:1 AAA sobre el wash máximo. */
+  /* Fondo 'Mar del Plata' (paleta AB): wash verde abisal arriba-izquierda
+     (el mar frío) + wash coral abajo-derecha (el atardecer de Playa Grande)
+     sobre el perla. Estático a propósito — sin animación. var(--bg) como
+     última capa = background-color opaco (los tests de tema siguen viendo
+     body claro ≥230). Contrastes: tinta abisal 15.7:1 AAA sobre el perla
+     del wash máximo. */
   background:
-    radial-gradient(ellipse 90% 60% at 5% 10%, oklch(0.58 0.18 32 / 0.20) 0%, transparent 60%),
-    radial-gradient(ellipse 70% 80% at 95% 92%, oklch(0.58 0.18 32 / 0.10) 0%, transparent 55%),
+    radial-gradient(ellipse 90% 60% at 5% 10%, oklch(0.42 0.08 200 / 0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 80% at 90% 85%, oklch(0.62 0.16 30 / 0.08) 0%, transparent 50%),
     var(--bg);
   color: var(--body);
   font-weight: 400;  /* Increased from 300 for WCAG AAA compliance */
