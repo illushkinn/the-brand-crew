@@ -1637,3 +1637,20 @@
   color: oklch(0.88 0 0);
   border-color: oklch(0.88 0 0);
 }
+
+/* ========================================
+   CORNER-SHAPE — squircle ligero ("achicar el ángulo")
+   Aplica la forma superellipse(2) SOBRE el border-radius existente
+   (no lo reemplaza: sin radius no hay esquina que modelar).
+   Progressive enhancement: @supports protege a los navegadores
+   sin la propiedad (verán el cuarto de círculo del radius).
+   ======================================== */
+@supports (corner-shape: superellipse(2)) {
+  .btn,
+  .btn-premium,
+  .cta-btn,
+  .glass-card,
+  .pricing-card-v2 {
+    corner-shape: var(--corner-shape);
+  }
+}

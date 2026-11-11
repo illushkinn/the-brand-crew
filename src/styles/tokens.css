@@ -45,6 +45,11 @@
   --radius-lg: 16px;
   --radius-full: 100px;
   --radius-round: 50%;
+  /* Corner-shape: squircle (superellipse(2)) sobre el radius — "achica"
+     el ángulo de la esquina con una curva más llena que el cuarto de
+     círculo. Progressive enhancement: solo aplica en navegadores con
+     soporte (Chrome 139+); el resto ve el border-radius circular normal. */
+  --corner-shape: superellipse(2);
 
   /* Escala de capas: un solo lugar para el orden de apilado */
   --z-banner: 100;    /* cookie banner */
