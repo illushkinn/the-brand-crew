@@ -113,7 +113,8 @@ export const dictionaries = {
       planGrowthText: '¿Buscás acompañamiento mensual?',
       planGrowthLink: 'Socio de crecimiento desde $750/mes',
       discoveryTitle: 'Que te encuentren cuando te buscan',
-      discoveryText: 'Tu web optimizada para aparecer en Google y para que ChatGPT te recomiende.',
+      discoveryText:
+        'Incluido en los tres packs: SEO técnico, textos claros y datos estructurados para que Google te muestre y ChatGPT te pueda citar. Sin humo.',
       // Kit 2 — Socio de crecimiento (antes "Growth Partner"; URL /pricing/growth-partner se mantiene por SEO)
       kit2Title: 'Socio de crecimiento<br>',
       growthTitle: 'Crecimiento mensual',
@@ -406,7 +407,8 @@ export const dictionaries = {
       planGrowthText: 'Looking for monthly support?',
       planGrowthLink: 'Growth Partner from $750/mo',
       discoveryTitle: 'Be found when they search for you',
-      discoveryText: 'Your site built to show up on Google and to get recommended by ChatGPT.',
+      discoveryText:
+        'Included in all three packs: technical SEO, clear copy and structured data so Google shows you and ChatGPT can cite you. No fluff.',
       kit2Title: 'Growth Partner<br>',
       growthTitle: 'Monthly Growth',
       growthPriceRange: '750–2,500',

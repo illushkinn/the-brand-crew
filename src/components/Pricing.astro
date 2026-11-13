@@ -94,4 +94,19 @@ const homeLink = `${DOMAIN}${getHomeLink(lang)}`;
   .pricing-note a:hover {
     color: var(--terracota-hover);
   }
+
+  /* Mobile: alineación a la izquierda (legibilidad en pantallas chicas) */
+  @media (max-width: 767px) {
+    .discovery-strip {
+      text-align: left;
+      padding: 1.25rem 1.25rem;
+    }
+    .discovery-chips {
+      justify-content: flex-start;
+      flex-wrap: wrap;
+    }
+    .pricing-note {
+      text-align: left;
+    }
+  }
 </style>
