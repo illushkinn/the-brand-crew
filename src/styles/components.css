@@ -498,6 +498,7 @@
 .hero-phrase {
   display: block;
   white-space: pre-line;  /* Respeta <br> pero permite wrap de palabras largas */
+  text-wrap: balance;     /* Refuerzo: reparte líneas si el copy crece */
 }
 .hero-sub {
   font-family: var(--font-body);
@@ -533,18 +534,14 @@
 .hero-actions .btn-premium {
   padding: 0.9rem 1.25rem;
   font-size: clamp(1.2rem, 2.8vw, 1.5rem);
-  color: var(--text-on-white);  /* Texto tinta sobre la placa espuma */
+  color: var(--espuma);  /* Texto espuma sobre coral (7:1) */
   font-weight: 400;  /* Fuente más delgada (era 500) */
-  /* Borde degradado redondeado (doble background): la plate espuma en
-     padding-box + el gradiente mar pintando el borde en border-box.
-     Técnica necesaria porque border-image NO respeta border-radius. */
-  border: 3px solid transparent;
+  /* Coral profundo (atardecer) con marco abisal sólido. El coral es la
+     superficie de conversión; el abisal mantiene la familia marina. */
+  border: 3px solid var(--vino);
   border-radius: 12px;  /* ligera redondez (era garpan: 10px) */
-  background:
-    linear-gradient(var(--espuma), var(--espuma)) padding-box,
-    var(--stroke-vino-rest) border-box,
-    var(--espuma);
-  /* Eliminar sombras */
+  background: var(--terracota);
+  text-shadow: none;
   box-shadow: none !important;
   backdrop-filter: none;
 }
@@ -555,22 +552,17 @@
 @media (hover: hover) and (pointer: fine) {
 .hero-actions .btn-premium:hover,
 .cta-final .cta-btn:hover {
-  color: var(--text-on-white);  /* Mantener texto tinta en hover */
-  /* Tinte abisal OPACO (8% sobre espuma, pre-mezclado) en la plate +
-     anillo mar completo en el borde (doble background, sin border-image). */
-  background:
-    color-mix(in srgb, var(--vino) 8%, var(--espuma)) padding-box,
-    var(--stroke-vino-full) border-box !important;
-  /* Hard drop shadow coral (atardecer), sin inset */
-  box-shadow: 5px 5px 0 0 var(--terracota) !important;
+  color: var(--espuma);
+  background: var(--terracota-hover) !important;
+  border-color: var(--vino) !important;
+  /* Hard drop shadow abisal, sin inset */
+  box-shadow: 5px 5px 0 0 var(--vino) !important;
 }
 }
 .hero-actions .btn-premium:active,
 .cta-final .cta-btn:active {
-  color: var(--text-on-white);  /* Mantener texto tinta en active */
-  background:
-    color-mix(in srgb, var(--vino) 8%, var(--espuma)) padding-box,
-    var(--stroke-vino-full) border-box !important;
+  color: var(--espuma);
+  background: var(--terracota-hover) !important;
   box-shadow: none !important;
   transform: translateY(1px) scale(0.985);
   scale: 1;
@@ -1345,17 +1337,12 @@
 .cta-btn {
   margin-top: 1rem;
   margin-bottom: 0.5rem;
-  color: var(--text-on-white);  /* Texto tinta sobre la placa espuma */
-  /* Borde degradado redondeado — misma técnica de doble background
-     que el CTA del hero (border-image no respeta border-radius). */
-  border: 3px solid transparent;
+  color: var(--espuma);
+  /* Mismo contrato que el CTA del hero: coral profundo + marco abisal. */
+  border: 3px solid var(--vino);
   border-radius: 12px;  /* ligera redondez (era garpan: 10px) */
-  background:
-    linear-gradient(var(--espuma), var(--espuma)) padding-box,
-    var(--stroke-vino-rest) border-box,
-    var(--espuma) !important;
-  border-color: transparent !important;  /* el borde transparente deja ver el gradiente border-box */
-  /* Eliminar sombras */
+  background: var(--terracota) !important;
+  text-shadow: none !important;
   box-shadow: none !important;
   backdrop-filter: none;
 }
