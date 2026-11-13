@@ -6,7 +6,7 @@ import { DOMAIN } from '../../lib/constants';
 import { getTranslation } from '../../i18n/ui';
 
 const canonicalURL = `${DOMAIN}/guias/cuanto-cuesta-una-pagina-web-en-argentina`;
-const title = '¿Cuánto cuesta una página web en Argentina? (2026) — The Brand Crew';
+const title = '¿Cuánto cuesta una página web en Argentina? (2026) | The Brand Crew';
 const description =
   'Cuánto cuesta una página web en Argentina en 2026: rangos en USD de plantilla, freelancer, agencia y retainer. Qué incluye cada tramo y errores al cotizar.';
 const breadcrumb = [
@@ -38,31 +38,31 @@ const rangos = [
     rango: 'Retainer mensual',
     precio: 'desde USD 750 / mes',
     esperas:
-      'La web no se termina el día del launch: se itera. Rediseño continuo, contenido y reporte de métricas mes a mes.',
+      'La web no se termina el día del launch: se itera. Rediseño, contenido y métricas mes a mes.',
     link: { href: '/pricing/growth-partner', text: 'Ver Socio de crecimiento' },
   },
 ];
 
 const incluye = [
   {
-    titulo: 'Plantilla / DIY (USD 100 – 500)',
+    titulo: 'Plantilla / DIY',
     texto:
-      'Te queda el archivo y nada más. Sin copy, sin SEO técnico, sin garantía de que el tema se vea bien en un celular chico. El soporte sos vos, y el tiempo que le dediques es el costo real.',
+      'Te queda el archivo y nada más. Sin copy, sin SEO técnico, sin garantía de que el tema se vea bien en un celular chico. El soporte sos vos: el tiempo que le dediques es el costo real.',
   },
   {
-    titulo: 'Freelancer (USD 500 – 1.500)',
+    titulo: 'Freelancer',
     texto:
       'Depende de una persona: si es buena, buen trabajo; si algún día no está, no hay red. Antes de firmar preguntá tres cosas por escrito: quién escribe los textos, si entra SEO técnico, y qué pasa cuando algo se rompe a los tres meses.',
   },
   {
-    titulo: 'Agencia (USD 1.500 – 4.500)',
+    titulo: 'Agencia',
     texto:
-      'Proceso, equipo y entrega. En este tramo ya deberías tener diseño a medida, textos escritos para tu cliente, SEO técnico base (titles, meta, sitemap, velocidad), sitio responsive, hosting del primer año y soporte post-entrega. Nuestros tres packs —Arrancá USD 1.500, Crecé USD 2.900 y Escalá USD 4.500— están pensados para que veas qué cambia de un tramo al otro.',
+      'Proceso, equipo y entrega. En este tramo ya deberías tener diseño a medida, textos escritos para tu cliente, SEO técnico base (titles, meta, sitemap, velocidad), sitio responsive, hosting del primer año y soporte post-entrega. Nuestros tres packs están pensados para que veas qué cambia de un tramo al otro.',
   },
   {
-    titulo: 'Retainer (desde USD 750 / mes)',
+    titulo: 'Retainer',
     texto:
-      'No comprás una web, comprás continuidad: alguien que mire las métricas, actualice, publique y proponga cambios todos los meses. Es lo contrario de entregar la web y desaparecer.',
+      'No comprás una web, comprás continuidad: alguien que mire las métricas, actualice, publique y proponga cambios todos los meses. Es lo contrario de entregar y desaparecer.',
   },
 ];
 
@@ -70,7 +70,7 @@ const errores = [
   {
     titulo: 'Elegir solo por precio',
     texto:
-      'El presupuesto más barato casi siempre es una plantilla con tu logo encima. Se ve bien el día uno y a los seis meses no rankea, no convierte y no se puede editar sin pelearse con nadie. Compará alcances, no números.',
+      'El presupuesto más barato casi siempre es una plantilla con tu logo encima. Se ve bien el día uno y a los seis meses no rankea, no convierte y no se puede editar. Compará alcances, no números.',
   },
   {
     titulo: 'Cotizar sin contenidos',
@@ -85,7 +85,7 @@ const errores = [
   {
     titulo: 'Confundir precio de entrega con costo total',
     texto:
-      'Dominio, hosting, correos, copias de seguridad, actualizaciones y arreglos siguen después del launch. Presupuestalos desde el día uno: es mejor saberlo antes que descubrirlo cuando vence la renovación.',
+      'Dominio, hosting, correos, copias de seguridad, actualizaciones y arreglos siguen después del launch. Presupuestalos desde el día uno: mejor saberlo antes de que venza la renovación.',
   },
 ];
 
@@ -109,9 +109,8 @@ const errores = [
         <h2 class="legal-h2">El precio depende de cuatro cosas</h2>
         <p class="legal-p">
           La respuesta corta: entre USD 100 y USD 4.500. La respuesta honesta:
-          ese rango tan amplio no existe porque unos cobren "de más" y otros
-          "de menos", sino porque no estás comprando lo mismo. Antes de mirar un
-          número, mirá estas cuatro variables:
+          ese rango no existe porque unos cobren "de más" y otros "de menos",
+          sino porque no estás comprando lo mismo. Mirá estas cuatro variables:
         </p>
         <ul class="guia-list">
           <li>
@@ -141,9 +140,9 @@ const errores = [
         <h2 class="legal-h2">Rangos de precio en USD</h2>
         <p class="legal-p">
           Los cuatro tramos que vas a encontrar al pedir presupuesto en
-          Argentina, con lo que podés esperar por tu dinero en cada uno. Los
-          valores de las filas "Agencia" y "Retainer" son los que nosotros
-          publicamos: nada de rangos inventados.
+          Argentina, con lo que podés esperar en cada uno. Los valores de
+          "Agencia" y "Retainer" son los que publicamos: nada de rangos
+          inventados.
         </p>
         <div class="tabla-wrap">
           <table class="precio-tabla">
@@ -175,8 +174,8 @@ const errores = [
       <section class="legal-block">
         <h2 class="legal-h2">Qué incluye cada rango</h2>
         <p class="legal-p">
-          La pregunta no es cuánto pagás, es qué te queda después. Esto es lo
-          que debería venir incluido en cada tramo:
+          La pregunta no es cuánto pagás, es qué te queda después. Esto
+          debería venir incluido en cada tramo:
         </p>
         <ul class="guia-list">
           {

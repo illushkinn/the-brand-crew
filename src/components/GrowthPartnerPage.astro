@@ -26,7 +26,7 @@ const breadcrumb = [
 
 <BaseLayout lang={lang} title={gp.metaTitle} description={gp.description} canonicalURL={canonicalURL} breadcrumb={breadcrumb}>
   <div class="growth-page-content">
-    <section class="section pricing reveal" id="precios" aria-label={`${gp.label} — ${dictionaries[lang].pricing.title1}`}>
+    <section class="section pricing reveal" id="precios" aria-label={`${gp.label}: ${dictionaries[lang].pricing.title1}`}>
       <span class="section-label mono text-terracota">{gp.label}</span>
       <h1 class="section-title" set:html={gp.title}></h1>
       <p class="pricing-growth-hero-sub" set:html={gp.sub}></p>

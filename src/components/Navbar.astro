@@ -17,7 +17,7 @@ const enHref = basePath === '/' ? '/en' : `/en${basePath}`;
 
 <header>
   <nav class="navbar" role="navigation" aria-label="Main navigation">
-    <a href={isHome} class="navbar-brand" aria-label="The Brand Crew — home">
+    <a href={isHome} class="navbar-brand" aria-label={lang === 'es' ? 'The Brand Crew, inicio' : 'The Brand Crew, home'}>
       <span class="logo-progress-ring" aria-hidden="true">
         <svg viewBox="0 0 80 80">
           <circle class="ring-bg" cx="40" cy="40" r="38" />
