@@ -190,38 +190,38 @@ test.describe('Dormant dark palette (Option B readiness)', () => {
     expect(bg).toBe('rgba(0, 0, 0, 0)');
   });
 
-  test('CTA keeps black text on white plate', async ({ page }) => {
+  test('CTA keeps foam text on coral plate', async ({ page }) => {
     await page.goto('/');
     await setDark(page);
 
     const color = await channels(page, '.hero-actions .btn-premium', 'color');
     expect(
-      allAtMost(color, 60),
-      `.btn-premium text should be dark, got ${color.value} -> rgb(${color.r},${color.g},${color.b})`
+      allAtLeast(color, 220),
+      `.btn-premium text should be foam, got ${color.value} -> rgb(${color.r},${color.g},${color.b})`
     ).toBe(true);
 
     const bg = await channels(page, '.hero-actions .btn-premium', 'background-color');
     expect(
-      allAtLeast(bg, 250),
-      `.btn-premium plate should be white, got ${bg.value} -> rgb(${bg.r},${bg.g},${bg.b})`
+      bg.r > 150 && bg.r > bg.g + 100 && bg.r > bg.b + 80,
+      `.btn-premium plate should be coral, got ${bg.value} -> rgb(${bg.r},${bg.g},${bg.b})`
     ).toBe(true);
   });
 
-  test('CTA section button black on white', async ({ page }) => {
+  test('CTA section button foam on coral', async ({ page }) => {
     await page.goto('/#contacto');
     await page.locator('.cta-btn').first().waitFor();
     await setDark(page);
 
     const color = await channels(page, '.cta-btn', 'color');
     expect(
-      allAtMost(color, 60),
-      `.cta-btn text should be dark, got ${color.value} -> rgb(${color.r},${color.g},${color.b})`
+      allAtLeast(color, 220),
+      `.cta-btn text should be foam, got ${color.value} -> rgb(${color.r},${color.g},${color.b})`
     ).toBe(true);
 
     const bg = await channels(page, '.cta-btn', 'background-color');
     expect(
-      allAtLeast(bg, 250),
-      `.cta-btn plate should be white, got ${bg.value} -> rgb(${bg.r},${bg.g},${bg.b})`
+      bg.r > 150 && bg.r > bg.g + 100 && bg.r > bg.b + 80,
+      `.cta-btn plate should be coral, got ${bg.value} -> rgb(${bg.r},${bg.g},${bg.b})`
     ).toBe(true);
   });
 

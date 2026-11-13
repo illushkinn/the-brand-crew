@@ -163,15 +163,15 @@ test.describe('Carousel Navigation', () => {
 
   test('luisito card links to its live URL', async ({ page }) => {
     // Luisito recovered its URL (vercel.app — the custom domain
-    // luisitoplayagrande.com is dead: NXDOMAIN). Every card now has a
-    // public URL, so every card renders a real link CTA — no placeholders.
+    // luisitoplayagrande.com is dead: NXDOMAIN). Pragma has no live URL
+    // (pragma.com.ar is NXDOMAIN too), so its card renders without a CTA.
     const luisito = page.locator('.resultado-card', { hasText: 'Luisito Playa Grande' });
     const link = luisito.locator('a.resultado-link');
     await expect(link).toHaveCount(1);
     await expect(link).toHaveAttribute('href', 'https://luisito-playa-grande.vercel.app');
 
     const linked = page.locator('.resultado-card').filter({ has: page.locator('a.resultado-link') });
-    expect(await linked.count()).toBe(5);
+    expect(await linked.count()).toBe(4);
   });
 
   test('cards fit inside the carousel on mobile', async ({ page }) => {
