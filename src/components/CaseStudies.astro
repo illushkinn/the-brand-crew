@@ -39,8 +39,8 @@ const cases = getCaseStudies(lang);
                   </span>
                   <h3 class="resultado-nombre">{name}</h3>
                   {c.url && (
-                    <a href={c.url} class="resultado-link" target="_blank" rel="noopener" aria-label={`${seeCase}: ${name}`}>
-                      {seeCase}
+                    <a href={c.url} class="resultado-link" target="_blank" rel="noopener">
+                      {seeCase}<span class="sr-only">: {name}</span>
                       <Icon name="arrow-external" size={16} strokeWidth={2} />
                     </a>
                   )}

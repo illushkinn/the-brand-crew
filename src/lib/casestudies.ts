@@ -50,7 +50,7 @@ export function getCaseStudies(lang: Lang): CaseStudy[] {
       // El dominio propio (luisitoplayagrande.com) está caído (NXDOMAIN);
       // el sitio vive en el deployment de Vercel.
       url: 'https://luisito-playa-grande.vercel.app',
-      logo: { kind: 'img', src: '/assets/logos/luisito.svg', alt: 'Luisito Playa Grande', class: 'invert-dark' },
+      logo: { kind: 'img', src: '/assets/logos/luisito.svg', alt: 'Logotipo de Luisito Playa Grande', class: 'invert-dark' },
       screenshot: '/assets/Luisito.webp',
       metrics: [
         { value: t('caseStudies.luisitoMetric1Value'), label: t('caseStudies.luisitoMetric1Label') },
@@ -60,7 +60,7 @@ export function getCaseStudies(lang: Lang): CaseStudy[] {
       key: 'apolonia',
       name: 'Apolonia',
       url: 'https://verduleria-apolonia-mar-del-plata.vercel.app',
-      logo: { kind: 'img', src: '/assets/logos/apolonia.svg', alt: 'Apolonia' },
+      logo: { kind: 'img', src: '/assets/logos/apolonia.svg', alt: 'Logotipo de Apolonia' },
       screenshot: '/assets/Apolonia.webp',
       metrics: [
         { value: t('caseStudies.apoloniaMetric1Value'), label: t('caseStudies.apoloniaMetric1Label') },
@@ -83,7 +83,7 @@ export function getCaseStudies(lang: Lang): CaseStudy[] {
       key: 'escolta',
       name: 'Escolta Miami',
       url: 'https://escoltamiami.com',
-      logo: { kind: 'img', src: '/assets/logos/escolta-miami.png', alt: 'Escolta Miami', class: 'dark-bg' },
+      logo: { kind: 'img', src: '/assets/logos/escolta-miami.png', alt: 'Logotipo de Escolta Miami', class: 'dark-bg' },
       screenshot: '/assets/Escolta.jpg',
       metrics: [
         { value: t('caseStudies.escoltaMetric1Value'), label: t('caseStudies.escoltaMetric1Label') },
@@ -93,8 +93,8 @@ export function getCaseStudies(lang: Lang): CaseStudy[] {
     {
       key: 'pragma',
       name: 'Pragma',
-      url: 'https://pragma.com.ar',
-      logo: { kind: 'img', src: '/assets/logos/pragma.webp', alt: 'Pragma', class: 'dark-bg' },
+      // Sin URL: el dominio histórico (pragma.com.ar) ya no resuelve (NXDOMAIN).
+      logo: { kind: 'img', src: '/assets/logos/pragma.webp', alt: 'Logotipo de Pragma', class: 'dark-bg' },
       screenshot: '/assets/Pragma.webp',
       metrics: [
         { value: t('caseStudies.pragmaMetric1Value'), label: t('caseStudies.pragmaMetric1Label') },
