@@ -4,7 +4,7 @@ import MobileMenu from '../components/MobileMenu.astro';
 import CookieBanner from '../components/CookieBanner.astro';
 import { type Lang, localeMap, hreflangMap, dictionaries, defaultLang, getTranslation } from '../i18n/ui';
 import { WHATSAPP_NUMBER, DOMAIN } from '../lib/constants';
-import { translatedPaths, ES_ONLY_PATHS } from '../lib/routing';
+import { getAlternatePaths } from '../lib/routing';
 
 interface Props {
   lang?: Lang;
@@ -42,13 +42,8 @@ const ogDescription = isDefaultTitle ? dictionaries[lang].seo.ogDescription : de
 const abs = (path: string) => (path.startsWith('http') ? path : path === '/' ? `${DOMAIN}/` : `${DOMAIN}${path}`);
 const computeAlternates = (): Partial<Record<Lang, string>> => {
   if (Astro.props.alternates) return Astro.props.alternates;
-  const pathname = new URL(canonicalURL).pathname.replace(/\/$/, '') || '/';
-  const esPath = /^\/en(\/|$)/.test(pathname)
-    ? (Object.entries(translatedPaths).find(([, en]) => en === pathname)?.[0] ?? (pathname.replace(/^\/en/, '') || '/'))
-    : pathname;
-  if (ES_ONLY_PATHS.includes(esPath) || esPath.startsWith('/guias')) return { es: esPath }; // ES-only content
-  const enPath = translatedPaths[esPath] ?? (esPath === '/' ? '/en' : `/en${esPath}`);
-  return { es: esPath, en: enPath };
+  const { es, en } = getAlternatePaths(new URL(canonicalURL).pathname);
+  return en ? { es, en } : { es };
 };
 const alternates = noindex ? {} : computeAlternates();
 

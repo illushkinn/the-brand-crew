@@ -3,16 +3,14 @@
 import Logo from './Logo.astro';
 import type { Lang } from '../i18n/ui';
 import { useTranslations } from '../i18n/ui';
-import { getHomeLink, getPricingLink } from '../lib/routing';
+import { getHomeLink, getPricingLink, getLangSwitchLinks } from '../lib/routing';
 
 interface Props { lang?: Lang }
 const { lang = 'es' } = Astro.props;
 const t = useTranslations(lang);
 
 const isHome = getHomeLink(lang);
-const basePath = Astro.url.pathname.replace(/^\/en\/?/, '') || '/';
-const esHref = basePath;
-const enHref = basePath === '/' ? '/en' : `/en${basePath}`;
+const { es: esHref, en: enHref } = getLangSwitchLinks(Astro.url.pathname);
 ---
 
 <header>

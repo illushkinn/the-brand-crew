@@ -63,3 +63,32 @@ export const ES_ONLY_PATHS: readonly string[] = [PRICE_GUIDE_PATH, LOCAL_LANDING
 export const translatedPaths: Record<string, string> = {
   '/servicios/diseno-web': '/en/services/web-design',
 };
+
+/**
+ * ES/EN equivalents for a pathname. `en: null` means the page has no English
+ * twin (ES-only content). Shared by hreflang and the language switcher.
+ */
+export function getAlternatePaths(pathname: string): { es: string; en: string | null } {
+  const path = pathname.split('?')[0].replace(/\/+$/, '') || '/';
+
+  const esPath = /^\/en(\/|$)/.test(path)
+    ? (Object.entries(translatedPaths).find(([, en]) => en === path)?.[0] ??
+      (path.replace(/^\/en/, '') || '/'))
+    : path;
+
+  if (ES_ONLY_PATHS.includes(esPath) || esPath.startsWith('/guias')) {
+    return { es: esPath, en: null };
+  }
+
+  const enPath = translatedPaths[esPath] ?? (esPath === '/' ? '/en' : `/en${esPath}`);
+  return { es: esPath, en: enPath };
+}
+
+/**
+ * Language-switcher hrefs. When the current page has no twin, the missing
+ * language falls back to that language's home instead of a 404.
+ */
+export function getLangSwitchLinks(pathname: string): { es: string; en: string } {
+  const { es, en } = getAlternatePaths(pathname);
+  return { es, en: en ?? '/en' };
+}
