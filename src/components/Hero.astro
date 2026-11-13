@@ -17,6 +17,9 @@ const ctaLabel = t('hero.cta');
   <section class="hero" id="inicio" aria-label="Hero">
     <div class="hero-split">
       <div class="hero-content">
+        <p class="hero-b2b-tags hero-anim" style="--hero-delay: 0.1s">
+          <span class="tag-b2b tag-outline">{t('hero.tag')}</span>
+        </p>
         <h1 class="hero-title hero-anim" style="--hero-delay: 0.2s">
           <span class="hero-phrase">
             <span class="nowrap">{t('hero.headline2')}</span><br>{' '}{t('hero.headline3')}
@@ -33,10 +36,10 @@ const ctaLabel = t('hero.cta');
             {ctaLabel}
           </a>
         </div>
-        <p class="hero-b2b-tags hero-anim" style="--hero-delay: 0.85s">
-          <span class="tag-b2b tag-outline">{t('hero.tag')}</span>
-        </p>
-        <p class="hero-risk hero-anim" style="--hero-delay: 0.95s">{t('hero.risk')}</p>
+        {/* Microcopy de reversión de riesgo: pegada al CTA, igual que .cta-risk
+            en la sección final. Sin ✓ — la frase es una promesa condicional,
+            no un ítem de checklist. */}
+        <p class="hero-risk hero-anim" style="--hero-delay: 0.85s">{t('hero.risk')}</p>
       </div>
 
        <div class="hero-logo hero-anim-logo" style="--hero-delay: 1.0s">

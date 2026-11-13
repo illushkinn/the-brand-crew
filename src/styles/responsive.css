@@ -210,7 +210,7 @@
   }
   .hero-actions {
     margin-top: calc(2rem + 64.6px);
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.6rem;
     justify-content: flex-start;
   }
   .hero-actions .btn-lg {
@@ -218,7 +218,7 @@
     font-size: 1.4rem;
   }
   .hero-b2b-tags {
-    margin-top: 0.35rem;
+    margin-bottom: 0.6rem;
     justify-content: flex-start;
   }
   .hero-logo {
@@ -509,13 +509,13 @@
     margin-bottom: 2rem;
   }
   .hero-actions {
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.75rem;
   }
   .hero-actions .btn-lg {
     padding: 0.8rem 2rem;
   }
   .hero-b2b-tags {
-    margin-top: 0.35rem;
+    margin-bottom: 0.6rem;
   }
 }
 

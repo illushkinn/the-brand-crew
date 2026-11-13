@@ -529,20 +529,24 @@
      (content 32.6px + restored sibling margin; must equal the target
      gap because adjacent sibling margins collapse → max(), not sum) */
   margin-top: 64.6px;
-  margin-bottom: 2.5rem;
+  /* Pegado a la microcopy de riesgo que va debajo (mismo patrón que
+     .cta-final .cta-risk). El aire lo pone .hero-risk con su propio mb. */
+  margin-bottom: 0.75rem;
 }
 .hero-actions .btn-premium {
   padding: 0.9rem 1.25rem;
   font-size: clamp(1.2rem, 2.8vw, 1.5rem);
   color: var(--espuma);  /* Texto espuma sobre coral (7:1) */
   font-weight: 400;  /* Fuente más delgada (era 500) */
-  /* Coral profundo (atardecer) con marco abisal sólido. El coral es la
-     superficie de conversión; el abisal mantiene la familia marina. */
-  border: 3px solid var(--vino);
+  /* Coral profundo (atardecer) SIN aro: el marco abisal de 3px medía
+     1.12:1 contra el relleno (WCAG 1.4.11 pide 3:1) y embarraba el filo.
+     El abisal vuelve como SOMBRA DURA desplazada, donde sí se mide bien:
+     7.28:1 contra la página. La familia marina queda en el CTA. */
+  border: none;
   border-radius: 12px;  /* ligera redondez (era garpan: 10px) */
   background: var(--terracota);
   text-shadow: none;
-  box-shadow: none !important;
+  box-shadow: 5px 5px 0 0 var(--vino) !important;
   backdrop-filter: none;
 }
 /* Contrato de hover/active compartido — hero + CTA final: un solo bloque
@@ -554,23 +558,24 @@
 .cta-final .cta-btn:hover {
   color: var(--espuma);
   background: var(--terracota-hover) !important;
-  border-color: var(--vino) !important;
-  /* Hard drop shadow abisal, sin inset */
-  box-shadow: 5px 5px 0 0 var(--vino) !important;
+  /* La sombra crece: el botón se acerca, no solo cambia de color */
+  box-shadow: 8px 8px 0 0 var(--vino) !important;
 }
 }
 .hero-actions .btn-premium:active,
 .cta-final .cta-btn:active {
   color: var(--espuma);
   background: var(--terracota-hover) !important;
-  box-shadow: none !important;
+  /* Se hunde: la sombra se achica para que el botón lea como presionado */
+  box-shadow: 2px 2px 0 0 var(--vino) !important;
   transform: translateY(1px) scale(0.985);
   scale: 1;
 }
 .hero-b2b-tags {
   display: flex;
   gap: 0.5rem;
-  margin-top: 1.5rem;
+  /* Kicker editorial: va SOBRE el título, por eso el aire es hacia abajo */
+  margin-bottom: 0.9rem;
   flex-wrap: wrap;
 }
 .tag-b2b {
@@ -592,17 +597,15 @@
   background: transparent;  /* deja ver el grid del hero */
 }
 .hero-risk {
-  margin-top: 1rem;
+  /* Microcopy del CTA: sin margen propio — el la une .hero-actions mb */
+  margin-top: 0;
   font-size: 0.95rem;
   line-height: 1.5;
   color: var(--body-dim);
-  max-width: 34ch;
-  text-wrap: pretty;
-}
-.hero-risk::before {
-  content: '✓ ';
-  color: var(--verde);
-  font-weight: 600;
+  /* Sin max-width fijo: usa el ancho de la columna y se parte en dos
+     líneas parejas. text-wrap balance evita la viuda de 3 palabras. */
+  max-width: none;
+  text-wrap: balance;
 }
 
 /* ========================================
@@ -1338,12 +1341,13 @@
   margin-top: 1rem;
   margin-bottom: 0.5rem;
   color: var(--espuma);
-  /* Mismo contrato que el CTA del hero: coral profundo + marco abisal. */
-  border: 3px solid var(--vino);
+  /* Mismo contrato que el CTA del hero: coral sin aro + sombra dura abisal.
+     (El aro de 3px medía 1.12:1 contra el relleno.) */
+  border: none;
   border-radius: 12px;  /* ligera redondez (era garpan: 10px) */
   background: var(--terracota) !important;
   text-shadow: none !important;
-  box-shadow: none !important;
+  box-shadow: 5px 5px 0 0 var(--vino) !important;
   backdrop-filter: none;
 }
 /* ========================================
