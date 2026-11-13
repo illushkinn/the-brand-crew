@@ -578,6 +578,12 @@
   margin-bottom: 0.9rem;
   flex-wrap: wrap;
 }
+/* El chip del kicker no pinta fondo ni borde (tag-outline), así que su
+   padding horizontal solo lo desfasaba 13px del filo del título. */
+.hero-b2b-tags .tag-b2b {
+  padding-left: 0;
+  padding-right: 0;
+}
 .tag-b2b {
   position: relative;
   z-index: 2;
