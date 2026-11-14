@@ -2,7 +2,7 @@
 // MobileMenu.astro - Mobile navigation menu with clip-path animation
 import type { Lang } from '../i18n/ui';
 import { useTranslations } from '../i18n/ui';
-import { getHomeLink, getPricingLink, getAboutLink } from '../lib/routing';
+import { getHomeLink, getPricingLink } from '../lib/routing';
 
 interface Props { lang?: Lang }
 const { lang = 'es' } = Astro.props;
@@ -15,5 +15,5 @@ const isHome = getHomeLink(lang);
   <a href={`${isHome}#casos`} class="mobile-link">{t('nav.cases')}</a>
   <a href={`${isHome}#faq`} class="mobile-link">{t('nav.faq')}</a>
   <a href={getPricingLink(lang)} class="mobile-link">{t('nav.pricing')}</a>
-  <a href={getAboutLink(lang)} class="mobile-link">{t('nav.about')}</a>
+  <a href={`${isHome}#crew`} class="mobile-link">{t('nav.about')}</a>
 </div>

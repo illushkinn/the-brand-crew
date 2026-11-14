@@ -27,14 +27,6 @@ export function getGrowthPartnerLink(lang: Lang): string {
 }
 
 /**
- * Get the about page link for the given language
- * ES /nosotros — EN /en/about (slug traducido, registrado en translatedPaths)
- */
-export function getAboutLink(lang: Lang): string {
-  return lang === 'es' ? '/nosotros' : '/en/about';
-}
-
-/**
  * Get the privacy policy page link for the given language
  */
 export function getPrivacyLink(lang: Lang): string {
@@ -70,7 +62,6 @@ export const ES_ONLY_PATHS: readonly string[] = [PRICE_GUIDE_PATH, LOCAL_LANDING
  */
 export const translatedPaths: Record<string, string> = {
   '/servicios/diseno-web': '/en/services/web-design',
-  '/nosotros': '/en/about',
 };
 
 /**

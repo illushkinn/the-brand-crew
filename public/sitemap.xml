@@ -13,18 +13,6 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://thebrandcrew.lat/nosotros</loc>
-    <lastmod>2026-11-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://thebrandcrew.lat/en/about</loc>
-    <lastmod>2026-11-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://thebrandcrew.lat/servicios/diseno-web</loc>
     <lastmod>2026-10-05</lastmod>
     <changefreq>monthly</changefreq>
