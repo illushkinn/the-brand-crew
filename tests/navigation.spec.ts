@@ -36,6 +36,6 @@ test.describe('Navigation', () => {
     const hrefs = await links.evaluateAll((els) =>
       els.map((el) => el.getAttribute('href'))
     );
-    expect(hrefs).toEqual(['/#resultados', '/#casos', '/#faq', '/pricing', '/#crew']);
+    expect(hrefs).toEqual(['/#resultados', '/#casos', '/#faq', '/pricing', '/nosotros']);
   });
 });

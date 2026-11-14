@@ -3,7 +3,7 @@
 import Logo from './Logo.astro';
 import type { Lang } from '../i18n/ui';
 import { useTranslations } from '../i18n/ui';
-import { getHomeLink, getPricingLink, getLangSwitchLinks } from '../lib/routing';
+import { getHomeLink, getPricingLink, getAboutLink, getLangSwitchLinks } from '../lib/routing';
 
 interface Props { lang?: Lang }
 const { lang = 'es' } = Astro.props;
@@ -29,7 +29,7 @@ const { es: esHref, en: enHref } = getLangSwitchLinks(Astro.url.pathname);
       <a href={`${isHome}#casos`}>{t('nav.cases')}</a>
       <a href={`${isHome}#faq`}>{t('nav.faq')}</a>
       <a href={getPricingLink(lang)}>{t('nav.pricing')}</a>
-      <a href={`${isHome}#crew`}>{t('nav.about')}</a>
+      <a href={getAboutLink(lang)}>{t('nav.about')}</a>
     </div>
     <div class="navbar-actions">
       <div class="lang-switcher" role="group" aria-label="Language">

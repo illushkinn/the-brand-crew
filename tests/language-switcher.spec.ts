@@ -12,6 +12,8 @@ const cases = [
   { path: '/en/services/web-design', es: '/servicios/diseno-web', en: '/en/services/web-design' },
   { path: '/guias/cuanto-cuesta-una-pagina-web-en-argentina', es: '/guias/cuanto-cuesta-una-pagina-web-en-argentina', en: '/en' },
   { path: '/diseno-web-mar-del-plata', es: '/diseno-web-mar-del-plata', en: '/en' },
+  { path: '/nosotros', es: '/nosotros', en: '/en/about' },
+  { path: '/en/about', es: '/nosotros', en: '/en/about' },
 ];
 
 for (const { path, es, en } of cases) {
