@@ -28,41 +28,9 @@
   }
 }
 
-/* Desktop ≥900px: side-by-side grid + ring larger */
-@media (min-width: 900px) {
-  .hero-split {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    align-items: center;
-    align-self: flex-start;
-    margin-left: clamp(1.5rem, 4vw, 4rem);
-    gap: clamp(2.5rem, 6vw, 5rem);
-  }
-  .hero-logo {
-    order: 0;
-    position: relative;
-  }
-
-  .hero-isotype {
-    width: 100%;
-    height: 100%;
-    transform: scale(1.15);
-    transform-origin: center;
-  }
-  .hero-content {
-    text-align: left;
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
-    max-width: none;
-  }
-  .hero-actions {
-    justify-content: flex-start;
-  }
-  .hero-b2b-tags {
-    justify-content: flex-start;
-  }
-}
+/* Desktop side-by-side + anclaje del hero: ahora vive en components.css
+   como grilla intrínseca (auto-fit/minmax) + @container (min-width: 890px)
+   sobre .hero-problema-wrap — sin breakpoint de dispositivo. */
 
 @media (max-width: 767.98px) {
   .hero-sub {

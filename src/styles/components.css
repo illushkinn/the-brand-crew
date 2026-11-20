@@ -481,7 +481,9 @@
   position: relative;
   z-index: 1;
   max-width: 860px;
-  margin-top: 1rem;
+  /* Sin margen superior: en la grilla intrínseca el centrado vertical lo
+     resuelve align-items del .hero-split, igual que antes en desktop. */
+  margin-top: 0;
   margin-left: auto;
   margin-right: auto;
   padding: 0;
@@ -617,14 +619,20 @@
 /* ========================================
    HERO — Ring + Isotype (global, not scoped)
    ======================================== */
+/* Grilla INTRÍNSECA — sin media queries por breakpoint de dispositivo:
+   una sola pista hasta que entran dos de 400px + gap; a partir de ahí,
+   dos columnas iguales (texto a la izquierda, sello a la derecha). */
 .hero-split {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr));
+  align-items: center;
   text-align: left;
   width: 100%;
   max-width: 1200px;
-  gap: clamp(1.5rem, 4vw, 3rem);
+  /* Mismo trazado que el viejo flex: 4vw hasta el tope fluido. El coeficiente
+     4vw es el que hace que auto-fit cambie a dos pistas justo en el viewport
+     900 (donde el @container también dispara). */
+  gap: clamp(1.5rem, 4vw, 5rem);
 }
 .hero-logo {
   display: flex;
@@ -645,8 +653,11 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  width: 330px;
-  height: 330px;
+  /* El sello se dimensiona por su CAJA (la columna), no por el viewport:
+     min() lo limita al ancho disponible; la altura la sigue la propia
+     artwork (380×386, casi cuadrada). */
+  width: min(100%, 330px);
+  height: auto;
   margin: 0;
   overflow: visible;
 }
@@ -659,10 +670,50 @@
   position: relative;
   z-index: 2;
 }
+/* Scope del hero (NO toca .hero-showcase, que reusa estas clases en mobile):
+   el isotipo y la artwork llenan el anillo — el crecimiento es intrínseco. */
+.hero-logo .hero-isotype {
+  width: 100%;
+  height: 100%;
+}
+/* .logo-wrap necesita ancho DEFINIDO: sin él, el width:100% del <img> se
+   resuelve contra un contenedor fit-content y cae al intrínseco de 145px
+   del SVG (percentage circular → fallback a auto). */
+.hero-logo .hero-isotype .logo-wrap {
+  width: 100%;
+}
+.hero-logo .hero-isotype .logo-isotype {
+  width: 100%;
+  height: auto;
+}
 .hero-isotype .logo-isotype {
   display: block;
   max-width: 100%;
   height: auto;
+}
+
+/* ========================================
+   CONTAINER QUERY — el componente reacciona
+   al ancho de SU CAJA, no al del dispositivo.
+   El wrap no tiene padding, así que el umbral
+   890px equivale al viejo @media (min-width: 900px)
+   (890 = viewport 900 − 10px de scrollbar).
+   ======================================== */
+.hero-problema-wrap {
+  container-type: inline-size;
+}
+@container (min-width: 890px) {
+  /* Anclaje a la izquierda del hero (antes en el media query de 900px) */
+  .hero-split {
+    align-self: flex-start;
+    margin-left: clamp(1.5rem, 4vw, 4rem);
+  }
+  /* Sello grande en la columna derecha: 380px = la misma huella que
+     ocupaba el isotipo escalado (330 × 1.15), pero ahora la artwork
+     llena el anillo (+18% de imagen real). */
+  .hero-logo-ring {
+    width: min(100%, 380px);
+  }
 }
 
 .resultados {
