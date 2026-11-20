@@ -531,9 +531,9 @@
      (content 32.6px + restored sibling margin; must equal the target
      gap because adjacent sibling margins collapse → max(), not sum) */
   margin-top: 64.6px;
-  /* Pegado a la microcopy de riesgo que va debajo (mismo patrón que
-     .cta-final .cta-risk). El aire lo pone .hero-risk con su propio mb. */
-  margin-bottom: 0.75rem;
+  /* Aire CTA → microcopy de riesgo: 24px. El gap lo aporta este margen
+     (colapsa con el margin-top:0 de .hero-risk), no la microcopy. */
+  margin-bottom: 1.5rem;
 }
 .hero-actions .btn-premium {
   padding: 0.9rem 1.25rem;
@@ -644,7 +644,10 @@
   z-index: 1;
   width: 100%;
   margin-top: 0.5rem;
-  margin-left: -8%;
+  /* El sello se mide contra SU pista, no contra el viewport: el anillo
+     consulta este contenedor para decidir si llena o queda en 330px. */
+  container-type: inline-size;
+  container-name: seal;
   opacity: 0;
   will-change: transform, opacity;
 }
@@ -660,6 +663,14 @@
   height: auto;
   margin: 0;
   overflow: visible;
+}
+/* Solo llena cuando su pista ya es una columna real (≤640px). El tope por
+   altura evita que el sello choque con el navbar en laptops bajas. */
+@container seal (max-width: 640px) {
+  .hero-logo-ring {
+    width: min(100%, calc(100dvh - 15rem));
+    height: auto;
+  }
 }
 .hero-isotype {
   width: 85%;
@@ -706,13 +717,11 @@
   /* Anclaje a la izquierda del hero (antes en el media query de 900px) */
   .hero-split {
     align-self: flex-start;
+    /* El split se ensancha hacia la derecha con el margen; descontarlo del
+       width evita que la caja se salga del hero (overflow: clip) y recorte
+       el sello. El max-width de 1200 sigue mandando en 1440. */
+    width: calc(100% - clamp(1.5rem, 4vw, 4rem));
     margin-left: clamp(1.5rem, 4vw, 4rem);
-  }
-  /* Sello grande en la columna derecha: 380px = la misma huella que
-     ocupaba el isotipo escalado (330 × 1.15), pero ahora la artwork
-     llena el anillo (+18% de imagen real). */
-  .hero-logo-ring {
-    width: min(100%, 380px);
   }
 }
 

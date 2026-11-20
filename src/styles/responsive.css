@@ -178,7 +178,6 @@
   }
   .hero-actions {
     margin-top: calc(2rem + 64.6px);
-    margin-bottom: 0.6rem;
     justify-content: flex-start;
   }
   .hero-actions .btn-lg {
@@ -288,9 +287,6 @@
   .hero-content {
     max-width: 70%;
   }
-  .hero-actions {
-    margin-bottom: 0.5em;
-  }
 }
 
 /* General landscape adjustments for mobile devices */
@@ -352,7 +348,6 @@
   }
   .hero-actions {
     gap: 0.75rem;
-    margin-bottom: 1rem;
   }
   .hero-actions .btn-lg {
     padding: 0.75rem 1.5rem;
@@ -475,9 +470,6 @@
   .hero-sub {
     margin-top: 0.5rem;
     margin-bottom: 2rem;
-  }
-  .hero-actions {
-    margin-bottom: 0.75rem;
   }
   .hero-actions .btn-lg {
     padding: 0.8rem 2rem;
