@@ -10,7 +10,6 @@
     "test": "playwright test",
     "test:unit": "vitest run",
     "test:watch": "vitest",
-    "test:ui": "vitest --ui",
     "test:headed": "playwright test --headed",
     "check": "astro check"
   },
@@ -22,7 +21,6 @@
     "@astrojs/check": "^0.9.10",
     "@playwright/test": "^1.61.0",
     "@types/node": "^22.20.2",
-    "jsdom": "^25.0.1",
     "typescript": "^5.9.3",
     "vitest": "^2.1.9"
   }
