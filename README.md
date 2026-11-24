@@ -130,5 +130,5 @@ Proprietary — © 2026 The Brand Crew. All rights reserved.
 
 - [thebrandcrew.lat](https://thebrandcrew.lat)
 - hello@thebrandcrew.lat
-- WhatsApp: +54 9 11 2406-3009
+- WhatsApp: +54 9 11 6908-0533
 - Dev: [Illya Grytsyk](https://illushkinn.github.io)
