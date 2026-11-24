@@ -86,9 +86,7 @@ export const dictionaries = {
       step3Text: 'En una semana está online. Incluye onboarding y consultoría para que siga trayendo clientes.',
     },
     pricing: {
-      kicker: '',
       title1: 'Precios',
-      title2: '',
       backToHome: '← Volver al inicio',
       // Kit 1 — Diseño web
       kit1Title: 'Web + Marca + Contenido',
@@ -381,9 +379,7 @@ export const dictionaries = {
       step3Text: 'Live in one week. Includes onboarding and consulting to keep bringing in clients.',
     },
     pricing: {
-      kicker: '',
       title1: 'Pricing',
-      title2: '',
       backToHome: '← Back to home',
       kit1Title: 'Web + Brand + Content',
       esencialTitle: 'Launch',

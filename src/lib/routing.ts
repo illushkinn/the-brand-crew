@@ -54,13 +54,13 @@ export const PRICE_GUIDE_PATH = '/guias/cuanto-cuesta-una-pagina-web-en-argentin
 export const LOCAL_LANDING_PATH = '/diseno-web-mar-del-plata';
 
 /** Pages with no English twin: hreflang only emits ES + x-default. */
-export const ES_ONLY_PATHS: readonly string[] = [PRICE_GUIDE_PATH, LOCAL_LANDING_PATH];
+const ES_ONLY_PATHS: readonly string[] = [PRICE_GUIDE_PATH, LOCAL_LANDING_PATH];
 
 /**
  * Pages whose ES and EN paths differ. Used for hreflang alternates.
  * Key = ES path, value = EN path.
  */
-export const translatedPaths: Record<string, string> = {
+const translatedPaths: Record<string, string> = {
   '/servicios/diseno-web': '/en/services/web-design',
 };
 

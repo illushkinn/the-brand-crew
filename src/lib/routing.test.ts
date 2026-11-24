@@ -1,6 +1,5 @@
 import { describe, expect, it } from 'vitest';
 import {
-  ES_ONLY_PATHS,
   LOCAL_LANDING_PATH,
   PRICE_GUIDE_PATH,
   getAlternatePaths,
@@ -11,7 +10,6 @@ import {
   getPrivacyLink,
   getTermsLink,
   getWebDesignLink,
-  translatedPaths,
 } from './routing';
 
 describe('language link helpers', () => {
@@ -50,12 +48,6 @@ describe('ES-only paths', () => {
   it('exports the price guide and local landing paths', () => {
     expect(PRICE_GUIDE_PATH).toBe('/guias/cuanto-cuesta-una-pagina-web-en-argentina');
     expect(LOCAL_LANDING_PATH).toBe('/diseno-web-mar-del-plata');
-  });
-
-  it('lists both ES-only paths', () => {
-    expect(ES_ONLY_PATHS).toContain(PRICE_GUIDE_PATH);
-    expect(ES_ONLY_PATHS).toContain(LOCAL_LANDING_PATH);
-    expect(ES_ONLY_PATHS).toHaveLength(2);
   });
 });
 
@@ -112,13 +104,6 @@ describe('getAlternatePaths', () => {
     });
     expect(getAlternatePaths('/en/')).toEqual({ es: '/', en: '/en' });
     expect(getAlternatePaths('')).toEqual({ es: '/', en: '/en' });
-  });
-
-  it('round-trips every entry in translatedPaths', () => {
-    for (const [esPath, enPath] of Object.entries(translatedPaths)) {
-      expect(getAlternatePaths(esPath)).toEqual({ es: esPath, en: enPath });
-      expect(getAlternatePaths(enPath)).toEqual({ es: esPath, en: enPath });
-    }
   });
 });
 

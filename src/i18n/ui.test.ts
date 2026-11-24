@@ -11,16 +11,11 @@ const LANGS: Lang[] = ['es', 'en'];
 
 /**
  * Blanks that are deliberate, not missing translations:
- * - pricing.kicker / pricing.title2: unused decorative slots (no heading kicker).
  * - cta.title2: the final CTA renders it only when non-empty.
  * - footer.guide / footer.local: ES-only pages, hidden in the EN footer.
  */
 const INTENTIONAL_BLANK_KEYS = [
-  'es.pricing.kicker',
-  'es.pricing.title2',
   'es.cta.title2',
-  'en.pricing.kicker',
-  'en.pricing.title2',
   'en.cta.title2',
   'en.footer.guide',
   'en.footer.local',

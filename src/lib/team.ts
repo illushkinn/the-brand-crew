@@ -3,7 +3,7 @@
  * Centralized data structure for founding partners
  */
 
-export type TeamMemberId = 'illya' | 'carlos';
+type TeamMemberId = 'illya' | 'carlos';
 
 export interface TeamMember {
   id: TeamMemberId;
