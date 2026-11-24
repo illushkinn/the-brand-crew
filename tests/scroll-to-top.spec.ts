@@ -68,31 +68,40 @@ test.describe('Scroll to Top', () => {
     expect(scrollY).toBeLessThan(50); // Allow small tolerance
   });
 
-  test('prefers-reduced-motion causes instant scroll instead of smooth', async ({ page }) => {
-    // Enable prefers-reduced-motion
-    await page.emulateMedia({ reducedMotion: 'reduce' });
+  test.describe('with prefers-reduced-motion', () => {
+    // Context-level emulation: applied before the beforeEach navigation, so
+    // the page loads with the media query already matching.
+    test.use({ contextOptions: { reducedMotion: 'reduce' } });
 
-    const btn = page.locator('.scroll-to-top');
+    test('prefers-reduced-motion causes instant scroll instead of smooth', async ({ page }) => {
+      const btn = page.locator('.scroll-to-top');
 
-    // Scroll down
-    await page.evaluate(() => {
-      const hero = document.getElementById('inicio');
-      const target = hero ? hero.offsetTop + hero.offsetHeight + 10 : 1000;
-      window.scrollTo({ top: target, behavior: 'instant' });
+      // The emulation must actually reach the page.
+      const reducedMotion = await page.evaluate(
+        () => window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      );
+      expect(reducedMotion).toBe(true);
+
+      // Scroll down until the hero is out of view.
+      await page.evaluate(() => {
+        const hero = document.getElementById('inicio');
+        const target = hero ? hero.offsetTop + hero.offsetHeight + 10 : 1000;
+        window.scrollTo({ top: target, behavior: 'instant' });
+      });
+      await expect(btn).toHaveClass(/is-visible/, { timeout: 3000 });
+
+      // Click button and wait for the scroll position to settle at the top.
+      // No wall-clock assertion: Playwright's click overhead is not browser
+      // scroll duration. `behavior: 'auto'` lands at 0 on the next frame.
+      await btn.click();
+      await expect
+        .poll(() => page.evaluate(() => window.scrollY), {
+          timeout: 2000,
+          intervals: [50, 100, 250],
+          message: 'reduced motion should jump to the top',
+        })
+        .toBeLessThan(50);
     });
-    await page.waitForTimeout(300);
-
-    // Click button
-    const startTime = Date.now();
-    await btn.click();
-    await page.waitForTimeout(100);
-
-    // Check scroll happened instantly (no smooth animation delay)
-    const scrollY = await page.evaluate(() => window.scrollY);
-    const elapsed = Date.now() - startTime;
-
-    expect(scrollY).toBeLessThan(50);
-    expect(elapsed).toBeLessThan(400); // Instant should be < 400ms vs smooth ~600ms
   });
 
   test('button has correct aria-label for accessibility', async ({ page }) => {

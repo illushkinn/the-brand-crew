@@ -60,18 +60,50 @@ test.describe('FAQ Accordion', () => {
     await expect(answers.nth(1)).not.toHaveClass(/is-open/);
   });
 
-  test('answer max-height expands to scrollHeight', async ({ page }) => {
+  test('answer max-height expands when opened and collapses when closed', async ({ page }) => {
     const firstQuestion = page.locator('.faq-question').first();
     const firstAnswer = page.locator('.faq-answer').first();
 
+    // max-height is animated, so the computed value is an intermediate
+    // number for ~400ms. Poll it instead of asserting an exact px string.
+    const readMaxHeight = () =>
+      firstAnswer.evaluate(el => {
+        const raw = window.getComputedStyle(el).maxHeight;
+        return {
+          maxHeight: Number.parseFloat(raw),
+          scrollHeight: el.scrollHeight,
+        };
+      });
+
     // Click to open
     await firstQuestion.click();
-    await page.waitForTimeout(100);
+    await expect(firstQuestion).toHaveAttribute('aria-expanded', 'true');
+    await expect(firstAnswer).toHaveClass(/is-open/);
 
-    // Verify max-height is set and greater than 0
-    const maxHeight = await firstAnswer.evaluate(el => window.getComputedStyle(el).maxHeight);
-    expect(maxHeight).not.toBe('0px');
-    expect(maxHeight).not.toBe('none');
+    // Once expanded, max-height must be a real positive value that does not
+    // exceed the answer's scrollHeight (the open answer is fully visible).
+    await expect
+      .poll(
+        async () => {
+          const { maxHeight, scrollHeight } = await readMaxHeight();
+          return maxHeight > 0 && maxHeight <= scrollHeight;
+        },
+        { timeout: 3000, intervals: [50, 100, 200], message: 'answer max-height should expand to a positive value' }
+      )
+      .toBe(true);
+
+    // Click again to close: max-height animates back to 0.
+    await firstQuestion.click();
+    await expect(firstQuestion).toHaveAttribute('aria-expanded', 'false');
+    await expect(firstAnswer).not.toHaveClass(/is-open/);
+
+    await expect
+      .poll(async () => (await readMaxHeight()).maxHeight, {
+        timeout: 3000,
+        intervals: [50, 100, 200],
+        message: 'answer max-height should collapse back to 0',
+      })
+      .toBe(0);
   });
 
   test('chevron rotates when item opens', async ({ page }) => {
