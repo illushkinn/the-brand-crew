@@ -56,6 +56,54 @@ test.describe('WhatsApp floating button', () => {
     expect(textFromHref(href)).toBe(EN_MESSAGE);
   });
 
+  test('ring stays hidden during the wa-ring delay', async ({ page }) => {
+    await page.goto('/', { waitUntil: 'domcontentloaded' });
+    const button = page.locator('.whatsapp-floating');
+    const ringOpacity = () => button.evaluate(el => getComputedStyle(el, '::after').opacity);
+
+    const timing = await button.evaluate(el => {
+      const ring = document
+        .getAnimations()
+        .find(
+          (animation): animation is CSSAnimation =>
+            animation instanceof CSSAnimation && animation.animationName === 'wa-ring'
+        );
+
+      return {
+        opacity: getComputedStyle(el, '::after').opacity,
+        now: Number(document.timeline.currentTime ?? 0),
+        start: ring && ring.startTime !== null ? Number(ring.startTime) : null,
+        delay: ring ? Number(ring.effect?.getTiming().delay ?? 0) : null,
+      };
+    });
+
+    if (timing.start === null || timing.delay === null) {
+      test.skip(true, 'wa-ring animation not available in this browser');
+      return;
+    }
+
+    const elapsed = timing.now - timing.start;
+    if (elapsed >= timing.delay) {
+      test.skip(true, 'page loaded slower than the 2s delay');
+      return;
+    }
+
+    // Still inside the delay: the base opacity must keep the ring invisible.
+    expect(timing.opacity).toBe('0');
+
+    // Observe only while safely inside the delay window (200ms margin).
+    const remaining = Math.floor(timing.delay - elapsed - 200);
+    if (remaining > 0) {
+      await expect
+        .poll(ringOpacity, {
+          timeout: Math.min(1000, remaining),
+          intervals: [100, 200],
+          message: 'the ring must stay hidden until wa-ring begins',
+        })
+        .toBe('0');
+    }
+  });
+
   test.describe('with prefers-reduced-motion', () => {
     // Context-level emulation: applied before navigation.
     test.use({ contextOptions: { reducedMotion: 'reduce' } });
