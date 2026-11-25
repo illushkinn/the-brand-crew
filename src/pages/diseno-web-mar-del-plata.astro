@@ -21,9 +21,9 @@ const description =
   'Webs a medida para negocios de Mar del Plata. Online en 7 días, desde USD 1.500. Nos juntamos en persona y trabajamos con precios claros.';
 
 const packs = [
-  { name: p.esencialTitle, price: p.esencialPrice, desc: 'Landing de una página' },
-  { name: p.crewTitle, price: p.crewPrice, desc: 'Web completa + marca' },
-  { name: p.mvpTitle, price: p.mvpPrice, desc: 'Tienda online o pedidos' },
+  { name: p.starterTitle, price: p.starterPrice, desc: 'Landing de una página' },
+  { name: p.proTitle, price: p.proPrice, desc: 'Web completa + marca' },
+  { name: p.scaleTitle, price: p.scalePrice, desc: 'Tienda online o pedidos' },
 ];
 
 const waLink = getWhatsAppLink('es', '¡Hola The Brand Crew! Tengo un negocio en Mar del Plata y quiero una web.');
@@ -47,8 +47,8 @@ const schemas = [
     offers: {
       '@type': 'AggregateOffer',
       priceCurrency: 'USD',
-      lowPrice: p.esencialPrice.replace(/[.,]/g, ''),
-      highPrice: p.mvpPrice.replace(/[.,]/g, ''),
+      lowPrice: p.starterPrice.replace(/[.,]/g, ''),
+      highPrice: p.scalePrice.replace(/[.,]/g, ''),
     },
   },
 ];
@@ -60,7 +60,7 @@ const schemas = [
   <section class="legal-main mdp-hero">
     <span class="section-label mono text-terracota">Mar del Plata</span>
     <h1 class="legal-title">Diseño web en Mar del Plata</h1>
-    <p class="mdp-sub">Webs a medida para negocios de la ciudad. Online en 7 días, desde USD {p.esencialPrice}.</p>
+    <p class="mdp-sub">Webs a medida para negocios de la ciudad. Online en 7 días, desde USD {p.starterPrice}.</p>
     <div class="mdp-actions">
       <a href={CALENDLY_URL} target="_blank" rel="noopener" class="btn btn-premium" data-calendly-url={CALENDLY_URL}>Agendar una llamada</a>
       <a href={waLink} target="_blank" rel="noopener" class="btn btn-outline">WhatsApp</a>
