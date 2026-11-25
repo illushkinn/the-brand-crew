@@ -60,50 +60,70 @@ test.describe('FAQ Accordion', () => {
     await expect(answers.nth(1)).not.toHaveClass(/is-open/);
   });
 
-  test('answer max-height expands when opened and collapses when closed', async ({ page }) => {
+  test('opening an answer releases the height cap (no clipped padding)', async ({ page }) => {
     const firstQuestion = page.locator('.faq-question').first();
     const firstAnswer = page.locator('.faq-answer').first();
 
-    // max-height is animated, so the computed value is an intermediate
-    // number for ~400ms. Poll it instead of asserting an exact px string.
-    const readMaxHeight = () =>
-      firstAnswer.evaluate(el => {
-        const raw = window.getComputedStyle(el).maxHeight;
-        return {
-          maxHeight: Number.parseFloat(raw),
-          scrollHeight: el.scrollHeight,
-        };
-      });
+    // Headless runs on a loaded machine can skip animation frames, so assert
+    // the synchronous state instead of an interpolated value: once expanded,
+    // the px cap must be released to max-height: none. A stale px cap is what
+    // used to clip the bottom padding (52px cap vs 66px content).
+    const readState = () =>
+      firstAnswer.evaluate(el => ({
+        inlineMaxHeight: el.style.maxHeight,
+        computedMaxHeight: window.getComputedStyle(el).maxHeight,
+        scrollHeight: el.scrollHeight,
+        clientHeight: el.clientHeight,
+      }));
 
-    // Click to open
     await firstQuestion.click();
     await expect(firstQuestion).toHaveAttribute('aria-expanded', 'true');
     await expect(firstAnswer).toHaveClass(/is-open/);
 
-    // Once expanded, max-height must be a real positive value that does not
-    // exceed the answer's scrollHeight (the open answer is fully visible).
     await expect
-      .poll(
-        async () => {
-          const { maxHeight, scrollHeight } = await readMaxHeight();
-          return maxHeight > 0 && maxHeight <= scrollHeight;
-        },
-        { timeout: 3000, intervals: [50, 100, 200], message: 'answer max-height should expand to a positive value' }
-      )
-      .toBe(true);
+      .poll(async () => (await readState()).inlineMaxHeight, {
+        timeout: 5000,
+        intervals: [50, 100, 200],
+        message: 'expanded answer should release its height cap',
+      })
+      .toBe('none');
 
-    // Click again to close: max-height animates back to 0.
+    const open = await readState();
+    expect(open.computedMaxHeight).toBe('none');
+    expect(open.scrollHeight).toBeGreaterThan(0);
+    expect(open.clientHeight + 1).toBeGreaterThanOrEqual(open.scrollHeight);
+
     await firstQuestion.click();
     await expect(firstQuestion).toHaveAttribute('aria-expanded', 'false');
     await expect(firstAnswer).not.toHaveClass(/is-open/);
+    expect(Number.parseFloat((await readState()).inlineMaxHeight)).toBe(0);
+  });
 
-    await expect
-      .poll(async () => (await readMaxHeight()).maxHeight, {
-        timeout: 3000,
-        intervals: [50, 100, 200],
-        message: 'answer max-height should collapse back to 0',
-      })
-      .toBe(0);
+  test('every open answer renders its full content including padding', async ({ page }) => {
+    const questions = page.locator('.faq-question');
+    const answers = page.locator('.faq-answer');
+    const count = await questions.count();
+
+    for (let i = 0; i < count; i++) {
+      await questions.nth(i).click();
+      await expect(questions.nth(i)).toHaveAttribute('aria-expanded', 'true');
+
+      const answer = answers.nth(i);
+      await expect
+        .poll(async () => answer.evaluate(el => el.style.maxHeight), {
+          timeout: 5000,
+          intervals: [50, 100, 200],
+          message: `FAQ item ${i + 1} should release its height cap`,
+        })
+        .toBe('none');
+
+      const geometry = await answer.evaluate(el => ({
+        computedMaxHeight: window.getComputedStyle(el).maxHeight,
+        clipped: el.clientHeight + 1 < el.scrollHeight,
+      }));
+      expect(geometry.computedMaxHeight).toBe('none');
+      expect(geometry.clipped).toBe(false);
+    }
   });
 
   test('chevron rotates when item opens', async ({ page }) => {

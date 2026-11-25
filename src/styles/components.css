@@ -985,7 +985,7 @@
 .faq-answer {
   overflow: hidden;
   max-height: 0;
-  transition: max-height 0.4s ease, padding 0.4s ease;
+  transition: max-height 0.4s ease;
   padding: 0;
 }
 .faq-answer.is-open {
