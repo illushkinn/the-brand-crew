@@ -5,6 +5,7 @@ import { dictionaries } from '../i18n/ui';
 import Icon from './Icon.astro';
 import { getWhatsAppLink } from '../lib/whatsapp';
 import { getGrowthPartnerLink } from '../lib/routing';
+import { splitPrice } from '../lib/pricing';
 
 interface Props {
   lang?: Lang;
@@ -28,6 +29,7 @@ const plans = [
   {
     plans.map((plan, i) => {
       const message = p.planCtaMessage.replace('{plan}', plan.name);
+      const split = splitPrice(plan.price);
       return (
         <article class:list={['plan-card', { 'is-star': i === STAR_INDEX }]}>
           <div class="plan-card-top">
@@ -43,6 +45,10 @@ const plans = [
           <ul class="plan-features">
             {plan.features.map((f) => <li>{f}</li>)}
           </ul>
+          <p class="plan-payment">
+            <span class="plan-payment-amount">{p.planSplitText.replace('{amount}', split.halfLabel)}</span>
+            <span class="plan-payment-detail">{p.planSplitDetail}</span>
+          </p>
           <a
             href={getWhatsAppLink(lang, message)}
             class="plan-cta"
@@ -187,7 +193,7 @@ const plans = [
     display: flex;
     flex-direction: column;
     gap: 0.8rem;
-    margin: 1.5rem 0 2rem;
+    margin: 1.5rem 0 1.5rem;
     padding: 0;
     list-style: none;
   }
@@ -207,6 +213,27 @@ const plans = [
     height: 5px;
     border-radius: var(--radius-round);
     background: var(--verde);
+  }
+
+  .plan-payment {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin: 0 0 1.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+  }
+  .plan-payment-amount {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--headline);
+  }
+  .plan-payment-detail {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    line-height: 1.5;
+    color: var(--body-dim);
   }
 
   .plan-cta {

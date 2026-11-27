@@ -6,6 +6,16 @@ import { useTranslations } from '../i18n/ui';
 interface Props { lang?: Lang }
 const { lang = 'es' } = Astro.props;
 const t = useTranslations(lang);
+
+// Ordered source of truth for the accordion. Adding a question only needs qN/aN
+// in both dictionaries: BaseLayout builds the FAQPage schema from the same keys.
+const items = [
+  { q: 'faq.q1', a: 'faq.a1' },
+  { q: 'faq.q2', a: 'faq.a2' },
+  { q: 'faq.q3', a: 'faq.a3' },
+  { q: 'faq.q4', a: 'faq.a4' },
+  { q: 'faq.q5', a: 'faq.a5' },
+];
 ---
 
 <section class="section faq reveal" id="faq" aria-label="FAQ">
@@ -15,42 +25,17 @@ const t = useTranslations(lang);
   <h2 class="section-title">{t('faq.title1')} <span class="text-terracota">{t('faq.title2')}</span></h2>
   <div class="glass-card">
     <div class="faq-list">
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">
-          {t('faq.q1')}
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="faq-chevron"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        </button>
-        <div class="faq-answer">
-          <p>{t('faq.a1')}</p>
+      {items.map(({ q, a }) => (
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            {t(q)}
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="faq-chevron"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="faq-answer">
+            <p>{t(a)}</p>
+          </div>
         </div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">
-          {t('faq.q2')}
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="faq-chevron"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        </button>
-        <div class="faq-answer">
-          <p>{t('faq.a2')}</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">
-          {t('faq.q3')}
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="faq-chevron"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        </button>
-        <div class="faq-answer">
-          <p>{t('faq.a3')}</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">
-          {t('faq.q4')}
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="faq-chevron"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        </button>
-        <div class="faq-answer">
-          <p>{t('faq.a4')}</p>
-        </div>
-      </div>
+      ))}
     </div>
   </div>
 </section>

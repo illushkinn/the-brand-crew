@@ -27,6 +27,16 @@ test.describe('Pricing smoke', () => {
     }
   });
 
+  test('shows the 50/50 payment split on every card', async ({ page }) => {
+    await gotoPricing(page);
+    const cards = page.locator('#precios .plan-card');
+    await expect(cards).toHaveCount(3);
+    for (const card of await cards.all()) {
+      await expect(card.locator('.plan-payment-amount')).toContainText('2 pagos de USD');
+      await expect(card.locator('.plan-payment-detail')).toContainText('50%');
+    }
+  });
+
   test('each plan CTA opens WhatsApp with the plan name', async ({ page }) => {
     await gotoPricing(page);
     const href = await page.locator('#precios .plan-card.is-star .plan-cta').getAttribute('href');

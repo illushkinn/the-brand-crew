@@ -129,40 +129,14 @@ const businessSchema = {
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": getTranslation(lang, 'faq.q1'),
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": getTranslation(lang, 'faq.a1')
-      }
-    },
-    {
-      "@type": "Question",
-      "name": getTranslation(lang, 'faq.q2'),
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": getTranslation(lang, 'faq.a2')
-      }
-    },
-    {
-      "@type": "Question",
-      "name": getTranslation(lang, 'faq.q3'),
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": getTranslation(lang, 'faq.a3')
-      }
-    },
-    {
-      "@type": "Question",
-      "name": getTranslation(lang, 'faq.q4'),
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": getTranslation(lang, 'faq.a4')
-      }
+  "mainEntity": [1, 2, 3, 4, 5].map((n) => ({
+    "@type": "Question",
+    "name": getTranslation(lang, `faq.q${n}`),
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": getTranslation(lang, `faq.a${n}`)
     }
-  ]
+  }))
 };
 
 const websiteSchema = {

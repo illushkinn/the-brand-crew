@@ -26,6 +26,8 @@ const homeLink = `${DOMAIN}${getHomeLink(lang)}`;
     <h2 class="section-title rv">{t('pricing.title1')}.</h2>
   )}
 
+  <p class="section-sub rv">{t('pricing.subtitle')}</p>
+
   <div class="rv pricing-kit">
     <p class="pricing-kit-title mono">{t('pricing.kit1Title')}</p>
     <PlanCards lang={lang} showBadge={true} badge={t('socios.badge')} titleHeading={titleHeading === 'h1' ? 'h2' : 'h3'} />
@@ -34,9 +36,8 @@ const homeLink = `${DOMAIN}${getHomeLink(lang)}`;
   <div class="rv discovery-strip">
     <p class="discovery-title mono">{t('pricing.discoveryTitle')}</p>
     <p class="discovery-text">{t('pricing.discoveryText')}</p>
-    <ul class="discovery-chips" aria-label="Google · ChatGPT">
+    <ul class="discovery-chips" aria-label="Google">
       <li class="tag-b2b tag-outline">Google</li>
-      <li class="tag-b2b tag-outline">ChatGPT</li>
     </ul>
   </div>
 
