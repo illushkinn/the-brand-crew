@@ -267,7 +267,10 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* Alineado abajo como en desktop: el bloque queda cerca del footer,
+       no flotando en el centro de la pantalla. */
+    justify-content: flex-end;
+    padding-bottom: 2rem;
     align-items: center;
     text-align: center;
   }
