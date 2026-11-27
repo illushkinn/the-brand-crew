@@ -249,6 +249,11 @@
   .hero {
     padding: 2rem 1rem;
   }
+  .footer {
+    /* Zona segura para los controles flotantes (WhatsApp + volver arriba):
+       sin esto el FAB tapa el final de los links del footer. */
+    padding-bottom: calc(7rem + env(safe-area-inset-bottom, 0px));
+  }
   .footer-card {
     padding: 1rem 1.5rem 2rem;
     gap: var(--space-md);
