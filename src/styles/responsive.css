@@ -44,6 +44,11 @@
   .faq .glass-card {
     margin-top: 0.5rem;
   }
+  .faq-answer p {
+    /* El FAB fijo (56px) se apoya sobre el borde derecho de la respuesta.
+       12px de aire alcanzan para que ninguna línea quede debajo del botón. */
+    padding-right: 0.75rem;
+  }
 }
 
 
@@ -255,10 +260,9 @@
     padding-bottom: 0;
   }
   .footer-card {
-    /* Zona segura para los controles flotantes (WhatsApp + volver arriba):
-       el padding interno deja los links por encima del FAB sin separar la
-       tarjeta del borde inferior de la pantalla. */
-    padding: 1rem 1.5rem calc(9.5rem + env(safe-area-inset-bottom, 0px));
+    /* Card ajustado al contenido: 5.5rem cubre la zona del scroll-to-top
+       (20px del borde + 46px de alto + aire), no relleno muerto. */
+    padding: 1rem 1.5rem calc(5.5rem + env(safe-area-inset-bottom, 0px));
     gap: var(--space-md);
     align-items: center;
     text-align: center;

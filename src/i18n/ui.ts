@@ -34,7 +34,7 @@ export const dictionaries = {
       sub: 'Para negocios que <span class="hero-em">laburan</span>.',
       cta: 'Contacto',
       tag: 'Diseño web · Identidad · Pauta',
-      risk: 'Primero lo ves andando. Después pagás: con tu dominio (.com.ar, .io, .store o .app) incluido'
+      risk: 'Prototipo andando antes del primer pago. Dominio del primer año incluido.'
     },
     caseStudies: {
       kicker: 'Casos',
@@ -77,13 +77,12 @@ export const dictionaries = {
     comoFunciona: {
       kicker: 'Cómo trabajamos',
       title1: 'Tres pasos.',
-      sub: 'Tu negocio <strong>online y creciendo</strong>.',
       step1Title: 'Nos contás tu idea',
-      step1Text: 'Llamada de 15 minutos. Contanos qué vendés y qué tiene que lograr tu web. Te decimos si se puede y cómo.',
+      step1Text: 'Llamada de 15 minutos. Contanos qué ofreces, a quién y qué tiene que lograr tu web.',
       step2Title: 'Diseño y lanzamiento',
-      step2Text: 'En 48 hs ves el prototipo andando. Ajustamos lo que necesites. 50% al aprobarlo, 50% a la entrega.',
+      step2Text: 'En 48 hs ves el prototipo andando. Ajustamos lo que necesites.',
       step3Title: 'Estás online',
-      step3Text: 'En una semana está online. Incluye onboarding y consultoría para que siga trayendo clientes.',
+      step3Text: 'En una semana está online.',
     },
     pricing: {
       title1: 'Precios',
@@ -113,9 +112,6 @@ export const dictionaries = {
       planFootnote: 'Dominio + hosting 1° año + Factura A incluidos · Solo 3 proyectos por mes',
       planGrowthText: '¿Buscás acompañamiento mensual?',
       planGrowthLink: 'Socio de crecimiento desde $750/mes',
-      discoveryTitle: 'Que te encuentren cuando te buscan',
-      discoveryText:
-        'Todos los planes incluyen lo necesario para que te encuentren en Google.',
       // Kit 2 — Socio de crecimiento (antes "Growth Partner"; URL /pricing/growth-partner se mantiene por SEO)
       kit2Title: 'Socio de crecimiento<br>',
       growthTitle: 'Crecimiento mensual',
@@ -335,7 +331,7 @@ export const dictionaries = {
       sub: 'For businesses that <span class="hero-em">actually work</span>.',
       cta: 'Contact',
       tag: 'Web design · Identity · Paid media · Argentina',
-      risk: 'See it running first. Then you pay: with your domain (.com.ar, .io, .store or .app) included'
+      risk: 'A running prototype before your first payment. Domain for the first year included.'
     },
     caseStudies: {
       kicker: 'Work',
@@ -374,13 +370,12 @@ export const dictionaries = {
     comoFunciona: {
       kicker: 'How we work',
       title1: 'Three steps.',
-      sub: 'Your business <strong>live and growing</strong>.',
       step1Title: 'You tell us your idea',
-      step1Text: "A 15-minute call. Tell us what you sell and what your site needs to achieve. We tell you if it's doable and how.",
+      step1Text: 'A 15-minute call. Tell us what you offer, to whom, and what your site needs to achieve.',
       step2Title: 'Design & launch',
-      step2Text: 'In 48 hours you see the prototype running. We adjust what you need. 50% when you approve it, 50% on delivery.',
+      step2Text: 'In 48 hours you see the prototype running. We adjust what you need.',
       step3Title: "You're live",
-      step3Text: 'Live in one week. Includes onboarding and consulting to keep bringing in clients.',
+      step3Text: 'Live in one week.',
     },
     pricing: {
       title1: 'Pricing',
@@ -409,9 +404,6 @@ export const dictionaries = {
       planFootnote: 'Domain + 1st-year hosting + invoice included · Only 3 projects per month',
       planGrowthText: 'Looking for monthly support?',
       planGrowthLink: 'Growth Partner from $750/mo',
-      discoveryTitle: 'Be found when they search for you',
-      discoveryText:
-        'Every plan includes what you need to be found on Google.',
       kit2Title: 'Growth Partner<br>',
       growthTitle: 'Monthly Growth',
       growthPriceRange: '750–2,500',

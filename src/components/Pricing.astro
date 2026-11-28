@@ -33,14 +33,6 @@ const homeLink = `${DOMAIN}${getHomeLink(lang)}`;
     <PlanCards lang={lang} showBadge={true} badge={t('socios.badge')} titleHeading={titleHeading === 'h1' ? 'h2' : 'h3'} />
   </div>
 
-  <div class="rv discovery-strip">
-    <p class="discovery-title mono">{t('pricing.discoveryTitle')}</p>
-    <p class="discovery-text">{t('pricing.discoveryText')}</p>
-    <ul class="discovery-chips" aria-label="Google">
-      <li class="tag-b2b tag-outline">Google</li>
-    </ul>
-  </div>
-
   {lang === 'es' && (
     <p class="pricing-note rv">
       ¿Antes de pedir presupuesto? Leé la <a href="/guias/cuanto-cuesta-una-pagina-web-en-argentina">guía de precios</a>: rangos, qué incluye cada tramo y los errores que más plata cuestan.
@@ -49,35 +41,6 @@ const homeLink = `${DOMAIN}${getHomeLink(lang)}`;
 </section>
 
 <style>
-  .discovery-strip {
-    max-width: 620px;
-    margin: 3rem auto 0;
-    padding: 1.5rem 2rem;
-    text-align: center;
-    border: 1px solid var(--card-border);
-    border-radius: var(--radius-lg);
-    background: var(--banner-bg);
-  }
-  .discovery-title {
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--charcoal);
-    margin-bottom: 0.75rem;
-  }
-  .discovery-text {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: var(--body);
-    text-wrap: pretty;
-  }
-  .discovery-chips {
-    display: flex;
-    justify-content: center;
-    gap: 0.5rem;
-    list-style: none;
-    margin-top: 1rem;
-  }
   .pricing-note {
     max-width: 620px;
     margin: 2rem auto 0;
@@ -98,14 +61,6 @@ const homeLink = `${DOMAIN}${getHomeLink(lang)}`;
 
   /* Mobile: alineación a la izquierda (legibilidad en pantallas chicas) */
   @media (max-width: 767px) {
-    .discovery-strip {
-      text-align: left;
-      padding: 1.25rem 1.25rem;
-    }
-    .discovery-chips {
-      justify-content: flex-start;
-      flex-wrap: wrap;
-    }
     .pricing-note {
       text-align: left;
     }
