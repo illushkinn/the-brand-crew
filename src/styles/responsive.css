@@ -250,12 +250,15 @@
     padding: 2rem 1rem;
   }
   .footer {
-    /* Zona segura para los controles flotantes (WhatsApp + volver arriba):
-       sin esto el FAB tapa el final de los links del footer. */
-    padding-bottom: calc(7rem + env(safe-area-inset-bottom, 0px));
+    /* Sin banda debajo de la tarjeta: el footer termina en el borde del
+       viewport. El aire para los controles flotantes vive dentro del card. */
+    padding-bottom: 0;
   }
   .footer-card {
-    padding: 1rem 1.5rem 2rem;
+    /* Zona segura para los controles flotantes (WhatsApp + volver arriba):
+       el padding interno deja los links por encima del FAB sin separar la
+       tarjeta del borde inferior de la pantalla. */
+    padding: 1rem 1.5rem calc(9.5rem + env(safe-area-inset-bottom, 0px));
     gap: var(--space-md);
     align-items: center;
     text-align: center;
