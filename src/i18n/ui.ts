@@ -189,7 +189,6 @@ export const dictionaries = {
       title1: 'Arranquemos',
       title2: '',
       schedule: 'Agendar una llamada',
-      risk: 'No dejes plata en la mesa. Tus clientes ya te están buscando.',
     },
     footer: {
       privacy: 'Política de privacidad',
@@ -485,7 +484,6 @@ export const dictionaries = {
       title1: "Let's get started",
       title2: '',
       schedule: 'Schedule a call',
-      risk: "Don't leave money on the table. Your clients are already searching for you.",
     },
     footer: {
       privacy: 'Privacy Policy',
